@@ -3,6 +3,7 @@
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="block.fs" />
     <Compile Include="app.fs" />
   </ItemGroup>
   <ItemGroup>

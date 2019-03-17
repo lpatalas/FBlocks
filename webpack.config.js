@@ -6,6 +6,7 @@ var path = require("path");
 
 module.exports = {
     mode: "development",
+    devtool: "source-map",
     entry: "./src/app.fsproj",
     output: {
         path: path.join(__dirname, "./public"),
