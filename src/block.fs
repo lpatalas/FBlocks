@@ -1,23 +1,24 @@
 module FBlocks.Block
 
-type Coord = { x: int; y: int }
-type ShapeKind = D | I | J | L | O | S | Z
-type Shape = Shape of Coord array
+type Cell = Empty | Square
+type CellCoord = { x: int; y: int }
+type Rotation = NoRotation | By90Degrees | By180Degrees | By270Degrees
+type Shape = D | I | J | L | O | S | Z
+type ShapeMatrix = Matrix.Matrix<Cell>
 
-let convertShapeDefinition (definition: int array array) =
-    seq {
-        for x in 0..(definition.Length - 1) do
-            for y in 0..(definition.Length - 1) do
-                if definition.[y].[x] = 1 then
-                    yield { x = x; y = y }
-    }
-    |> Seq.toArray
-    |> Shape
+type Block = {
+    rotation: Rotation;
+    shape: Shape;
+}
 
-let createShape shapeKind =
+let rotateMatrix (matrix: ShapeMatrix) =
+    let rotateCell x y _ =
+        Matrix.getAt y (matrix.size - 1 - x) matrix
+    matrix |> Matrix.mapi rotateCell
+
+let getShapeMatrix shapeKind =
     let x = 1
-
-    convertShapeDefinition (
+    let matrixDefinition =
         match shapeKind with
         | D -> [| [| 0; x; 0 |]
                   [| x; x; x |]
@@ -45,4 +46,9 @@ let createShape shapeKind =
 
         | Z -> [| [| x; x; 0 |]
                   [| 0; x; x |]
-                  [| 0; 0; 0 |] |])
+                  [| 0; 0; 0 |] |]
+
+    matrixDefinition
+    |> Matrix.create
+    |> Matrix.map (fun x -> if x = 1 then Square else Empty)
+
