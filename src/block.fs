@@ -19,3 +19,7 @@ let moveBy dx dy block =
 let rotate block =
     { block with shape = Matrix.rotateClockwise block.shape }
 
+let getSquareCoords block =
+    block.shape
+    |> Shape.filledCellCoords
+    |> Seq.map (fun coord -> add coord block.position)

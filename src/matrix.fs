@@ -22,6 +22,11 @@ let iteri action matrix =
         action (i % matrix.size) (i / matrix.size) x
     Array.iteri action' matrix.cells
 
+let flatmapi mapping matrix =
+    let mapping' i x =
+        mapping (i % matrix.size) (i / matrix.size) x
+    Array.mapi mapping' matrix.cells
+
 let map mapping matrix =
     {
         cells = matrix.cells |> Array.map mapping

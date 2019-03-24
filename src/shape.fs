@@ -1,5 +1,7 @@
 module FBlocks.Shape
 
+open FBlocks.Coord
+
 type ShapeCell = EmptyCell | FilledCell
 type ShapeName = D | I | J | L | O | S | Z
 type ShapeMatrix = Matrix.Matrix<ShapeCell>
@@ -40,3 +42,8 @@ let getShapeMatrix shapeName =
     |> Matrix.create
     |> Matrix.map (fun x -> if x = 1 then FilledCell else EmptyCell)
 
+let filledCellCoords shape =
+    shape
+    |> Matrix.flatmapi (fun x y v -> ({ x = x; y = y }, v))
+    |> Seq.filter (fun (coord, v) -> v = FilledCell)
+    |> Seq.map (fun (coord, _) -> coord)

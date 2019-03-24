@@ -2,11 +2,9 @@ module FBlocks.App
 
 open Fable.Core.JsInterop
 open Fable.Import.Browser
-open FBlocks.Coord
 open FBlocks.Shape
 
 let blockSize = 24.0
-let gameAreaSize = (10, 20)
 
 let clearCanvas (canvas: HTMLCanvasElement) =
     let context = canvas.getContext_2d()
@@ -25,15 +23,18 @@ let drawShape (x: int) (y:int) (color: string) (shape: ShapeMatrix) (canvas: HTM
     shape
     |> Matrix.iteri (fun cellX cellY cell ->
         if cell = FilledCell then
-            drawSquare (x + cellX) (y + cellY) color canvas)
+            drawSquare (x + cellX) (y + cellY) color canvas
+        else
+            drawSquare (x + cellX) (y + cellY) "#333" canvas)
 
 type MoveDirection = Left | Right | Up | Down
 
 let run containerDivId =
+    let grid = Grid.createDefault
     let elem = document.getElementById containerDivId
     let canvas = document.createElement_canvas()
-    canvas.width <- float (fst gameAreaSize) * blockSize
-    canvas.height <- float (snd gameAreaSize) * blockSize
+    canvas.width <- float grid.width * blockSize
+    canvas.height <- float grid.height * blockSize
     elem.appendChild(canvas) |> ignore
 
     let mutable block = Block.create D
@@ -58,7 +59,7 @@ let run containerDivId =
 
         let updatedBlock = block |> move |> rotate
 
-        if updatedBlock <> block then
+        if updatedBlock <> block && Grid.isBlockValid grid updatedBlock then
             block <- updatedBlock
             redraw()
 
