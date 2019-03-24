@@ -1,4 +1,4 @@
-module Matrix
+module FBlocks.Matrix
 
 type Matrix<'T> = {
     cells: 'T array
