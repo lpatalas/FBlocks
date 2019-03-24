@@ -36,52 +36,30 @@ let run containerDivId =
     canvas.height <- float (snd gameAreaSize) * blockSize
     elem.appendChild(canvas) |> ignore
 
-    let shapeKind = D
-    let mutable pos = { x = 0; y = 0 }
-    let mutable rotation = 0
+    let mutable block = Block.create D
 
     let redraw() =
-        let matrix =
-            match rotation with
-            | 1 -> Matrix.rotate (getShapeMatrix shapeKind)
-            | 2 -> Matrix.rotate (Matrix.rotate (getShapeMatrix shapeKind))
-            | 3 -> Matrix.rotate (Matrix.rotate (Matrix.rotate (getShapeMatrix shapeKind)))
-            | _ -> getShapeMatrix shapeKind
-
         clearCanvas canvas
-        drawShape pos.x pos.y "red" matrix canvas
-
-    let moveBlock (direction: MoveDirection) =
-        let newPos =
-            match direction with
-            | Left -> { pos with x = pos.x - 1 }
-            | Right -> { pos with x = pos.x + 1 }
-            | Up -> { pos with y = pos.y - 1 }
-            | Down -> { pos with y = pos.y + 1 }
-        pos <- newPos
-
-    let rotateBlock() =
-        rotation <- if rotation = 3 then 0 else rotation + 1
+        drawShape block.position.x block.position.y "red" block.shape canvas
 
     let onKeyDown (e: KeyboardEvent) =
-        let moveDirection =
+        let move =
             match e.key with
-            | "ArrowLeft" -> Some Left
-            | "ArrowRight" -> Some Right
-            | "ArrowUp" -> Some Up
-            | "ArrowDown" -> Some Down
-            | _ -> None
+            | "ArrowLeft" -> Block.moveBy -1 0
+            | "ArrowRight" -> Block.moveBy 1 0
+            | "ArrowUp" -> Block.moveBy 0 -1
+            | "ArrowDown" -> Block.moveBy 0 1
+            | _ -> id
 
-        let rotate = e.key = " "
+        let rotate =
+            match e.key with
+            | " " -> Block.rotate
+            | _ -> id
 
-        match moveDirection with
-        | Some dir ->
-            moveBlock dir
-            redraw()
-        | None -> ()
+        let updatedBlock = block |> move |> rotate
 
-        if rotate then
-            rotateBlock()
+        if updatedBlock <> block then
+            block <- updatedBlock
             redraw()
 
     window.addEventListener_keydown onKeyDown
