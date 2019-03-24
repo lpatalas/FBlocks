@@ -1,5 +1,7 @@
 module FBlocks.Matrix
 
+open Coord
+
 type Matrix<'T> = {
     cells: 'T array
     columnCount: int
@@ -34,6 +36,9 @@ let fromArray (input: 'T array array) =
 let getAt x y matrix =
     matrix.cells.[x + (y * matrix.columnCount)]
 
+let exists predicate matrix =
+    Array.exists predicate matrix.cells
+
 let iter action matrix =
     Array.iter action matrix.cells
 
@@ -62,6 +67,12 @@ let mapi mapping matrix =
         columnCount = matrix.columnCount
         rowCount = matrix.rowCount
     }
+
+let coordsWithValue value matrix =
+    matrix
+    |> flatmapi (fun x y v -> (x, y, v))
+    |> Seq.filter (fun (_, _, v) -> v = value)
+    |> Seq.map (fun (x, y, _) -> { x = x; y = y })
 
 let rotateClockwise matrix =
     let rotateCell x y _ =

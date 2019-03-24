@@ -17,12 +17,25 @@ let createDefault =
         width = width
     }
 
+let getFilledCellCoords grid =
+    grid.cells
+    |> Matrix.coordsWithValue Shape.FilledCell
+
 let isBlockValid grid block =
-    let isCellValid coord =
+    let isCellInBounds coord =
         coord.x >= 0
         && coord.x < grid.width
         && coord.y >= 0
         && coord.y < grid.height
+
+    let isCellOverlappingFilledGrid cellCoord =
+        grid
+        |> getFilledCellCoords
+        |> Seq.exists (fun gridCoord -> gridCoord = cellCoord)
+
+    let isCellValid cell =
+        isCellInBounds cell
+        && not (isCellOverlappingFilledGrid cell)
 
     block
     |> Block.getSquareCoords
