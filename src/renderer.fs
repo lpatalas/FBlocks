@@ -28,9 +28,6 @@ let drawSquare (x: int) (y: int) (color: string) (canvas: HTMLCanvasElement) =
     context.fillStyle <- !^ color
     context.fillRect((float x) * blockSize + 0.5, (float y) * blockSize + 0.5, blockSize - 1.0, blockSize - 1.0)
 
-let toArray (a: 'T[,]) =
-    a |> Seq.cast<'T>
-
 let drawGrid (grid: Grid.Grid) (canvas: HTMLCanvasElement) =
     grid.cells
     |> Matrix.iteri (fun cellX cellY cell ->
@@ -47,5 +44,5 @@ let drawShape (x: int) (y:int) (color: string) (shape: ShapeMatrix) (canvas: HTM
 
 let redraw renderer grid (block: Block.Block) =
     clearCanvas renderer.canvas
-    drawGrid grid renderer.canvas
     drawShape block.position.x block.position.y "red" block.shape renderer.canvas
+    drawGrid grid renderer.canvas
