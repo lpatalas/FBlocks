@@ -19,6 +19,12 @@ let drawSquare (x: int) (y: int) (color: string) (canvas: HTMLCanvasElement) =
 let toArray (a: 'T[,]) =
     a |> Seq.cast<'T>
 
+let drawGrid (grid: Grid.Grid) (canvas: HTMLCanvasElement) =
+    grid.cells
+    |> Matrix.iteri (fun cellX cellY cell ->
+        if cell = FilledCell then
+            drawSquare cellX cellY "#FFF" canvas)
+
 let drawShape (x: int) (y:int) (color: string) (shape: ShapeMatrix) (canvas: HTMLCanvasElement) =
     shape
     |> Matrix.iteri (fun cellX cellY cell ->
@@ -30,17 +36,18 @@ let drawShape (x: int) (y:int) (color: string) (shape: ShapeMatrix) (canvas: HTM
 type MoveDirection = Left | Right | Up | Down
 
 let run containerDivId =
-    let grid = Grid.createDefault
+    let mutable grid = Grid.createDefault
+    let mutable block = Block.create D
+
     let elem = document.getElementById containerDivId
     let canvas = document.createElement_canvas()
     canvas.width <- float grid.width * blockSize
     canvas.height <- float grid.height * blockSize
     elem.appendChild(canvas) |> ignore
 
-    let mutable block = Block.create D
-
     let redraw() =
         clearCanvas canvas
+        drawGrid grid canvas
         drawShape block.position.x block.position.y "red" block.shape canvas
 
     let onKeyDown (e: KeyboardEvent) =
@@ -59,8 +66,14 @@ let run containerDivId =
 
         let updatedBlock = block |> move |> rotate
 
-        if updatedBlock <> block && Grid.isBlockValid grid updatedBlock then
-            block <- updatedBlock
+        if Grid.isBlockValid grid updatedBlock then
+
+            if e.key = "Enter" then
+                grid <- Grid.placeBlock grid updatedBlock
+                block <- Block.create L
+            else
+                block <- updatedBlock
+
             redraw()
 
     window.addEventListener_keydown onKeyDown
