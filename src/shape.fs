@@ -3,7 +3,7 @@ module FBlocks.Shape
 open FBlocks.Coord
 
 type ShapeCell = EmptyCell | FilledCell
-type ShapeName = D | I | J | L | O | S | Z
+type ShapeName = D | I | J | L | O | S | Z | E
 type ShapeMatrix = Matrix.Matrix<ShapeCell>
 
 let getShapeMatrix shapeName =
@@ -38,8 +38,11 @@ let getShapeMatrix shapeName =
                   [| 0; x; x |]
                   [| 0; 0; 0 |] |]
 
+        | E -> [| [| x; 0; x; 0; x |]
+                  [| x; x; x; x; x |] |]
+
     matrixDefinition
-    |> Matrix.create
+    |> Matrix.fromArray
     |> Matrix.map (fun x -> if x = 1 then FilledCell else EmptyCell)
 
 let filledCellCoords shape =

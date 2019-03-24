@@ -2,46 +2,70 @@ module FBlocks.Matrix
 
 type Matrix<'T> = {
     cells: 'T array
-    size: int
+    columnCount: int
+    rowCount: int
 }
 
-let create (input: 'T array array) =
+let create columnCount rowCount value =
+    {
+        cells = Array.replicate (columnCount * rowCount) value
+        columnCount = columnCount
+        rowCount = rowCount
+    }
+
+let fromArray (input: 'T array array) =
+    if input.Length = 0 then
+        invalidArg "input" "Input array can't have zero length"
+
+    let rowCount = input.Length
+    let columnCount = input.[0].Length
+    let areSubarraysSameLength =
+        input |> Seq.forall (fun subarray -> subarray.Length = columnCount)
+
+    if not areSubarraysSameLength then
+        invalidArg "input" "All subarrays in matrix must have same length"
+
     {
         cells = input |> Array.concat
-        size = input.Length
+        columnCount = columnCount
+        rowCount = rowCount
     }
 
 let getAt x y matrix =
-    matrix.cells.[x + (y * matrix.size)]
+    matrix.cells.[x + (y * matrix.columnCount)]
 
 let iter action matrix =
     Array.iter action matrix.cells
 
 let iteri action matrix =
     let action' i x =
-        action (i % matrix.size) (i / matrix.size) x
+        action (i % matrix.columnCount) (i / matrix.columnCount) x
     Array.iteri action' matrix.cells
 
 let flatmapi mapping matrix =
     let mapping' i x =
-        mapping (i % matrix.size) (i / matrix.size) x
+        mapping (i % matrix.columnCount) (i / matrix.columnCount) x
     Array.mapi mapping' matrix.cells
 
 let map mapping matrix =
     {
         cells = matrix.cells |> Array.map mapping
-        size = matrix.size
+        columnCount = matrix.columnCount
+        rowCount = matrix.rowCount
     }
 
 let mapi mapping matrix =
     let mapping' i x =
-        mapping (i % matrix.size) (i / matrix.size) x
+        mapping (i % matrix.columnCount) (i / matrix.columnCount) x
     {
         cells = matrix.cells |> Array.mapi mapping'
-        size = matrix.size
+        columnCount = matrix.columnCount
+        rowCount = matrix.rowCount
     }
 
 let rotateClockwise matrix =
     let rotateCell x y _ =
-        getAt y (matrix.size - 1 - x) matrix
-    matrix |> mapi rotateCell
+        getAt y (matrix.rowCount - 1 - x) matrix
+
+    create matrix.rowCount matrix.columnCount (getAt 0 0 matrix)
+    |> mapi rotateCell
