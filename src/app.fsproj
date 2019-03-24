@@ -3,8 +3,9 @@
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="coord.fs" />
     <Compile Include="matrix.fs" />
-    <Compile Include="block.fs" />
+    <Compile Include="shape.fs" />
     <Compile Include="app.fs" />
   </ItemGroup>
   <ItemGroup>

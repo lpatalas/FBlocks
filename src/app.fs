@@ -2,7 +2,8 @@ module FBlocks.App
 
 open Fable.Core.JsInterop
 open Fable.Import.Browser
-open FBlocks.Block
+open FBlocks.Coord
+open FBlocks.Shape
 
 let blockSize = 24.0
 let gameAreaSize = (10, 20)
@@ -23,7 +24,7 @@ let toArray (a: 'T[,]) =
 let drawShape (x: int) (y:int) (color: string) (shape: ShapeMatrix) (canvas: HTMLCanvasElement) =
     shape
     |> Matrix.iteri (fun cellX cellY cell ->
-        if cell = Square then
+        if cell = FilledCell then
             drawSquare (x + cellX) (y + cellY) color canvas)
 
 type MoveDirection = Left | Right | Up | Down
@@ -42,9 +43,9 @@ let run containerDivId =
     let redraw() =
         let matrix =
             match rotation with
-            | 1 -> rotateMatrix (getShapeMatrix shapeKind)
-            | 2 -> rotateMatrix (rotateMatrix (getShapeMatrix shapeKind))
-            | 3 -> rotateMatrix (rotateMatrix (rotateMatrix (getShapeMatrix shapeKind)))
+            | 1 -> Matrix.rotate (getShapeMatrix shapeKind)
+            | 2 -> Matrix.rotate (Matrix.rotate (getShapeMatrix shapeKind))
+            | 3 -> Matrix.rotate (Matrix.rotate (Matrix.rotate (getShapeMatrix shapeKind)))
             | _ -> getShapeMatrix shapeKind
 
         clearCanvas canvas

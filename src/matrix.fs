@@ -35,3 +35,8 @@ let mapi mapping matrix =
         cells = matrix.cells |> Array.mapi mapping'
         size = matrix.size
     }
+
+let rotate matrix =
+    let rotateCell x y _ =
+        getAt y (matrix.size - 1 - x) matrix
+    matrix |> mapi rotateCell
