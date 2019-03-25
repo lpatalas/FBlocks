@@ -81,7 +81,7 @@ let processFalling elapsedTime gameState =
                 lastBlockFallTime = elapsedTime }
         else
             { gameState with
-                block = Block.create Shape.L
+                block = Shape.random() |> Block.create
                 grid = Grid.placeBlock gameState.grid gameState.block
                 lastBlockFallTime = elapsedTime }
     else
@@ -114,7 +114,7 @@ let run containerDivId =
     let currentTime = performance.now()
 
     let gameState = {
-        block = Block.create Shape.D
+        block = Shape.random() |> Block.create
         grid = Grid.createDefault
         lastBlockFallTime = currentTime
     }

@@ -1,10 +1,24 @@
 module FBlocks.Shape
 
+open System
 open FBlocks.Coord
 
 type ShapeCell = EmptyCell | FilledCell
 type ShapeName = D | I | J | L | O | S | Z | E
 type ShapeMatrix = Matrix.Matrix<ShapeCell>
+
+let randomGenerator = Random()
+
+let random() =
+    match randomGenerator.Next(7) with
+    | 0 -> D
+    | 1 -> I
+    | 2 -> J
+    | 3 -> L
+    | 4 -> O
+    | 5 -> S
+    | 6 -> Z
+    | _ -> E
 
 let getShapeMatrix shapeName =
     let x = 1
