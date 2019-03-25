@@ -48,7 +48,6 @@ let processInput currentTime inputs gameState =
             | Input.Move Input.Down -> moveBlockDown currentTime
             | Input.Rotate -> rotateBlock
             | Input.PlaceBlock -> placeBlock
-            | _ -> id
 
     let updatedGameState =
         inputs
