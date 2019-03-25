@@ -42,7 +42,19 @@ let updateBlockIfValid gameState updater =
     else
         gameState
 
-let processInput gameState =
+let moveBlockDown currentTime gameState =
+    let movedBlock = Block.moveBy 0 1 gameState.block
+    if Grid.isBlockValid gameState.grid movedBlock then
+        { gameState with
+            block = movedBlock
+            lastBlockFallTime = currentTime }
+    else
+        { gameState with
+            block = Shape.random() |> Block.create
+            grid = Grid.placeBlock gameState.grid gameState.block
+            lastBlockFallTime = currentTime }
+
+let processInput currentTime gameState =
     let processAction action gameState =
         let moveBlock dx dy gameState =
             Block.moveBy dx dy |> updateBlockIfValid gameState
@@ -60,7 +72,7 @@ let processInput gameState =
             | Move Left -> moveBlock -1 0
             | Move Right -> moveBlock 1 0
             | Move Up -> moveBlock 0 -1
-            | Move Down -> moveBlock 0 1
+            | Move Down -> moveBlockDown currentTime
             | Rotate -> rotateBlock
             | PlaceBlock -> placeBlock
             | _ -> id
@@ -74,23 +86,14 @@ let processInput gameState =
 
 let processFalling elapsedTime gameState =
     if elapsedTime - gameState.lastBlockFallTime >= blockFallInterval then
-        let movedBlock = Block.moveBy 0 1 gameState.block
-        if Grid.isBlockValid gameState.grid movedBlock then
-            { gameState with
-                block = movedBlock
-                lastBlockFallTime = elapsedTime }
-        else
-            { gameState with
-                block = Shape.random() |> Block.create
-                grid = Grid.placeBlock gameState.grid gameState.block
-                lastBlockFallTime = elapsedTime }
+        moveBlockDown elapsedTime gameState
     else
         gameState
 
 let processFrame elapsedTime deltaTime gameState =
     let newGameState =
         gameState
-        |> processInput
+        |> processInput elapsedTime
         |> processFalling elapsedTime
 
     newGameState
