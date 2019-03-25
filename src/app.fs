@@ -74,8 +74,16 @@ let processInput gameState =
 
 let processFalling elapsedTime gameState =
     if elapsedTime - gameState.lastBlockFallTime >= blockFallInterval then
-        let newGameState = Block.moveBy 0 1 |> updateBlockIfValid gameState
-        { newGameState with lastBlockFallTime = elapsedTime }
+        let movedBlock = Block.moveBy 0 1 gameState.block
+        if Grid.isBlockValid gameState.grid movedBlock then
+            { gameState with
+                block = movedBlock
+                lastBlockFallTime = elapsedTime }
+        else
+            { gameState with
+                block = Block.create Shape.L
+                grid = Grid.placeBlock gameState.grid gameState.block
+                lastBlockFallTime = elapsedTime }
     else
         gameState
 
