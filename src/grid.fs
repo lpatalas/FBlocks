@@ -1,6 +1,7 @@
 module FBlocks.Grid
 
 open FBlocks.Coord
+open FBlocks
 
 type Grid = {
     cells: Matrix.Matrix<Shape.ShapeCell>
@@ -41,6 +42,29 @@ let isBlockValid grid block =
     |> Block.getSquareCoords
     |> Seq.forall isCellValid
 
+let removeCompletedRows matrix =
+    let completeRowIndices =
+        let isRowComplete rowIndex =
+            matrix
+            |> Matrix.getRow rowIndex
+            |> Seq.forall (fun cell -> cell = Shape.FilledCell)
+
+        seq { 0..(matrix.rowCount - 1) }
+        |> Seq.filter isRowComplete
+
+    let removeRow matrix rowIndex =
+        let mapCell x y value =
+            if y = 0 then
+                Shape.EmptyCell
+            else if y <= rowIndex then
+                Matrix.getAt x (y - 1) matrix
+            else
+                value
+        Matrix.mapi mapCell matrix
+
+    completeRowIndices
+    |> Seq.fold removeRow matrix
+
 let placeBlock grid block =
     let blockCells = Block.getSquareCoords block
     let gridCells =
@@ -50,6 +74,8 @@ let placeBlock grid block =
                 Shape.FilledCell
             else
                 value)
+        |> removeCompletedRows
+
     {
         cells = gridCells
         height = grid.height

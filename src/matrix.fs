@@ -36,6 +36,9 @@ let fromArray (input: 'T array array) =
 let getAt x y matrix =
     matrix.cells.[x + (y * matrix.columnCount)]
 
+let getRow y matrix =
+    matrix.cells.[(y * matrix.columnCount)..(matrix.columnCount + (y * matrix.columnCount) - 1)]
+
 let exists predicate matrix =
     Array.exists predicate matrix.cells
 
