@@ -9,6 +9,8 @@
     <Compile Include="block.fs" />
     <Compile Include="grid.fs" />
     <Compile Include="renderer.fs" />
+    <Compile Include="input.fs" />
+    <Compile Include="gameState.fs" />
     <Compile Include="app.fs" />
   </ItemGroup>
   <ItemGroup>
