@@ -2227,6 +2227,1341 @@ function tryParse(str, style, unsigned, bitsize) {
 
 /***/ }),
 
+/***/ "./.fable/fable-library.2.1.12/List.js":
+/*!*********************************************!*\
+  !*** ./.fable/fable-library.2.1.12/List.js ***!
+  \*********************************************/
+/*! exports provided: head, tryHead, tail, last, tryLast, compareWith, foldIndexedAux, foldIndexed, fold, reverse, foldBack, toSeq, ofSeq, concat, foldIndexed2Aux, foldIndexed2, fold2, foldBack2, unfold, foldIndexed3Aux, foldIndexed3, fold3, scan, scanBack, length, append, collect, map, mapIndexed, indexed, map2, mapIndexed2, map3, mapIndexed3, mapFold, mapFoldBack, iterate, iterate2, iterateIndexed, iterateIndexed2, ofArray, empty, isEmpty, tryPickIndexedAux, tryPickIndexed, tryPick, pick, tryFindIndexed, tryFind, findIndexed, find, findBack, tryFindBack, tryFindIndex, tryFindIndexBack, findIndex, findIndexBack, item, tryItem, filter, partition, choose, contains, except, initialize, replicate, reduce, reduceBack, forAll, forAll2, exists, exists2, unzip, unzip3, zip, zip3, sort, sortBy, sortDescending, sortByDescending, sortWith, sum, sumBy, maxBy, max, minBy, min, average, averageBy, permute, skip, skipWhile, takeSplitAux, take, takeWhile, truncate, splitAt, slice, distinctBy, distinct, exactlyOne, groupBy, countBy, where, pairwise, windowed */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "head", function() { return head; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "tryHead", function() { return tryHead; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "tail", function() { return tail; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "last", function() { return last; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "tryLast", function() { return tryLast; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "compareWith", function() { return compareWith; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "foldIndexedAux", function() { return foldIndexedAux; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "foldIndexed", function() { return foldIndexed; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fold", function() { return fold; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "reverse", function() { return reverse; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "foldBack", function() { return foldBack; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "toSeq", function() { return toSeq; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ofSeq", function() { return ofSeq; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "concat", function() { return concat; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "foldIndexed2Aux", function() { return foldIndexed2Aux; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "foldIndexed2", function() { return foldIndexed2; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fold2", function() { return fold2; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "foldBack2", function() { return foldBack2; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "unfold", function() { return unfold; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "foldIndexed3Aux", function() { return foldIndexed3Aux; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "foldIndexed3", function() { return foldIndexed3; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fold3", function() { return fold3; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "scan", function() { return scan; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "scanBack", function() { return scanBack; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "length", function() { return length; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "append", function() { return append; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "collect", function() { return collect; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "map", function() { return map; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "mapIndexed", function() { return mapIndexed; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "indexed", function() { return indexed; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "map2", function() { return map2; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "mapIndexed2", function() { return mapIndexed2; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "map3", function() { return map3; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "mapIndexed3", function() { return mapIndexed3; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "mapFold", function() { return mapFold; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "mapFoldBack", function() { return mapFoldBack; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "iterate", function() { return iterate; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "iterate2", function() { return iterate2; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "iterateIndexed", function() { return iterateIndexed; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "iterateIndexed2", function() { return iterateIndexed2; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ofArray", function() { return ofArray; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "empty", function() { return empty; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isEmpty", function() { return isEmpty; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "tryPickIndexedAux", function() { return tryPickIndexedAux; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "tryPickIndexed", function() { return tryPickIndexed; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "tryPick", function() { return tryPick; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "pick", function() { return pick; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "tryFindIndexed", function() { return tryFindIndexed; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "tryFind", function() { return tryFind; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "findIndexed", function() { return findIndexed; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "find", function() { return find; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "findBack", function() { return findBack; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "tryFindBack", function() { return tryFindBack; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "tryFindIndex", function() { return tryFindIndex; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "tryFindIndexBack", function() { return tryFindIndexBack; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "findIndex", function() { return findIndex; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "findIndexBack", function() { return findIndexBack; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "item", function() { return item; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "tryItem", function() { return tryItem; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "filter", function() { return filter; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "partition", function() { return partition; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "choose", function() { return choose; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "contains", function() { return contains; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "except", function() { return except; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "initialize", function() { return initialize; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "replicate", function() { return replicate; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "reduce", function() { return reduce; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "reduceBack", function() { return reduceBack; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "forAll", function() { return forAll; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "forAll2", function() { return forAll2; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "exists", function() { return exists; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "exists2", function() { return exists2; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "unzip", function() { return unzip; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "unzip3", function() { return unzip3; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "zip", function() { return zip; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "zip3", function() { return zip3; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "sort", function() { return sort; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "sortBy", function() { return sortBy; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "sortDescending", function() { return sortDescending; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "sortByDescending", function() { return sortByDescending; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "sortWith", function() { return sortWith; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "sum", function() { return sum; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "sumBy", function() { return sumBy; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "maxBy", function() { return maxBy; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "max", function() { return max; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "minBy", function() { return minBy; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "min", function() { return min; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "average", function() { return average; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "averageBy", function() { return averageBy; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "permute", function() { return permute; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "skip", function() { return skip; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "skipWhile", function() { return skipWhile; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "takeSplitAux", function() { return takeSplitAux; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "take", function() { return take; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "takeWhile", function() { return takeWhile; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "truncate", function() { return truncate; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "splitAt", function() { return splitAt; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "slice", function() { return slice; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "distinctBy", function() { return distinctBy; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "distinct", function() { return distinct; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "exactlyOne", function() { return exactlyOne; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "groupBy", function() { return groupBy; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "countBy", function() { return countBy; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "where", function() { return where; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "pairwise", function() { return pairwise; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "windowed", function() { return windowed; });
+/* harmony import */ var _Option__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Option */ "./.fable/fable-library.2.1.12/Option.js");
+/* harmony import */ var _Types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Types */ "./.fable/fable-library.2.1.12/Types.js");
+/* harmony import */ var _Seq__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Seq */ "./.fable/fable-library.2.1.12/Seq.js");
+/* harmony import */ var _Util__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Util */ "./.fable/fable-library.2.1.12/Util.js");
+/* harmony import */ var _Array__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Array */ "./.fable/fable-library.2.1.12/Array.js");
+/* harmony import */ var _Set__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Set */ "./.fable/fable-library.2.1.12/Set.js");
+/* harmony import */ var _List__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./List */ "./.fable/fable-library.2.1.12/List.js");
+/* harmony import */ var _Map__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./Map */ "./.fable/fable-library.2.1.12/Map.js");
+
+
+
+
+
+
+
+
+
+function head(_arg1) {
+  if (_arg1.tail != null) {
+    const x = _arg1.head;
+    return x;
+  } else {
+    throw new Error("List was empty");
+  }
+}
+function tryHead(_arg1$$1) {
+  if (_arg1$$1.tail != null) {
+    const x$$1 = _arg1$$1.head;
+    return Object(_Option__WEBPACK_IMPORTED_MODULE_0__["some"])(x$$1);
+  } else {
+    return null;
+  }
+}
+function tail(_arg1$$2) {
+  if (_arg1$$2.tail != null) {
+    const xs = _arg1$$2.tail;
+    return xs;
+  } else {
+    throw new Error("List was empty");
+  }
+}
+function last(_arg1$$3) {
+  last: while (true) {
+    if (_arg1$$3.tail != null) {
+      if (_arg1$$3.tail.tail == null) {
+        return _arg1$$3.head;
+      } else {
+        const $_arg1$$3$$2 = _arg1$$3;
+        _arg1$$3 = $_arg1$$3$$2.tail;
+        continue last;
+      }
+    } else {
+      throw new Error("List was empty");
+    }
+
+    break;
+  }
+}
+function tryLast(_arg1$$4) {
+  tryLast: while (true) {
+    if (_arg1$$4.tail != null) {
+      if (_arg1$$4.tail.tail == null) {
+        return Object(_Option__WEBPACK_IMPORTED_MODULE_0__["some"])(_arg1$$4.head);
+      } else {
+        const $_arg1$$4$$3 = _arg1$$4;
+        _arg1$$4 = $_arg1$$4$$3.tail;
+        continue tryLast;
+      }
+    } else {
+      return null;
+    }
+
+    break;
+  }
+}
+function compareWith(comparer, xs$$3, ys) {
+  if (xs$$3 === ys) {
+    return 0;
+  } else {
+    const loop = function loop(xs$$4, ys$$1) {
+      loop: while (true) {
+        const matchValue = [xs$$4, ys$$1];
+
+        if (matchValue[0].tail != null) {
+          if (matchValue[1].tail != null) {
+            const matchValue$$1 = comparer(matchValue[0].head, matchValue[1].head) | 0;
+
+            if (matchValue$$1 === 0) {
+              xs$$4 = matchValue[0].tail;
+              ys$$1 = matchValue[1].tail;
+              continue loop;
+            } else {
+              const res = matchValue$$1 | 0;
+              return res | 0;
+            }
+          } else {
+            return 1;
+          }
+        } else if (matchValue[1].tail == null) {
+          return 0;
+        } else {
+          return -1 | 0;
+        }
+
+        break;
+      }
+    };
+
+    return loop(xs$$3, ys) | 0;
+  }
+}
+function foldIndexedAux($arg$$7, $arg$$8, $arg$$9, $arg$$10) {
+  foldIndexedAux: while (true) {
+    const f = $arg$$7,
+          i = $arg$$8,
+          acc = $arg$$9,
+          _arg1$$5 = $arg$$10;
+
+    if (_arg1$$5.tail != null) {
+      const xs$$6 = _arg1$$5.tail;
+      const x$$5 = _arg1$$5.head;
+      $arg$$7 = f;
+      $arg$$8 = i + 1;
+      $arg$$9 = f(i, acc, x$$5);
+      $arg$$10 = xs$$6;
+      continue foldIndexedAux;
+    } else {
+      return acc;
+    }
+
+    break;
+  }
+}
+function foldIndexed(f$$1, state, xs$$7) {
+  return foldIndexedAux(f$$1, 0, state, xs$$7);
+}
+function fold($arg$$14, $arg$$15, $arg$$16) {
+  fold: while (true) {
+    const f$$2 = $arg$$14,
+          state$$1 = $arg$$15,
+          xs$$8 = $arg$$16;
+
+    if (xs$$8.tail != null) {
+      const t = xs$$8.tail;
+      const h = xs$$8.head;
+      $arg$$14 = f$$2;
+      $arg$$15 = f$$2(state$$1, h);
+      $arg$$16 = t;
+      continue fold;
+    } else {
+      return state$$1;
+    }
+
+    break;
+  }
+}
+function reverse(xs$$9) {
+  return fold(function (acc$$1, x$$6) {
+    return new _Types__WEBPACK_IMPORTED_MODULE_1__["List"](x$$6, acc$$1);
+  }, new _Types__WEBPACK_IMPORTED_MODULE_1__["List"](), xs$$9);
+}
+function foldBack(f$$3, xs$$10, state$$2) {
+  return fold(function (acc$$2, x$$7) {
+    return f$$3(x$$7, acc$$2);
+  }, state$$2, reverse(xs$$10));
+}
+function toSeq(xs$$11) {
+  return Object(_Seq__WEBPACK_IMPORTED_MODULE_2__["map"])(function (x$$8) {
+    return x$$8;
+  }, xs$$11);
+}
+function ofSeq(xs$$12) {
+  return reverse(Object(_Seq__WEBPACK_IMPORTED_MODULE_2__["fold"])(function (acc$$3, x$$9) {
+    return new _Types__WEBPACK_IMPORTED_MODULE_1__["List"](x$$9, acc$$3);
+  }, new _Types__WEBPACK_IMPORTED_MODULE_1__["List"](), xs$$12));
+}
+function concat(lists) {
+  return reverse(Object(_Seq__WEBPACK_IMPORTED_MODULE_2__["fold"])(function (state$$3, xs$$14) {
+    return fold(function f$$4(acc$$4, x$$10) {
+      return new _Types__WEBPACK_IMPORTED_MODULE_1__["List"](x$$10, acc$$4);
+    }, state$$3, xs$$14);
+  }, new _Types__WEBPACK_IMPORTED_MODULE_1__["List"](), lists));
+}
+function foldIndexed2Aux($arg$$20, $arg$$21, $arg$$22, $arg$$23, $arg$$24) {
+  foldIndexed2Aux: while (true) {
+    const f$$5 = $arg$$20,
+          i$$1 = $arg$$21,
+          acc$$5 = $arg$$22,
+          bs = $arg$$23,
+          cs = $arg$$24;
+    const matchValue$$2 = [bs, cs];
+    var $target$$25, x$$11, xs$$16, y$$1, ys$$3;
+
+    if (matchValue$$2[0].tail != null) {
+      if (matchValue$$2[1].tail != null) {
+        $target$$25 = 1;
+        x$$11 = matchValue$$2[0].head;
+        xs$$16 = matchValue$$2[0].tail;
+        y$$1 = matchValue$$2[1].head;
+        ys$$3 = matchValue$$2[1].tail;
+      } else {
+        $target$$25 = 2;
+      }
+    } else if (matchValue$$2[1].tail == null) {
+      $target$$25 = 0;
+    } else {
+      $target$$25 = 2;
+    }
+
+    switch ($target$$25) {
+      case 0:
+        {
+          return acc$$5;
+        }
+
+      case 1:
+        {
+          $arg$$20 = f$$5;
+          $arg$$21 = i$$1 + 1;
+          $arg$$22 = f$$5(i$$1, acc$$5, x$$11, y$$1);
+          $arg$$23 = xs$$16;
+          $arg$$24 = ys$$3;
+          continue foldIndexed2Aux;
+        }
+
+      case 2:
+        {
+          throw new Error("Lists had different lengths");
+        }
+    }
+
+    break;
+  }
+}
+function foldIndexed2(f$$6, state$$4, xs$$17, ys$$4) {
+  return foldIndexed2Aux(f$$6, 0, state$$4, xs$$17, ys$$4);
+}
+function fold2(f$$7, state$$5, xs$$18, ys$$5) {
+  return Object(_Seq__WEBPACK_IMPORTED_MODULE_2__["fold2"])(f$$7, state$$5, xs$$18, ys$$5);
+}
+function foldBack2(f$$8, xs$$19, ys$$6, state$$6) {
+  return Object(_Seq__WEBPACK_IMPORTED_MODULE_2__["foldBack2"])(f$$8, xs$$19, ys$$6, state$$6);
+}
+function unfold(f$$9, state$$7) {
+  const unfoldInner = function unfoldInner(acc$$6, state$$8) {
+    unfoldInner: while (true) {
+      const matchValue$$3 = f$$9(state$$8);
+
+      if (matchValue$$3 != null) {
+        const x$$12 = matchValue$$3[0];
+        const state$$9 = matchValue$$3[1];
+        const $acc$$6$$40 = acc$$6;
+        acc$$6 = new _Types__WEBPACK_IMPORTED_MODULE_1__["List"](x$$12, $acc$$6$$40);
+        state$$8 = state$$9;
+        continue unfoldInner;
+      } else {
+        return reverse(acc$$6);
+      }
+
+      break;
+    }
+  };
+
+  return unfoldInner(new _Types__WEBPACK_IMPORTED_MODULE_1__["List"](), state$$7);
+}
+function foldIndexed3Aux($arg$$41, $arg$$42, $arg$$43, $arg$$44, $arg$$45, $arg$$46) {
+  foldIndexed3Aux: while (true) {
+    const f$$10 = $arg$$41,
+          i$$2 = $arg$$42,
+          acc$$7 = $arg$$43,
+          bs$$1 = $arg$$44,
+          cs$$1 = $arg$$45,
+          ds = $arg$$46;
+    const matchValue$$4 = [bs$$1, cs$$1, ds];
+    var $target$$47, x$$13, xs$$20, y$$2, ys$$7, z, zs;
+
+    if (matchValue$$4[0].tail != null) {
+      if (matchValue$$4[1].tail != null) {
+        if (matchValue$$4[2].tail != null) {
+          $target$$47 = 1;
+          x$$13 = matchValue$$4[0].head;
+          xs$$20 = matchValue$$4[0].tail;
+          y$$2 = matchValue$$4[1].head;
+          ys$$7 = matchValue$$4[1].tail;
+          z = matchValue$$4[2].head;
+          zs = matchValue$$4[2].tail;
+        } else {
+          $target$$47 = 2;
+        }
+      } else {
+        $target$$47 = 2;
+      }
+    } else if (matchValue$$4[1].tail == null) {
+      if (matchValue$$4[2].tail == null) {
+        $target$$47 = 0;
+      } else {
+        $target$$47 = 2;
+      }
+    } else {
+      $target$$47 = 2;
+    }
+
+    switch ($target$$47) {
+      case 0:
+        {
+          return acc$$7;
+        }
+
+      case 1:
+        {
+          $arg$$41 = f$$10;
+          $arg$$42 = i$$2 + 1;
+          $arg$$43 = f$$10(i$$2, acc$$7, x$$13, y$$2, z);
+          $arg$$44 = xs$$20;
+          $arg$$45 = ys$$7;
+          $arg$$46 = zs;
+          continue foldIndexed3Aux;
+        }
+
+      case 2:
+        {
+          throw new Error("Lists had different lengths");
+        }
+    }
+
+    break;
+  }
+}
+function foldIndexed3(f$$11, seed, xs$$21, ys$$8, zs$$1) {
+  return foldIndexed3Aux(f$$11, 0, seed, xs$$21, ys$$8, zs$$1);
+}
+function fold3(f$$12, state$$10, xs$$22, ys$$9, zs$$2) {
+  return foldIndexed3(function (_arg1$$6, acc$$8, x$$14, y$$3, z$$1) {
+    return f$$12(acc$$8, x$$14, y$$3, z$$1);
+  }, state$$10, xs$$22, ys$$9, zs$$2);
+}
+function scan(f$$13, state$$11, xs$$23) {
+  return ofSeq(Object(_Seq__WEBPACK_IMPORTED_MODULE_2__["scan"])(f$$13, state$$11, xs$$23));
+}
+function scanBack(f$$14, xs$$25, state$$12) {
+  return ofSeq(Object(_Seq__WEBPACK_IMPORTED_MODULE_2__["scanBack"])(f$$14, xs$$25, state$$12));
+}
+function length(xs$$27) {
+  return fold(function (acc$$9, _arg1$$7) {
+    return acc$$9 + 1;
+  }, 0, xs$$27);
+}
+function append(xs$$28, ys$$10) {
+  return fold(function (acc$$10, x$$15) {
+    return new _Types__WEBPACK_IMPORTED_MODULE_1__["List"](x$$15, acc$$10);
+  }, ys$$10, reverse(xs$$28));
+}
+function collect(f$$15, xs$$29) {
+  return ofSeq(Object(_Seq__WEBPACK_IMPORTED_MODULE_2__["collect"])(f$$15, xs$$29));
+}
+function map(f$$16, xs$$31) {
+  return reverse(fold(function (acc$$11, x$$16) {
+    return new _Types__WEBPACK_IMPORTED_MODULE_1__["List"](f$$16(x$$16), acc$$11);
+  }, new _Types__WEBPACK_IMPORTED_MODULE_1__["List"](), xs$$31));
+}
+function mapIndexed(f$$17, xs$$33) {
+  return reverse(foldIndexed(function (i$$3, acc$$12, x$$17) {
+    return new _Types__WEBPACK_IMPORTED_MODULE_1__["List"](f$$17(i$$3, x$$17), acc$$12);
+  }, new _Types__WEBPACK_IMPORTED_MODULE_1__["List"](), xs$$33));
+}
+function indexed(xs$$35) {
+  return mapIndexed(function (i$$4, x$$18) {
+    return [i$$4, x$$18];
+  }, xs$$35);
+}
+function map2(f$$18, xs$$36, ys$$11) {
+  return reverse(fold2(function (acc$$13, x$$19, y$$4) {
+    return new _Types__WEBPACK_IMPORTED_MODULE_1__["List"](f$$18(x$$19, y$$4), acc$$13);
+  }, new _Types__WEBPACK_IMPORTED_MODULE_1__["List"](), xs$$36, ys$$11));
+}
+function mapIndexed2(f$$19, xs$$38, ys$$12) {
+  return reverse(foldIndexed2(function (i$$5, acc$$14, x$$20, y$$5) {
+    return new _Types__WEBPACK_IMPORTED_MODULE_1__["List"](f$$19(i$$5, x$$20, y$$5), acc$$14);
+  }, new _Types__WEBPACK_IMPORTED_MODULE_1__["List"](), xs$$38, ys$$12));
+}
+function map3(f$$20, xs$$40, ys$$13, zs$$3) {
+  return reverse(fold3(function (acc$$15, x$$21, y$$6, z$$2) {
+    return new _Types__WEBPACK_IMPORTED_MODULE_1__["List"](f$$20(x$$21, y$$6, z$$2), acc$$15);
+  }, new _Types__WEBPACK_IMPORTED_MODULE_1__["List"](), xs$$40, ys$$13, zs$$3));
+}
+function mapIndexed3(f$$21, xs$$42, ys$$14, zs$$4) {
+  return reverse(foldIndexed3(function (i$$6, acc$$16, x$$22, y$$7, z$$3) {
+    return new _Types__WEBPACK_IMPORTED_MODULE_1__["List"](f$$21(i$$6, x$$22, y$$7, z$$3), acc$$16);
+  }, new _Types__WEBPACK_IMPORTED_MODULE_1__["List"](), xs$$42, ys$$14, zs$$4));
+}
+function mapFold(f$$22, s, xs$$44) {
+  const foldFn = function foldFn(tupledArg, x$$23) {
+    const patternInput = f$$22(tupledArg[1], x$$23);
+    return [new _Types__WEBPACK_IMPORTED_MODULE_1__["List"](patternInput[0], tupledArg[0]), patternInput[1]];
+  };
+
+  const patternInput$$1 = fold(foldFn, [new _Types__WEBPACK_IMPORTED_MODULE_1__["List"](), s], xs$$44);
+  return [reverse(patternInput$$1[0]), patternInput$$1[1]];
+}
+function mapFoldBack(f$$23, xs$$45, s$$2) {
+  return mapFold(function (s$$3, v) {
+    return f$$23(v, s$$3);
+  }, s$$2, reverse(xs$$45));
+}
+function iterate(f$$24, xs$$46) {
+  fold(function (unitVar0, x$$24) {
+    f$$24(x$$24);
+  }, null, xs$$46);
+}
+function iterate2(f$$25, xs$$47, ys$$15) {
+  fold2(function (unitVar0$$1, x$$25, y$$8) {
+    f$$25(x$$25, y$$8);
+  }, null, xs$$47, ys$$15);
+}
+function iterateIndexed(f$$26, xs$$48) {
+  foldIndexed(function (i$$7, unitVar1, x$$26) {
+    f$$26(i$$7, x$$26);
+  }, null, xs$$48);
+}
+function iterateIndexed2(f$$27, xs$$49, ys$$16) {
+  foldIndexed2(function (i$$8, unitVar1$$1, x$$27, y$$9) {
+    f$$27(i$$8, x$$27, y$$9);
+  }, null, xs$$49, ys$$16);
+}
+function ofArray(xs$$50) {
+  let res$$1 = new _Types__WEBPACK_IMPORTED_MODULE_1__["List"]();
+
+  for (let i$$9 = Object(_Util__WEBPACK_IMPORTED_MODULE_3__["count"])(xs$$50) - 1; i$$9 >= 0; i$$9--) {
+    res$$1 = new _Types__WEBPACK_IMPORTED_MODULE_1__["List"](xs$$50[i$$9], res$$1);
+  }
+
+  return res$$1;
+}
+function empty() {
+  return new _Types__WEBPACK_IMPORTED_MODULE_1__["List"]();
+}
+function isEmpty(_arg1$$8) {
+  if (_arg1$$8.tail == null) {
+    return true;
+  } else {
+    return false;
+  }
+}
+function tryPickIndexedAux($arg$$100, $arg$$101, $arg$$102) {
+  tryPickIndexedAux: while (true) {
+    const f$$28 = $arg$$100,
+          i$$10 = $arg$$101,
+          _arg1$$9 = $arg$$102;
+
+    if (_arg1$$9.tail != null) {
+      const xs$$51 = _arg1$$9.tail;
+      const x$$28 = _arg1$$9.head;
+      const result = f$$28(i$$10, x$$28);
+
+      if (result == null) {
+        $arg$$100 = f$$28;
+        $arg$$101 = i$$10 + 1;
+        $arg$$102 = xs$$51;
+        continue tryPickIndexedAux;
+      } else {
+        return result;
+      }
+    } else {
+      return null;
+    }
+
+    break;
+  }
+}
+function tryPickIndexed(f$$29, xs$$52) {
+  return tryPickIndexedAux(f$$29, 0, xs$$52);
+}
+function tryPick(f$$30, xs$$53) {
+  return tryPickIndexed(function (_arg1$$10, x$$29) {
+    return f$$30(x$$29);
+  }, xs$$53);
+}
+function pick(f$$31, xs$$54) {
+  const matchValue$$5 = tryPick(f$$31, xs$$54);
+
+  if (matchValue$$5 != null) {
+    const x$$30 = Object(_Option__WEBPACK_IMPORTED_MODULE_0__["value"])(matchValue$$5);
+    return x$$30;
+  } else {
+    throw new Error("List did not contain any matching elements");
+  }
+}
+function tryFindIndexed(f$$32, xs$$55) {
+  return tryPickIndexed(function (i$$11, x$$31) {
+    return f$$32(i$$11, x$$31) ? Object(_Option__WEBPACK_IMPORTED_MODULE_0__["some"])(x$$31) : null;
+  }, xs$$55);
+}
+function tryFind(f$$33, xs$$56) {
+  return tryPickIndexed(function (_arg1$$11, x$$32) {
+    return f$$33(x$$32) ? Object(_Option__WEBPACK_IMPORTED_MODULE_0__["some"])(x$$32) : null;
+  }, xs$$56);
+}
+function findIndexed(f$$34, xs$$57) {
+  const matchValue$$6 = tryFindIndexed(f$$34, xs$$57);
+
+  if (matchValue$$6 != null) {
+    const x$$33 = Object(_Option__WEBPACK_IMPORTED_MODULE_0__["value"])(matchValue$$6);
+    return x$$33;
+  } else {
+    throw new Error("List did not contain any matching elements");
+  }
+}
+function find(f$$35, xs$$58) {
+  return findIndexed(function (_arg1$$12, x$$34) {
+    return f$$35(x$$34);
+  }, xs$$58);
+}
+function findBack(f$$36, xs$$59) {
+  return find(f$$36, reverse(xs$$59));
+}
+function tryFindBack(f$$37, xs$$62) {
+  return tryFind(f$$37, reverse(xs$$62));
+}
+function tryFindIndex(f$$38, xs$$65) {
+  return tryPickIndexed(function (i$$12, x$$35) {
+    return f$$38(x$$35) ? i$$12 : null;
+  }, xs$$65);
+}
+function tryFindIndexBack(f$$39, xs$$66) {
+  return Object(_Array__WEBPACK_IMPORTED_MODULE_4__["tryFindIndexBack"])(f$$39, Object(_Array__WEBPACK_IMPORTED_MODULE_4__["ofList"])(xs$$66, Array));
+}
+function findIndex(f$$40, xs$$67) {
+  const matchValue$$7 = tryFindIndex(f$$40, xs$$67);
+
+  if (matchValue$$7 != null) {
+    const x$$36 = matchValue$$7 | 0;
+    return x$$36 | 0;
+  } else {
+    throw new Error("List did not contain any matching elements");
+  }
+}
+function findIndexBack(f$$41, xs$$68) {
+  return Object(_Array__WEBPACK_IMPORTED_MODULE_4__["findIndexBack"])(f$$41, Object(_Array__WEBPACK_IMPORTED_MODULE_4__["ofList"])(xs$$68, Array));
+}
+function item(n, xs$$69) {
+  return findIndexed(function (i$$13, _arg1$$13) {
+    return n === i$$13;
+  }, xs$$69);
+}
+function tryItem(n$$1, xs$$70) {
+  return tryFindIndexed(function (i$$14, _arg1$$14) {
+    return n$$1 === i$$14;
+  }, xs$$70);
+}
+function filter(f$$42, xs$$71) {
+  return reverse(fold(function (acc$$17, x$$37) {
+    return f$$42(x$$37) ? new _Types__WEBPACK_IMPORTED_MODULE_1__["List"](x$$37, acc$$17) : acc$$17;
+  }, new _Types__WEBPACK_IMPORTED_MODULE_1__["List"](), xs$$71));
+}
+function partition(f$$43, xs$$73) {
+  return fold(function (tupledArg$$1, x$$38) {
+    return f$$43(x$$38) ? [new _Types__WEBPACK_IMPORTED_MODULE_1__["List"](x$$38, tupledArg$$1[0]), tupledArg$$1[1]] : [tupledArg$$1[0], new _Types__WEBPACK_IMPORTED_MODULE_1__["List"](x$$38, tupledArg$$1[1])];
+  }, [new _Types__WEBPACK_IMPORTED_MODULE_1__["List"](), new _Types__WEBPACK_IMPORTED_MODULE_1__["List"]()], reverse(xs$$73));
+}
+function choose(f$$44, xs$$74) {
+  return reverse(fold(function (acc$$18, x$$39) {
+    const matchValue$$8 = f$$44(x$$39);
+
+    if (matchValue$$8 == null) {
+      return acc$$18;
+    } else {
+      const y$$10 = Object(_Option__WEBPACK_IMPORTED_MODULE_0__["value"])(matchValue$$8);
+      return new _Types__WEBPACK_IMPORTED_MODULE_1__["List"](y$$10, acc$$18);
+    }
+  }, new _Types__WEBPACK_IMPORTED_MODULE_1__["List"](), xs$$74));
+}
+function contains(value, list, eq) {
+  const loop$$1 = function loop$$1(xs$$76) {
+    loop$$1: while (true) {
+      if (xs$$76.tail != null) {
+        const v$$1 = xs$$76.head;
+        const rest = xs$$76.tail;
+
+        if (eq.Equals(value, v$$1)) {
+          return true;
+        } else {
+          xs$$76 = rest;
+          continue loop$$1;
+        }
+      } else {
+        return false;
+      }
+
+      break;
+    }
+  };
+
+  return loop$$1(list);
+}
+function except(itemsToExclude, array$$2, eq$$1) {
+  if (isEmpty(array$$2)) {
+    return array$$2;
+  } else {
+    const cached = Object(_Set__WEBPACK_IMPORTED_MODULE_5__["createMutable"])(itemsToExclude, Object(_Util__WEBPACK_IMPORTED_MODULE_3__["comparerFromEqualityComparer"])(eq$$1));
+    return filter(function f$$45(arg00) {
+      return Object(_Util__WEBPACK_IMPORTED_MODULE_3__["addToSet"])(arg00, cached);
+    }, array$$2);
+  }
+}
+function initialize(n$$2, f$$46) {
+  let xs$$78 = new _Types__WEBPACK_IMPORTED_MODULE_1__["List"]();
+
+  for (let i$$15 = 1; i$$15 <= n$$2; i$$15++) {
+    xs$$78 = new _Types__WEBPACK_IMPORTED_MODULE_1__["List"](f$$46(n$$2 - i$$15), xs$$78);
+  }
+
+  return xs$$78;
+}
+function replicate(n$$3, x$$40) {
+  return initialize(n$$3, function (_arg1$$15) {
+    return x$$40;
+  });
+}
+function reduce(f$$47, _arg1$$16) {
+  if (_arg1$$16.tail != null) {
+    const t$$1 = _arg1$$16.tail;
+    const h$$1 = _arg1$$16.head;
+    return fold(f$$47, h$$1, t$$1);
+  } else {
+    throw new Error("List was empty");
+  }
+}
+function reduceBack(f$$48, _arg1$$17) {
+  if (_arg1$$17.tail != null) {
+    const t$$2 = _arg1$$17.tail;
+    const h$$2 = _arg1$$17.head;
+    return foldBack(f$$48, t$$2, h$$2);
+  } else {
+    throw new Error("List was empty");
+  }
+}
+function forAll(f$$49, xs$$79) {
+  return fold(function (acc$$19, x$$41) {
+    return acc$$19 ? f$$49(x$$41) : false;
+  }, true, xs$$79);
+}
+function forAll2(f$$50, xs$$80, ys$$17) {
+  return fold2(function (acc$$20, x$$42, y$$11) {
+    return acc$$20 ? f$$50(x$$42, y$$11) : false;
+  }, true, xs$$80, ys$$17);
+}
+function exists($arg$$146, $arg$$147) {
+  exists: while (true) {
+    const f$$51 = $arg$$146,
+          _arg1$$18 = $arg$$147;
+
+    if (_arg1$$18.tail != null) {
+      const xs$$81 = _arg1$$18.tail;
+      const x$$43 = _arg1$$18.head;
+
+      if (f$$51(x$$43)) {
+        return true;
+      } else {
+        $arg$$146 = f$$51;
+        $arg$$147 = xs$$81;
+        continue exists;
+      }
+    } else {
+      return false;
+    }
+
+    break;
+  }
+}
+function exists2($arg$$148, $arg$$149, $arg$$150) {
+  exists2: while (true) {
+    const f$$52 = $arg$$148,
+          bs$$2 = $arg$$149,
+          cs$$2 = $arg$$150;
+    const matchValue$$9 = [bs$$2, cs$$2];
+    var $target$$151, x$$44, xs$$82, y$$12, ys$$18;
+
+    if (matchValue$$9[0].tail != null) {
+      if (matchValue$$9[1].tail != null) {
+        $target$$151 = 1;
+        x$$44 = matchValue$$9[0].head;
+        xs$$82 = matchValue$$9[0].tail;
+        y$$12 = matchValue$$9[1].head;
+        ys$$18 = matchValue$$9[1].tail;
+      } else {
+        $target$$151 = 2;
+      }
+    } else if (matchValue$$9[1].tail == null) {
+      $target$$151 = 0;
+    } else {
+      $target$$151 = 2;
+    }
+
+    switch ($target$$151) {
+      case 0:
+        {
+          return false;
+        }
+
+      case 1:
+        {
+          if (f$$52(x$$44, y$$12)) {
+            return true;
+          } else {
+            $arg$$148 = f$$52;
+            $arg$$149 = xs$$82;
+            $arg$$150 = ys$$18;
+            continue exists2;
+          }
+        }
+
+      case 2:
+        {
+          throw new Error("Lists had different lengths");
+        }
+    }
+
+    break;
+  }
+}
+function unzip(xs$$83) {
+  return foldBack(function (tupledArg$$2, tupledArg$$3) {
+    return [new _Types__WEBPACK_IMPORTED_MODULE_1__["List"](tupledArg$$2[0], tupledArg$$3[0]), new _Types__WEBPACK_IMPORTED_MODULE_1__["List"](tupledArg$$2[1], tupledArg$$3[1])];
+  }, xs$$83, [new _Types__WEBPACK_IMPORTED_MODULE_1__["List"](), new _Types__WEBPACK_IMPORTED_MODULE_1__["List"]()]);
+}
+function unzip3(xs$$84) {
+  return foldBack(function (tupledArg$$4, tupledArg$$5) {
+    return [new _Types__WEBPACK_IMPORTED_MODULE_1__["List"](tupledArg$$4[0], tupledArg$$5[0]), new _Types__WEBPACK_IMPORTED_MODULE_1__["List"](tupledArg$$4[1], tupledArg$$5[1]), new _Types__WEBPACK_IMPORTED_MODULE_1__["List"](tupledArg$$4[2], tupledArg$$5[2])];
+  }, xs$$84, [new _Types__WEBPACK_IMPORTED_MODULE_1__["List"](), new _Types__WEBPACK_IMPORTED_MODULE_1__["List"](), new _Types__WEBPACK_IMPORTED_MODULE_1__["List"]()]);
+}
+function zip(xs$$85, ys$$19) {
+  return map2(function (x$$47, y$$15) {
+    return [x$$47, y$$15];
+  }, xs$$85, ys$$19);
+}
+function zip3(xs$$86, ys$$20, zs$$5) {
+  return map3(function (x$$48, y$$16, z$$5) {
+    return [x$$48, y$$16, z$$5];
+  }, xs$$86, ys$$20, zs$$5);
+}
+function sort(xs$$87, comparer$$1) {
+  var xs$$88;
+  return ofArray((xs$$88 = Object(_Array__WEBPACK_IMPORTED_MODULE_4__["ofList"])(xs$$87, Array), (xs$$88.sort(function comparer$$2(x$$49, y$$17) {
+    return comparer$$1.Compare(x$$49, y$$17);
+  }), xs$$88)));
+}
+function sortBy(projection, xs$$90, comparer$$3) {
+  var xs$$91;
+  return ofArray((xs$$91 = Object(_Array__WEBPACK_IMPORTED_MODULE_4__["ofList"])(xs$$90, Array), (xs$$91.sort(function comparer$$4(x$$50, y$$18) {
+    return comparer$$3.Compare(projection(x$$50), projection(y$$18));
+  }), xs$$91)));
+}
+function sortDescending(xs$$93, comparer$$5) {
+  var xs$$94;
+  return ofArray((xs$$94 = Object(_Array__WEBPACK_IMPORTED_MODULE_4__["ofList"])(xs$$93, Array), (xs$$94.sort(function comparer$$6(x$$51, y$$19) {
+    return comparer$$5.Compare(x$$51, y$$19) * -1;
+  }), xs$$94)));
+}
+function sortByDescending(projection$$1, xs$$96, comparer$$7) {
+  var xs$$97;
+  return ofArray((xs$$97 = Object(_Array__WEBPACK_IMPORTED_MODULE_4__["ofList"])(xs$$96, Array), (xs$$97.sort(function comparer$$8(x$$52, y$$20) {
+    return comparer$$7.Compare(projection$$1(x$$52), projection$$1(y$$20)) * -1;
+  }), xs$$97)));
+}
+function sortWith(comparer$$9, xs$$99) {
+  var xs$$100;
+  return ofArray((xs$$100 = Object(_Array__WEBPACK_IMPORTED_MODULE_4__["ofList"])(xs$$99, Array), (xs$$100.sort(comparer$$9), xs$$100)));
+}
+function sum(xs$$102, adder) {
+  return fold(function (acc$$21, x$$53) {
+    return adder.Add(acc$$21, x$$53);
+  }, adder.GetZero(), xs$$102);
+}
+function sumBy(f$$53, xs$$103, adder$$1) {
+  return fold(function (acc$$22, x$$54) {
+    return adder$$1.Add(acc$$22, f$$53(x$$54));
+  }, adder$$1.GetZero(), xs$$103);
+}
+function maxBy(projection$$2, xs$$104, comparer$$11) {
+  return reduce(function (x$$55, y$$21) {
+    return comparer$$11.Compare(projection$$2(y$$21), projection$$2(x$$55)) > 0 ? y$$21 : x$$55;
+  }, xs$$104);
+}
+function max(li, comparer$$12) {
+  return reduce(function (x$$56, y$$22) {
+    return comparer$$12.Compare(y$$22, x$$56) > 0 ? y$$22 : x$$56;
+  }, li);
+}
+function minBy(projection$$3, xs$$105, comparer$$13) {
+  return reduce(function (x$$57, y$$23) {
+    return comparer$$13.Compare(projection$$3(y$$23), projection$$3(x$$57)) > 0 ? x$$57 : y$$23;
+  }, xs$$105);
+}
+function min(xs$$106, comparer$$14) {
+  return reduce(function (x$$58, y$$24) {
+    return comparer$$14.Compare(y$$24, x$$58) > 0 ? x$$58 : y$$24;
+  }, xs$$106);
+}
+function average(xs$$107, averager) {
+  const total = fold(function (acc$$23, x$$59) {
+    return averager.Add(acc$$23, x$$59);
+  }, averager.GetZero(), xs$$107);
+  return averager.DivideByInt(total, length(xs$$107));
+}
+function averageBy(f$$54, xs$$108, averager$$1) {
+  const total$$1 = fold(function (acc$$24, x$$60) {
+    return averager$$1.Add(acc$$24, f$$54(x$$60));
+  }, averager$$1.GetZero(), xs$$108);
+  return averager$$1.DivideByInt(total$$1, length(xs$$108));
+}
+function permute(f$$55, xs$$109) {
+  return ofArray(Object(_Array__WEBPACK_IMPORTED_MODULE_4__["permute"])(f$$55, Object(_Array__WEBPACK_IMPORTED_MODULE_4__["ofList"])(xs$$109, Array)));
+}
+function skip(i$$16, xs$$111) {
+  const skipInner = function skipInner(i$$17, xs$$112) {
+    skipInner: while (true) {
+      const matchValue$$10 = [i$$17, xs$$112];
+
+      if (matchValue$$10[0] === 0) {
+        return xs$$112;
+      } else if (matchValue$$10[1].tail != null) {
+        const xs$$113 = matchValue$$10[1].tail;
+        const $i$$17$$174 = i$$17;
+        i$$17 = $i$$17$$174 - 1;
+        xs$$112 = xs$$113;
+        continue skipInner;
+      } else {
+        throw new Error("The input sequence has an insufficient number of elements.");
+      }
+
+      break;
+    }
+  };
+
+  const matchValue$$11 = [i$$16, xs$$111];
+
+  if (matchValue$$11[0] < 0) {
+    throw new Error("The input must be non-negative.");
+  } else {
+    var $target$$175, i$$20, xs$$115;
+
+    if (matchValue$$11[0] === 0) {
+      $target$$175 = 0;
+    } else if (matchValue$$11[0] === 1) {
+      if (matchValue$$11[1].tail != null) {
+        $target$$175 = 1;
+      } else {
+        $target$$175 = 2;
+        i$$20 = matchValue$$11[0];
+        xs$$115 = matchValue$$11[1];
+      }
+    } else {
+      $target$$175 = 2;
+      i$$20 = matchValue$$11[0];
+      xs$$115 = matchValue$$11[1];
+    }
+
+    switch ($target$$175) {
+      case 0:
+        {
+          return xs$$111;
+        }
+
+      case 1:
+        {
+          const xs$$114 = matchValue$$11[1].tail;
+          return xs$$114;
+        }
+
+      case 2:
+        {
+          return skipInner(i$$20, xs$$115);
+        }
+    }
+  }
+}
+function skipWhile($arg$$176, $arg$$177) {
+  var t$$3, h$$3;
+
+  skipWhile: while (true) {
+    const predicate = $arg$$176,
+          xs$$116 = $arg$$177;
+    var $target$$178, h$$4, t$$4;
+
+    if (xs$$116.tail != null) {
+      if (t$$3 = xs$$116.tail, (h$$3 = xs$$116.head, predicate(h$$3))) {
+        $target$$178 = 0;
+        h$$4 = xs$$116.head;
+        t$$4 = xs$$116.tail;
+      } else {
+        $target$$178 = 1;
+      }
+    } else {
+      $target$$178 = 1;
+    }
+
+    switch ($target$$178) {
+      case 0:
+        {
+          $arg$$176 = predicate;
+          $arg$$177 = t$$4;
+          continue skipWhile;
+        }
+
+      case 1:
+        {
+          return xs$$116;
+        }
+    }
+
+    break;
+  }
+}
+function takeSplitAux(error, i$$21, acc$$25, xs$$117) {
+  takeSplitAux: while (true) {
+    const matchValue$$12 = [i$$21, xs$$117];
+
+    if (matchValue$$12[0] === 0) {
+      return [reverse(acc$$25), xs$$117];
+    } else if (matchValue$$12[1].tail != null) {
+      const xs$$118 = matchValue$$12[1].tail;
+      const x$$61 = matchValue$$12[1].head;
+      const $acc$$25$$181 = acc$$25;
+      const $error$$179 = error;
+      const $i$$21$$180 = i$$21;
+      error = $error$$179;
+      i$$21 = $i$$21$$180 - 1;
+      acc$$25 = new _Types__WEBPACK_IMPORTED_MODULE_1__["List"](x$$61, $acc$$25$$181);
+      xs$$117 = xs$$118;
+      continue takeSplitAux;
+    } else {
+      if (error) {
+        throw new Error("The input sequence has an insufficient number of elements.");
+      } else {
+        return [reverse(acc$$25), xs$$117];
+      }
+    }
+
+    break;
+  }
+}
+function take(i$$22, xs$$119) {
+  const matchValue$$13 = [i$$22, xs$$119];
+
+  if (matchValue$$13[0] < 0) {
+    throw new Error("The input must be non-negative.");
+  } else {
+    var $target$$182, i$$25, xs$$120;
+
+    if (matchValue$$13[0] === 0) {
+      $target$$182 = 0;
+    } else if (matchValue$$13[0] === 1) {
+      if (matchValue$$13[1].tail != null) {
+        $target$$182 = 1;
+      } else {
+        $target$$182 = 2;
+        i$$25 = matchValue$$13[0];
+        xs$$120 = matchValue$$13[1];
+      }
+    } else {
+      $target$$182 = 2;
+      i$$25 = matchValue$$13[0];
+      xs$$120 = matchValue$$13[1];
+    }
+
+    switch ($target$$182) {
+      case 0:
+        {
+          return new _Types__WEBPACK_IMPORTED_MODULE_1__["List"]();
+        }
+
+      case 1:
+        {
+          const x$$62 = matchValue$$13[1].head;
+          return new _Types__WEBPACK_IMPORTED_MODULE_1__["List"](x$$62, new _Types__WEBPACK_IMPORTED_MODULE_1__["List"]());
+        }
+
+      case 2:
+        {
+          return takeSplitAux(true, i$$25, new _Types__WEBPACK_IMPORTED_MODULE_1__["List"](), xs$$120)[0];
+        }
+    }
+  }
+}
+function takeWhile(predicate$$1, xs$$121) {
+  if (xs$$121.tail != null) {
+    if (xs$$121.tail.tail == null) {
+      if (predicate$$1(xs$$121.head)) {
+        return xs$$121;
+      } else {
+        return xs$$121.tail;
+      }
+    } else {
+      if (!predicate$$1(xs$$121.head)) {
+        return new _Types__WEBPACK_IMPORTED_MODULE_1__["List"]();
+      } else {
+        return new _Types__WEBPACK_IMPORTED_MODULE_1__["List"](xs$$121.head, takeWhile(predicate$$1, xs$$121.tail));
+      }
+    }
+  } else {
+    return xs$$121;
+  }
+}
+function truncate(i$$26, xs$$123) {
+  const matchValue$$14 = [i$$26, xs$$123];
+
+  if (matchValue$$14[0] < 0) {
+    throw new Error("The input must be non-negative.");
+  } else {
+    var $target$$185, i$$29, xs$$124;
+
+    if (matchValue$$14[0] === 0) {
+      $target$$185 = 0;
+    } else if (matchValue$$14[0] === 1) {
+      if (matchValue$$14[1].tail != null) {
+        $target$$185 = 1;
+      } else {
+        $target$$185 = 2;
+        i$$29 = matchValue$$14[0];
+        xs$$124 = matchValue$$14[1];
+      }
+    } else {
+      $target$$185 = 2;
+      i$$29 = matchValue$$14[0];
+      xs$$124 = matchValue$$14[1];
+    }
+
+    switch ($target$$185) {
+      case 0:
+        {
+          return new _Types__WEBPACK_IMPORTED_MODULE_1__["List"]();
+        }
+
+      case 1:
+        {
+          const x$$65 = matchValue$$14[1].head;
+          return new _Types__WEBPACK_IMPORTED_MODULE_1__["List"](x$$65, new _Types__WEBPACK_IMPORTED_MODULE_1__["List"]());
+        }
+
+      case 2:
+        {
+          return takeSplitAux(false, i$$29, new _Types__WEBPACK_IMPORTED_MODULE_1__["List"](), xs$$124)[0];
+        }
+    }
+  }
+}
+function splitAt(i$$30, xs$$125) {
+  const matchValue$$15 = [i$$30, xs$$125];
+
+  if (matchValue$$15[0] < 0) {
+    throw new Error("The input must be non-negative.");
+  } else {
+    var $target$$186, i$$33, xs$$127;
+
+    if (matchValue$$15[0] === 0) {
+      $target$$186 = 0;
+    } else if (matchValue$$15[0] === 1) {
+      if (matchValue$$15[1].tail != null) {
+        $target$$186 = 1;
+      } else {
+        $target$$186 = 2;
+        i$$33 = matchValue$$15[0];
+        xs$$127 = matchValue$$15[1];
+      }
+    } else {
+      $target$$186 = 2;
+      i$$33 = matchValue$$15[0];
+      xs$$127 = matchValue$$15[1];
+    }
+
+    switch ($target$$186) {
+      case 0:
+        {
+          return [new _Types__WEBPACK_IMPORTED_MODULE_1__["List"](), xs$$125];
+        }
+
+      case 1:
+        {
+          const xs$$126 = matchValue$$15[1].tail;
+          const x$$66 = matchValue$$15[1].head;
+          return [new _Types__WEBPACK_IMPORTED_MODULE_1__["List"](x$$66, new _Types__WEBPACK_IMPORTED_MODULE_1__["List"]()), xs$$126];
+        }
+
+      case 2:
+        {
+          return takeSplitAux(true, i$$33, new _Types__WEBPACK_IMPORTED_MODULE_1__["List"](), xs$$127);
+        }
+    }
+  }
+}
+function slice(lower, upper, xs$$128) {
+  const lower$$1 = Object(_Option__WEBPACK_IMPORTED_MODULE_0__["defaultArg"])(lower, -1) | 0;
+  const upper$$1 = Object(_Option__WEBPACK_IMPORTED_MODULE_0__["defaultArg"])(upper, -1) | 0;
+  return reverse(foldIndexed(function f$$56(i$$34, acc$$26, x$$67) {
+    if ((lower$$1 === -1 ? true : lower$$1 <= i$$34) ? upper$$1 === -1 ? true : i$$34 <= upper$$1 : false) {
+      return new _Types__WEBPACK_IMPORTED_MODULE_1__["List"](x$$67, acc$$26);
+    } else {
+      return acc$$26;
+    }
+  }, new _Types__WEBPACK_IMPORTED_MODULE_1__["List"](), xs$$128));
+}
+function distinctBy(projection$$4, xs$$131, eq$$2) {
+  const hashSet = Object(_Set__WEBPACK_IMPORTED_MODULE_5__["createMutable"])([], Object(_Util__WEBPACK_IMPORTED_MODULE_3__["comparerFromEqualityComparer"])(eq$$2));
+  return filter(function f$$57($arg$$1) {
+    return Object(_Util__WEBPACK_IMPORTED_MODULE_3__["addToSet"])(projection$$4($arg$$1), hashSet);
+  }, xs$$131);
+}
+function distinct(xs$$133, eq$$3) {
+  return distinctBy(function (x$$68) {
+    return x$$68;
+  }, xs$$133, eq$$3);
+}
+function exactlyOne(xs$$134) {
+  if (Object(_List__WEBPACK_IMPORTED_MODULE_6__["length"])(xs$$134) === 1) {
+    return Object(_List__WEBPACK_IMPORTED_MODULE_6__["item"])(0, xs$$134);
+  } else if (Object(_List__WEBPACK_IMPORTED_MODULE_6__["length"])(xs$$134) === 0) {
+    throw new Error("The input sequence was empty\\nParameter name: list");
+  } else {
+    throw new Error("Input list too long\\nParameter name: list");
+  }
+}
+function groupBy(projection$$5, xs$$135, eq$$4) {
+  const dict = Object(_Map__WEBPACK_IMPORTED_MODULE_7__["createMutable"])([], Object(_Util__WEBPACK_IMPORTED_MODULE_3__["comparerFromEqualityComparer"])(eq$$4));
+  Object(_Seq__WEBPACK_IMPORTED_MODULE_2__["iterate"])(function (v$$2) {
+    const key = projection$$5(v$$2);
+
+    if (dict.has(key)) {
+      dict.set(key, new _Types__WEBPACK_IMPORTED_MODULE_1__["List"](v$$2, dict.get(key)));
+    } else {
+      dict.set(key, new _Types__WEBPACK_IMPORTED_MODULE_1__["List"](v$$2, new _Types__WEBPACK_IMPORTED_MODULE_1__["List"]()));
+    }
+  }, xs$$135);
+  return ofSeq(Object(_Seq__WEBPACK_IMPORTED_MODULE_2__["map"])(function mapping(kv) {
+    return [kv[0], reverse(kv[1])];
+  }, dict));
+}
+function countBy(projection$$6, xs$$137, eq$$5) {
+  const dict$$1 = Object(_Map__WEBPACK_IMPORTED_MODULE_7__["createMutable"])([], Object(_Util__WEBPACK_IMPORTED_MODULE_3__["comparerFromEqualityComparer"])(eq$$5));
+  iterate(function (v$$3) {
+    const key$$1 = projection$$6(v$$3);
+    const matchValue$$16 = Object(_Util__WEBPACK_IMPORTED_MODULE_3__["tryGetValue"])(dict$$1, key$$1, null);
+
+    if (matchValue$$16[0]) {
+      matchValue$$16[1].contents = matchValue$$16[1].contents + 1;
+    } else {
+      dict$$1.set(key$$1, new _Types__WEBPACK_IMPORTED_MODULE_1__["FSharpRef"](1));
+    }
+  }, xs$$137);
+  let result$$1 = new _Types__WEBPACK_IMPORTED_MODULE_1__["List"]();
+  Object(_Seq__WEBPACK_IMPORTED_MODULE_2__["iterate"])(function (group) {
+    result$$1 = new _Types__WEBPACK_IMPORTED_MODULE_1__["List"]([group[0], group[1].contents], result$$1);
+  }, dict$$1);
+  return result$$1;
+}
+function where(predicate$$2, xs$$138) {
+  return filter(predicate$$2, xs$$138);
+}
+function pairwise(xs$$139) {
+  const inner = function inner(xs$$140, acc$$27, x1) {
+    inner: while (true) {
+      if (xs$$140.tail != null) {
+        const xs$$141 = xs$$140.tail;
+        const x2 = xs$$140.head;
+        acc$$27.push([x1, x2]);
+        const $acc$$27$$198 = acc$$27;
+        xs$$140 = xs$$141;
+        acc$$27 = $acc$$27$$198;
+        x1 = x2;
+        continue inner;
+      } else {
+        return ofArray(acc$$27);
+      }
+
+      break;
+    }
+  };
+
+  var $target$$199, x1$$1, x2$$1, xs$$142;
+
+  if (xs$$139.tail != null) {
+    if (xs$$139.tail.tail != null) {
+      $target$$199 = 1;
+      x1$$1 = xs$$139.head;
+      x2$$1 = xs$$139.tail.head;
+      xs$$142 = xs$$139.tail.tail;
+    } else {
+      $target$$199 = 0;
+    }
+  } else {
+    $target$$199 = 0;
+  }
+
+  switch ($target$$199) {
+    case 0:
+      {
+        return new _Types__WEBPACK_IMPORTED_MODULE_1__["List"]();
+      }
+
+    case 1:
+      {
+        const acc$$28 = [];
+        acc$$28.push([x1$$1, x2$$1]);
+        return inner(xs$$142, acc$$28, x2$$1);
+      }
+  }
+}
+function windowed(windowSize, source$$1) {
+  if (windowSize <= 0) {
+    throw new Error("windowSize must be positive");
+  }
+
+  return Object(_List__WEBPACK_IMPORTED_MODULE_6__["ofSeq"])(Object(_Seq__WEBPACK_IMPORTED_MODULE_2__["delay"])(function () {
+    return Object(_Seq__WEBPACK_IMPORTED_MODULE_2__["map"])(function (i$$35) {
+      return Object(_List__WEBPACK_IMPORTED_MODULE_6__["slice"])(i$$35 - windowSize, i$$35 - 1, source$$1);
+    }, Object(_Seq__WEBPACK_IMPORTED_MODULE_2__["rangeNumber"])(windowSize, 1, Object(_List__WEBPACK_IMPORTED_MODULE_6__["length"])(source$$1)));
+  }));
+}
+
+/***/ }),
+
 /***/ "./.fable/fable-library.2.1.12/Long.js":
 /*!*********************************************!*\
   !*** ./.fable/fable-library.2.1.12/Long.js ***!
@@ -10472,134 +11807,46 @@ var Big = _Big_();
 /*!********************!*\
   !*** ./src/app.fs ***!
   \********************/
-/*! exports provided: blockSize, gameAreaSize, clearCanvas, drawSquare, toArray, drawShape, MoveDirection, MoveDirection$reflection, run */
+/*! exports provided: mainLoop, run */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "blockSize", function() { return blockSize; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "gameAreaSize", function() { return gameAreaSize; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "clearCanvas", function() { return clearCanvas; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "drawSquare", function() { return drawSquare; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "toArray", function() { return toArray; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "drawShape", function() { return drawShape; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MoveDirection", function() { return MoveDirection; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MoveDirection$reflection", function() { return MoveDirection$reflection; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "mainLoop", function() { return mainLoop; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "run", function() { return run; });
-/* harmony import */ var _home_lukasz_projects_fblocks_src_block_fs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./src/block.fs */ "./src/block.fs");
+/* harmony import */ var _home_lukasz_projects_fblocks_src_gameState_fs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./src/gameState.fs */ "./src/gameState.fs");
 /* harmony import */ var _fable_fable_library_2_1_12_Util__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../.fable/fable-library.2.1.12/Util */ "./.fable/fable-library.2.1.12/Util.js");
-/* harmony import */ var _home_lukasz_projects_fblocks_src_matrix_fs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./src/matrix.fs */ "./src/matrix.fs");
-/* harmony import */ var _fable_fable_library_2_1_12_Types__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../.fable/fable-library.2.1.12/Types */ "./.fable/fable-library.2.1.12/Types.js");
-/* harmony import */ var _fable_fable_library_2_1_12_Reflection__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../.fable/fable-library.2.1.12/Reflection */ "./.fable/fable-library.2.1.12/Reflection.js");
+/* harmony import */ var _home_lukasz_projects_fblocks_src_renderer_fs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./src/renderer.fs */ "./src/renderer.fs");
+/* harmony import */ var _home_lukasz_projects_fblocks_src_input_fs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./src/input.fs */ "./src/input.fs");
 
 
 
 
+function mainLoop(gameState, renderer, lastTime, lastElapsedTime, currentTime) {
+  const deltaTime = currentTime - lastTime;
+  const elapsedTime = lastElapsedTime + deltaTime;
+  const newGameState = deltaTime > 0 ? Object(_home_lukasz_projects_fblocks_src_gameState_fs__WEBPACK_IMPORTED_MODULE_0__["update"])(elapsedTime, gameState) : gameState;
 
-const blockSize = 24;
-const gameAreaSize = [10, 20];
-function clearCanvas(canvas) {
-  const context = canvas.getContext("2d");
-  context.fillStyle = "#000";
-  context.fillRect(0, 0, canvas.width, canvas.height);
-}
-function drawSquare(x, y, color, canvas$$1) {
-  const context$$1 = canvas$$1.getContext("2d");
-  context$$1.fillStyle = color;
-  context$$1.fillRect(x * blockSize + 0.5, y * blockSize + 0.5, blockSize - 1, blockSize - 1);
-}
-function toArray(a) {
-  return a;
-}
-function drawShape(x$$1, y$$1, color$$1, shape, canvas$$2) {
-  Object(_home_lukasz_projects_fblocks_src_matrix_fs__WEBPACK_IMPORTED_MODULE_2__["iteri"])(function action(cellX, cellY, cell) {
-    if (Object(_fable_fable_library_2_1_12_Util__WEBPACK_IMPORTED_MODULE_1__["equals"])(cell, new _home_lukasz_projects_fblocks_src_block_fs__WEBPACK_IMPORTED_MODULE_0__["Cell"](1, "Square"))) {
-      drawSquare(x$$1 + cellX, y$$1 + cellY, color$$1, canvas$$2);
-    }
-  }, shape);
-}
-const MoveDirection = Object(_fable_fable_library_2_1_12_Types__WEBPACK_IMPORTED_MODULE_3__["declare"])(function FBlocks_App_MoveDirection(tag, name, ...fields) {
-  _fable_fable_library_2_1_12_Types__WEBPACK_IMPORTED_MODULE_3__["Union"].call(this, tag, name, ...fields);
-}, _fable_fable_library_2_1_12_Types__WEBPACK_IMPORTED_MODULE_3__["Union"]);
-function MoveDirection$reflection() {
-  return Object(_fable_fable_library_2_1_12_Reflection__WEBPACK_IMPORTED_MODULE_4__["union"])("FBlocks.App.MoveDirection", [], MoveDirection, () => ["Left", "Right", "Up", "Down"]);
+  if (!Object(_fable_fable_library_2_1_12_Util__WEBPACK_IMPORTED_MODULE_1__["equals"])(newGameState, gameState)) {
+    Object(_home_lukasz_projects_fblocks_src_renderer_fs__WEBPACK_IMPORTED_MODULE_2__["redraw"])(renderer, newGameState.grid, newGameState.block);
+  }
+
+  window.requestAnimationFrame(function (currentTime$$1) {
+    mainLoop(newGameState, renderer, currentTime, elapsedTime, currentTime$$1);
+  });
 }
 function run(containerDivId) {
-  const elem = document.getElementById(containerDivId);
-  const canvas$$3 = document.createElement("canvas");
-  canvas$$3.width = gameAreaSize[0] * blockSize;
-  canvas$$3.height = gameAreaSize[1] * blockSize;
-  elem.appendChild(canvas$$3);
-  const shapeKind = new _home_lukasz_projects_fblocks_src_block_fs__WEBPACK_IMPORTED_MODULE_0__["Shape"](0, "D");
-  let pos = new _home_lukasz_projects_fblocks_src_block_fs__WEBPACK_IMPORTED_MODULE_0__["CellCoord"](0, 0);
-  let rotation = 0;
+  const currentTime$$2 = performance.now();
+  const gameState$$1 = Object(_home_lukasz_projects_fblocks_src_gameState_fs__WEBPACK_IMPORTED_MODULE_0__["create"])();
+  const renderer$$1 = Object(_home_lukasz_projects_fblocks_src_renderer_fs__WEBPACK_IMPORTED_MODULE_2__["create"])(containerDivId, gameState$$1.grid);
 
   const redraw = function redraw() {
-    const matrix$$1 = rotation === 1 ? Object(_home_lukasz_projects_fblocks_src_block_fs__WEBPACK_IMPORTED_MODULE_0__["rotateMatrix"])(Object(_home_lukasz_projects_fblocks_src_block_fs__WEBPACK_IMPORTED_MODULE_0__["getShapeMatrix"])(shapeKind)) : rotation === 2 ? Object(_home_lukasz_projects_fblocks_src_block_fs__WEBPACK_IMPORTED_MODULE_0__["rotateMatrix"])(Object(_home_lukasz_projects_fblocks_src_block_fs__WEBPACK_IMPORTED_MODULE_0__["rotateMatrix"])(Object(_home_lukasz_projects_fblocks_src_block_fs__WEBPACK_IMPORTED_MODULE_0__["getShapeMatrix"])(shapeKind))) : rotation === 3 ? Object(_home_lukasz_projects_fblocks_src_block_fs__WEBPACK_IMPORTED_MODULE_0__["rotateMatrix"])(Object(_home_lukasz_projects_fblocks_src_block_fs__WEBPACK_IMPORTED_MODULE_0__["rotateMatrix"])(Object(_home_lukasz_projects_fblocks_src_block_fs__WEBPACK_IMPORTED_MODULE_0__["rotateMatrix"])(Object(_home_lukasz_projects_fblocks_src_block_fs__WEBPACK_IMPORTED_MODULE_0__["getShapeMatrix"])(shapeKind)))) : Object(_home_lukasz_projects_fblocks_src_block_fs__WEBPACK_IMPORTED_MODULE_0__["getShapeMatrix"])(shapeKind);
-    clearCanvas(canvas$$3);
-    drawShape(pos.x, pos.y, "red", matrix$$1, canvas$$3);
+    Object(_home_lukasz_projects_fblocks_src_renderer_fs__WEBPACK_IMPORTED_MODULE_2__["redraw"])(renderer$$1, gameState$$1.grid, gameState$$1.block);
   };
 
-  const moveBlock = function moveBlock(direction) {
-    const newPos = direction.tag === 1 ? new _home_lukasz_projects_fblocks_src_block_fs__WEBPACK_IMPORTED_MODULE_0__["CellCoord"](pos.x + 1, pos.y) : direction.tag === 2 ? new _home_lukasz_projects_fblocks_src_block_fs__WEBPACK_IMPORTED_MODULE_0__["CellCoord"](pos.x, pos.y - 1) : direction.tag === 3 ? new _home_lukasz_projects_fblocks_src_block_fs__WEBPACK_IMPORTED_MODULE_0__["CellCoord"](pos.x, pos.y + 1) : new _home_lukasz_projects_fblocks_src_block_fs__WEBPACK_IMPORTED_MODULE_0__["CellCoord"](pos.x - 1, pos.y);
-    pos = newPos;
-  };
-
-  const rotateBlock = function rotateBlock() {
-    rotation = rotation === 3 ? 0 : rotation + 1;
-  };
-
-  const onKeyDown = function onKeyDown(e) {
-    let moveDirection;
-    const matchValue = e.key;
-
-    switch (matchValue) {
-      case "ArrowLeft":
-        {
-          moveDirection = new MoveDirection(0, "Left");
-          break;
-        }
-
-      case "ArrowRight":
-        {
-          moveDirection = new MoveDirection(1, "Right");
-          break;
-        }
-
-      case "ArrowUp":
-        {
-          moveDirection = new MoveDirection(2, "Up");
-          break;
-        }
-
-      case "ArrowDown":
-        {
-          moveDirection = new MoveDirection(3, "Down");
-          break;
-        }
-
-      default:
-        {
-          moveDirection = null;
-        }
-    }
-
-    const rotate = e.key === " ";
-
-    if (moveDirection == null) {} else {
-      const dir = moveDirection;
-      moveBlock(dir);
-      redraw();
-    }
-
-    if (rotate) {
-      rotateBlock();
-      redraw();
-    }
-  };
-
-  window.addEventListener("keydown", onKeyDown);
+  window.addEventListener("keydown", _home_lukasz_projects_fblocks_src_input_fs__WEBPACK_IMPORTED_MODULE_3__["onKeyDown"]);
   redraw();
+  mainLoop(gameState$$1, renderer$$1, currentTime$$2, 0, currentTime$$2);
 }
 run("mainContainer");
 
@@ -10609,27 +11856,13 @@ run("mainContainer");
 /*!************************!*\
   !*** ./src/app.fsproj ***!
   \************************/
-/*! exports provided: blockSize, gameAreaSize, clearCanvas, drawSquare, toArray, drawShape, MoveDirection, MoveDirection$reflection, run */
+/*! exports provided: mainLoop, run */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _app_fs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./app.fs */ "./src/app.fs");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "blockSize", function() { return _app_fs__WEBPACK_IMPORTED_MODULE_0__["blockSize"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "gameAreaSize", function() { return _app_fs__WEBPACK_IMPORTED_MODULE_0__["gameAreaSize"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "clearCanvas", function() { return _app_fs__WEBPACK_IMPORTED_MODULE_0__["clearCanvas"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "drawSquare", function() { return _app_fs__WEBPACK_IMPORTED_MODULE_0__["drawSquare"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "toArray", function() { return _app_fs__WEBPACK_IMPORTED_MODULE_0__["toArray"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "drawShape", function() { return _app_fs__WEBPACK_IMPORTED_MODULE_0__["drawShape"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "MoveDirection", function() { return _app_fs__WEBPACK_IMPORTED_MODULE_0__["MoveDirection"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "MoveDirection$reflection", function() { return _app_fs__WEBPACK_IMPORTED_MODULE_0__["MoveDirection$reflection"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "mainLoop", function() { return _app_fs__WEBPACK_IMPORTED_MODULE_0__["mainLoop"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "run", function() { return _app_fs__WEBPACK_IMPORTED_MODULE_0__["run"]; });
 
@@ -10641,78 +11874,404 @@ __webpack_require__.r(__webpack_exports__);
 /*!**********************!*\
   !*** ./src/block.fs ***!
   \**********************/
-/*! exports provided: Cell, Cell$reflection, CellCoord, CellCoord$reflection, Rotation, Rotation$reflection, Shape, Shape$reflection, Block, Block$reflection, rotateMatrix, getShapeMatrix */
+/*! exports provided: Block, Block$reflection, create, moveBy, rotate, getSquareCoords, getFilledCells */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Cell", function() { return Cell; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Cell$reflection", function() { return Cell$reflection; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CellCoord", function() { return CellCoord; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CellCoord$reflection", function() { return CellCoord$reflection; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Rotation", function() { return Rotation; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Rotation$reflection", function() { return Rotation$reflection; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Shape", function() { return Shape; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Shape$reflection", function() { return Shape$reflection; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Block", function() { return Block; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Block$reflection", function() { return Block$reflection; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "rotateMatrix", function() { return rotateMatrix; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getShapeMatrix", function() { return getShapeMatrix; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "create", function() { return create; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "moveBy", function() { return moveBy; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "rotate", function() { return rotate; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getSquareCoords", function() { return getSquareCoords; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getFilledCells", function() { return getFilledCells; });
 /* harmony import */ var _fable_fable_library_2_1_12_Types__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../.fable/fable-library.2.1.12/Types */ "./.fable/fable-library.2.1.12/Types.js");
-/* harmony import */ var _fable_fable_library_2_1_12_Reflection__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../.fable/fable-library.2.1.12/Reflection */ "./.fable/fable-library.2.1.12/Reflection.js");
-/* harmony import */ var _home_lukasz_projects_fblocks_src_matrix_fs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./src/matrix.fs */ "./src/matrix.fs");
+/* harmony import */ var _home_lukasz_projects_fblocks_src_coord_fs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./src/coord.fs */ "./src/coord.fs");
+/* harmony import */ var _home_lukasz_projects_fblocks_src_shape_fs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./src/shape.fs */ "./src/shape.fs");
+/* harmony import */ var _home_lukasz_projects_fblocks_src_matrix_fs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./src/matrix.fs */ "./src/matrix.fs");
+/* harmony import */ var _fable_fable_library_2_1_12_Reflection__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../.fable/fable-library.2.1.12/Reflection */ "./.fable/fable-library.2.1.12/Reflection.js");
+/* harmony import */ var _fable_fable_library_2_1_12_Seq__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../.fable/fable-library.2.1.12/Seq */ "./.fable/fable-library.2.1.12/Seq.js");
 
 
 
-const Cell = Object(_fable_fable_library_2_1_12_Types__WEBPACK_IMPORTED_MODULE_0__["declare"])(function FBlocks_Block_Cell(tag, name, ...fields) {
-  _fable_fable_library_2_1_12_Types__WEBPACK_IMPORTED_MODULE_0__["Union"].call(this, tag, name, ...fields);
-}, _fable_fable_library_2_1_12_Types__WEBPACK_IMPORTED_MODULE_0__["Union"]);
-function Cell$reflection() {
-  return Object(_fable_fable_library_2_1_12_Reflection__WEBPACK_IMPORTED_MODULE_1__["union"])("FBlocks.Block.Cell", [], Cell, () => ["Empty", "Square"]);
-}
-const CellCoord = Object(_fable_fable_library_2_1_12_Types__WEBPACK_IMPORTED_MODULE_0__["declare"])(function FBlocks_Block_CellCoord(arg1, arg2) {
-  this.x = arg1 | 0;
-  this.y = arg2 | 0;
-}, _fable_fable_library_2_1_12_Types__WEBPACK_IMPORTED_MODULE_0__["Record"]);
-function CellCoord$reflection() {
-  return Object(_fable_fable_library_2_1_12_Reflection__WEBPACK_IMPORTED_MODULE_1__["record"])("FBlocks.Block.CellCoord", [], CellCoord, () => [["x", _fable_fable_library_2_1_12_Reflection__WEBPACK_IMPORTED_MODULE_1__["int32"]], ["y", _fable_fable_library_2_1_12_Reflection__WEBPACK_IMPORTED_MODULE_1__["int32"]]]);
-}
-const Rotation = Object(_fable_fable_library_2_1_12_Types__WEBPACK_IMPORTED_MODULE_0__["declare"])(function FBlocks_Block_Rotation(tag, name, ...fields) {
-  _fable_fable_library_2_1_12_Types__WEBPACK_IMPORTED_MODULE_0__["Union"].call(this, tag, name, ...fields);
-}, _fable_fable_library_2_1_12_Types__WEBPACK_IMPORTED_MODULE_0__["Union"]);
-function Rotation$reflection() {
-  return Object(_fable_fable_library_2_1_12_Reflection__WEBPACK_IMPORTED_MODULE_1__["union"])("FBlocks.Block.Rotation", [], Rotation, () => ["NoRotation", "By90Degrees", "By180Degrees", "By270Degrees"]);
-}
-const Shape = Object(_fable_fable_library_2_1_12_Types__WEBPACK_IMPORTED_MODULE_0__["declare"])(function FBlocks_Block_Shape(tag, name, ...fields) {
-  _fable_fable_library_2_1_12_Types__WEBPACK_IMPORTED_MODULE_0__["Union"].call(this, tag, name, ...fields);
-}, _fable_fable_library_2_1_12_Types__WEBPACK_IMPORTED_MODULE_0__["Union"]);
-function Shape$reflection() {
-  return Object(_fable_fable_library_2_1_12_Reflection__WEBPACK_IMPORTED_MODULE_1__["union"])("FBlocks.Block.Shape", [], Shape, () => ["D", "I", "J", "L", "O", "S", "Z"]);
-}
+
+
+
 const Block = Object(_fable_fable_library_2_1_12_Types__WEBPACK_IMPORTED_MODULE_0__["declare"])(function FBlocks_Block_Block(arg1, arg2) {
-  this.rotation = arg1;
+  this.position = arg1;
   this.shape = arg2;
 }, _fable_fable_library_2_1_12_Types__WEBPACK_IMPORTED_MODULE_0__["Record"]);
 function Block$reflection() {
-  return Object(_fable_fable_library_2_1_12_Reflection__WEBPACK_IMPORTED_MODULE_1__["record"])("FBlocks.Block.Block", [], Block, () => [["rotation", Rotation$reflection()], ["shape", Shape$reflection()]]);
+  return Object(_fable_fable_library_2_1_12_Reflection__WEBPACK_IMPORTED_MODULE_4__["record"])("FBlocks.Block.Block", [], Block, () => [["position", Object(_home_lukasz_projects_fblocks_src_coord_fs__WEBPACK_IMPORTED_MODULE_1__["Coord$reflection"])()], ["shape", Object(_home_lukasz_projects_fblocks_src_matrix_fs__WEBPACK_IMPORTED_MODULE_3__["Matrix$00601$reflection"])(Object(_home_lukasz_projects_fblocks_src_shape_fs__WEBPACK_IMPORTED_MODULE_2__["ShapeCell$reflection"])())]]);
 }
-function rotateMatrix(matrix) {
-  const rotateCell = function rotateCell(x, y, _arg1) {
-    return Object(_home_lukasz_projects_fblocks_src_matrix_fs__WEBPACK_IMPORTED_MODULE_2__["getAt"])(y, matrix.size - 1 - x, matrix);
+function create(shapeName) {
+  return new Block(new _home_lukasz_projects_fblocks_src_coord_fs__WEBPACK_IMPORTED_MODULE_1__["Coord"](0, 0), Object(_home_lukasz_projects_fblocks_src_shape_fs__WEBPACK_IMPORTED_MODULE_2__["getShapeMatrix"])(shapeName));
+}
+function moveBy(dx, dy, block) {
+  return new Block(Object(_home_lukasz_projects_fblocks_src_coord_fs__WEBPACK_IMPORTED_MODULE_1__["add"])(block.position, new _home_lukasz_projects_fblocks_src_coord_fs__WEBPACK_IMPORTED_MODULE_1__["Coord"](dx, dy)), block.shape);
+}
+function rotate(block$$1) {
+  return new Block(block$$1.position, Object(_home_lukasz_projects_fblocks_src_matrix_fs__WEBPACK_IMPORTED_MODULE_3__["rotateClockwise"])(block$$1.shape));
+}
+function getSquareCoords(block$$2) {
+  return Object(_fable_fable_library_2_1_12_Seq__WEBPACK_IMPORTED_MODULE_5__["map"])(function mapping(coord) {
+    return Object(_home_lukasz_projects_fblocks_src_coord_fs__WEBPACK_IMPORTED_MODULE_1__["add"])(coord, block$$2.position);
+  }, Object(_home_lukasz_projects_fblocks_src_shape_fs__WEBPACK_IMPORTED_MODULE_2__["filledCellCoords"])(block$$2.shape));
+}
+function getFilledCells(block$$3) {
+  return Object(_fable_fable_library_2_1_12_Seq__WEBPACK_IMPORTED_MODULE_5__["map"])(function mapping$$2(tupledArg$$1) {
+    return [Object(_home_lukasz_projects_fblocks_src_coord_fs__WEBPACK_IMPORTED_MODULE_1__["add"])(tupledArg$$1[0], block$$3.position), tupledArg$$1[1]];
+  }, Object(_fable_fable_library_2_1_12_Seq__WEBPACK_IMPORTED_MODULE_5__["filter"])(function predicate(tupledArg) {
+    return Object(_home_lukasz_projects_fblocks_src_shape_fs__WEBPACK_IMPORTED_MODULE_2__["isCellFilled"])(tupledArg[1]);
+  }, Object(_home_lukasz_projects_fblocks_src_matrix_fs__WEBPACK_IMPORTED_MODULE_3__["flatmapi"])(function mapping$$1(x, y, cell) {
+    return [new _home_lukasz_projects_fblocks_src_coord_fs__WEBPACK_IMPORTED_MODULE_1__["Coord"](x, y), cell];
+  }, block$$3.shape)));
+}
+
+/***/ }),
+
+/***/ "./src/coord.fs":
+/*!**********************!*\
+  !*** ./src/coord.fs ***!
+  \**********************/
+/*! exports provided: Coord, Coord$reflection, add */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Coord", function() { return Coord; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Coord$reflection", function() { return Coord$reflection; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "add", function() { return add; });
+/* harmony import */ var _fable_fable_library_2_1_12_Types__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../.fable/fable-library.2.1.12/Types */ "./.fable/fable-library.2.1.12/Types.js");
+/* harmony import */ var _fable_fable_library_2_1_12_Reflection__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../.fable/fable-library.2.1.12/Reflection */ "./.fable/fable-library.2.1.12/Reflection.js");
+
+
+const Coord = Object(_fable_fable_library_2_1_12_Types__WEBPACK_IMPORTED_MODULE_0__["declare"])(function FBlocks_Coord_Coord(arg1, arg2) {
+  this.x = arg1 | 0;
+  this.y = arg2 | 0;
+}, _fable_fable_library_2_1_12_Types__WEBPACK_IMPORTED_MODULE_0__["Record"]);
+function Coord$reflection() {
+  return Object(_fable_fable_library_2_1_12_Reflection__WEBPACK_IMPORTED_MODULE_1__["record"])("FBlocks.Coord.Coord", [], Coord, () => [["x", _fable_fable_library_2_1_12_Reflection__WEBPACK_IMPORTED_MODULE_1__["int32"]], ["y", _fable_fable_library_2_1_12_Reflection__WEBPACK_IMPORTED_MODULE_1__["int32"]]]);
+}
+function add(a, b) {
+  return new Coord(a.x + b.x, a.y + b.y);
+}
+
+/***/ }),
+
+/***/ "./src/gameState.fs":
+/*!**************************!*\
+  !*** ./src/gameState.fs ***!
+  \**************************/
+/*! exports provided: blockFallInterval, GameState, GameState$reflection, updateBlockIfValid, moveBlockDown, processInput, processFalling, update, create */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "blockFallInterval", function() { return blockFallInterval; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GameState", function() { return GameState; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GameState$reflection", function() { return GameState$reflection; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "updateBlockIfValid", function() { return updateBlockIfValid; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "moveBlockDown", function() { return moveBlockDown; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "processInput", function() { return processInput; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "processFalling", function() { return processFalling; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "update", function() { return update; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "create", function() { return create; });
+/* harmony import */ var _fable_fable_library_2_1_12_Types__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../.fable/fable-library.2.1.12/Types */ "./.fable/fable-library.2.1.12/Types.js");
+/* harmony import */ var _home_lukasz_projects_fblocks_src_block_fs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./src/block.fs */ "./src/block.fs");
+/* harmony import */ var _home_lukasz_projects_fblocks_src_grid_fs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./src/grid.fs */ "./src/grid.fs");
+/* harmony import */ var _fable_fable_library_2_1_12_Reflection__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../.fable/fable-library.2.1.12/Reflection */ "./.fable/fable-library.2.1.12/Reflection.js");
+/* harmony import */ var _home_lukasz_projects_fblocks_src_shape_fs__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./src/shape.fs */ "./src/shape.fs");
+/* harmony import */ var _fable_fable_library_2_1_12_Util__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../.fable/fable-library.2.1.12/Util */ "./.fable/fable-library.2.1.12/Util.js");
+/* harmony import */ var _fable_fable_library_2_1_12_Seq__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../.fable/fable-library.2.1.12/Seq */ "./.fable/fable-library.2.1.12/Seq.js");
+/* harmony import */ var _home_lukasz_projects_fblocks_src_input_fs__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./src/input.fs */ "./src/input.fs");
+
+
+
+
+
+
+
+
+const blockFallInterval = 1000;
+const GameState = Object(_fable_fable_library_2_1_12_Types__WEBPACK_IMPORTED_MODULE_0__["declare"])(function FBlocks_GameState_GameState(arg1, arg2, arg3) {
+  this.block = arg1;
+  this.grid = arg2;
+  this.lastBlockFallTime = arg3;
+}, _fable_fable_library_2_1_12_Types__WEBPACK_IMPORTED_MODULE_0__["Record"]);
+function GameState$reflection() {
+  return Object(_fable_fable_library_2_1_12_Reflection__WEBPACK_IMPORTED_MODULE_3__["record"])("FBlocks.GameState.GameState", [], GameState, () => [["block", Object(_home_lukasz_projects_fblocks_src_block_fs__WEBPACK_IMPORTED_MODULE_1__["Block$reflection"])()], ["grid", Object(_home_lukasz_projects_fblocks_src_grid_fs__WEBPACK_IMPORTED_MODULE_2__["Grid$reflection"])()], ["lastBlockFallTime", _fable_fable_library_2_1_12_Reflection__WEBPACK_IMPORTED_MODULE_3__["float64"]]]);
+}
+function updateBlockIfValid(gameState, updater) {
+  const updatedBlock = updater(gameState.block);
+
+  if (Object(_home_lukasz_projects_fblocks_src_grid_fs__WEBPACK_IMPORTED_MODULE_2__["isBlockValid"])(gameState.grid, updatedBlock)) {
+    return new GameState(updatedBlock, gameState.grid, gameState.lastBlockFallTime);
+  } else {
+    return gameState;
+  }
+}
+function moveBlockDown(currentTime, gameState$$1) {
+  const movedBlock = Object(_home_lukasz_projects_fblocks_src_block_fs__WEBPACK_IMPORTED_MODULE_1__["moveBy"])(0, 1, gameState$$1.block);
+
+  if (Object(_home_lukasz_projects_fblocks_src_grid_fs__WEBPACK_IMPORTED_MODULE_2__["isBlockValid"])(gameState$$1.grid, movedBlock)) {
+    return new GameState(movedBlock, gameState$$1.grid, currentTime);
+  } else {
+    return new GameState(Object(_home_lukasz_projects_fblocks_src_block_fs__WEBPACK_IMPORTED_MODULE_1__["create"])(Object(_home_lukasz_projects_fblocks_src_shape_fs__WEBPACK_IMPORTED_MODULE_4__["random"])()), Object(_home_lukasz_projects_fblocks_src_grid_fs__WEBPACK_IMPORTED_MODULE_2__["placeBlock"])(gameState$$1.grid, gameState$$1.block), currentTime);
+  }
+}
+function processInput(currentTime$$1, inputs, gameState$$2) {
+  const processAction = function processAction(gameState$$3, action) {
+    const moveBlock = function moveBlock(dx, dy, gameState$$4) {
+      return updateBlockIfValid(gameState$$4, function (block) {
+        return Object(_home_lukasz_projects_fblocks_src_block_fs__WEBPACK_IMPORTED_MODULE_1__["moveBy"])(dx, dy, block);
+      });
+    };
+
+    const rotateBlock = function rotateBlock(gameState$$5) {
+      return updateBlockIfValid(gameState$$5, _home_lukasz_projects_fblocks_src_block_fs__WEBPACK_IMPORTED_MODULE_1__["rotate"]);
+    };
+
+    const placeBlock = function placeBlock(gameState$$6) {
+      return new GameState(Object(_home_lukasz_projects_fblocks_src_block_fs__WEBPACK_IMPORTED_MODULE_1__["create"])(new _home_lukasz_projects_fblocks_src_shape_fs__WEBPACK_IMPORTED_MODULE_4__["ShapeName"](3, "L")), Object(_home_lukasz_projects_fblocks_src_grid_fs__WEBPACK_IMPORTED_MODULE_2__["placeBlock"])(gameState$$6.grid, gameState$$6.block), gameState$$6.lastBlockFallTime);
+    };
+
+    return (action.tag === 1 ? rotateBlock : action.tag === 2 ? placeBlock : action.fields[0].tag === 1 ? Object(_fable_fable_library_2_1_12_Util__WEBPACK_IMPORTED_MODULE_5__["partialApply"])(1, moveBlock, [1, 0]) : action.fields[0].tag === 2 ? Object(_fable_fable_library_2_1_12_Util__WEBPACK_IMPORTED_MODULE_5__["partialApply"])(1, moveBlock, [0, -1]) : action.fields[0].tag === 3 ? function (gameState$$7) {
+      return moveBlockDown(currentTime$$1, gameState$$7);
+    } : Object(_fable_fable_library_2_1_12_Util__WEBPACK_IMPORTED_MODULE_5__["partialApply"])(1, moveBlock, [-1, 0]))(gameState$$3);
   };
 
-  return Object(_home_lukasz_projects_fblocks_src_matrix_fs__WEBPACK_IMPORTED_MODULE_2__["mapi"])(rotateCell, matrix);
+  const updatedGameState = Object(_fable_fable_library_2_1_12_Seq__WEBPACK_IMPORTED_MODULE_6__["fold"])(processAction, gameState$$2, inputs);
+  return updatedGameState;
 }
-function getShapeMatrix(shapeKind) {
-  const x$$1 = 1;
-  const matrixDefinition = shapeKind.tag === 1 ? [new Int32Array([0, 0, 0, 0]), new Int32Array([x$$1, x$$1, x$$1, x$$1]), new Int32Array([0, 0, 0, 0]), new Int32Array([0, 0, 0, 0])] : shapeKind.tag === 2 ? [new Int32Array([x$$1, 0, 0]), new Int32Array([x$$1, x$$1, x$$1]), new Int32Array([0, 0, 0])] : shapeKind.tag === 3 ? [new Int32Array([0, 0, x$$1]), new Int32Array([x$$1, x$$1, x$$1]), new Int32Array([0, 0, 0])] : shapeKind.tag === 4 ? [new Int32Array([x$$1, x$$1]), new Int32Array([x$$1, x$$1])] : shapeKind.tag === 5 ? [new Int32Array([0, x$$1, x$$1]), new Int32Array([x$$1, x$$1, 0]), new Int32Array([0, 0, 0])] : shapeKind.tag === 6 ? [new Int32Array([x$$1, x$$1, 0]), new Int32Array([0, x$$1, x$$1]), new Int32Array([0, 0, 0])] : [new Int32Array([0, x$$1, 0]), new Int32Array([x$$1, x$$1, x$$1]), new Int32Array([0, 0, 0])];
-  return Object(_home_lukasz_projects_fblocks_src_matrix_fs__WEBPACK_IMPORTED_MODULE_2__["map"])(function mapping$$1(x$$2) {
-    if (x$$2 === 1) {
-      return new Cell(1, "Square");
+function processFalling(currentTime$$2, gameState$$8) {
+  if (currentTime$$2 - gameState$$8.lastBlockFallTime >= blockFallInterval) {
+    return moveBlockDown(currentTime$$2, gameState$$8);
+  } else {
+    return gameState$$8;
+  }
+}
+function update(currentTime$$3, gameState$$9) {
+  const newGameState = processFalling(currentTime$$3, processInput(currentTime$$3, Object(_home_lukasz_projects_fblocks_src_input_fs__WEBPACK_IMPORTED_MODULE_7__["getQueue"])(), gameState$$9));
+  return newGameState;
+}
+function create() {
+  return new GameState(Object(_home_lukasz_projects_fblocks_src_block_fs__WEBPACK_IMPORTED_MODULE_1__["create"])(Object(_home_lukasz_projects_fblocks_src_shape_fs__WEBPACK_IMPORTED_MODULE_4__["random"])()), _home_lukasz_projects_fblocks_src_grid_fs__WEBPACK_IMPORTED_MODULE_2__["createDefault"], 0);
+}
+
+/***/ }),
+
+/***/ "./src/grid.fs":
+/*!*********************!*\
+  !*** ./src/grid.fs ***!
+  \*********************/
+/*! exports provided: Grid, Grid$reflection, createDefault, getFilledCellCoords, isBlockValid, removeCompletedRows, placeBlock */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Grid", function() { return Grid; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Grid$reflection", function() { return Grid$reflection; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createDefault", function() { return createDefault; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getFilledCellCoords", function() { return getFilledCellCoords; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isBlockValid", function() { return isBlockValid; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "removeCompletedRows", function() { return removeCompletedRows; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "placeBlock", function() { return placeBlock; });
+/* harmony import */ var _fable_fable_library_2_1_12_Types__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../.fable/fable-library.2.1.12/Types */ "./.fable/fable-library.2.1.12/Types.js");
+/* harmony import */ var _home_lukasz_projects_fblocks_src_shape_fs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./src/shape.fs */ "./src/shape.fs");
+/* harmony import */ var _home_lukasz_projects_fblocks_src_matrix_fs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./src/matrix.fs */ "./src/matrix.fs");
+/* harmony import */ var _fable_fable_library_2_1_12_Reflection__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../.fable/fable-library.2.1.12/Reflection */ "./.fable/fable-library.2.1.12/Reflection.js");
+/* harmony import */ var _fable_fable_library_2_1_12_Util__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../.fable/fable-library.2.1.12/Util */ "./.fable/fable-library.2.1.12/Util.js");
+/* harmony import */ var _fable_fable_library_2_1_12_Seq__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../.fable/fable-library.2.1.12/Seq */ "./.fable/fable-library.2.1.12/Seq.js");
+/* harmony import */ var _home_lukasz_projects_fblocks_src_block_fs__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./src/block.fs */ "./src/block.fs");
+/* harmony import */ var _home_lukasz_projects_fblocks_src_coord_fs__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./src/coord.fs */ "./src/coord.fs");
+
+
+
+
+
+
+
+
+const Grid = Object(_fable_fable_library_2_1_12_Types__WEBPACK_IMPORTED_MODULE_0__["declare"])(function FBlocks_Grid_Grid(arg1, arg2, arg3) {
+  this.cells = arg1;
+  this.height = arg2 | 0;
+  this.width = arg3 | 0;
+}, _fable_fable_library_2_1_12_Types__WEBPACK_IMPORTED_MODULE_0__["Record"]);
+function Grid$reflection() {
+  return Object(_fable_fable_library_2_1_12_Reflection__WEBPACK_IMPORTED_MODULE_3__["record"])("FBlocks.Grid.Grid", [], Grid, () => [["cells", Object(_home_lukasz_projects_fblocks_src_matrix_fs__WEBPACK_IMPORTED_MODULE_2__["Matrix$00601$reflection"])(Object(_home_lukasz_projects_fblocks_src_shape_fs__WEBPACK_IMPORTED_MODULE_1__["ShapeCell$reflection"])())], ["height", _fable_fable_library_2_1_12_Reflection__WEBPACK_IMPORTED_MODULE_3__["int32"]], ["width", _fable_fable_library_2_1_12_Reflection__WEBPACK_IMPORTED_MODULE_3__["int32"]]]);
+}
+const createDefault = (() => {
+  const width = 10;
+  const height = 20;
+  return new Grid(Object(_home_lukasz_projects_fblocks_src_matrix_fs__WEBPACK_IMPORTED_MODULE_2__["create"])(width, height, new _home_lukasz_projects_fblocks_src_shape_fs__WEBPACK_IMPORTED_MODULE_1__["ShapeCell"](0, "EmptyCell")), height, width);
+})();
+function getFilledCellCoords(grid) {
+  return Object(_home_lukasz_projects_fblocks_src_matrix_fs__WEBPACK_IMPORTED_MODULE_2__["coordsWhere"])(_home_lukasz_projects_fblocks_src_shape_fs__WEBPACK_IMPORTED_MODULE_1__["isCellFilled"], grid.cells);
+}
+function isBlockValid(grid$$1, block) {
+  const isCellInBounds = function isCellInBounds(coord) {
+    if ((coord.x >= 0 ? coord.x < grid$$1.width : false) ? coord.y >= 0 : false) {
+      return coord.y < grid$$1.height;
     } else {
-      return new Cell(0, "Empty");
+      return false;
     }
-  }, Object(_home_lukasz_projects_fblocks_src_matrix_fs__WEBPACK_IMPORTED_MODULE_2__["create"])(matrixDefinition));
+  };
+
+  const isCellOverlappingFilledGrid = function isCellOverlappingFilledGrid(cellCoord) {
+    return Object(_fable_fable_library_2_1_12_Seq__WEBPACK_IMPORTED_MODULE_5__["exists"])(function predicate(gridCoord) {
+      return Object(_fable_fable_library_2_1_12_Util__WEBPACK_IMPORTED_MODULE_4__["equals"])(gridCoord, cellCoord);
+    }, getFilledCellCoords(grid$$1));
+  };
+
+  const isCellValid = function isCellValid(cell$$1) {
+    if (isCellInBounds(cell$$1)) {
+      return !isCellOverlappingFilledGrid(cell$$1);
+    } else {
+      return false;
+    }
+  };
+
+  return Object(_fable_fable_library_2_1_12_Seq__WEBPACK_IMPORTED_MODULE_5__["forAll"])(isCellValid, Object(_home_lukasz_projects_fblocks_src_block_fs__WEBPACK_IMPORTED_MODULE_6__["getSquareCoords"])(block));
+}
+function removeCompletedRows(matrix$$1) {
+  let completeRowIndices;
+
+  const isRowComplete = function isRowComplete(rowIndex) {
+    return Object(_fable_fable_library_2_1_12_Seq__WEBPACK_IMPORTED_MODULE_5__["forAll"])(_home_lukasz_projects_fblocks_src_shape_fs__WEBPACK_IMPORTED_MODULE_1__["isCellFilled"], Object(_home_lukasz_projects_fblocks_src_matrix_fs__WEBPACK_IMPORTED_MODULE_2__["getRow"])(rowIndex, matrix$$1));
+  };
+
+  completeRowIndices = Object(_fable_fable_library_2_1_12_Seq__WEBPACK_IMPORTED_MODULE_5__["filter"])(isRowComplete, Object(_fable_fable_library_2_1_12_Seq__WEBPACK_IMPORTED_MODULE_5__["rangeNumber"])(0, 1, matrix$$1.rowCount - 1));
+
+  const removeRow = function removeRow(matrix$$3, rowIndex$$1) {
+    const mapCell = function mapCell(x, y, value) {
+      if (y === 0) {
+        return new _home_lukasz_projects_fblocks_src_shape_fs__WEBPACK_IMPORTED_MODULE_1__["ShapeCell"](0, "EmptyCell");
+      } else if (y <= rowIndex$$1) {
+        return Object(_home_lukasz_projects_fblocks_src_matrix_fs__WEBPACK_IMPORTED_MODULE_2__["getAt"])(x, y - 1, matrix$$3);
+      } else {
+        return value;
+      }
+    };
+
+    return Object(_home_lukasz_projects_fblocks_src_matrix_fs__WEBPACK_IMPORTED_MODULE_2__["mapi"])(mapCell, matrix$$3);
+  };
+
+  return Object(_fable_fable_library_2_1_12_Seq__WEBPACK_IMPORTED_MODULE_5__["fold"])(removeRow, matrix$$1, completeRowIndices);
+}
+function placeBlock(grid$$3, block$$2) {
+  const filledCells = Object(_home_lukasz_projects_fblocks_src_block_fs__WEBPACK_IMPORTED_MODULE_6__["getFilledCells"])(block$$2);
+  const gridCells = removeCompletedRows(Object(_home_lukasz_projects_fblocks_src_matrix_fs__WEBPACK_IMPORTED_MODULE_2__["mapi"])(function mapping(x$$1, y$$1, value$$1) {
+    const matchingCell = Object(_fable_fable_library_2_1_12_Seq__WEBPACK_IMPORTED_MODULE_5__["tryFind"])(function (tupledArg) {
+      return Object(_fable_fable_library_2_1_12_Util__WEBPACK_IMPORTED_MODULE_4__["equals"])(tupledArg[0], new _home_lukasz_projects_fblocks_src_coord_fs__WEBPACK_IMPORTED_MODULE_7__["Coord"](x$$1, y$$1));
+    }, filledCells);
+
+    if (matchingCell != null) {
+      const cell$$3 = matchingCell[1];
+      return cell$$3;
+    } else {
+      return value$$1;
+    }
+  }, grid$$3.cells));
+  return new Grid(gridCells, grid$$3.height, grid$$3.width);
+}
+
+/***/ }),
+
+/***/ "./src/input.fs":
+/*!**********************!*\
+  !*** ./src/input.fs ***!
+  \**********************/
+/*! exports provided: MoveDirection, MoveDirection$reflection, InputAction, InputAction$reflection, inputQueue, getQueue, onKeyDown */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MoveDirection", function() { return MoveDirection; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MoveDirection$reflection", function() { return MoveDirection$reflection; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "InputAction", function() { return InputAction; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "InputAction$reflection", function() { return InputAction$reflection; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "inputQueue", function() { return inputQueue; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getQueue", function() { return getQueue; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "onKeyDown", function() { return onKeyDown; });
+/* harmony import */ var _fable_fable_library_2_1_12_Types__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../.fable/fable-library.2.1.12/Types */ "./.fable/fable-library.2.1.12/Types.js");
+/* harmony import */ var _fable_fable_library_2_1_12_Reflection__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../.fable/fable-library.2.1.12/Reflection */ "./.fable/fable-library.2.1.12/Reflection.js");
+/* harmony import */ var _fable_fable_library_2_1_12_Util__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../.fable/fable-library.2.1.12/Util */ "./.fable/fable-library.2.1.12/Util.js");
+/* harmony import */ var _fable_fable_library_2_1_12_List__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../.fable/fable-library.2.1.12/List */ "./.fable/fable-library.2.1.12/List.js");
+
+
+
+
+const MoveDirection = Object(_fable_fable_library_2_1_12_Types__WEBPACK_IMPORTED_MODULE_0__["declare"])(function FBlocks_Input_MoveDirection(tag, name, ...fields) {
+  _fable_fable_library_2_1_12_Types__WEBPACK_IMPORTED_MODULE_0__["Union"].call(this, tag, name, ...fields);
+}, _fable_fable_library_2_1_12_Types__WEBPACK_IMPORTED_MODULE_0__["Union"]);
+function MoveDirection$reflection() {
+  return Object(_fable_fable_library_2_1_12_Reflection__WEBPACK_IMPORTED_MODULE_1__["union"])("FBlocks.Input.MoveDirection", [], MoveDirection, () => ["Left", "Right", "Up", "Down"]);
+}
+const InputAction = Object(_fable_fable_library_2_1_12_Types__WEBPACK_IMPORTED_MODULE_0__["declare"])(function FBlocks_Input_InputAction(tag, name, ...fields) {
+  _fable_fable_library_2_1_12_Types__WEBPACK_IMPORTED_MODULE_0__["Union"].call(this, tag, name, ...fields);
+}, _fable_fable_library_2_1_12_Types__WEBPACK_IMPORTED_MODULE_0__["Union"]);
+function InputAction$reflection() {
+  return Object(_fable_fable_library_2_1_12_Reflection__WEBPACK_IMPORTED_MODULE_1__["union"])("FBlocks.Input.InputAction", [], InputAction, () => [["Move", [MoveDirection$reflection()]], "Rotate", "PlaceBlock"]);
+}
+const inputQueue = Object(_fable_fable_library_2_1_12_Util__WEBPACK_IMPORTED_MODULE_2__["createAtom"])(new _fable_fable_library_2_1_12_Types__WEBPACK_IMPORTED_MODULE_0__["List"]());
+function getQueue() {
+  const inputs = Object(_fable_fable_library_2_1_12_List__WEBPACK_IMPORTED_MODULE_3__["reverse"])(inputQueue());
+  inputQueue(new _fable_fable_library_2_1_12_Types__WEBPACK_IMPORTED_MODULE_0__["List"]());
+  return inputs;
+}
+function onKeyDown(e) {
+  let maybeAction;
+  const matchValue = e.key;
+
+  switch (matchValue) {
+    case "ArrowLeft":
+      {
+        maybeAction = new InputAction(0, "Move", new MoveDirection(0, "Left"));
+        break;
+      }
+
+    case "ArrowRight":
+      {
+        maybeAction = new InputAction(0, "Move", new MoveDirection(1, "Right"));
+        break;
+      }
+
+    case "ArrowUp":
+      {
+        maybeAction = new InputAction(0, "Move", new MoveDirection(2, "Up"));
+        break;
+      }
+
+    case "ArrowDown":
+      {
+        maybeAction = new InputAction(0, "Move", new MoveDirection(3, "Down"));
+        break;
+      }
+
+    case " ":
+      {
+        maybeAction = new InputAction(1, "Rotate");
+        break;
+      }
+
+    case "Enter":
+      {
+        maybeAction = new InputAction(2, "PlaceBlock");
+        break;
+      }
+
+    default:
+      {
+        maybeAction = null;
+      }
+  }
+
+  if (maybeAction == null) {} else {
+    const action = maybeAction;
+    inputQueue(new _fable_fable_library_2_1_12_Types__WEBPACK_IMPORTED_MODULE_0__["List"](action, inputQueue()));
+  }
 }
 
 /***/ }),
@@ -10721,7 +12280,7 @@ function getShapeMatrix(shapeKind) {
 /*!***********************!*\
   !*** ./src/matrix.fs ***!
   \***********************/
-/*! exports provided: Matrix$00601, Matrix$00601$reflection, create, getAt, iter, iteri, map, mapi */
+/*! exports provided: Matrix$00601, Matrix$00601$reflection, create, fromArray, getAt, getRow, exists, iter, iteri, flatmapi, map, mapi, coordsWithValue, coordsWhere, rotateClockwise */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -10729,49 +12288,351 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Matrix$00601", function() { return Matrix$00601; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Matrix$00601$reflection", function() { return Matrix$00601$reflection; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "create", function() { return create; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fromArray", function() { return fromArray; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getAt", function() { return getAt; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getRow", function() { return getRow; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "exists", function() { return exists; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "iter", function() { return iter; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "iteri", function() { return iteri; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "flatmapi", function() { return flatmapi; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "map", function() { return map; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "mapi", function() { return mapi; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "coordsWithValue", function() { return coordsWithValue; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "coordsWhere", function() { return coordsWhere; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "rotateClockwise", function() { return rotateClockwise; });
 /* harmony import */ var _fable_fable_library_2_1_12_Types__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../.fable/fable-library.2.1.12/Types */ "./.fable/fable-library.2.1.12/Types.js");
 /* harmony import */ var _fable_fable_library_2_1_12_Reflection__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../.fable/fable-library.2.1.12/Reflection */ "./.fable/fable-library.2.1.12/Reflection.js");
 /* harmony import */ var _fable_fable_library_2_1_12_Array__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../.fable/fable-library.2.1.12/Array */ "./.fable/fable-library.2.1.12/Array.js");
+/* harmony import */ var _fable_fable_library_2_1_12_Seq__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../.fable/fable-library.2.1.12/Seq */ "./.fable/fable-library.2.1.12/Seq.js");
+/* harmony import */ var _home_lukasz_projects_fblocks_src_coord_fs__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./src/coord.fs */ "./src/coord.fs");
+/* harmony import */ var _fable_fable_library_2_1_12_Util__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../.fable/fable-library.2.1.12/Util */ "./.fable/fable-library.2.1.12/Util.js");
 
 
 
-const Matrix$00601 = Object(_fable_fable_library_2_1_12_Types__WEBPACK_IMPORTED_MODULE_0__["declare"])(function FBlocks_Matrix_Matrix(arg1, arg2) {
+
+
+
+const Matrix$00601 = Object(_fable_fable_library_2_1_12_Types__WEBPACK_IMPORTED_MODULE_0__["declare"])(function FBlocks_Matrix_Matrix(arg1, arg2, arg3) {
   this.cells = arg1;
-  this.size = arg2 | 0;
+  this.columnCount = arg2 | 0;
+  this.rowCount = arg3 | 0;
 }, _fable_fable_library_2_1_12_Types__WEBPACK_IMPORTED_MODULE_0__["Record"]);
 function Matrix$00601$reflection($gen$$1) {
-  return Object(_fable_fable_library_2_1_12_Reflection__WEBPACK_IMPORTED_MODULE_1__["record"])("FBlocks.Matrix.Matrix`1", [$gen$$1], Matrix$00601, () => [["cells", Object(_fable_fable_library_2_1_12_Reflection__WEBPACK_IMPORTED_MODULE_1__["array"])($gen$$1)], ["size", _fable_fable_library_2_1_12_Reflection__WEBPACK_IMPORTED_MODULE_1__["int32"]]]);
+  return Object(_fable_fable_library_2_1_12_Reflection__WEBPACK_IMPORTED_MODULE_1__["record"])("FBlocks.Matrix.Matrix`1", [$gen$$1], Matrix$00601, () => [["cells", Object(_fable_fable_library_2_1_12_Reflection__WEBPACK_IMPORTED_MODULE_1__["array"])($gen$$1)], ["columnCount", _fable_fable_library_2_1_12_Reflection__WEBPACK_IMPORTED_MODULE_1__["int32"]], ["rowCount", _fable_fable_library_2_1_12_Reflection__WEBPACK_IMPORTED_MODULE_1__["int32"]]]);
 }
-function create(input) {
-  return new Matrix$00601(Object(_fable_fable_library_2_1_12_Array__WEBPACK_IMPORTED_MODULE_2__["concat"])(input, Array), input.length);
+function create(columnCount, rowCount, value) {
+  return new Matrix$00601(Object(_fable_fable_library_2_1_12_Array__WEBPACK_IMPORTED_MODULE_2__["replicate"])(columnCount * rowCount, value, Array), columnCount, rowCount);
+}
+function fromArray(input) {
+  if (input.length === 0) {
+    throw new Error("Input array can't have zero length\\nParameter name: input");
+  }
+
+  const rowCount$$1 = input.length | 0;
+  const columnCount$$1 = input[0].length | 0;
+  const areSubarraysSameLength = Object(_fable_fable_library_2_1_12_Seq__WEBPACK_IMPORTED_MODULE_3__["forAll"])(function predicate(subarray) {
+    return subarray.length === columnCount$$1;
+  }, input);
+
+  if (!areSubarraysSameLength) {
+    throw new Error("All subarrays in matrix must have same length\\nParameter name: input");
+  }
+
+  return new Matrix$00601(Object(_fable_fable_library_2_1_12_Array__WEBPACK_IMPORTED_MODULE_2__["concat"])(input, Array), columnCount$$1, rowCount$$1);
 }
 function getAt(x, y, matrix) {
-  return matrix.cells[x + y * matrix.size];
+  return matrix.cells[x + y * matrix.columnCount];
 }
-function iter(action, matrix$$1) {
-  matrix$$1.cells.forEach(action);
+function getRow(y$$1, matrix$$1) {
+  return matrix$$1.cells.slice(y$$1 * matrix$$1.columnCount, matrix$$1.columnCount + y$$1 * matrix$$1.columnCount - 1 + 1);
 }
-function iteri(action$$1, matrix$$2) {
+function exists(predicate$$1, matrix$$2) {
+  return matrix$$2.cells.some(predicate$$1);
+}
+function iter(action, matrix$$3) {
+  matrix$$3.cells.forEach(action);
+}
+function iteri(action$$1, matrix$$4) {
   const action$0027 = function action$0027(i, x$$1) {
-    action$$1(i % matrix$$2.size, ~~(i / matrix$$2.size), x$$1);
+    action$$1(i % matrix$$4.columnCount, ~~(i / matrix$$4.columnCount), x$$1);
   };
 
-  Object(_fable_fable_library_2_1_12_Array__WEBPACK_IMPORTED_MODULE_2__["iterateIndexed"])(action$0027, matrix$$2.cells);
+  Object(_fable_fable_library_2_1_12_Array__WEBPACK_IMPORTED_MODULE_2__["iterateIndexed"])(action$0027, matrix$$4.cells);
 }
-function map(mapping, matrix$$3) {
-  return new Matrix$00601(Object(_fable_fable_library_2_1_12_Array__WEBPACK_IMPORTED_MODULE_2__["map"])(mapping, matrix$$3.cells, Array), matrix$$3.size);
-}
-function mapi(mapping$$1, matrix$$4) {
+function flatmapi(mapping, matrix$$5) {
   const mapping$0027 = function mapping$0027(i$$1, x$$2) {
-    return mapping$$1(i$$1 % matrix$$4.size, ~~(i$$1 / matrix$$4.size), x$$2);
+    return mapping(i$$1 % matrix$$5.columnCount, ~~(i$$1 / matrix$$5.columnCount), x$$2);
   };
 
-  return new Matrix$00601(Object(_fable_fable_library_2_1_12_Array__WEBPACK_IMPORTED_MODULE_2__["mapIndexed"])(mapping$0027, matrix$$4.cells, Array), matrix$$4.size);
+  return Object(_fable_fable_library_2_1_12_Array__WEBPACK_IMPORTED_MODULE_2__["mapIndexed"])(mapping$0027, matrix$$5.cells, Array);
+}
+function map(mapping$$1, matrix$$6) {
+  return new Matrix$00601(Object(_fable_fable_library_2_1_12_Array__WEBPACK_IMPORTED_MODULE_2__["map"])(mapping$$1, matrix$$6.cells, Array), matrix$$6.columnCount, matrix$$6.rowCount);
+}
+function mapi(mapping$$2, matrix$$7) {
+  const mapping$0027$$1 = function mapping$0027$$1(i$$2, x$$3) {
+    return mapping$$2(i$$2 % matrix$$7.columnCount, ~~(i$$2 / matrix$$7.columnCount), x$$3);
+  };
+
+  return new Matrix$00601(Object(_fable_fable_library_2_1_12_Array__WEBPACK_IMPORTED_MODULE_2__["mapIndexed"])(mapping$0027$$1, matrix$$7.cells, Array), matrix$$7.columnCount, matrix$$7.rowCount);
+}
+function coordsWithValue(value$$1, matrix$$8) {
+  return Object(_fable_fable_library_2_1_12_Seq__WEBPACK_IMPORTED_MODULE_3__["map"])(function mapping$$4(tupledArg$$1) {
+    return new _home_lukasz_projects_fblocks_src_coord_fs__WEBPACK_IMPORTED_MODULE_4__["Coord"](tupledArg$$1[0], tupledArg$$1[1]);
+  }, Object(_fable_fable_library_2_1_12_Seq__WEBPACK_IMPORTED_MODULE_3__["filter"])(function predicate$$2(tupledArg) {
+    return Object(_fable_fable_library_2_1_12_Util__WEBPACK_IMPORTED_MODULE_5__["equals"])(tupledArg[2], value$$1);
+  }, flatmapi(function mapping$$3(x$$4, y$$2, v) {
+    return [x$$4, y$$2, v];
+  }, matrix$$8)));
+}
+function coordsWhere(predicate$$3, matrix$$10) {
+  return Object(_fable_fable_library_2_1_12_Seq__WEBPACK_IMPORTED_MODULE_3__["map"])(function mapping$$6(tupledArg$$3) {
+    return new _home_lukasz_projects_fblocks_src_coord_fs__WEBPACK_IMPORTED_MODULE_4__["Coord"](tupledArg$$3[0], tupledArg$$3[1]);
+  }, Object(_fable_fable_library_2_1_12_Seq__WEBPACK_IMPORTED_MODULE_3__["filter"])(function predicate$$4(tupledArg$$2) {
+    return predicate$$3(tupledArg$$2[2]);
+  }, flatmapi(function mapping$$5(x$$6, y$$4, v$$2) {
+    return [x$$6, y$$4, v$$2];
+  }, matrix$$10)));
+}
+function rotateClockwise(matrix$$12) {
+  const rotateCell = function rotateCell(x$$8, y$$6, _arg1$$2) {
+    return getAt(y$$6, matrix$$12.rowCount - 1 - x$$8, matrix$$12);
+  };
+
+  return mapi(rotateCell, create(matrix$$12.rowCount, matrix$$12.columnCount, getAt(0, 0, matrix$$12)));
+}
+
+/***/ }),
+
+/***/ "./src/renderer.fs":
+/*!*************************!*\
+  !*** ./src/renderer.fs ***!
+  \*************************/
+/*! exports provided: Renderer, Renderer$reflection, blockSize, create, clearCanvas, drawSquare, drawGrid, drawShape, redraw */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Renderer", function() { return Renderer; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Renderer$reflection", function() { return Renderer$reflection; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "blockSize", function() { return blockSize; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "create", function() { return create; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "clearCanvas", function() { return clearCanvas; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "drawSquare", function() { return drawSquare; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "drawGrid", function() { return drawGrid; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "drawShape", function() { return drawShape; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "redraw", function() { return redraw; });
+/* harmony import */ var _fable_fable_library_2_1_12_Types__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../.fable/fable-library.2.1.12/Types */ "./.fable/fable-library.2.1.12/Types.js");
+/* harmony import */ var _fable_fable_library_2_1_12_Reflection__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../.fable/fable-library.2.1.12/Reflection */ "./.fable/fable-library.2.1.12/Reflection.js");
+/* harmony import */ var _home_lukasz_projects_fblocks_src_matrix_fs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./src/matrix.fs */ "./src/matrix.fs");
+
+
+
+const Renderer = Object(_fable_fable_library_2_1_12_Types__WEBPACK_IMPORTED_MODULE_0__["declare"])(function FBlocks_Renderer_Renderer(arg1) {
+  this.canvas = arg1;
+}, _fable_fable_library_2_1_12_Types__WEBPACK_IMPORTED_MODULE_0__["Record"]);
+function Renderer$reflection() {
+  return Object(_fable_fable_library_2_1_12_Reflection__WEBPACK_IMPORTED_MODULE_1__["record"])("FBlocks.Renderer.Renderer", [], Renderer, () => [["canvas", Object(_fable_fable_library_2_1_12_Reflection__WEBPACK_IMPORTED_MODULE_1__["type"])("Fable.Import.Browser.HTMLCanvasElement")]]);
+}
+const blockSize = 24;
+function create(containerElementId, grid) {
+  const elem = document.getElementById(containerElementId);
+  const canvas = document.createElement("canvas");
+  canvas.width = grid.width * blockSize;
+  canvas.height = grid.height * blockSize;
+  elem.appendChild(canvas);
+  return new Renderer(canvas);
+}
+function clearCanvas(canvas$$1) {
+  const context = canvas$$1.getContext("2d");
+  context.fillStyle = "#000";
+  context.fillRect(0, 0, canvas$$1.width, canvas$$1.height);
+}
+function drawSquare(x, y, color, canvas$$2) {
+  const context$$1 = canvas$$2.getContext("2d");
+  context$$1.fillStyle = color;
+  context$$1.fillRect(x * blockSize + 0.5, y * blockSize + 0.5, blockSize - 1, blockSize - 1);
+}
+function drawGrid(grid$$1, canvas$$3) {
+  Object(_home_lukasz_projects_fblocks_src_matrix_fs__WEBPACK_IMPORTED_MODULE_2__["iteri"])(function action(cellX, cellY, cell) {
+    if (cell.tag === 1) {
+      const color$$1 = cell.fields[0];
+      drawSquare(cellX, cellY, color$$1, canvas$$3);
+    }
+  }, grid$$1.cells);
+}
+function drawShape(x$$1, y$$1, shape, canvas$$4) {
+  Object(_home_lukasz_projects_fblocks_src_matrix_fs__WEBPACK_IMPORTED_MODULE_2__["iteri"])(function action$$1(cellX$$1, cellY$$1, cell$$1) {
+    if (cell$$1.tag === 0) {
+      drawSquare(x$$1 + cellX$$1, y$$1 + cellY$$1, "#333", canvas$$4);
+    } else {
+      const color$$2 = cell$$1.fields[0];
+      drawSquare(x$$1 + cellX$$1, y$$1 + cellY$$1, color$$2, canvas$$4);
+    }
+  }, shape);
+}
+function redraw(renderer, grid$$2, block) {
+  clearCanvas(renderer.canvas);
+  drawShape(block.position.x, block.position.y, block.shape, renderer.canvas);
+  drawGrid(grid$$2, renderer.canvas);
+}
+
+/***/ }),
+
+/***/ "./src/shape.fs":
+/*!**********************!*\
+  !*** ./src/shape.fs ***!
+  \**********************/
+/*! exports provided: ShapeCell, ShapeCell$reflection, ShapeName, ShapeName$reflection, randomGenerator, random, isCellFilled, getShapeColor, getShapeMatrix, filledCellCoords */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ShapeCell", function() { return ShapeCell; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ShapeCell$reflection", function() { return ShapeCell$reflection; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ShapeName", function() { return ShapeName; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ShapeName$reflection", function() { return ShapeName$reflection; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "randomGenerator", function() { return randomGenerator; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "random", function() { return random; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isCellFilled", function() { return isCellFilled; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getShapeColor", function() { return getShapeColor; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getShapeMatrix", function() { return getShapeMatrix; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "filledCellCoords", function() { return filledCellCoords; });
+/* harmony import */ var _fable_fable_library_2_1_12_Types__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../.fable/fable-library.2.1.12/Types */ "./.fable/fable-library.2.1.12/Types.js");
+/* harmony import */ var _fable_fable_library_2_1_12_Reflection__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../.fable/fable-library.2.1.12/Reflection */ "./.fable/fable-library.2.1.12/Reflection.js");
+/* harmony import */ var _fable_fable_library_2_1_12_Util__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../.fable/fable-library.2.1.12/Util */ "./.fable/fable-library.2.1.12/Util.js");
+/* harmony import */ var _home_lukasz_projects_fblocks_src_matrix_fs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./src/matrix.fs */ "./src/matrix.fs");
+/* harmony import */ var _home_lukasz_projects_fblocks_src_coord_fs__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./src/coord.fs */ "./src/coord.fs");
+/* harmony import */ var _fable_fable_library_2_1_12_Seq__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../.fable/fable-library.2.1.12/Seq */ "./.fable/fable-library.2.1.12/Seq.js");
+
+
+
+
+
+
+const ShapeCell = Object(_fable_fable_library_2_1_12_Types__WEBPACK_IMPORTED_MODULE_0__["declare"])(function FBlocks_Shape_ShapeCell(tag, name, ...fields) {
+  _fable_fable_library_2_1_12_Types__WEBPACK_IMPORTED_MODULE_0__["Union"].call(this, tag, name, ...fields);
+}, _fable_fable_library_2_1_12_Types__WEBPACK_IMPORTED_MODULE_0__["Union"]);
+function ShapeCell$reflection() {
+  return Object(_fable_fable_library_2_1_12_Reflection__WEBPACK_IMPORTED_MODULE_1__["union"])("FBlocks.Shape.ShapeCell", [], ShapeCell, () => ["EmptyCell", ["FilledCell", [_fable_fable_library_2_1_12_Reflection__WEBPACK_IMPORTED_MODULE_1__["string"]]]]);
+}
+const ShapeName = Object(_fable_fable_library_2_1_12_Types__WEBPACK_IMPORTED_MODULE_0__["declare"])(function FBlocks_Shape_ShapeName(tag, name, ...fields) {
+  _fable_fable_library_2_1_12_Types__WEBPACK_IMPORTED_MODULE_0__["Union"].call(this, tag, name, ...fields);
+}, _fable_fable_library_2_1_12_Types__WEBPACK_IMPORTED_MODULE_0__["Union"]);
+function ShapeName$reflection() {
+  return Object(_fable_fable_library_2_1_12_Reflection__WEBPACK_IMPORTED_MODULE_1__["union"])("FBlocks.Shape.ShapeName", [], ShapeName, () => ["D", "I", "J", "L", "O", "S", "Z"]);
+}
+const randomGenerator = {};
+function random() {
+  const matchValue = Object(_fable_fable_library_2_1_12_Util__WEBPACK_IMPORTED_MODULE_2__["randomNext"])(0, 7) | 0;
+
+  switch (matchValue) {
+    case 0:
+      {
+        return new ShapeName(0, "D");
+      }
+
+    case 1:
+      {
+        return new ShapeName(1, "I");
+      }
+
+    case 2:
+      {
+        return new ShapeName(2, "J");
+      }
+
+    case 3:
+      {
+        return new ShapeName(3, "L");
+      }
+
+    case 4:
+      {
+        return new ShapeName(4, "O");
+      }
+
+    case 5:
+      {
+        return new ShapeName(5, "S");
+      }
+
+    case 6:
+      {
+        return new ShapeName(6, "Z");
+      }
+
+    default:
+      {
+        throw new Error("Random number out of range of available shapes");
+      }
+  }
+}
+function isCellFilled(cell) {
+  if (cell.tag === 0) {
+    return false;
+  } else {
+    return true;
+  }
+}
+function getShapeColor(shapeName) {
+  switch (shapeName.tag) {
+    case 1:
+      {
+        return "#8080FF";
+      }
+
+    case 2:
+      {
+        return "#FFFF80";
+      }
+
+    case 3:
+      {
+        return "#FFB080";
+      }
+
+    case 4:
+      {
+        return "#80FF80";
+      }
+
+    case 5:
+      {
+        return "#FF80FF";
+      }
+
+    case 6:
+      {
+        return "#B080FF";
+      }
+
+    default:
+      {
+        return "#FF8080";
+      }
+  }
+}
+function getShapeMatrix(shapeName$$1) {
+  const x = 1;
+  const matrixDefinition = shapeName$$1.tag === 1 ? [new Int32Array([0, 0, 0, 0]), new Int32Array([x, x, x, x]), new Int32Array([0, 0, 0, 0]), new Int32Array([0, 0, 0, 0])] : shapeName$$1.tag === 2 ? [new Int32Array([x, 0, 0]), new Int32Array([x, x, x]), new Int32Array([0, 0, 0])] : shapeName$$1.tag === 3 ? [new Int32Array([0, 0, x]), new Int32Array([x, x, x]), new Int32Array([0, 0, 0])] : shapeName$$1.tag === 4 ? [new Int32Array([x, x]), new Int32Array([x, x])] : shapeName$$1.tag === 5 ? [new Int32Array([0, x, x]), new Int32Array([x, x, 0]), new Int32Array([0, 0, 0])] : shapeName$$1.tag === 6 ? [new Int32Array([x, x, 0]), new Int32Array([0, x, x]), new Int32Array([0, 0, 0])] : [new Int32Array([0, x, 0]), new Int32Array([x, x, x]), new Int32Array([0, 0, 0])];
+  const color = getShapeColor(shapeName$$1);
+  return Object(_home_lukasz_projects_fblocks_src_matrix_fs__WEBPACK_IMPORTED_MODULE_3__["map"])(function mapping(x$$1) {
+    if (x$$1 === 1) {
+      return new ShapeCell(1, "FilledCell", color);
+    } else {
+      return new ShapeCell(0, "EmptyCell");
+    }
+  }, Object(_home_lukasz_projects_fblocks_src_matrix_fs__WEBPACK_IMPORTED_MODULE_3__["fromArray"])(matrixDefinition));
+}
+function filledCellCoords(shape) {
+  return Object(_fable_fable_library_2_1_12_Seq__WEBPACK_IMPORTED_MODULE_5__["map"])(function mapping$$2(tupledArg$$1) {
+    return tupledArg$$1[0];
+  }, Object(_fable_fable_library_2_1_12_Seq__WEBPACK_IMPORTED_MODULE_5__["filter"])(function predicate(tupledArg) {
+    return isCellFilled(tupledArg[1]);
+  }, Object(_home_lukasz_projects_fblocks_src_matrix_fs__WEBPACK_IMPORTED_MODULE_3__["flatmapi"])(function mapping$$1(x$$2, y, v) {
+    return [new _home_lukasz_projects_fblocks_src_coord_fs__WEBPACK_IMPORTED_MODULE_4__["Coord"](x$$2, y), v];
+  }, shape)));
 }
 
 /***/ })

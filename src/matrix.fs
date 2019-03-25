@@ -77,6 +77,12 @@ let coordsWithValue value matrix =
     |> Seq.filter (fun (_, _, v) -> v = value)
     |> Seq.map (fun (x, y, _) -> { x = x; y = y })
 
+let coordsWhere predicate matrix =
+    matrix
+    |> flatmapi (fun x y v -> (x, y, v))
+    |> Seq.filter (fun (_, _, v) -> predicate v)
+    |> Seq.map (fun (x, y, _) -> { x = x; y = y })
+
 let rotateClockwise matrix =
     let rotateCell x y _ =
         getAt y (matrix.rowCount - 1 - x) matrix

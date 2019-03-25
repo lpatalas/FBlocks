@@ -31,18 +31,18 @@ let drawSquare (x: int) (y: int) (color: string) (canvas: HTMLCanvasElement) =
 let drawGrid (grid: Grid.Grid) (canvas: HTMLCanvasElement) =
     grid.cells
     |> Matrix.iteri (fun cellX cellY cell ->
-        if cell = FilledCell then
-            drawSquare cellX cellY "#FFF" canvas)
+        match cell with
+        | FilledCell color -> drawSquare cellX cellY color canvas
+        | _ -> ())
 
-let drawShape (x: int) (y:int) (color: string) (shape: ShapeMatrix) (canvas: HTMLCanvasElement) =
+let drawShape (x: int) (y:int) (shape: ShapeMatrix) (canvas: HTMLCanvasElement) =
     shape
     |> Matrix.iteri (fun cellX cellY cell ->
-        if cell = FilledCell then
-            drawSquare (x + cellX) (y + cellY) color canvas
-        else
-            drawSquare (x + cellX) (y + cellY) "#333" canvas)
+        match cell with
+        | FilledCell color -> drawSquare (x + cellX) (y + cellY) color canvas
+        | EmptyCell -> drawSquare (x + cellX) (y + cellY) "#333" canvas)
 
 let redraw renderer grid (block: Block.Block) =
     clearCanvas renderer.canvas
-    drawShape block.position.x block.position.y "red" block.shape renderer.canvas
+    drawShape block.position.x block.position.y block.shape renderer.canvas
     drawGrid grid renderer.canvas

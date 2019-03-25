@@ -20,7 +20,7 @@ let createDefault =
 
 let getFilledCellCoords grid =
     grid.cells
-    |> Matrix.coordsWithValue Shape.FilledCell
+    |> Matrix.coordsWhere Shape.isCellFilled
 
 let isBlockValid grid block =
     let isCellInBounds coord =
@@ -47,7 +47,7 @@ let removeCompletedRows matrix =
         let isRowComplete rowIndex =
             matrix
             |> Matrix.getRow rowIndex
-            |> Seq.forall (fun cell -> cell = Shape.FilledCell)
+            |> Seq.forall Shape.isCellFilled
 
         seq { 0..(matrix.rowCount - 1) }
         |> Seq.filter isRowComplete
@@ -66,14 +66,16 @@ let removeCompletedRows matrix =
     |> Seq.fold removeRow matrix
 
 let placeBlock grid block =
-    let blockCells = Block.getSquareCoords block
+    let filledCells = Block.getFilledCells block
     let gridCells =
         grid.cells
         |> Matrix.mapi (fun x y value ->
-            if Seq.exists (fun coord -> coord = { x = x; y = y }) blockCells then
-                Shape.FilledCell
-            else
-                value)
+            let matchingCell =
+                Seq.tryFind (fun (coord, _) -> coord = { x = x; y = y }) filledCells
+
+            match matchingCell with
+            | Some (_, cell) -> cell
+            | _ -> value)
         |> removeCompletedRows
 
     {

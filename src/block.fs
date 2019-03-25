@@ -23,3 +23,9 @@ let getSquareCoords block =
     block.shape
     |> Shape.filledCellCoords
     |> Seq.map (fun coord -> add coord block.position)
+
+let getFilledCells block =
+    block.shape
+    |> Matrix.flatmapi (fun x y cell -> ({ x = x; y = y }, cell))
+    |> Seq.filter (fun (coord, cell) -> Shape.isCellFilled cell)
+    |> Seq.map (fun (coord, cell) -> ((add coord block.position), cell))
