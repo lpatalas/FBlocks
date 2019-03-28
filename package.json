@@ -7,9 +7,8 @@
   "author": "Łukasz Patalas",
   "license": "MIT",
   "scripts": {
-    "build": "dotnet build src/app.fsproj",
-    "start": "webpack-dev-server",
-    "webpack": "webpack"
+    "build": "webpack",
+    "start": "webpack-dev-server"
   },
   "devDependencies": {
     "@babel/core": "^7.3.4",
