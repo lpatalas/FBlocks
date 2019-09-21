@@ -13075,47 +13075,56 @@ function fromBytesBE(bytes, unsigned) {
 /*!********************!*\
   !*** ./src/app.fs ***!
   \********************/
-/*! exports provided: mainLoop, run */
+/*! exports provided: requestAnimationFrame, mainLoop, run */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "requestAnimationFrame", function() { return requestAnimationFrame; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "mainLoop", function() { return mainLoop; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "run", function() { return run; });
-/* harmony import */ var _gameState_fs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./gameState.fs */ "./src/gameState.fs");
-/* harmony import */ var _fable_fable_library_2_3_25_Util_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../.fable/fable-library.2.3.25/Util.js */ "./.fable/fable-library.2.3.25/Util.js");
-/* harmony import */ var _renderer_fs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./renderer.fs */ "./src/renderer.fs");
-/* harmony import */ var _input_fs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./input.fs */ "./src/input.fs");
+/* harmony import */ var _time_fs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./time.fs */ "./src/time.fs");
+/* harmony import */ var _gameState_fs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./gameState.fs */ "./src/gameState.fs");
+/* harmony import */ var _fable_fable_library_2_3_25_Util_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../.fable/fable-library.2.3.25/Util.js */ "./.fable/fable-library.2.3.25/Util.js");
+/* harmony import */ var _renderer_fs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./renderer.fs */ "./src/renderer.fs");
+/* harmony import */ var _input_fs__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./input.fs */ "./src/input.fs");
 
 
 
 
+
+function requestAnimationFrame(callback) {
+  return window.requestAnimationFrame(function ($arg$$1) {
+    var ms;
+    callback((ms = $arg$$1, (Object(_time_fs__WEBPACK_IMPORTED_MODULE_0__["fromMilliseconds"])(ms))));
+  });
+}
 function mainLoop(gameState, renderer, lastTime, lastElapsedTime, currentTime) {
-  const deltaTime = currentTime - lastTime;
-  const elapsedTime = lastElapsedTime + deltaTime;
-  const newGameState = deltaTime > 0 ? Object(_gameState_fs__WEBPACK_IMPORTED_MODULE_0__["update"])(elapsedTime, gameState) : gameState;
+  const deltaTime = Object(_time_fs__WEBPACK_IMPORTED_MODULE_0__["difference"])(currentTime, lastTime);
+  const elapsedTime = Object(_time_fs__WEBPACK_IMPORTED_MODULE_0__["add"])(lastElapsedTime, deltaTime);
+  const newGameState = deltaTime.CompareTo(_time_fs__WEBPACK_IMPORTED_MODULE_0__["zero"]) > 0 ? Object(_gameState_fs__WEBPACK_IMPORTED_MODULE_1__["update"])(elapsedTime, gameState) : gameState;
 
-  if (!Object(_fable_fable_library_2_3_25_Util_js__WEBPACK_IMPORTED_MODULE_1__["equals"])(newGameState, gameState)) {
-    Object(_renderer_fs__WEBPACK_IMPORTED_MODULE_2__["redraw"])(renderer, newGameState.grid, newGameState.block);
+  if (!Object(_fable_fable_library_2_3_25_Util_js__WEBPACK_IMPORTED_MODULE_2__["equals"])(newGameState, gameState)) {
+    Object(_renderer_fs__WEBPACK_IMPORTED_MODULE_3__["redraw"])(renderer, newGameState.grid, newGameState.block);
   }
 
-  const value = window.requestAnimationFrame(function (currentTime$$1) {
+  const value = requestAnimationFrame(function (currentTime$$1) {
     mainLoop(newGameState, renderer, currentTime, elapsedTime, currentTime$$1);
   });
   value, null;
 }
 function run(containerDivId) {
-  const currentTime$$2 = performance.now();
-  const gameState$$1 = Object(_gameState_fs__WEBPACK_IMPORTED_MODULE_0__["create"])();
-  const renderer$$1 = Object(_renderer_fs__WEBPACK_IMPORTED_MODULE_2__["create"])(containerDivId, gameState$$1.grid);
+  const currentTime$$2 = Object(_time_fs__WEBPACK_IMPORTED_MODULE_0__["getCurrent"])();
+  const gameState$$1 = Object(_gameState_fs__WEBPACK_IMPORTED_MODULE_1__["create"])();
+  const renderer$$1 = Object(_renderer_fs__WEBPACK_IMPORTED_MODULE_3__["create"])(containerDivId, gameState$$1.grid);
 
   const redraw = function redraw() {
-    Object(_renderer_fs__WEBPACK_IMPORTED_MODULE_2__["redraw"])(renderer$$1, gameState$$1.grid, gameState$$1.block);
+    Object(_renderer_fs__WEBPACK_IMPORTED_MODULE_3__["redraw"])(renderer$$1, gameState$$1.grid, gameState$$1.block);
   };
 
-  window.addEventListener("keydown", _input_fs__WEBPACK_IMPORTED_MODULE_3__["onKeyDown"]);
+  window.addEventListener("keydown", _input_fs__WEBPACK_IMPORTED_MODULE_4__["onKeyDown"]);
   redraw();
-  mainLoop(gameState$$1, renderer$$1, currentTime$$2, 0, currentTime$$2);
+  mainLoop(gameState$$1, renderer$$1, currentTime$$2, _time_fs__WEBPACK_IMPORTED_MODULE_0__["zero"], currentTime$$2);
 }
 run("mainContainer");
 
@@ -13125,12 +13134,14 @@ run("mainContainer");
 /*!************************!*\
   !*** ./src/app.fsproj ***!
   \************************/
-/*! exports provided: mainLoop, run */
+/*! exports provided: requestAnimationFrame, mainLoop, run */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _app_fs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./app.fs */ "./src/app.fs");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "requestAnimationFrame", function() { return _app_fs__WEBPACK_IMPORTED_MODULE_0__["requestAnimationFrame"]; });
+
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "mainLoop", function() { return _app_fs__WEBPACK_IMPORTED_MODULE_0__["mainLoop"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "run", function() { return _app_fs__WEBPACK_IMPORTED_MODULE_0__["run"]; });
@@ -13260,14 +13271,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "processFalling", function() { return processFalling; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "update", function() { return update; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "create", function() { return create; });
-/* harmony import */ var _fable_fable_library_2_3_25_Types_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../.fable/fable-library.2.3.25/Types.js */ "./.fable/fable-library.2.3.25/Types.js");
-/* harmony import */ var _block_fs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./block.fs */ "./src/block.fs");
-/* harmony import */ var _grid_fs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./grid.fs */ "./src/grid.fs");
-/* harmony import */ var _fable_fable_library_2_3_25_Reflection_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../.fable/fable-library.2.3.25/Reflection.js */ "./.fable/fable-library.2.3.25/Reflection.js");
-/* harmony import */ var _shape_fs__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./shape.fs */ "./src/shape.fs");
-/* harmony import */ var _fable_fable_library_2_3_25_Util_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../.fable/fable-library.2.3.25/Util.js */ "./.fable/fable-library.2.3.25/Util.js");
-/* harmony import */ var _fable_fable_library_2_3_25_Seq_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../.fable/fable-library.2.3.25/Seq.js */ "./.fable/fable-library.2.3.25/Seq.js");
-/* harmony import */ var _input_fs__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./input.fs */ "./src/input.fs");
+/* harmony import */ var _time_fs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./time.fs */ "./src/time.fs");
+/* harmony import */ var _fable_fable_library_2_3_25_Types_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../.fable/fable-library.2.3.25/Types.js */ "./.fable/fable-library.2.3.25/Types.js");
+/* harmony import */ var _block_fs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./block.fs */ "./src/block.fs");
+/* harmony import */ var _grid_fs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./grid.fs */ "./src/grid.fs");
+/* harmony import */ var _fable_fable_library_2_3_25_Reflection_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../.fable/fable-library.2.3.25/Reflection.js */ "./.fable/fable-library.2.3.25/Reflection.js");
+/* harmony import */ var _shape_fs__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./shape.fs */ "./src/shape.fs");
+/* harmony import */ var _fable_fable_library_2_3_25_Util_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../.fable/fable-library.2.3.25/Util.js */ "./.fable/fable-library.2.3.25/Util.js");
+/* harmony import */ var _fable_fable_library_2_3_25_Seq_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../.fable/fable-library.2.3.25/Seq.js */ "./.fable/fable-library.2.3.25/Seq.js");
+/* harmony import */ var _input_fs__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./input.fs */ "./src/input.fs");
 
 
 
@@ -13276,19 +13288,20 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-const blockFallInterval = 1000;
-const GameState = Object(_fable_fable_library_2_3_25_Types_js__WEBPACK_IMPORTED_MODULE_0__["declare"])(function FBlocks_GameState_GameState(arg1, arg2, arg3) {
+
+const blockFallInterval = Object(_time_fs__WEBPACK_IMPORTED_MODULE_0__["fromMilliseconds"])(1000);
+const GameState = Object(_fable_fable_library_2_3_25_Types_js__WEBPACK_IMPORTED_MODULE_1__["declare"])(function FBlocks_GameState_GameState(arg1, arg2, arg3) {
   this.block = arg1;
   this.grid = arg2;
   this.lastBlockFallTime = arg3;
-}, _fable_fable_library_2_3_25_Types_js__WEBPACK_IMPORTED_MODULE_0__["Record"]);
+}, _fable_fable_library_2_3_25_Types_js__WEBPACK_IMPORTED_MODULE_1__["Record"]);
 function GameState$reflection() {
-  return Object(_fable_fable_library_2_3_25_Reflection_js__WEBPACK_IMPORTED_MODULE_3__["record"])("FBlocks.GameState.GameState", [], GameState, () => [["block", Object(_block_fs__WEBPACK_IMPORTED_MODULE_1__["Block$reflection"])()], ["grid", Object(_grid_fs__WEBPACK_IMPORTED_MODULE_2__["Grid$reflection"])()], ["lastBlockFallTime", _fable_fable_library_2_3_25_Reflection_js__WEBPACK_IMPORTED_MODULE_3__["float64"]]]);
+  return Object(_fable_fable_library_2_3_25_Reflection_js__WEBPACK_IMPORTED_MODULE_4__["record"])("FBlocks.GameState.GameState", [], GameState, () => [["block", Object(_block_fs__WEBPACK_IMPORTED_MODULE_2__["Block$reflection"])()], ["grid", Object(_grid_fs__WEBPACK_IMPORTED_MODULE_3__["Grid$reflection"])()], ["lastBlockFallTime", Object(_time_fs__WEBPACK_IMPORTED_MODULE_0__["Time$reflection"])()]]);
 }
 function updateBlockIfValid(gameState, updater) {
   const updatedBlock = updater(gameState.block);
 
-  if (Object(_grid_fs__WEBPACK_IMPORTED_MODULE_2__["isBlockValid"])(gameState.grid, updatedBlock)) {
+  if (Object(_grid_fs__WEBPACK_IMPORTED_MODULE_3__["isBlockValid"])(gameState.grid, updatedBlock)) {
     return new GameState(updatedBlock, gameState.grid, gameState.lastBlockFallTime);
   } else {
     return gameState;
@@ -13296,46 +13309,46 @@ function updateBlockIfValid(gameState, updater) {
 }
 function moveBlockDown(currentTime, gameState$$1) {
   var shapeName;
-  const movedBlock = Object(_block_fs__WEBPACK_IMPORTED_MODULE_1__["moveBy"])(0, 1, gameState$$1.block);
+  const movedBlock = Object(_block_fs__WEBPACK_IMPORTED_MODULE_2__["moveBy"])(0, 1, gameState$$1.block);
 
-  if (Object(_grid_fs__WEBPACK_IMPORTED_MODULE_2__["isBlockValid"])(gameState$$1.grid, movedBlock)) {
+  if (Object(_grid_fs__WEBPACK_IMPORTED_MODULE_3__["isBlockValid"])(gameState$$1.grid, movedBlock)) {
     return new GameState(movedBlock, gameState$$1.grid, currentTime);
   } else {
-    return new GameState((shapeName = Object(_shape_fs__WEBPACK_IMPORTED_MODULE_4__["random"])(), (Object(_block_fs__WEBPACK_IMPORTED_MODULE_1__["create"])(shapeName))), Object(_grid_fs__WEBPACK_IMPORTED_MODULE_2__["placeBlock"])(gameState$$1.grid, gameState$$1.block), currentTime);
+    return new GameState((shapeName = Object(_shape_fs__WEBPACK_IMPORTED_MODULE_5__["random"])(), (Object(_block_fs__WEBPACK_IMPORTED_MODULE_2__["create"])(shapeName))), Object(_grid_fs__WEBPACK_IMPORTED_MODULE_3__["placeBlock"])(gameState$$1.grid, gameState$$1.block), currentTime);
   }
 }
 function processInput(currentTime$$1, inputs, gameState$$2) {
   const processAction = function processAction(gameState$$3, action) {
     const moveBlock = function moveBlock(dx, dy, gameState$$4) {
       const updater$$1 = function updater$$1(block) {
-        return Object(_block_fs__WEBPACK_IMPORTED_MODULE_1__["moveBy"])(dx, dy, block);
+        return Object(_block_fs__WEBPACK_IMPORTED_MODULE_2__["moveBy"])(dx, dy, block);
       };
 
       return updateBlockIfValid(gameState$$4, updater$$1);
     };
 
     const rotateBlock = function rotateBlock(gameState$$5) {
-      const updater$$2 = _block_fs__WEBPACK_IMPORTED_MODULE_1__["rotate"];
+      const updater$$2 = _block_fs__WEBPACK_IMPORTED_MODULE_2__["rotate"];
       return updateBlockIfValid(gameState$$5, updater$$2);
     };
 
     const placeBlock = function placeBlock(gameState$$6) {
-      const grid = Object(_grid_fs__WEBPACK_IMPORTED_MODULE_2__["placeBlock"])(gameState$$6.grid, gameState$$6.block);
-      return new GameState(Object(_block_fs__WEBPACK_IMPORTED_MODULE_1__["create"])(new _shape_fs__WEBPACK_IMPORTED_MODULE_4__["ShapeName"](3, "L")), grid, gameState$$6.lastBlockFallTime);
+      const grid = Object(_grid_fs__WEBPACK_IMPORTED_MODULE_3__["placeBlock"])(gameState$$6.grid, gameState$$6.block);
+      return new GameState(Object(_block_fs__WEBPACK_IMPORTED_MODULE_2__["create"])(new _shape_fs__WEBPACK_IMPORTED_MODULE_5__["ShapeName"](3, "L")), grid, gameState$$6.lastBlockFallTime);
     };
 
-    return (action.tag === 1 ? rotateBlock : action.tag === 2 ? placeBlock : action.fields[0].tag === 1 ? Object(_fable_fable_library_2_3_25_Util_js__WEBPACK_IMPORTED_MODULE_5__["partialApply"])(1, moveBlock, [1, 0]) : action.fields[0].tag === 2 ? Object(_fable_fable_library_2_3_25_Util_js__WEBPACK_IMPORTED_MODULE_5__["partialApply"])(1, moveBlock, [0, -1]) : action.fields[0].tag === 3 ? function (gameState$$7) {
+    return (action.tag === 1 ? rotateBlock : action.tag === 2 ? placeBlock : action.fields[0].tag === 1 ? Object(_fable_fable_library_2_3_25_Util_js__WEBPACK_IMPORTED_MODULE_6__["partialApply"])(1, moveBlock, [1, 0]) : action.fields[0].tag === 2 ? Object(_fable_fable_library_2_3_25_Util_js__WEBPACK_IMPORTED_MODULE_6__["partialApply"])(1, moveBlock, [0, -1]) : action.fields[0].tag === 3 ? function (gameState$$7) {
       return moveBlockDown(currentTime$$1, gameState$$7);
-    } : Object(_fable_fable_library_2_3_25_Util_js__WEBPACK_IMPORTED_MODULE_5__["partialApply"])(1, moveBlock, [-1, 0]))(gameState$$3);
+    } : Object(_fable_fable_library_2_3_25_Util_js__WEBPACK_IMPORTED_MODULE_6__["partialApply"])(1, moveBlock, [-1, 0]))(gameState$$3);
   };
 
   let updatedGameState;
   const source = inputs;
-  updatedGameState = Object(_fable_fable_library_2_3_25_Seq_js__WEBPACK_IMPORTED_MODULE_6__["fold"])(processAction, gameState$$2, source);
+  updatedGameState = Object(_fable_fable_library_2_3_25_Seq_js__WEBPACK_IMPORTED_MODULE_7__["fold"])(processAction, gameState$$2, source);
   return updatedGameState;
 }
 function processFalling(currentTime$$2, gameState$$8) {
-  if (currentTime$$2 - gameState$$8.lastBlockFallTime >= blockFallInterval) {
+  if (Object(_time_fs__WEBPACK_IMPORTED_MODULE_0__["difference"])(currentTime$$2, gameState$$8.lastBlockFallTime).CompareTo(blockFallInterval) >= 0) {
     return moveBlockDown(currentTime$$2, gameState$$8);
   } else {
     return gameState$$8;
@@ -13345,14 +13358,14 @@ function update(currentTime$$3, gameState$$9) {
   let newGameState;
   let gameState$$11;
   const gameState$$10 = gameState$$9;
-  const inputs$$1 = Object(_input_fs__WEBPACK_IMPORTED_MODULE_7__["getQueue"])();
+  const inputs$$1 = Object(_input_fs__WEBPACK_IMPORTED_MODULE_8__["getQueue"])();
   gameState$$11 = processInput(currentTime$$3, inputs$$1, gameState$$10);
   newGameState = processFalling(currentTime$$3, gameState$$11);
   return newGameState;
 }
 function create() {
   var shapeName$$1;
-  return new GameState((shapeName$$1 = Object(_shape_fs__WEBPACK_IMPORTED_MODULE_4__["random"])(), (Object(_block_fs__WEBPACK_IMPORTED_MODULE_1__["create"])(shapeName$$1))), _grid_fs__WEBPACK_IMPORTED_MODULE_2__["createDefault"], 0);
+  return new GameState((shapeName$$1 = Object(_shape_fs__WEBPACK_IMPORTED_MODULE_5__["random"])(), (Object(_block_fs__WEBPACK_IMPORTED_MODULE_2__["create"])(shapeName$$1))), _grid_fs__WEBPACK_IMPORTED_MODULE_3__["createDefault"], _time_fs__WEBPACK_IMPORTED_MODULE_0__["zero"]);
 }
 
 /***/ }),
@@ -13983,6 +13996,53 @@ function filledCellCoords(shape) {
     const coord$$1 = tupledArg$$1[0];
     return coord$$1;
   }, source$$1);
+}
+
+/***/ }),
+
+/***/ "./src/time.fs":
+/*!*********************!*\
+  !*** ./src/time.fs ***!
+  \*********************/
+/*! exports provided: Time, Time$reflection, zero, add, difference, fromMilliseconds, getCurrent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Time", function() { return Time; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Time$reflection", function() { return Time$reflection; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "zero", function() { return zero; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "add", function() { return add; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "difference", function() { return difference; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fromMilliseconds", function() { return fromMilliseconds; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getCurrent", function() { return getCurrent; });
+/* harmony import */ var _fable_fable_library_2_3_25_Types_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../.fable/fable-library.2.3.25/Types.js */ "./.fable/fable-library.2.3.25/Types.js");
+/* harmony import */ var _fable_fable_library_2_3_25_Reflection_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../.fable/fable-library.2.3.25/Reflection.js */ "./.fable/fable-library.2.3.25/Reflection.js");
+
+
+const Time = Object(_fable_fable_library_2_3_25_Types_js__WEBPACK_IMPORTED_MODULE_0__["declare"])(function FBlocks_Time_Time(tag, name, ...fields) {
+  _fable_fable_library_2_3_25_Types_js__WEBPACK_IMPORTED_MODULE_0__["Union"].call(this, tag, name, ...fields);
+}, _fable_fable_library_2_3_25_Types_js__WEBPACK_IMPORTED_MODULE_0__["Union"]);
+function Time$reflection() {
+  return Object(_fable_fable_library_2_3_25_Reflection_js__WEBPACK_IMPORTED_MODULE_1__["union"])("FBlocks.Time.Time", [], Time, () => [["Time", [_fable_fable_library_2_3_25_Reflection_js__WEBPACK_IMPORTED_MODULE_1__["float64"]]]]);
+}
+const zero = new Time(0, "Time", 0);
+function add(_arg2, _arg1) {
+  const t1 = _arg2.fields[0];
+  const t2 = _arg1.fields[0];
+  return new Time(0, "Time", t1 + t2);
+}
+function difference(_arg2$$1, _arg1$$1) {
+  const t1$$1 = _arg2$$1.fields[0];
+  const t2$$1 = _arg1$$1.fields[0];
+  return new Time(0, "Time", t1$$1 - t2$$1);
+}
+function fromMilliseconds(ms) {
+  return new Time(0, "Time", ms);
+}
+function getCurrent() {
+  const ms$$1 = performance.now();
+  return fromMilliseconds(ms$$1);
 }
 
 /***/ })

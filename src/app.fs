@@ -1,14 +1,16 @@
 module FBlocks.App
 
 open Fable.Import.Browser
-open System
+
+let onNextFrame callback =
+    window.requestAnimationFrame (callback << Time.fromMilliseconds) |> ignore
 
 let rec mainLoop gameState renderer lastTime lastElapsedTime currentTime =
-    let deltaTime = currentTime - lastTime
-    let elapsedTime = lastElapsedTime + deltaTime
+    let deltaTime = Time.difference currentTime lastTime
+    let elapsedTime = Time.add lastElapsedTime deltaTime
 
     let newGameState =
-        if deltaTime > 0.0 then
+        if deltaTime > Time.zero then
             GameState.update elapsedTime gameState
         else
             gameState
@@ -16,10 +18,10 @@ let rec mainLoop gameState renderer lastTime lastElapsedTime currentTime =
     if newGameState <> gameState then
         Renderer.redraw renderer newGameState.grid newGameState.block
 
-    window.requestAnimationFrame (mainLoop newGameState renderer currentTime elapsedTime) |> ignore
+    onNextFrame (mainLoop newGameState renderer currentTime elapsedTime)
 
 let run containerDivId =
-    let currentTime = performance.now()
+    let currentTime = Time.getCurrent()
     let gameState = GameState.create()
     let renderer = Renderer.create containerDivId gameState.grid
 
@@ -30,6 +32,6 @@ let run containerDivId =
 
     redraw()
 
-    mainLoop gameState renderer currentTime 0.0 currentTime
+    mainLoop gameState renderer currentTime Time.zero currentTime
 
 run "mainContainer"

@@ -1,11 +1,11 @@
 module FBlocks.GameState
 
-let blockFallInterval = 1000.0
+let blockFallInterval = Time.fromMilliseconds 1000.0
 
 type GameState = {
     block: Block.Block
     grid: Grid.Grid
-    lastBlockFallTime: float
+    lastBlockFallTime: Time.Time
 }
 
 let updateBlockIfValid gameState updater =
@@ -56,7 +56,7 @@ let processInput currentTime inputs gameState =
     updatedGameState
 
 let processFalling currentTime gameState =
-    if currentTime - gameState.lastBlockFallTime >= blockFallInterval then
+    if Time.difference currentTime gameState.lastBlockFallTime >= blockFallInterval then
         moveBlockDown currentTime gameState
     else
         gameState
@@ -73,5 +73,5 @@ let create() =
     {
         block = Shape.random() |> Block.create
         grid = Grid.createDefault
-        lastBlockFallTime = 0.0
+        lastBlockFallTime = Time.zero
     }

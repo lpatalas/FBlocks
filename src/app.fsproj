@@ -3,6 +3,7 @@
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="time.fs" />
     <Compile Include="coord.fs" />
     <Compile Include="matrix.fs" />
     <Compile Include="shape.fs" />
