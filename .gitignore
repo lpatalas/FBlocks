@@ -1,3 +1,4 @@
+.ionide/
 bin/
 node_modules/
 obj/

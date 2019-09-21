@@ -86,9 +86,9 @@
 /************************************************************************/
 /******/ ({
 
-/***/ "./.fable/fable-library.2.1.12/Array.js":
+/***/ "./.fable/fable-library.2.3.25/Array.js":
 /*!**********************************************!*\
-  !*** ./.fable/fable-library.2.1.12/Array.js ***!
+  !*** ./.fable/fable-library.2.3.25/Array.js ***!
   \**********************************************/
 /*! exports provided: append, filter, fill, getSubArray, last, tryLast, mapIndexed, map, mapIndexed2, map2, mapIndexed3, map3, mapFold, mapFoldBack, indexed, truncate, concat, collect, countBy, distinctBy, distinct, where, contains, except, groupBy, empty, singleton, initialize, pairwise, replicate, copy, reverse, scan, scanBack, skip, skipWhile, take, takeWhile, addRangeInPlace, removeInPlace, removeAllInPlace, copyTo, partition, find, tryFind, findIndex, tryFindIndex, pick, tryPick, findBack, tryFindBack, findLastIndex, findIndexBack, tryFindIndexBack, choose, foldIndexed, fold, iterate, iterateIndexed, iterate2, iterateIndexed2, isEmpty, forAll, permute, setSlice, sortInPlaceBy, sortInPlace, sort, sortBy, sortDescending, sortByDescending, sortWith, unfold, unzip, unzip3, zip, zip3, chunkBySize, splitAt, compareWith, equalsWith, exactlyOne, head, tryHead, tail, item, tryItem, foldBackIndexed, foldBack, foldIndexed2, fold2, foldBackIndexed2, foldBack2, reduce, reduceBack, forAll2, existsOffset, exists, existsOffset2, exists2, sum, sumBy, maxBy, max, minBy, min, average, averageBy, ofSeq, ofList, toList, windowed */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -207,14 +207,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ofList", function() { return ofList; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "toList", function() { return toList; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "windowed", function() { return windowed; });
-/* harmony import */ var _Option__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Option */ "./.fable/fable-library.2.1.12/Option.js");
-/* harmony import */ var _Util__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Util */ "./.fable/fable-library.2.1.12/Util.js");
-/* harmony import */ var _Map__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Map */ "./.fable/fable-library.2.1.12/Map.js");
-/* harmony import */ var _Seq__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Seq */ "./.fable/fable-library.2.1.12/Seq.js");
-/* harmony import */ var _Set__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Set */ "./.fable/fable-library.2.1.12/Set.js");
-/* harmony import */ var _Types__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Types */ "./.fable/fable-library.2.1.12/Types.js");
-/* harmony import */ var _Array__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Array */ "./.fable/fable-library.2.1.12/Array.js");
-
+/* harmony import */ var _Option_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Option.js */ "./.fable/fable-library.2.3.25/Option.js");
+/* harmony import */ var _Util_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Util.js */ "./.fable/fable-library.2.3.25/Util.js");
+/* harmony import */ var _Map_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Map.js */ "./.fable/fable-library.2.3.25/Map.js");
+/* harmony import */ var _Set_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Set.js */ "./.fable/fable-library.2.3.25/Set.js");
+/* harmony import */ var _Types_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Types.js */ "./.fable/fable-library.2.3.25/Types.js");
+/* harmony import */ var _Seq_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Seq.js */ "./.fable/fable-library.2.3.25/Seq.js");
 
 
 
@@ -266,7 +264,7 @@ function tryLast(array$$6) {
   if (array$$6.length === 0) {
     return null;
   } else {
-    return Object(_Option__WEBPACK_IMPORTED_MODULE_0__["some"])(array$$6[array$$6.length - 1]);
+    return Object(_Option_js__WEBPACK_IMPORTED_MODULE_0__["some"])(array$$6[array$$6.length - 1]);
   }
 }
 function mapIndexed(f, source, cons$$1) {
@@ -280,8 +278,8 @@ function mapIndexed(f, source, cons$$1) {
 
     return target$$1;
   } else {
-    return source.map(function mapping(x, i$$3) {
-      return f(i$$3, x);
+    return source.map(function (delegateArg0, delegateArg1) {
+      return f(delegateArg1, delegateArg0);
     });
   }
 }
@@ -359,9 +357,8 @@ function mapFold(mapping$$2, state, array$$9, cons$$7) {
   if (matchValue === 0) {
     return [[], state];
   } else {
-    const len$$2 = matchValue | 0;
     let acc = state;
-    const res = new cons$$7(len$$2);
+    const res = new cons$$7(matchValue);
 
     for (let i$$9 = 0; i$$9 <= array$$9.length - 1; i$$9++) {
       const patternInput = mapping$$2(acc, array$$9[i$$9]);
@@ -378,9 +375,8 @@ function mapFoldBack(mapping$$3, array$$10, state$$1, cons$$8) {
   if (matchValue$$1 === 0) {
     return [[], state$$1];
   } else {
-    const len$$3 = matchValue$$1 | 0;
     let acc$$1 = state$$1;
-    const res$$1 = new cons$$8(len$$3);
+    const res$$1 = new cons$$8(matchValue$$1);
 
     for (let i$$10 = array$$10.length - 1; i$$10 >= 0; i$$10--) {
       const patternInput$$1 = mapping$$3(array$$10[i$$10], acc$$1);
@@ -402,10 +398,11 @@ function indexed(source$$2) {
   return target$$3;
 }
 function truncate(count$$4, array$$11) {
-  const count$$5 = Object(_Util__WEBPACK_IMPORTED_MODULE_1__["max"])(_Util__WEBPACK_IMPORTED_MODULE_1__["comparePrimitives"], 0, count$$4) | 0;
+  const count$$5 = Object(_Util_js__WEBPACK_IMPORTED_MODULE_1__["max"])(_Util_js__WEBPACK_IMPORTED_MODULE_1__["comparePrimitives"], 0, count$$4) | 0;
   return array$$11.slice(0, 0 + count$$5);
 }
 function concat(arrays, cons$$9) {
+  var arr$$3;
   const arrays$$1 = Array.from(arrays);
   const matchValue$$2 = arrays$$1.length | 0;
 
@@ -422,7 +419,7 @@ function concat(arrays, cons$$9) {
 
     default:
       {
-        if (ArrayBuffer.isView(arrays$$1[0])) {
+        if (arr$$3 = arrays$$1[0], ArrayBuffer.isView(arr$$3)) {
           let totalIdx = 0;
           let totalLength = 0;
 
@@ -454,52 +451,54 @@ function collect(mapping$$4, array$$14, cons$$10) {
   return concat(mapped, cons$$10);
 }
 function countBy(projection, array$$15, eq) {
-  const dict = Object(_Map__WEBPACK_IMPORTED_MODULE_2__["createMutable"])([], Object(_Util__WEBPACK_IMPORTED_MODULE_1__["comparerFromEqualityComparer"])(eq));
+  const dict = Object(_Map_js__WEBPACK_IMPORTED_MODULE_2__["createMutable"])([], eq);
+  const keys = [];
 
   for (let idx$$2 = 0; idx$$2 <= array$$15.length - 1; idx$$2++) {
     const value$$2 = array$$15[idx$$2];
     const key = projection(value$$2);
-    const matchValue$$3 = Object(_Util__WEBPACK_IMPORTED_MODULE_1__["tryGetValue"])(dict, key, 0);
+    const matchValue$$3 = Object(_Util_js__WEBPACK_IMPORTED_MODULE_1__["tryGetValue"])(dict, key, 0);
 
     if (matchValue$$3[0]) {
       dict.set(key, matchValue$$3[1] + 1);
     } else {
       dict.set(key, 1);
+      const value$$3 = keys.push(key);
+      value$$3, null;
     }
   }
 
-  const res$$2 = new Array(dict.size);
-  let i$$12 = 0;
-  Object(_Seq__WEBPACK_IMPORTED_MODULE_3__["iterate"])(function (group) {
-    res$$2[i$$12] = [group[0], group[1]];
-    i$$12 = i$$12 + 1;
-  }, dict);
-  return res$$2;
+  const result$$5 = map(function (key$$1) {
+    return [key$$1, Object(_Util_js__WEBPACK_IMPORTED_MODULE_1__["getItemFromDict"])(dict, key$$1)];
+  }, keys, Array);
+  return result$$5;
 }
-function distinctBy(projection$$1, array$$16, eq$$1) {
-  const hashSet = Object(_Set__WEBPACK_IMPORTED_MODULE_4__["createMutable"])([], Object(_Util__WEBPACK_IMPORTED_MODULE_1__["comparerFromEqualityComparer"])(eq$$1));
+function distinctBy(projection$$1, array$$17, eq$$1) {
+  const hashSet = Object(_Set_js__WEBPACK_IMPORTED_MODULE_3__["createMutable"])([], eq$$1);
   return filter(function predicate$$2($arg$$3) {
-    return Object(_Util__WEBPACK_IMPORTED_MODULE_1__["addToSet"])(projection$$1($arg$$3), hashSet);
-  }, array$$16);
+    const arg00 = projection$$1($arg$$3);
+    return Object(_Util_js__WEBPACK_IMPORTED_MODULE_1__["addToSet"])(arg00, hashSet);
+  }, array$$17);
 }
-function distinct(array$$18, eq$$2) {
+function distinct(array$$19, eq$$2) {
   return distinctBy(function (x$$2) {
     return x$$2;
-  }, array$$18, eq$$2);
+  }, array$$19, eq$$2);
 }
-function where(predicate$$3, array$$19) {
-  return array$$19.filter(predicate$$3);
+function where(predicate$$3, array$$20) {
+  return array$$20.filter(predicate$$3);
 }
-function contains(value$$3, array$$21, eq$$3) {
-  const loop = function loop(i$$13) {
+function contains(value$$4, array$$22, eq$$3) {
+  const loop = function loop($i$$12$$75) {
     loop: while (true) {
-      if (i$$13 >= array$$21.length) {
+      const i$$12 = $i$$12$$75;
+
+      if (i$$12 >= array$$22.length) {
         return false;
-      } else if (eq$$3.Equals(value$$3, array$$21[i$$13])) {
+      } else if (eq$$3.Equals(value$$4, array$$22[i$$12])) {
         return true;
       } else {
-        const $i$$13$$49 = i$$13;
-        i$$13 = $i$$13$$49 + 1;
+        $i$$12$$75 = i$$12 + 1;
         continue loop;
       }
 
@@ -509,46 +508,46 @@ function contains(value$$3, array$$21, eq$$3) {
 
   return loop(0);
 }
-function except(itemsToExclude, array$$22, eq$$4) {
-  if (array$$22.length === 0) {
-    return array$$22;
+function except(itemsToExclude, array$$23, eq$$4) {
+  if (array$$23.length === 0) {
+    return array$$23;
   } else {
-    const cached = Object(_Set__WEBPACK_IMPORTED_MODULE_4__["createMutable"])(itemsToExclude, Object(_Util__WEBPACK_IMPORTED_MODULE_1__["comparerFromEqualityComparer"])(eq$$4));
-    return array$$22.filter(function predicate$$5(arg00$$1) {
-      return Object(_Util__WEBPACK_IMPORTED_MODULE_1__["addToSet"])(arg00$$1, cached);
+    const cached = Object(_Set_js__WEBPACK_IMPORTED_MODULE_3__["createMutable"])(itemsToExclude, eq$$4);
+    return array$$23.filter(function predicate$$5(arg00$$1) {
+      return Object(_Util_js__WEBPACK_IMPORTED_MODULE_1__["addToSet"])(arg00$$1, cached);
     });
   }
 }
-function groupBy(projection$$2, array$$25, cons$$11, eq$$5) {
-  const dict$$1 = Object(_Map__WEBPACK_IMPORTED_MODULE_2__["createMutable"])([], Object(_Util__WEBPACK_IMPORTED_MODULE_1__["comparerFromEqualityComparer"])(eq$$5));
+function groupBy(projection$$2, array$$26, cons$$11, eq$$5) {
+  const dict$$1 = Object(_Map_js__WEBPACK_IMPORTED_MODULE_2__["createMutable"])([], eq$$5);
+  const keys$$1 = [];
 
-  for (let idx$$3 = 0; idx$$3 <= array$$25.length - 1; idx$$3++) {
-    const v = array$$25[idx$$3];
-    const key$$1 = projection$$2(v);
-    const matchValue$$4 = Object(_Util__WEBPACK_IMPORTED_MODULE_1__["tryGetValue"])(dict$$1, key$$1, null);
+  for (let idx$$3 = 0; idx$$3 <= array$$26.length - 1; idx$$3++) {
+    const v = array$$26[idx$$3];
+    const key$$2 = projection$$2(v);
+    const matchValue$$4 = Object(_Util_js__WEBPACK_IMPORTED_MODULE_1__["tryGetValue"])(dict$$1, key$$2, null);
 
     if (matchValue$$4[0]) {
-      matchValue$$4[1].push(v);
+      dict$$1.set(key$$2, new _Types_js__WEBPACK_IMPORTED_MODULE_4__["List"](v, matchValue$$4[1]));
     } else {
-      const prev$$2 = [v];
-      dict$$1.set(key$$1, prev$$2);
+      Object(_Util_js__WEBPACK_IMPORTED_MODULE_1__["addToDict"])(dict$$1, key$$2, new _Types_js__WEBPACK_IMPORTED_MODULE_4__["List"](v, new _Types_js__WEBPACK_IMPORTED_MODULE_4__["List"]()));
+      const value$$5 = keys$$1.push(key$$2);
+      value$$5, null;
     }
   }
 
-  const result$$5 = new Array(dict$$1.size);
-  let i$$14 = 0;
-  Object(_Seq__WEBPACK_IMPORTED_MODULE_3__["iterate"])(function (group$$1) {
-    result$$5[i$$14] = [group$$1[0], cons$$11.from(group$$1[1])];
-    i$$14 = i$$14 + 1;
-  }, dict$$1);
-  return result$$5;
+  const result$$6 = map(function (key$$3) {
+    var array$$28;
+    return [key$$3, (array$$28 = cons$$11.from(Object(_Util_js__WEBPACK_IMPORTED_MODULE_1__["getItemFromDict"])(dict$$1, key$$3)), (array$$28.reverse()))];
+  }, keys$$1, Array);
+  return result$$6;
 }
 function empty(cons$$12) {
   return new cons$$12(0);
 }
-function singleton(value$$5, cons$$14) {
+function singleton(value$$6, cons$$14) {
   const ar = new cons$$14(1);
-  ar[0] = value$$5;
+  ar[0] = value$$6;
   return ar;
 }
 function initialize(count$$8, initializer, cons$$15) {
@@ -556,26 +555,26 @@ function initialize(count$$8, initializer, cons$$15) {
     throw new Error("The input must be non-negative\\nParameter name: count");
   }
 
-  const result$$6 = new cons$$15(count$$8);
+  const result$$7 = new cons$$15(count$$8);
 
-  for (let i$$15 = 0; i$$15 <= count$$8 - 1; i$$15++) {
-    result$$6[i$$15] = initializer(i$$15);
+  for (let i$$13 = 0; i$$13 <= count$$8 - 1; i$$13++) {
+    result$$7[i$$13] = initializer(i$$13);
   }
 
-  return result$$6;
+  return result$$7;
 }
-function pairwise(array$$27) {
-  if (array$$27.length < 2) {
+function pairwise(array$$30) {
+  if (array$$30.length < 2) {
     return [];
   } else {
-    const count$$9 = array$$27.length - 1 | 0;
-    const result$$7 = new Array(count$$9);
+    const count$$9 = array$$30.length - 1 | 0;
+    const result$$8 = new Array(count$$9);
 
-    for (let i$$16 = 0; i$$16 <= count$$9 - 1; i$$16++) {
-      result$$7[i$$16] = [array$$27[i$$16], array$$27[i$$16 + 1]];
+    for (let i$$14 = 0; i$$14 <= count$$9 - 1; i$$14++) {
+      result$$8[i$$14] = [array$$30[i$$14], array$$30[i$$14 + 1]];
     }
 
-    return result$$7;
+    return result$$8;
   }
 }
 function replicate(count$$10, initial, cons$$16) {
@@ -583,118 +582,120 @@ function replicate(count$$10, initial, cons$$16) {
     throw new Error("The input must be non-negative\\nParameter name: count");
   }
 
-  const result$$8 = new cons$$16(count$$10);
+  const result$$9 = new cons$$16(count$$10);
 
-  for (let i$$17 = 0; i$$17 <= result$$8.length - 1; i$$17++) {
-    result$$8[i$$17] = initial;
+  for (let i$$15 = 0; i$$15 <= result$$9.length - 1; i$$15++) {
+    result$$9[i$$15] = initial;
   }
 
-  return result$$8;
+  return result$$9;
 }
-function copy(array$$28, cons$$17) {
-  return array$$28.slice();
+function copy(array$$31, cons$$17) {
+  return array$$31.slice();
 }
-function reverse(array$$30, cons$$18) {
-  return array$$30.slice().reverse();
+function reverse(array$$33, cons$$18) {
+  const array$$35 = array$$33.slice();
+  return array$$35.reverse();
 }
-function scan(folder, state$$2, array$$34, cons$$19) {
-  const res$$3 = new cons$$19(array$$34.length + 1);
-  res$$3[0] = state$$2;
+function scan(folder, state$$2, array$$37, cons$$19) {
+  const res$$2 = new cons$$19(array$$37.length + 1);
+  res$$2[0] = state$$2;
 
-  for (let i$$18 = 0; i$$18 <= array$$34.length - 1; i$$18++) {
-    res$$3[i$$18 + 1] = folder(res$$3[i$$18], array$$34[i$$18]);
+  for (let i$$16 = 0; i$$16 <= array$$37.length - 1; i$$16++) {
+    res$$2[i$$16 + 1] = folder(res$$2[i$$16], array$$37[i$$16]);
+  }
+
+  return res$$2;
+}
+function scanBack(folder$$1, array$$38, state$$3, cons$$20) {
+  const res$$3 = new cons$$20(array$$38.length + 1);
+  res$$3[array$$38.length] = state$$3;
+
+  for (let i$$17 = array$$38.length - 1; i$$17 >= 0; i$$17--) {
+    res$$3[i$$17] = folder$$1(array$$38[i$$17], res$$3[i$$17 + 1]);
   }
 
   return res$$3;
 }
-function scanBack(folder$$1, array$$35, state$$3, cons$$20) {
-  const res$$4 = new cons$$20(array$$35.length + 1);
-  res$$4[array$$35.length] = state$$3;
-
-  for (let i$$19 = array$$35.length - 1; i$$19 >= 0; i$$19--) {
-    res$$4[i$$19] = folder$$1(array$$35[i$$19], res$$4[i$$19 + 1]);
-  }
-
-  return res$$4;
-}
-function skip(count$$11, array$$36, cons$$21) {
-  if (count$$11 > array$$36.length) {
+function skip(count$$11, array$$39, cons$$21) {
+  if (count$$11 > array$$39.length) {
     throw new Error("count is greater than array length\\nParameter name: count");
   }
 
-  if (count$$11 === array$$36.length) {
+  if (count$$11 === array$$39.length) {
     return new cons$$21(0);
   } else {
     const count$$12 = (count$$11 < 0 ? 0 : count$$11) | 0;
-    return array$$36.slice(count$$12);
+    return array$$39.slice(count$$12);
   }
 }
-function skipWhile(predicate$$7, array$$38, cons$$23) {
+function skipWhile(predicate$$7, array$$41, cons$$23) {
   let count$$14 = 0;
 
-  while (count$$14 < array$$38.length ? predicate$$7(array$$38[count$$14]) : false) {
+  while (count$$14 < array$$41.length ? predicate$$7(array$$41[count$$14]) : false) {
     count$$14 = count$$14 + 1;
   }
 
-  if (count$$14 === array$$38.length) {
+  if (count$$14 === array$$41.length) {
     return new cons$$23(0);
   } else {
-    return array$$38.slice(count$$14);
+    const count$$15 = count$$14 | 0;
+    return array$$41.slice(count$$15);
   }
 }
-function take(count$$16, array$$40, cons$$25) {
+function take(count$$16, array$$43, cons$$25) {
   if (count$$16 < 0) {
     throw new Error("The input must be non-negative\\nParameter name: count");
   }
 
-  if (count$$16 > array$$40.length) {
+  if (count$$16 > array$$43.length) {
     throw new Error("count is greater than array length\\nParameter name: count");
   }
 
   if (count$$16 === 0) {
     return new cons$$25(0);
   } else {
-    return array$$40.slice(0, 0 + count$$16);
+    return array$$43.slice(0, 0 + count$$16);
   }
 }
-function takeWhile(predicate$$8, array$$42, cons$$27) {
+function takeWhile(predicate$$8, array$$45, cons$$27) {
   let count$$18 = 0;
 
-  while (count$$18 < array$$42.length ? predicate$$8(array$$42[count$$18]) : false) {
+  while (count$$18 < array$$45.length ? predicate$$8(array$$45[count$$18]) : false) {
     count$$18 = count$$18 + 1;
   }
 
   if (count$$18 === 0) {
     return new cons$$27(0);
   } else {
-    return array$$42.slice(0, 0 + count$$18);
+    const count$$19 = count$$18 | 0;
+    return array$$45.slice(0, 0 + count$$19);
   }
 }
-function addRangeInPlace(range, array$$44) {
-  const iter = range[Symbol.iterator]();
-  let cur = iter.next();
-
-  while (!cur.done) {
-    array$$44.push(cur.value);
-    cur = iter.next();
-  }
+function addRangeInPlace(range, array$$47) {
+  Object(_Seq_js__WEBPACK_IMPORTED_MODULE_5__["iterate"])(function (x$$3) {
+    const value$$7 = array$$47.push(x$$3);
+    value$$7, null;
+  }, range);
 }
-function removeInPlace(item$$3, array$$46) {
-  const i$$20 = array$$46.indexOf(item$$3);
+function removeInPlace(item$$4, array$$49) {
+  const i$$18 = array$$49.indexOf(item$$4);
 
-  if (i$$20 > -1) {
-    array$$46.splice(i$$20, 1);
+  if (i$$18 > -1) {
+    const value$$8 = array$$49.splice(i$$18, 1);
+    value$$8, null;
     return true;
   } else {
     return false;
   }
 }
-function removeAllInPlace(predicate$$9, array$$49) {
+function removeAllInPlace(predicate$$9, array$$52) {
   const countRemoveAll = function countRemoveAll(count$$20) {
-    const i$$21 = array$$49.findIndex(predicate$$9);
+    const i$$19 = array$$52.findIndex(predicate$$9);
 
-    if (i$$21 > -1) {
-      array$$49.splice(i$$21, 1);
+    if (i$$19 > -1) {
+      const value$$9 = array$$52.splice(i$$19, 1);
+      value$$9, null;
       return countRemoveAll(count$$20) + 1 | 0;
     } else {
       return count$$20 | 0;
@@ -706,78 +707,75 @@ function removeAllInPlace(predicate$$9, array$$49) {
 function copyTo(source$$3, sourceIndex, target$$4, targetIndex$$1, count$$21) {
   const diff = targetIndex$$1 - sourceIndex | 0;
 
-  for (let i$$22 = sourceIndex; i$$22 <= sourceIndex + count$$21 - 1; i$$22++) {
-    target$$4[i$$22 + diff] = source$$3[i$$22];
+  for (let i$$20 = sourceIndex; i$$20 <= sourceIndex + count$$21 - 1; i$$20++) {
+    target$$4[i$$20 + diff] = source$$3[i$$20];
   }
 }
 function partition(f$$6, source$$4, cons$$29) {
-  const len$$9 = source$$4.length | 0;
-  const res1 = new cons$$29(len$$9);
-  const res2 = new cons$$29(len$$9);
+  const len$$7 = source$$4.length | 0;
+  const res1 = new cons$$29(len$$7);
+  const res2 = new cons$$29(len$$7);
   let iTrue = 0;
   let iFalse = 0;
 
-  for (let i$$23 = 0; i$$23 <= len$$9 - 1; i$$23++) {
-    if (f$$6(source$$4[i$$23])) {
-      res1[iTrue] = source$$4[i$$23];
+  for (let i$$21 = 0; i$$21 <= len$$7 - 1; i$$21++) {
+    if (f$$6(source$$4[i$$21])) {
+      res1[iTrue] = source$$4[i$$21];
       iTrue = iTrue + 1;
     } else {
-      res2[iFalse] = source$$4[i$$23];
+      res2[iFalse] = source$$4[i$$21];
       iFalse = iFalse + 1;
     }
   }
 
-  return [truncate(iTrue, res1), truncate(iFalse, res2)];
+  return [(truncate(iTrue, res1)), (truncate(iFalse, res2))];
 }
-function find(predicate$$11, array$$54) {
-  const matchValue$$5 = array$$54.find(predicate$$11);
+function find(predicate$$11, array$$57) {
+  const matchValue$$5 = array$$57.find(predicate$$11);
 
   if (matchValue$$5 == null) {
     return indexNotFound();
   } else {
-    const res$$5 = Object(_Option__WEBPACK_IMPORTED_MODULE_0__["value"])(matchValue$$5);
-    return res$$5;
+    const res$$4 = Object(_Option_js__WEBPACK_IMPORTED_MODULE_0__["value"])(matchValue$$5);
+    return res$$4;
   }
 }
-function tryFind(predicate$$13, array$$56) {
-  return array$$56.find(predicate$$13);
+function tryFind(predicate$$13, array$$59) {
+  return array$$59.find(predicate$$13);
 }
-function findIndex(predicate$$15, array$$58) {
-  var index;
-  const matchValue$$6 = array$$58.findIndex(predicate$$15);
+function findIndex(predicate$$15, array$$61) {
+  const matchValue$$6 = array$$61.findIndex(predicate$$15);
 
-  if (index = matchValue$$6 | 0, index > -1) {
-    const index$$1 = matchValue$$6 | 0;
-    return index$$1 | 0;
+  if (matchValue$$6 > -1) {
+    return matchValue$$6 | 0;
   } else {
     return indexNotFound() | 0;
   }
 }
-function tryFindIndex(predicate$$17, array$$60) {
-  var index$$2;
-  const matchValue$$7 = array$$60.findIndex(predicate$$17);
+function tryFindIndex(predicate$$17, array$$63) {
+  const matchValue$$7 = array$$63.findIndex(predicate$$17);
 
-  if (index$$2 = matchValue$$7 | 0, index$$2 > -1) {
-    const index$$3 = matchValue$$7 | 0;
-    return index$$3;
+  if (matchValue$$7 > -1) {
+    return matchValue$$7;
   } else {
     return null;
   }
 }
-function pick(chooser, array$$62) {
-  const loop$$1 = function loop$$1(i$$24) {
+function pick(chooser, array$$65) {
+  const loop$$1 = function loop$$1($i$$22$$143) {
     loop$$1: while (true) {
-      if (i$$24 >= array$$62.length) {
+      const i$$22 = $i$$22$$143;
+
+      if (i$$22 >= array$$65.length) {
         return indexNotFound();
       } else {
-        const matchValue$$8 = chooser(array$$62[i$$24]);
+        const matchValue$$8 = chooser(array$$65[i$$22]);
 
         if (matchValue$$8 != null) {
-          const res$$6 = Object(_Option__WEBPACK_IMPORTED_MODULE_0__["value"])(matchValue$$8);
-          return res$$6;
+          const res$$5 = Object(_Option_js__WEBPACK_IMPORTED_MODULE_0__["value"])(matchValue$$8);
+          return res$$5;
         } else {
-          const $i$$24$$86 = i$$24;
-          i$$24 = $i$$24$$86 + 1;
+          $i$$22$$143 = i$$22 + 1;
           continue loop$$1;
         }
       }
@@ -788,21 +786,21 @@ function pick(chooser, array$$62) {
 
   return loop$$1(0);
 }
-function tryPick(chooser$$1, array$$63) {
-  const loop$$2 = function loop$$2(i$$25) {
+function tryPick(chooser$$1, array$$66) {
+  const loop$$2 = function loop$$2($i$$23$$146) {
     loop$$2: while (true) {
-      if (i$$25 >= array$$63.length) {
+      const i$$23 = $i$$23$$146;
+
+      if (i$$23 >= array$$66.length) {
         return null;
       } else {
-        const matchValue$$9 = chooser$$1(array$$63[i$$25]);
+        const matchValue$$9 = chooser$$1(array$$66[i$$23]);
 
         if (matchValue$$9 == null) {
-          const $i$$25$$89 = i$$25;
-          i$$25 = $i$$25$$89 + 1;
+          $i$$23$$146 = i$$23 + 1;
           continue loop$$2;
         } else {
-          const res$$7 = matchValue$$9;
-          return res$$7;
+          return matchValue$$9;
         }
       }
 
@@ -812,16 +810,17 @@ function tryPick(chooser$$1, array$$63) {
 
   return loop$$2(0);
 }
-function findBack(predicate$$19, array$$64) {
-  const loop$$3 = function loop$$3(i$$26) {
+function findBack(predicate$$19, array$$67) {
+  const loop$$3 = function loop$$3($i$$24$$149) {
     loop$$3: while (true) {
-      if (i$$26 < 0) {
+      const i$$24 = $i$$24$$149;
+
+      if (i$$24 < 0) {
         return indexNotFound();
-      } else if (predicate$$19(array$$64[i$$26])) {
-        return array$$64[i$$26];
+      } else if (predicate$$19(array$$67[i$$24])) {
+        return array$$67[i$$24];
       } else {
-        const $i$$26$$92 = i$$26;
-        i$$26 = $i$$26$$92 - 1;
+        $i$$24$$149 = i$$24 - 1;
         continue loop$$3;
       }
 
@@ -829,18 +828,19 @@ function findBack(predicate$$19, array$$64) {
     }
   };
 
-  return loop$$3(array$$64.length - 1);
+  return loop$$3(array$$67.length - 1);
 }
-function tryFindBack(predicate$$20, array$$65) {
-  const loop$$4 = function loop$$4(i$$27) {
+function tryFindBack(predicate$$20, array$$68) {
+  const loop$$4 = function loop$$4($i$$25$$152) {
     loop$$4: while (true) {
-      if (i$$27 < 0) {
+      const i$$25 = $i$$25$$152;
+
+      if (i$$25 < 0) {
         return null;
-      } else if (predicate$$20(array$$65[i$$27])) {
-        return Object(_Option__WEBPACK_IMPORTED_MODULE_0__["some"])(array$$65[i$$27]);
+      } else if (predicate$$20(array$$68[i$$25])) {
+        return Object(_Option_js__WEBPACK_IMPORTED_MODULE_0__["some"])(array$$68[i$$25]);
       } else {
-        const $i$$27$$95 = i$$27;
-        i$$27 = $i$$27$$95 - 1;
+        $i$$25$$152 = i$$25 - 1;
         continue loop$$4;
       }
 
@@ -848,18 +848,19 @@ function tryFindBack(predicate$$20, array$$65) {
     }
   };
 
-  return loop$$4(array$$65.length - 1);
+  return loop$$4(array$$68.length - 1);
 }
-function findLastIndex(predicate$$21, array$$66) {
-  const loop$$5 = function loop$$5(i$$28) {
+function findLastIndex(predicate$$21, array$$69) {
+  const loop$$5 = function loop$$5($i$$26$$155) {
     loop$$5: while (true) {
-      if (i$$28 < 0) {
+      const i$$26 = $i$$26$$155;
+
+      if (i$$26 < 0) {
         return -1 | 0;
-      } else if (predicate$$21(array$$66[i$$28])) {
-        return i$$28 | 0;
+      } else if (predicate$$21(array$$69[i$$26])) {
+        return i$$26 | 0;
       } else {
-        const $i$$28$$98 = i$$28;
-        i$$28 = $i$$28$$98 - 1;
+        $i$$26$$155 = i$$26 - 1;
         continue loop$$5;
       }
 
@@ -867,18 +868,19 @@ function findLastIndex(predicate$$21, array$$66) {
     }
   };
 
-  return loop$$5(array$$66.length - 1) | 0;
+  return loop$$5(array$$69.length - 1) | 0;
 }
-function findIndexBack(predicate$$22, array$$67) {
-  const loop$$6 = function loop$$6(i$$29) {
+function findIndexBack(predicate$$22, array$$70) {
+  const loop$$6 = function loop$$6($i$$27$$158) {
     loop$$6: while (true) {
-      if (i$$29 < 0) {
+      const i$$27 = $i$$27$$158;
+
+      if (i$$27 < 0) {
         return indexNotFound() | 0;
-      } else if (predicate$$22(array$$67[i$$29])) {
-        return i$$29 | 0;
+      } else if (predicate$$22(array$$70[i$$27])) {
+        return i$$27 | 0;
       } else {
-        const $i$$29$$101 = i$$29;
-        i$$29 = $i$$29$$101 - 1;
+        $i$$27$$158 = i$$27 - 1;
         continue loop$$6;
       }
 
@@ -886,18 +888,19 @@ function findIndexBack(predicate$$22, array$$67) {
     }
   };
 
-  return loop$$6(array$$67.length - 1) | 0;
+  return loop$$6(array$$70.length - 1) | 0;
 }
-function tryFindIndexBack(predicate$$23, array$$68) {
-  const loop$$7 = function loop$$7(i$$30) {
+function tryFindIndexBack(predicate$$23, array$$71) {
+  const loop$$7 = function loop$$7($i$$28$$161) {
     loop$$7: while (true) {
-      if (i$$30 < 0) {
+      const i$$28 = $i$$28$$161;
+
+      if (i$$28 < 0) {
         return null;
-      } else if (predicate$$23(array$$68[i$$30])) {
-        return i$$30;
+      } else if (predicate$$23(array$$71[i$$28])) {
+        return i$$28;
       } else {
-        const $i$$30$$104 = i$$30;
-        i$$30 = $i$$30$$104 - 1;
+        $i$$28$$161 = i$$28 - 1;
         continue loop$$7;
       }
 
@@ -905,36 +908,36 @@ function tryFindIndexBack(predicate$$23, array$$68) {
     }
   };
 
-  return loop$$7(array$$68.length - 1);
+  return loop$$7(array$$71.length - 1);
 }
-function choose(chooser$$2, array$$69, cons$$30) {
-  const f$$7 = function f$$7(x$$3) {
-    return chooser$$2(x$$3) != null;
-  };
-
-  const g = function g(x$$4) {
-    return Object(_Option__WEBPACK_IMPORTED_MODULE_0__["value"])(chooser$$2(x$$4));
-  };
-
-  const arr$$6 = array$$69.filter(f$$7);
-  return map(g, arr$$6, cons$$30);
+function choose(chooser$$2, array$$72, cons$$30) {
+  const arr$$6 = array$$72.filter(function f$$7(x$$4) {
+    const option = chooser$$2(x$$4);
+    return option != null;
+  });
+  return map(function g(x$$5) {
+    const option$$1 = chooser$$2(x$$5);
+    return Object(_Option_js__WEBPACK_IMPORTED_MODULE_0__["value"])(option$$1);
+  }, arr$$6, cons$$30);
 }
-function foldIndexed(folder$$2, state$$4, array$$71) {
-  return array$$71.reduce(function folder$$3(acc$$2, x$$5, i$$31) {
-    return folder$$2(i$$31, acc$$2, x$$5);
+function foldIndexed(folder$$2, state$$4, array$$74) {
+  return array$$74.reduce(function (delegateArg0$$1, delegateArg1$$1, delegateArg2) {
+    return folder$$2(delegateArg2, delegateArg0$$1, delegateArg1$$1);
   }, state$$4);
 }
-function fold(folder$$4, state$$6, array$$73) {
-  return array$$73.reduce(folder$$4, state$$6);
+function fold(folder$$4, state$$6, array$$76) {
+  return array$$76.reduce(function (delegateArg0$$2, delegateArg1$$2) {
+    return folder$$4(delegateArg0$$2, delegateArg1$$2);
+  }, state$$6);
 }
-function iterate(action, array$$75) {
-  for (let i$$32 = 0; i$$32 <= array$$75.length - 1; i$$32++) {
-    action(array$$75[i$$32]);
+function iterate(action, array$$78) {
+  for (let i$$30 = 0; i$$30 <= array$$78.length - 1; i$$30++) {
+    action(array$$78[i$$30]);
   }
 }
-function iterateIndexed(action$$1, array$$76) {
-  for (let i$$33 = 0; i$$33 <= array$$76.length - 1; i$$33++) {
-    action$$1(i$$33, array$$76[i$$33]);
+function iterateIndexed(action$$1, array$$79) {
+  for (let i$$31 = 0; i$$31 <= array$$79.length - 1; i$$31++) {
+    action$$1(i$$31, array$$79[i$$31]);
   }
 }
 function iterate2(action$$2, array1$$2, array2$$2) {
@@ -942,8 +945,8 @@ function iterate2(action$$2, array1$$2, array2$$2) {
     throw new Error("Arrays had different lengths");
   }
 
-  for (let i$$34 = 0; i$$34 <= array1$$2.length - 1; i$$34++) {
-    action$$2(array1$$2[i$$34], array2$$2[i$$34]);
+  for (let i$$32 = 0; i$$32 <= array1$$2.length - 1; i$$32++) {
+    action$$2(array1$$2[i$$32], array2$$2[i$$32]);
   }
 }
 function iterateIndexed2(action$$3, array1$$3, array2$$3) {
@@ -951,30 +954,30 @@ function iterateIndexed2(action$$3, array1$$3, array2$$3) {
     throw new Error("Arrays had different lengths");
   }
 
-  for (let i$$35 = 0; i$$35 <= array1$$3.length - 1; i$$35++) {
-    action$$3(i$$35, array1$$3[i$$35], array2$$3[i$$35]);
+  for (let i$$33 = 0; i$$33 <= array1$$3.length - 1; i$$33++) {
+    action$$3(i$$33, array1$$3[i$$33], array2$$3[i$$33]);
   }
 }
-function isEmpty(array$$77) {
-  return array$$77.length === 0;
+function isEmpty(array$$80) {
+  return array$$80.length === 0;
 }
-function forAll(predicate$$25, array$$78) {
-  return array$$78.every(predicate$$25);
+function forAll(predicate$$25, array$$81) {
+  return array$$81.every(predicate$$25);
 }
-function permute(f$$8, array$$80) {
-  const size = array$$80.length | 0;
-  const res$$8 = new array$$80.constructor(array$$80.length);
+function permute(f$$8, array$$83) {
+  const size = array$$83.length | 0;
+  const res$$7 = new array$$83.constructor(array$$83.length);
   const checkFlags = new Array(size);
-  iterateIndexed(function (i$$36, x$$7) {
-    const j$$1 = f$$8(i$$36) | 0;
+  iterateIndexed(function (i$$34, x$$8) {
+    const j$$1 = f$$8(i$$34) | 0;
 
     if (j$$1 < 0 ? true : j$$1 >= size) {
       throw new Error("Not a valid permutation");
     }
 
-    res$$8[j$$1] = x$$7;
+    res$$7[j$$1] = x$$8;
     checkFlags[j$$1] = 1;
-  }, array$$80);
+  }, array$$83);
   const isValid = forAll(function (y) {
     return 1 === y;
   }, checkFlags);
@@ -983,67 +986,69 @@ function permute(f$$8, array$$80) {
     throw new Error("Not a valid permutation");
   }
 
-  return res$$8;
+  return res$$7;
 }
 function setSlice(target$$5, lower, upper, source$$5) {
-  const lower$$1 = Object(_Option__WEBPACK_IMPORTED_MODULE_0__["defaultArg"])(lower, 0) | 0;
-  const upper$$1 = Object(_Option__WEBPACK_IMPORTED_MODULE_0__["defaultArg"])(upper, 0) | 0;
+  const lower$$1 = Object(_Option_js__WEBPACK_IMPORTED_MODULE_0__["defaultArg"])(lower, 0) | 0;
+  const upper$$1 = Object(_Option_js__WEBPACK_IMPORTED_MODULE_0__["defaultArg"])(upper, 0) | 0;
   const length = (upper$$1 > 0 ? upper$$1 : target$$5.length - 1) - lower$$1 | 0;
 
   if (ArrayBuffer.isView(target$$5) ? source$$5.length <= length : false) {
-    return target$$5.set(source$$5, lower$$1);
+    const target$$6 = target$$5;
+    const source$$6 = source$$5;
+    return target$$6.set(source$$6, lower$$1);
   } else {
-    for (let i$$37 = 0; i$$37 <= length; i$$37++) {
-      target$$5[i$$37 + lower$$1] = source$$5[i$$37];
+    for (let i$$35 = 0; i$$35 <= length; i$$35++) {
+      target$$5[i$$35 + lower$$1] = source$$5[i$$35];
     }
   }
 }
 function sortInPlaceBy(projection$$3, xs, comparer) {
-  xs.sort(function (x$$9, y$$1) {
-    return comparer.Compare(projection$$3(x$$9), projection$$3(y$$1));
+  xs.sort(function (x$$10, y$$1) {
+    return comparer.Compare(projection$$3(x$$10), projection$$3(y$$1));
   });
 }
 function sortInPlace(xs$$1, comparer$$1) {
-  xs$$1.sort(function (x$$10, y$$2) {
-    return comparer$$1.Compare(x$$10, y$$2);
+  xs$$1.sort(function (x$$11, y$$2) {
+    return comparer$$1.Compare(x$$11, y$$2);
   });
 }
 
-function copyArray(array$$81) {
-  const result$$9 = new array$$81.constructor(array$$81.length);
+function copyArray(array$$84) {
+  const result$$10 = new array$$84.constructor(array$$84.length);
 
-  for (let i$$38 = 0; i$$38 <= array$$81.length - 1; i$$38++) {
-    result$$9[i$$38] = array$$81[i$$38];
+  for (let i$$36 = 0; i$$36 <= array$$84.length - 1; i$$36++) {
+    result$$10[i$$36] = array$$84[i$$36];
   }
 
-  return result$$9;
+  return result$$10;
 }
 
 function sort(xs$$2, comparer$$2) {
   const xs$$3 = copyArray(xs$$2);
-  xs$$3.sort(function comparer$$3(x$$11, y$$3) {
-    return comparer$$2.Compare(x$$11, y$$3);
+  xs$$3.sort(function comparer$$3(x$$12, y$$3) {
+    return comparer$$2.Compare(x$$12, y$$3);
   });
   return xs$$3;
 }
 function sortBy(projection$$4, xs$$4, comparer$$4) {
   const xs$$5 = copyArray(xs$$4);
-  xs$$5.sort(function comparer$$5(x$$12, y$$4) {
-    return comparer$$4.Compare(projection$$4(x$$12), projection$$4(y$$4));
+  xs$$5.sort(function comparer$$5(x$$13, y$$4) {
+    return comparer$$4.Compare(projection$$4(x$$13), projection$$4(y$$4));
   });
   return xs$$5;
 }
 function sortDescending(xs$$6, comparer$$6) {
   const xs$$7 = copyArray(xs$$6);
-  xs$$7.sort(function comparer$$7(x$$13, y$$5) {
-    return comparer$$6.Compare(x$$13, y$$5) * -1;
+  xs$$7.sort(function comparer$$7(x$$14, y$$5) {
+    return comparer$$6.Compare(x$$14, y$$5) * -1;
   });
   return xs$$7;
 }
 function sortByDescending(projection$$5, xs$$8, comparer$$8) {
   const xs$$9 = copyArray(xs$$8);
-  xs$$9.sort(function comparer$$9(x$$14, y$$6) {
-    return comparer$$8.Compare(projection$$5(x$$14), projection$$5(y$$6)) * -1;
+  xs$$9.sort(function comparer$$9(x$$15, y$$6) {
+    return comparer$$8.Compare(projection$$5(x$$15), projection$$5(y$$6)) * -1;
   });
   return xs$$9;
 }
@@ -1053,17 +1058,19 @@ function sortWith(comparer$$10, xs$$10) {
   return xs$$11;
 }
 function unfold(generator, state$$8) {
-  const res$$9 = [];
+  const res$$8 = [];
 
-  const loop$$8 = function loop$$8(state$$9) {
+  const loop$$8 = function loop$$8($state$$9$$220) {
     loop$$8: while (true) {
+      const state$$9 = $state$$9$$220;
       const matchValue$$10 = generator(state$$9);
 
       if (matchValue$$10 != null) {
-        const x$$15 = matchValue$$10[0];
+        const x$$16 = matchValue$$10[0];
         const s$0027$$2 = matchValue$$10[1];
-        res$$9.push(x$$15);
-        state$$9 = s$0027$$2;
+        const value$$10 = res$$8.push(x$$16);
+        value$$10, null;
+        $state$$9$$220 = s$0027$$2;
         continue loop$$8;
       }
 
@@ -1072,28 +1079,28 @@ function unfold(generator, state$$8) {
   };
 
   loop$$8(state$$8);
-  return res$$9;
+  return res$$8;
 }
-function unzip(array$$83) {
-  const len$$11 = array$$83.length | 0;
-  const res1$$1 = new Array(len$$11);
-  const res2$$1 = new Array(len$$11);
-  iterateIndexed(function (i$$39, tupledArg) {
-    res1$$1[i$$39] = tupledArg[0];
-    res2$$1[i$$39] = tupledArg[1];
-  }, array$$83);
+function unzip(array$$86) {
+  const len$$9 = array$$86.length | 0;
+  const res1$$1 = new Array(len$$9);
+  const res2$$1 = new Array(len$$9);
+  iterateIndexed(function (i$$37, tupledArg) {
+    res1$$1[i$$37] = tupledArg[0];
+    res2$$1[i$$37] = tupledArg[1];
+  }, array$$86);
   return [res1$$1, res2$$1];
 }
-function unzip3(array$$84) {
-  const len$$14 = array$$84.length | 0;
-  const res1$$2 = new Array(len$$14);
-  const res2$$2 = new Array(len$$14);
-  const res3 = new Array(len$$14);
-  iterateIndexed(function (i$$40, tupledArg$$1) {
-    res1$$2[i$$40] = tupledArg$$1[0];
-    res2$$2[i$$40] = tupledArg$$1[1];
-    res3[i$$40] = tupledArg$$1[2];
-  }, array$$84);
+function unzip3(array$$87) {
+  const len$$12 = array$$87.length | 0;
+  const res1$$2 = new Array(len$$12);
+  const res2$$2 = new Array(len$$12);
+  const res3 = new Array(len$$12);
+  iterateIndexed(function (i$$38, tupledArg$$1) {
+    res1$$2[i$$38] = tupledArg$$1[0];
+    res2$$2[i$$38] = tupledArg$$1[1];
+    res3[i$$38] = tupledArg$$1[2];
+  }, array$$87);
   return [res1$$2, res2$$2, res3];
 }
 function zip(array1$$4, array2$$4) {
@@ -1101,56 +1108,61 @@ function zip(array1$$4, array2$$4) {
     throw new Error("Arrays had different lengths");
   }
 
-  const result$$10 = new Array(array1$$4.length);
+  let result$$11;
+  const len$$16 = array1$$4.length | 0;
+  result$$11 = new Array(len$$16);
 
-  for (let i$$41 = 0; i$$41 <= array1$$4.length - 1; i$$41++) {
-    result$$10[i$$41] = [array1$$4[i$$41], array2$$4[i$$41]];
+  for (let i$$39 = 0; i$$39 <= array1$$4.length - 1; i$$39++) {
+    result$$11[i$$39] = [array1$$4[i$$39], array2$$4[i$$39]];
   }
 
-  return result$$10;
+  return result$$11;
 }
 function zip3(array1$$5, array2$$5, array3) {
   if (array1$$5.length !== array2$$5.length ? true : array2$$5.length !== array3.length) {
     throw new Error("Arrays had different lengths");
   }
 
-  const result$$11 = new Array(array1$$5.length);
+  let result$$12;
+  const len$$17 = array1$$5.length | 0;
+  result$$12 = new Array(len$$17);
 
-  for (let i$$42 = 0; i$$42 <= array1$$5.length - 1; i$$42++) {
-    result$$11[i$$42] = [array1$$5[i$$42], array2$$5[i$$42], array3[i$$42]];
+  for (let i$$40 = 0; i$$40 <= array1$$5.length - 1; i$$40++) {
+    result$$12[i$$40] = [array1$$5[i$$40], array2$$5[i$$40], array3[i$$40]];
   }
 
-  return result$$11;
+  return result$$12;
 }
-function chunkBySize(chunkSize, array$$85) {
+function chunkBySize(chunkSize, array$$88) {
   if (chunkSize < 1) {
     throw new Error("The input must be positive.\\nParameter name: size");
   }
 
-  if (array$$85.length === 0) {
+  if (array$$88.length === 0) {
     return [[]];
   } else {
-    const result$$12 = [];
+    const result$$13 = [];
 
-    for (let x$$16 = 0; x$$16 <= ~~Math.ceil(array$$85.length / chunkSize) - 1; x$$16++) {
-      const start$$8 = x$$16 * chunkSize | 0;
-      const slice = array$$85.slice(start$$8, start$$8 + chunkSize);
-      result$$12.push(slice);
+    for (let x$$17 = 0; x$$17 <= ~~Math.ceil(array$$88.length / chunkSize) - 1; x$$17++) {
+      const start$$8 = x$$17 * chunkSize | 0;
+      const slice = array$$88.slice(start$$8, start$$8 + chunkSize);
+      const value$$11 = result$$13.push(slice);
+      value$$11, null;
     }
 
-    return result$$12;
+    return result$$13;
   }
 }
-function splitAt(index$$4, array$$88) {
+function splitAt(index$$4, array$$91) {
   if (index$$4 < 0) {
     throw new Error("The input must be non-negative\\nParameter name: index");
   }
 
-  if (index$$4 > array$$88.length) {
+  if (index$$4 > array$$91.length) {
     throw new Error("The input sequence has an insufficient number of elements.\\nParameter name: index");
   }
 
-  return [array$$88.slice(0, 0 + index$$4), array$$88.slice(index$$4)];
+  return [array$$91.slice(0, 0 + index$$4), array$$91.slice(index$$4)];
 }
 function compareWith(comparer$$12, array1$$6, array2$$6) {
   if (array1$$6 == null) {
@@ -1162,8 +1174,8 @@ function compareWith(comparer$$12, array1$$6, array2$$6) {
   } else if (array2$$6 == null) {
     return 1;
   } else {
-    let i$$43 = 0;
-    let result$$13 = 0;
+    let i$$41 = 0;
+    let result$$14 = 0;
     const length1 = array1$$6.length | 0;
     const length2 = array2$$6.length | 0;
 
@@ -1172,66 +1184,66 @@ function compareWith(comparer$$12, array1$$6, array2$$6) {
     } else if (length1 < length2) {
       return -1 | 0;
     } else {
-      while (i$$43 < length1 ? result$$13 === 0 : false) {
-        result$$13 = comparer$$12(array1$$6[i$$43], array2$$6[i$$43]);
-        i$$43 = i$$43 + 1;
+      while (i$$41 < length1 ? result$$14 === 0 : false) {
+        result$$14 = comparer$$12(array1$$6[i$$41], array2$$6[i$$41]);
+        i$$41 = i$$41 + 1;
       }
 
-      return result$$13 | 0;
+      return result$$14 | 0;
     }
   }
 }
 function equalsWith(comparer$$13, array1$$7, array2$$7) {
-  return compareWith(_Util__WEBPACK_IMPORTED_MODULE_1__["compare"], array1$$7, array2$$7) === 0;
+  return compareWith(_Util_js__WEBPACK_IMPORTED_MODULE_1__["compare"], array1$$7, array2$$7) === 0;
 }
-function exactlyOne(array$$91) {
-  if (array$$91.length === 1) {
-    return array$$91[0];
-  } else if (array$$91.length === 0) {
+function exactlyOne(array$$94) {
+  if (array$$94.length === 1) {
+    return array$$94[0];
+  } else if (array$$94.length === 0) {
     throw new Error("The input sequence was empty\\nParameter name: array");
   } else {
     throw new Error("Input array too long\\nParameter name: array");
   }
 }
-function head(array$$92) {
-  if (array$$92.length === 0) {
+function head(array$$95) {
+  if (array$$95.length === 0) {
     throw new Error("The input array was empty\\nParameter name: array");
   } else {
-    return array$$92[0];
+    return array$$95[0];
   }
 }
-function tryHead(array$$93) {
-  if (array$$93.length === 0) {
+function tryHead(array$$96) {
+  if (array$$96.length === 0) {
     return null;
   } else {
-    return Object(_Option__WEBPACK_IMPORTED_MODULE_0__["some"])(array$$93[0]);
+    return Object(_Option_js__WEBPACK_IMPORTED_MODULE_0__["some"])(array$$96[0]);
   }
 }
-function tail(array$$94) {
-  if (array$$94.length === 0) {
+function tail(array$$97) {
+  if (array$$97.length === 0) {
     throw new Error("Not enough elements\\nParameter name: array");
   }
 
-  return array$$94.slice(1);
+  return array$$97.slice(1);
 }
-function item(index$$5, array$$96) {
-  return array$$96[index$$5];
+function item(index$$5, array$$99) {
+  return array$$99[index$$5];
 }
-function tryItem(index$$6, array$$97) {
-  if (index$$6 < 0 ? true : index$$6 >= array$$97.length) {
+function tryItem(index$$6, array$$100) {
+  if (index$$6 < 0 ? true : index$$6 >= array$$100.length) {
     return null;
   } else {
-    return Object(_Option__WEBPACK_IMPORTED_MODULE_0__["some"])(array$$97[index$$6]);
+    return Object(_Option_js__WEBPACK_IMPORTED_MODULE_0__["some"])(array$$100[index$$6]);
   }
 }
-function foldBackIndexed(folder$$6, array$$98, state$$10) {
-  return array$$98.reduceRight(function folder$$7(acc$$4, x$$17, i$$44) {
-    return folder$$6(i$$44, x$$17, acc$$4);
+function foldBackIndexed(folder$$6, array$$101, state$$10) {
+  return array$$101.reduceRight(function (delegateArg0$$3, delegateArg1$$3, delegateArg2$$1) {
+    return folder$$6(delegateArg2$$1, delegateArg1$$3, delegateArg0$$3);
   }, state$$10);
 }
-function foldBack(folder$$8, array$$100, state$$12) {
-  return array$$100.reduceRight(function folder$$9(acc$$5, x$$18) {
-    return folder$$8(x$$18, acc$$5);
+function foldBack(folder$$8, array$$103, state$$12) {
+  return array$$103.reduceRight(function (delegateArg0$$4, delegateArg1$$4) {
+    return folder$$8(delegateArg1$$4, delegateArg0$$4);
   }, state$$12);
 }
 function foldIndexed2(folder$$10, state$$14, array1$$8, array2$$8) {
@@ -1241,15 +1253,15 @@ function foldIndexed2(folder$$10, state$$14, array1$$8, array2$$8) {
     throw new Error("Arrays have different lengths");
   }
 
-  for (let i$$45 = 0; i$$45 <= array1$$8.length - 1; i$$45++) {
-    acc$$6 = folder$$10(i$$45, acc$$6, array1$$8[i$$45], array2$$8[i$$45]);
+  for (let i$$43 = 0; i$$43 <= array1$$8.length - 1; i$$43++) {
+    acc$$6 = folder$$10(i$$43, acc$$6, array1$$8[i$$43], array2$$8[i$$43]);
   }
 
   return acc$$6;
 }
 function fold2(folder$$11, state$$15, array1$$9, array2$$9) {
-  return foldIndexed2(function (_arg1, acc$$7, x$$19, y$$7) {
-    return folder$$11(acc$$7, x$$19, y$$7);
+  return foldIndexed2(function (_arg1, acc$$7, x$$20, y$$7) {
+    return folder$$11(acc$$7, x$$20, y$$7);
   }, state$$15, array1$$9, array2$$9);
 }
 function foldBackIndexed2(folder$$12, array1$$10, array2$$10, state$$16) {
@@ -1261,75 +1273,75 @@ function foldBackIndexed2(folder$$12, array1$$10, array2$$10, state$$16) {
 
   const size$$1 = array1$$10.length | 0;
 
-  for (let i$$46 = 1; i$$46 <= size$$1; i$$46++) {
-    acc$$8 = folder$$12(i$$46 - 1, array1$$10[size$$1 - i$$46], array2$$10[size$$1 - i$$46], acc$$8);
+  for (let i$$44 = 1; i$$44 <= size$$1; i$$44++) {
+    acc$$8 = folder$$12(i$$44 - 1, array1$$10[size$$1 - i$$44], array2$$10[size$$1 - i$$44], acc$$8);
   }
 
   return acc$$8;
 }
 function foldBack2(f$$9, array1$$11, array2$$11, state$$17) {
-  return foldBackIndexed2(function (_arg1$$1, x$$20, y$$8, acc$$9) {
-    return f$$9(x$$20, y$$8, acc$$9);
+  return foldBackIndexed2(function (_arg1$$1, x$$21, y$$8, acc$$9) {
+    return f$$9(x$$21, y$$8, acc$$9);
   }, array1$$11, array2$$11, state$$17);
 }
-function reduce(reduction, array$$102) {
-  if (array$$102.length === 0) {
+function reduce(reduction, array$$105) {
+  if (array$$105.length === 0) {
     throw new Error("The input array was empty");
   }
 
-  return array$$102.reduce(reduction);
+  return array$$105.reduce(reduction);
 }
-function reduceBack(reduction$$2, array$$104) {
-  if (array$$104.length === 0) {
+function reduceBack(reduction$$2, array$$107) {
+  if (array$$107.length === 0) {
     throw new Error("The input array was empty");
   }
 
-  return array$$104.reduceRight(reduction$$2);
+  return array$$107.reduceRight(reduction$$2);
 }
 function forAll2(predicate$$27, array1$$12, array2$$12) {
-  return fold2(function (acc$$10, x$$21, y$$9) {
-    return acc$$10 ? predicate$$27(x$$21, y$$9) : false;
+  return fold2(function (acc$$10, x$$22, y$$9) {
+    return acc$$10 ? predicate$$27(x$$22, y$$9) : false;
   }, true, array1$$12, array2$$12);
 }
-function existsOffset($arg$$176, $arg$$177, $arg$$178) {
+function existsOffset($predicate$$28$$275, $array$$109$$276, $index$$7$$277) {
   existsOffset: while (true) {
-    const predicate$$28 = $arg$$176,
-          array$$106 = $arg$$177,
-          index$$7 = $arg$$178;
+    const predicate$$28 = $predicate$$28$$275,
+          array$$109 = $array$$109$$276,
+          index$$7 = $index$$7$$277;
 
-    if (index$$7 === array$$106.length) {
+    if (index$$7 === array$$109.length) {
       return false;
-    } else if (predicate$$28(array$$106[index$$7])) {
+    } else if (predicate$$28(array$$109[index$$7])) {
       return true;
     } else {
-      $arg$$176 = predicate$$28;
-      $arg$$177 = array$$106;
-      $arg$$178 = index$$7 + 1;
+      $predicate$$28$$275 = predicate$$28;
+      $array$$109$$276 = array$$109;
+      $index$$7$$277 = index$$7 + 1;
       continue existsOffset;
     }
 
     break;
   }
 }
-function exists(predicate$$29, array$$107) {
-  return existsOffset(predicate$$29, array$$107, 0);
+function exists(predicate$$29, array$$110) {
+  return existsOffset(predicate$$29, array$$110, 0);
 }
-function existsOffset2($arg$$181, $arg$$182, $arg$$183, $arg$$184) {
+function existsOffset2($predicate$$30$$280, $array1$$13$$281, $array2$$13$$282, $index$$8$$283) {
   existsOffset2: while (true) {
-    const predicate$$30 = $arg$$181,
-          array1$$13 = $arg$$182,
-          array2$$13 = $arg$$183,
-          index$$8 = $arg$$184;
+    const predicate$$30 = $predicate$$30$$280,
+          array1$$13 = $array1$$13$$281,
+          array2$$13 = $array2$$13$$282,
+          index$$8 = $index$$8$$283;
 
     if (index$$8 === array1$$13.length) {
       return false;
     } else if (predicate$$30(array1$$13[index$$8], array2$$13[index$$8])) {
       return true;
     } else {
-      $arg$$181 = predicate$$30;
-      $arg$$182 = array1$$13;
-      $arg$$183 = array2$$13;
-      $arg$$184 = index$$8 + 1;
+      $predicate$$30$$280 = predicate$$30;
+      $array1$$13$$281 = array1$$13;
+      $array2$$13$$282 = array2$$13;
+      $index$$8$$283 = index$$8 + 1;
       continue existsOffset2;
     }
 
@@ -1343,69 +1355,69 @@ function exists2(predicate$$31, array1$$14, array2$$14) {
 
   return existsOffset2(predicate$$31, array1$$14, array2$$14, 0);
 }
-function sum(array$$108, adder) {
+function sum(array$$111, adder) {
   let acc$$11 = adder.GetZero();
 
-  for (let i$$47 = 0; i$$47 <= array$$108.length - 1; i$$47++) {
-    acc$$11 = adder.Add(acc$$11, array$$108[i$$47]);
+  for (let i$$45 = 0; i$$45 <= array$$111.length - 1; i$$45++) {
+    acc$$11 = adder.Add(acc$$11, array$$111[i$$45]);
   }
 
   return acc$$11;
 }
-function sumBy(projection$$6, array$$109, adder$$1) {
+function sumBy(projection$$6, array$$112, adder$$1) {
   let acc$$12 = adder$$1.GetZero();
 
-  for (let i$$48 = 0; i$$48 <= array$$109.length - 1; i$$48++) {
-    acc$$12 = adder$$1.Add(acc$$12, projection$$6(array$$109[i$$48]));
+  for (let i$$46 = 0; i$$46 <= array$$112.length - 1; i$$46++) {
+    acc$$12 = adder$$1.Add(acc$$12, projection$$6(array$$112[i$$46]));
   }
 
   return acc$$12;
 }
 function maxBy(projection$$7, xs$$12, comparer$$14) {
-  return reduce(function (x$$22, y$$10) {
-    return comparer$$14.Compare(projection$$7(y$$10), projection$$7(x$$22)) > 0 ? y$$10 : x$$22;
+  return reduce(function (x$$23, y$$10) {
+    return comparer$$14.Compare(projection$$7(y$$10), projection$$7(x$$23)) > 0 ? y$$10 : x$$23;
   }, xs$$12);
 }
 function max(xs$$13, comparer$$15) {
-  return reduce(function (x$$23, y$$11) {
-    return comparer$$15.Compare(y$$11, x$$23) > 0 ? y$$11 : x$$23;
+  return reduce(function (x$$24, y$$11) {
+    return comparer$$15.Compare(y$$11, x$$24) > 0 ? y$$11 : x$$24;
   }, xs$$13);
 }
 function minBy(projection$$8, xs$$14, comparer$$16) {
-  return reduce(function (x$$24, y$$12) {
-    return comparer$$16.Compare(projection$$8(y$$12), projection$$8(x$$24)) > 0 ? x$$24 : y$$12;
+  return reduce(function (x$$25, y$$12) {
+    return comparer$$16.Compare(projection$$8(y$$12), projection$$8(x$$25)) > 0 ? x$$25 : y$$12;
   }, xs$$14);
 }
 function min(xs$$15, comparer$$17) {
-  return reduce(function (x$$25, y$$13) {
-    return comparer$$17.Compare(y$$13, x$$25) > 0 ? x$$25 : y$$13;
+  return reduce(function (x$$26, y$$13) {
+    return comparer$$17.Compare(y$$13, x$$26) > 0 ? x$$26 : y$$13;
   }, xs$$15);
 }
-function average(array$$110, averager) {
-  if (array$$110.length === 0) {
+function average(array$$113, averager) {
+  if (array$$113.length === 0) {
     throw new Error("The input array was empty\\nParameter name: array");
   }
 
   let total = averager.GetZero();
 
-  for (let i$$49 = 0; i$$49 <= array$$110.length - 1; i$$49++) {
-    total = averager.Add(total, array$$110[i$$49]);
+  for (let i$$47 = 0; i$$47 <= array$$113.length - 1; i$$47++) {
+    total = averager.Add(total, array$$113[i$$47]);
   }
 
-  return averager.DivideByInt(total, array$$110.length);
+  return averager.DivideByInt(total, array$$113.length);
 }
-function averageBy(projection$$9, array$$111, averager$$1) {
-  if (array$$111.length === 0) {
+function averageBy(projection$$9, array$$114, averager$$1) {
+  if (array$$114.length === 0) {
     throw new Error("The input array was empty\\nParameter name: array");
   }
 
   let total$$1 = averager$$1.GetZero();
 
-  for (let i$$50 = 0; i$$50 <= array$$111.length - 1; i$$50++) {
-    total$$1 = averager$$1.Add(total$$1, projection$$9(array$$111[i$$50]));
+  for (let i$$48 = 0; i$$48 <= array$$114.length - 1; i$$48++) {
+    total$$1 = averager$$1.Add(total$$1, projection$$9(array$$114[i$$48]));
   }
 
-  return averager$$1.DivideByInt(total$$1, array$$111.length);
+  return averager$$1.DivideByInt(total$$1, array$$114.length);
 }
 function ofSeq(source$$7, cons$$31) {
   return cons$$31.from(source$$7);
@@ -1414,11 +1426,11 @@ function ofList(source$$8, cons$$32) {
   return cons$$32.from(source$$8);
 }
 function toList(source$$9) {
-  const len$$20 = source$$9.length | 0;
-  let target$$7 = new _Types__WEBPACK_IMPORTED_MODULE_5__["List"]();
+  const len$$18 = source$$9.length | 0;
+  let target$$7 = new _Types_js__WEBPACK_IMPORTED_MODULE_4__["List"]();
 
-  for (let i$$51 = len$$20 - 1; i$$51 >= 0; i$$51--) {
-    target$$7 = new _Types__WEBPACK_IMPORTED_MODULE_5__["List"](source$$9[i$$51], target$$7);
+  for (let i$$49 = len$$18 - 1; i$$49 >= 0; i$$49--) {
+    target$$7 = new _Types_js__WEBPACK_IMPORTED_MODULE_4__["List"](source$$9[i$$49], target$$7);
   }
 
   return target$$7;
@@ -1428,20 +1440,24 @@ function windowed(windowSize, source$$10) {
     throw new Error("windowSize must be positive");
   }
 
-  return Object(_Array__WEBPACK_IMPORTED_MODULE_6__["ofSeq"])(Object(_Seq__WEBPACK_IMPORTED_MODULE_3__["delay"])(function () {
-    return Object(_Seq__WEBPACK_IMPORTED_MODULE_3__["map"])(function (i$$52) {
-      return source$$10.slice(i$$52 - windowSize, i$$52 - 1 + 1);
-    }, Object(_Seq__WEBPACK_IMPORTED_MODULE_3__["rangeNumber"])(windowSize, 1, source$$10.length));
-  }), Array);
+  let res$$9;
+  const len$$19 = Object(_Util_js__WEBPACK_IMPORTED_MODULE_1__["max"])(_Util_js__WEBPACK_IMPORTED_MODULE_1__["comparePrimitives"], 0, source$$10.length - windowSize) | 0;
+  res$$9 = new Array(len$$19);
+
+  for (let i$$50 = windowSize; i$$50 <= source$$10.length; i$$50++) {
+    res$$9[i$$50 - windowSize] = source$$10.slice(i$$50 - windowSize, i$$50 - 1 + 1);
+  }
+
+  return res$$9;
 }
 
 /***/ }),
 
-/***/ "./.fable/fable-library.2.1.12/Date.js":
+/***/ "./.fable/fable-library.2.3.25/Date.js":
 /*!*********************************************!*\
-  !*** ./.fable/fable-library.2.1.12/Date.js ***!
+  !*** ./.fable/fable-library.2.3.25/Date.js ***!
   \*********************************************/
-/*! exports provided: offsetRegex, dateOffsetToString, dateToHalfUTCString, toString, default, fromTicks, fromDateTimeOffset, getTicks, minValue, maxValue, parseRaw, parse, tryParse, create, now, utcNow, today, isLeapYear, daysInMonth, toUniversalTime, toLocalTime, timeOfDay, date, day, hour, millisecond, minute, month, second, year, dayOfWeek, dayOfYear, add, addDays, addHours, addMinutes, addSeconds, addMilliseconds, addYears, addMonths, subtract, toLongDateString, toShortDateString, toLongTimeString, toShortTimeString, equals, compare, compareTo, op_Addition, op_Subtraction, isDaylightSavingTime */
+/*! exports provided: offsetRegex, dateOffsetToString, dateToHalfUTCString, toString, default, fromTicks, fromDateTimeOffset, getTicks, minValue, maxValue, parseRaw, parse, tryParse, create, now, utcNow, today, isLeapYear, daysInMonth, toUniversalTime, toLocalTime, specifyKind, timeOfDay, date, day, hour, millisecond, minute, month, second, year, dayOfWeek, dayOfYear, add, addDays, addHours, addMinutes, addSeconds, addMilliseconds, addYears, addMonths, subtract, toLongDateString, toShortDateString, toLongTimeString, toShortTimeString, equals, compare, compareTo, op_Addition, op_Subtraction, isDaylightSavingTime */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1467,6 +1483,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "daysInMonth", function() { return daysInMonth; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "toUniversalTime", function() { return toUniversalTime; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "toLocalTime", function() { return toLocalTime; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "specifyKind", function() { return specifyKind; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "timeOfDay", function() { return timeOfDay; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "date", function() { return date; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "day", function() { return day; });
@@ -1497,8 +1514,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "op_Addition", function() { return op_Addition; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "op_Subtraction", function() { return op_Subtraction; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isDaylightSavingTime", function() { return isDaylightSavingTime; });
-/* harmony import */ var _Long__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Long */ "./.fable/fable-library.2.1.12/Long.js");
-/* harmony import */ var _Util__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Util */ "./.fable/fable-library.2.1.12/Util.js");
+/* harmony import */ var _Long__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Long */ "./.fable/fable-library.2.3.25/Long.js");
+/* harmony import */ var _Util__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Util */ "./.fable/fable-library.2.3.25/Util.js");
 /**
  * DateTimeOffset functions.
  *
@@ -1549,7 +1566,7 @@ function dateToISOStringWithOffset(dateWithOffset, offset) {
 }
 function dateToStringWithCustomFormat(date, format, utc) {
     return format.replace(/(\w)\1*/g, (match) => {
-        let rep = match;
+        let rep = Number.NaN;
         switch (match.substring(0, 1)) {
             case "y":
                 const y = utc ? date.getUTCFullYear() : date.getFullYear();
@@ -1574,11 +1591,16 @@ function dateToStringWithCustomFormat(date, format, utc) {
             case "s":
                 rep = utc ? date.getUTCSeconds() : date.getSeconds();
                 break;
+            case "f":
+                rep = utc ? date.getUTCMilliseconds() : date.getMilliseconds();
+                break;
         }
-        if (rep !== match && rep < 10 && match.length > 1) {
-            rep = "0" + rep;
+        if (Number.isNaN(rep)) {
+            return match;
         }
-        return rep;
+        else {
+            return (rep < 10 && match.length > 1) ? "0" + rep : "" + rep;
+        }
     });
 }
 function dateToStringWithOffset(date, format) {
@@ -1731,6 +1753,10 @@ function parse(str, detectUTC = false) {
 }
 function tryParse(v) {
     try {
+        // if value is null or whitespace, parsing fails
+        if (v == null || v.trim() === "") {
+            return [false, minValue()];
+        }
         return [true, parse(v)];
     }
     catch (_err) {
@@ -1772,6 +1798,9 @@ function toUniversalTime(date) {
 }
 function toLocalTime(date) {
     return date.kind === 2 /* Local */ ? date : DateTime(date.getTime(), 2 /* Local */);
+}
+function specifyKind(d, kind) {
+    return create(year(d), month(d), day(d), hour(d), minute(d), second(d), millisecond(d), kind);
 }
 function timeOfDay(d) {
     return hour(d) * 3600000
@@ -1895,15 +1924,15 @@ function isDaylightSavingTime(x) {
 function isDST(janOffset, julOffset, tOffset) {
     return Math.min(janOffset, julOffset) === tOffset;
 }
-
+//# sourceMappingURL=Date.js.map
 
 /***/ }),
 
-/***/ "./.fable/fable-library.2.1.12/Decimal.js":
+/***/ "./.fable/fable-library.2.3.25/Decimal.js":
 /*!************************************************!*\
-  !*** ./.fable/fable-library.2.1.12/Decimal.js ***!
+  !*** ./.fable/fable-library.2.3.25/Decimal.js ***!
   \************************************************/
-/*! exports provided: default, get_Zero, get_One, get_MinusOne, get_MaxValue, get_MinValue, compare, equals, abs, round, truncate, ceiling, floor, pow, sqrt, op_Subtraction, op_Modulus, op_Addition, op_Division, op_Multiply, op_UnaryNegation, toString, tryParse, parse, toNumber, fromIntArray, fromInts, fromParts, getBits */
+/*! exports provided: default, get_Zero, get_One, get_MinusOne, get_MaxValue, get_MinValue, compare, equals, abs, round, truncate, ceiling, floor, pow, sqrt, op_Addition, op_Subtraction, op_Multiply, op_Division, op_Modulus, op_UnaryNegation, add, subtract, multiply, divide, remainder, negate, toString, tryParse, parse, toNumber, fromIntArray, fromInts, fromParts, getBits, makeRangeStepFunction */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1922,12 +1951,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "floor", function() { return floor; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "pow", function() { return pow; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "sqrt", function() { return sqrt; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "op_Subtraction", function() { return op_Subtraction; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "op_Modulus", function() { return op_Modulus; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "op_Addition", function() { return op_Addition; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "op_Division", function() { return op_Division; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "op_Subtraction", function() { return op_Subtraction; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "op_Multiply", function() { return op_Multiply; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "op_Division", function() { return op_Division; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "op_Modulus", function() { return op_Modulus; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "op_UnaryNegation", function() { return op_UnaryNegation; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "add", function() { return add; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "subtract", function() { return subtract; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "multiply", function() { return multiply; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "divide", function() { return divide; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "remainder", function() { return remainder; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "negate", function() { return negate; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "toString", function() { return toString; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "tryParse", function() { return tryParse; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "parse", function() { return parse; });
@@ -1936,7 +1971,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fromInts", function() { return fromInts; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fromParts", function() { return fromParts; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getBits", function() { return getBits; });
-/* harmony import */ var _lib_big__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./lib/big */ "./.fable/fable-library.2.1.12/lib/big.js");
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "makeRangeStepFunction", function() { return makeRangeStepFunction; });
+/* harmony import */ var _lib_big__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./lib/big */ "./.fable/fable-library.2.3.25/lib/big.js");
 
 /* harmony default export */ __webpack_exports__["default"] = (_lib_big__WEBPACK_IMPORTED_MODULE_0__["default"]);
 const get_Zero = new _lib_big__WEBPACK_IMPORTED_MODULE_0__["default"](0);
@@ -1954,7 +1990,7 @@ function abs(x) {
     return x.abs();
 }
 function round(x, digits = 0) {
-    return x.round(digits, x.cmp(0) >= 0 ? 1 /* ROUND_HALF_UP */ : 2 /* ROUND_HALF_EVEN */);
+    return x.round(digits, 2 /* ROUND_HALF_EVEN */);
 }
 function truncate(x) {
     return x.round(0, 0 /* ROUND_DOWN */);
@@ -1971,26 +2007,32 @@ function pow(x, n) {
 function sqrt(x) {
     return x.sqrt();
 }
+function op_Addition(x, y) {
+    return x.add(y);
+}
 function op_Subtraction(x, y) {
     return x.sub(y);
 }
-function op_Modulus(x, y) {
-    return x.mod(y);
-}
-function op_Addition(x, y) {
-    return x.add(y);
+function op_Multiply(x, y) {
+    return x.mul(y);
 }
 function op_Division(x, y) {
     return x.div(y);
 }
-function op_Multiply(x, y) {
-    return x.mul(y);
+function op_Modulus(x, y) {
+    return x.mod(y);
 }
 function op_UnaryNegation(x) {
     const x2 = new _lib_big__WEBPACK_IMPORTED_MODULE_0__["default"](x);
     x2.s = -x2.s || 0;
     return x2;
 }
+const add = op_Addition;
+const subtract = op_Subtraction;
+const multiply = op_Multiply;
+const divide = op_Division;
+const remainder = op_Modulus;
+const negate = op_UnaryNegation;
 function toString(x) {
     return x.toString();
 }
@@ -2017,15 +2059,15 @@ function toNumber(x) {
 function decimalToHex(dec, bitSize) {
     const hex = new Uint8Array(bitSize / 4 | 0);
     let hexCount = 1;
-    for (const d of dec) {
-        let val = d;
+    for (let d = 0; d < dec.length; d++) {
+        let value = dec[d];
         for (let i = 0; i < hexCount; i++) {
-            const digit = hex[i] * 10 + val | 0;
+            const digit = hex[i] * 10 + value | 0;
             hex[i] = digit & 0xF;
-            val = digit >> 4;
+            value = digit >> 4;
         }
-        if (val !== 0) {
-            hex[hexCount++] = val;
+        if (value !== 0) {
+            hex[hexCount++] = value;
         }
     }
     return hex.slice(0, hexCount); // digits in reverse order
@@ -2033,8 +2075,8 @@ function decimalToHex(dec, bitSize) {
 function hexToDecimal(hex, bitSize) {
     const dec = new Uint8Array(bitSize * 301 / 1000 + 1 | 0);
     let decCount = 1;
-    for (const d of hex) {
-        let carry = d;
+    for (let d = hex.length - 1; d >= 0; d--) {
+        let carry = hex[d];
         for (let i = 0; i < decCount; i++) {
             const val = dec[i] * 16 + carry | 0;
             dec[i] = (val % 10) | 0;
@@ -2073,17 +2115,13 @@ function fromParts(low, mid, high, isNegative, scale) {
     setInt32Bits(hexDigits, low, 0);
     setInt32Bits(hexDigits, mid, 8);
     setInt32Bits(hexDigits, high, 16);
-    const decDigits = hexToDecimal(hexDigits.reverse(), bitSize);
-    const sign = isNegative ? "-" : "";
-    const pos = scale & 0x7F;
-    let decStr = "";
-    for (let i = 0; i < decDigits.length; i++) {
-        if (i === pos) {
-            decStr = "." + decStr;
-        }
-        decStr = "0123456789".charAt(decDigits[i]) + decStr;
-    }
-    const d = new _lib_big__WEBPACK_IMPORTED_MODULE_0__["default"](sign + decStr);
+    const decDigits = hexToDecimal(hexDigits, bitSize);
+    scale = scale & 0x7F;
+    const big = new _lib_big__WEBPACK_IMPORTED_MODULE_0__["default"](0);
+    big.c = Array.from(decDigits.reverse());
+    big.e = decDigits.length - scale - 1;
+    big.s = isNegative ? -1 : 1;
+    const d = new _lib_big__WEBPACK_IMPORTED_MODULE_0__["default"](big);
     return d;
 }
 function getBits(d) {
@@ -2094,20 +2132,37 @@ function getBits(d) {
     const mid = getInt32Bits(hexDigits, 8);
     const high = getInt32Bits(hexDigits, 16);
     const decStr = d.toString();
-    const pos = decStr.indexOf(".");
-    const scale = (pos < 0) ? 0 : decStr.length - pos - 1;
-    const signExp = ((scale & 0x7F) << 16) * d.s;
+    const dotPos = decStr.indexOf(".");
+    const scale = dotPos < 0 ? 0 : decStr.length - dotPos - 1;
+    const signExp = ((scale & 0x7F) << 16) | (d.s < 0 ? 0x80000000 : 0);
     return [low, mid, high, signExp];
 }
-
+function makeRangeStepFunction(step, last) {
+    const stepComparedWithZero = step.cmp(get_Zero);
+    if (stepComparedWithZero === 0) {
+        throw new Error("The step of a range cannot be zero");
+    }
+    const stepGreaterThanZero = stepComparedWithZero > 0;
+    return (x) => {
+        const comparedWithLast = x.cmp(last);
+        if ((stepGreaterThanZero && comparedWithLast <= 0)
+            || (!stepGreaterThanZero && comparedWithLast >= 0)) {
+            return [x, op_Addition(x, step)];
+        }
+        else {
+            return null;
+        }
+    };
+}
+//# sourceMappingURL=Decimal.js.map
 
 /***/ }),
 
-/***/ "./.fable/fable-library.2.1.12/Int32.js":
+/***/ "./.fable/fable-library.2.3.25/Int32.js":
 /*!**********************************************!*\
-  !*** ./.fable/fable-library.2.1.12/Int32.js ***!
+  !*** ./.fable/fable-library.2.3.25/Int32.js ***!
   \**********************************************/
-/*! exports provided: NumberStyles, isValid, parse, tryParse */
+/*! exports provided: NumberStyles, isValid, parse, tryParse, op_UnaryNegation_Int8, op_UnaryNegation_Int16, op_UnaryNegation_Int32 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2116,6 +2171,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isValid", function() { return isValid; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "parse", function() { return parse; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "tryParse", function() { return tryParse; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "op_UnaryNegation_Int8", function() { return op_UnaryNegation_Int8; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "op_UnaryNegation_Int16", function() { return op_UnaryNegation_Int16; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "op_UnaryNegation_Int32", function() { return op_UnaryNegation_Int32; });
 var NumberStyles;
 (function (NumberStyles) {
     // None = 0x00000000,
@@ -2185,7 +2243,7 @@ function getRadix(prefix, style) {
 }
 function isValid(str, style, radix) {
     const integerRegex = /^\s*([\+\-])?(0[xXoObB])?([0-9a-fA-F]+)\s*$/;
-    const res = integerRegex.exec(str.replace("_", ""));
+    const res = integerRegex.exec(str.replace(/_/g, ""));
     if (res != null) {
         const [_all, sign, prefix, digits] = res;
         radix = radix || getRadix(prefix, style);
@@ -2223,15 +2281,24 @@ function tryParse(str, style, unsigned, bitsize) {
     }
     return [false, 0];
 }
-
+function op_UnaryNegation_Int8(x) {
+    return x === -128 ? x : -x;
+}
+function op_UnaryNegation_Int16(x) {
+    return x === -32768 ? x : -x;
+}
+function op_UnaryNegation_Int32(x) {
+    return x === -2147483648 ? x : -x;
+}
+//# sourceMappingURL=Int32.js.map
 
 /***/ }),
 
-/***/ "./.fable/fable-library.2.1.12/List.js":
+/***/ "./.fable/fable-library.2.3.25/List.js":
 /*!*********************************************!*\
-  !*** ./.fable/fable-library.2.1.12/List.js ***!
+  !*** ./.fable/fable-library.2.3.25/List.js ***!
   \*********************************************/
-/*! exports provided: head, tryHead, tail, last, tryLast, compareWith, foldIndexedAux, foldIndexed, fold, reverse, foldBack, toSeq, ofSeq, concat, foldIndexed2Aux, foldIndexed2, fold2, foldBack2, unfold, foldIndexed3Aux, foldIndexed3, fold3, scan, scanBack, length, append, collect, map, mapIndexed, indexed, map2, mapIndexed2, map3, mapIndexed3, mapFold, mapFoldBack, iterate, iterate2, iterateIndexed, iterateIndexed2, ofArray, empty, isEmpty, tryPickIndexedAux, tryPickIndexed, tryPick, pick, tryFindIndexed, tryFind, findIndexed, find, findBack, tryFindBack, tryFindIndex, tryFindIndexBack, findIndex, findIndexBack, item, tryItem, filter, partition, choose, contains, except, initialize, replicate, reduce, reduceBack, forAll, forAll2, exists, exists2, unzip, unzip3, zip, zip3, sort, sortBy, sortDescending, sortByDescending, sortWith, sum, sumBy, maxBy, max, minBy, min, average, averageBy, permute, skip, skipWhile, takeSplitAux, take, takeWhile, truncate, splitAt, slice, distinctBy, distinct, exactlyOne, groupBy, countBy, where, pairwise, windowed */
+/*! exports provided: head, tryHead, tail, last, tryLast, compareWith, foldIndexedAux, foldIndexed, fold, reverse, foldBack, toSeq, ofSeq, concat, foldIndexed2Aux, foldIndexed2, fold2, foldBack2, unfold, foldIndexed3Aux, foldIndexed3, fold3, scan, scanBack, length, append, collect, map, mapIndexed, indexed, map2, mapIndexed2, map3, mapIndexed3, mapFold, mapFoldBack, iterate, iterate2, iterateIndexed, iterateIndexed2, ofArray, empty, isEmpty, tryPickIndexedAux, tryPickIndexed, tryPick, pick, tryFindIndexed, tryFind, findIndexed, find, findBack, tryFindBack, tryFindIndex, tryFindIndexBack, findIndex, findIndexBack, item, tryItem, filter, partition, choose, contains, except, initialize, replicate, reduce, reduceBack, forAll, forAll2, exists, exists2, unzip, unzip3, zip, zip3, sort, sortBy, sortDescending, sortByDescending, sortWith, sum, sumBy, maxBy, max, minBy, min, average, averageBy, permute, skip, skipWhile, takeSplitAux, take, takeWhile, truncate, splitAt, outOfRange, slice, distinctBy, distinct, exactlyOne, groupBy, countBy, where, pairwise, windowed */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2333,6 +2400,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "takeWhile", function() { return takeWhile; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "truncate", function() { return truncate; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "splitAt", function() { return splitAt; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "outOfRange", function() { return outOfRange; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "slice", function() { return slice; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "distinctBy", function() { return distinctBy; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "distinct", function() { return distinct; });
@@ -2342,15 +2410,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "where", function() { return where; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "pairwise", function() { return pairwise; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "windowed", function() { return windowed; });
-/* harmony import */ var _Option__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Option */ "./.fable/fable-library.2.1.12/Option.js");
-/* harmony import */ var _Types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Types */ "./.fable/fable-library.2.1.12/Types.js");
-/* harmony import */ var _Seq__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Seq */ "./.fable/fable-library.2.1.12/Seq.js");
-/* harmony import */ var _Util__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Util */ "./.fable/fable-library.2.1.12/Util.js");
-/* harmony import */ var _Array__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Array */ "./.fable/fable-library.2.1.12/Array.js");
-/* harmony import */ var _Set__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Set */ "./.fable/fable-library.2.1.12/Set.js");
-/* harmony import */ var _List__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./List */ "./.fable/fable-library.2.1.12/List.js");
-/* harmony import */ var _Map__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./Map */ "./.fable/fable-library.2.1.12/Map.js");
-
+/* harmony import */ var _Option_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Option.js */ "./.fable/fable-library.2.3.25/Option.js");
+/* harmony import */ var _Types_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Types.js */ "./.fable/fable-library.2.3.25/Types.js");
+/* harmony import */ var _Seq_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Seq.js */ "./.fable/fable-library.2.3.25/Seq.js");
+/* harmony import */ var _Util_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Util.js */ "./.fable/fable-library.2.3.25/Util.js");
+/* harmony import */ var _Array_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Array.js */ "./.fable/fable-library.2.3.25/Array.js");
+/* harmony import */ var _Set_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Set.js */ "./.fable/fable-library.2.3.25/Set.js");
+/* harmony import */ var _Map_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Map.js */ "./.fable/fable-library.2.3.25/Map.js");
 
 
 
@@ -2361,36 +2427,34 @@ __webpack_require__.r(__webpack_exports__);
 
 function head(_arg1) {
   if (_arg1.tail != null) {
-    const x = _arg1.head;
-    return x;
+    return _arg1.head;
   } else {
     throw new Error("List was empty");
   }
 }
 function tryHead(_arg1$$1) {
   if (_arg1$$1.tail != null) {
-    const x$$1 = _arg1$$1.head;
-    return Object(_Option__WEBPACK_IMPORTED_MODULE_0__["some"])(x$$1);
+    return Object(_Option_js__WEBPACK_IMPORTED_MODULE_0__["some"])(_arg1$$1.head);
   } else {
     return null;
   }
 }
 function tail(_arg1$$2) {
   if (_arg1$$2.tail != null) {
-    const xs = _arg1$$2.tail;
-    return xs;
+    return _arg1$$2.tail;
   } else {
     throw new Error("List was empty");
   }
 }
-function last(_arg1$$3) {
+function last($_arg1$$3$$5) {
   last: while (true) {
+    const _arg1$$3 = $_arg1$$3$$5;
+
     if (_arg1$$3.tail != null) {
       if (_arg1$$3.tail.tail == null) {
         return _arg1$$3.head;
       } else {
-        const $_arg1$$3$$2 = _arg1$$3;
-        _arg1$$3 = $_arg1$$3$$2.tail;
+        $_arg1$$3$$5 = _arg1$$3.tail;
         continue last;
       }
     } else {
@@ -2400,14 +2464,15 @@ function last(_arg1$$3) {
     break;
   }
 }
-function tryLast(_arg1$$4) {
+function tryLast($_arg1$$4$$6) {
   tryLast: while (true) {
+    const _arg1$$4 = $_arg1$$4$$6;
+
     if (_arg1$$4.tail != null) {
       if (_arg1$$4.tail.tail == null) {
-        return Object(_Option__WEBPACK_IMPORTED_MODULE_0__["some"])(_arg1$$4.head);
+        return Object(_Option_js__WEBPACK_IMPORTED_MODULE_0__["some"])(_arg1$$4.head);
       } else {
-        const $_arg1$$4$$3 = _arg1$$4;
-        _arg1$$4 = $_arg1$$4$$3.tail;
+        $_arg1$$4$$6 = _arg1$$4.tail;
         continue tryLast;
       }
     } else {
@@ -2421,26 +2486,26 @@ function compareWith(comparer, xs$$3, ys) {
   if (xs$$3 === ys) {
     return 0;
   } else {
-    const loop = function loop(xs$$4, ys$$1) {
+    const loop = function loop($xs$$4$$10, $ys$$1$$11) {
       loop: while (true) {
-        const matchValue = [xs$$4, ys$$1];
+        const xs$$4 = $xs$$4$$10,
+              ys$$1 = $ys$$1$$11;
 
-        if (matchValue[0].tail != null) {
-          if (matchValue[1].tail != null) {
-            const matchValue$$1 = comparer(matchValue[0].head, matchValue[1].head) | 0;
+        if (xs$$4.tail != null) {
+          if (ys$$1.tail != null) {
+            const matchValue$$1 = comparer(xs$$4.head, ys$$1.head) | 0;
 
             if (matchValue$$1 === 0) {
-              xs$$4 = matchValue[0].tail;
-              ys$$1 = matchValue[1].tail;
+              $xs$$4$$10 = xs$$4.tail;
+              $ys$$1$$11 = ys$$1.tail;
               continue loop;
             } else {
-              const res = matchValue$$1 | 0;
-              return res | 0;
+              return matchValue$$1 | 0;
             }
           } else {
             return 1;
           }
-        } else if (matchValue[1].tail == null) {
+        } else if (ys$$1.tail == null) {
           return 0;
         } else {
           return -1 | 0;
@@ -2453,20 +2518,18 @@ function compareWith(comparer, xs$$3, ys) {
     return loop(xs$$3, ys) | 0;
   }
 }
-function foldIndexedAux($arg$$7, $arg$$8, $arg$$9, $arg$$10) {
+function foldIndexedAux($f$$12, $i$$13, $acc$$14, $_arg1$$5$$15) {
   foldIndexedAux: while (true) {
-    const f = $arg$$7,
-          i = $arg$$8,
-          acc = $arg$$9,
-          _arg1$$5 = $arg$$10;
+    const f = $f$$12,
+          i = $i$$13,
+          acc = $acc$$14,
+          _arg1$$5 = $_arg1$$5$$15;
 
     if (_arg1$$5.tail != null) {
-      const xs$$6 = _arg1$$5.tail;
-      const x$$5 = _arg1$$5.head;
-      $arg$$7 = f;
-      $arg$$8 = i + 1;
-      $arg$$9 = f(i, acc, x$$5);
-      $arg$$10 = xs$$6;
+      $f$$12 = f;
+      $i$$13 = i + 1;
+      $acc$$14 = f(i, acc, _arg1$$5.head);
+      $_arg1$$5$$15 = _arg1$$5.tail;
       continue foldIndexedAux;
     } else {
       return acc;
@@ -2478,18 +2541,16 @@ function foldIndexedAux($arg$$7, $arg$$8, $arg$$9, $arg$$10) {
 function foldIndexed(f$$1, state, xs$$7) {
   return foldIndexedAux(f$$1, 0, state, xs$$7);
 }
-function fold($arg$$14, $arg$$15, $arg$$16) {
+function fold($f$$2$$19, $state$$1$$20, $xs$$8$$21) {
   fold: while (true) {
-    const f$$2 = $arg$$14,
-          state$$1 = $arg$$15,
-          xs$$8 = $arg$$16;
+    const f$$2 = $f$$2$$19,
+          state$$1 = $state$$1$$20,
+          xs$$8 = $xs$$8$$21;
 
     if (xs$$8.tail != null) {
-      const t = xs$$8.tail;
-      const h = xs$$8.head;
-      $arg$$14 = f$$2;
-      $arg$$15 = f$$2(state$$1, h);
-      $arg$$16 = t;
+      $f$$2$$19 = f$$2;
+      $state$$1$$20 = f$$2(state$$1, xs$$8.head);
+      $xs$$8$$21 = xs$$8.tail;
       continue fold;
     } else {
       return state$$1;
@@ -2500,8 +2561,8 @@ function fold($arg$$14, $arg$$15, $arg$$16) {
 }
 function reverse(xs$$9) {
   return fold(function (acc$$1, x$$6) {
-    return new _Types__WEBPACK_IMPORTED_MODULE_1__["List"](x$$6, acc$$1);
-  }, new _Types__WEBPACK_IMPORTED_MODULE_1__["List"](), xs$$9);
+    return new _Types_js__WEBPACK_IMPORTED_MODULE_1__["List"](x$$6, acc$$1);
+  }, new _Types_js__WEBPACK_IMPORTED_MODULE_1__["List"](), xs$$9);
 }
 function foldBack(f$$3, xs$$10, state$$2) {
   return fold(function (acc$$2, x$$7) {
@@ -2509,49 +2570,50 @@ function foldBack(f$$3, xs$$10, state$$2) {
   }, state$$2, reverse(xs$$10));
 }
 function toSeq(xs$$11) {
-  return Object(_Seq__WEBPACK_IMPORTED_MODULE_2__["map"])(function (x$$8) {
+  return Object(_Seq_js__WEBPACK_IMPORTED_MODULE_2__["map"])(function (x$$8) {
     return x$$8;
   }, xs$$11);
 }
 function ofSeq(xs$$12) {
-  return reverse(Object(_Seq__WEBPACK_IMPORTED_MODULE_2__["fold"])(function (acc$$3, x$$9) {
-    return new _Types__WEBPACK_IMPORTED_MODULE_1__["List"](x$$9, acc$$3);
-  }, new _Types__WEBPACK_IMPORTED_MODULE_1__["List"](), xs$$12));
+  const xs$$13 = Object(_Seq_js__WEBPACK_IMPORTED_MODULE_2__["fold"])(function (acc$$3, x$$9) {
+    return new _Types_js__WEBPACK_IMPORTED_MODULE_1__["List"](x$$9, acc$$3);
+  }, new _Types_js__WEBPACK_IMPORTED_MODULE_1__["List"](), xs$$12);
+  return reverse(xs$$13);
 }
 function concat(lists) {
-  return reverse(Object(_Seq__WEBPACK_IMPORTED_MODULE_2__["fold"])(function (state$$3, xs$$14) {
+  const xs$$15 = Object(_Seq_js__WEBPACK_IMPORTED_MODULE_2__["fold"])(function (state$$3, xs$$14) {
     return fold(function f$$4(acc$$4, x$$10) {
-      return new _Types__WEBPACK_IMPORTED_MODULE_1__["List"](x$$10, acc$$4);
+      return new _Types_js__WEBPACK_IMPORTED_MODULE_1__["List"](x$$10, acc$$4);
     }, state$$3, xs$$14);
-  }, new _Types__WEBPACK_IMPORTED_MODULE_1__["List"](), lists));
+  }, new _Types_js__WEBPACK_IMPORTED_MODULE_1__["List"](), lists);
+  return reverse(xs$$15);
 }
-function foldIndexed2Aux($arg$$20, $arg$$21, $arg$$22, $arg$$23, $arg$$24) {
+function foldIndexed2Aux($f$$5$$31, $i$$1$$32, $acc$$5$$33, $bs$$34, $cs$$35) {
   foldIndexed2Aux: while (true) {
-    const f$$5 = $arg$$20,
-          i$$1 = $arg$$21,
-          acc$$5 = $arg$$22,
-          bs = $arg$$23,
-          cs = $arg$$24;
-    const matchValue$$2 = [bs, cs];
-    var $target$$25, x$$11, xs$$16, y$$1, ys$$3;
+    const f$$5 = $f$$5$$31,
+          i$$1 = $i$$1$$32,
+          acc$$5 = $acc$$5$$33,
+          bs = $bs$$34,
+          cs = $cs$$35;
+    var $target$$36, x$$11, xs$$16, y$$1, ys$$3;
 
-    if (matchValue$$2[0].tail != null) {
-      if (matchValue$$2[1].tail != null) {
-        $target$$25 = 1;
-        x$$11 = matchValue$$2[0].head;
-        xs$$16 = matchValue$$2[0].tail;
-        y$$1 = matchValue$$2[1].head;
-        ys$$3 = matchValue$$2[1].tail;
+    if (bs.tail != null) {
+      if (cs.tail != null) {
+        $target$$36 = 1;
+        x$$11 = bs.head;
+        xs$$16 = bs.tail;
+        y$$1 = cs.head;
+        ys$$3 = cs.tail;
       } else {
-        $target$$25 = 2;
+        $target$$36 = 2;
       }
-    } else if (matchValue$$2[1].tail == null) {
-      $target$$25 = 0;
+    } else if (cs.tail == null) {
+      $target$$36 = 0;
     } else {
-      $target$$25 = 2;
+      $target$$36 = 2;
     }
 
-    switch ($target$$25) {
+    switch ($target$$36) {
       case 0:
         {
           return acc$$5;
@@ -2559,11 +2621,11 @@ function foldIndexed2Aux($arg$$20, $arg$$21, $arg$$22, $arg$$23, $arg$$24) {
 
       case 1:
         {
-          $arg$$20 = f$$5;
-          $arg$$21 = i$$1 + 1;
-          $arg$$22 = f$$5(i$$1, acc$$5, x$$11, y$$1);
-          $arg$$23 = xs$$16;
-          $arg$$24 = ys$$3;
+          $f$$5$$31 = f$$5;
+          $i$$1$$32 = i$$1 + 1;
+          $acc$$5$$33 = f$$5(i$$1, acc$$5, x$$11, y$$1);
+          $bs$$34 = xs$$16;
+          $cs$$35 = ys$$3;
           continue foldIndexed2Aux;
         }
 
@@ -2580,22 +2642,23 @@ function foldIndexed2(f$$6, state$$4, xs$$17, ys$$4) {
   return foldIndexed2Aux(f$$6, 0, state$$4, xs$$17, ys$$4);
 }
 function fold2(f$$7, state$$5, xs$$18, ys$$5) {
-  return Object(_Seq__WEBPACK_IMPORTED_MODULE_2__["fold2"])(f$$7, state$$5, xs$$18, ys$$5);
+  return Object(_Seq_js__WEBPACK_IMPORTED_MODULE_2__["fold2"])(f$$7, state$$5, xs$$18, ys$$5);
 }
 function foldBack2(f$$8, xs$$19, ys$$6, state$$6) {
-  return Object(_Seq__WEBPACK_IMPORTED_MODULE_2__["foldBack2"])(f$$8, xs$$19, ys$$6, state$$6);
+  return Object(_Seq_js__WEBPACK_IMPORTED_MODULE_2__["foldBack2"])(f$$8, xs$$19, ys$$6, state$$6);
 }
 function unfold(f$$9, state$$7) {
-  const unfoldInner = function unfoldInner(acc$$6, state$$8) {
+  const unfoldInner = function unfoldInner($acc$$6$$51, $state$$8$$52) {
     unfoldInner: while (true) {
+      const acc$$6 = $acc$$6$$51,
+            state$$8 = $state$$8$$52;
       const matchValue$$3 = f$$9(state$$8);
 
       if (matchValue$$3 != null) {
         const x$$12 = matchValue$$3[0];
         const state$$9 = matchValue$$3[1];
-        const $acc$$6$$40 = acc$$6;
-        acc$$6 = new _Types__WEBPACK_IMPORTED_MODULE_1__["List"](x$$12, $acc$$6$$40);
-        state$$8 = state$$9;
+        $acc$$6$$51 = new _Types_js__WEBPACK_IMPORTED_MODULE_1__["List"](x$$12, acc$$6);
+        $state$$8$$52 = state$$9;
         continue unfoldInner;
       } else {
         return reverse(acc$$6);
@@ -2605,46 +2668,45 @@ function unfold(f$$9, state$$7) {
     }
   };
 
-  return unfoldInner(new _Types__WEBPACK_IMPORTED_MODULE_1__["List"](), state$$7);
+  return unfoldInner(new _Types_js__WEBPACK_IMPORTED_MODULE_1__["List"](), state$$7);
 }
-function foldIndexed3Aux($arg$$41, $arg$$42, $arg$$43, $arg$$44, $arg$$45, $arg$$46) {
+function foldIndexed3Aux($f$$10$$53, $i$$2$$54, $acc$$7$$55, $bs$$1$$56, $cs$$1$$57, $ds$$58) {
   foldIndexed3Aux: while (true) {
-    const f$$10 = $arg$$41,
-          i$$2 = $arg$$42,
-          acc$$7 = $arg$$43,
-          bs$$1 = $arg$$44,
-          cs$$1 = $arg$$45,
-          ds = $arg$$46;
-    const matchValue$$4 = [bs$$1, cs$$1, ds];
-    var $target$$47, x$$13, xs$$20, y$$2, ys$$7, z, zs;
+    const f$$10 = $f$$10$$53,
+          i$$2 = $i$$2$$54,
+          acc$$7 = $acc$$7$$55,
+          bs$$1 = $bs$$1$$56,
+          cs$$1 = $cs$$1$$57,
+          ds = $ds$$58;
+    var $target$$59, x$$13, xs$$20, y$$2, ys$$7, z, zs;
 
-    if (matchValue$$4[0].tail != null) {
-      if (matchValue$$4[1].tail != null) {
-        if (matchValue$$4[2].tail != null) {
-          $target$$47 = 1;
-          x$$13 = matchValue$$4[0].head;
-          xs$$20 = matchValue$$4[0].tail;
-          y$$2 = matchValue$$4[1].head;
-          ys$$7 = matchValue$$4[1].tail;
-          z = matchValue$$4[2].head;
-          zs = matchValue$$4[2].tail;
+    if (bs$$1.tail != null) {
+      if (cs$$1.tail != null) {
+        if (ds.tail != null) {
+          $target$$59 = 1;
+          x$$13 = bs$$1.head;
+          xs$$20 = bs$$1.tail;
+          y$$2 = cs$$1.head;
+          ys$$7 = cs$$1.tail;
+          z = ds.head;
+          zs = ds.tail;
         } else {
-          $target$$47 = 2;
+          $target$$59 = 2;
         }
       } else {
-        $target$$47 = 2;
+        $target$$59 = 2;
       }
-    } else if (matchValue$$4[1].tail == null) {
-      if (matchValue$$4[2].tail == null) {
-        $target$$47 = 0;
+    } else if (cs$$1.tail == null) {
+      if (ds.tail == null) {
+        $target$$59 = 0;
       } else {
-        $target$$47 = 2;
+        $target$$59 = 2;
       }
     } else {
-      $target$$47 = 2;
+      $target$$59 = 2;
     }
 
-    switch ($target$$47) {
+    switch ($target$$59) {
       case 0:
         {
           return acc$$7;
@@ -2652,12 +2714,12 @@ function foldIndexed3Aux($arg$$41, $arg$$42, $arg$$43, $arg$$44, $arg$$45, $arg$
 
       case 1:
         {
-          $arg$$41 = f$$10;
-          $arg$$42 = i$$2 + 1;
-          $arg$$43 = f$$10(i$$2, acc$$7, x$$13, y$$2, z);
-          $arg$$44 = xs$$20;
-          $arg$$45 = ys$$7;
-          $arg$$46 = zs;
+          $f$$10$$53 = f$$10;
+          $i$$2$$54 = i$$2 + 1;
+          $acc$$7$$55 = f$$10(i$$2, acc$$7, x$$13, y$$2, z);
+          $bs$$1$$56 = xs$$20;
+          $cs$$1$$57 = ys$$7;
+          $ds$$58 = zs;
           continue foldIndexed3Aux;
         }
 
@@ -2679,10 +2741,12 @@ function fold3(f$$12, state$$10, xs$$22, ys$$9, zs$$2) {
   }, state$$10, xs$$22, ys$$9, zs$$2);
 }
 function scan(f$$13, state$$11, xs$$23) {
-  return ofSeq(Object(_Seq__WEBPACK_IMPORTED_MODULE_2__["scan"])(f$$13, state$$11, xs$$23));
+  const xs$$24 = Object(_Seq_js__WEBPACK_IMPORTED_MODULE_2__["scan"])(f$$13, state$$11, xs$$23);
+  return ofSeq(xs$$24);
 }
 function scanBack(f$$14, xs$$25, state$$12) {
-  return ofSeq(Object(_Seq__WEBPACK_IMPORTED_MODULE_2__["scanBack"])(f$$14, xs$$25, state$$12));
+  const xs$$26 = Object(_Seq_js__WEBPACK_IMPORTED_MODULE_2__["scanBack"])(f$$14, xs$$25, state$$12);
+  return ofSeq(xs$$26);
 }
 function length(xs$$27) {
   return fold(function (acc$$9, _arg1$$7) {
@@ -2691,21 +2755,24 @@ function length(xs$$27) {
 }
 function append(xs$$28, ys$$10) {
   return fold(function (acc$$10, x$$15) {
-    return new _Types__WEBPACK_IMPORTED_MODULE_1__["List"](x$$15, acc$$10);
+    return new _Types_js__WEBPACK_IMPORTED_MODULE_1__["List"](x$$15, acc$$10);
   }, ys$$10, reverse(xs$$28));
 }
 function collect(f$$15, xs$$29) {
-  return ofSeq(Object(_Seq__WEBPACK_IMPORTED_MODULE_2__["collect"])(f$$15, xs$$29));
+  const xs$$30 = Object(_Seq_js__WEBPACK_IMPORTED_MODULE_2__["collect"])(f$$15, xs$$29);
+  return ofSeq(xs$$30);
 }
 function map(f$$16, xs$$31) {
-  return reverse(fold(function (acc$$11, x$$16) {
-    return new _Types__WEBPACK_IMPORTED_MODULE_1__["List"](f$$16(x$$16), acc$$11);
-  }, new _Types__WEBPACK_IMPORTED_MODULE_1__["List"](), xs$$31));
+  const xs$$32 = fold(function (acc$$11, x$$16) {
+    return new _Types_js__WEBPACK_IMPORTED_MODULE_1__["List"](f$$16(x$$16), acc$$11);
+  }, new _Types_js__WEBPACK_IMPORTED_MODULE_1__["List"](), xs$$31);
+  return reverse(xs$$32);
 }
 function mapIndexed(f$$17, xs$$33) {
-  return reverse(foldIndexed(function (i$$3, acc$$12, x$$17) {
-    return new _Types__WEBPACK_IMPORTED_MODULE_1__["List"](f$$17(i$$3, x$$17), acc$$12);
-  }, new _Types__WEBPACK_IMPORTED_MODULE_1__["List"](), xs$$33));
+  const xs$$34 = foldIndexed(function (i$$3, acc$$12, x$$17) {
+    return new _Types_js__WEBPACK_IMPORTED_MODULE_1__["List"](f$$17(i$$3, x$$17), acc$$12);
+  }, new _Types_js__WEBPACK_IMPORTED_MODULE_1__["List"](), xs$$33);
+  return reverse(xs$$34);
 }
 function indexed(xs$$35) {
   return mapIndexed(function (i$$4, x$$18) {
@@ -2713,32 +2780,34 @@ function indexed(xs$$35) {
   }, xs$$35);
 }
 function map2(f$$18, xs$$36, ys$$11) {
-  return reverse(fold2(function (acc$$13, x$$19, y$$4) {
-    return new _Types__WEBPACK_IMPORTED_MODULE_1__["List"](f$$18(x$$19, y$$4), acc$$13);
-  }, new _Types__WEBPACK_IMPORTED_MODULE_1__["List"](), xs$$36, ys$$11));
+  const xs$$37 = fold2(function (acc$$13, x$$19, y$$4) {
+    return new _Types_js__WEBPACK_IMPORTED_MODULE_1__["List"](f$$18(x$$19, y$$4), acc$$13);
+  }, new _Types_js__WEBPACK_IMPORTED_MODULE_1__["List"](), xs$$36, ys$$11);
+  return reverse(xs$$37);
 }
 function mapIndexed2(f$$19, xs$$38, ys$$12) {
-  return reverse(foldIndexed2(function (i$$5, acc$$14, x$$20, y$$5) {
-    return new _Types__WEBPACK_IMPORTED_MODULE_1__["List"](f$$19(i$$5, x$$20, y$$5), acc$$14);
-  }, new _Types__WEBPACK_IMPORTED_MODULE_1__["List"](), xs$$38, ys$$12));
+  const xs$$39 = foldIndexed2(function (i$$5, acc$$14, x$$20, y$$5) {
+    return new _Types_js__WEBPACK_IMPORTED_MODULE_1__["List"](f$$19(i$$5, x$$20, y$$5), acc$$14);
+  }, new _Types_js__WEBPACK_IMPORTED_MODULE_1__["List"](), xs$$38, ys$$12);
+  return reverse(xs$$39);
 }
 function map3(f$$20, xs$$40, ys$$13, zs$$3) {
-  return reverse(fold3(function (acc$$15, x$$21, y$$6, z$$2) {
-    return new _Types__WEBPACK_IMPORTED_MODULE_1__["List"](f$$20(x$$21, y$$6, z$$2), acc$$15);
-  }, new _Types__WEBPACK_IMPORTED_MODULE_1__["List"](), xs$$40, ys$$13, zs$$3));
+  const xs$$41 = fold3(function (acc$$15, x$$21, y$$6, z$$2) {
+    return new _Types_js__WEBPACK_IMPORTED_MODULE_1__["List"](f$$20(x$$21, y$$6, z$$2), acc$$15);
+  }, new _Types_js__WEBPACK_IMPORTED_MODULE_1__["List"](), xs$$40, ys$$13, zs$$3);
+  return reverse(xs$$41);
 }
 function mapIndexed3(f$$21, xs$$42, ys$$14, zs$$4) {
-  return reverse(foldIndexed3(function (i$$6, acc$$16, x$$22, y$$7, z$$3) {
-    return new _Types__WEBPACK_IMPORTED_MODULE_1__["List"](f$$21(i$$6, x$$22, y$$7, z$$3), acc$$16);
-  }, new _Types__WEBPACK_IMPORTED_MODULE_1__["List"](), xs$$42, ys$$14, zs$$4));
+  const xs$$43 = foldIndexed3(function (i$$6, acc$$16, x$$22, y$$7, z$$3) {
+    return new _Types_js__WEBPACK_IMPORTED_MODULE_1__["List"](f$$21(i$$6, x$$22, y$$7, z$$3), acc$$16);
+  }, new _Types_js__WEBPACK_IMPORTED_MODULE_1__["List"](), xs$$42, ys$$14, zs$$4);
+  return reverse(xs$$43);
 }
 function mapFold(f$$22, s, xs$$44) {
-  const foldFn = function foldFn(tupledArg, x$$23) {
+  const patternInput$$1 = fold(function foldFn(tupledArg, x$$23) {
     const patternInput = f$$22(tupledArg[1], x$$23);
-    return [new _Types__WEBPACK_IMPORTED_MODULE_1__["List"](patternInput[0], tupledArg[0]), patternInput[1]];
-  };
-
-  const patternInput$$1 = fold(foldFn, [new _Types__WEBPACK_IMPORTED_MODULE_1__["List"](), s], xs$$44);
+    return [new _Types_js__WEBPACK_IMPORTED_MODULE_1__["List"](patternInput[0], tupledArg[0]), patternInput[1]];
+  }, [new _Types_js__WEBPACK_IMPORTED_MODULE_1__["List"](), s], xs$$44);
   return [reverse(patternInput$$1[0]), patternInput$$1[1]];
 }
 function mapFoldBack(f$$23, xs$$45, s$$2) {
@@ -2767,16 +2836,16 @@ function iterateIndexed2(f$$27, xs$$49, ys$$16) {
   }, null, xs$$49, ys$$16);
 }
 function ofArray(xs$$50) {
-  let res$$1 = new _Types__WEBPACK_IMPORTED_MODULE_1__["List"]();
+  let res$$1 = new _Types_js__WEBPACK_IMPORTED_MODULE_1__["List"]();
 
-  for (let i$$9 = Object(_Util__WEBPACK_IMPORTED_MODULE_3__["count"])(xs$$50) - 1; i$$9 >= 0; i$$9--) {
-    res$$1 = new _Types__WEBPACK_IMPORTED_MODULE_1__["List"](xs$$50[i$$9], res$$1);
+  for (let i$$9 = Object(_Util_js__WEBPACK_IMPORTED_MODULE_3__["count"])(xs$$50) - 1; i$$9 >= 0; i$$9--) {
+    res$$1 = new _Types_js__WEBPACK_IMPORTED_MODULE_1__["List"](xs$$50[i$$9], res$$1);
   }
 
   return res$$1;
 }
 function empty() {
-  return new _Types__WEBPACK_IMPORTED_MODULE_1__["List"]();
+  return new _Types_js__WEBPACK_IMPORTED_MODULE_1__["List"]();
 }
 function isEmpty(_arg1$$8) {
   if (_arg1$$8.tail == null) {
@@ -2785,21 +2854,19 @@ function isEmpty(_arg1$$8) {
     return false;
   }
 }
-function tryPickIndexedAux($arg$$100, $arg$$101, $arg$$102) {
+function tryPickIndexedAux($f$$28$$120, $i$$10$$121, $_arg1$$9$$122) {
   tryPickIndexedAux: while (true) {
-    const f$$28 = $arg$$100,
-          i$$10 = $arg$$101,
-          _arg1$$9 = $arg$$102;
+    const f$$28 = $f$$28$$120,
+          i$$10 = $i$$10$$121,
+          _arg1$$9 = $_arg1$$9$$122;
 
     if (_arg1$$9.tail != null) {
-      const xs$$51 = _arg1$$9.tail;
-      const x$$28 = _arg1$$9.head;
-      const result = f$$28(i$$10, x$$28);
+      const result = f$$28(i$$10, _arg1$$9.head);
 
       if (result == null) {
-        $arg$$100 = f$$28;
-        $arg$$101 = i$$10 + 1;
-        $arg$$102 = xs$$51;
+        $f$$28$$120 = f$$28;
+        $i$$10$$121 = i$$10 + 1;
+        $_arg1$$9$$122 = _arg1$$9.tail;
         continue tryPickIndexedAux;
       } else {
         return result;
@@ -2823,7 +2890,7 @@ function pick(f$$31, xs$$54) {
   const matchValue$$5 = tryPick(f$$31, xs$$54);
 
   if (matchValue$$5 != null) {
-    const x$$30 = Object(_Option__WEBPACK_IMPORTED_MODULE_0__["value"])(matchValue$$5);
+    const x$$30 = Object(_Option_js__WEBPACK_IMPORTED_MODULE_0__["value"])(matchValue$$5);
     return x$$30;
   } else {
     throw new Error("List did not contain any matching elements");
@@ -2831,19 +2898,19 @@ function pick(f$$31, xs$$54) {
 }
 function tryFindIndexed(f$$32, xs$$55) {
   return tryPickIndexed(function (i$$11, x$$31) {
-    return f$$32(i$$11, x$$31) ? Object(_Option__WEBPACK_IMPORTED_MODULE_0__["some"])(x$$31) : null;
+    return f$$32(i$$11, x$$31) ? Object(_Option_js__WEBPACK_IMPORTED_MODULE_0__["some"])(x$$31) : null;
   }, xs$$55);
 }
 function tryFind(f$$33, xs$$56) {
   return tryPickIndexed(function (_arg1$$11, x$$32) {
-    return f$$33(x$$32) ? Object(_Option__WEBPACK_IMPORTED_MODULE_0__["some"])(x$$32) : null;
+    return f$$33(x$$32) ? Object(_Option_js__WEBPACK_IMPORTED_MODULE_0__["some"])(x$$32) : null;
   }, xs$$56);
 }
 function findIndexed(f$$34, xs$$57) {
   const matchValue$$6 = tryFindIndexed(f$$34, xs$$57);
 
   if (matchValue$$6 != null) {
-    const x$$33 = Object(_Option__WEBPACK_IMPORTED_MODULE_0__["value"])(matchValue$$6);
+    const x$$33 = Object(_Option_js__WEBPACK_IMPORTED_MODULE_0__["value"])(matchValue$$6);
     return x$$33;
   } else {
     throw new Error("List did not contain any matching elements");
@@ -2855,10 +2922,14 @@ function find(f$$35, xs$$58) {
   }, xs$$58);
 }
 function findBack(f$$36, xs$$59) {
-  return find(f$$36, reverse(xs$$59));
+  let xs$$61;
+  xs$$61 = reverse(xs$$59);
+  return find(f$$36, xs$$61);
 }
 function tryFindBack(f$$37, xs$$62) {
-  return tryFind(f$$37, reverse(xs$$62));
+  let xs$$64;
+  xs$$64 = reverse(xs$$62);
+  return tryFind(f$$37, xs$$64);
 }
 function tryFindIndex(f$$38, xs$$65) {
   return tryPickIndexed(function (i$$12, x$$35) {
@@ -2866,7 +2937,8 @@ function tryFindIndex(f$$38, xs$$65) {
   }, xs$$65);
 }
 function tryFindIndexBack(f$$39, xs$$66) {
-  return Object(_Array__WEBPACK_IMPORTED_MODULE_4__["tryFindIndexBack"])(f$$39, Object(_Array__WEBPACK_IMPORTED_MODULE_4__["ofList"])(xs$$66, Array));
+  const array = Object(_Array_js__WEBPACK_IMPORTED_MODULE_4__["ofList"])(xs$$66, Array);
+  return Object(_Array_js__WEBPACK_IMPORTED_MODULE_4__["tryFindIndexBack"])(f$$39, array);
 }
 function findIndex(f$$40, xs$$67) {
   const matchValue$$7 = tryFindIndex(f$$40, xs$$67);
@@ -2879,7 +2951,8 @@ function findIndex(f$$40, xs$$67) {
   }
 }
 function findIndexBack(f$$41, xs$$68) {
-  return Object(_Array__WEBPACK_IMPORTED_MODULE_4__["findIndexBack"])(f$$41, Object(_Array__WEBPACK_IMPORTED_MODULE_4__["ofList"])(xs$$68, Array));
+  const array$$1 = Object(_Array_js__WEBPACK_IMPORTED_MODULE_4__["ofList"])(xs$$68, Array);
+  return Object(_Array_js__WEBPACK_IMPORTED_MODULE_4__["findIndexBack"])(f$$41, array$$1) | 0;
 }
 function item(n, xs$$69) {
   return findIndexed(function (i$$13, _arg1$$13) {
@@ -2892,38 +2965,39 @@ function tryItem(n$$1, xs$$70) {
   }, xs$$70);
 }
 function filter(f$$42, xs$$71) {
-  return reverse(fold(function (acc$$17, x$$37) {
-    return f$$42(x$$37) ? new _Types__WEBPACK_IMPORTED_MODULE_1__["List"](x$$37, acc$$17) : acc$$17;
-  }, new _Types__WEBPACK_IMPORTED_MODULE_1__["List"](), xs$$71));
+  const xs$$72 = fold(function (acc$$17, x$$37) {
+    return f$$42(x$$37) ? new _Types_js__WEBPACK_IMPORTED_MODULE_1__["List"](x$$37, acc$$17) : acc$$17;
+  }, new _Types_js__WEBPACK_IMPORTED_MODULE_1__["List"](), xs$$71);
+  return reverse(xs$$72);
 }
 function partition(f$$43, xs$$73) {
   return fold(function (tupledArg$$1, x$$38) {
-    return f$$43(x$$38) ? [new _Types__WEBPACK_IMPORTED_MODULE_1__["List"](x$$38, tupledArg$$1[0]), tupledArg$$1[1]] : [tupledArg$$1[0], new _Types__WEBPACK_IMPORTED_MODULE_1__["List"](x$$38, tupledArg$$1[1])];
-  }, [new _Types__WEBPACK_IMPORTED_MODULE_1__["List"](), new _Types__WEBPACK_IMPORTED_MODULE_1__["List"]()], reverse(xs$$73));
+    return f$$43(x$$38) ? [new _Types_js__WEBPACK_IMPORTED_MODULE_1__["List"](x$$38, tupledArg$$1[0]), tupledArg$$1[1]] : [tupledArg$$1[0], new _Types_js__WEBPACK_IMPORTED_MODULE_1__["List"](x$$38, tupledArg$$1[1])];
+  }, [new _Types_js__WEBPACK_IMPORTED_MODULE_1__["List"](), new _Types_js__WEBPACK_IMPORTED_MODULE_1__["List"]()], reverse(xs$$73));
 }
 function choose(f$$44, xs$$74) {
-  return reverse(fold(function (acc$$18, x$$39) {
+  const xs$$75 = fold(function (acc$$18, x$$39) {
     const matchValue$$8 = f$$44(x$$39);
 
     if (matchValue$$8 == null) {
       return acc$$18;
     } else {
-      const y$$10 = Object(_Option__WEBPACK_IMPORTED_MODULE_0__["value"])(matchValue$$8);
-      return new _Types__WEBPACK_IMPORTED_MODULE_1__["List"](y$$10, acc$$18);
+      const y$$10 = Object(_Option_js__WEBPACK_IMPORTED_MODULE_0__["value"])(matchValue$$8);
+      return new _Types_js__WEBPACK_IMPORTED_MODULE_1__["List"](y$$10, acc$$18);
     }
-  }, new _Types__WEBPACK_IMPORTED_MODULE_1__["List"](), xs$$74));
+  }, new _Types_js__WEBPACK_IMPORTED_MODULE_1__["List"](), xs$$74);
+  return reverse(xs$$75);
 }
 function contains(value, list, eq) {
-  const loop$$1 = function loop$$1(xs$$76) {
+  const loop$$1 = function loop$$1($xs$$76$$162) {
     loop$$1: while (true) {
-      if (xs$$76.tail != null) {
-        const v$$1 = xs$$76.head;
-        const rest = xs$$76.tail;
+      const xs$$76 = $xs$$76$$162;
 
-        if (eq.Equals(value, v$$1)) {
+      if (xs$$76.tail != null) {
+        if (eq.Equals(value, xs$$76.head)) {
           return true;
         } else {
-          xs$$76 = rest;
+          $xs$$76$$162 = xs$$76.tail;
           continue loop$$1;
         }
       } else {
@@ -2940,17 +3014,17 @@ function except(itemsToExclude, array$$2, eq$$1) {
   if (isEmpty(array$$2)) {
     return array$$2;
   } else {
-    const cached = Object(_Set__WEBPACK_IMPORTED_MODULE_5__["createMutable"])(itemsToExclude, Object(_Util__WEBPACK_IMPORTED_MODULE_3__["comparerFromEqualityComparer"])(eq$$1));
+    const cached = Object(_Set_js__WEBPACK_IMPORTED_MODULE_5__["createMutable"])(itemsToExclude, eq$$1);
     return filter(function f$$45(arg00) {
-      return Object(_Util__WEBPACK_IMPORTED_MODULE_3__["addToSet"])(arg00, cached);
+      return Object(_Util_js__WEBPACK_IMPORTED_MODULE_3__["addToSet"])(arg00, cached);
     }, array$$2);
   }
 }
 function initialize(n$$2, f$$46) {
-  let xs$$78 = new _Types__WEBPACK_IMPORTED_MODULE_1__["List"]();
+  let xs$$78 = new _Types_js__WEBPACK_IMPORTED_MODULE_1__["List"]();
 
   for (let i$$15 = 1; i$$15 <= n$$2; i$$15++) {
-    xs$$78 = new _Types__WEBPACK_IMPORTED_MODULE_1__["List"](f$$46(n$$2 - i$$15), xs$$78);
+    xs$$78 = new _Types_js__WEBPACK_IMPORTED_MODULE_1__["List"](f$$46(n$$2 - i$$15), xs$$78);
   }
 
   return xs$$78;
@@ -2962,18 +3036,14 @@ function replicate(n$$3, x$$40) {
 }
 function reduce(f$$47, _arg1$$16) {
   if (_arg1$$16.tail != null) {
-    const t$$1 = _arg1$$16.tail;
-    const h$$1 = _arg1$$16.head;
-    return fold(f$$47, h$$1, t$$1);
+    return fold(f$$47, _arg1$$16.head, _arg1$$16.tail);
   } else {
     throw new Error("List was empty");
   }
 }
 function reduceBack(f$$48, _arg1$$17) {
   if (_arg1$$17.tail != null) {
-    const t$$2 = _arg1$$17.tail;
-    const h$$2 = _arg1$$17.head;
-    return foldBack(f$$48, t$$2, h$$2);
+    return foldBack(f$$48, _arg1$$17.tail, _arg1$$17.head);
   } else {
     throw new Error("List was empty");
   }
@@ -2988,20 +3058,17 @@ function forAll2(f$$50, xs$$80, ys$$17) {
     return acc$$20 ? f$$50(x$$42, y$$11) : false;
   }, true, xs$$80, ys$$17);
 }
-function exists($arg$$146, $arg$$147) {
+function exists($f$$51$$180, $_arg1$$18$$181) {
   exists: while (true) {
-    const f$$51 = $arg$$146,
-          _arg1$$18 = $arg$$147;
+    const f$$51 = $f$$51$$180,
+          _arg1$$18 = $_arg1$$18$$181;
 
     if (_arg1$$18.tail != null) {
-      const xs$$81 = _arg1$$18.tail;
-      const x$$43 = _arg1$$18.head;
-
-      if (f$$51(x$$43)) {
+      if (f$$51(_arg1$$18.head)) {
         return true;
       } else {
-        $arg$$146 = f$$51;
-        $arg$$147 = xs$$81;
+        $f$$51$$180 = f$$51;
+        $_arg1$$18$$181 = _arg1$$18.tail;
         continue exists;
       }
     } else {
@@ -3011,31 +3078,30 @@ function exists($arg$$146, $arg$$147) {
     break;
   }
 }
-function exists2($arg$$148, $arg$$149, $arg$$150) {
+function exists2($f$$52$$182, $bs$$2$$183, $cs$$2$$184) {
   exists2: while (true) {
-    const f$$52 = $arg$$148,
-          bs$$2 = $arg$$149,
-          cs$$2 = $arg$$150;
-    const matchValue$$9 = [bs$$2, cs$$2];
-    var $target$$151, x$$44, xs$$82, y$$12, ys$$18;
+    const f$$52 = $f$$52$$182,
+          bs$$2 = $bs$$2$$183,
+          cs$$2 = $cs$$2$$184;
+    var $target$$185, x$$44, xs$$82, y$$12, ys$$18;
 
-    if (matchValue$$9[0].tail != null) {
-      if (matchValue$$9[1].tail != null) {
-        $target$$151 = 1;
-        x$$44 = matchValue$$9[0].head;
-        xs$$82 = matchValue$$9[0].tail;
-        y$$12 = matchValue$$9[1].head;
-        ys$$18 = matchValue$$9[1].tail;
+    if (bs$$2.tail != null) {
+      if (cs$$2.tail != null) {
+        $target$$185 = 1;
+        x$$44 = bs$$2.head;
+        xs$$82 = bs$$2.tail;
+        y$$12 = cs$$2.head;
+        ys$$18 = cs$$2.tail;
       } else {
-        $target$$151 = 2;
+        $target$$185 = 2;
       }
-    } else if (matchValue$$9[1].tail == null) {
-      $target$$151 = 0;
+    } else if (cs$$2.tail == null) {
+      $target$$185 = 0;
     } else {
-      $target$$151 = 2;
+      $target$$185 = 2;
     }
 
-    switch ($target$$151) {
+    switch ($target$$185) {
       case 0:
         {
           return false;
@@ -3046,9 +3112,9 @@ function exists2($arg$$148, $arg$$149, $arg$$150) {
           if (f$$52(x$$44, y$$12)) {
             return true;
           } else {
-            $arg$$148 = f$$52;
-            $arg$$149 = xs$$82;
-            $arg$$150 = ys$$18;
+            $f$$52$$182 = f$$52;
+            $bs$$2$$183 = xs$$82;
+            $cs$$2$$184 = ys$$18;
             continue exists2;
           }
         }
@@ -3064,13 +3130,13 @@ function exists2($arg$$148, $arg$$149, $arg$$150) {
 }
 function unzip(xs$$83) {
   return foldBack(function (tupledArg$$2, tupledArg$$3) {
-    return [new _Types__WEBPACK_IMPORTED_MODULE_1__["List"](tupledArg$$2[0], tupledArg$$3[0]), new _Types__WEBPACK_IMPORTED_MODULE_1__["List"](tupledArg$$2[1], tupledArg$$3[1])];
-  }, xs$$83, [new _Types__WEBPACK_IMPORTED_MODULE_1__["List"](), new _Types__WEBPACK_IMPORTED_MODULE_1__["List"]()]);
+    return [new _Types_js__WEBPACK_IMPORTED_MODULE_1__["List"](tupledArg$$2[0], tupledArg$$3[0]), new _Types_js__WEBPACK_IMPORTED_MODULE_1__["List"](tupledArg$$2[1], tupledArg$$3[1])];
+  }, xs$$83, [new _Types_js__WEBPACK_IMPORTED_MODULE_1__["List"](), new _Types_js__WEBPACK_IMPORTED_MODULE_1__["List"]()]);
 }
 function unzip3(xs$$84) {
   return foldBack(function (tupledArg$$4, tupledArg$$5) {
-    return [new _Types__WEBPACK_IMPORTED_MODULE_1__["List"](tupledArg$$4[0], tupledArg$$5[0]), new _Types__WEBPACK_IMPORTED_MODULE_1__["List"](tupledArg$$4[1], tupledArg$$5[1]), new _Types__WEBPACK_IMPORTED_MODULE_1__["List"](tupledArg$$4[2], tupledArg$$5[2])];
-  }, xs$$84, [new _Types__WEBPACK_IMPORTED_MODULE_1__["List"](), new _Types__WEBPACK_IMPORTED_MODULE_1__["List"](), new _Types__WEBPACK_IMPORTED_MODULE_1__["List"]()]);
+    return [new _Types_js__WEBPACK_IMPORTED_MODULE_1__["List"](tupledArg$$4[0], tupledArg$$5[0]), new _Types_js__WEBPACK_IMPORTED_MODULE_1__["List"](tupledArg$$4[1], tupledArg$$5[1]), new _Types_js__WEBPACK_IMPORTED_MODULE_1__["List"](tupledArg$$4[2], tupledArg$$5[2])];
+  }, xs$$84, [new _Types_js__WEBPACK_IMPORTED_MODULE_1__["List"](), new _Types_js__WEBPACK_IMPORTED_MODULE_1__["List"](), new _Types_js__WEBPACK_IMPORTED_MODULE_1__["List"]()]);
 }
 function zip(xs$$85, ys$$19) {
   return map2(function (x$$47, y$$15) {
@@ -3083,32 +3149,47 @@ function zip3(xs$$86, ys$$20, zs$$5) {
   }, xs$$86, ys$$20, zs$$5);
 }
 function sort(xs$$87, comparer$$1) {
-  var xs$$88;
-  return ofArray((xs$$88 = Object(_Array__WEBPACK_IMPORTED_MODULE_4__["ofList"])(xs$$87, Array), (xs$$88.sort(function comparer$$2(x$$49, y$$17) {
+  let xs$$89;
+  const xs$$88 = Object(_Array_js__WEBPACK_IMPORTED_MODULE_4__["ofList"])(xs$$87, Array);
+  xs$$88.sort(function comparer$$2(x$$49, y$$17) {
     return comparer$$1.Compare(x$$49, y$$17);
-  }), xs$$88)));
+  });
+  xs$$89 = xs$$88;
+  return ofArray(xs$$89);
 }
 function sortBy(projection, xs$$90, comparer$$3) {
-  var xs$$91;
-  return ofArray((xs$$91 = Object(_Array__WEBPACK_IMPORTED_MODULE_4__["ofList"])(xs$$90, Array), (xs$$91.sort(function comparer$$4(x$$50, y$$18) {
+  let xs$$92;
+  const xs$$91 = Object(_Array_js__WEBPACK_IMPORTED_MODULE_4__["ofList"])(xs$$90, Array);
+  xs$$91.sort(function comparer$$4(x$$50, y$$18) {
     return comparer$$3.Compare(projection(x$$50), projection(y$$18));
-  }), xs$$91)));
+  });
+  xs$$92 = xs$$91;
+  return ofArray(xs$$92);
 }
 function sortDescending(xs$$93, comparer$$5) {
-  var xs$$94;
-  return ofArray((xs$$94 = Object(_Array__WEBPACK_IMPORTED_MODULE_4__["ofList"])(xs$$93, Array), (xs$$94.sort(function comparer$$6(x$$51, y$$19) {
+  let xs$$95;
+  const xs$$94 = Object(_Array_js__WEBPACK_IMPORTED_MODULE_4__["ofList"])(xs$$93, Array);
+  xs$$94.sort(function comparer$$6(x$$51, y$$19) {
     return comparer$$5.Compare(x$$51, y$$19) * -1;
-  }), xs$$94)));
+  });
+  xs$$95 = xs$$94;
+  return ofArray(xs$$95);
 }
 function sortByDescending(projection$$1, xs$$96, comparer$$7) {
-  var xs$$97;
-  return ofArray((xs$$97 = Object(_Array__WEBPACK_IMPORTED_MODULE_4__["ofList"])(xs$$96, Array), (xs$$97.sort(function comparer$$8(x$$52, y$$20) {
+  let xs$$98;
+  const xs$$97 = Object(_Array_js__WEBPACK_IMPORTED_MODULE_4__["ofList"])(xs$$96, Array);
+  xs$$97.sort(function comparer$$8(x$$52, y$$20) {
     return comparer$$7.Compare(projection$$1(x$$52), projection$$1(y$$20)) * -1;
-  }), xs$$97)));
+  });
+  xs$$98 = xs$$97;
+  return ofArray(xs$$98);
 }
 function sortWith(comparer$$9, xs$$99) {
-  var xs$$100;
-  return ofArray((xs$$100 = Object(_Array__WEBPACK_IMPORTED_MODULE_4__["ofList"])(xs$$99, Array), (xs$$100.sort(comparer$$9), xs$$100)));
+  let xs$$101;
+  const xs$$100 = Object(_Array_js__WEBPACK_IMPORTED_MODULE_4__["ofList"])(xs$$99, Array);
+  xs$$100.sort(comparer$$9);
+  xs$$101 = xs$$100;
+  return ofArray(xs$$101);
 }
 function sum(xs$$102, adder) {
   return fold(function (acc$$21, x$$53) {
@@ -3153,20 +3234,23 @@ function averageBy(f$$54, xs$$108, averager$$1) {
   return averager$$1.DivideByInt(total$$1, length(xs$$108));
 }
 function permute(f$$55, xs$$109) {
-  return ofArray(Object(_Array__WEBPACK_IMPORTED_MODULE_4__["permute"])(f$$55, Object(_Array__WEBPACK_IMPORTED_MODULE_4__["ofList"])(xs$$109, Array)));
+  let xs$$110;
+  let array$$3;
+  array$$3 = Object(_Array_js__WEBPACK_IMPORTED_MODULE_4__["ofList"])(xs$$109, Array);
+  xs$$110 = Object(_Array_js__WEBPACK_IMPORTED_MODULE_4__["permute"])(f$$55, array$$3);
+  return ofArray(xs$$110);
 }
 function skip(i$$16, xs$$111) {
-  const skipInner = function skipInner(i$$17, xs$$112) {
+  const skipInner = function skipInner($i$$17$$237, $xs$$112$$238) {
     skipInner: while (true) {
-      const matchValue$$10 = [i$$17, xs$$112];
+      const i$$17 = $i$$17$$237,
+            xs$$112 = $xs$$112$$238;
 
-      if (matchValue$$10[0] === 0) {
+      if (i$$17 === 0) {
         return xs$$112;
-      } else if (matchValue$$10[1].tail != null) {
-        const xs$$113 = matchValue$$10[1].tail;
-        const $i$$17$$174 = i$$17;
-        i$$17 = $i$$17$$174 - 1;
-        xs$$112 = xs$$113;
+      } else if (xs$$112.tail != null) {
+        $i$$17$$237 = i$$17 - 1;
+        $xs$$112$$238 = xs$$112.tail;
         continue skipInner;
       } else {
         throw new Error("The input sequence has an insufficient number of elements.");
@@ -3176,30 +3260,28 @@ function skip(i$$16, xs$$111) {
     }
   };
 
-  const matchValue$$11 = [i$$16, xs$$111];
-
-  if (matchValue$$11[0] < 0) {
+  if (i$$16 < 0) {
     throw new Error("The input must be non-negative.");
   } else {
-    var $target$$175, i$$20, xs$$115;
+    var $target$$239, i$$20, xs$$115;
 
-    if (matchValue$$11[0] === 0) {
-      $target$$175 = 0;
-    } else if (matchValue$$11[0] === 1) {
-      if (matchValue$$11[1].tail != null) {
-        $target$$175 = 1;
+    if (i$$16 === 0) {
+      $target$$239 = 0;
+    } else if (i$$16 === 1) {
+      if (xs$$111.tail != null) {
+        $target$$239 = 1;
       } else {
-        $target$$175 = 2;
-        i$$20 = matchValue$$11[0];
-        xs$$115 = matchValue$$11[1];
+        $target$$239 = 2;
+        i$$20 = i$$16;
+        xs$$115 = xs$$111;
       }
     } else {
-      $target$$175 = 2;
-      i$$20 = matchValue$$11[0];
-      xs$$115 = matchValue$$11[1];
+      $target$$239 = 2;
+      i$$20 = i$$16;
+      xs$$115 = xs$$111;
     }
 
-    switch ($target$$175) {
+    switch ($target$$239) {
       case 0:
         {
           return xs$$111;
@@ -3207,8 +3289,7 @@ function skip(i$$16, xs$$111) {
 
       case 1:
         {
-          const xs$$114 = matchValue$$11[1].tail;
-          return xs$$114;
+          return xs$$111.tail;
         }
 
       case 2:
@@ -3218,31 +3299,29 @@ function skip(i$$16, xs$$111) {
     }
   }
 }
-function skipWhile($arg$$176, $arg$$177) {
-  var t$$3, h$$3;
-
+function skipWhile($predicate$$240, $xs$$116$$241) {
   skipWhile: while (true) {
-    const predicate = $arg$$176,
-          xs$$116 = $arg$$177;
-    var $target$$178, h$$4, t$$4;
+    const predicate = $predicate$$240,
+          xs$$116 = $xs$$116$$241;
+    var $target$$242, h$$4, t$$4;
 
     if (xs$$116.tail != null) {
-      if (t$$3 = xs$$116.tail, (h$$3 = xs$$116.head, predicate(h$$3))) {
-        $target$$178 = 0;
+      if (predicate(xs$$116.head)) {
+        $target$$242 = 0;
         h$$4 = xs$$116.head;
         t$$4 = xs$$116.tail;
       } else {
-        $target$$178 = 1;
+        $target$$242 = 1;
       }
     } else {
-      $target$$178 = 1;
+      $target$$242 = 1;
     }
 
-    switch ($target$$178) {
+    switch ($target$$242) {
       case 0:
         {
-          $arg$$176 = predicate;
-          $arg$$177 = t$$4;
+          $predicate$$240 = predicate;
+          $xs$$116$$241 = t$$4;
           continue skipWhile;
         }
 
@@ -3255,22 +3334,20 @@ function skipWhile($arg$$176, $arg$$177) {
     break;
   }
 }
-function takeSplitAux(error, i$$21, acc$$25, xs$$117) {
+function takeSplitAux($error$$243, $i$$21$$244, $acc$$25$$245, $xs$$117$$246) {
   takeSplitAux: while (true) {
-    const matchValue$$12 = [i$$21, xs$$117];
+    const error = $error$$243,
+          i$$21 = $i$$21$$244,
+          acc$$25 = $acc$$25$$245,
+          xs$$117 = $xs$$117$$246;
 
-    if (matchValue$$12[0] === 0) {
+    if (i$$21 === 0) {
       return [reverse(acc$$25), xs$$117];
-    } else if (matchValue$$12[1].tail != null) {
-      const xs$$118 = matchValue$$12[1].tail;
-      const x$$61 = matchValue$$12[1].head;
-      const $acc$$25$$181 = acc$$25;
-      const $error$$179 = error;
-      const $i$$21$$180 = i$$21;
-      error = $error$$179;
-      i$$21 = $i$$21$$180 - 1;
-      acc$$25 = new _Types__WEBPACK_IMPORTED_MODULE_1__["List"](x$$61, $acc$$25$$181);
-      xs$$117 = xs$$118;
+    } else if (xs$$117.tail != null) {
+      $error$$243 = error;
+      $i$$21$$244 = i$$21 - 1;
+      $acc$$25$$245 = new _Types_js__WEBPACK_IMPORTED_MODULE_1__["List"](xs$$117.head, acc$$25);
+      $xs$$117$$246 = xs$$117.tail;
       continue takeSplitAux;
     } else {
       if (error) {
@@ -3284,44 +3361,42 @@ function takeSplitAux(error, i$$21, acc$$25, xs$$117) {
   }
 }
 function take(i$$22, xs$$119) {
-  const matchValue$$13 = [i$$22, xs$$119];
-
-  if (matchValue$$13[0] < 0) {
+  if (i$$22 < 0) {
     throw new Error("The input must be non-negative.");
   } else {
-    var $target$$182, i$$25, xs$$120;
+    var $target$$249, i$$25, xs$$120;
 
-    if (matchValue$$13[0] === 0) {
-      $target$$182 = 0;
-    } else if (matchValue$$13[0] === 1) {
-      if (matchValue$$13[1].tail != null) {
-        $target$$182 = 1;
+    if (i$$22 === 0) {
+      $target$$249 = 0;
+    } else if (i$$22 === 1) {
+      if (xs$$119.tail != null) {
+        $target$$249 = 1;
       } else {
-        $target$$182 = 2;
-        i$$25 = matchValue$$13[0];
-        xs$$120 = matchValue$$13[1];
+        $target$$249 = 2;
+        i$$25 = i$$22;
+        xs$$120 = xs$$119;
       }
     } else {
-      $target$$182 = 2;
-      i$$25 = matchValue$$13[0];
-      xs$$120 = matchValue$$13[1];
+      $target$$249 = 2;
+      i$$25 = i$$22;
+      xs$$120 = xs$$119;
     }
 
-    switch ($target$$182) {
+    switch ($target$$249) {
       case 0:
         {
-          return new _Types__WEBPACK_IMPORTED_MODULE_1__["List"]();
+          return new _Types_js__WEBPACK_IMPORTED_MODULE_1__["List"]();
         }
 
       case 1:
         {
-          const x$$62 = matchValue$$13[1].head;
-          return new _Types__WEBPACK_IMPORTED_MODULE_1__["List"](x$$62, new _Types__WEBPACK_IMPORTED_MODULE_1__["List"]());
+          return new _Types_js__WEBPACK_IMPORTED_MODULE_1__["List"](xs$$119.head, new _Types_js__WEBPACK_IMPORTED_MODULE_1__["List"]());
         }
 
       case 2:
         {
-          return takeSplitAux(true, i$$25, new _Types__WEBPACK_IMPORTED_MODULE_1__["List"](), xs$$120)[0];
+          const tuple = takeSplitAux(true, i$$25, new _Types_js__WEBPACK_IMPORTED_MODULE_1__["List"](), xs$$120);
+          return tuple[0];
         }
     }
   }
@@ -3336,9 +3411,9 @@ function takeWhile(predicate$$1, xs$$121) {
       }
     } else {
       if (!predicate$$1(xs$$121.head)) {
-        return new _Types__WEBPACK_IMPORTED_MODULE_1__["List"]();
+        return new _Types_js__WEBPACK_IMPORTED_MODULE_1__["List"]();
       } else {
-        return new _Types__WEBPACK_IMPORTED_MODULE_1__["List"](xs$$121.head, takeWhile(predicate$$1, xs$$121.tail));
+        return new _Types_js__WEBPACK_IMPORTED_MODULE_1__["List"](xs$$121.head, takeWhile(predicate$$1, xs$$121.tail));
       }
     }
   } else {
@@ -3346,170 +3421,199 @@ function takeWhile(predicate$$1, xs$$121) {
   }
 }
 function truncate(i$$26, xs$$123) {
-  const matchValue$$14 = [i$$26, xs$$123];
-
-  if (matchValue$$14[0] < 0) {
+  if (i$$26 < 0) {
     throw new Error("The input must be non-negative.");
   } else {
-    var $target$$185, i$$29, xs$$124;
+    var $target$$254, i$$29, xs$$124;
 
-    if (matchValue$$14[0] === 0) {
-      $target$$185 = 0;
-    } else if (matchValue$$14[0] === 1) {
-      if (matchValue$$14[1].tail != null) {
-        $target$$185 = 1;
+    if (i$$26 === 0) {
+      $target$$254 = 0;
+    } else if (i$$26 === 1) {
+      if (xs$$123.tail != null) {
+        $target$$254 = 1;
       } else {
-        $target$$185 = 2;
-        i$$29 = matchValue$$14[0];
-        xs$$124 = matchValue$$14[1];
+        $target$$254 = 2;
+        i$$29 = i$$26;
+        xs$$124 = xs$$123;
       }
     } else {
-      $target$$185 = 2;
-      i$$29 = matchValue$$14[0];
-      xs$$124 = matchValue$$14[1];
+      $target$$254 = 2;
+      i$$29 = i$$26;
+      xs$$124 = xs$$123;
     }
 
-    switch ($target$$185) {
+    switch ($target$$254) {
       case 0:
         {
-          return new _Types__WEBPACK_IMPORTED_MODULE_1__["List"]();
+          return new _Types_js__WEBPACK_IMPORTED_MODULE_1__["List"]();
         }
 
       case 1:
         {
-          const x$$65 = matchValue$$14[1].head;
-          return new _Types__WEBPACK_IMPORTED_MODULE_1__["List"](x$$65, new _Types__WEBPACK_IMPORTED_MODULE_1__["List"]());
+          return new _Types_js__WEBPACK_IMPORTED_MODULE_1__["List"](xs$$123.head, new _Types_js__WEBPACK_IMPORTED_MODULE_1__["List"]());
         }
 
       case 2:
         {
-          return takeSplitAux(false, i$$29, new _Types__WEBPACK_IMPORTED_MODULE_1__["List"](), xs$$124)[0];
+          const tuple$$1 = takeSplitAux(false, i$$29, new _Types_js__WEBPACK_IMPORTED_MODULE_1__["List"](), xs$$124);
+          return tuple$$1[0];
         }
     }
   }
 }
 function splitAt(i$$30, xs$$125) {
-  const matchValue$$15 = [i$$30, xs$$125];
-
-  if (matchValue$$15[0] < 0) {
+  if (i$$30 < 0) {
     throw new Error("The input must be non-negative.");
   } else {
-    var $target$$186, i$$33, xs$$127;
+    var $target$$257, i$$33, xs$$127;
 
-    if (matchValue$$15[0] === 0) {
-      $target$$186 = 0;
-    } else if (matchValue$$15[0] === 1) {
-      if (matchValue$$15[1].tail != null) {
-        $target$$186 = 1;
+    if (i$$30 === 0) {
+      $target$$257 = 0;
+    } else if (i$$30 === 1) {
+      if (xs$$125.tail != null) {
+        $target$$257 = 1;
       } else {
-        $target$$186 = 2;
-        i$$33 = matchValue$$15[0];
-        xs$$127 = matchValue$$15[1];
+        $target$$257 = 2;
+        i$$33 = i$$30;
+        xs$$127 = xs$$125;
       }
     } else {
-      $target$$186 = 2;
-      i$$33 = matchValue$$15[0];
-      xs$$127 = matchValue$$15[1];
+      $target$$257 = 2;
+      i$$33 = i$$30;
+      xs$$127 = xs$$125;
     }
 
-    switch ($target$$186) {
+    switch ($target$$257) {
       case 0:
         {
-          return [new _Types__WEBPACK_IMPORTED_MODULE_1__["List"](), xs$$125];
+          return [new _Types_js__WEBPACK_IMPORTED_MODULE_1__["List"](), xs$$125];
         }
 
       case 1:
         {
-          const xs$$126 = matchValue$$15[1].tail;
-          const x$$66 = matchValue$$15[1].head;
-          return [new _Types__WEBPACK_IMPORTED_MODULE_1__["List"](x$$66, new _Types__WEBPACK_IMPORTED_MODULE_1__["List"]()), xs$$126];
+          return [new _Types_js__WEBPACK_IMPORTED_MODULE_1__["List"](xs$$125.head, new _Types_js__WEBPACK_IMPORTED_MODULE_1__["List"]()), xs$$125.tail];
         }
 
       case 2:
         {
-          return takeSplitAux(true, i$$33, new _Types__WEBPACK_IMPORTED_MODULE_1__["List"](), xs$$127);
+          return takeSplitAux(true, i$$33, new _Types_js__WEBPACK_IMPORTED_MODULE_1__["List"](), xs$$127);
         }
     }
   }
 }
+function outOfRange() {
+  throw new Error("Index out of range");
+}
 function slice(lower, upper, xs$$128) {
-  const lower$$1 = Object(_Option__WEBPACK_IMPORTED_MODULE_0__["defaultArg"])(lower, -1) | 0;
-  const upper$$1 = Object(_Option__WEBPACK_IMPORTED_MODULE_0__["defaultArg"])(upper, -1) | 0;
-  return reverse(foldIndexed(function f$$56(i$$34, acc$$26, x$$67) {
-    if ((lower$$1 === -1 ? true : lower$$1 <= i$$34) ? upper$$1 === -1 ? true : i$$34 <= upper$$1 : false) {
-      return new _Types__WEBPACK_IMPORTED_MODULE_1__["List"](x$$67, acc$$26);
-    } else {
-      return acc$$26;
+  const lower$$1 = Object(_Option_js__WEBPACK_IMPORTED_MODULE_0__["defaultArg"])(lower, 0) | 0;
+  const hasUpper = upper != null;
+
+  if (lower$$1 < 0) {
+    return outOfRange();
+  } else if (hasUpper ? upper < lower$$1 : false) {
+    return new _Types_js__WEBPACK_IMPORTED_MODULE_1__["List"]();
+  } else {
+    let lastIndex = -1 | 0;
+    let res$$2;
+    const state$$13 = new _Types_js__WEBPACK_IMPORTED_MODULE_1__["List"]();
+    res$$2 = foldIndexed(function f$$56(i$$34, acc$$26, x$$67) {
+      lastIndex = i$$34;
+
+      if (lower$$1 <= i$$34 ? !hasUpper ? true : i$$34 <= upper : false) {
+        return new _Types_js__WEBPACK_IMPORTED_MODULE_1__["List"](x$$67, acc$$26);
+      } else {
+        return acc$$26;
+      }
+    }, state$$13, xs$$128);
+
+    if (lower$$1 > lastIndex + 1 ? true : hasUpper ? upper > lastIndex : false) {
+      outOfRange();
     }
-  }, new _Types__WEBPACK_IMPORTED_MODULE_1__["List"](), xs$$128));
+
+    return reverse(res$$2);
+  }
 }
-function distinctBy(projection$$4, xs$$131, eq$$2) {
-  const hashSet = Object(_Set__WEBPACK_IMPORTED_MODULE_5__["createMutable"])([], Object(_Util__WEBPACK_IMPORTED_MODULE_3__["comparerFromEqualityComparer"])(eq$$2));
+function distinctBy(projection$$4, xs$$130, eq$$2) {
+  const hashSet = Object(_Set_js__WEBPACK_IMPORTED_MODULE_5__["createMutable"])([], eq$$2);
   return filter(function f$$57($arg$$1) {
-    return Object(_Util__WEBPACK_IMPORTED_MODULE_3__["addToSet"])(projection$$4($arg$$1), hashSet);
-  }, xs$$131);
+    const arg00$$1 = projection$$4($arg$$1);
+    return Object(_Util_js__WEBPACK_IMPORTED_MODULE_3__["addToSet"])(arg00$$1, hashSet);
+  }, xs$$130);
 }
-function distinct(xs$$133, eq$$3) {
+function distinct(xs$$132, eq$$3) {
   return distinctBy(function (x$$68) {
     return x$$68;
-  }, xs$$133, eq$$3);
+  }, xs$$132, eq$$3);
 }
-function exactlyOne(xs$$134) {
-  if (Object(_List__WEBPACK_IMPORTED_MODULE_6__["length"])(xs$$134) === 1) {
-    return Object(_List__WEBPACK_IMPORTED_MODULE_6__["item"])(0, xs$$134);
-  } else if (Object(_List__WEBPACK_IMPORTED_MODULE_6__["length"])(xs$$134) === 0) {
-    throw new Error("The input sequence was empty\\nParameter name: list");
+function exactlyOne(xs$$133) {
+  if (xs$$133.tail != null) {
+    if (xs$$133.tail.tail != null) {
+      throw new Error("Input list too long\\nParameter name: list");
+    } else {
+      return xs$$133.head;
+    }
   } else {
-    throw new Error("Input list too long\\nParameter name: list");
+    throw new Error("The input sequence was empty\\nParameter name: list");
   }
 }
 function groupBy(projection$$5, xs$$135, eq$$4) {
-  const dict = Object(_Map__WEBPACK_IMPORTED_MODULE_7__["createMutable"])([], Object(_Util__WEBPACK_IMPORTED_MODULE_3__["comparerFromEqualityComparer"])(eq$$4));
-  Object(_Seq__WEBPACK_IMPORTED_MODULE_2__["iterate"])(function (v$$2) {
+  const dict = Object(_Map_js__WEBPACK_IMPORTED_MODULE_6__["createMutable"])([], eq$$4);
+  let keys = new _Types_js__WEBPACK_IMPORTED_MODULE_1__["List"]();
+  iterate(function f$$58(v$$2) {
     const key = projection$$5(v$$2);
-
-    if (dict.has(key)) {
-      dict.set(key, new _Types__WEBPACK_IMPORTED_MODULE_1__["List"](v$$2, dict.get(key)));
-    } else {
-      dict.set(key, new _Types__WEBPACK_IMPORTED_MODULE_1__["List"](v$$2, new _Types__WEBPACK_IMPORTED_MODULE_1__["List"]()));
-    }
-  }, xs$$135);
-  return ofSeq(Object(_Seq__WEBPACK_IMPORTED_MODULE_2__["map"])(function mapping(kv) {
-    return [kv[0], reverse(kv[1])];
-  }, dict));
-}
-function countBy(projection$$6, xs$$137, eq$$5) {
-  const dict$$1 = Object(_Map__WEBPACK_IMPORTED_MODULE_7__["createMutable"])([], Object(_Util__WEBPACK_IMPORTED_MODULE_3__["comparerFromEqualityComparer"])(eq$$5));
-  iterate(function (v$$3) {
-    const key$$1 = projection$$6(v$$3);
-    const matchValue$$16 = Object(_Util__WEBPACK_IMPORTED_MODULE_3__["tryGetValue"])(dict$$1, key$$1, null);
+    const matchValue$$16 = Object(_Util_js__WEBPACK_IMPORTED_MODULE_3__["tryGetValue"])(dict, key, null);
 
     if (matchValue$$16[0]) {
-      matchValue$$16[1].contents = matchValue$$16[1].contents + 1;
+      dict.set(key, new _Types_js__WEBPACK_IMPORTED_MODULE_1__["List"](v$$2, matchValue$$16[1]));
     } else {
-      dict$$1.set(key$$1, new _Types__WEBPACK_IMPORTED_MODULE_1__["FSharpRef"](1));
+      Object(_Util_js__WEBPACK_IMPORTED_MODULE_3__["addToDict"])(dict, key, new _Types_js__WEBPACK_IMPORTED_MODULE_1__["List"](v$$2, new _Types_js__WEBPACK_IMPORTED_MODULE_1__["List"]()));
+      keys = new _Types_js__WEBPACK_IMPORTED_MODULE_1__["List"](key, keys);
     }
+  }, xs$$135);
+  let result$$1 = new _Types_js__WEBPACK_IMPORTED_MODULE_1__["List"]();
+  const xs$$137 = keys;
+  iterate(function f$$59(key$$1) {
+    result$$1 = new _Types_js__WEBPACK_IMPORTED_MODULE_1__["List"]([key$$1, reverse(Object(_Util_js__WEBPACK_IMPORTED_MODULE_3__["getItemFromDict"])(dict, key$$1))], result$$1);
   }, xs$$137);
-  let result$$1 = new _Types__WEBPACK_IMPORTED_MODULE_1__["List"]();
-  Object(_Seq__WEBPACK_IMPORTED_MODULE_2__["iterate"])(function (group) {
-    result$$1 = new _Types__WEBPACK_IMPORTED_MODULE_1__["List"]([group[0], group[1].contents], result$$1);
-  }, dict$$1);
   return result$$1;
 }
-function where(predicate$$2, xs$$138) {
-  return filter(predicate$$2, xs$$138);
+function countBy(projection$$6, xs$$138, eq$$5) {
+  const dict$$1 = Object(_Map_js__WEBPACK_IMPORTED_MODULE_6__["createMutable"])([], eq$$5);
+  let keys$$1 = new _Types_js__WEBPACK_IMPORTED_MODULE_1__["List"]();
+  iterate(function f$$60(v$$3) {
+    const key$$2 = projection$$6(v$$3);
+    const matchValue$$17 = Object(_Util_js__WEBPACK_IMPORTED_MODULE_3__["tryGetValue"])(dict$$1, key$$2, 0);
+
+    if (matchValue$$17[0]) {
+      dict$$1.set(key$$2, matchValue$$17[1] + 1);
+    } else {
+      dict$$1.set(key$$2, 1);
+      keys$$1 = new _Types_js__WEBPACK_IMPORTED_MODULE_1__["List"](key$$2, keys$$1);
+    }
+  }, xs$$138);
+  let result$$2 = new _Types_js__WEBPACK_IMPORTED_MODULE_1__["List"]();
+  const xs$$140 = keys$$1;
+  iterate(function f$$61(key$$3) {
+    result$$2 = new _Types_js__WEBPACK_IMPORTED_MODULE_1__["List"]([key$$3, Object(_Util_js__WEBPACK_IMPORTED_MODULE_3__["getItemFromDict"])(dict$$1, key$$3)], result$$2);
+  }, xs$$140);
+  return result$$2;
 }
-function pairwise(xs$$139) {
-  const inner = function inner(xs$$140, acc$$27, x1) {
+function where(predicate$$2, xs$$141) {
+  return filter(predicate$$2, xs$$141);
+}
+function pairwise(xs$$142) {
+  const inner = function inner($xs$$143$$284, $acc$$27$$285, $x1$$1$$286) {
     inner: while (true) {
-      if (xs$$140.tail != null) {
-        const xs$$141 = xs$$140.tail;
-        const x2 = xs$$140.head;
-        acc$$27.push([x1, x2]);
-        const $acc$$27$$198 = acc$$27;
-        xs$$140 = xs$$141;
-        acc$$27 = $acc$$27$$198;
-        x1 = x2;
+      const xs$$143 = $xs$$143$$284,
+            acc$$27 = $acc$$27$$285,
+            x1$$1 = $x1$$1$$286;
+
+      if (xs$$143.tail != null) {
+        let copyOfStruct = acc$$27;
+        copyOfStruct.push([x1$$1, xs$$143.head]);
+        $xs$$143$$284 = xs$$143.tail;
+        $acc$$27$$285 = acc$$27;
+        $x1$$1$$286 = xs$$143.head;
         continue inner;
       } else {
         return ofArray(acc$$27);
@@ -3519,310 +3623,177 @@ function pairwise(xs$$139) {
     }
   };
 
-  var $target$$199, x1$$1, x2$$1, xs$$142;
+  var $target$$287, x1$$2, x2$$2, xs$$145;
 
-  if (xs$$139.tail != null) {
-    if (xs$$139.tail.tail != null) {
-      $target$$199 = 1;
-      x1$$1 = xs$$139.head;
-      x2$$1 = xs$$139.tail.head;
-      xs$$142 = xs$$139.tail.tail;
+  if (xs$$142.tail != null) {
+    if (xs$$142.tail.tail != null) {
+      $target$$287 = 1;
+      x1$$2 = xs$$142.head;
+      x2$$2 = xs$$142.tail.head;
+      xs$$145 = xs$$142.tail.tail;
     } else {
-      $target$$199 = 0;
+      $target$$287 = 0;
     }
   } else {
-    $target$$199 = 0;
+    $target$$287 = 0;
   }
 
-  switch ($target$$199) {
+  switch ($target$$287) {
     case 0:
       {
-        return new _Types__WEBPACK_IMPORTED_MODULE_1__["List"]();
+        return new _Types_js__WEBPACK_IMPORTED_MODULE_1__["List"]();
       }
 
     case 1:
       {
         const acc$$28 = [];
-        acc$$28.push([x1$$1, x2$$1]);
-        return inner(xs$$142, acc$$28, x2$$1);
+        acc$$28.push([x1$$2, x2$$2]);
+        const clo1 = Object(_Util_js__WEBPACK_IMPORTED_MODULE_3__["partialApply"])(2, inner, [xs$$145]);
+        const clo2 = clo1(acc$$28);
+        return clo2(x2$$2);
       }
   }
 }
-function windowed(windowSize, source$$1) {
+function windowed(windowSize, source) {
   if (windowSize <= 0) {
     throw new Error("windowSize must be positive");
   }
 
-  return Object(_List__WEBPACK_IMPORTED_MODULE_6__["ofSeq"])(Object(_Seq__WEBPACK_IMPORTED_MODULE_2__["delay"])(function () {
-    return Object(_Seq__WEBPACK_IMPORTED_MODULE_2__["map"])(function (i$$35) {
-      return Object(_List__WEBPACK_IMPORTED_MODULE_6__["slice"])(i$$35 - windowSize, i$$35 - 1, source$$1);
-    }, Object(_Seq__WEBPACK_IMPORTED_MODULE_2__["rangeNumber"])(windowSize, 1, Object(_List__WEBPACK_IMPORTED_MODULE_6__["length"])(source$$1)));
-  }));
+  let res$$3 = new _Types_js__WEBPACK_IMPORTED_MODULE_1__["List"]();
+
+  for (let i$$35 = length(source); i$$35 >= windowSize; i$$35--) {
+    res$$3 = new _Types_js__WEBPACK_IMPORTED_MODULE_1__["List"](slice(i$$35 - windowSize, i$$35 - 1, source), res$$3);
+  }
+
+  return res$$3;
 }
 
 /***/ }),
 
-/***/ "./.fable/fable-library.2.1.12/Long.js":
+/***/ "./.fable/fable-library.2.3.25/Long.js":
 /*!*********************************************!*\
-  !*** ./.fable/fable-library.2.1.12/Long.js ***!
+  !*** ./.fable/fable-library.2.3.25/Long.js ***!
   \*********************************************/
-/*! exports provided: default, neg, not, add, sub, mul, div, mod, shl, shr, and, or, xor, fromInt, fromNumber, fromInteger, fromBits, fromString, parse, tryParse, fromValue, ZERO, UZERO, ONE, UONE, NEG_ONE, MAX_VALUE, MAX_UNSIGNED_VALUE, MIN_VALUE, toInt, toNumber, toString, getHighBits, getHighBitsUnsigned, getLowBits, getLowBitsUnsigned, getNumBitsAbs, isZero, isNegative, isPositive, isOdd, isEven, equals, notEquals, lessThan, lessThanOrEqual, greaterThan, greaterThanOrEqual, compare, abs, op_UnaryNegation, op_Addition, op_Subtraction, op_Multiply, op_Division, op_Modulus, op_LogicalNot, op_BitwiseAnd, op_BitwiseOr, op_ExclusiveOr, op_LeftShift, op_RightShift, op_RightShiftUnsigned, toSigned, toUnsigned, toBytes, toBytesLE, toBytesBE, fromBytes, fromBytesLE, fromBytesBE, unixEpochMillisecondsToTicks, ticksToUnixEpochMilliseconds, makeRangeStepFunction */
+/*! exports provided: default, get_Zero, get_One, op_Addition, op_Subtraction, op_Multiply, op_Division, op_Modulus, op_UnaryNegation, op_LeftShift, op_RightShift, op_RightShiftUnsigned, op_BitwiseAnd, op_BitwiseOr, op_ExclusiveOr, op_LogicalNot, op_LessThan, op_LessThanOrEqual, op_GreaterThan, op_GreaterThanOrEqual, op_Equality, op_Inequality, equals, compare, fromInt, fromBits, fromBytes, fromNumber, fromString, fromValue, toInt, toBytes, toNumber, toString, getLowBits, getHighBits, getLowBitsUnsigned, getHighBitsUnsigned, abs, fromInteger, parse, tryParse, unixEpochMillisecondsToTicks, ticksToUnixEpochMilliseconds, makeRangeStepFunction */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Long; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "neg", function() { return neg; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "not", function() { return not; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "add", function() { return add; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "sub", function() { return sub; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "mul", function() { return mul; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "div", function() { return div; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "mod", function() { return mod; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "shl", function() { return shl; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "shr", function() { return shr; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "and", function() { return and; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "or", function() { return or; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "xor", function() { return xor; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fromInt", function() { return fromInt; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fromNumber", function() { return fromNumber; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fromInteger", function() { return fromInteger; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fromBits", function() { return fromBits; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fromString", function() { return fromString; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "parse", function() { return parse; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "tryParse", function() { return tryParse; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fromValue", function() { return fromValue; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ZERO", function() { return ZERO; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UZERO", function() { return UZERO; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ONE", function() { return ONE; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UONE", function() { return UONE; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NEG_ONE", function() { return NEG_ONE; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MAX_VALUE", function() { return MAX_VALUE; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MAX_UNSIGNED_VALUE", function() { return MAX_UNSIGNED_VALUE; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MIN_VALUE", function() { return MIN_VALUE; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "toInt", function() { return toInt; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "toNumber", function() { return toNumber; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "toString", function() { return toString; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getHighBits", function() { return getHighBits; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getHighBitsUnsigned", function() { return getHighBitsUnsigned; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getLowBits", function() { return getLowBits; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getLowBitsUnsigned", function() { return getLowBitsUnsigned; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getNumBitsAbs", function() { return getNumBitsAbs; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isZero", function() { return isZero; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isNegative", function() { return isNegative; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isPositive", function() { return isPositive; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isOdd", function() { return isOdd; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isEven", function() { return isEven; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "equals", function() { return equals; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "notEquals", function() { return notEquals; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "lessThan", function() { return lessThan; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "lessThanOrEqual", function() { return lessThanOrEqual; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "greaterThan", function() { return greaterThan; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "greaterThanOrEqual", function() { return greaterThanOrEqual; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "compare", function() { return compare; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "abs", function() { return abs; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "op_UnaryNegation", function() { return op_UnaryNegation; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "get_Zero", function() { return get_Zero; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "get_One", function() { return get_One; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "op_Addition", function() { return op_Addition; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "op_Subtraction", function() { return op_Subtraction; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "op_Multiply", function() { return op_Multiply; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "op_Division", function() { return op_Division; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "op_Modulus", function() { return op_Modulus; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "op_LogicalNot", function() { return op_LogicalNot; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "op_BitwiseAnd", function() { return op_BitwiseAnd; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "op_BitwiseOr", function() { return op_BitwiseOr; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "op_ExclusiveOr", function() { return op_ExclusiveOr; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "op_UnaryNegation", function() { return op_UnaryNegation; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "op_LeftShift", function() { return op_LeftShift; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "op_RightShift", function() { return op_RightShift; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "op_RightShiftUnsigned", function() { return op_RightShiftUnsigned; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "toSigned", function() { return toSigned; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "toUnsigned", function() { return toUnsigned; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "toBytes", function() { return toBytes; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "toBytesLE", function() { return toBytesLE; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "toBytesBE", function() { return toBytesBE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "op_BitwiseAnd", function() { return op_BitwiseAnd; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "op_BitwiseOr", function() { return op_BitwiseOr; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "op_ExclusiveOr", function() { return op_ExclusiveOr; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "op_LogicalNot", function() { return op_LogicalNot; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "op_LessThan", function() { return op_LessThan; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "op_LessThanOrEqual", function() { return op_LessThanOrEqual; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "op_GreaterThan", function() { return op_GreaterThan; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "op_GreaterThanOrEqual", function() { return op_GreaterThanOrEqual; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "op_Equality", function() { return op_Equality; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "op_Inequality", function() { return op_Inequality; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "equals", function() { return equals; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "compare", function() { return compare; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fromInt", function() { return fromInt; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fromBits", function() { return fromBits; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fromBytes", function() { return fromBytes; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fromBytesLE", function() { return fromBytesLE; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fromBytesBE", function() { return fromBytesBE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fromNumber", function() { return fromNumber; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fromString", function() { return fromString; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fromValue", function() { return fromValue; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "toInt", function() { return toInt; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "toBytes", function() { return toBytes; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "toNumber", function() { return toNumber; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "toString", function() { return toString; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getLowBits", function() { return getLowBits; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getHighBits", function() { return getHighBits; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getLowBitsUnsigned", function() { return getLowBitsUnsigned; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getHighBitsUnsigned", function() { return getHighBitsUnsigned; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "abs", function() { return abs; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fromInteger", function() { return fromInteger; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "parse", function() { return parse; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "tryParse", function() { return tryParse; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "unixEpochMillisecondsToTicks", function() { return unixEpochMillisecondsToTicks; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ticksToUnixEpochMilliseconds", function() { return ticksToUnixEpochMilliseconds; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "makeRangeStepFunction", function() { return makeRangeStepFunction; });
-/* harmony import */ var _Int32__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Int32 */ "./.fable/fable-library.2.1.12/Int32.js");
-/* harmony import */ var _Util__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Util */ "./.fable/fable-library.2.1.12/Util.js");
-// Adapted from: https://github.com/dcodeIO/long.js/blob/f572e3a17d313730cf11eb838f6d2a5e31626f8a/src/long.js
-// Apache License 2.0: https://github.com/dcodeIO/long.js/blob/master/LICENSE
-/* tslint:disable */
+/* harmony import */ var _Int32__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Int32 */ "./.fable/fable-library.2.3.25/Int32.js");
+/* harmony import */ var _lib_long__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./lib/long */ "./.fable/fable-library.2.3.25/lib/long.js");
 
 
-/**
- * wasm optimizations, to do native i64 multiplication and divide
- */
-var wasm = null;
-try {
-    wasm = new WebAssembly.Instance(new WebAssembly.Module(new Uint8Array([
-        0, 97, 115, 109, 1, 0, 0, 0, 1, 13, 2, 96, 0, 1, 127, 96, 4, 127, 127, 127, 127, 1, 127, 3, 7, 6, 0, 1, 1, 1, 1, 1, 6, 6, 1, 127, 1, 65, 0, 11, 7, 50, 6, 3, 109, 117, 108, 0, 1, 5, 100, 105, 118, 95, 115, 0, 2, 5, 100, 105, 118, 95, 117, 0, 3, 5, 114, 101, 109, 95, 115, 0, 4, 5, 114, 101, 109, 95, 117, 0, 5, 8, 103, 101, 116, 95, 104, 105, 103, 104, 0, 0, 10, 191, 1, 6, 4, 0, 35, 0, 11, 36, 1, 1, 126, 32, 0, 173, 32, 1, 173, 66, 32, 134, 132, 32, 2, 173, 32, 3, 173, 66, 32, 134, 132, 126, 34, 4, 66, 32, 135, 167, 36, 0, 32, 4, 167, 11, 36, 1, 1, 126, 32, 0, 173, 32, 1, 173, 66, 32, 134, 132, 32, 2, 173, 32, 3, 173, 66, 32, 134, 132, 127, 34, 4, 66, 32, 135, 167, 36, 0, 32, 4, 167, 11, 36, 1, 1, 126, 32, 0, 173, 32, 1, 173, 66, 32, 134, 132, 32, 2, 173, 32, 3, 173, 66, 32, 134, 132, 128, 34, 4, 66, 32, 135, 167, 36, 0, 32, 4, 167, 11, 36, 1, 1, 126, 32, 0, 173, 32, 1, 173, 66, 32, 134, 132, 32, 2, 173, 32, 3, 173, 66, 32, 134, 132, 129, 34, 4, 66, 32, 135, 167, 36, 0, 32, 4, 167, 11, 36, 1, 1, 126, 32, 0, 173, 32, 1, 173, 66, 32, 134, 132, 32, 2, 173, 32, 3, 173, 66, 32, 134, 132, 130, 34, 4, 66, 32, 135, 167, 36, 0, 32, 4, 167, 11
-    ])), {}).exports;
+/* harmony default export */ __webpack_exports__["default"] = (_lib_long__WEBPACK_IMPORTED_MODULE_1__["Long"]);
+const get_Zero = _lib_long__WEBPACK_IMPORTED_MODULE_1__["ZERO"];
+const get_One = _lib_long__WEBPACK_IMPORTED_MODULE_1__["ONE"];
+const op_Addition = _lib_long__WEBPACK_IMPORTED_MODULE_1__["add"];
+const op_Subtraction = _lib_long__WEBPACK_IMPORTED_MODULE_1__["subtract"];
+const op_Multiply = _lib_long__WEBPACK_IMPORTED_MODULE_1__["multiply"];
+const op_Division = _lib_long__WEBPACK_IMPORTED_MODULE_1__["divide"];
+const op_Modulus = _lib_long__WEBPACK_IMPORTED_MODULE_1__["modulo"];
+const op_UnaryNegation = _lib_long__WEBPACK_IMPORTED_MODULE_1__["negate"];
+const op_LeftShift = _lib_long__WEBPACK_IMPORTED_MODULE_1__["shiftLeft"];
+const op_RightShift = _lib_long__WEBPACK_IMPORTED_MODULE_1__["shiftRight"];
+const op_RightShiftUnsigned = _lib_long__WEBPACK_IMPORTED_MODULE_1__["shiftRightUnsigned"];
+const op_BitwiseAnd = _lib_long__WEBPACK_IMPORTED_MODULE_1__["and"];
+const op_BitwiseOr = _lib_long__WEBPACK_IMPORTED_MODULE_1__["or"];
+const op_ExclusiveOr = _lib_long__WEBPACK_IMPORTED_MODULE_1__["xor"];
+const op_LogicalNot = _lib_long__WEBPACK_IMPORTED_MODULE_1__["not"];
+const op_LessThan = _lib_long__WEBPACK_IMPORTED_MODULE_1__["lessThan"];
+const op_LessThanOrEqual = _lib_long__WEBPACK_IMPORTED_MODULE_1__["lessThanOrEqual"];
+const op_GreaterThan = _lib_long__WEBPACK_IMPORTED_MODULE_1__["greaterThan"];
+const op_GreaterThanOrEqual = _lib_long__WEBPACK_IMPORTED_MODULE_1__["greaterThanOrEqual"];
+const op_Equality = _lib_long__WEBPACK_IMPORTED_MODULE_1__["equals"];
+const op_Inequality = _lib_long__WEBPACK_IMPORTED_MODULE_1__["notEquals"];
+const equals = _lib_long__WEBPACK_IMPORTED_MODULE_1__["equals"];
+const compare = _lib_long__WEBPACK_IMPORTED_MODULE_1__["compare"];
+const fromInt = _lib_long__WEBPACK_IMPORTED_MODULE_1__["fromInt"];
+const fromBits = _lib_long__WEBPACK_IMPORTED_MODULE_1__["fromBits"];
+const fromBytes = _lib_long__WEBPACK_IMPORTED_MODULE_1__["fromBytes"];
+const fromNumber = _lib_long__WEBPACK_IMPORTED_MODULE_1__["fromNumber"];
+const fromString = _lib_long__WEBPACK_IMPORTED_MODULE_1__["fromString"];
+const fromValue = _lib_long__WEBPACK_IMPORTED_MODULE_1__["fromValue"];
+const toInt = _lib_long__WEBPACK_IMPORTED_MODULE_1__["toInt"];
+const toBytes = _lib_long__WEBPACK_IMPORTED_MODULE_1__["toBytes"];
+const toNumber = _lib_long__WEBPACK_IMPORTED_MODULE_1__["toNumber"];
+const toString = _lib_long__WEBPACK_IMPORTED_MODULE_1__["toString"];
+const getLowBits = _lib_long__WEBPACK_IMPORTED_MODULE_1__["getLowBits"];
+const getHighBits = _lib_long__WEBPACK_IMPORTED_MODULE_1__["getHighBits"];
+const getLowBitsUnsigned = _lib_long__WEBPACK_IMPORTED_MODULE_1__["getLowBitsUnsigned"];
+const getHighBitsUnsigned = _lib_long__WEBPACK_IMPORTED_MODULE_1__["getHighBitsUnsigned"];
+function getMaxValue(unsigned, radix, isNegative) {
+    switch (radix) {
+        case 2: return unsigned ?
+            "1111111111111111111111111111111111111111111111111111111111111111" :
+            (isNegative ? "1000000000000000000000000000000000000000000000000000000000000000"
+                : "111111111111111111111111111111111111111111111111111111111111111");
+        case 8: return unsigned ?
+            "1777777777777777777777" :
+            (isNegative ? "1000000000000000000000" : "777777777777777777777");
+        case 10: return unsigned ?
+            "18446744073709551615" :
+            (isNegative ? "9223372036854775808" : "9223372036854775807");
+        case 16: return unsigned ?
+            "FFFFFFFFFFFFFFFF" :
+            (isNegative ? "8000000000000000" : "7FFFFFFFFFFFFFFF");
+        default: throw new Error("Invalid radix.");
+    }
 }
-catch (e) {
-    // no wasm support :(
-}
-/**
- * Constructs a 64 bit two's-complement integer, given its low and high 32 bit values as *signed* integers.
- *  See the from* functions below for more convenient ways of constructing Longs.
- * @exports Long
- * @class A Long class for representing a 64 bit two's-complement integer value.
- * @param {number} low The low (signed) 32 bits of the long
- * @param {number} high The high (signed) 32 bits of the long
- * @param {boolean=} unsigned Whether unsigned or not, defaults to signed
- * @constructor
- */
-function Long(low, high, unsigned) {
-    /**
-     * The low 32 bits as a signed value.
-     * @type {number}
-     */
-    this.low = low | 0;
-    /**
-     * The high 32 bits as a signed value.
-     * @type {number}
-     */
-    this.high = high | 0;
-    /**
-     * Whether unsigned or not.
-     * @type {boolean}
-     */
-    this.unsigned = !!unsigned;
-}
-Long.prototype.GetHashCode = function () {
-    return Object(_Util__WEBPACK_IMPORTED_MODULE_1__["combineHashCodes"])([this.unsigned ? 1 : 0, this.high, this.low]);
-};
-Long.prototype.Equals = function (x) { return equals(this, x); };
-Long.prototype.CompareTo = function (x) { return compare(this, x); };
-Long.prototype.toString = function (radix) { return toString(this, radix); };
-Long.prototype.toJSON = function () { return toString(this); };
-const neg = op_UnaryNegation;
-const not = op_LogicalNot;
-const add = op_Addition;
-const sub = op_Subtraction;
-const mul = op_Multiply;
-const div = op_Division;
-const mod = op_Modulus;
-const shl = op_LeftShift;
-const shr = op_RightShift;
-const and = op_BitwiseAnd;
-const or = op_BitwiseOr;
-const xor = op_ExclusiveOr;
-// The internal representation of a long is the two given signed, 32-bit values.
-// We use 32-bit pieces because these are the size of integers on which
-// Javascript performs bit-operations.  For operations like addition and
-// multiplication, we split each number into 16 bit pieces, which can easily be
-// multiplied within Javascript's floating-point representation without overflow
-// or change in sign.
-//
-// In the algorithms below, we frequently reduce the negative case to the
-// positive case by negating the input(s) and then post-processing the result.
-// Note that we must ALWAYS check specially whether those values are MIN_VALUE
-// (-2^63) because -MIN_VALUE == MIN_VALUE (since 2^63 cannot be represented as
-// a positive number, it overflows back into a negative).  Not handling this
-// case would often result in infinite recursion.
-//
-// Common constant values ZERO, ONE, NEG_ONE, etc. are defined below the from*
-// methods on which they depend.
-/**
- * An indicator used to reliably determine if an object is a Long or not.
- * @type {boolean}
- * @const
- * @private
- */
-Long.prototype.__isLong__;
-Object.defineProperty(Long.prototype, "__isLong__", { value: true });
-/**
- * @function
- * @param {*} obj Object
- * @returns {boolean}
- * @inner
- */
-function isLong(obj) {
-    return (obj && obj["__isLong__"]) === true;
-}
-/**
- * A cache of the Long representations of small integer values.
- * @type {!Object}
- * @inner
- */
-var INT_CACHE = {};
-/**
- * A cache of the Long representations of small unsigned integer values.
- * @type {!Object}
- * @inner
- */
-var UINT_CACHE = {};
-/**
- * @param {number} value
- * @param {boolean=} unsigned
- * @returns {!Long}
- * @inner
- */
-function fromInt(value, unsigned) {
-    var obj, cachedObj, cache;
-    if (unsigned) {
-        value >>>= 0;
-        if (cache = (0 <= value && value < 256)) {
-            cachedObj = UINT_CACHE[value];
-            if (cachedObj)
-                return cachedObj;
-        }
-        obj = fromBits(value, (value | 0) < 0 ? -1 : 0, true);
-        if (cache)
-            UINT_CACHE[value] = obj;
-        return obj;
+function abs(x) {
+    if (!x.unsigned && _lib_long__WEBPACK_IMPORTED_MODULE_1__["isNegative"](x)) {
+        return op_UnaryNegation(x);
     }
     else {
-        value |= 0;
-        if (cache = (-128 <= value && value < 128)) {
-            cachedObj = INT_CACHE[value];
-            if (cachedObj)
-                return cachedObj;
-        }
-        obj = fromBits(value, value < 0 ? -1 : 0, false);
-        if (cache)
-            INT_CACHE[value] = obj;
-        return obj;
+        return x;
     }
 }
-/**
- * @param {number} value
- * @param {boolean=} unsigned
- * @returns {!Long}
- * @inner
- */
-function fromNumber(value, unsigned) {
-    if (isNaN(value))
-        return unsigned ? UZERO : ZERO;
-    if (unsigned) {
-        if (value < 0)
-            return UZERO;
-        if (value >= TWO_PWR_64_DBL)
-            return MAX_UNSIGNED_VALUE;
-    }
-    else {
-        if (value <= -TWO_PWR_63_DBL)
-            return MIN_VALUE;
-        if (value + 1 >= TWO_PWR_63_DBL)
-            return MAX_VALUE;
-    }
-    if (value < 0)
-        return op_UnaryNegation(fromNumber(-value, unsigned));
-    return fromBits((value % TWO_PWR_32_DBL) | 0, (value / TWO_PWR_32_DBL) | 0, unsigned);
-}
-/**
- * @param {number} value
- * @param {boolean} unsigned
- * @param {number} kind
- * @returns {!Long}
- * @inner
- */
 function fromInteger(value, unsigned, kind) {
-    var x;
-    var xh = 0;
+    let x = value;
+    let xh = 0;
     switch (kind) {
         case 0:
             x = value << 24 >> 24;
@@ -3842,105 +3813,24 @@ function fromInteger(value, unsigned, kind) {
             x = value >> 0;
             xh = x;
             break;
-        case 6: x = value >>> 0;
+        case 6:
+            x = value >>> 0;
+            break;
     }
-    return fromBits(x, xh >> 31, unsigned);
-}
-/**
- * @param {number} lowBits
- * @param {number} highBits
- * @param {boolean=} unsigned
- * @returns {!Long}
- * @inner
- */
-function fromBits(lowBits, highBits, unsigned) {
-    return new Long(lowBits, highBits, unsigned);
-}
-/**
- * @function
- * @param {number} base
- * @param {number} exponent
- * @returns {number}
- * @inner
- */
-var pow_dbl = Math.pow; // Used 4 times (4*8 to 15+4)
-/**
- * @param {string} str
- * @param {(boolean|number)=} unsigned
- * @param {number=} radix
- * @returns {!Long}
- * @inner
- */
-function fromString(str, unsigned, radix) {
-    if (str.length === 0)
-        throw Error('empty string');
-    if (str === "NaN" || str === "Infinity" || str === "+Infinity" || str === "-Infinity")
-        return ZERO;
-    if (typeof unsigned === 'number') {
-        // For goog.math.long compatibility
-        radix = unsigned,
-            unsigned = false;
-    }
-    else {
-        unsigned = !!unsigned;
-    }
-    radix = radix || 10;
-    if (radix < 2 || 36 < radix)
-        throw RangeError('radix');
-    var p = str.indexOf('-');
-    if (p > 0)
-        throw Error('interior hyphen');
-    else if (p === 0) {
-        return op_UnaryNegation(fromString(str.substring(1), unsigned, radix));
-    }
-    // Do several (8) digits each time through the loop, so as to
-    // minimize the calls to the very expensive emulated div.
-    var radixToPower = fromNumber(pow_dbl(radix, 8));
-    var result = ZERO;
-    for (var i = 0; i < str.length; i += 8) {
-        var size = Math.min(8, str.length - i), value = parseInt(str.substring(i, i + size), radix);
-        if (size < 8) {
-            var power = fromNumber(pow_dbl(radix, size));
-            result = op_Addition(op_Multiply(result, power), fromNumber(value));
-        }
-        else {
-            result = op_Multiply(result, radixToPower);
-            result = op_Addition(result, fromNumber(value));
-        }
-    }
-    result.unsigned = unsigned;
-    return result;
-}
-function getMaxValue(unsigned, radix, isNegative) {
-    switch (radix) {
-        case 2: return unsigned ?
-            "1111111111111111111111111111111111111111111111111111111111111111" :
-            (isNegative ? "1000000000000000000000000000000000000000000000000000000000000000"
-                : "111111111111111111111111111111111111111111111111111111111111111");
-        case 8: return unsigned ?
-            "1777777777777777777777" :
-            (isNegative ? "1000000000000000000000" : "777777777777777777777");
-        case 10: return unsigned ?
-            "18446744073709551615" :
-            (isNegative ? "9223372036854775808" : "9223372036854775807");
-        case 16: return unsigned ?
-            "FFFFFFFFFFFFFFFF" :
-            (isNegative ? "8000000000000000" : "7FFFFFFFFFFFFFFF");
-        default: throw new Error("Invalid radix.");
-    }
+    return _lib_long__WEBPACK_IMPORTED_MODULE_1__["fromBits"](x, xh >> 31, unsigned);
 }
 function parse(str, style, unsigned, bitsize, radix) {
     const res = Object(_Int32__WEBPACK_IMPORTED_MODULE_0__["isValid"])(str, style, radix);
     if (res != null) {
         const lessOrEqual = (x, y) => {
             const len = Math.max(x.length, y.length);
-            return x.padStart(len, "0") <= maxValue.padStart(len, "0");
+            return x.padStart(len, "0") <= y.padStart(len, "0");
         };
         const isNegative = res.sign === "-";
         const maxValue = getMaxValue(unsigned || res.radix !== 10, res.radix, isNegative);
-        if (lessOrEqual(res.digits, maxValue)) {
+        if (lessOrEqual(res.digits.toUpperCase(), maxValue)) {
             str = isNegative ? res.sign + res.digits : res.digits;
-            return fromString(str, unsigned, res.radix);
+            return _lib_long__WEBPACK_IMPORTED_MODULE_1__["fromString"](str, unsigned, res.radix);
         }
     }
     throw new Error("Input string was not in a correct format.");
@@ -3953,799 +3843,40 @@ function tryParse(str, style, unsigned, bitsize) {
     catch (_a) {
         // supress error
     }
-    return [false, ZERO];
+    return [false, _lib_long__WEBPACK_IMPORTED_MODULE_1__["ZERO"]];
 }
-/**
- * @function
- * @param {!Long|number|string|!{low: number, high: number, unsigned: boolean}} val
- * @param {boolean=} unsigned
- * @returns {!Long}
- * @inner
- */
-function fromValue(val, unsigned) {
-    if (typeof val === 'number')
-        return fromNumber(val, unsigned);
-    if (typeof val === 'string')
-        return fromString(val, unsigned);
-    // Throws for non-objects, converts non-instanceof Long:
-    return fromBits(val.low, val.high, typeof unsigned === 'boolean' ? unsigned : val.unsigned);
-}
-// NOTE: the compiler should inline these constant values below and then remove these variables, so there should be
-// no runtime penalty for these.
-/**
- * @type {number}
- * @const
- * @inner
- */
-var TWO_PWR_16_DBL = 1 << 16;
-/**
- * @type {number}
- * @const
- * @inner
- */
-var TWO_PWR_24_DBL = 1 << 24;
-/**
- * @type {number}
- * @const
- * @inner
- */
-var TWO_PWR_32_DBL = TWO_PWR_16_DBL * TWO_PWR_16_DBL;
-/**
- * @type {number}
- * @const
- * @inner
- */
-var TWO_PWR_64_DBL = TWO_PWR_32_DBL * TWO_PWR_32_DBL;
-/**
- * @type {number}
- * @const
- * @inner
- */
-var TWO_PWR_63_DBL = TWO_PWR_64_DBL / 2;
-/**
- * @type {!Long}
- * @const
- * @inner
- */
-var TWO_PWR_24 = fromInt(TWO_PWR_24_DBL);
-/**
- * @type {!Long}
- * @inner
- */
-var ZERO = fromInt(0);
-/**
- * @type {!Long}
- * @inner
- */
-var UZERO = fromInt(0, true);
-/**
- * @type {!Long}
- * @inner
- */
-var ONE = fromInt(1);
-/**
- * @type {!Long}
- * @inner
- */
-var UONE = fromInt(1, true);
-/**
- * @type {!Long}
- * @inner
- */
-var NEG_ONE = fromInt(-1);
-/**
- * @type {!Long}
- * @inner
- */
-var MAX_VALUE = fromBits(0xFFFFFFFF | 0, 0x7FFFFFFF | 0, false);
-/**
- * @type {!Long}
- * @inner
- */
-var MAX_UNSIGNED_VALUE = fromBits(0xFFFFFFFF | 0, 0xFFFFFFFF | 0, true);
-/**
- * @type {!Long}
- * @inner
- */
-var MIN_VALUE = fromBits(0, 0x80000000 | 0, false);
-/**
- * Converts the Long to a 32 bit integer, assuming it is a 32 bit integer.
- * @returns {number}
- */
-function toInt($this) {
-    return $this.unsigned ? $this.low >>> 0 : $this.low;
-}
-;
-/**
- * Converts the Long to a the nearest floating-point representation of this value (double, 53 bit mantissa).
- * @returns {number}
- */
-function toNumber($this) {
-    if ($this.unsigned)
-        return (($this.high >>> 0) * TWO_PWR_32_DBL) + ($this.low >>> 0);
-    return $this.high * TWO_PWR_32_DBL + ($this.low >>> 0);
-}
-;
-/**
- * Converts the Long to a string written in the specified radix.
- * @param {number=} radix Radix (2-36), defaults to 10
- * @returns {string}
- * @override
- * @throws {RangeError} If `radix` is out of range
- */
-function toString($this, radix) {
-    radix = radix || 10;
-    if (radix < 2 || 36 < radix)
-        throw RangeError('radix');
-    if (isZero($this))
-        return '0';
-    if (isNegative($this)) { // Unsigned Longs are never negative
-        if (equals($this, MIN_VALUE)) {
-            // We need to change the Long value before it can be negated, so we remove
-            // the bottom-most digit in this base and then recurse to do the rest.
-            var radixLong = fromNumber(radix), div = op_Division($this, radixLong), rem1 = op_Subtraction(op_Multiply(div, radixLong), $this);
-            return toString(div, radix) + toInt(rem1).toString(radix);
-        }
-        else
-            return '-' + toString(op_UnaryNegation($this), radix);
-    }
-    // Do several (6) digits each time through the loop, so as to
-    // minimize the calls to the very expensive emulated div.
-    var radixToPower = fromNumber(pow_dbl(radix, 6), $this.unsigned), rem = $this;
-    var result = '';
-    while (true) {
-        var remDiv = op_Division(rem, radixToPower), intval = toInt(op_Subtraction(rem, op_Multiply(remDiv, radixToPower))) >>> 0, digits = intval.toString(radix);
-        rem = remDiv;
-        if (isZero(rem))
-            return digits + result;
-        else {
-            while (digits.length < 6)
-                digits = '0' + digits;
-            result = '' + digits + result;
-        }
-    }
-}
-;
-/**
- * Gets the high 32 bits as a signed integer.
- * @returns {number} Signed high bits
- */
-function getHighBits($this) {
-    return $this.high;
-}
-;
-/**
- * Gets the high 32 bits as an unsigned integer.
- * @returns {number} Unsigned high bits
- */
-function getHighBitsUnsigned($this) {
-    return $this.high >>> 0;
-}
-;
-/**
- * Gets the low 32 bits as a signed integer.
- * @returns {number} Signed low bits
- */
-function getLowBits($this) {
-    return $this.low;
-}
-;
-/**
- * Gets the low 32 bits as an unsigned integer.
- * @returns {number} Unsigned low bits
- */
-function getLowBitsUnsigned($this) {
-    return $this.low >>> 0;
-}
-;
-/**
- * Gets the number of bits needed to represent the absolute value of this Long.
- * @returns {number}
- */
-function getNumBitsAbs($this) {
-    if (isNegative($this)) // Unsigned Longs are never negative
-        return equals($this, MIN_VALUE) ? 64 : getNumBitsAbs(op_UnaryNegation($this));
-    var val = $this.high != 0 ? $this.high : $this.low;
-    for (var bit = 31; bit > 0; bit--)
-        if ((val & (1 << bit)) != 0)
-            break;
-    return $this.high != 0 ? bit + 33 : bit + 1;
-}
-;
-/**
- * Tests if this Long's value equals zero.
- * @returns {boolean}
- */
-function isZero($this) {
-    return $this.high === 0 && $this.low === 0;
-}
-;
-/**
- * Tests if this Long's value is negative.
- * @returns {boolean}
- */
-function isNegative($this) {
-    return !$this.unsigned && $this.high < 0;
-}
-;
-/**
- * Tests if this Long's value is positive.
- * @returns {boolean}
- */
-function isPositive($this) {
-    return $this.unsigned || $this.high >= 0;
-}
-;
-/**
- * Tests if this Long's value is odd.
- * @returns {boolean}
- */
-function isOdd($this) {
-    return ($this.low & 1) === 1;
-}
-;
-/**
- * Tests if this Long's value is even.
- * @returns {boolean}
- */
-function isEven($this) {
-    return ($this.low & 1) === 0;
-}
-;
-/**
- * Tests if this Long's value equals the specified's.
- * @param {!Long|number|string} other Other value
- * @returns {boolean}
- */
-function equals($this, other) {
-    if (!isLong(other))
-        other = fromValue(other);
-    if ($this.unsigned !== other.unsigned && ($this.high >>> 31) === 1 && (other.high >>> 31) === 1)
-        return false;
-    return $this.high === other.high && $this.low === other.low;
-}
-;
-/**
- * Tests if this Long's value differs from the specified's.
- * @param {!Long|number|string} other Other value
- * @returns {boolean}
- */
-function notEquals($this, other) {
-    return !equals($this, /* validates */ other);
-}
-;
-/**
- * Tests if this Long's value is less than the specified's.
- * @param {!Long|number|string} other Other value
- * @returns {boolean}
- */
-function lessThan($this, other) {
-    return compare($this, /* validates */ other) < 0;
-}
-;
-/**
- * Tests if this Long's value is less than or equal the specified's.
- * @param {!Long|number|string} other Other value
- * @returns {boolean}
- */
-function lessThanOrEqual($this, other) {
-    return compare($this, /* validates */ other) <= 0;
-}
-;
-/**
- * Tests if this Long's value is greater than the specified's.
- * @param {!Long|number|string} other Other value
- * @returns {boolean}
- */
-function greaterThan($this, other) {
-    return compare($this, /* validates */ other) > 0;
-}
-;
-/**
- * Tests if this Long's value is greater than or equal the specified's.
- * @param {!Long|number|string} other Other value
- * @returns {boolean}
- */
-function greaterThanOrEqual($this, other) {
-    return compare($this, /* validates */ other) >= 0;
-}
-;
-/**
- * Compares this Long's value with the specified's.
- * @param {!Long|number|string} other Other value
- * @returns {number} 0 if they are the same, 1 if the this is greater and -1
- *  if the given one is greater
- */
-function compare($this, other) {
-    if (!isLong(other))
-        other = fromValue(other);
-    if (equals($this, other))
-        return 0;
-    var thisNeg = isNegative($this), otherNeg = isNegative(other);
-    if (thisNeg && !otherNeg)
-        return -1;
-    if (!thisNeg && otherNeg)
-        return 1;
-    // At this point the sign bits are the same
-    if (!$this.unsigned)
-        return isNegative(op_Subtraction($this, other)) ? -1 : 1;
-    // Both are positive if at least one is unsigned
-    return (other.high >>> 0) > ($this.high >>> 0) || (other.high === $this.high && (other.low >>> 0) > ($this.low >>> 0)) ? -1 : 1;
-}
-;
-/**
- * Absolute value of the given number.
- */
-function abs($this) {
-    if (!$this.unsigned && isNegative($this))
-        return op_UnaryNegation($this);
-    else
-        return $this;
-}
-/**
- * Negates this Long's value.
- * @returns {!Long} Negated Long
- */
-function op_UnaryNegation($this) {
-    if (!$this.unsigned && equals($this, MIN_VALUE))
-        return MIN_VALUE;
-    return op_Addition(op_LogicalNot($this), ONE);
-}
-;
-/**
- * Returns the sum of this and the specified Long.
- * @param {!Long|number|string} addend Addend
- * @returns {!Long} Sum
- */
-function op_Addition($this, addend) {
-    if (!isLong(addend))
-        addend = fromValue(addend);
-    // Divide each number into 4 chunks of 16 bits, and then sum the chunks.
-    var a48 = $this.high >>> 16;
-    var a32 = $this.high & 0xFFFF;
-    var a16 = $this.low >>> 16;
-    var a00 = $this.low & 0xFFFF;
-    var b48 = addend.high >>> 16;
-    var b32 = addend.high & 0xFFFF;
-    var b16 = addend.low >>> 16;
-    var b00 = addend.low & 0xFFFF;
-    var c48 = 0, c32 = 0, c16 = 0, c00 = 0;
-    c00 += a00 + b00;
-    c16 += c00 >>> 16;
-    c00 &= 0xFFFF;
-    c16 += a16 + b16;
-    c32 += c16 >>> 16;
-    c16 &= 0xFFFF;
-    c32 += a32 + b32;
-    c48 += c32 >>> 16;
-    c32 &= 0xFFFF;
-    c48 += a48 + b48;
-    c48 &= 0xFFFF;
-    return fromBits((c16 << 16) | c00, (c48 << 16) | c32, $this.unsigned);
-}
-;
-/**
- * Returns the difference of this and the specified Long.
- * @param {!Long|number|string} subtrahend Subtrahend
- * @returns {!Long} Difference
- */
-function op_Subtraction($this, subtrahend) {
-    if (!isLong(subtrahend))
-        subtrahend = fromValue(subtrahend);
-    return op_Addition($this, op_UnaryNegation(subtrahend));
-}
-;
-/**
- * Returns the product of this and the specified Long.
- * @param {!Long|number|string} multiplier Multiplier
- * @returns {!Long} Product
- */
-function op_Multiply($this, multiplier) {
-    if (isZero($this))
-        return $this.unsigned ? UZERO : ZERO;
-    if (!isLong(multiplier))
-        multiplier = fromValue(multiplier);
-    // use wasm support if present
-    if (wasm) {
-        var low = wasm.mul($this.low, $this.high, multiplier.low, multiplier.high);
-        return fromBits(low, wasm.get_high(), $this.unsigned);
-    }
-    if (isZero(multiplier))
-        return $this.unsigned ? UZERO : ZERO;
-    if (equals($this, MIN_VALUE))
-        return isOdd(multiplier) ? MIN_VALUE : ZERO;
-    if (equals(multiplier, MIN_VALUE))
-        return isOdd($this) ? MIN_VALUE : ZERO;
-    if (isNegative($this)) {
-        if (isNegative(multiplier))
-            return op_Multiply(op_UnaryNegation($this), op_UnaryNegation(multiplier));
-        else
-            return op_UnaryNegation(op_Multiply(op_UnaryNegation($this), multiplier));
-    }
-    else if (isNegative(multiplier))
-        return op_UnaryNegation(op_Multiply($this, op_UnaryNegation(multiplier)));
-    // If both longs are small, use float multiplication
-    if (lessThan($this, TWO_PWR_24) && lessThan(multiplier, TWO_PWR_24))
-        return fromNumber(toNumber($this) * toNumber(multiplier), $this.unsigned);
-    // Divide each long into 4 chunks of 16 bits, and then add up 4x4 products.
-    // We can skip products that would overflow.
-    var a48 = $this.high >>> 16;
-    var a32 = $this.high & 0xFFFF;
-    var a16 = $this.low >>> 16;
-    var a00 = $this.low & 0xFFFF;
-    var b48 = multiplier.high >>> 16;
-    var b32 = multiplier.high & 0xFFFF;
-    var b16 = multiplier.low >>> 16;
-    var b00 = multiplier.low & 0xFFFF;
-    var c48 = 0, c32 = 0, c16 = 0, c00 = 0;
-    c00 += a00 * b00;
-    c16 += c00 >>> 16;
-    c00 &= 0xFFFF;
-    c16 += a16 * b00;
-    c32 += c16 >>> 16;
-    c16 &= 0xFFFF;
-    c16 += a00 * b16;
-    c32 += c16 >>> 16;
-    c16 &= 0xFFFF;
-    c32 += a32 * b00;
-    c48 += c32 >>> 16;
-    c32 &= 0xFFFF;
-    c32 += a16 * b16;
-    c48 += c32 >>> 16;
-    c32 &= 0xFFFF;
-    c32 += a00 * b32;
-    c48 += c32 >>> 16;
-    c32 &= 0xFFFF;
-    c48 += a48 * b00 + a32 * b16 + a16 * b32 + a00 * b48;
-    c48 &= 0xFFFF;
-    return fromBits((c16 << 16) | c00, (c48 << 16) | c32, $this.unsigned);
-}
-;
-/**
- * Returns this Long divided by the specified. The result is signed if this Long is signed or
- *  unsigned if this Long is unsigned.
- * @param {!Long|number|string} divisor Divisor
- * @returns {!Long} Quotient
- */
-function op_Division($this, divisor) {
-    if (!isLong(divisor))
-        divisor = fromValue(divisor);
-    if (isZero(divisor))
-        throw Error('division by zero');
-    // use wasm support if present
-    if (wasm) {
-        // guard against signed division overflow: the largest
-        // negative number / -1 would be 1 larger than the largest
-        // positive number, due to two's complement.
-        if (!$this.unsigned &&
-            $this.high === -0x80000000 &&
-            divisor.low === -1 && divisor.high === -1) {
-            // be consistent with non-wasm code path
-            return $this;
-        }
-        var low = ($this.unsigned ? wasm.div_u : wasm.div_s)($this.low, $this.high, divisor.low, divisor.high);
-        return fromBits(low, wasm.get_high(), $this.unsigned);
-    }
-    if (isZero($this))
-        return $this.unsigned ? UZERO : ZERO;
-    var approx, rem, res;
-    if (!$this.unsigned) {
-        // This section is only relevant for signed longs and is derived from the
-        // closure library as a whole.
-        if (equals($this, MIN_VALUE)) {
-            if (equals(divisor, ONE) || equals(divisor, NEG_ONE))
-                return MIN_VALUE; // recall that -MIN_VALUE == MIN_VALUE
-            else if (equals(divisor, MIN_VALUE))
-                return ONE;
-            else {
-                // At this point, we have |other| >= 2, so |this/other| < |MIN_VALUE|.
-                var halfThis = op_RightShift($this, 1);
-                approx = op_LeftShift(op_Division(halfThis, divisor), 1);
-                if (equals(approx, ZERO)) {
-                    return isNegative(divisor) ? ONE : NEG_ONE;
-                }
-                else {
-                    rem = op_Subtraction($this, op_Multiply(divisor, approx));
-                    res = op_Addition(approx, op_Division(rem, divisor));
-                    return res;
-                }
-            }
-        }
-        else if (equals(divisor, MIN_VALUE))
-            return $this.unsigned ? UZERO : ZERO;
-        if (isNegative($this)) {
-            if (isNegative(divisor))
-                return op_Division(op_UnaryNegation($this), op_UnaryNegation(divisor));
-            return op_UnaryNegation(op_Division(op_UnaryNegation($this), divisor));
-        }
-        else if (isNegative(divisor))
-            return op_UnaryNegation(op_Division($this, op_UnaryNegation(divisor)));
-        res = ZERO;
-    }
-    else {
-        // The algorithm below has not been made for unsigned longs. It's therefore
-        // required to take special care of the MSB prior to running it.
-        if (!divisor.unsigned)
-            divisor = toUnsigned(divisor);
-        if (greaterThan(divisor, $this))
-            return UZERO;
-        if (greaterThan(divisor, op_RightShiftUnsigned($this, 1))) // 15 >>> 1 = 7 ; with divisor = 8 ; true
-            return UONE;
-        res = UZERO;
-    }
-    // Repeat the following until the remainder is less than other:  find a
-    // floating-point that approximates remainder / other *from below*, add this
-    // into the result, and subtract it from the remainder.  It is critical that
-    // the approximate value is less than or equal to the real value so that the
-    // remainder never becomes negative.
-    rem = $this;
-    while (greaterThanOrEqual(rem, divisor)) {
-        // Approximate the result of division. This may be a little greater or
-        // smaller than the actual value.
-        approx = Math.max(1, Math.floor(toNumber(rem) / toNumber(divisor)));
-        // We will tweak the approximate result by changing it in the 48-th digit or
-        // the smallest non-fractional digit, whichever is larger.
-        var log2 = Math.ceil(Math.log(approx) / Math.LN2), delta = (log2 <= 48) ? 1 : pow_dbl(2, log2 - 48), 
-        // Decrease the approximation until it is smaller than the remainder.  Note
-        // that if it is too large, the product overflows and is negative.
-        approxRes = fromNumber(approx), approxRem = op_Multiply(approxRes, divisor);
-        while (isNegative(approxRem) || greaterThan(approxRem, rem)) {
-            approx -= delta;
-            approxRes = fromNumber(approx, $this.unsigned);
-            approxRem = op_Multiply(approxRes, divisor);
-        }
-        // We know the answer can't be zero... and actually, zero would cause
-        // infinite recursion since we would make no progress.
-        if (isZero(approxRes))
-            approxRes = ONE;
-        res = op_Addition(res, approxRes);
-        rem = op_Subtraction(rem, approxRem);
-    }
-    return res;
-}
-;
-/**
- * Returns this Long modulo the specified.
- * @param {!Long|number|string} divisor Divisor
- * @returns {!Long} Remainder
- */
-function op_Modulus($this, divisor) {
-    if (!isLong(divisor))
-        divisor = fromValue(divisor);
-    // use wasm support if present
-    if (wasm) {
-        var low = ($this.unsigned ? wasm.rem_u : wasm.rem_s)($this.low, $this.high, divisor.low, divisor.high);
-        return fromBits(low, wasm.get_high(), $this.unsigned);
-    }
-    return op_Subtraction($this, op_Multiply(op_Division($this, divisor), divisor));
-}
-;
-/**
- * Returns the bitwise NOT of this Long.
- * @returns {!Long}
- */
-function op_LogicalNot($this) {
-    return fromBits(~$this.low, ~$this.high, $this.unsigned);
-}
-;
-/**
- * Returns the bitwise AND of this Long and the specified.
- * @param {!Long|number|string} other Other Long
- * @returns {!Long}
- */
-function op_BitwiseAnd($this, other) {
-    if (!isLong(other))
-        other = fromValue(other);
-    return fromBits($this.low & other.low, $this.high & other.high, $this.unsigned);
-}
-;
-/**
- * Returns the bitwise OR of this Long and the specified.
- * @param {!Long|number|string} other Other Long
- * @returns {!Long}
- */
-function op_BitwiseOr($this, other) {
-    if (!isLong(other))
-        other = fromValue(other);
-    return fromBits($this.low | other.low, $this.high | other.high, $this.unsigned);
-}
-;
-/**
- * Returns the bitwise XOR of this Long and the given one.
- * @param {!Long|number|string} other Other Long
- * @returns {!Long}
- */
-function op_ExclusiveOr($this, other) {
-    if (!isLong(other))
-        other = fromValue(other);
-    return fromBits($this.low ^ other.low, $this.high ^ other.high, $this.unsigned);
-}
-;
-/**
- * Returns this Long with bits shifted to the left by the given amount.
- * @param {number|!Long} numBits Number of bits
- * @returns {!Long} Shifted Long
- */
-function op_LeftShift($this, numBits) {
-    if (isLong(numBits))
-        numBits = toInt(numBits);
-    if ((numBits &= 63) === 0)
-        return $this;
-    else if (numBits < 32)
-        return fromBits($this.low << numBits, ($this.high << numBits) | ($this.low >>> (32 - numBits)), $this.unsigned);
-    else
-        return fromBits(0, $this.low << (numBits - 32), $this.unsigned);
-}
-;
-/**
- * Returns this Long with bits arithmetically shifted to the right by the given amount.
- * @param {number|!Long} numBits Number of bits
- * @returns {!Long} Shifted Long
- */
-function op_RightShift($this, numBits) {
-    if (isLong(numBits))
-        numBits = toInt(numBits);
-    if ((numBits &= 63) === 0)
-        return $this;
-    else if (numBits < 32)
-        return fromBits(($this.low >>> numBits) | ($this.high << (32 - numBits)), $this.high >> numBits, $this.unsigned);
-    else
-        return fromBits($this.high >> (numBits - 32), $this.high >= 0 ? 0 : -1, $this.unsigned);
-}
-;
-/**
- * Returns this Long with bits logically shifted to the right by the given amount.
- * @param {number|!Long} numBits Number of bits
- * @returns {!Long} Shifted Long
- */
-function op_RightShiftUnsigned($this, numBits) {
-    if (isLong(numBits))
-        numBits = toInt(numBits);
-    numBits &= 63;
-    if (numBits === 0)
-        return $this;
-    else {
-        var high = $this.high;
-        if (numBits < 32) {
-            var low = $this.low;
-            return fromBits((low >>> numBits) | (high << (32 - numBits)), high >>> numBits, $this.unsigned);
-        }
-        else if (numBits === 32)
-            return fromBits(high, 0, $this.unsigned);
-        else
-            return fromBits(high >>> (numBits - 32), 0, $this.unsigned);
-    }
-}
-;
-/**
- * Converts this Long to signed.
- * @returns {!Long} Signed long
- */
-function toSigned($this) {
-    if (!$this.unsigned)
-        return $this;
-    return fromBits($this.low, $this.high, false);
-}
-;
-/**
- * Converts this Long to unsigned.
- * @returns {!Long} Unsigned long
- */
-function toUnsigned($this) {
-    if ($this.unsigned)
-        return $this;
-    return fromBits($this.low, $this.high, true);
-}
-;
-/**
- * Converts this Long to its byte representation.
- * @param {boolean=} le Whether little or big endian, defaults to big endian
- * @returns {!Array.<number>} Byte representation
- */
-function toBytes($this, le) {
-    return le ? toBytesLE($this) : toBytesBE($this);
-}
-;
-/**
- * Converts this Long to its little endian byte representation.
- * @returns {!Array.<number>} Little endian byte representation
- */
-function toBytesLE($this) {
-    var hi = $this.high, lo = $this.low;
-    return [
-        lo & 0xff,
-        lo >>> 8 & 0xff,
-        lo >>> 16 & 0xff,
-        lo >>> 24,
-        hi & 0xff,
-        hi >>> 8 & 0xff,
-        hi >>> 16 & 0xff,
-        hi >>> 24
-    ];
-}
-;
-/**
- * Converts this Long to its big endian byte representation.
- * @returns {!Array.<number>} Big endian byte representation
- */
-function toBytesBE($this) {
-    var hi = $this.high, lo = $this.low;
-    return [
-        hi >>> 24,
-        hi >>> 16 & 0xff,
-        hi >>> 8 & 0xff,
-        hi & 0xff,
-        lo >>> 24,
-        lo >>> 16 & 0xff,
-        lo >>> 8 & 0xff,
-        lo & 0xff
-    ];
-}
-;
-/**
- * Creates a Long from its byte representation.
- * @param {!Array.<number>} bytes Byte representation
- * @param {boolean=} unsigned Whether unsigned or not, defaults to signed
- * @param {boolean=} le Whether little or big endian, defaults to big endian
- * @returns {Long} The corresponding Long value
- */
-function fromBytes(bytes, unsigned, le) {
-    return le ? fromBytesLE(bytes, unsigned) : fromBytesBE(bytes, unsigned);
-}
-;
-/**
- * Creates a Long from its little endian byte representation.
- * @param {!Array.<number>} bytes Little endian byte representation
- * @param {boolean=} unsigned Whether unsigned or not, defaults to signed
- * @returns {Long} The corresponding Long value
- */
-function fromBytesLE(bytes, unsigned) {
-    return new Long(bytes[0] |
-        bytes[1] << 8 |
-        bytes[2] << 16 |
-        bytes[3] << 24, bytes[4] |
-        bytes[5] << 8 |
-        bytes[6] << 16 |
-        bytes[7] << 24, unsigned);
-}
-;
-/**
- * Creates a Long from its big endian byte representation.
- * @param {!Array.<number>} bytes Big endian byte representation
- * @param {boolean=} unsigned Whether unsigned or not, defaults to signed
- * @returns {Long} The corresponding Long value
- */
-function fromBytesBE(bytes, unsigned) {
-    return new Long(bytes[4] << 24 |
-        bytes[5] << 16 |
-        bytes[6] << 8 |
-        bytes[7], bytes[0] << 24 |
-        bytes[1] << 16 |
-        bytes[2] << 8 |
-        bytes[3], unsigned);
-}
-;
 function unixEpochMillisecondsToTicks(ms, offset) {
-    return op_Multiply(op_Addition(op_Addition(fromNumber(ms), 62135596800000), offset), 10000);
+    return op_Multiply(op_Addition(op_Addition(_lib_long__WEBPACK_IMPORTED_MODULE_1__["fromNumber"](ms), 62135596800000), offset), 10000);
 }
 function ticksToUnixEpochMilliseconds(ticks) {
-    return toNumber(op_Subtraction(op_Division(ticks, 10000), 62135596800000));
+    return _lib_long__WEBPACK_IMPORTED_MODULE_1__["toNumber"](op_Subtraction(op_Division(ticks, 10000), 62135596800000));
 }
 function makeRangeStepFunction(step, last, unsigned) {
-    const zero = unsigned ? UZERO : ZERO;
-    return (x) => greaterThan(step, zero) && lessThanOrEqual(x, last)
-        || lessThan(step, zero) && greaterThanOrEqual(x, last)
-        ? [x, op_Addition(x, step)] : null;
+    const stepComparedWithZero = _lib_long__WEBPACK_IMPORTED_MODULE_1__["compare"](step, unsigned ? _lib_long__WEBPACK_IMPORTED_MODULE_1__["UZERO"] : _lib_long__WEBPACK_IMPORTED_MODULE_1__["ZERO"]);
+    if (stepComparedWithZero === 0) {
+        throw new Error("The step of a range cannot be zero");
+    }
+    const stepGreaterThanZero = stepComparedWithZero > 0;
+    return (x) => {
+        const comparedWithLast = _lib_long__WEBPACK_IMPORTED_MODULE_1__["compare"](x, last);
+        if ((stepGreaterThanZero && comparedWithLast <= 0)
+            || (!stepGreaterThanZero && comparedWithLast >= 0)) {
+            return [x, op_Addition(x, step)];
+        }
+        else {
+            return null;
+        }
+    };
 }
-
+//# sourceMappingURL=Long.js.map
 
 /***/ }),
 
-/***/ "./.fable/fable-library.2.1.12/Map.js":
+/***/ "./.fable/fable-library.2.3.25/Map.js":
 /*!********************************************!*\
-  !*** ./.fable/fable-library.2.1.12/Map.js ***!
+  !*** ./.fable/fable-library.2.3.25/Map.js ***!
   \********************************************/
-/*! exports provided: MapTree$00602, MapTree$00602$reflection, MapTreeModule$$$sizeAux, MapTreeModule$$$size, MapTreeModule$$$empty, MapTreeModule$$$height, MapTreeModule$$$isEmpty, MapTreeModule$$$mk, MapTreeModule$$$rebalance, MapTreeModule$$$add, MapTreeModule$$$find, MapTreeModule$$$tryFind, MapTreeModule$$$partition1, MapTreeModule$$$partitionAux, MapTreeModule$$$partition, MapTreeModule$$$filter1, MapTreeModule$$$filterAux, MapTreeModule$$$filter, MapTreeModule$$$spliceOutSuccessor, MapTreeModule$$$remove, MapTreeModule$$$mem, MapTreeModule$$$iter, MapTreeModule$$$tryPick, MapTreeModule$$$exists, MapTreeModule$$$forall, MapTreeModule$$$map, MapTreeModule$$$mapi, MapTreeModule$$$foldBack, MapTreeModule$$$fold, MapTreeModule$$$foldFromTo, MapTreeModule$$$foldSection, MapTreeModule$$$loop, MapTreeModule$$$toList, MapTreeModule$$$ofList, MapTreeModule$$$mkFromEnumerator, MapTreeModule$$$ofArray, MapTreeModule$$$ofSeq, MapTreeModule$$$copyToArray, MapTreeModule$002EMapIterator$00602, MapTreeModule$002EMapIterator$00602$reflection, MapTreeModule$$$collapseLHS, MapTreeModule$$$mkIterator, MapTreeModule$$$notStarted, MapTreeModule$$$alreadyFinished, MapTreeModule$$$current, MapTreeModule$$$moveNext, MapTreeModule$002EmkIEnumerator$0027$00602, MapTreeModule$002EmkIEnumerator$0027$00602$reflection, MapTreeModule$002EmkIEnumerator$0027$00602$$$$002Ector$$Z26BC498C, MapTreeModule$$$mkIEnumerator, MapTreeModule$$$toSeq, FSharpMap, FSharpMap$reflection, FSharpMap$$$$002Ector$$58ADD115, FSharpMap$$get_Comparer, FSharpMap$$get_Tree, FSharpMap$$Add$$5BDDA1, FSharpMap$$get_IsEmpty, FSharpMap$$get_Item$$2B595, FSharpMap$$TryGetValue$$5BDDA1, FSharpMap$$TryPick$$72321DD7, FSharpMap$$Exists$$Z395DDC35, FSharpMap$$Filter$$Z395DDC35, FSharpMap$$ForAll$$Z395DDC35, FSharpMap$$Fold, FSharpMap$$FoldSection, FSharpMap$$Iterate$$1DCFB91D, FSharpMap$$MapRange$$6DC7247, FSharpMap$$Map$$Z6F6B671C, FSharpMap$$Partition$$Z395DDC35, FSharpMap$$get_Count, FSharpMap$$ContainsKey$$2B595, FSharpMap$$Remove$$2B595, FSharpMap$$TryFind$$2B595, FSharpMap$$ToList, isEmpty, add, find, tryFind, remove, containsKey, iterate, tryPick, pick, exists, filter, partition, forAll, mapRange, map, fold, foldBack, toSeq, findKey, tryFindKey, ofList, ofSeq, ofArray, toList, toArray, empty, createMutable, groupBy, countBy */
+/*! exports provided: MapTree$00602, MapTree$00602$reflection, MapTreeModule$$$sizeAux, MapTreeModule$$$size, MapTreeModule$$$empty, MapTreeModule$$$height, MapTreeModule$$$isEmpty, MapTreeModule$$$mk, MapTreeModule$$$rebalance, MapTreeModule$$$add, MapTreeModule$$$find, MapTreeModule$$$tryFind, MapTreeModule$$$partition1, MapTreeModule$$$partitionAux, MapTreeModule$$$partition, MapTreeModule$$$filter1, MapTreeModule$$$filterAux, MapTreeModule$$$filter, MapTreeModule$$$spliceOutSuccessor, MapTreeModule$$$remove, MapTreeModule$$$mem, MapTreeModule$$$iter, MapTreeModule$$$tryPick, MapTreeModule$$$exists, MapTreeModule$$$forall, MapTreeModule$$$map, MapTreeModule$$$mapi, MapTreeModule$$$foldBack, MapTreeModule$$$fold, MapTreeModule$$$foldFromTo, MapTreeModule$$$foldSection, MapTreeModule$$$loop, MapTreeModule$$$toList, MapTreeModule$$$ofList, MapTreeModule$$$mkFromEnumerator, MapTreeModule$$$ofArray, MapTreeModule$$$ofSeq, MapTreeModule$$$copyToArray, MapTreeModule$002EMapIterator$00602, MapTreeModule$002EMapIterator$00602$reflection, MapTreeModule$$$collapseLHS, MapTreeModule$$$mkIterator, MapTreeModule$$$notStarted, MapTreeModule$$$alreadyFinished, MapTreeModule$$$current, MapTreeModule$$$moveNext, MapTreeModule$002EmkIEnumerator$0027$00602, MapTreeModule$002EmkIEnumerator$0027$00602$reflection, MapTreeModule$002EmkIEnumerator$0027$00602$$$$002Ector$$Z26BC498C, MapTreeModule$$$mkIEnumerator, MapTreeModule$$$toSeq, FSharpMap, FSharpMap$reflection, FSharpMap$$$$002Ector$$58ADD115, FSharpMap$$get_Comparer, FSharpMap$$get_Tree, FSharpMap$$Add$$5BDDA1, FSharpMap$$get_IsEmpty, FSharpMap$$get_Item$$2B595, FSharpMap$$TryGetValue$$5BDDA1, FSharpMap$$TryPick$$72321DD7, FSharpMap$$Exists$$Z395DDC35, FSharpMap$$Filter$$Z395DDC35, FSharpMap$$ForAll$$Z395DDC35, FSharpMap$$Fold, FSharpMap$$FoldSection, FSharpMap$$Iterate$$1DCFB91D, FSharpMap$$MapRange$$6DC7247, FSharpMap$$Map$$Z6F6B671C, FSharpMap$$Partition$$Z395DDC35, FSharpMap$$get_Count, FSharpMap$$ContainsKey$$2B595, FSharpMap$$Remove$$2B595, FSharpMap$$TryFind$$2B595, FSharpMap$$ToList, isEmpty, add, find, tryFind, remove, containsKey, iterate, tryPick, pick, exists, filter, partition, forAll, mapRange, map, fold, foldBack, toSeq, findKey, tryFindKey, ofList, ofSeq, ofArray, toList, toArray, empty, createMutable, groupBy, countBy, count */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -4854,26 +3985,32 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createMutable", function() { return createMutable; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "groupBy", function() { return groupBy; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "countBy", function() { return countBy; });
-/* harmony import */ var _Types__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Types */ "./.fable/fable-library.2.1.12/Types.js");
-/* harmony import */ var _Reflection__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Reflection */ "./.fable/fable-library.2.1.12/Reflection.js");
-/* harmony import */ var _Option__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Option */ "./.fable/fable-library.2.1.12/Option.js");
-/* harmony import */ var _Seq__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Seq */ "./.fable/fable-library.2.1.12/Seq.js");
-/* harmony import */ var _Util__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Util */ "./.fable/fable-library.2.1.12/Util.js");
-/* harmony import */ var _String__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./String */ "./.fable/fable-library.2.1.12/String.js");
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "count", function() { return count; });
+/* harmony import */ var _Types_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Types.js */ "./.fable/fable-library.2.3.25/Types.js");
+/* harmony import */ var _Reflection_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Reflection.js */ "./.fable/fable-library.2.3.25/Reflection.js");
+/* harmony import */ var _Option_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Option.js */ "./.fable/fable-library.2.3.25/Option.js");
+/* harmony import */ var _Seq_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Seq.js */ "./.fable/fable-library.2.3.25/Seq.js");
+/* harmony import */ var _Util_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Util.js */ "./.fable/fable-library.2.3.25/Util.js");
+/* harmony import */ var _String_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./String.js */ "./.fable/fable-library.2.3.25/String.js");
+/* harmony import */ var _MutableMap__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./MutableMap */ "./.fable/fable-library.2.3.25/MutableMap.js");
 
 
 
 
 
 
-const MapTree$00602 = Object(_Types__WEBPACK_IMPORTED_MODULE_0__["declare"])(function Map_MapTree(tag, name, ...fields) {
-  _Types__WEBPACK_IMPORTED_MODULE_0__["Union"].call(this, tag, name, ...fields);
-}, _Types__WEBPACK_IMPORTED_MODULE_0__["Union"]);
+
+const MapTree$00602 = Object(_Types_js__WEBPACK_IMPORTED_MODULE_0__["declare"])(function Map_MapTree(tag, name, ...fields) {
+  _Types_js__WEBPACK_IMPORTED_MODULE_0__["Union"].call(this, tag, name, ...fields);
+}, _Types_js__WEBPACK_IMPORTED_MODULE_0__["Union"]);
 function MapTree$00602$reflection($gen$$3, $gen$$4) {
-  return Object(_Reflection__WEBPACK_IMPORTED_MODULE_1__["union"])("Map.MapTree`2", [$gen$$3, $gen$$4], MapTree$00602, () => ["MapEmpty", ["MapOne", [$gen$$3, $gen$$4]], ["MapNode", [$gen$$3, $gen$$4, MapTree$00602$reflection($gen$$3, $gen$$4), MapTree$00602$reflection($gen$$3, $gen$$4), _Reflection__WEBPACK_IMPORTED_MODULE_1__["int32"]]]]);
+  return Object(_Reflection_js__WEBPACK_IMPORTED_MODULE_1__["union"])("Map.MapTree`2", [$gen$$3, $gen$$4], MapTree$00602, () => ["MapEmpty", ["MapOne", [$gen$$3, $gen$$4]], ["MapNode", [$gen$$3, $gen$$4, MapTree$00602$reflection($gen$$3, $gen$$4), MapTree$00602$reflection($gen$$3, $gen$$4), _Reflection_js__WEBPACK_IMPORTED_MODULE_1__["int32"]]]]);
 }
-function MapTreeModule$$$sizeAux(acc, m) {
+function MapTreeModule$$$sizeAux($acc$$5, $m$$6) {
   MapTreeModule$$$sizeAux: while (true) {
+    const acc = $acc$$5,
+          m = $m$$6;
+
     switch (m.tag) {
       case 1:
         {
@@ -4882,11 +4019,8 @@ function MapTreeModule$$$sizeAux(acc, m) {
 
       case 2:
         {
-          const r = m.fields[3];
-          const l = m.fields[2];
-          const $acc$$5 = acc;
-          acc = MapTreeModule$$$sizeAux($acc$$5 + 1, l);
-          m = r;
+          $acc$$5 = MapTreeModule$$$sizeAux(acc + 1, m.fields[2]);
+          $m$$6 = m.fields[3];
           continue MapTreeModule$$$sizeAux;
         }
 
@@ -4914,8 +4048,7 @@ function MapTreeModule$$$height(_arg1) {
 
     case 2:
       {
-        const h = _arg1.fields[4] | 0;
-        return h | 0;
+        return _arg1.fields[4] | 0;
       }
 
     default:
@@ -4932,20 +4065,19 @@ function MapTreeModule$$$isEmpty(m$$1) {
   }
 }
 function MapTreeModule$$$mk(l$$1, k, v, r$$1) {
-  const matchValue = [l$$1, r$$1];
-  var $target$$6;
+  var $target$$14;
 
-  if (matchValue[0].tag === 0) {
-    if (matchValue[1].tag === 0) {
-      $target$$6 = 0;
+  if (l$$1.tag === 0) {
+    if (r$$1.tag === 0) {
+      $target$$14 = 0;
     } else {
-      $target$$6 = 1;
+      $target$$14 = 1;
     }
   } else {
-    $target$$6 = 1;
+    $target$$14 = 1;
   }
 
-  switch ($target$$6) {
+  switch ($target$$14) {
     case 0:
       {
         return new MapTree$00602(1, "MapOne", k, v);
@@ -4966,46 +4098,28 @@ function MapTreeModule$$$rebalance(t1, k$$1, v$$1, t2) {
 
   if (t2h > t1h + 2) {
     if (t2.tag === 2) {
-      const t2v = t2.fields[1];
-      const t2r = t2.fields[3];
-      const t2l = t2.fields[2];
-      const t2k = t2.fields[0];
-
-      if (MapTreeModule$$$height(t2l) > t1h + 1) {
-        if (t2l.tag === 2) {
-          const t2lv = t2l.fields[1];
-          const t2lr = t2l.fields[3];
-          const t2ll = t2l.fields[2];
-          const t2lk = t2l.fields[0];
-          return MapTreeModule$$$mk(MapTreeModule$$$mk(t1, k$$1, v$$1, t2ll), t2lk, t2lv, MapTreeModule$$$mk(t2lr, t2k, t2v, t2r));
+      if (MapTreeModule$$$height(t2.fields[2]) > t1h + 1) {
+        if (t2.fields[2].tag === 2) {
+          return MapTreeModule$$$mk(MapTreeModule$$$mk(t1, k$$1, v$$1, t2.fields[2].fields[2]), t2.fields[2].fields[0], t2.fields[2].fields[1], MapTreeModule$$$mk(t2.fields[2].fields[3], t2.fields[0], t2.fields[1], t2.fields[3]));
         } else {
           throw new Error("rebalance");
         }
       } else {
-        return MapTreeModule$$$mk(MapTreeModule$$$mk(t1, k$$1, v$$1, t2l), t2k, t2v, t2r);
+        return MapTreeModule$$$mk(MapTreeModule$$$mk(t1, k$$1, v$$1, t2.fields[2]), t2.fields[0], t2.fields[1], t2.fields[3]);
       }
     } else {
       throw new Error("rebalance");
     }
   } else if (t1h > t2h + 2) {
     if (t1.tag === 2) {
-      const t1v = t1.fields[1];
-      const t1r = t1.fields[3];
-      const t1l = t1.fields[2];
-      const t1k = t1.fields[0];
-
-      if (MapTreeModule$$$height(t1r) > t2h + 1) {
-        if (t1r.tag === 2) {
-          const t1rv = t1r.fields[1];
-          const t1rr = t1r.fields[3];
-          const t1rl = t1r.fields[2];
-          const t1rk = t1r.fields[0];
-          return MapTreeModule$$$mk(MapTreeModule$$$mk(t1l, t1k, t1v, t1rl), t1rk, t1rv, MapTreeModule$$$mk(t1rr, k$$1, v$$1, t2));
+      if (MapTreeModule$$$height(t1.fields[3]) > t2h + 1) {
+        if (t1.fields[3].tag === 2) {
+          return MapTreeModule$$$mk(MapTreeModule$$$mk(t1.fields[2], t1.fields[0], t1.fields[1], t1.fields[3].fields[2]), t1.fields[3].fields[0], t1.fields[3].fields[1], MapTreeModule$$$mk(t1.fields[3].fields[3], k$$1, v$$1, t2));
         } else {
           throw new Error("re  balance");
         }
       } else {
-        return MapTreeModule$$$mk(t1l, t1k, t1v, MapTreeModule$$$mk(t1r, k$$1, v$$1, t2));
+        return MapTreeModule$$$mk(t1.fields[2], t1.fields[0], t1.fields[1], MapTreeModule$$$mk(t1.fields[3], k$$1, v$$1, t2));
       }
     } else {
       throw new Error("rebalance");
@@ -5018,8 +4132,7 @@ function MapTreeModule$$$add(comparer, k$$2, v$$2, m$$3) {
   switch (m$$3.tag) {
     case 1:
       {
-        const k2 = m$$3.fields[0];
-        const c = comparer.Compare(k$$2, k2) | 0;
+        const c = comparer.Compare(k$$2, m$$3.fields[0]) | 0;
 
         if (c < 0) {
           return new MapTree$00602(2, "MapNode", k$$2, v$$2, new MapTree$00602(0, "MapEmpty"), m$$3, 2);
@@ -5032,19 +4145,14 @@ function MapTreeModule$$$add(comparer, k$$2, v$$2, m$$3) {
 
     case 2:
       {
-        const v2 = m$$3.fields[1];
-        const r$$2 = m$$3.fields[3];
-        const l$$2 = m$$3.fields[2];
-        const k2$$1 = m$$3.fields[0];
-        const h$$1 = m$$3.fields[4] | 0;
-        const c$$1 = comparer.Compare(k$$2, k2$$1) | 0;
+        const c$$1 = comparer.Compare(k$$2, m$$3.fields[0]) | 0;
 
         if (c$$1 < 0) {
-          return MapTreeModule$$$rebalance(MapTreeModule$$$add(comparer, k$$2, v$$2, l$$2), k2$$1, v2, r$$2);
+          return MapTreeModule$$$rebalance(MapTreeModule$$$add(comparer, k$$2, v$$2, m$$3.fields[2]), m$$3.fields[0], m$$3.fields[1], m$$3.fields[3]);
         } else if (c$$1 === 0) {
-          return new MapTree$00602(2, "MapNode", k$$2, v$$2, l$$2, r$$2, h$$1);
+          return new MapTree$00602(2, "MapNode", k$$2, v$$2, m$$3.fields[2], m$$3.fields[3], m$$3.fields[4]);
         } else {
-          return MapTreeModule$$$rebalance(l$$2, k2$$1, v2, MapTreeModule$$$add(comparer, k$$2, v$$2, r$$2));
+          return MapTreeModule$$$rebalance(m$$3.fields[2], m$$3.fields[0], m$$3.fields[1], MapTreeModule$$$add(comparer, k$$2, v$$2, m$$3.fields[3]));
         }
       }
 
@@ -5054,17 +4162,19 @@ function MapTreeModule$$$add(comparer, k$$2, v$$2, m$$3) {
       }
   }
 }
-function MapTreeModule$$$find(comparer$$1, k$$3, m$$4) {
+function MapTreeModule$$$find($comparer$$1$$23, $k$$3$$24, $m$$4$$25) {
   MapTreeModule$$$find: while (true) {
+    const comparer$$1 = $comparer$$1$$23,
+          k$$3 = $k$$3$$24,
+          m$$4 = $m$$4$$25;
+
     switch (m$$4.tag) {
       case 1:
         {
-          const v2$$1 = m$$4.fields[1];
-          const k2$$2 = m$$4.fields[0];
-          const c$$2 = comparer$$1.Compare(k$$3, k2$$2) | 0;
+          const c$$2 = comparer$$1.Compare(k$$3, m$$4.fields[0]) | 0;
 
           if (c$$2 === 0) {
-            return v2$$1;
+            return m$$4.fields[1];
           } else {
             throw new Error("key not found");
           }
@@ -5072,27 +4182,19 @@ function MapTreeModule$$$find(comparer$$1, k$$3, m$$4) {
 
       case 2:
         {
-          const v2$$2 = m$$4.fields[1];
-          const r$$3 = m$$4.fields[3];
-          const l$$3 = m$$4.fields[2];
-          const k2$$3 = m$$4.fields[0];
-          const c$$3 = comparer$$1.Compare(k$$3, k2$$3) | 0;
+          const c$$3 = comparer$$1.Compare(k$$3, m$$4.fields[0]) | 0;
 
           if (c$$3 < 0) {
-            const $comparer$$1$$7 = comparer$$1;
-            const $k$$3$$8 = k$$3;
-            comparer$$1 = $comparer$$1$$7;
-            k$$3 = $k$$3$$8;
-            m$$4 = l$$3;
+            $comparer$$1$$23 = comparer$$1;
+            $k$$3$$24 = k$$3;
+            $m$$4$$25 = m$$4.fields[2];
             continue MapTreeModule$$$find;
           } else if (c$$3 === 0) {
-            return v2$$2;
+            return m$$4.fields[1];
           } else {
-            const $comparer$$1$$9 = comparer$$1;
-            const $k$$3$$10 = k$$3;
-            comparer$$1 = $comparer$$1$$9;
-            k$$3 = $k$$3$$10;
-            m$$4 = r$$3;
+            $comparer$$1$$23 = comparer$$1;
+            $k$$3$$24 = k$$3;
+            $m$$4$$25 = m$$4.fields[3];
             continue MapTreeModule$$$find;
           }
         }
@@ -5106,17 +4208,19 @@ function MapTreeModule$$$find(comparer$$1, k$$3, m$$4) {
     break;
   }
 }
-function MapTreeModule$$$tryFind(comparer$$2, k$$4, m$$5) {
+function MapTreeModule$$$tryFind($comparer$$2$$26, $k$$4$$27, $m$$5$$28) {
   MapTreeModule$$$tryFind: while (true) {
+    const comparer$$2 = $comparer$$2$$26,
+          k$$4 = $k$$4$$27,
+          m$$5 = $m$$5$$28;
+
     switch (m$$5.tag) {
       case 1:
         {
-          const v2$$3 = m$$5.fields[1];
-          const k2$$4 = m$$5.fields[0];
-          const c$$4 = comparer$$2.Compare(k$$4, k2$$4) | 0;
+          const c$$4 = comparer$$2.Compare(k$$4, m$$5.fields[0]) | 0;
 
           if (c$$4 === 0) {
-            return Object(_Option__WEBPACK_IMPORTED_MODULE_2__["some"])(v2$$3);
+            return Object(_Option_js__WEBPACK_IMPORTED_MODULE_2__["some"])(m$$5.fields[1]);
           } else {
             return null;
           }
@@ -5124,27 +4228,19 @@ function MapTreeModule$$$tryFind(comparer$$2, k$$4, m$$5) {
 
       case 2:
         {
-          const v2$$4 = m$$5.fields[1];
-          const r$$4 = m$$5.fields[3];
-          const l$$4 = m$$5.fields[2];
-          const k2$$5 = m$$5.fields[0];
-          const c$$5 = comparer$$2.Compare(k$$4, k2$$5) | 0;
+          const c$$5 = comparer$$2.Compare(k$$4, m$$5.fields[0]) | 0;
 
           if (c$$5 < 0) {
-            const $comparer$$2$$11 = comparer$$2;
-            const $k$$4$$12 = k$$4;
-            comparer$$2 = $comparer$$2$$11;
-            k$$4 = $k$$4$$12;
-            m$$5 = l$$4;
+            $comparer$$2$$26 = comparer$$2;
+            $k$$4$$27 = k$$4;
+            $m$$5$$28 = m$$5.fields[2];
             continue MapTreeModule$$$tryFind;
           } else if (c$$5 === 0) {
-            return Object(_Option__WEBPACK_IMPORTED_MODULE_2__["some"])(v2$$4);
+            return Object(_Option_js__WEBPACK_IMPORTED_MODULE_2__["some"])(m$$5.fields[1]);
           } else {
-            const $comparer$$2$$13 = comparer$$2;
-            const $k$$4$$14 = k$$4;
-            comparer$$2 = $comparer$$2$$13;
-            k$$4 = $k$$4$$14;
-            m$$5 = r$$4;
+            $comparer$$2$$26 = comparer$$2;
+            $k$$4$$27 = k$$4;
+            $m$$5$$28 = m$$5.fields[3];
             continue MapTreeModule$$$tryFind;
           }
         }
@@ -5165,42 +4261,35 @@ function MapTreeModule$$$partition1(comparer$$3, f, k$$5, v$$3, acc1, acc2) {
     return [acc1, MapTreeModule$$$add(comparer$$3, k$$5, v$$3, acc2)];
   }
 }
-function MapTreeModule$$$partitionAux($arg$$21, $arg$$22, $arg$$23, $arg$$24, $arg$$25) {
+function MapTreeModule$$$partitionAux($comparer$$4$$35, $f$$1$$36, $s$$37, $acc_0$$38, $acc_1$$39) {
   MapTreeModule$$$partitionAux: while (true) {
-    const comparer$$4 = $arg$$21,
-          f$$1 = $arg$$22,
-          s = $arg$$23,
-          acc_0 = $arg$$24,
-          acc_1 = $arg$$25;
-    const acc$$1 = [acc_0, acc_1];
+    const comparer$$4 = $comparer$$4$$35,
+          f$$1 = $f$$1$$36,
+          s = $s$$37,
+          acc_0 = $acc_0$$38,
+          acc_1 = $acc_1$$39;
 
     switch (s.tag) {
       case 1:
         {
-          const v$$4 = s.fields[1];
-          const k$$6 = s.fields[0];
-          return MapTreeModule$$$partition1(comparer$$4, f$$1, k$$6, v$$4, acc$$1[0], acc$$1[1]);
+          return MapTreeModule$$$partition1(comparer$$4, f$$1, s.fields[0], s.fields[1], acc_0, acc_1);
         }
 
       case 2:
         {
-          const v$$5 = s.fields[1];
-          const r$$5 = s.fields[3];
-          const l$$5 = s.fields[2];
-          const k$$7 = s.fields[0];
-          const acc$$2 = MapTreeModule$$$partitionAux(comparer$$4, f$$1, r$$5, acc$$1[0], acc$$1[1]);
-          const acc$$3 = MapTreeModule$$$partition1(comparer$$4, f$$1, k$$7, v$$5, acc$$2[0], acc$$2[1]);
-          $arg$$21 = comparer$$4;
-          $arg$$22 = f$$1;
-          $arg$$23 = l$$5;
-          $arg$$24 = acc$$3[0];
-          $arg$$25 = acc$$3[1];
+          const acc$$2 = MapTreeModule$$$partitionAux(comparer$$4, f$$1, s.fields[3], acc_0, acc_1);
+          const acc$$3 = MapTreeModule$$$partition1(comparer$$4, f$$1, s.fields[0], s.fields[1], acc$$2[0], acc$$2[1]);
+          $comparer$$4$$35 = comparer$$4;
+          $f$$1$$36 = f$$1;
+          $s$$37 = s.fields[2];
+          $acc_0$$38 = acc$$3[0];
+          $acc_1$$39 = acc$$3[1];
           continue MapTreeModule$$$partitionAux;
         }
 
       default:
         {
-          return acc$$1;
+          return [acc_0, acc_1];
         }
     }
 
@@ -5217,33 +4306,27 @@ function MapTreeModule$$$filter1(comparer$$6, f$$3, k$$8, v$$6, acc$$4) {
     return acc$$4;
   }
 }
-function MapTreeModule$$$filterAux($arg$$34, $arg$$35, $arg$$36, $arg$$37) {
+function MapTreeModule$$$filterAux($comparer$$7$$48, $f$$4$$49, $s$$2$$50, $acc$$5$$51) {
   MapTreeModule$$$filterAux: while (true) {
-    const comparer$$7 = $arg$$34,
-          f$$4 = $arg$$35,
-          s$$2 = $arg$$36,
-          acc$$5 = $arg$$37;
+    const comparer$$7 = $comparer$$7$$48,
+          f$$4 = $f$$4$$49,
+          s$$2 = $s$$2$$50,
+          acc$$5 = $acc$$5$$51;
 
     switch (s$$2.tag) {
       case 1:
         {
-          const v$$7 = s$$2.fields[1];
-          const k$$9 = s$$2.fields[0];
-          return MapTreeModule$$$filter1(comparer$$7, f$$4, k$$9, v$$7, acc$$5);
+          return MapTreeModule$$$filter1(comparer$$7, f$$4, s$$2.fields[0], s$$2.fields[1], acc$$5);
         }
 
       case 2:
         {
-          const v$$8 = s$$2.fields[1];
-          const r$$6 = s$$2.fields[3];
-          const l$$6 = s$$2.fields[2];
-          const k$$10 = s$$2.fields[0];
-          const acc$$6 = MapTreeModule$$$filterAux(comparer$$7, f$$4, l$$6, acc$$5);
-          const acc$$7 = MapTreeModule$$$filter1(comparer$$7, f$$4, k$$10, v$$8, acc$$6);
-          $arg$$34 = comparer$$7;
-          $arg$$35 = f$$4;
-          $arg$$36 = r$$6;
-          $arg$$37 = acc$$7;
+          const acc$$6 = MapTreeModule$$$filterAux(comparer$$7, f$$4, s$$2.fields[2], acc$$5);
+          const acc$$7 = MapTreeModule$$$filter1(comparer$$7, f$$4, s$$2.fields[0], s$$2.fields[1], acc$$6);
+          $comparer$$7$$48 = comparer$$7;
+          $f$$4$$49 = f$$4;
+          $s$$2$$50 = s$$2.fields[3];
+          $acc$$5$$51 = acc$$7;
           continue MapTreeModule$$$filterAux;
         }
 
@@ -5263,23 +4346,16 @@ function MapTreeModule$$$spliceOutSuccessor(m$$6) {
   switch (m$$6.tag) {
     case 1:
       {
-        const v2$$5 = m$$6.fields[1];
-        const k2$$6 = m$$6.fields[0];
-        return [k2$$6, v2$$5, new MapTree$00602(0, "MapEmpty")];
+        return [m$$6.fields[0], m$$6.fields[1], new MapTree$00602(0, "MapEmpty")];
       }
 
     case 2:
       {
-        const v2$$6 = m$$6.fields[1];
-        const r$$7 = m$$6.fields[3];
-        const l$$7 = m$$6.fields[2];
-        const k2$$7 = m$$6.fields[0];
-
-        if (l$$7.tag === 0) {
-          return [k2$$7, v2$$6, r$$7];
+        if (m$$6.fields[2].tag === 0) {
+          return [m$$6.fields[0], m$$6.fields[1], m$$6.fields[3]];
         } else {
-          const patternInput = MapTreeModule$$$spliceOutSuccessor(l$$7);
-          return [patternInput[0], patternInput[1], MapTreeModule$$$mk(patternInput[2], k2$$7, v2$$6, r$$7)];
+          const patternInput = MapTreeModule$$$spliceOutSuccessor(m$$6.fields[2]);
+          return [patternInput[0], patternInput[1], MapTreeModule$$$mk(patternInput[2], m$$6.fields[0], m$$6.fields[1], m$$6.fields[3])];
         }
       }
 
@@ -5293,8 +4369,7 @@ function MapTreeModule$$$remove(comparer$$9, k$$11, m$$7) {
   switch (m$$7.tag) {
     case 1:
       {
-        const k2$$8 = m$$7.fields[0];
-        const c$$6 = comparer$$9.Compare(k$$11, k2$$8) | 0;
+        const c$$6 = comparer$$9.Compare(k$$11, m$$7.fields[0]) | 0;
 
         if (c$$6 === 0) {
           return new MapTree$00602(0, "MapEmpty");
@@ -5305,27 +4380,21 @@ function MapTreeModule$$$remove(comparer$$9, k$$11, m$$7) {
 
     case 2:
       {
-        const v2$$7 = m$$7.fields[1];
-        const r$$8 = m$$7.fields[3];
-        const l$$8 = m$$7.fields[2];
-        const k2$$9 = m$$7.fields[0];
-        const c$$7 = comparer$$9.Compare(k$$11, k2$$9) | 0;
+        const c$$7 = comparer$$9.Compare(k$$11, m$$7.fields[0]) | 0;
 
         if (c$$7 < 0) {
-          return MapTreeModule$$$rebalance(MapTreeModule$$$remove(comparer$$9, k$$11, l$$8), k2$$9, v2$$7, r$$8);
+          return MapTreeModule$$$rebalance(MapTreeModule$$$remove(comparer$$9, k$$11, m$$7.fields[2]), m$$7.fields[0], m$$7.fields[1], m$$7.fields[3]);
         } else if (c$$7 === 0) {
-          const matchValue$$1 = [l$$8, r$$8];
-
-          if (matchValue$$1[0].tag === 0) {
-            return r$$8;
-          } else if (matchValue$$1[1].tag === 0) {
-            return l$$8;
+          if (m$$7.fields[2].tag === 0) {
+            return m$$7.fields[3];
+          } else if (m$$7.fields[3].tag === 0) {
+            return m$$7.fields[2];
           } else {
-            const patternInput$$1 = MapTreeModule$$$spliceOutSuccessor(r$$8);
-            return MapTreeModule$$$mk(l$$8, patternInput$$1[0], patternInput$$1[1], patternInput$$1[2]);
+            const patternInput$$1 = MapTreeModule$$$spliceOutSuccessor(m$$7.fields[3]);
+            return MapTreeModule$$$mk(m$$7.fields[2], patternInput$$1[0], patternInput$$1[1], patternInput$$1[2]);
           }
         } else {
-          return MapTreeModule$$$rebalance(l$$8, k2$$9, v2$$7, MapTreeModule$$$remove(comparer$$9, k$$11, r$$8));
+          return MapTreeModule$$$rebalance(m$$7.fields[2], m$$7.fields[0], m$$7.fields[1], MapTreeModule$$$remove(comparer$$9, k$$11, m$$7.fields[3]));
         }
       }
 
@@ -5335,37 +4404,33 @@ function MapTreeModule$$$remove(comparer$$9, k$$11, m$$7) {
       }
   }
 }
-function MapTreeModule$$$mem(comparer$$10, k$$12, m$$8) {
+function MapTreeModule$$$mem($comparer$$10$$59, $k$$12$$60, $m$$8$$61) {
   MapTreeModule$$$mem: while (true) {
+    const comparer$$10 = $comparer$$10$$59,
+          k$$12 = $k$$12$$60,
+          m$$8 = $m$$8$$61;
+
     switch (m$$8.tag) {
       case 1:
         {
-          const k2$$10 = m$$8.fields[0];
-          return comparer$$10.Compare(k$$12, k2$$10) === 0;
+          return comparer$$10.Compare(k$$12, m$$8.fields[0]) === 0;
         }
 
       case 2:
         {
-          const r$$9 = m$$8.fields[3];
-          const l$$9 = m$$8.fields[2];
-          const k2$$11 = m$$8.fields[0];
-          const c$$8 = comparer$$10.Compare(k$$12, k2$$11) | 0;
+          const c$$8 = comparer$$10.Compare(k$$12, m$$8.fields[0]) | 0;
 
           if (c$$8 < 0) {
-            const $comparer$$10$$41 = comparer$$10;
-            const $k$$12$$42 = k$$12;
-            comparer$$10 = $comparer$$10$$41;
-            k$$12 = $k$$12$$42;
-            m$$8 = l$$9;
+            $comparer$$10$$59 = comparer$$10;
+            $k$$12$$60 = k$$12;
+            $m$$8$$61 = m$$8.fields[2];
             continue MapTreeModule$$$mem;
           } else if (c$$8 === 0) {
             return true;
           } else {
-            const $comparer$$10$$43 = comparer$$10;
-            const $k$$12$$44 = k$$12;
-            comparer$$10 = $comparer$$10$$43;
-            k$$12 = $k$$12$$44;
-            m$$8 = r$$9;
+            $comparer$$10$$59 = comparer$$10;
+            $k$$12$$60 = k$$12;
+            $m$$8$$61 = m$$8.fields[3];
             continue MapTreeModule$$$mem;
           }
         }
@@ -5379,30 +4444,24 @@ function MapTreeModule$$$mem(comparer$$10, k$$12, m$$8) {
     break;
   }
 }
-function MapTreeModule$$$iter($arg$$45, $arg$$46) {
+function MapTreeModule$$$iter($f$$6$$62, $m$$9$$63) {
   MapTreeModule$$$iter: while (true) {
-    const f$$6 = $arg$$45,
-          m$$9 = $arg$$46;
+    const f$$6 = $f$$6$$62,
+          m$$9 = $m$$9$$63;
 
     switch (m$$9.tag) {
       case 1:
         {
-          const v2$$8 = m$$9.fields[1];
-          const k2$$12 = m$$9.fields[0];
-          f$$6(k2$$12, v2$$8);
+          f$$6(m$$9.fields[0], m$$9.fields[1]);
           break;
         }
 
       case 2:
         {
-          const v2$$9 = m$$9.fields[1];
-          const r$$10 = m$$9.fields[3];
-          const l$$10 = m$$9.fields[2];
-          const k2$$13 = m$$9.fields[0];
-          MapTreeModule$$$iter(f$$6, l$$10);
-          f$$6(k2$$13, v2$$9);
-          $arg$$45 = f$$6;
-          $arg$$46 = r$$10;
+          MapTreeModule$$$iter(f$$6, m$$9.fields[2]);
+          f$$6(m$$9.fields[0], m$$9.fields[1]);
+          $f$$6$$62 = f$$6;
+          $m$$9$$63 = m$$9.fields[3];
           continue MapTreeModule$$$iter;
           break;
         }
@@ -5414,41 +4473,33 @@ function MapTreeModule$$$iter($arg$$45, $arg$$46) {
     break;
   }
 }
-function MapTreeModule$$$tryPick($arg$$47, $arg$$48) {
+function MapTreeModule$$$tryPick($f$$7$$64, $m$$10$$65) {
   MapTreeModule$$$tryPick: while (true) {
-    const f$$7 = $arg$$47,
-          m$$10 = $arg$$48;
+    const f$$7 = $f$$7$$64,
+          m$$10 = $m$$10$$65;
 
     switch (m$$10.tag) {
       case 1:
         {
-          const v2$$10 = m$$10.fields[1];
-          const k2$$14 = m$$10.fields[0];
-          return f$$7(k2$$14, v2$$10);
+          return f$$7(m$$10.fields[0], m$$10.fields[1]);
         }
 
       case 2:
         {
-          const v2$$11 = m$$10.fields[1];
-          const r$$11 = m$$10.fields[3];
-          const l$$11 = m$$10.fields[2];
-          const k2$$15 = m$$10.fields[0];
-          const matchValue$$2 = MapTreeModule$$$tryPick(f$$7, l$$11);
+          const matchValue$$2 = MapTreeModule$$$tryPick(f$$7, m$$10.fields[2]);
 
           if (matchValue$$2 == null) {
-            const matchValue$$3 = f$$7(k2$$15, v2$$11);
+            const matchValue$$3 = f$$7(m$$10.fields[0], m$$10.fields[1]);
 
             if (matchValue$$3 == null) {
-              $arg$$47 = f$$7;
-              $arg$$48 = r$$11;
+              $f$$7$$64 = f$$7;
+              $m$$10$$65 = m$$10.fields[3];
               continue MapTreeModule$$$tryPick;
             } else {
-              const res$$1 = matchValue$$3;
-              return res$$1;
+              return matchValue$$3;
             }
           } else {
-            const res = matchValue$$2;
-            return res;
+            return matchValue$$2;
           }
         }
 
@@ -5461,31 +4512,24 @@ function MapTreeModule$$$tryPick($arg$$47, $arg$$48) {
     break;
   }
 }
-function MapTreeModule$$$exists($arg$$49, $arg$$50) {
+function MapTreeModule$$$exists($f$$8$$66, $m$$11$$67) {
   MapTreeModule$$$exists: while (true) {
-    const f$$8 = $arg$$49,
-          m$$11 = $arg$$50;
+    const f$$8 = $f$$8$$66,
+          m$$11 = $m$$11$$67;
 
     switch (m$$11.tag) {
       case 1:
         {
-          const v2$$12 = m$$11.fields[1];
-          const k2$$16 = m$$11.fields[0];
-          return f$$8(k2$$16, v2$$12);
+          return f$$8(m$$11.fields[0], m$$11.fields[1]);
         }
 
       case 2:
         {
-          const v2$$13 = m$$11.fields[1];
-          const r$$12 = m$$11.fields[3];
-          const l$$12 = m$$11.fields[2];
-          const k2$$17 = m$$11.fields[0];
-
-          if (MapTreeModule$$$exists(f$$8, l$$12) ? true : f$$8(k2$$17, v2$$13)) {
+          if (MapTreeModule$$$exists(f$$8, m$$11.fields[2]) ? true : f$$8(m$$11.fields[0], m$$11.fields[1])) {
             return true;
           } else {
-            $arg$$49 = f$$8;
-            $arg$$50 = r$$12;
+            $f$$8$$66 = f$$8;
+            $m$$11$$67 = m$$11.fields[3];
             continue MapTreeModule$$$exists;
           }
         }
@@ -5499,29 +4543,22 @@ function MapTreeModule$$$exists($arg$$49, $arg$$50) {
     break;
   }
 }
-function MapTreeModule$$$forall($arg$$51, $arg$$52) {
+function MapTreeModule$$$forall($f$$9$$68, $m$$12$$69) {
   MapTreeModule$$$forall: while (true) {
-    const f$$9 = $arg$$51,
-          m$$12 = $arg$$52;
+    const f$$9 = $f$$9$$68,
+          m$$12 = $m$$12$$69;
 
     switch (m$$12.tag) {
       case 1:
         {
-          const v2$$14 = m$$12.fields[1];
-          const k2$$18 = m$$12.fields[0];
-          return f$$9(k2$$18, v2$$14);
+          return f$$9(m$$12.fields[0], m$$12.fields[1]);
         }
 
       case 2:
         {
-          const v2$$15 = m$$12.fields[1];
-          const r$$13 = m$$12.fields[3];
-          const l$$13 = m$$12.fields[2];
-          const k2$$19 = m$$12.fields[0];
-
-          if (MapTreeModule$$$forall(f$$9, l$$13) ? f$$9(k2$$19, v2$$15) : false) {
-            $arg$$51 = f$$9;
-            $arg$$52 = r$$13;
+          if (MapTreeModule$$$forall(f$$9, m$$12.fields[2]) ? f$$9(m$$12.fields[0], m$$12.fields[1]) : false) {
+            $f$$9$$68 = f$$9;
+            $m$$12$$69 = m$$12.fields[3];
             continue MapTreeModule$$$forall;
           } else {
             return false;
@@ -5541,22 +4578,15 @@ function MapTreeModule$$$map(f$$10, m$$13) {
   switch (m$$13.tag) {
     case 1:
       {
-        const v$$9 = m$$13.fields[1];
-        const k$$13 = m$$13.fields[0];
-        return new MapTree$00602(1, "MapOne", k$$13, f$$10(v$$9));
+        return new MapTree$00602(1, "MapOne", m$$13.fields[0], f$$10(m$$13.fields[1]));
       }
 
     case 2:
       {
-        const v$$10 = m$$13.fields[1];
-        const r$$14 = m$$13.fields[3];
-        const l$$14 = m$$13.fields[2];
-        const k$$14 = m$$13.fields[0];
-        const h$$2 = m$$13.fields[4] | 0;
-        const l2 = MapTreeModule$$$map(f$$10, l$$14);
-        const v2$$16 = f$$10(v$$10);
-        const r2 = MapTreeModule$$$map(f$$10, r$$14);
-        return new MapTree$00602(2, "MapNode", k$$14, v2$$16, l2, r2, h$$2);
+        const l2 = MapTreeModule$$$map(f$$10, m$$13.fields[2]);
+        const v2$$16 = f$$10(m$$13.fields[1]);
+        const r2 = MapTreeModule$$$map(f$$10, m$$13.fields[3]);
+        return new MapTree$00602(2, "MapNode", m$$13.fields[0], v2$$16, l2, r2, m$$13.fields[4]);
       }
 
     default:
@@ -5569,22 +4599,15 @@ function MapTreeModule$$$mapi(f$$11, m$$14) {
   switch (m$$14.tag) {
     case 1:
       {
-        const v$$11 = m$$14.fields[1];
-        const k$$15 = m$$14.fields[0];
-        return new MapTree$00602(1, "MapOne", k$$15, f$$11(k$$15, v$$11));
+        return new MapTree$00602(1, "MapOne", m$$14.fields[0], f$$11(m$$14.fields[0], m$$14.fields[1]));
       }
 
     case 2:
       {
-        const v$$12 = m$$14.fields[1];
-        const r$$15 = m$$14.fields[3];
-        const l$$15 = m$$14.fields[2];
-        const k$$16 = m$$14.fields[0];
-        const h$$3 = m$$14.fields[4] | 0;
-        const l2$$1 = MapTreeModule$$$mapi(f$$11, l$$15);
-        const v2$$17 = f$$11(k$$16, v$$12);
-        const r2$$1 = MapTreeModule$$$mapi(f$$11, r$$15);
-        return new MapTree$00602(2, "MapNode", k$$16, v2$$17, l2$$1, r2$$1, h$$3);
+        const l2$$1 = MapTreeModule$$$mapi(f$$11, m$$14.fields[2]);
+        const v2$$17 = f$$11(m$$14.fields[0], m$$14.fields[1]);
+        const r2$$1 = MapTreeModule$$$mapi(f$$11, m$$14.fields[3]);
+        return new MapTree$00602(2, "MapNode", m$$14.fields[0], v2$$17, l2$$1, r2$$1, m$$14.fields[4]);
       }
 
     default:
@@ -5593,31 +4616,25 @@ function MapTreeModule$$$mapi(f$$11, m$$14) {
       }
   }
 }
-function MapTreeModule$$$foldBack($arg$$57, $arg$$58, $arg$$59) {
+function MapTreeModule$$$foldBack($f$$12$$74, $m$$15$$75, $x$$1$$76) {
   MapTreeModule$$$foldBack: while (true) {
-    const f$$12 = $arg$$57,
-          m$$15 = $arg$$58,
-          x$$1 = $arg$$59;
+    const f$$12 = $f$$12$$74,
+          m$$15 = $m$$15$$75,
+          x$$1 = $x$$1$$76;
 
     switch (m$$15.tag) {
       case 1:
         {
-          const v$$13 = m$$15.fields[1];
-          const k$$17 = m$$15.fields[0];
-          return f$$12(k$$17, v$$13, x$$1);
+          return f$$12(m$$15.fields[0], m$$15.fields[1], x$$1);
         }
 
       case 2:
         {
-          const v$$14 = m$$15.fields[1];
-          const r$$16 = m$$15.fields[3];
-          const l$$16 = m$$15.fields[2];
-          const k$$18 = m$$15.fields[0];
-          const x$$2 = MapTreeModule$$$foldBack(f$$12, r$$16, x$$1);
-          const x$$3 = f$$12(k$$18, v$$14, x$$2);
-          $arg$$57 = f$$12;
-          $arg$$58 = l$$16;
-          $arg$$59 = x$$3;
+          const x$$2 = MapTreeModule$$$foldBack(f$$12, m$$15.fields[3], x$$1);
+          const x$$3 = f$$12(m$$15.fields[0], m$$15.fields[1], x$$2);
+          $f$$12$$74 = f$$12;
+          $m$$15$$75 = m$$15.fields[2];
+          $x$$1$$76 = x$$3;
           continue MapTreeModule$$$foldBack;
         }
 
@@ -5630,31 +4647,25 @@ function MapTreeModule$$$foldBack($arg$$57, $arg$$58, $arg$$59) {
     break;
   }
 }
-function MapTreeModule$$$fold($arg$$60, $arg$$61, $arg$$62) {
+function MapTreeModule$$$fold($f$$13$$77, $x$$4$$78, $m$$16$$79) {
   MapTreeModule$$$fold: while (true) {
-    const f$$13 = $arg$$60,
-          x$$4 = $arg$$61,
-          m$$16 = $arg$$62;
+    const f$$13 = $f$$13$$77,
+          x$$4 = $x$$4$$78,
+          m$$16 = $m$$16$$79;
 
     switch (m$$16.tag) {
       case 1:
         {
-          const v$$15 = m$$16.fields[1];
-          const k$$19 = m$$16.fields[0];
-          return f$$13(x$$4, k$$19, v$$15);
+          return f$$13(x$$4, m$$16.fields[0], m$$16.fields[1]);
         }
 
       case 2:
         {
-          const v$$16 = m$$16.fields[1];
-          const r$$17 = m$$16.fields[3];
-          const l$$17 = m$$16.fields[2];
-          const k$$20 = m$$16.fields[0];
-          const x$$5 = MapTreeModule$$$fold(f$$13, x$$4, l$$17);
-          const x$$6 = f$$13(x$$5, k$$20, v$$16);
-          $arg$$60 = f$$13;
-          $arg$$61 = x$$6;
-          $arg$$62 = r$$17;
+          const x$$5 = MapTreeModule$$$fold(f$$13, x$$4, m$$16.fields[2]);
+          const x$$6 = f$$13(x$$5, m$$16.fields[0], m$$16.fields[1]);
+          $f$$13$$77 = f$$13;
+          $x$$4$$78 = x$$6;
+          $m$$16$$79 = m$$16.fields[3];
           continue MapTreeModule$$$fold;
         }
 
@@ -5671,25 +4682,19 @@ function MapTreeModule$$$foldFromTo(comparer$$11, lo, hi, f$$14, m$$17, x$$7) {
   switch (m$$17.tag) {
     case 1:
       {
-        const v$$17 = m$$17.fields[1];
-        const k$$21 = m$$17.fields[0];
-        const cLoKey = comparer$$11.Compare(lo, k$$21) | 0;
-        const cKeyHi = comparer$$11.Compare(k$$21, hi) | 0;
-        const x$$8 = (cLoKey <= 0 ? cKeyHi <= 0 : false) ? f$$14(k$$21, v$$17, x$$7) : x$$7;
+        const cLoKey = comparer$$11.Compare(lo, m$$17.fields[0]) | 0;
+        const cKeyHi = comparer$$11.Compare(m$$17.fields[0], hi) | 0;
+        const x$$8 = (cLoKey <= 0 ? cKeyHi <= 0 : false) ? f$$14(m$$17.fields[0], m$$17.fields[1], x$$7) : x$$7;
         return x$$8;
       }
 
     case 2:
       {
-        const v$$18 = m$$17.fields[1];
-        const r$$18 = m$$17.fields[3];
-        const l$$18 = m$$17.fields[2];
-        const k$$22 = m$$17.fields[0];
-        const cLoKey$$1 = comparer$$11.Compare(lo, k$$22) | 0;
-        const cKeyHi$$1 = comparer$$11.Compare(k$$22, hi) | 0;
-        const x$$9 = cLoKey$$1 < 0 ? MapTreeModule$$$foldFromTo(comparer$$11, lo, hi, f$$14, l$$18, x$$7) : x$$7;
-        const x$$10 = (cLoKey$$1 <= 0 ? cKeyHi$$1 <= 0 : false) ? f$$14(k$$22, v$$18, x$$9) : x$$9;
-        const x$$11 = cKeyHi$$1 < 0 ? MapTreeModule$$$foldFromTo(comparer$$11, lo, hi, f$$14, r$$18, x$$10) : x$$10;
+        const cLoKey$$1 = comparer$$11.Compare(lo, m$$17.fields[0]) | 0;
+        const cKeyHi$$1 = comparer$$11.Compare(m$$17.fields[0], hi) | 0;
+        const x$$9 = cLoKey$$1 < 0 ? MapTreeModule$$$foldFromTo(comparer$$11, lo, hi, f$$14, m$$17.fields[2], x$$7) : x$$7;
+        const x$$10 = (cLoKey$$1 <= 0 ? cKeyHi$$1 <= 0 : false) ? f$$14(m$$17.fields[0], m$$17.fields[1], x$$9) : x$$9;
+        const x$$11 = cKeyHi$$1 < 0 ? MapTreeModule$$$foldFromTo(comparer$$11, lo, hi, f$$14, m$$17.fields[3], x$$10) : x$$10;
         return x$$11;
       }
 
@@ -5706,25 +4711,21 @@ function MapTreeModule$$$foldSection(comparer$$12, lo$$1, hi$$1, f$$15, m$$18, x
     return MapTreeModule$$$foldFromTo(comparer$$12, lo$$1, hi$$1, f$$15, m$$18, x$$12);
   }
 }
-function MapTreeModule$$$loop(m$$19, acc$$8) {
+function MapTreeModule$$$loop($m$$19$$92, $acc$$8$$93) {
   MapTreeModule$$$loop: while (true) {
+    const m$$19 = $m$$19$$92,
+          acc$$8 = $acc$$8$$93;
+
     switch (m$$19.tag) {
       case 1:
         {
-          const v$$19 = m$$19.fields[1];
-          const k$$23 = m$$19.fields[0];
-          return new _Types__WEBPACK_IMPORTED_MODULE_0__["List"]([k$$23, v$$19], acc$$8);
+          return new _Types_js__WEBPACK_IMPORTED_MODULE_0__["List"]([m$$19.fields[0], m$$19.fields[1]], acc$$8);
         }
 
       case 2:
         {
-          const v$$20 = m$$19.fields[1];
-          const r$$19 = m$$19.fields[3];
-          const l$$19 = m$$19.fields[2];
-          const k$$24 = m$$19.fields[0];
-          const $acc$$8$$75 = acc$$8;
-          m$$19 = l$$19;
-          acc$$8 = new _Types__WEBPACK_IMPORTED_MODULE_0__["List"]([k$$24, v$$20], MapTreeModule$$$loop(r$$19, $acc$$8$$75));
+          $m$$19$$92 = m$$19.fields[2];
+          $acc$$8$$93 = new _Types_js__WEBPACK_IMPORTED_MODULE_0__["List"]([m$$19.fields[0], m$$19.fields[1]], MapTreeModule$$$loop(m$$19.fields[3], acc$$8));
           continue MapTreeModule$$$loop;
         }
 
@@ -5738,23 +4739,24 @@ function MapTreeModule$$$loop(m$$19, acc$$8) {
   }
 }
 function MapTreeModule$$$toList(m$$20) {
-  return MapTreeModule$$$loop(m$$20, new _Types__WEBPACK_IMPORTED_MODULE_0__["List"]());
+  return MapTreeModule$$$loop(m$$20, new _Types_js__WEBPACK_IMPORTED_MODULE_0__["List"]());
 }
 function MapTreeModule$$$ofList(comparer$$13, l$$20) {
-  return Object(_Seq__WEBPACK_IMPORTED_MODULE_3__["fold"])(function (acc$$9, tupledArg) {
+  return Object(_Seq_js__WEBPACK_IMPORTED_MODULE_3__["fold"])(function (acc$$9, tupledArg) {
     return MapTreeModule$$$add(comparer$$13, tupledArg[0], tupledArg[1], acc$$9);
   }, MapTreeModule$$$empty(), l$$20);
 }
-function MapTreeModule$$$mkFromEnumerator(comparer$$14, acc$$10, e) {
+function MapTreeModule$$$mkFromEnumerator($comparer$$14$$97, $acc$$10$$98, $e$$99) {
   MapTreeModule$$$mkFromEnumerator: while (true) {
+    const comparer$$14 = $comparer$$14$$97,
+          acc$$10 = $acc$$10$$98,
+          e = $e$$99;
+
     if (e.MoveNext()) {
       const patternInput$$2 = e.Current;
-      const $acc$$10$$77 = acc$$10;
-      const $comparer$$14$$76 = comparer$$14;
-      const $e$$78 = e;
-      comparer$$14 = $comparer$$14$$76;
-      acc$$10 = MapTreeModule$$$add($comparer$$14$$76, patternInput$$2[0], patternInput$$2[1], $acc$$10$$77);
-      e = $e$$78;
+      $comparer$$14$$97 = comparer$$14;
+      $acc$$10$$98 = MapTreeModule$$$add(comparer$$14, patternInput$$2[0], patternInput$$2[1], acc$$10);
+      $e$$99 = e;
       continue MapTreeModule$$$mkFromEnumerator;
     } else {
       return acc$$10;
@@ -5774,12 +4776,12 @@ function MapTreeModule$$$ofArray(comparer$$15, arr) {
   return res$$2;
 }
 function MapTreeModule$$$ofSeq(comparer$$16, c$$9) {
-  const ie = Object(_Seq__WEBPACK_IMPORTED_MODULE_3__["getEnumerator"])(c$$9);
+  const ie = Object(_Seq_js__WEBPACK_IMPORTED_MODULE_3__["getEnumerator"])(c$$9);
 
   try {
     return MapTreeModule$$$mkFromEnumerator(comparer$$16, MapTreeModule$$$empty(), ie);
   } finally {
-    if (Object(_Util__WEBPACK_IMPORTED_MODULE_4__["isDisposable"])(ie)) {
+    if (Object(_Util_js__WEBPACK_IMPORTED_MODULE_4__["isDisposable"])(ie)) {
       ie.Dispose();
     }
   }
@@ -5791,36 +4793,36 @@ function MapTreeModule$$$copyToArray(s$$4, arr$$1, i$$1) {
     j = j + 1;
   }, s$$4);
 }
-const MapTreeModule$002EMapIterator$00602 = Object(_Types__WEBPACK_IMPORTED_MODULE_0__["declare"])(function Map_MapTreeModule_MapIterator(arg1, arg2) {
+const MapTreeModule$002EMapIterator$00602 = Object(_Types_js__WEBPACK_IMPORTED_MODULE_0__["declare"])(function Map_MapTreeModule_MapIterator(arg1, arg2) {
   this.stack = arg1;
   this.started = arg2;
-}, _Types__WEBPACK_IMPORTED_MODULE_0__["Record"]);
-function MapTreeModule$002EMapIterator$00602$reflection($gen$$79, $gen$$80) {
-  return Object(_Reflection__WEBPACK_IMPORTED_MODULE_1__["record"])("Map.MapTreeModule.MapIterator`2", [$gen$$79, $gen$$80], MapTreeModule$002EMapIterator$00602, () => [["stack", Object(_Reflection__WEBPACK_IMPORTED_MODULE_1__["list"])(MapTree$00602$reflection($gen$$79, $gen$$80))], ["started", _Reflection__WEBPACK_IMPORTED_MODULE_1__["bool"]]]);
+}, _Types_js__WEBPACK_IMPORTED_MODULE_0__["Record"]);
+function MapTreeModule$002EMapIterator$00602$reflection($gen$$109, $gen$$110) {
+  return Object(_Reflection_js__WEBPACK_IMPORTED_MODULE_1__["record"])("Map.MapTreeModule.MapIterator`2", [$gen$$109, $gen$$110], MapTreeModule$002EMapIterator$00602, () => [["stack", Object(_Reflection_js__WEBPACK_IMPORTED_MODULE_1__["list"])(MapTree$00602$reflection($gen$$109, $gen$$110))], ["started", _Reflection_js__WEBPACK_IMPORTED_MODULE_1__["bool"]]]);
 }
-function MapTreeModule$$$collapseLHS(stack) {
+function MapTreeModule$$$collapseLHS($stack$$111) {
   MapTreeModule$$$collapseLHS: while (true) {
+    const stack = $stack$$111;
+
     if (stack.tail != null) {
       if (stack.head.tag === 1) {
         return stack;
       } else if (stack.head.tag === 2) {
-        const $stack$$81 = stack;
-        stack = new _Types__WEBPACK_IMPORTED_MODULE_0__["List"]($stack$$81.head.fields[2], new _Types__WEBPACK_IMPORTED_MODULE_0__["List"](new MapTree$00602(1, "MapOne", $stack$$81.head.fields[0], $stack$$81.head.fields[1]), new _Types__WEBPACK_IMPORTED_MODULE_0__["List"]($stack$$81.head.fields[3], $stack$$81.tail)));
+        $stack$$111 = new _Types_js__WEBPACK_IMPORTED_MODULE_0__["List"](stack.head.fields[2], new _Types_js__WEBPACK_IMPORTED_MODULE_0__["List"](new MapTree$00602(1, "MapOne", stack.head.fields[0], stack.head.fields[1]), new _Types_js__WEBPACK_IMPORTED_MODULE_0__["List"](stack.head.fields[3], stack.tail)));
         continue MapTreeModule$$$collapseLHS;
       } else {
-        const $stack$$82 = stack;
-        stack = $stack$$82.tail;
+        $stack$$111 = stack.tail;
         continue MapTreeModule$$$collapseLHS;
       }
     } else {
-      return new _Types__WEBPACK_IMPORTED_MODULE_0__["List"]();
+      return new _Types_js__WEBPACK_IMPORTED_MODULE_0__["List"]();
     }
 
     break;
   }
 }
 function MapTreeModule$$$mkIterator(s$$5) {
-  return new MapTreeModule$002EMapIterator$00602(MapTreeModule$$$collapseLHS(new _Types__WEBPACK_IMPORTED_MODULE_0__["List"](s$$5, new _Types__WEBPACK_IMPORTED_MODULE_0__["List"]())), false);
+  return new MapTreeModule$002EMapIterator$00602(MapTreeModule$$$collapseLHS(new _Types_js__WEBPACK_IMPORTED_MODULE_0__["List"](s$$5, new _Types_js__WEBPACK_IMPORTED_MODULE_0__["List"]())), false);
 }
 function MapTreeModule$$$notStarted() {
   throw new Error("enumeration not started");
@@ -5860,16 +4862,16 @@ function MapTreeModule$$$moveNext(i$$3) {
     return !(i$$3.stack.tail == null);
   }
 }
-const MapTreeModule$002EmkIEnumerator$0027$00602 = Object(_Types__WEBPACK_IMPORTED_MODULE_0__["declare"])(function Map_MapTreeModule_mkIEnumerator_(s$$6) {
+const MapTreeModule$002EmkIEnumerator$0027$00602 = Object(_Types_js__WEBPACK_IMPORTED_MODULE_0__["declare"])(function Map_MapTreeModule_mkIEnumerator_(s$$6) {
   const $this$$1 = this;
   $this$$1.s = s$$6;
   $this$$1.i = MapTreeModule$$$mkIterator($this$$1.s);
 });
-function MapTreeModule$002EmkIEnumerator$0027$00602$reflection($gen$$83, $gen$$84) {
-  return Object(_Reflection__WEBPACK_IMPORTED_MODULE_1__["type"])("Map.MapTreeModule.mkIEnumerator'`2", [$gen$$83, $gen$$84]);
+function MapTreeModule$002EmkIEnumerator$0027$00602$reflection($gen$$115, $gen$$116) {
+  return Object(_Reflection_js__WEBPACK_IMPORTED_MODULE_1__["type"])("Map.MapTreeModule.mkIEnumerator'`2", [$gen$$115, $gen$$116]);
 }
 function MapTreeModule$002EmkIEnumerator$0027$00602$$$$002Ector$$Z26BC498C(s$$6) {
-  return this != null ? MapTreeModule$002EmkIEnumerator$0027$00602.call(this, s$$6) : new MapTreeModule$002EmkIEnumerator$0027$00602(s$$6);
+  return this instanceof MapTreeModule$002EmkIEnumerator$0027$00602 ? MapTreeModule$002EmkIEnumerator$0027$00602.call(this, s$$6) : new MapTreeModule$002EmkIEnumerator$0027$00602(s$$6);
 }
 Object.defineProperty(MapTreeModule$002EmkIEnumerator$0027$00602.prototype, "Current", {
   "get": function () {
@@ -5895,7 +4897,7 @@ function MapTreeModule$$$mkIEnumerator(s$$7) {
 }
 function MapTreeModule$$$toSeq(s$$8) {
   const en = MapTreeModule$$$mkIEnumerator(s$$8);
-  return Object(_Seq__WEBPACK_IMPORTED_MODULE_3__["unfold"])(function generator(en$$1) {
+  return Object(_Seq_js__WEBPACK_IMPORTED_MODULE_3__["unfold"])(function generator(en$$1) {
     if (en$$1.MoveNext()) {
       return [en$$1.Current, en$$1];
     } else {
@@ -5903,16 +4905,16 @@ function MapTreeModule$$$toSeq(s$$8) {
     }
   }, en);
 }
-const FSharpMap = Object(_Types__WEBPACK_IMPORTED_MODULE_0__["declare"])(function Map_Map(comparer$$17, tree) {
+const FSharpMap = Object(_Types_js__WEBPACK_IMPORTED_MODULE_0__["declare"])(function Map_Map(comparer$$17, tree) {
   const $this$$2 = this;
   $this$$2.comparer = comparer$$17;
   $this$$2.tree = tree;
 });
-function FSharpMap$reflection($gen$$85, $gen$$86) {
-  return Object(_Reflection__WEBPACK_IMPORTED_MODULE_1__["type"])("Map.FSharpMap", [$gen$$85, $gen$$86]);
+function FSharpMap$reflection($gen$$120, $gen$$121) {
+  return Object(_Reflection_js__WEBPACK_IMPORTED_MODULE_1__["type"])("Map.FSharpMap", [$gen$$120, $gen$$121]);
 }
 function FSharpMap$$$$002Ector$$58ADD115(comparer$$17, tree) {
-  return this != null ? FSharpMap.call(this, comparer$$17, tree) : new FSharpMap(comparer$$17, tree);
+  return this instanceof FSharpMap ? FSharpMap.call(this, comparer$$17, tree) : new FSharpMap(comparer$$17, tree);
 }
 function FSharpMap$$get_Comparer(__$$4) {
   return __$$4.comparer;
@@ -5935,7 +4937,7 @@ function FSharpMap$$TryGetValue$$5BDDA1(__$$9, k$$30, defValue) {
   if (matchValue$$6 == null) {
     return [false, defValue];
   } else {
-    const v$$25 = Object(_Option__WEBPACK_IMPORTED_MODULE_2__["value"])(matchValue$$6);
+    const v$$25 = Object(_Option_js__WEBPACK_IMPORTED_MODULE_2__["value"])(matchValue$$6);
     return [true, v$$25];
   }
 }
@@ -5987,10 +4989,13 @@ function FSharpMap$$ToList(__$$24) {
 }
 
 FSharpMap.prototype.toString = function () {
+  var strings;
   const this$ = this;
-  return "map [" + Object(_String__WEBPACK_IMPORTED_MODULE_5__["join"])("; ", ...Object(_Seq__WEBPACK_IMPORTED_MODULE_3__["map"])(function mapping(kv) {
-    return Object(_String__WEBPACK_IMPORTED_MODULE_5__["toText"])(Object(_String__WEBPACK_IMPORTED_MODULE_5__["printf"])("(%A, %A)"))(kv[0])(kv[1]);
-  }, this$)) + "]";
+  return "map [" + (strings = (Object(_Seq_js__WEBPACK_IMPORTED_MODULE_3__["map"])(function mapping(kv) {
+    const clo1 = Object(_String_js__WEBPACK_IMPORTED_MODULE_5__["toText"])(Object(_String_js__WEBPACK_IMPORTED_MODULE_5__["printf"])("(%A, %A)"));
+    const clo2 = clo1(kv[0]);
+    return clo2(kv[1]);
+  }, this$)), (Object(_String_js__WEBPACK_IMPORTED_MODULE_5__["join"])("; ", strings))) + "]";
 };
 
 FSharpMap.prototype.GetHashCode = function () {
@@ -6004,9 +5009,10 @@ FSharpMap.prototype.GetHashCode = function () {
   const e$$1 = MapTreeModule$$$mkIEnumerator(FSharpMap$$get_Tree(this$$$1));
 
   while (e$$1.MoveNext()) {
-    const activePatternResult3058 = e$$1.Current;
-    res$$3 = combineHash(res$$3, Object(_Util__WEBPACK_IMPORTED_MODULE_4__["structuralHash"])(activePatternResult3058[0]));
-    res$$3 = combineHash(res$$3, Object(_Util__WEBPACK_IMPORTED_MODULE_4__["structuralHash"])(activePatternResult3058[1]));
+    const patternInput$$5 = e$$1.Current;
+    const activePatternResult3676 = patternInput$$5;
+    res$$3 = combineHash(res$$3, Object(_Util_js__WEBPACK_IMPORTED_MODULE_4__["structuralHash"])(activePatternResult3676[0]));
+    res$$3 = combineHash(res$$3, Object(_Util_js__WEBPACK_IMPORTED_MODULE_4__["structuralHash"])(activePatternResult3676[1]));
   }
 
   return Math.abs(res$$3) | 0;
@@ -6019,18 +5025,17 @@ FSharpMap.prototype.Equals = function (that) {
 
 FSharpMap.prototype[Symbol.iterator] = function () {
   const __$$25 = this;
-  return Object(_Seq__WEBPACK_IMPORTED_MODULE_3__["toIterator"])(MapTreeModule$$$mkIEnumerator(__$$25.tree));
+  return Object(_Seq_js__WEBPACK_IMPORTED_MODULE_3__["toIterator"])(MapTreeModule$$$mkIEnumerator(__$$25.tree));
 };
 
 FSharpMap.prototype.CompareTo = function (obj) {
   const m$$22 = this;
-  const m2 = obj;
   let res$$4 = 0;
   let finished = false;
   const e1 = MapTreeModule$$$mkIEnumerator(FSharpMap$$get_Tree(m$$22));
 
   try {
-    const e2 = MapTreeModule$$$mkIEnumerator(FSharpMap$$get_Tree(m2));
+    const e2 = MapTreeModule$$$mkIEnumerator(FSharpMap$$get_Tree(obj));
 
     try {
       while (!finished ? res$$4 === 0 : false) {
@@ -6041,7 +5046,7 @@ FSharpMap.prototype.CompareTo = function (obj) {
             const kvp1 = e1.Current;
             const kvp2 = e2.Current;
             const c$$10 = m$$22.comparer.Compare(kvp1[0], kvp2[0]) | 0;
-            res$$4 = c$$10 !== 0 ? c$$10 : Object(_Util__WEBPACK_IMPORTED_MODULE_4__["compare"])(kvp1[1], kvp2[1]);
+            res$$4 = c$$10 !== 0 ? c$$10 : Object(_Util_js__WEBPACK_IMPORTED_MODULE_4__["compare"])(kvp1[1], kvp2[1]);
           } else {
             res$$4 = 1;
           }
@@ -6054,34 +5059,84 @@ FSharpMap.prototype.CompareTo = function (obj) {
 
       return res$$4 | 0;
     } finally {
-      if (Object(_Util__WEBPACK_IMPORTED_MODULE_4__["isDisposable"])(e2)) {
+      if (Object(_Util_js__WEBPACK_IMPORTED_MODULE_4__["isDisposable"])(e2)) {
         e2.Dispose();
       }
     }
   } finally {
-    if (Object(_Util__WEBPACK_IMPORTED_MODULE_4__["isDisposable"])(e1)) {
+    if (Object(_Util_js__WEBPACK_IMPORTED_MODULE_4__["isDisposable"])(e1)) {
       e1.Dispose();
     }
   }
 };
 
+Object.defineProperty(FSharpMap.prototype, "size", {
+  "get": function () {
+    const this$$$3 = this;
+    return FSharpMap$$get_Count(this$$$3) | 0;
+  }
+});
+
+FSharpMap.prototype.clear = function () {
+  throw new Error("Map cannot be mutated");
+};
+
+FSharpMap.prototype.delete = function (_arg1$$1) {
+  throw new Error("Map cannot be mutated");
+};
+
+FSharpMap.prototype.entries = function () {
+  const this$$$4 = this;
+  return MapTreeModule$$$toSeq(FSharpMap$$get_Tree(this$$$4));
+};
+
+FSharpMap.prototype.get = function (k$$34) {
+  const this$$$5 = this;
+  return FSharpMap$$get_Item$$2B595(this$$$5, k$$34);
+};
+
+FSharpMap.prototype.has = function (k$$35) {
+  const this$$$6 = this;
+  return FSharpMap$$ContainsKey$$2B595(this$$$6, k$$35);
+};
+
+FSharpMap.prototype.keys = function () {
+  const this$$$7 = this;
+  const source$$1 = MapTreeModule$$$toSeq(FSharpMap$$get_Tree(this$$$7));
+  return Object(_Seq_js__WEBPACK_IMPORTED_MODULE_3__["map"])(function mapping$$1(kv$$1) {
+    return kv$$1[0];
+  }, source$$1);
+};
+
+FSharpMap.prototype.set = function (k$$36, v$$26) {
+  throw new Error("Map cannot be mutated");
+};
+
+FSharpMap.prototype.values = function () {
+  const this$$$8 = this;
+  const source$$2 = MapTreeModule$$$toSeq(FSharpMap$$get_Tree(this$$$8));
+  return Object(_Seq_js__WEBPACK_IMPORTED_MODULE_3__["map"])(function mapping$$2(kv$$2) {
+    return kv$$2[1];
+  }, source$$2);
+};
+
 function isEmpty(m$$23) {
   return FSharpMap$$get_IsEmpty(m$$23);
 }
-function add(k$$34, v$$26, m$$24) {
-  return FSharpMap$$Add$$5BDDA1(m$$24, k$$34, v$$26);
+function add(k$$37, v$$27, m$$24) {
+  return FSharpMap$$Add$$5BDDA1(m$$24, k$$37, v$$27);
 }
-function find(k$$35, m$$25) {
-  return FSharpMap$$get_Item$$2B595(m$$25, k$$35);
+function find(k$$38, m$$25) {
+  return FSharpMap$$get_Item$$2B595(m$$25, k$$38);
 }
-function tryFind(k$$36, m$$26) {
-  return FSharpMap$$TryFind$$2B595(m$$26, k$$36);
+function tryFind(k$$39, m$$26) {
+  return FSharpMap$$TryFind$$2B595(m$$26, k$$39);
 }
-function remove(k$$37, m$$27) {
-  return FSharpMap$$Remove$$2B595(m$$27, k$$37);
+function remove(k$$40, m$$27) {
+  return FSharpMap$$Remove$$2B595(m$$27, k$$40);
 }
-function containsKey(k$$38, m$$28) {
-  return FSharpMap$$ContainsKey$$2B595(m$$28, k$$38);
+function containsKey(k$$41, m$$28) {
+  return FSharpMap$$ContainsKey$$2B595(m$$28, k$$41);
 }
 function iterate(f$$27, m$$29) {
   FSharpMap$$Iterate$$1DCFB91D(m$$29, f$$27);
@@ -6093,7 +5148,7 @@ function pick(f$$29, m$$31) {
   const matchValue$$8 = tryPick(f$$29, m$$31);
 
   if (matchValue$$8 != null) {
-    const res$$5 = Object(_Option__WEBPACK_IMPORTED_MODULE_2__["value"])(matchValue$$8);
+    const res$$5 = Object(_Option_js__WEBPACK_IMPORTED_MODULE_2__["value"])(matchValue$$8);
     return res$$5;
   } else {
     throw new Error("key not found");
@@ -6127,29 +5182,33 @@ function toSeq(m$$40) {
   return MapTreeModule$$$toSeq(FSharpMap$$get_Tree(m$$40));
 }
 function findKey(f$$38, m$$41) {
-  const _arg1$$1 = MapTreeModule$$$tryPick(function f$$39(k$$39, v$$27) {
-    if (f$$38(k$$39, v$$27)) {
-      return Object(_Option__WEBPACK_IMPORTED_MODULE_2__["some"])(k$$39);
+  let _arg1$$2;
+
+  const m$$42 = FSharpMap$$get_Tree(m$$41);
+  _arg1$$2 = MapTreeModule$$$tryPick(function f$$39(k$$42, v$$28) {
+    if (f$$38(k$$42, v$$28)) {
+      return Object(_Option_js__WEBPACK_IMPORTED_MODULE_2__["some"])(k$$42);
     } else {
       return null;
     }
-  }, FSharpMap$$get_Tree(m$$41));
+  }, m$$42);
 
-  if (_arg1$$1 == null) {
+  if (_arg1$$2 == null) {
     throw new Error("Key not found");
   } else {
-    const k$$40 = Object(_Option__WEBPACK_IMPORTED_MODULE_2__["value"])(_arg1$$1);
-    return k$$40;
+    const k$$43 = Object(_Option_js__WEBPACK_IMPORTED_MODULE_2__["value"])(_arg1$$2);
+    return k$$43;
   }
 }
 function tryFindKey(f$$40, m$$43) {
-  return MapTreeModule$$$tryPick(function f$$41(k$$41, v$$28) {
-    if (f$$40(k$$41, v$$28)) {
-      return Object(_Option__WEBPACK_IMPORTED_MODULE_2__["some"])(k$$41);
+  const m$$44 = FSharpMap$$get_Tree(m$$43);
+  return MapTreeModule$$$tryPick(function f$$41(k$$44, v$$29) {
+    if (f$$40(k$$44, v$$29)) {
+      return Object(_Option_js__WEBPACK_IMPORTED_MODULE_2__["some"])(k$$44);
     } else {
       return null;
     }
-  }, FSharpMap$$get_Tree(m$$43));
+  }, m$$44);
 }
 function ofList(l$$22, comparer$$18) {
   return FSharpMap$$$$002Ector$$58ADD115(comparer$$18, MapTreeModule$$$ofList(comparer$$18, l$$22));
@@ -6164,7 +5223,9 @@ function toList(m$$45) {
   return FSharpMap$$ToList(m$$45);
 }
 function toArray(m$$46) {
-  const res$$6 = new Array(FSharpMap$$get_Count(m$$46));
+  let res$$6;
+  const len = FSharpMap$$get_Count(m$$46) | 0;
+  res$$6 = new Array(len);
   MapTreeModule$$$copyToArray(FSharpMap$$get_Tree(m$$46), res$$6, 0);
   return res$$6;
 }
@@ -6196,8 +5257,8 @@ function createMutablePrivate(comparer$$22, tree$0027) {
       return MapTreeModule$$$toSeq(tree$$1);
     },
 
-    get(k$$42) {
-      return MapTreeModule$$$find(comparer$$22, k$$42, tree$$1);
+    get(k$$45) {
+      return MapTreeModule$$$find(comparer$$22, k$$45, tree$$1);
     },
 
     has(x$$19) {
@@ -6205,25 +5266,27 @@ function createMutablePrivate(comparer$$22, tree$0027) {
     },
 
     keys() {
-      return Object(_Seq__WEBPACK_IMPORTED_MODULE_3__["map"])(function mapping$$1(kv$$1) {
-        return kv$$1[0];
-      }, MapTreeModule$$$toSeq(tree$$1));
+      const source$$3 = MapTreeModule$$$toSeq(tree$$1);
+      return Object(_Seq_js__WEBPACK_IMPORTED_MODULE_3__["map"])(function mapping$$3(kv$$3) {
+        return kv$$3[0];
+      }, source$$3);
     },
 
-    set(k$$43, v$$29) {
-      const this$$$3 = this;
-      tree$$1 = MapTreeModule$$$add(comparer$$22, k$$43, v$$29, tree$$1);
-      return this$$$3;
+    set(k$$46, v$$30) {
+      const this$$$9 = this;
+      tree$$1 = MapTreeModule$$$add(comparer$$22, k$$46, v$$30, tree$$1);
+      return this$$$9;
     },
 
     values() {
-      return Object(_Seq__WEBPACK_IMPORTED_MODULE_3__["map"])(function mapping$$2(kv$$2) {
-        return kv$$2[1];
-      }, MapTreeModule$$$toSeq(tree$$1));
+      const source$$4 = MapTreeModule$$$toSeq(tree$$1);
+      return Object(_Seq_js__WEBPACK_IMPORTED_MODULE_3__["map"])(function mapping$$4(kv$$4) {
+        return kv$$4[1];
+      }, source$$4);
     },
 
     [Symbol.iterator]() {
-      return Object(_Seq__WEBPACK_IMPORTED_MODULE_3__["toIterator"])(MapTreeModule$$$mkIEnumerator(tree$$1));
+      return Object(_Seq_js__WEBPACK_IMPORTED_MODULE_3__["toIterator"])(MapTreeModule$$$mkIEnumerator(tree$$1));
     },
 
     GetEnumerator() {
@@ -6233,42 +5296,740 @@ function createMutablePrivate(comparer$$22, tree$0027) {
   };
 }
 
-function createMutable(source$$3, comparer$$23) {
-  return createMutablePrivate(comparer$$23, MapTreeModule$$$ofSeq(comparer$$23, source$$3));
+function createMutable(source$$5, comparer$$23) {
+  const map$$1 = Object(_MutableMap__WEBPACK_IMPORTED_MODULE_6__["MutableMap$00602$$$$002Ector$$6623D9B3"])(source$$5, comparer$$23);
+  return map$$1;
 }
 function groupBy(projection, xs, comparer$$24) {
-  const dict = createMutable(Object(_Seq__WEBPACK_IMPORTED_MODULE_3__["empty"])(), comparer$$24);
-  Object(_Seq__WEBPACK_IMPORTED_MODULE_3__["iterate"])(function (v$$30) {
-    const key = projection(v$$30);
+  const dict = createMutable(Object(_Seq_js__WEBPACK_IMPORTED_MODULE_3__["empty"])(), comparer$$24);
+  Object(_Seq_js__WEBPACK_IMPORTED_MODULE_3__["iterate"])(function (v$$31) {
+    const key = projection(v$$31);
 
     if (dict.has(key)) {
-      dict.get(key).push(v$$30);
+      dict.get(key).push(v$$31);
     } else {
-      dict.set(key, Array.from([v$$30]));
+      const value = dict.set(key, [v$$31]);
+      value, null;
     }
   }, xs);
-  return Object(_Seq__WEBPACK_IMPORTED_MODULE_3__["map"])(function mapping$$3(kv$$3) {
-    return [kv$$3[0], kv$$3[1]];
+  return Object(_Seq_js__WEBPACK_IMPORTED_MODULE_3__["map"])(function mapping$$5(kv$$5) {
+    return [kv$$5[0], kv$$5[1]];
   }, dict);
 }
 function countBy(projection$$1, xs$$1, comparer$$25) {
-  const dict$$1 = createMutable(Object(_Seq__WEBPACK_IMPORTED_MODULE_3__["empty"])(), comparer$$25);
-  Object(_Seq__WEBPACK_IMPORTED_MODULE_3__["iterate"])(function (value$$1) {
+  const dict$$1 = createMutable(Object(_Seq_js__WEBPACK_IMPORTED_MODULE_3__["empty"])(), comparer$$25);
+  Object(_Seq_js__WEBPACK_IMPORTED_MODULE_3__["iterate"])(function (value$$1) {
     const key$$1 = projection$$1(value$$1);
-    dict$$1.has(key$$1) ? dict$$1.set(key$$1, dict$$1.get(key$$1) + 1) : dict$$1.set(key$$1, 1);
+    const value$$2 = dict$$1.has(key$$1) ? dict$$1.set(key$$1, dict$$1.get(key$$1) + 1) : dict$$1.set(key$$1, 1);
+    value$$2, null;
   }, xs$$1);
-  return Object(_Seq__WEBPACK_IMPORTED_MODULE_3__["map"])(function mapping$$4(kv$$4) {
-    return [kv$$4[0], kv$$4[1]];
+  return Object(_Seq_js__WEBPACK_IMPORTED_MODULE_3__["map"])(function mapping$$6(kv$$6) {
+    return [kv$$6[0], kv$$6[1]];
   }, dict$$1);
+}
+function count(m$$47) {
+  return FSharpMap$$get_Count(m$$47);
 }
 
 /***/ }),
 
-/***/ "./.fable/fable-library.2.1.12/Option.js":
+/***/ "./.fable/fable-library.2.3.25/MutableMap.js":
+/*!***************************************************!*\
+  !*** ./.fable/fable-library.2.3.25/MutableMap.js ***!
+  \***************************************************/
+/*! exports provided: MutableMap$00602, MutableMap$00602$reflection, MutableMap$00602$$$$002Ector$$6623D9B3, MutableMap$00602$$TryFind$$2B595, MutableMap$00602$$get_Comparer, MutableMap$00602$$Clear, MutableMap$00602$$get_Count, MutableMap$00602$$get_Item$$2B595, MutableMap$00602$$set_Item$$5BDDA1, MutableMap$00602$$Add$$5BDDA1, MutableMap$00602$$ContainsKey$$2B595, MutableMap$00602$$Remove$$2B595 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MutableMap$00602", function() { return MutableMap$00602; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MutableMap$00602$reflection", function() { return MutableMap$00602$reflection; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MutableMap$00602$$$$002Ector$$6623D9B3", function() { return MutableMap$00602$$$$002Ector$$6623D9B3; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MutableMap$00602$$TryFind$$2B595", function() { return MutableMap$00602$$TryFind$$2B595; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MutableMap$00602$$get_Comparer", function() { return MutableMap$00602$$get_Comparer; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MutableMap$00602$$Clear", function() { return MutableMap$00602$$Clear; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MutableMap$00602$$get_Count", function() { return MutableMap$00602$$get_Count; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MutableMap$00602$$get_Item$$2B595", function() { return MutableMap$00602$$get_Item$$2B595; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MutableMap$00602$$set_Item$$5BDDA1", function() { return MutableMap$00602$$set_Item$$5BDDA1; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MutableMap$00602$$Add$$5BDDA1", function() { return MutableMap$00602$$Add$$5BDDA1; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MutableMap$00602$$ContainsKey$$2B595", function() { return MutableMap$00602$$ContainsKey$$2B595; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MutableMap$00602$$Remove$$2B595", function() { return MutableMap$00602$$Remove$$2B595; });
+/* harmony import */ var _Types_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Types.js */ "./.fable/fable-library.2.3.25/Types.js");
+/* harmony import */ var _Seq_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Seq.js */ "./.fable/fable-library.2.3.25/Seq.js");
+/* harmony import */ var _Reflection_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Reflection.js */ "./.fable/fable-library.2.3.25/Reflection.js");
+/* harmony import */ var _Util_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Util.js */ "./.fable/fable-library.2.3.25/Util.js");
+/* harmony import */ var _String_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./String.js */ "./.fable/fable-library.2.3.25/String.js");
+
+
+
+
+
+const MutableMap$00602 = Object(_Types_js__WEBPACK_IMPORTED_MODULE_0__["declare"])(function Fable_Collections_MutableMap(pairs, comparer) {
+  const $this$$1 = this;
+  const this$ = new _Types_js__WEBPACK_IMPORTED_MODULE_0__["FSharpRef"](null);
+  $this$$1.comparer = comparer;
+  this$.contents = $this$$1;
+  $this$$1["entries@23"] = new Map([]);
+  $this$$1["init@20-1"] = 1;
+  Object(_Seq_js__WEBPACK_IMPORTED_MODULE_1__["iterate"])(function (pair) {
+    MutableMap$00602$$Add$$5BDDA1(this$.contents, pair[0], pair[1]);
+  }, pairs);
+});
+function MutableMap$00602$reflection($gen$$4, $gen$$5) {
+  return Object(_Reflection_js__WEBPACK_IMPORTED_MODULE_2__["type"])("Fable.Collections.MutableMap`2", [$gen$$4, $gen$$5]);
+}
+function MutableMap$00602$$$$002Ector$$6623D9B3(pairs, comparer) {
+  return this instanceof MutableMap$00602 ? MutableMap$00602.call(this, pairs, comparer) : new MutableMap$00602(pairs, comparer);
+}
+
+function MutableMap$00602$$TryFindIndex$$2B595(this$$$1, k) {
+  const h = this$$$1.comparer.GetHashCode(k) | 0;
+  const matchValue = Object(_Util_js__WEBPACK_IMPORTED_MODULE_3__["tryGetValue"])(this$$$1["entries@23"], h, null);
+
+  if (matchValue[0]) {
+    return [true, h, matchValue[1].findIndex(function (pair$$1) {
+      return this$$$1.comparer.Equals(k, pair$$1[0]);
+    })];
+  } else {
+    return [false, h, -1];
+  }
+}
+
+function MutableMap$00602$$TryFind$$2B595(this$$$2, k$$1) {
+  const matchValue$$1 = MutableMap$00602$$TryFindIndex$$2B595(this$$$2, k$$1);
+  var $target$$10;
+
+  if (matchValue$$1[0]) {
+    if (matchValue$$1[2] > -1) {
+      $target$$10 = 0;
+    } else {
+      $target$$10 = 1;
+    }
+  } else {
+    $target$$10 = 1;
+  }
+
+  switch ($target$$10) {
+    case 0:
+      {
+        return Object(_Util_js__WEBPACK_IMPORTED_MODULE_3__["getItemFromDict"])(this$$$2["entries@23"], matchValue$$1[1])[matchValue$$1[2]];
+      }
+
+    case 1:
+      {
+        return null;
+      }
+  }
+}
+function MutableMap$00602$$get_Comparer(this$$$3) {
+  return this$$$3.comparer;
+}
+function MutableMap$00602$$Clear(this$$$4) {
+  this$$$4["entries@23"].clear();
+}
+function MutableMap$00602$$get_Count(this$$$5) {
+  const source = this$$$5["entries@23"].values();
+  return Object(_Seq_js__WEBPACK_IMPORTED_MODULE_1__["sumBy"])(function projection(pairs$$2) {
+    return pairs$$2.length;
+  }, source, {
+    GetZero() {
+      return 0;
+    },
+
+    Add($x$$2, $y$$3) {
+      return $x$$2 + $y$$3;
+    }
+
+  }) | 0;
+}
+function MutableMap$00602$$get_Item$$2B595(this$$$6, k$$2) {
+  const matchValue$$2 = MutableMap$00602$$TryFind$$2B595(this$$$6, k$$2);
+
+  if (matchValue$$2 != null) {
+    const pair$$2 = matchValue$$2;
+    return pair$$2[1];
+  } else {
+    throw new Error("The item was not found in collection");
+  }
+}
+function MutableMap$00602$$set_Item$$5BDDA1(this$$$7, k$$3, v) {
+  const matchValue$$3 = MutableMap$00602$$TryFindIndex$$2B595(this$$$7, k$$3);
+  var $target$$20;
+
+  if (matchValue$$3[0]) {
+    if (matchValue$$3[2] > -1) {
+      $target$$20 = 0;
+    } else {
+      $target$$20 = 1;
+    }
+  } else {
+    $target$$20 = 1;
+  }
+
+  switch ($target$$20) {
+    case 0:
+      {
+        Object(_Util_js__WEBPACK_IMPORTED_MODULE_3__["getItemFromDict"])(this$$$7["entries@23"], matchValue$$3[1])[matchValue$$3[2]] = [k$$3, v];
+        break;
+      }
+
+    case 1:
+      {
+        if (matchValue$$3[0]) {
+          const value = Object(_Util_js__WEBPACK_IMPORTED_MODULE_3__["getItemFromDict"])(this$$$7["entries@23"], matchValue$$3[1]).push([k$$3, v]);
+          null, null;
+        } else {
+          this$$$7["entries@23"].set(matchValue$$3[1], [[k$$3, v]]);
+        }
+
+        break;
+      }
+  }
+}
+function MutableMap$00602$$Add$$5BDDA1(this$$$8, k$$4, v$$1) {
+  const matchValue$$4 = MutableMap$00602$$TryFindIndex$$2B595(this$$$8, k$$4);
+  var $target$$24;
+
+  if (matchValue$$4[0]) {
+    if (matchValue$$4[2] > -1) {
+      $target$$24 = 0;
+    } else {
+      $target$$24 = 1;
+    }
+  } else {
+    $target$$24 = 1;
+  }
+
+  switch ($target$$24) {
+    case 0:
+      {
+        let msg;
+        const clo1 = Object(_String_js__WEBPACK_IMPORTED_MODULE_4__["toText"])(Object(_String_js__WEBPACK_IMPORTED_MODULE_4__["printf"])("An item with the same key has already been added. Key: %A"));
+        msg = clo1(k$$4);
+        throw new Error(msg);
+        break;
+      }
+
+    case 1:
+      {
+        if (matchValue$$4[0]) {
+          const value$$1 = Object(_Util_js__WEBPACK_IMPORTED_MODULE_3__["getItemFromDict"])(this$$$8["entries@23"], matchValue$$4[1]).push([k$$4, v$$1]);
+          null, null;
+        } else {
+          this$$$8["entries@23"].set(matchValue$$4[1], [[k$$4, v$$1]]);
+        }
+
+        break;
+      }
+  }
+}
+function MutableMap$00602$$ContainsKey$$2B595(this$$$9, k$$5) {
+  const matchValue$$5 = MutableMap$00602$$TryFindIndex$$2B595(this$$$9, k$$5);
+  var $target$$27;
+
+  if (matchValue$$5[0]) {
+    if (matchValue$$5[2] > -1) {
+      $target$$27 = 0;
+    } else {
+      $target$$27 = 1;
+    }
+  } else {
+    $target$$27 = 1;
+  }
+
+  switch ($target$$27) {
+    case 0:
+      {
+        return true;
+      }
+
+    case 1:
+      {
+        return false;
+      }
+  }
+}
+function MutableMap$00602$$Remove$$2B595(this$$$10, k$$6) {
+  const matchValue$$6 = MutableMap$00602$$TryFindIndex$$2B595(this$$$10, k$$6);
+  var $target$$30;
+
+  if (matchValue$$6[0]) {
+    if (matchValue$$6[2] > -1) {
+      $target$$30 = 0;
+    } else {
+      $target$$30 = 1;
+    }
+  } else {
+    $target$$30 = 1;
+  }
+
+  switch ($target$$30) {
+    case 0:
+      {
+        Object(_Util_js__WEBPACK_IMPORTED_MODULE_3__["getItemFromDict"])(this$$$10["entries@23"], matchValue$$6[1]).splice(matchValue$$6[2], 1);
+        return true;
+      }
+
+    case 1:
+      {
+        return false;
+      }
+  }
+}
+
+MutableMap$00602.prototype[Symbol.iterator] = function () {
+  var elems;
+  const this$$$11 = this;
+  return Object(_Seq_js__WEBPACK_IMPORTED_MODULE_1__["toIterator"])((elems = Object(_Seq_js__WEBPACK_IMPORTED_MODULE_1__["delay"])(function () {
+    return Object(_Seq_js__WEBPACK_IMPORTED_MODULE_1__["collect"])(function (pairs$$3) {
+      return Object(_Seq_js__WEBPACK_IMPORTED_MODULE_1__["map"])(function (pair$$3) {
+        return pair$$3;
+      }, pairs$$3);
+    }, this$$$11["entries@23"].values());
+  }), Object(_Seq_js__WEBPACK_IMPORTED_MODULE_1__["getEnumerator"])(elems)));
+};
+
+MutableMap$00602.prototype.Add = function (item) {
+  const this$$$12 = this;
+  MutableMap$00602$$Add$$5BDDA1(this$$$12, item[0], item[1]);
+};
+
+MutableMap$00602.prototype.Clear = function () {
+  const this$$$13 = this;
+  MutableMap$00602$$Clear(this$$$13);
+};
+
+MutableMap$00602.prototype.Contains = function (item$$1) {
+  var p;
+  const this$$$14 = this;
+  const matchValue$$7 = MutableMap$00602$$TryFind$$2B595(this$$$14, item$$1[0]);
+  var $target$$31;
+
+  if (matchValue$$7 != null) {
+    if (p = matchValue$$7, Object(_Util_js__WEBPACK_IMPORTED_MODULE_3__["equals"])(p[1], item$$1[1])) {
+      $target$$31 = 0;
+    } else {
+      $target$$31 = 1;
+    }
+  } else {
+    $target$$31 = 1;
+  }
+
+  switch ($target$$31) {
+    case 0:
+      {
+        return true;
+      }
+
+    case 1:
+      {
+        return false;
+      }
+  }
+};
+
+MutableMap$00602.prototype.CopyTo = function (array, arrayIndex) {
+  const this$$$15 = this;
+  Object(_Seq_js__WEBPACK_IMPORTED_MODULE_1__["iterateIndexed"])(function action(i$$10, e) {
+    array[arrayIndex + i$$10] = e;
+  }, this$$$15);
+};
+
+Object.defineProperty(MutableMap$00602.prototype, "Count", {
+  "get": function () {
+    const this$$$16 = this;
+    return MutableMap$00602$$get_Count(this$$$16) | 0;
+  }
+});
+Object.defineProperty(MutableMap$00602.prototype, "IsReadOnly", {
+  "get": function () {
+    return false;
+  }
+});
+
+MutableMap$00602.prototype.Remove = function (item$$2) {
+  const this$$$18 = this;
+  const matchValue$$8 = MutableMap$00602$$TryFind$$2B595(this$$$18, item$$2[0]);
+
+  if (matchValue$$8 != null) {
+    const pair$$4 = matchValue$$8;
+
+    if (Object(_Util_js__WEBPACK_IMPORTED_MODULE_3__["equals"])(pair$$4[1], item$$2[1])) {
+      const value$$2 = MutableMap$00602$$Remove$$2B595(this$$$18, item$$2[0]);
+      value$$2, null;
+    }
+
+    return true;
+  } else {
+    return false;
+  }
+};
+
+Object.defineProperty(MutableMap$00602.prototype, "size", {
+  "get": function () {
+    const this$$$19 = this;
+    return MutableMap$00602$$get_Count(this$$$19) | 0;
+  }
+});
+
+MutableMap$00602.prototype.clear = function () {
+  const this$$$20 = this;
+  MutableMap$00602$$Clear(this$$$20);
+};
+
+MutableMap$00602.prototype.delete = function (k$$7) {
+  const this$$$21 = this;
+  return MutableMap$00602$$Remove$$2B595(this$$$21, k$$7);
+};
+
+MutableMap$00602.prototype.entries = function () {
+  const this$$$22 = this;
+  return Object(_Seq_js__WEBPACK_IMPORTED_MODULE_1__["map"])(function mapping(x) {
+    return x;
+  }, this$$$22);
+};
+
+MutableMap$00602.prototype.get = function (k$$8) {
+  const this$$$23 = this;
+  return MutableMap$00602$$get_Item$$2B595(this$$$23, k$$8);
+};
+
+MutableMap$00602.prototype.has = function (k$$9) {
+  const this$$$24 = this;
+  return MutableMap$00602$$ContainsKey$$2B595(this$$$24, k$$9);
+};
+
+MutableMap$00602.prototype.keys = function () {
+  const this$$$25 = this;
+  return Object(_Seq_js__WEBPACK_IMPORTED_MODULE_1__["map"])(function mapping$$1(pair$$5) {
+    return pair$$5[0];
+  }, this$$$25);
+};
+
+MutableMap$00602.prototype.set = function (k$$10, v$$2) {
+  const this$$$26 = this;
+  MutableMap$00602$$set_Item$$5BDDA1(this$$$26, k$$10, v$$2);
+  return this$$$26;
+};
+
+MutableMap$00602.prototype.values = function () {
+  const this$$$27 = this;
+  return Object(_Seq_js__WEBPACK_IMPORTED_MODULE_1__["map"])(function mapping$$2(pair$$6) {
+    return pair$$6[1];
+  }, this$$$27);
+};
+
+/***/ }),
+
+/***/ "./.fable/fable-library.2.3.25/MutableSet.js":
+/*!***************************************************!*\
+  !*** ./.fable/fable-library.2.3.25/MutableSet.js ***!
+  \***************************************************/
+/*! exports provided: MutableSet$00601, MutableSet$00601$reflection, MutableSet$00601$$$$002Ector$$Z6150332D, MutableSet$00601$$get_Comparer, MutableSet$00601$$Clear, MutableSet$00601$$get_Count, MutableSet$00601$$Add$$2B595, MutableSet$00601$$Contains$$2B595, MutableSet$00601$$Remove$$2B595 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MutableSet$00601", function() { return MutableSet$00601; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MutableSet$00601$reflection", function() { return MutableSet$00601$reflection; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MutableSet$00601$$$$002Ector$$Z6150332D", function() { return MutableSet$00601$$$$002Ector$$Z6150332D; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MutableSet$00601$$get_Comparer", function() { return MutableSet$00601$$get_Comparer; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MutableSet$00601$$Clear", function() { return MutableSet$00601$$Clear; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MutableSet$00601$$get_Count", function() { return MutableSet$00601$$get_Count; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MutableSet$00601$$Add$$2B595", function() { return MutableSet$00601$$Add$$2B595; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MutableSet$00601$$Contains$$2B595", function() { return MutableSet$00601$$Contains$$2B595; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MutableSet$00601$$Remove$$2B595", function() { return MutableSet$00601$$Remove$$2B595; });
+/* harmony import */ var _Types_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Types.js */ "./.fable/fable-library.2.3.25/Types.js");
+/* harmony import */ var _Seq_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Seq.js */ "./.fable/fable-library.2.3.25/Seq.js");
+/* harmony import */ var _Reflection_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Reflection.js */ "./.fable/fable-library.2.3.25/Reflection.js");
+/* harmony import */ var _Util_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Util.js */ "./.fable/fable-library.2.3.25/Util.js");
+/* harmony import */ var _Option_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Option.js */ "./.fable/fable-library.2.3.25/Option.js");
+
+
+
+
+
+const MutableSet$00601 = Object(_Types_js__WEBPACK_IMPORTED_MODULE_0__["declare"])(function Fable_Collections_MutableSet(items, comparer) {
+  const $this$$1 = this;
+  const this$ = new _Types_js__WEBPACK_IMPORTED_MODULE_0__["FSharpRef"](null);
+  $this$$1.comparer = comparer;
+  this$.contents = $this$$1;
+  $this$$1["entries@24"] = new Map([]);
+  $this$$1["init@21-2"] = 1;
+  Object(_Seq_js__WEBPACK_IMPORTED_MODULE_1__["iterate"])(function (item) {
+    const value = MutableSet$00601$$Add$$2B595(this$.contents, item);
+    value, null;
+  }, items);
+});
+function MutableSet$00601$reflection($gen$$4) {
+  return Object(_Reflection_js__WEBPACK_IMPORTED_MODULE_2__["type"])("Fable.Collections.MutableSet`1", [$gen$$4]);
+}
+function MutableSet$00601$$$$002Ector$$Z6150332D(items, comparer) {
+  return this instanceof MutableSet$00601 ? MutableSet$00601.call(this, items, comparer) : new MutableSet$00601(items, comparer);
+}
+
+function MutableSet$00601$$TryFindIndex$$2B595(this$$$1, k) {
+  const h = this$$$1.comparer.GetHashCode(k) | 0;
+  const matchValue = Object(_Util_js__WEBPACK_IMPORTED_MODULE_3__["tryGetValue"])(this$$$1["entries@24"], h, null);
+
+  if (matchValue[0]) {
+    return [true, h, matchValue[1].findIndex(function (v) {
+      return this$$$1.comparer.Equals(k, v);
+    })];
+  } else {
+    return [false, h, -1];
+  }
+}
+
+function MutableSet$00601$$TryFind$$2B595(this$$$2, k$$1) {
+  const matchValue$$1 = MutableSet$00601$$TryFindIndex$$2B595(this$$$2, k$$1);
+  var $target$$9;
+
+  if (matchValue$$1[0]) {
+    if (matchValue$$1[2] > -1) {
+      $target$$9 = 0;
+    } else {
+      $target$$9 = 1;
+    }
+  } else {
+    $target$$9 = 1;
+  }
+
+  switch ($target$$9) {
+    case 0:
+      {
+        return Object(_Option_js__WEBPACK_IMPORTED_MODULE_4__["some"])(Object(_Util_js__WEBPACK_IMPORTED_MODULE_3__["getItemFromDict"])(this$$$2["entries@24"], matchValue$$1[1])[matchValue$$1[2]]);
+      }
+
+    case 1:
+      {
+        return null;
+      }
+  }
+}
+
+function MutableSet$00601$$get_Comparer(this$$$3) {
+  return this$$$3.comparer;
+}
+function MutableSet$00601$$Clear(this$$$4) {
+  this$$$4["entries@24"].clear();
+}
+function MutableSet$00601$$get_Count(this$$$5) {
+  const source = this$$$5["entries@24"].values();
+  return Object(_Seq_js__WEBPACK_IMPORTED_MODULE_1__["sumBy"])(function projection(pairs) {
+    return pairs.length;
+  }, source, {
+    GetZero() {
+      return 0;
+    },
+
+    Add($x$$2, $y$$3) {
+      return $x$$2 + $y$$3;
+    }
+
+  }) | 0;
+}
+function MutableSet$00601$$Add$$2B595(this$$$6, k$$2) {
+  const matchValue$$2 = MutableSet$00601$$TryFindIndex$$2B595(this$$$6, k$$2);
+  var $target$$16;
+
+  if (matchValue$$2[0]) {
+    if (matchValue$$2[2] > -1) {
+      $target$$16 = 0;
+    } else {
+      $target$$16 = 1;
+    }
+  } else {
+    $target$$16 = 1;
+  }
+
+  switch ($target$$16) {
+    case 0:
+      {
+        return false;
+      }
+
+    case 1:
+      {
+        if (matchValue$$2[0]) {
+          const value$$1 = Object(_Util_js__WEBPACK_IMPORTED_MODULE_3__["getItemFromDict"])(this$$$6["entries@24"], matchValue$$2[1]).push(k$$2);
+          null, null;
+          return true;
+        } else {
+          this$$$6["entries@24"].set(matchValue$$2[1], [k$$2]);
+          return true;
+        }
+      }
+  }
+}
+function MutableSet$00601$$Contains$$2B595(this$$$7, k$$3) {
+  const matchValue$$3 = MutableSet$00601$$TryFindIndex$$2B595(this$$$7, k$$3);
+  var $target$$19;
+
+  if (matchValue$$3[0]) {
+    if (matchValue$$3[2] > -1) {
+      $target$$19 = 0;
+    } else {
+      $target$$19 = 1;
+    }
+  } else {
+    $target$$19 = 1;
+  }
+
+  switch ($target$$19) {
+    case 0:
+      {
+        return true;
+      }
+
+    case 1:
+      {
+        return false;
+      }
+  }
+}
+function MutableSet$00601$$Remove$$2B595(this$$$8, k$$4) {
+  const matchValue$$4 = MutableSet$00601$$TryFindIndex$$2B595(this$$$8, k$$4);
+  var $target$$22;
+
+  if (matchValue$$4[0]) {
+    if (matchValue$$4[2] > -1) {
+      $target$$22 = 0;
+    } else {
+      $target$$22 = 1;
+    }
+  } else {
+    $target$$22 = 1;
+  }
+
+  switch ($target$$22) {
+    case 0:
+      {
+        Object(_Util_js__WEBPACK_IMPORTED_MODULE_3__["getItemFromDict"])(this$$$8["entries@24"], matchValue$$4[1]).splice(matchValue$$4[2], 1);
+        return true;
+      }
+
+    case 1:
+      {
+        return false;
+      }
+  }
+}
+
+MutableSet$00601.prototype[Symbol.iterator] = function () {
+  var elems;
+  const this$$$9 = this;
+  return Object(_Seq_js__WEBPACK_IMPORTED_MODULE_1__["toIterator"])((elems = Object(_Seq_js__WEBPACK_IMPORTED_MODULE_1__["delay"])(function () {
+    return Object(_Seq_js__WEBPACK_IMPORTED_MODULE_1__["collect"])(function (values$$1) {
+      return Object(_Seq_js__WEBPACK_IMPORTED_MODULE_1__["map"])(function (value$$2) {
+        return value$$2;
+      }, values$$1);
+    }, this$$$9["entries@24"].values());
+  }), Object(_Seq_js__WEBPACK_IMPORTED_MODULE_1__["getEnumerator"])(elems)));
+};
+
+MutableSet$00601.prototype.Add = function (item$$1) {
+  const this$$$10 = this;
+  const value$$3 = MutableSet$00601$$Add$$2B595(this$$$10, item$$1);
+  value$$3, null;
+};
+
+MutableSet$00601.prototype.Clear = function () {
+  const this$$$11 = this;
+  MutableSet$00601$$Clear(this$$$11);
+};
+
+MutableSet$00601.prototype.Contains = function (item$$2) {
+  const this$$$12 = this;
+  return MutableSet$00601$$Contains$$2B595(this$$$12, item$$2);
+};
+
+MutableSet$00601.prototype.CopyTo = function (array, arrayIndex) {
+  const this$$$13 = this;
+  Object(_Seq_js__WEBPACK_IMPORTED_MODULE_1__["iterateIndexed"])(function action(i$$8, e) {
+    array[arrayIndex + i$$8] = e;
+  }, this$$$13);
+};
+
+Object.defineProperty(MutableSet$00601.prototype, "Count", {
+  "get": function () {
+    const this$$$14 = this;
+    return MutableSet$00601$$get_Count(this$$$14) | 0;
+  }
+});
+Object.defineProperty(MutableSet$00601.prototype, "IsReadOnly", {
+  "get": function () {
+    return false;
+  }
+});
+
+MutableSet$00601.prototype.Remove = function (item$$3) {
+  const this$$$16 = this;
+  return MutableSet$00601$$Remove$$2B595(this$$$16, item$$3);
+};
+
+Object.defineProperty(MutableSet$00601.prototype, "size", {
+  "get": function () {
+    const this$$$17 = this;
+    return MutableSet$00601$$get_Count(this$$$17) | 0;
+  }
+});
+
+MutableSet$00601.prototype.add = function (k$$5) {
+  const this$$$18 = this;
+  const value$$4 = MutableSet$00601$$Add$$2B595(this$$$18, k$$5);
+  value$$4, null;
+  return this$$$18;
+};
+
+MutableSet$00601.prototype.add_ = function (k$$6) {
+  const this$$$19 = this;
+  return MutableSet$00601$$Add$$2B595(this$$$19, k$$6);
+};
+
+MutableSet$00601.prototype.clear = function () {
+  const this$$$20 = this;
+  MutableSet$00601$$Clear(this$$$20);
+};
+
+MutableSet$00601.prototype.delete = function (k$$7) {
+  const this$$$21 = this;
+  return MutableSet$00601$$Remove$$2B595(this$$$21, k$$7);
+};
+
+MutableSet$00601.prototype.has = function (k$$8) {
+  const this$$$22 = this;
+  return MutableSet$00601$$Contains$$2B595(this$$$22, k$$8);
+};
+
+MutableSet$00601.prototype.keys = function () {
+  const this$$$23 = this;
+  return Object(_Seq_js__WEBPACK_IMPORTED_MODULE_1__["map"])(function mapping(x) {
+    return x;
+  }, this$$$23);
+};
+
+MutableSet$00601.prototype.values = function () {
+  const this$$$24 = this;
+  return Object(_Seq_js__WEBPACK_IMPORTED_MODULE_1__["map"])(function mapping$$1(x$$1) {
+    return x$$1;
+  }, this$$$24);
+};
+
+MutableSet$00601.prototype.entries = function () {
+  const this$$$25 = this;
+  return Object(_Seq_js__WEBPACK_IMPORTED_MODULE_1__["map"])(function mapping$$2(v$$1) {
+    return [v$$1, v$$1];
+  }, this$$$25);
+};
+
+/***/ }),
+
+/***/ "./.fable/fable-library.2.3.25/Option.js":
 /*!***********************************************!*\
-  !*** ./.fable/fable-library.2.1.12/Option.js ***!
+  !*** ./.fable/fable-library.2.3.25/Option.js ***!
   \***********************************************/
-/*! exports provided: Some, some, value, defaultArg, defaultArgWith, filter, Choice, choice1, choice2, tryValueIfChoice1, tryValueIfChoice2, Result, ok, error, mapOk, mapError, bindOk */
+/*! exports provided: Some, some, value, defaultArg, defaultArgWith, filter, map, Choice, choice1, choice2, tryValueIfChoice1, tryValueIfChoice2, Result, ok, error, mapOk, mapError, bindOk */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -6279,6 +6040,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "defaultArg", function() { return defaultArg; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "defaultArgWith", function() { return defaultArgWith; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "filter", function() { return filter; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "map", function() { return map; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Choice", function() { return Choice; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "choice1", function() { return choice1; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "choice2", function() { return choice2; });
@@ -6290,18 +6052,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "mapOk", function() { return mapOk; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "mapError", function() { return mapError; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "bindOk", function() { return bindOk; });
-/* harmony import */ var _Types__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Types */ "./.fable/fable-library.2.1.12/Types.js");
-/* harmony import */ var _Util__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Util */ "./.fable/fable-library.2.1.12/Util.js");
+/* harmony import */ var _Types__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Types */ "./.fable/fable-library.2.3.25/Types.js");
+/* harmony import */ var _Util__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Util */ "./.fable/fable-library.2.3.25/Util.js");
 
 
-// Options are erased in runtime by Fable, but we have
-// the `Some` type below to wrap values that would evaluate
-// to null in runtime. These two rules must be followed:
-// 1- None is always null in runtime, a non-strict null check
-//    (`x == null`) is enough to check the case of an option.
-// 2- To get the value of an option the `getValue` helper
-//    below must **always** be used.
-// export type Option<T> = T | Some<T>;
 // Using a class here for better compatibility with TS files importing Some
 class Some {
     constructor(value) {
@@ -6318,17 +6072,24 @@ class Some {
         return Object(_Util__WEBPACK_IMPORTED_MODULE_1__["structuralHash"])(this.value);
     }
     Equals(other) {
-        return other == null
-            ? false
-            : Object(_Util__WEBPACK_IMPORTED_MODULE_1__["equals"])(this.value, other instanceof Some ? other.value : other);
+        if (other == null) {
+            return false;
+        }
+        else {
+            return Object(_Util__WEBPACK_IMPORTED_MODULE_1__["equals"])(this.value, other instanceof Some ? other.value : other);
+        }
     }
     CompareTo(other) {
-        return other == null
-            ? 1
-            : Object(_Util__WEBPACK_IMPORTED_MODULE_1__["compare"])(this.value, other instanceof Some ? other.value : other);
+        if (other == null) {
+            return 1;
+        }
+        else {
+            return Object(_Util__WEBPACK_IMPORTED_MODULE_1__["compare"])(this.value, other instanceof Some ? other.value : other);
+        }
     }
 }
 function some(x) {
+    x = (x === undefined) ? null : x;
     return x == null || x instanceof Some ? new Some(x) : x;
 }
 function value(x, acceptNull) {
@@ -6350,6 +6111,9 @@ function defaultArgWith(arg, defThunk) {
 }
 function filter(predicate, arg) {
     return arg != null ? (!predicate(value(arg)) ? null : arg) : arg;
+}
+function map(predicate, ...args) {
+    return args.every((x) => x != null) ? predicate.apply(null, args) : null;
 }
 // CHOICE
 const Choice = Object(_Types__WEBPACK_IMPORTED_MODULE_0__["declare"])(function Choice(tag, name, field) {
@@ -6386,15 +6150,15 @@ function mapError(f, result) {
 function bindOk(f, result) {
     return result.tag === 0 ? f(result.fields[0]) : result;
 }
-
+//# sourceMappingURL=Option.js.map
 
 /***/ }),
 
-/***/ "./.fable/fable-library.2.1.12/Reflection.js":
+/***/ "./.fable/fable-library.2.3.25/Reflection.js":
 /*!***************************************************!*\
-  !*** ./.fable/fable-library.2.1.12/Reflection.js ***!
+  !*** ./.fable/fable-library.2.3.25/Reflection.js ***!
   \***************************************************/
-/*! exports provided: CaseInfo, TypeInfo, getGenerics, equals, compare, type, record, union, tuple, delegate, lambda, option, list, array, obj, unit, char, string, bool, int8, uint8, int16, uint16, int32, uint32, float32, float64, decimal, name, fullName, namespace, isArray, getElementType, isGenericType, getGenericTypeDefinition, getUnionCases, getRecordElements, getTupleElements, getFunctionElements, isUnion, isRecord, isTuple, isFunction, getUnionFields, getUnionCaseFields, getRecordFields, getRecordField, getTupleFields, getTupleField, makeUnion, makeRecord, makeTuple, getCaseTag, getCaseName, getCaseFields */
+/*! exports provided: CaseInfo, TypeInfo, getGenerics, equals, compare, type, record, anonRecord, union, tuple, delegate, lambda, option, list, array, obj, unit, char, string, bool, int8, uint8, int16, uint16, int32, uint32, float32, float64, decimal, name, fullName, namespace, isArray, getElementType, isGenericType, getGenericTypeDefinition, getUnionCases, getRecordElements, getTupleElements, getFunctionElements, isUnion, isRecord, isTuple, isFunction, getUnionFields, getUnionCaseFields, getRecordFields, getRecordField, getTupleFields, getTupleField, makeUnion, makeRecord, makeTuple, getCaseTag, getCaseName, getCaseFields */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -6406,6 +6170,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "compare", function() { return compare; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "type", function() { return type; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "record", function() { return record; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "anonRecord", function() { return anonRecord; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "union", function() { return union; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "tuple", function() { return tuple; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "delegate", function() { return delegate; });
@@ -6454,8 +6219,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getCaseTag", function() { return getCaseTag; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getCaseName", function() { return getCaseName; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getCaseFields", function() { return getCaseFields; });
-/* harmony import */ var _Types__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Types */ "./.fable/fable-library.2.1.12/Types.js");
-/* harmony import */ var _Util__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Util */ "./.fable/fable-library.2.1.12/Util.js");
+/* harmony import */ var _Types__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Types */ "./.fable/fable-library.2.3.25/Types.js");
+/* harmony import */ var _Util__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Util */ "./.fable/fable-library.2.3.25/Util.js");
 
 
 class CaseInfo {
@@ -6488,8 +6253,14 @@ function getGenerics(t) {
     return t.generics != null ? t.generics : [];
 }
 function equals(t1, t2) {
-    return t1.fullname === t2.fullname
-        && Object(_Util__WEBPACK_IMPORTED_MODULE_1__["equalArraysWith"])(getGenerics(t1), getGenerics(t2), equals);
+    if (t1.fullname === "") { // Anonymous records
+        return t2.fullname === ""
+            && Object(_Util__WEBPACK_IMPORTED_MODULE_1__["equalArraysWith"])(getRecordElements(t1), getRecordElements(t2), ([k1, v1], [k2, v2]) => k1 === k2 && equals(v1, v2));
+    }
+    else {
+        return t1.fullname === t2.fullname
+            && Object(_Util__WEBPACK_IMPORTED_MODULE_1__["equalArraysWith"])(getGenerics(t1), getGenerics(t2), equals);
+    }
 }
 // System.Type is not comparable in .NET, but let's implement this
 // in case users want to create a dictionary with types as keys
@@ -6506,6 +6277,9 @@ function type(fullname, generics) {
 }
 function record(fullname, generics, constructor, fields) {
     return new TypeInfo(fullname, generics, constructor, fields);
+}
+function anonRecord(...fields) {
+    return new TypeInfo("", null, null, () => fields);
 }
 function union(fullname, generics, constructor, cases) {
     const t = new TypeInfo(fullname, generics, constructor, null, () => cases().map((x, i) => typeof x === "string" ? new CaseInfo(t, i, x) : new CaseInfo(t, i, x[0], x[1])));
@@ -6667,7 +6441,12 @@ function makeRecord(t, values) {
     if (fields.length !== values.length) {
         throw new Error(`Expected an array of length ${fields.length} but got ${values.length}`);
     }
-    return new t.constructor(...values);
+    return t.constructor != null
+        ? new t.constructor(...values)
+        : Object(_Types__WEBPACK_IMPORTED_MODULE_0__["anonRecord"])(fields.reduce((obj, [key, _t], i) => {
+            obj[key] = values[i];
+            return obj;
+        }, {}));
 }
 function makeTuple(values, t) {
     return values;
@@ -6690,13 +6469,13 @@ function getCaseFields(x) {
     assertUnion(x);
     return x.fields;
 }
-
+//# sourceMappingURL=Reflection.js.map
 
 /***/ }),
 
-/***/ "./.fable/fable-library.2.1.12/RegExp.js":
+/***/ "./.fable/fable-library.2.3.25/RegExp.js":
 /*!***********************************************!*\
-  !*** ./.fable/fable-library.2.1.12/RegExp.js ***!
+  !*** ./.fable/fable-library.2.3.25/RegExp.js ***!
   \***********************************************/
 /*! exports provided: create, escape, unescape, isMatch, match, matches, options, replace, split */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -6716,13 +6495,15 @@ function create(pattern, options) {
     // Supported RegexOptions
     // * IgnoreCase:  0x0001
     // * Multiline:   0x0002
+    // * Singleline:  0x0010
     // * ECMAScript:  0x0100 (ignored)
-    if ((options & ~(1 ^ 2 ^ 256)) !== 0) {
-        throw new Error("RegexOptions only supports: IgnoreCase, Multiline and ECMAScript");
+    if ((options & ~(1 ^ 2 ^ 16 ^ 256)) !== 0) {
+        throw new Error("RegexOptions only supports: IgnoreCase, Multiline, Singleline and ECMAScript");
     }
     let flags = "g";
     flags += options & 1 ? "i" : ""; // 0x0001 RegexOptions.IgnoreCase
     flags += options & 2 ? "m" : "";
+    flags += options & 16 ? "s" : "";
     return new RegExp(pattern, flags);
 }
 // From http://stackoverflow.com/questions/3446170/escape-string-for-use-in-javascript-regex
@@ -6820,15 +6601,15 @@ function split(reg, input, limit, offset = 0) {
     input = input.substring(offset);
     return input.split(reg, limit);
 }
-
+//# sourceMappingURL=RegExp.js.map
 
 /***/ }),
 
-/***/ "./.fable/fable-library.2.1.12/Seq.js":
+/***/ "./.fable/fable-library.2.3.25/Seq.js":
 /*!********************************************!*\
-  !*** ./.fable/fable-library.2.1.12/Seq.js ***!
+  !*** ./.fable/fable-library.2.3.25/Seq.js ***!
   \********************************************/
-/*! exports provided: Enumerator, getEnumerator, toIterator, ofArray, append, average, averageBy, concat, collect, choose, compareWith, delay, empty, enumerateWhile, enumerateThenFinally, enumerateUsing, exactlyOne, except, exists, exists2, forAll, forAll2, contains, filter, where, fold, foldBack, fold2, foldBack2, tryHead, head, initialize, initializeInfinite, tryItem, item, iterate, iterate2, iterateIndexed, iterateIndexed2, isEmpty, tryLast, last, length, map, mapIndexed, indexed, map2, mapIndexed2, map3, mapFold, mapFoldBack, max, maxBy, min, minBy, pairwise, rangeChar, rangeLong, rangeNumber, readOnly, reduce, reduceBack, replicate, reverse, scan, scanBack, singleton, skip, skipWhile, sortWith, sum, sumBy, tail, take, truncate, takeWhile, tryFind, find, tryFindBack, findBack, tryFindIndex, findIndex, tryFindIndexBack, findIndexBack, tryPick, pick, unfold, zip, zip3, windowed */
+/*! exports provided: Enumerator, getEnumerator, toIterator, ofArray, allPairs, append, average, averageBy, concat, collect, choose, compareWith, delay, empty, enumerateFromFunctions, enumerateWhile, enumerateThenFinally, enumerateUsing, exactlyOne, except, exists, exists2, forAll, forAll2, contains, filter, where, fold, foldBack, fold2, foldBack2, tryHead, head, initialize, initializeInfinite, tryItem, item, iterate, iterate2, iterateIndexed, iterateIndexed2, isEmpty, tryLast, last, length, map, mapIndexed, indexed, map2, mapIndexed2, map3, mapFold, mapFoldBack, max, maxBy, min, minBy, pairwise, rangeChar, rangeLong, rangeDecimal, rangeNumber, readOnly, reduce, reduceBack, replicate, reverse, scan, scanBack, singleton, skip, skipWhile, sortWith, sum, sumBy, tail, take, truncate, takeWhile, tryFind, find, tryFindBack, findBack, tryFindIndex, findIndex, tryFindIndexBack, findIndexBack, tryPick, pick, unfold, zip, zip3, windowed */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -6837,6 +6618,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getEnumerator", function() { return getEnumerator; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "toIterator", function() { return toIterator; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ofArray", function() { return ofArray; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "allPairs", function() { return allPairs; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "append", function() { return append; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "average", function() { return average; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "averageBy", function() { return averageBy; });
@@ -6846,6 +6628,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "compareWith", function() { return compareWith; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "delay", function() { return delay; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "empty", function() { return empty; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "enumerateFromFunctions", function() { return enumerateFromFunctions; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "enumerateWhile", function() { return enumerateWhile; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "enumerateThenFinally", function() { return enumerateThenFinally; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "enumerateUsing", function() { return enumerateUsing; });
@@ -6891,6 +6674,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "pairwise", function() { return pairwise; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "rangeChar", function() { return rangeChar; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "rangeLong", function() { return rangeLong; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "rangeDecimal", function() { return rangeDecimal; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "rangeNumber", function() { return rangeNumber; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "readOnly", function() { return readOnly; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "reduce", function() { return reduce; });
@@ -6923,9 +6707,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "zip", function() { return zip; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "zip3", function() { return zip3; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "windowed", function() { return windowed; });
-/* harmony import */ var _Long__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Long */ "./.fable/fable-library.2.1.12/Long.js");
-/* harmony import */ var _Option__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Option */ "./.fable/fable-library.2.1.12/Option.js");
-/* harmony import */ var _Util__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Util */ "./.fable/fable-library.2.1.12/Util.js");
+/* harmony import */ var _Decimal__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Decimal */ "./.fable/fable-library.2.3.25/Decimal.js");
+/* harmony import */ var _Long__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Long */ "./.fable/fable-library.2.3.25/Long.js");
+/* harmony import */ var _Option__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Option */ "./.fable/fable-library.2.3.25/Option.js");
+/* harmony import */ var _Util__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Util */ "./.fable/fable-library.2.3.25/Util.js");
+
 
 
 
@@ -6971,10 +6757,29 @@ function __failIfNone(res) {
     if (res == null) {
         throw new Error("Seq did not contain any matching element");
     }
-    return Object(_Option__WEBPACK_IMPORTED_MODULE_1__["value"])(res);
+    return Object(_Option__WEBPACK_IMPORTED_MODULE_2__["value"])(res);
 }
 function ofArray(xs) {
     return delay(() => unfold((i) => i < xs.length ? [xs[i], i + 1] : null, 0));
+}
+function allPairs(xs, ys) {
+    let firstEl = true;
+    const ysCache = [];
+    return collect((x) => {
+        if (firstEl) {
+            firstEl = false;
+            return map((y) => {
+                ysCache.push(y);
+                return [x, y];
+            }, ys);
+        }
+        else {
+            return ysCache.map((y) => [x, y]);
+            // return map(function (i) {
+            //     return [x, ysCache[i]];
+            // }, rangeNumber(0, 1, ysCache.length - 1));
+        }
+    }, xs);
 }
 function append(xs, ys) {
     return delay(() => {
@@ -7054,7 +6859,7 @@ function choose(f, xs) {
         while (!cur.done) {
             const y = f(cur.value);
             if (y != null) {
-                return [Object(_Option__WEBPACK_IMPORTED_MODULE_1__["value"])(y), iter];
+                return [Object(_Option__WEBPACK_IMPORTED_MODULE_2__["value"])(y), iter];
             }
             cur = iter.next();
         }
@@ -7063,7 +6868,7 @@ function choose(f, xs) {
 }
 function compareWith(f, xs, ys) {
     const nonZero = tryFind((i) => i !== 0, map2((x, y) => f(x, y), xs, ys));
-    return nonZero != null ? Object(_Option__WEBPACK_IMPORTED_MODULE_1__["value"])(nonZero) : length(xs) - length(ys);
+    return nonZero != null ? Object(_Option__WEBPACK_IMPORTED_MODULE_2__["value"])(nonZero) : length(xs) - length(ys);
 }
 function delay(f) {
     return {
@@ -7072,6 +6877,9 @@ function delay(f) {
 }
 function empty() {
     return unfold(() => void 0);
+}
+function enumerateFromFunctions(factory, moveNext, current) {
+    return delay(() => unfold((e) => moveNext(e) ? [current(e), e] : null, factory()));
 }
 function enumerateWhile(cond, xs) {
     return concat(unfold(() => cond() ? [xs, true] : null));
@@ -7134,7 +6942,7 @@ function exactlyOne(xs) {
 }
 function except(itemsToExclude, source) {
     const exclusionItems = Array.from(itemsToExclude);
-    const testIsNotInExclusionItems = (element) => !exclusionItems.some((excludedItem) => Object(_Util__WEBPACK_IMPORTED_MODULE_2__["equals"])(excludedItem, element));
+    const testIsNotInExclusionItems = (element) => !exclusionItems.some((excludedItem) => Object(_Util__WEBPACK_IMPORTED_MODULE_3__["equals"])(excludedItem, element));
     return filter(testIsNotInExclusionItems, source);
 }
 function exists(f, xs) {
@@ -7172,7 +6980,7 @@ function forAll2(f, xs, ys) {
     return !exists2((x, y) => !f(x, y), xs, ys);
 }
 function contains(i, xs) {
-    return exists((x) => Object(_Util__WEBPACK_IMPORTED_MODULE_2__["equals"])(x, i), xs);
+    return exists((x) => Object(_Util__WEBPACK_IMPORTED_MODULE_3__["equals"])(x, i), xs);
 }
 function filter(f, xs) {
     return delay(() => unfold((iter) => {
@@ -7238,7 +7046,7 @@ function foldBack2(f, xs, ys, acc) {
 function tryHead(xs) {
     const iter = xs[Symbol.iterator]();
     const cur = iter.next();
-    return cur.done ? null : Object(_Option__WEBPACK_IMPORTED_MODULE_1__["some"])(cur.value);
+    return cur.done ? null : Object(_Option__WEBPACK_IMPORTED_MODULE_2__["some"])(cur.value);
 }
 function head(xs) {
     return __failIfNone(tryHead(xs));
@@ -7254,7 +7062,7 @@ function tryItem(i, xs) {
         return null;
     }
     if (Array.isArray(xs) || ArrayBuffer.isView(xs)) {
-        return i < xs.length ? Object(_Option__WEBPACK_IMPORTED_MODULE_1__["some"])(xs[i]) : null;
+        return i < xs.length ? Object(_Option__WEBPACK_IMPORTED_MODULE_2__["some"])(xs[i]) : null;
     }
     for (let j = 0, iter = xs[Symbol.iterator]();; j++) {
         const cur = iter.next();
@@ -7262,7 +7070,7 @@ function tryItem(i, xs) {
             break;
         }
         if (j === i) {
-            return Object(_Option__WEBPACK_IMPORTED_MODULE_1__["some"])(cur.value);
+            return Object(_Option__WEBPACK_IMPORTED_MODULE_2__["some"])(cur.value);
         }
     }
     return null;
@@ -7287,7 +7095,7 @@ function isEmpty(xs) {
     return i.next().done;
 }
 function tryLast(xs) {
-    return isEmpty(xs) ? null : Object(_Option__WEBPACK_IMPORTED_MODULE_1__["some"])(reduce((_, x) => x, xs));
+    return isEmpty(xs) ? null : Object(_Option__WEBPACK_IMPORTED_MODULE_2__["some"])(reduce((_, x) => x, xs));
 }
 function last(xs) {
     return __failIfNone(tryLast(xs));
@@ -7376,19 +7184,19 @@ function mapFoldBack(f, xs, acc, transform) {
     return transform !== void 0 ? [transform(result), acc] : [result, acc];
 }
 function max(xs, comparer) {
-    const compareFn = comparer != null ? comparer.Compare : _Util__WEBPACK_IMPORTED_MODULE_2__["compare"];
+    const compareFn = comparer != null ? comparer.Compare : _Util__WEBPACK_IMPORTED_MODULE_3__["compare"];
     return reduce((acc, x) => compareFn(acc, x) === 1 ? acc : x, xs);
 }
 function maxBy(f, xs, comparer) {
-    const compareFn = comparer != null ? comparer.Compare : _Util__WEBPACK_IMPORTED_MODULE_2__["compare"];
+    const compareFn = comparer != null ? comparer.Compare : _Util__WEBPACK_IMPORTED_MODULE_3__["compare"];
     return reduce((acc, x) => compareFn(f(acc), f(x)) === 1 ? acc : x, xs);
 }
 function min(xs, comparer) {
-    const compareFn = comparer != null ? comparer.Compare : _Util__WEBPACK_IMPORTED_MODULE_2__["compare"];
+    const compareFn = comparer != null ? comparer.Compare : _Util__WEBPACK_IMPORTED_MODULE_3__["compare"];
     return reduce((acc, x) => compareFn(acc, x) === -1 ? acc : x, xs);
 }
 function minBy(f, xs, comparer) {
-    const compareFn = comparer != null ? comparer.Compare : _Util__WEBPACK_IMPORTED_MODULE_2__["compare"];
+    const compareFn = comparer != null ? comparer.Compare : _Util__WEBPACK_IMPORTED_MODULE_3__["compare"];
     return reduce((acc, x) => compareFn(f(acc), f(x)) === -1 ? acc : x, xs);
 }
 function pairwise(xs) {
@@ -7398,7 +7206,11 @@ function rangeChar(first, last) {
     return delay(() => unfold((x) => x <= last ? [x, String.fromCharCode(x.charCodeAt(0) + 1)] : null, first));
 }
 function rangeLong(first, step, last, unsigned) {
-    const stepFn = Object(_Long__WEBPACK_IMPORTED_MODULE_0__["makeRangeStepFunction"])(step, last, unsigned);
+    const stepFn = Object(_Long__WEBPACK_IMPORTED_MODULE_1__["makeRangeStepFunction"])(step, last, unsigned);
+    return delay(() => unfold(stepFn, first));
+}
+function rangeDecimal(first, step, last) {
+    const stepFn = Object(_Decimal__WEBPACK_IMPORTED_MODULE_0__["makeRangeStepFunction"])(step, last);
     return delay(() => unfold(stepFn, first));
 }
 function rangeNumber(first, step, last) {
@@ -7547,10 +7359,10 @@ function tryFind(f, xs, defaultValue) {
             break;
         }
         if (f(cur.value, i)) {
-            return Object(_Option__WEBPACK_IMPORTED_MODULE_1__["some"])(cur.value);
+            return Object(_Option__WEBPACK_IMPORTED_MODULE_2__["some"])(cur.value);
         }
     }
-    return defaultValue === void 0 ? null : Object(_Option__WEBPACK_IMPORTED_MODULE_1__["some"])(defaultValue);
+    return defaultValue === void 0 ? null : Object(_Option__WEBPACK_IMPORTED_MODULE_2__["some"])(defaultValue);
 }
 function find(f, xs) {
     return __failIfNone(tryFind(f, xs));
@@ -7655,13 +7467,13 @@ function windowed(windowSize, source) {
         },
     };
 }
-
+//# sourceMappingURL=Seq.js.map
 
 /***/ }),
 
-/***/ "./.fable/fable-library.2.1.12/Set.js":
+/***/ "./.fable/fable-library.2.3.25/Set.js":
 /*!********************************************!*\
-  !*** ./.fable/fable-library.2.1.12/Set.js ***!
+  !*** ./.fable/fable-library.2.3.25/Set.js ***!
   \********************************************/
 /*! exports provided: SetTree$00601, SetTree$00601$reflection, SetTreeModule$$$countAux, SetTreeModule$$$count, SetTreeModule$$$SetOne, SetTreeModule$$$SetNode, SetTreeModule$$$height, SetTreeModule$$$tolerance, SetTreeModule$$$mk, SetTreeModule$$$rebalance, SetTreeModule$$$add, SetTreeModule$$$balance, SetTreeModule$$$split, SetTreeModule$$$spliceOutSuccessor, SetTreeModule$$$remove, SetTreeModule$$$mem, SetTreeModule$$$iter, SetTreeModule$$$foldBack, SetTreeModule$$$fold, SetTreeModule$$$forall, SetTreeModule$$$exists, SetTreeModule$$$isEmpty, SetTreeModule$$$subset, SetTreeModule$$$psubset, SetTreeModule$$$filterAux, SetTreeModule$$$filter, SetTreeModule$$$diffAux, SetTreeModule$$$diff, SetTreeModule$$$union, SetTreeModule$$$intersectionAux, SetTreeModule$$$intersection, SetTreeModule$$$partition1, SetTreeModule$$$partitionAux, SetTreeModule$$$partition, SetTreeModule$$$$007CMatchSetNode$007CMatchSetEmpty$007C, SetTreeModule$$$minimumElementAux, SetTreeModule$$$minimumElementOpt, SetTreeModule$$$maximumElementAux, SetTreeModule$$$maximumElementOpt, SetTreeModule$$$minimumElement, SetTreeModule$$$maximumElement, SetTreeModule$002ESetIterator$00601, SetTreeModule$002ESetIterator$00601$reflection, SetTreeModule$$$collapseLHS, SetTreeModule$$$mkIterator, SetTreeModule$$$notStarted, SetTreeModule$$$alreadyFinished, SetTreeModule$$$current, SetTreeModule$$$moveNext, SetTreeModule$002EmkIEnumerator$00601, SetTreeModule$002EmkIEnumerator$00601$reflection, SetTreeModule$002EmkIEnumerator$00601$$$$002Ector$$Z5B395D56, SetTreeModule$$$mkIEnumerator, SetTreeModule$$$toSeq, SetTreeModule$$$compareStacks, SetTreeModule$$$compare, SetTreeModule$$$choose, SetTreeModule$$$loop, SetTreeModule$$$toList, SetTreeModule$$$copyToArray, SetTreeModule$$$mkFromEnumerator, SetTreeModule$$$ofSeq, SetTreeModule$$$ofArray, FSharpSet, FSharpSet$reflection, FSharpSet$$$$002Ector$$2528C5CB, FSharpSet$$get_Comparer, FSharpSet$$get_Tree, FSharpSet$$Add$$2B595, FSharpSet$$Remove$$2B595, FSharpSet$$get_Count, FSharpSet$$Contains$$2B595, FSharpSet$$Iterate$$5028453F, FSharpSet$$Fold, FSharpSet$$get_IsEmpty, FSharpSet$$Partition$$Z1D55A0D7, FSharpSet$$Filter$$Z1D55A0D7, FSharpSet$$Map$$38806891, FSharpSet$$Exists$$Z1D55A0D7, FSharpSet$$ForAll$$Z1D55A0D7, FSharpSet$$$op_Subtraction, FSharpSet$$$op_Addition, FSharpSet$$$Intersection$$Z3BE9BFE0, FSharpSet$$$IntersectionMany$$Z15B59630, FSharpSet$$$Equality$$Z3BE9BFE0, FSharpSet$$$Compare$$Z3BE9BFE0, FSharpSet$$get_Choose, FSharpSet$$get_MinimumElement, FSharpSet$$get_MaximumElement, FSharpSet$$IsSubsetOf$$6A20B1FF, FSharpSet$$IsSupersetOf$$6A20B1FF, FSharpSet$$IsProperSubsetOf$$6A20B1FF, FSharpSet$$IsProperSupersetOf$$6A20B1FF, isEmpty, contains, add, singleton, remove, union, unionMany, intersect, intersectMany, iterate, empty, forAll, exists, filter, partition, fold, foldBack, map, count, minimumElement, maximumElement, ofList, ofArray, toList, toArray, toSeq, ofSeq, difference, isSubset, isSuperset, isProperSubset, isProperSuperset, minElement, maxElement, createMutable, distinct, distinctBy, unionWith, intersectWith, exceptWith, isSubsetOf, isSupersetOf, isProperSubsetOf, isProperSupersetOf */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -7805,26 +7617,31 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isSupersetOf", function() { return isSupersetOf; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isProperSubsetOf", function() { return isProperSubsetOf; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isProperSupersetOf", function() { return isProperSupersetOf; });
-/* harmony import */ var _Types__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Types */ "./.fable/fable-library.2.1.12/Types.js");
-/* harmony import */ var _Reflection__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Reflection */ "./.fable/fable-library.2.1.12/Reflection.js");
-/* harmony import */ var _Option__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Option */ "./.fable/fable-library.2.1.12/Option.js");
-/* harmony import */ var _Seq__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Seq */ "./.fable/fable-library.2.1.12/Seq.js");
-/* harmony import */ var _Util__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Util */ "./.fable/fable-library.2.1.12/Util.js");
-/* harmony import */ var _String__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./String */ "./.fable/fable-library.2.1.12/String.js");
+/* harmony import */ var _Types_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Types.js */ "./.fable/fable-library.2.3.25/Types.js");
+/* harmony import */ var _Reflection_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Reflection.js */ "./.fable/fable-library.2.3.25/Reflection.js");
+/* harmony import */ var _Option_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Option.js */ "./.fable/fable-library.2.3.25/Option.js");
+/* harmony import */ var _Seq_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Seq.js */ "./.fable/fable-library.2.3.25/Seq.js");
+/* harmony import */ var _Util_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Util.js */ "./.fable/fable-library.2.3.25/Util.js");
+/* harmony import */ var _String_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./String.js */ "./.fable/fable-library.2.3.25/String.js");
+/* harmony import */ var _MutableSet__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./MutableSet */ "./.fable/fable-library.2.3.25/MutableSet.js");
 
 
 
 
 
 
-const SetTree$00601 = Object(_Types__WEBPACK_IMPORTED_MODULE_0__["declare"])(function Set_SetTree(tag, name, ...fields) {
-  _Types__WEBPACK_IMPORTED_MODULE_0__["Union"].call(this, tag, name, ...fields);
-}, _Types__WEBPACK_IMPORTED_MODULE_0__["Union"]);
+
+const SetTree$00601 = Object(_Types_js__WEBPACK_IMPORTED_MODULE_0__["declare"])(function Set_SetTree(tag, name, ...fields) {
+  _Types_js__WEBPACK_IMPORTED_MODULE_0__["Union"].call(this, tag, name, ...fields);
+}, _Types_js__WEBPACK_IMPORTED_MODULE_0__["Union"]);
 function SetTree$00601$reflection($gen$$3) {
-  return Object(_Reflection__WEBPACK_IMPORTED_MODULE_1__["union"])("Set.SetTree`1", [$gen$$3], SetTree$00601, () => ["SetEmpty", ["SetNode", [$gen$$3, SetTree$00601$reflection($gen$$3), SetTree$00601$reflection($gen$$3), _Reflection__WEBPACK_IMPORTED_MODULE_1__["int32"]]], ["SetOne", [$gen$$3]]]);
+  return Object(_Reflection_js__WEBPACK_IMPORTED_MODULE_1__["union"])("Set.SetTree`1", [$gen$$3], SetTree$00601, () => ["SetEmpty", ["SetNode", [$gen$$3, SetTree$00601$reflection($gen$$3), SetTree$00601$reflection($gen$$3), _Reflection_js__WEBPACK_IMPORTED_MODULE_1__["int32"]]], ["SetOne", [$gen$$3]]]);
 }
-function SetTreeModule$$$countAux(s, acc) {
+function SetTreeModule$$$countAux($s$$4, $acc$$5) {
   SetTreeModule$$$countAux: while (true) {
+    const s = $s$$4,
+          acc = $acc$$5;
+
     switch (s.tag) {
       case 2:
         {
@@ -7838,11 +7655,8 @@ function SetTreeModule$$$countAux(s, acc) {
 
       default:
         {
-          const r = s.fields[2];
-          const l = s.fields[1];
-          const $acc$$4 = acc;
-          s = l;
-          acc = SetTreeModule$$$countAux(r, $acc$$4 + 1);
+          $s$$4 = s.fields[1];
+          $acc$$5 = SetTreeModule$$$countAux(s.fields[2], acc + 1);
           continue SetTreeModule$$$countAux;
         }
     }
@@ -7868,8 +7682,7 @@ function SetTreeModule$$$height(t) {
 
     case 1:
       {
-        const h$$1 = t.fields[3] | 0;
-        return h$$1 | 0;
+        return t.fields[3] | 0;
       }
 
     default:
@@ -7880,20 +7693,19 @@ function SetTreeModule$$$height(t) {
 }
 const SetTreeModule$$$tolerance = 2;
 function SetTreeModule$$$mk(l$$2, k, r$$2) {
-  const matchValue = [l$$2, r$$2];
-  var $target$$5;
+  var $target$$16;
 
-  if (matchValue[0].tag === 0) {
-    if (matchValue[1].tag === 0) {
-      $target$$5 = 0;
+  if (l$$2.tag === 0) {
+    if (r$$2.tag === 0) {
+      $target$$16 = 0;
     } else {
-      $target$$5 = 1;
+      $target$$16 = 1;
     }
   } else {
-    $target$$5 = 1;
+    $target$$16 = 1;
   }
 
-  switch ($target$$5) {
+  switch ($target$$16) {
     case 0:
       {
         return SetTreeModule$$$SetOne(k);
@@ -7914,42 +7726,28 @@ function SetTreeModule$$$rebalance(t1, k$$1, t2) {
 
   if (t2h > t1h + SetTreeModule$$$tolerance) {
     if (t2.tag === 1) {
-      const t2r = t2.fields[2];
-      const t2l = t2.fields[1];
-      const t2k = t2.fields[0];
-
-      if (SetTreeModule$$$height(t2l) > t1h + 1) {
-        if (t2l.tag === 1) {
-          const t2lr = t2l.fields[2];
-          const t2ll = t2l.fields[1];
-          const t2lk = t2l.fields[0];
-          return SetTreeModule$$$mk(SetTreeModule$$$mk(t1, k$$1, t2ll), t2lk, SetTreeModule$$$mk(t2lr, t2k, t2r));
+      if (SetTreeModule$$$height(t2.fields[1]) > t1h + 1) {
+        if (t2.fields[1].tag === 1) {
+          return SetTreeModule$$$mk(SetTreeModule$$$mk(t1, k$$1, t2.fields[1].fields[1]), t2.fields[1].fields[0], SetTreeModule$$$mk(t2.fields[1].fields[2], t2.fields[0], t2.fields[2]));
         } else {
           throw new Error("rebalance");
         }
       } else {
-        return SetTreeModule$$$mk(SetTreeModule$$$mk(t1, k$$1, t2l), t2k, t2r);
+        return SetTreeModule$$$mk(SetTreeModule$$$mk(t1, k$$1, t2.fields[1]), t2.fields[0], t2.fields[2]);
       }
     } else {
       throw new Error("rebalance");
     }
   } else if (t1h > t2h + SetTreeModule$$$tolerance) {
     if (t1.tag === 1) {
-      const t1r = t1.fields[2];
-      const t1l = t1.fields[1];
-      const t1k = t1.fields[0];
-
-      if (SetTreeModule$$$height(t1r) > t2h + 1) {
-        if (t1r.tag === 1) {
-          const t1rr = t1r.fields[2];
-          const t1rl = t1r.fields[1];
-          const t1rk = t1r.fields[0];
-          return SetTreeModule$$$mk(SetTreeModule$$$mk(t1l, t1k, t1rl), t1rk, SetTreeModule$$$mk(t1rr, k$$1, t2));
+      if (SetTreeModule$$$height(t1.fields[2]) > t2h + 1) {
+        if (t1.fields[2].tag === 1) {
+          return SetTreeModule$$$mk(SetTreeModule$$$mk(t1.fields[1], t1.fields[0], t1.fields[2].fields[1]), t1.fields[2].fields[0], SetTreeModule$$$mk(t1.fields[2].fields[2], k$$1, t2));
         } else {
           throw new Error("rebalance");
         }
       } else {
-        return SetTreeModule$$$mk(t1l, t1k, SetTreeModule$$$mk(t1r, k$$1, t2));
+        return SetTreeModule$$$mk(t1.fields[1], t1.fields[0], SetTreeModule$$$mk(t1.fields[2], k$$1, t2));
       }
     } else {
       throw new Error("rebalance");
@@ -7962,8 +7760,7 @@ function SetTreeModule$$$add(comparer, k$$2, t$$1) {
   switch (t$$1.tag) {
     case 2:
       {
-        const k2$$1 = t$$1.fields[0];
-        const c$$1 = comparer.Compare(k$$2, k2$$1) | 0;
+        const c$$1 = comparer.Compare(k$$2, t$$1.fields[0]) | 0;
 
         if (c$$1 < 0) {
           return SetTreeModule$$$SetNode(k$$2, new SetTree$00601(0, "SetEmpty"), t$$1, 2);
@@ -7981,63 +7778,59 @@ function SetTreeModule$$$add(comparer, k$$2, t$$1) {
 
     default:
       {
-        const r$$3 = t$$1.fields[2];
-        const l$$3 = t$$1.fields[1];
-        const k2 = t$$1.fields[0];
-        const c = comparer.Compare(k$$2, k2) | 0;
+        const c = comparer.Compare(k$$2, t$$1.fields[0]) | 0;
 
         if (c < 0) {
-          return SetTreeModule$$$rebalance(SetTreeModule$$$add(comparer, k$$2, l$$3), k2, r$$3);
+          return SetTreeModule$$$rebalance(SetTreeModule$$$add(comparer, k$$2, t$$1.fields[1]), t$$1.fields[0], t$$1.fields[2]);
         } else if (c === 0) {
           return t$$1;
         } else {
-          return SetTreeModule$$$rebalance(l$$3, k2, SetTreeModule$$$add(comparer, k$$2, r$$3));
+          return SetTreeModule$$$rebalance(t$$1.fields[1], t$$1.fields[0], SetTreeModule$$$add(comparer, k$$2, t$$1.fields[2]));
         }
       }
   }
 }
 function SetTreeModule$$$balance(comparer$$1, t1$$1, k$$3, t2$$1) {
-  const matchValue$$1 = [t1$$1, t2$$1];
-  var $target$$6, t2$$2, t1$$2, k1, t2$$3, k2$$2, t1$$3, h1, h2, k1$$1, k2$$3, t11, t12, t21, t22;
+  var $target$$27, t2$$2, t1$$2, k1, t2$$3, k2$$2, t1$$3, h1, h2, k1$$1, k2$$3, t11, t12, t21, t22;
 
-  if (matchValue$$1[0].tag === 2) {
-    if (matchValue$$1[1].tag === 0) {
-      $target$$6 = 1;
-      t1$$2 = matchValue$$1[0];
-    } else if (matchValue$$1[1].tag === 2) {
-      $target$$6 = 2;
-      k1 = matchValue$$1[0].fields[0];
-      t2$$3 = matchValue$$1[1];
+  if (t1$$1.tag === 2) {
+    if (t2$$1.tag === 0) {
+      $target$$27 = 1;
+      t1$$2 = t1$$1;
+    } else if (t2$$1.tag === 2) {
+      $target$$27 = 2;
+      k1 = t1$$1.fields[0];
+      t2$$3 = t2$$1;
     } else {
-      $target$$6 = 2;
-      k1 = matchValue$$1[0].fields[0];
-      t2$$3 = matchValue$$1[1];
+      $target$$27 = 2;
+      k1 = t1$$1.fields[0];
+      t2$$3 = t2$$1;
     }
-  } else if (matchValue$$1[0].tag === 1) {
-    if (matchValue$$1[1].tag === 2) {
-      $target$$6 = 3;
-      k2$$2 = matchValue$$1[1].fields[0];
-      t1$$3 = matchValue$$1[0];
-    } else if (matchValue$$1[1].tag === 1) {
-      $target$$6 = 4;
-      h1 = matchValue$$1[0].fields[3];
-      h2 = matchValue$$1[1].fields[3];
-      k1$$1 = matchValue$$1[0].fields[0];
-      k2$$3 = matchValue$$1[1].fields[0];
-      t11 = matchValue$$1[0].fields[1];
-      t12 = matchValue$$1[0].fields[2];
-      t21 = matchValue$$1[1].fields[1];
-      t22 = matchValue$$1[1].fields[2];
+  } else if (t1$$1.tag === 1) {
+    if (t2$$1.tag === 2) {
+      $target$$27 = 3;
+      k2$$2 = t2$$1.fields[0];
+      t1$$3 = t1$$1;
+    } else if (t2$$1.tag === 1) {
+      $target$$27 = 4;
+      h1 = t1$$1.fields[3];
+      h2 = t2$$1.fields[3];
+      k1$$1 = t1$$1.fields[0];
+      k2$$3 = t2$$1.fields[0];
+      t11 = t1$$1.fields[1];
+      t12 = t1$$1.fields[2];
+      t21 = t2$$1.fields[1];
+      t22 = t2$$1.fields[2];
     } else {
-      $target$$6 = 1;
-      t1$$2 = matchValue$$1[0];
+      $target$$27 = 1;
+      t1$$2 = t1$$1;
     }
   } else {
-    $target$$6 = 0;
-    t2$$2 = matchValue$$1[1];
+    $target$$27 = 0;
+    t2$$2 = t2$$1;
   }
 
-  switch ($target$$6) {
+  switch ($target$$27) {
     case 0:
       {
         return SetTreeModule$$$add(comparer$$1, k$$3, t2$$2);
@@ -8074,8 +7867,7 @@ function SetTreeModule$$$split(comparer$$2, pivot, t$$2) {
   switch (t$$2.tag) {
     case 2:
       {
-        const k1$$3 = t$$2.fields[0];
-        const c$$3 = comparer$$2.Compare(k1$$3, pivot) | 0;
+        const c$$3 = comparer$$2.Compare(t$$2.fields[0], pivot) | 0;
 
         if (c$$3 < 0) {
           return [t$$2, false, new SetTree$00601(0, "SetEmpty")];
@@ -8093,19 +7885,16 @@ function SetTreeModule$$$split(comparer$$2, pivot, t$$2) {
 
     default:
       {
-        const t12$$1 = t$$2.fields[2];
-        const t11$$1 = t$$2.fields[1];
-        const k1$$2 = t$$2.fields[0];
-        const c$$2 = comparer$$2.Compare(pivot, k1$$2) | 0;
+        const c$$2 = comparer$$2.Compare(pivot, t$$2.fields[0]) | 0;
 
         if (c$$2 < 0) {
-          const patternInput = SetTreeModule$$$split(comparer$$2, pivot, t11$$1);
-          return [patternInput[0], patternInput[1], SetTreeModule$$$balance(comparer$$2, patternInput[2], k1$$2, t12$$1)];
+          const patternInput = SetTreeModule$$$split(comparer$$2, pivot, t$$2.fields[1]);
+          return [patternInput[0], patternInput[1], SetTreeModule$$$balance(comparer$$2, patternInput[2], t$$2.fields[0], t$$2.fields[2])];
         } else if (c$$2 === 0) {
-          return [t11$$1, true, t12$$1];
+          return [t$$2.fields[1], true, t$$2.fields[2]];
         } else {
-          const patternInput$$1 = SetTreeModule$$$split(comparer$$2, pivot, t12$$1);
-          return [SetTreeModule$$$balance(comparer$$2, t11$$1, k1$$2, patternInput$$1[0]), patternInput$$1[1], patternInput$$1[2]];
+          const patternInput$$1 = SetTreeModule$$$split(comparer$$2, pivot, t$$2.fields[2]);
+          return [SetTreeModule$$$balance(comparer$$2, t$$2.fields[1], t$$2.fields[0], patternInput$$1[0]), patternInput$$1[1], patternInput$$1[2]];
         }
       }
   }
@@ -8114,21 +7903,16 @@ function SetTreeModule$$$spliceOutSuccessor(t$$3) {
   switch (t$$3.tag) {
     case 2:
       {
-        const k2$$4 = t$$3.fields[0];
-        return [k2$$4, new SetTree$00601(0, "SetEmpty")];
+        return [t$$3.fields[0], new SetTree$00601(0, "SetEmpty")];
       }
 
     case 1:
       {
-        const r$$4 = t$$3.fields[2];
-        const l$$4 = t$$3.fields[1];
-        const k2$$5 = t$$3.fields[0];
-
-        if (l$$4.tag === 0) {
-          return [k2$$5, r$$4];
+        if (t$$3.fields[1].tag === 0) {
+          return [t$$3.fields[0], t$$3.fields[2]];
         } else {
-          const patternInput$$2 = SetTreeModule$$$spliceOutSuccessor(l$$4);
-          return [patternInput$$2[0], SetTreeModule$$$mk(patternInput$$2[1], k2$$5, r$$4)];
+          const patternInput$$2 = SetTreeModule$$$spliceOutSuccessor(t$$3.fields[1]);
+          return [patternInput$$2[0], SetTreeModule$$$mk(patternInput$$2[1], t$$3.fields[0], t$$3.fields[2])];
         }
       }
 
@@ -8142,8 +7926,7 @@ function SetTreeModule$$$remove(comparer$$3, k$$4, t$$4) {
   switch (t$$4.tag) {
     case 2:
       {
-        const k2$$6 = t$$4.fields[0];
-        const c$$4 = comparer$$3.Compare(k$$4, k2$$6) | 0;
+        const c$$4 = comparer$$3.Compare(k$$4, t$$4.fields[0]) | 0;
 
         if (c$$4 === 0) {
           return new SetTree$00601(0, "SetEmpty");
@@ -8154,26 +7937,21 @@ function SetTreeModule$$$remove(comparer$$3, k$$4, t$$4) {
 
     case 1:
       {
-        const r$$5 = t$$4.fields[2];
-        const l$$5 = t$$4.fields[1];
-        const k2$$7 = t$$4.fields[0];
-        const c$$5 = comparer$$3.Compare(k$$4, k2$$7) | 0;
+        const c$$5 = comparer$$3.Compare(k$$4, t$$4.fields[0]) | 0;
 
         if (c$$5 < 0) {
-          return SetTreeModule$$$rebalance(SetTreeModule$$$remove(comparer$$3, k$$4, l$$5), k2$$7, r$$5);
+          return SetTreeModule$$$rebalance(SetTreeModule$$$remove(comparer$$3, k$$4, t$$4.fields[1]), t$$4.fields[0], t$$4.fields[2]);
         } else if (c$$5 === 0) {
-          const matchValue$$2 = [l$$5, r$$5];
-
-          if (matchValue$$2[0].tag === 0) {
-            return r$$5;
-          } else if (matchValue$$2[1].tag === 0) {
-            return l$$5;
+          if (t$$4.fields[1].tag === 0) {
+            return t$$4.fields[2];
+          } else if (t$$4.fields[2].tag === 0) {
+            return t$$4.fields[1];
           } else {
-            const patternInput$$3 = SetTreeModule$$$spliceOutSuccessor(r$$5);
-            return SetTreeModule$$$mk(l$$5, patternInput$$3[0], patternInput$$3[1]);
+            const patternInput$$3 = SetTreeModule$$$spliceOutSuccessor(t$$4.fields[2]);
+            return SetTreeModule$$$mk(t$$4.fields[1], patternInput$$3[0], patternInput$$3[1]);
           }
         } else {
-          return SetTreeModule$$$rebalance(l$$5, k2$$7, SetTreeModule$$$remove(comparer$$3, k$$4, r$$5));
+          return SetTreeModule$$$rebalance(t$$4.fields[1], t$$4.fields[0], SetTreeModule$$$remove(comparer$$3, k$$4, t$$4.fields[2]));
         }
       }
 
@@ -8183,13 +7961,16 @@ function SetTreeModule$$$remove(comparer$$3, k$$4, t$$4) {
       }
   }
 }
-function SetTreeModule$$$mem(comparer$$4, k$$5, t$$5) {
+function SetTreeModule$$$mem($comparer$$4$$35, $k$$5$$36, $t$$5$$37) {
   SetTreeModule$$$mem: while (true) {
+    const comparer$$4 = $comparer$$4$$35,
+          k$$5 = $k$$5$$36,
+          t$$5 = $t$$5$$37;
+
     switch (t$$5.tag) {
       case 2:
         {
-          const k2$$9 = t$$5.fields[0];
-          return comparer$$4.Compare(k$$5, k2$$9) === 0;
+          return comparer$$4.Compare(k$$5, t$$5.fields[0]) === 0;
         }
 
       case 0:
@@ -8199,26 +7980,19 @@ function SetTreeModule$$$mem(comparer$$4, k$$5, t$$5) {
 
       default:
         {
-          const r$$6 = t$$5.fields[2];
-          const l$$6 = t$$5.fields[1];
-          const k2$$8 = t$$5.fields[0];
-          const c$$6 = comparer$$4.Compare(k$$5, k2$$8) | 0;
+          const c$$6 = comparer$$4.Compare(k$$5, t$$5.fields[0]) | 0;
 
           if (c$$6 < 0) {
-            const $comparer$$4$$7 = comparer$$4;
-            const $k$$5$$8 = k$$5;
-            comparer$$4 = $comparer$$4$$7;
-            k$$5 = $k$$5$$8;
-            t$$5 = l$$6;
+            $comparer$$4$$35 = comparer$$4;
+            $k$$5$$36 = k$$5;
+            $t$$5$$37 = t$$5.fields[1];
             continue SetTreeModule$$$mem;
           } else if (c$$6 === 0) {
             return true;
           } else {
-            const $comparer$$4$$9 = comparer$$4;
-            const $k$$5$$10 = k$$5;
-            comparer$$4 = $comparer$$4$$9;
-            k$$5 = $k$$5$$10;
-            t$$5 = r$$6;
+            $comparer$$4$$35 = comparer$$4;
+            $k$$5$$36 = k$$5;
+            $t$$5$$37 = t$$5.fields[2];
             continue SetTreeModule$$$mem;
           }
         }
@@ -8227,16 +8001,15 @@ function SetTreeModule$$$mem(comparer$$4, k$$5, t$$5) {
     break;
   }
 }
-function SetTreeModule$$$iter($arg$$11, $arg$$12) {
+function SetTreeModule$$$iter($f$$38, $t$$6$$39) {
   SetTreeModule$$$iter: while (true) {
-    const f = $arg$$11,
-          t$$6 = $arg$$12;
+    const f = $f$$38,
+          t$$6 = $t$$6$$39;
 
     switch (t$$6.tag) {
       case 2:
         {
-          const k2$$11 = t$$6.fields[0];
-          f(k2$$11);
+          f(t$$6.fields[0]);
           break;
         }
 
@@ -8247,13 +8020,10 @@ function SetTreeModule$$$iter($arg$$11, $arg$$12) {
 
       default:
         {
-          const r$$7 = t$$6.fields[2];
-          const l$$7 = t$$6.fields[1];
-          const k2$$10 = t$$6.fields[0];
-          SetTreeModule$$$iter(f, l$$7);
-          f(k2$$10);
-          $arg$$11 = f;
-          $arg$$12 = r$$7;
+          SetTreeModule$$$iter(f, t$$6.fields[1]);
+          f(t$$6.fields[0]);
+          $f$$38 = f;
+          $t$$6$$39 = t$$6.fields[2];
           continue SetTreeModule$$$iter;
         }
     }
@@ -8261,17 +8031,16 @@ function SetTreeModule$$$iter($arg$$11, $arg$$12) {
     break;
   }
 }
-function SetTreeModule$$$foldBack($arg$$13, $arg$$14, $arg$$15) {
+function SetTreeModule$$$foldBack($f$$1$$40, $m$$1$$41, $x$$1$$42) {
   SetTreeModule$$$foldBack: while (true) {
-    const f$$1 = $arg$$13,
-          m$$1 = $arg$$14,
-          x$$1 = $arg$$15;
+    const f$$1 = $f$$1$$40,
+          m$$1 = $m$$1$$41,
+          x$$1 = $x$$1$$42;
 
     switch (m$$1.tag) {
       case 2:
         {
-          const k$$7 = m$$1.fields[0];
-          return f$$1(k$$7, x$$1);
+          return f$$1(m$$1.fields[0], x$$1);
         }
 
       case 0:
@@ -8281,12 +8050,9 @@ function SetTreeModule$$$foldBack($arg$$13, $arg$$14, $arg$$15) {
 
       default:
         {
-          const r$$8 = m$$1.fields[2];
-          const l$$8 = m$$1.fields[1];
-          const k$$6 = m$$1.fields[0];
-          $arg$$13 = f$$1;
-          $arg$$14 = l$$8;
-          $arg$$15 = f$$1(k$$6, SetTreeModule$$$foldBack(f$$1, r$$8, x$$1));
+          $f$$1$$40 = f$$1;
+          $m$$1$$41 = m$$1.fields[1];
+          $x$$1$$42 = f$$1(m$$1.fields[0], SetTreeModule$$$foldBack(f$$1, m$$1.fields[2], x$$1));
           continue SetTreeModule$$$foldBack;
         }
     }
@@ -8294,17 +8060,16 @@ function SetTreeModule$$$foldBack($arg$$13, $arg$$14, $arg$$15) {
     break;
   }
 }
-function SetTreeModule$$$fold($arg$$16, $arg$$17, $arg$$18) {
+function SetTreeModule$$$fold($f$$2$$43, $x$$2$$44, $m$$2$$45) {
   SetTreeModule$$$fold: while (true) {
-    const f$$2 = $arg$$16,
-          x$$2 = $arg$$17,
-          m$$2 = $arg$$18;
+    const f$$2 = $f$$2$$43,
+          x$$2 = $x$$2$$44,
+          m$$2 = $m$$2$$45;
 
     switch (m$$2.tag) {
       case 2:
         {
-          const k$$9 = m$$2.fields[0];
-          return f$$2(x$$2, k$$9);
+          return f$$2(x$$2, m$$2.fields[0]);
         }
 
       case 0:
@@ -8314,14 +8079,11 @@ function SetTreeModule$$$fold($arg$$16, $arg$$17, $arg$$18) {
 
       default:
         {
-          const r$$9 = m$$2.fields[2];
-          const l$$9 = m$$2.fields[1];
-          const k$$8 = m$$2.fields[0];
-          const x$$3 = SetTreeModule$$$fold(f$$2, x$$2, l$$9);
-          const x$$4 = f$$2(x$$3, k$$8);
-          $arg$$16 = f$$2;
-          $arg$$17 = x$$4;
-          $arg$$18 = r$$9;
+          const x$$3 = SetTreeModule$$$fold(f$$2, x$$2, m$$2.fields[1]);
+          const x$$4 = f$$2(x$$3, m$$2.fields[0]);
+          $f$$2$$43 = f$$2;
+          $x$$2$$44 = x$$4;
+          $m$$2$$45 = m$$2.fields[2];
           continue SetTreeModule$$$fold;
         }
     }
@@ -8329,16 +8091,15 @@ function SetTreeModule$$$fold($arg$$16, $arg$$17, $arg$$18) {
     break;
   }
 }
-function SetTreeModule$$$forall($arg$$19, $arg$$20) {
+function SetTreeModule$$$forall($f$$3$$46, $m$$3$$47) {
   SetTreeModule$$$forall: while (true) {
-    const f$$3 = $arg$$19,
-          m$$3 = $arg$$20;
+    const f$$3 = $f$$3$$46,
+          m$$3 = $m$$3$$47;
 
     switch (m$$3.tag) {
       case 2:
         {
-          const k2$$13 = m$$3.fields[0];
-          return f$$3(k2$$13);
+          return f$$3(m$$3.fields[0]);
         }
 
       case 0:
@@ -8348,13 +8109,9 @@ function SetTreeModule$$$forall($arg$$19, $arg$$20) {
 
       default:
         {
-          const r$$10 = m$$3.fields[2];
-          const l$$10 = m$$3.fields[1];
-          const k2$$12 = m$$3.fields[0];
-
-          if (f$$3(k2$$12) ? SetTreeModule$$$forall(f$$3, l$$10) : false) {
-            $arg$$19 = f$$3;
-            $arg$$20 = r$$10;
+          if (f$$3(m$$3.fields[0]) ? SetTreeModule$$$forall(f$$3, m$$3.fields[1]) : false) {
+            $f$$3$$46 = f$$3;
+            $m$$3$$47 = m$$3.fields[2];
             continue SetTreeModule$$$forall;
           } else {
             return false;
@@ -8365,16 +8122,15 @@ function SetTreeModule$$$forall($arg$$19, $arg$$20) {
     break;
   }
 }
-function SetTreeModule$$$exists($arg$$21, $arg$$22) {
+function SetTreeModule$$$exists($f$$4$$48, $m$$4$$49) {
   SetTreeModule$$$exists: while (true) {
-    const f$$4 = $arg$$21,
-          m$$4 = $arg$$22;
+    const f$$4 = $f$$4$$48,
+          m$$4 = $m$$4$$49;
 
     switch (m$$4.tag) {
       case 2:
         {
-          const k2$$15 = m$$4.fields[0];
-          return f$$4(k2$$15);
+          return f$$4(m$$4.fields[0]);
         }
 
       case 0:
@@ -8384,15 +8140,11 @@ function SetTreeModule$$$exists($arg$$21, $arg$$22) {
 
       default:
         {
-          const r$$11 = m$$4.fields[2];
-          const l$$11 = m$$4.fields[1];
-          const k2$$14 = m$$4.fields[0];
-
-          if (f$$4(k2$$14) ? true : SetTreeModule$$$exists(f$$4, l$$11)) {
+          if (f$$4(m$$4.fields[0]) ? true : SetTreeModule$$$exists(f$$4, m$$4.fields[1])) {
             return true;
           } else {
-            $arg$$21 = f$$4;
-            $arg$$22 = r$$11;
+            $f$$4$$48 = f$$4;
+            $m$$4$$49 = m$$4.fields[2];
             continue SetTreeModule$$$exists;
           }
         }
@@ -8424,20 +8176,18 @@ function SetTreeModule$$$psubset(comparer$$6, a$$1, b$$1) {
     return false;
   }
 }
-function SetTreeModule$$$filterAux($arg$$23, $arg$$24, $arg$$25, $arg$$26) {
+function SetTreeModule$$$filterAux($comparer$$7$$57, $f$$5$$58, $s$$2$$59, $acc$$1$$60) {
   SetTreeModule$$$filterAux: while (true) {
-    const comparer$$7 = $arg$$23,
-          f$$5 = $arg$$24,
-          s$$2 = $arg$$25,
-          acc$$1 = $arg$$26;
+    const comparer$$7 = $comparer$$7$$57,
+          f$$5 = $f$$5$$58,
+          s$$2 = $s$$2$$59,
+          acc$$1 = $acc$$1$$60;
 
     switch (s$$2.tag) {
       case 2:
         {
-          const k$$11 = s$$2.fields[0];
-
-          if (f$$5(k$$11)) {
-            return SetTreeModule$$$add(comparer$$7, k$$11, acc$$1);
+          if (f$$5(s$$2.fields[0])) {
+            return SetTreeModule$$$add(comparer$$7, s$$2.fields[0], acc$$1);
           } else {
             return acc$$1;
           }
@@ -8450,14 +8200,11 @@ function SetTreeModule$$$filterAux($arg$$23, $arg$$24, $arg$$25, $arg$$26) {
 
       default:
         {
-          const r$$12 = s$$2.fields[2];
-          const l$$12 = s$$2.fields[1];
-          const k$$10 = s$$2.fields[0];
-          const acc$$2 = f$$5(k$$10) ? SetTreeModule$$$add(comparer$$7, k$$10, acc$$1) : acc$$1;
-          $arg$$23 = comparer$$7;
-          $arg$$24 = f$$5;
-          $arg$$25 = l$$12;
-          $arg$$26 = SetTreeModule$$$filterAux(comparer$$7, f$$5, r$$12, acc$$2);
+          const acc$$2 = f$$5(s$$2.fields[0]) ? SetTreeModule$$$add(comparer$$7, s$$2.fields[0], acc$$1) : acc$$1;
+          $comparer$$7$$57 = comparer$$7;
+          $f$$5$$58 = f$$5;
+          $s$$2$$59 = s$$2.fields[1];
+          $acc$$1$$60 = SetTreeModule$$$filterAux(comparer$$7, f$$5, s$$2.fields[2], acc$$2);
           continue SetTreeModule$$$filterAux;
         }
     }
@@ -8468,13 +8215,16 @@ function SetTreeModule$$$filterAux($arg$$23, $arg$$24, $arg$$25, $arg$$26) {
 function SetTreeModule$$$filter(comparer$$8, f$$6, s$$3) {
   return SetTreeModule$$$filterAux(comparer$$8, f$$6, s$$3, new SetTree$00601(0, "SetEmpty"));
 }
-function SetTreeModule$$$diffAux(comparer$$9, m$$6, acc$$3) {
+function SetTreeModule$$$diffAux($comparer$$9$$64, $m$$6$$65, $acc$$3$$66) {
   SetTreeModule$$$diffAux: while (true) {
+    const comparer$$9 = $comparer$$9$$64,
+          m$$6 = $m$$6$$65,
+          acc$$3 = $acc$$3$$66;
+
     switch (m$$6.tag) {
       case 2:
         {
-          const k$$13 = m$$6.fields[0];
-          return SetTreeModule$$$remove(comparer$$9, k$$13, acc$$3);
+          return SetTreeModule$$$remove(comparer$$9, m$$6.fields[0], acc$$3);
         }
 
       case 0:
@@ -8484,14 +8234,9 @@ function SetTreeModule$$$diffAux(comparer$$9, m$$6, acc$$3) {
 
       default:
         {
-          const r$$13 = m$$6.fields[2];
-          const l$$13 = m$$6.fields[1];
-          const k$$12 = m$$6.fields[0];
-          const $acc$$3$$31 = acc$$3;
-          const $comparer$$9$$30 = comparer$$9;
-          comparer$$9 = $comparer$$9$$30;
-          m$$6 = l$$13;
-          acc$$3 = SetTreeModule$$$diffAux($comparer$$9$$30, r$$13, SetTreeModule$$$remove($comparer$$9$$30, k$$12, $acc$$3$$31));
+          $comparer$$9$$64 = comparer$$9;
+          $m$$6$$65 = m$$6.fields[1];
+          $acc$$3$$66 = SetTreeModule$$$diffAux(comparer$$9, m$$6.fields[2], SetTreeModule$$$remove(comparer$$9, m$$6.fields[0], acc$$3));
           continue SetTreeModule$$$diffAux;
         }
     }
@@ -8503,45 +8248,44 @@ function SetTreeModule$$$diff(comparer$$10, a$$2, b$$2) {
   return SetTreeModule$$$diffAux(comparer$$10, b$$2, a$$2);
 }
 function SetTreeModule$$$union(comparer$$11, t1$$4, t2$$4) {
-  const matchValue$$3 = [t1$$4, t2$$4];
-  var $target$$32, h1$$1, h2$$1, k1$$4, k2$$16, t11$$2, t12$$2, t21$$1, t22$$1, t$$7, t$$8, k1$$5, t2$$5, k2$$17, t1$$5;
+  var $target$$73, h1$$1, h2$$1, k1$$4, k2$$16, t11$$2, t12$$2, t21$$1, t22$$1, t$$7, t$$8, k1$$5, t2$$5, k2$$17, t1$$5;
 
-  if (matchValue$$3[0].tag === 0) {
-    $target$$32 = 1;
-    t$$7 = matchValue$$3[1];
-  } else if (matchValue$$3[0].tag === 2) {
-    if (matchValue$$3[1].tag === 0) {
-      $target$$32 = 2;
-      t$$8 = matchValue$$3[0];
-    } else if (matchValue$$3[1].tag === 2) {
-      $target$$32 = 3;
-      k1$$5 = matchValue$$3[0].fields[0];
-      t2$$5 = matchValue$$3[1];
+  if (t1$$4.tag === 0) {
+    $target$$73 = 1;
+    t$$7 = t2$$4;
+  } else if (t1$$4.tag === 2) {
+    if (t2$$4.tag === 0) {
+      $target$$73 = 2;
+      t$$8 = t1$$4;
+    } else if (t2$$4.tag === 2) {
+      $target$$73 = 3;
+      k1$$5 = t1$$4.fields[0];
+      t2$$5 = t2$$4;
     } else {
-      $target$$32 = 3;
-      k1$$5 = matchValue$$3[0].fields[0];
-      t2$$5 = matchValue$$3[1];
+      $target$$73 = 3;
+      k1$$5 = t1$$4.fields[0];
+      t2$$5 = t2$$4;
     }
-  } else if (matchValue$$3[1].tag === 0) {
-    $target$$32 = 2;
-    t$$8 = matchValue$$3[0];
-  } else if (matchValue$$3[1].tag === 2) {
-    $target$$32 = 4;
-    k2$$17 = matchValue$$3[1].fields[0];
-    t1$$5 = matchValue$$3[0];
+  } else if (t2$$4.tag === 0) {
+    $target$$73 = 2;
+    t$$8 = t1$$4;
+  } else if (t2$$4.tag === 2) {
+    $target$$73 = 4;
+    k2$$17 = t2$$4.fields[0];
+    t1$$5 = t1$$4;
   } else {
-    $target$$32 = 0;
-    h1$$1 = matchValue$$3[0].fields[3];
-    h2$$1 = matchValue$$3[1].fields[3];
-    k1$$4 = matchValue$$3[0].fields[0];
-    k2$$16 = matchValue$$3[1].fields[0];
-    t11$$2 = matchValue$$3[0].fields[1];
-    t12$$2 = matchValue$$3[0].fields[2];
-    t21$$1 = matchValue$$3[1].fields[1];
-    t22$$1 = matchValue$$3[1].fields[2];
+    $target$$73 = 0;
+    h1$$1 = t1$$4.fields[3];
+    h2$$1 = t2$$4.fields[3];
+    k1$$4 = t1$$4.fields[0];
+    k2$$16 = t2$$4.fields[0];
+    t11$$2 = t1$$4.fields[1];
+    t12$$2 = t1$$4.fields[2];
+    t21$$1 = t2$$4.fields[1];
+    t22$$1 = t2$$4.fields[2];
   }
 
-  switch ($target$$32) {
+  switch ($target$$73) {
     case 0:
       {
         if (h1$$1 > h2$$1) {
@@ -8574,15 +8318,18 @@ function SetTreeModule$$$union(comparer$$11, t1$$4, t2$$4) {
       }
   }
 }
-function SetTreeModule$$$intersectionAux(comparer$$12, b$$3, m$$7, acc$$4) {
+function SetTreeModule$$$intersectionAux($comparer$$12$$74, $b$$3$$75, $m$$7$$76, $acc$$4$$77) {
   SetTreeModule$$$intersectionAux: while (true) {
+    const comparer$$12 = $comparer$$12$$74,
+          b$$3 = $b$$3$$75,
+          m$$7 = $m$$7$$76,
+          acc$$4 = $acc$$4$$77;
+
     switch (m$$7.tag) {
       case 2:
         {
-          const k$$15 = m$$7.fields[0];
-
-          if (SetTreeModule$$$mem(comparer$$12, k$$15, b$$3)) {
-            return SetTreeModule$$$add(comparer$$12, k$$15, acc$$4);
+          if (SetTreeModule$$$mem(comparer$$12, m$$7.fields[0], b$$3)) {
+            return SetTreeModule$$$add(comparer$$12, m$$7.fields[0], acc$$4);
           } else {
             return acc$$4;
           }
@@ -8595,17 +8342,12 @@ function SetTreeModule$$$intersectionAux(comparer$$12, b$$3, m$$7, acc$$4) {
 
       default:
         {
-          const r$$14 = m$$7.fields[2];
-          const l$$14 = m$$7.fields[1];
-          const k$$14 = m$$7.fields[0];
-          const acc$$5 = SetTreeModule$$$intersectionAux(comparer$$12, b$$3, r$$14, acc$$4);
-          const acc$$6 = SetTreeModule$$$mem(comparer$$12, k$$14, b$$3) ? SetTreeModule$$$add(comparer$$12, k$$14, acc$$5) : acc$$5;
-          const $b$$3$$34 = b$$3;
-          const $comparer$$12$$33 = comparer$$12;
-          comparer$$12 = $comparer$$12$$33;
-          b$$3 = $b$$3$$34;
-          m$$7 = l$$14;
-          acc$$4 = acc$$6;
+          const acc$$5 = SetTreeModule$$$intersectionAux(comparer$$12, b$$3, m$$7.fields[2], acc$$4);
+          const acc$$6 = SetTreeModule$$$mem(comparer$$12, m$$7.fields[0], b$$3) ? SetTreeModule$$$add(comparer$$12, m$$7.fields[0], acc$$5) : acc$$5;
+          $comparer$$12$$74 = comparer$$12;
+          $b$$3$$75 = b$$3;
+          $m$$7$$76 = m$$7.fields[1];
+          $acc$$4$$77 = acc$$6;
           continue SetTreeModule$$$intersectionAux;
         }
     }
@@ -8623,39 +8365,34 @@ function SetTreeModule$$$partition1(comparer$$14, f$$7, k$$16, acc1, acc2) {
     return [acc1, SetTreeModule$$$add(comparer$$14, k$$16, acc2)];
   }
 }
-function SetTreeModule$$$partitionAux($arg$$40, $arg$$41, $arg$$42, $arg$$43, $arg$$44) {
+function SetTreeModule$$$partitionAux($comparer$$15$$86, $f$$8$$87, $s$$4$$88, $acc_0$$89, $acc_1$$90) {
   SetTreeModule$$$partitionAux: while (true) {
-    const comparer$$15 = $arg$$40,
-          f$$8 = $arg$$41,
-          s$$4 = $arg$$42,
-          acc_0 = $arg$$43,
-          acc_1 = $arg$$44;
-    const acc$$7 = [acc_0, acc_1];
+    const comparer$$15 = $comparer$$15$$86,
+          f$$8 = $f$$8$$87,
+          s$$4 = $s$$4$$88,
+          acc_0 = $acc_0$$89,
+          acc_1 = $acc_1$$90;
 
     switch (s$$4.tag) {
       case 2:
         {
-          const k$$18 = s$$4.fields[0];
-          return SetTreeModule$$$partition1(comparer$$15, f$$8, k$$18, acc$$7[0], acc$$7[1]);
+          return SetTreeModule$$$partition1(comparer$$15, f$$8, s$$4.fields[0], acc_0, acc_1);
         }
 
       case 0:
         {
-          return acc$$7;
+          return [acc_0, acc_1];
         }
 
       default:
         {
-          const r$$15 = s$$4.fields[2];
-          const l$$15 = s$$4.fields[1];
-          const k$$17 = s$$4.fields[0];
-          const acc$$8 = SetTreeModule$$$partitionAux(comparer$$15, f$$8, r$$15, acc$$7[0], acc$$7[1]);
-          const acc$$9 = SetTreeModule$$$partition1(comparer$$15, f$$8, k$$17, acc$$8[0], acc$$8[1]);
-          $arg$$40 = comparer$$15;
-          $arg$$41 = f$$8;
-          $arg$$42 = l$$15;
-          $arg$$43 = acc$$9[0];
-          $arg$$44 = acc$$9[1];
+          const acc$$8 = SetTreeModule$$$partitionAux(comparer$$15, f$$8, s$$4.fields[2], acc_0, acc_1);
+          const acc$$9 = SetTreeModule$$$partition1(comparer$$15, f$$8, s$$4.fields[0], acc$$8[0], acc$$8[1]);
+          $comparer$$15$$86 = comparer$$15;
+          $f$$8$$87 = f$$8;
+          $s$$4$$88 = s$$4.fields[1];
+          $acc_0$$89 = acc$$9[0];
+          $acc_1$$90 = acc$$9[1];
           continue SetTreeModule$$$partitionAux;
         }
     }
@@ -8671,31 +8408,29 @@ function SetTreeModule$$$$007CMatchSetNode$007CMatchSetEmpty$007C(s$$6) {
   switch (s$$6.tag) {
     case 2:
       {
-        const k2$$19 = s$$6.fields[0];
-        return new _Option__WEBPACK_IMPORTED_MODULE_2__["Choice"](0, "Choice1Of2", [k2$$19, new SetTree$00601(0, "SetEmpty"), new SetTree$00601(0, "SetEmpty")]);
+        return new _Option_js__WEBPACK_IMPORTED_MODULE_2__["Choice"](0, "Choice1Of2", [s$$6.fields[0], new SetTree$00601(0, "SetEmpty"), new SetTree$00601(0, "SetEmpty")]);
       }
 
     case 0:
       {
-        return new _Option__WEBPACK_IMPORTED_MODULE_2__["Choice"](1, "Choice2Of2", null);
+        return new _Option_js__WEBPACK_IMPORTED_MODULE_2__["Choice"](1, "Choice2Of2", null);
       }
 
     default:
       {
-        const r$$16 = s$$6.fields[2];
-        const l$$16 = s$$6.fields[1];
-        const k2$$18 = s$$6.fields[0];
-        return new _Option__WEBPACK_IMPORTED_MODULE_2__["Choice"](0, "Choice1Of2", [k2$$18, l$$16, r$$16]);
+        return new _Option_js__WEBPACK_IMPORTED_MODULE_2__["Choice"](0, "Choice1Of2", [s$$6.fields[0], s$$6.fields[1], s$$6.fields[2]]);
       }
   }
 }
-function SetTreeModule$$$minimumElementAux(s$$7, n$$1) {
+function SetTreeModule$$$minimumElementAux($s$$7$$95, $n$$1$$96) {
   SetTreeModule$$$minimumElementAux: while (true) {
+    const s$$7 = $s$$7$$95,
+          n$$1 = $n$$1$$96;
+
     switch (s$$7.tag) {
       case 2:
         {
-          const k$$20 = s$$7.fields[0];
-          return k$$20;
+          return s$$7.fields[0];
         }
 
       case 0:
@@ -8705,10 +8440,8 @@ function SetTreeModule$$$minimumElementAux(s$$7, n$$1) {
 
       default:
         {
-          const l$$17 = s$$7.fields[1];
-          const k$$19 = s$$7.fields[0];
-          s$$7 = l$$17;
-          n$$1 = k$$19;
+          $s$$7$$95 = s$$7.fields[1];
+          $n$$1$$96 = s$$7.fields[0];
           continue SetTreeModule$$$minimumElementAux;
         }
     }
@@ -8720,8 +8453,7 @@ function SetTreeModule$$$minimumElementOpt(s$$8) {
   switch (s$$8.tag) {
     case 2:
       {
-        const k$$22 = s$$8.fields[0];
-        return Object(_Option__WEBPACK_IMPORTED_MODULE_2__["some"])(k$$22);
+        return Object(_Option_js__WEBPACK_IMPORTED_MODULE_2__["some"])(s$$8.fields[0]);
       }
 
     case 0:
@@ -8731,19 +8463,19 @@ function SetTreeModule$$$minimumElementOpt(s$$8) {
 
     default:
       {
-        const l$$18 = s$$8.fields[1];
-        const k$$21 = s$$8.fields[0];
-        return Object(_Option__WEBPACK_IMPORTED_MODULE_2__["some"])(SetTreeModule$$$minimumElementAux(l$$18, k$$21));
+        return Object(_Option_js__WEBPACK_IMPORTED_MODULE_2__["some"])(SetTreeModule$$$minimumElementAux(s$$8.fields[1], s$$8.fields[0]));
       }
   }
 }
-function SetTreeModule$$$maximumElementAux(s$$9, n$$2) {
+function SetTreeModule$$$maximumElementAux($s$$9$$98, $n$$2$$99) {
   SetTreeModule$$$maximumElementAux: while (true) {
+    const s$$9 = $s$$9$$98,
+          n$$2 = $n$$2$$99;
+
     switch (s$$9.tag) {
       case 2:
         {
-          const k$$24 = s$$9.fields[0];
-          return k$$24;
+          return s$$9.fields[0];
         }
 
       case 0:
@@ -8753,10 +8485,8 @@ function SetTreeModule$$$maximumElementAux(s$$9, n$$2) {
 
       default:
         {
-          const r$$17 = s$$9.fields[2];
-          const k$$23 = s$$9.fields[0];
-          s$$9 = r$$17;
-          n$$2 = k$$23;
+          $s$$9$$98 = s$$9.fields[2];
+          $n$$2$$99 = s$$9.fields[0];
           continue SetTreeModule$$$maximumElementAux;
         }
     }
@@ -8768,8 +8498,7 @@ function SetTreeModule$$$maximumElementOpt(s$$10) {
   switch (s$$10.tag) {
     case 2:
       {
-        const k$$26 = s$$10.fields[0];
-        return Object(_Option__WEBPACK_IMPORTED_MODULE_2__["some"])(k$$26);
+        return Object(_Option_js__WEBPACK_IMPORTED_MODULE_2__["some"])(s$$10.fields[0]);
       }
 
     case 0:
@@ -8779,9 +8508,7 @@ function SetTreeModule$$$maximumElementOpt(s$$10) {
 
     default:
       {
-        const r$$18 = s$$10.fields[2];
-        const k$$25 = s$$10.fields[0];
-        return Object(_Option__WEBPACK_IMPORTED_MODULE_2__["some"])(SetTreeModule$$$maximumElementAux(r$$18, k$$25));
+        return Object(_Option_js__WEBPACK_IMPORTED_MODULE_2__["some"])(SetTreeModule$$$maximumElementAux(s$$10.fields[2], s$$10.fields[0]));
       }
   }
 }
@@ -8791,7 +8518,7 @@ function SetTreeModule$$$minimumElement(s$$11) {
   if (matchValue$$4 == null) {
     throw new Error("Set contains no elements");
   } else {
-    const k$$27 = Object(_Option__WEBPACK_IMPORTED_MODULE_2__["value"])(matchValue$$4);
+    const k$$27 = Object(_Option_js__WEBPACK_IMPORTED_MODULE_2__["value"])(matchValue$$4);
     return k$$27;
   }
 }
@@ -8801,40 +8528,40 @@ function SetTreeModule$$$maximumElement(s$$12) {
   if (matchValue$$5 == null) {
     throw new Error("Set contains no elements");
   } else {
-    const k$$28 = Object(_Option__WEBPACK_IMPORTED_MODULE_2__["value"])(matchValue$$5);
+    const k$$28 = Object(_Option_js__WEBPACK_IMPORTED_MODULE_2__["value"])(matchValue$$5);
     return k$$28;
   }
 }
-const SetTreeModule$002ESetIterator$00601 = Object(_Types__WEBPACK_IMPORTED_MODULE_0__["declare"])(function Set_SetTreeModule_SetIterator(arg1, arg2) {
+const SetTreeModule$002ESetIterator$00601 = Object(_Types_js__WEBPACK_IMPORTED_MODULE_0__["declare"])(function Set_SetTreeModule_SetIterator(arg1, arg2) {
   this.stack = arg1;
   this.started = arg2;
-}, _Types__WEBPACK_IMPORTED_MODULE_0__["Record"]);
-function SetTreeModule$002ESetIterator$00601$reflection($gen$$48) {
-  return Object(_Reflection__WEBPACK_IMPORTED_MODULE_1__["record"])("Set.SetTreeModule.SetIterator`1", [$gen$$48], SetTreeModule$002ESetIterator$00601, () => [["stack", Object(_Reflection__WEBPACK_IMPORTED_MODULE_1__["list"])(SetTree$00601$reflection($gen$$48))], ["started", _Reflection__WEBPACK_IMPORTED_MODULE_1__["bool"]]]);
+}, _Types_js__WEBPACK_IMPORTED_MODULE_0__["Record"]);
+function SetTreeModule$002ESetIterator$00601$reflection($gen$$103) {
+  return Object(_Reflection_js__WEBPACK_IMPORTED_MODULE_1__["record"])("Set.SetTreeModule.SetIterator`1", [$gen$$103], SetTreeModule$002ESetIterator$00601, () => [["stack", Object(_Reflection_js__WEBPACK_IMPORTED_MODULE_1__["list"])(SetTree$00601$reflection($gen$$103))], ["started", _Reflection_js__WEBPACK_IMPORTED_MODULE_1__["bool"]]]);
 }
-function SetTreeModule$$$collapseLHS(stack) {
+function SetTreeModule$$$collapseLHS($stack$$104) {
   SetTreeModule$$$collapseLHS: while (true) {
+    const stack = $stack$$104;
+
     if (stack.tail != null) {
       if (stack.head.tag === 2) {
         return stack;
       } else if (stack.head.tag === 1) {
-        const $stack$$49 = stack;
-        stack = new _Types__WEBPACK_IMPORTED_MODULE_0__["List"]($stack$$49.head.fields[1], new _Types__WEBPACK_IMPORTED_MODULE_0__["List"](SetTreeModule$$$SetOne($stack$$49.head.fields[0]), new _Types__WEBPACK_IMPORTED_MODULE_0__["List"]($stack$$49.head.fields[2], $stack$$49.tail)));
+        $stack$$104 = new _Types_js__WEBPACK_IMPORTED_MODULE_0__["List"](stack.head.fields[1], new _Types_js__WEBPACK_IMPORTED_MODULE_0__["List"](SetTreeModule$$$SetOne(stack.head.fields[0]), new _Types_js__WEBPACK_IMPORTED_MODULE_0__["List"](stack.head.fields[2], stack.tail)));
         continue SetTreeModule$$$collapseLHS;
       } else {
-        const $stack$$50 = stack;
-        stack = $stack$$50.tail;
+        $stack$$104 = stack.tail;
         continue SetTreeModule$$$collapseLHS;
       }
     } else {
-      return new _Types__WEBPACK_IMPORTED_MODULE_0__["List"]();
+      return new _Types_js__WEBPACK_IMPORTED_MODULE_0__["List"]();
     }
 
     break;
   }
 }
 function SetTreeModule$$$mkIterator(s$$13) {
-  return new SetTreeModule$002ESetIterator$00601(SetTreeModule$$$collapseLHS(new _Types__WEBPACK_IMPORTED_MODULE_0__["List"](s$$13, new _Types__WEBPACK_IMPORTED_MODULE_0__["List"]())), false);
+  return new SetTreeModule$002ESetIterator$00601(SetTreeModule$$$collapseLHS(new _Types_js__WEBPACK_IMPORTED_MODULE_0__["List"](s$$13, new _Types_js__WEBPACK_IMPORTED_MODULE_0__["List"]())), false);
 }
 function SetTreeModule$$$notStarted() {
   throw new Error("Enumeration not started");
@@ -8874,16 +8601,16 @@ function SetTreeModule$$$moveNext(i$$1) {
     return !(i$$1.stack.tail == null);
   }
 }
-const SetTreeModule$002EmkIEnumerator$00601 = Object(_Types__WEBPACK_IMPORTED_MODULE_0__["declare"])(function Set_SetTreeModule_mkIEnumerator(s$$14) {
+const SetTreeModule$002EmkIEnumerator$00601 = Object(_Types_js__WEBPACK_IMPORTED_MODULE_0__["declare"])(function Set_SetTreeModule_mkIEnumerator(s$$14) {
   const $this$$1 = this;
   $this$$1.s = s$$14;
   $this$$1.i = SetTreeModule$$$mkIterator($this$$1.s);
 });
-function SetTreeModule$002EmkIEnumerator$00601$reflection($gen$$51) {
-  return Object(_Reflection__WEBPACK_IMPORTED_MODULE_1__["type"])("Set.SetTreeModule.mkIEnumerator`1", [$gen$$51]);
+function SetTreeModule$002EmkIEnumerator$00601$reflection($gen$$108) {
+  return Object(_Reflection_js__WEBPACK_IMPORTED_MODULE_1__["type"])("Set.SetTreeModule.mkIEnumerator`1", [$gen$$108]);
 }
 function SetTreeModule$002EmkIEnumerator$00601$$$$002Ector$$Z5B395D56(s$$14) {
-  return this != null ? SetTreeModule$002EmkIEnumerator$00601.call(this, s$$14) : new SetTreeModule$002EmkIEnumerator$00601(s$$14);
+  return this instanceof SetTreeModule$002EmkIEnumerator$00601 ? SetTreeModule$002EmkIEnumerator$00601.call(this, s$$14) : new SetTreeModule$002EmkIEnumerator$00601(s$$14);
 }
 Object.defineProperty(SetTreeModule$002EmkIEnumerator$00601.prototype, "Current", {
   "get": function () {
@@ -8909,7 +8636,7 @@ function SetTreeModule$$$mkIEnumerator(s$$15) {
 }
 function SetTreeModule$$$toSeq(s$$16) {
   const en = SetTreeModule$$$mkIEnumerator(s$$16);
-  return Object(_Seq__WEBPACK_IMPORTED_MODULE_3__["unfold"])(function generator(en$$1) {
+  return Object(_Seq_js__WEBPACK_IMPORTED_MODULE_3__["unfold"])(function generator(en$$1) {
     if (en$$1.MoveNext()) {
       return [en$$1.Current, en$$1];
     } else {
@@ -8917,115 +8644,117 @@ function SetTreeModule$$$toSeq(s$$16) {
     }
   }, en);
 }
-function SetTreeModule$$$compareStacks(comparer$$17, l1, l2) {
+function SetTreeModule$$$compareStacks($comparer$$17$$112, $l1$$113, $l2$$114) {
   SetTreeModule$$$compareStacks: while (true) {
-    const matchValue$$8 = [l1, l2];
-    var $target$$52, t1$$6, t2$$6, n1k, n2k, t1$$7, t2$$7, n1k$$1, n2k$$1, n2r, t1$$8, t2$$8, emp, n1k$$2, n1r, n2k$$2, t1$$9, t2$$9, n1k$$3, n1r$$1, n2k$$3, n2r$$1, t1$$10, t2$$10, n1k$$4, t1$$11, n1k$$5, n1l, n1r$$2, t1$$12, n2k$$4, t2$$11, n2k$$5, n2l, n2r$$2, t2$$12;
+    const comparer$$17 = $comparer$$17$$112,
+          l1 = $l1$$113,
+          l2 = $l2$$114;
+    var $target$$115, t1$$6, t2$$6, n1k, n2k, t1$$7, t2$$7, n1k$$1, n2k$$1, n2r, t1$$8, t2$$8, emp, n1k$$2, n1r, n2k$$2, t1$$9, t2$$9, n1k$$3, n1r$$1, n2k$$3, n2r$$1, t1$$10, t2$$10, n1k$$4, t1$$11, n1k$$5, n1l, n1r$$2, t1$$12, n2k$$4, t2$$11, n2k$$5, n2l, n2r$$2, t2$$12;
 
-    if (matchValue$$8[0].tail != null) {
-      if (matchValue$$8[1].tail != null) {
-        if (matchValue$$8[1].head.tag === 2) {
-          if (matchValue$$8[0].head.tag === 2) {
-            $target$$52 = 4;
-            n1k = matchValue$$8[0].head.fields[0];
-            n2k = matchValue$$8[1].head.fields[0];
-            t1$$7 = matchValue$$8[0].tail;
-            t2$$7 = matchValue$$8[1].tail;
-          } else if (matchValue$$8[0].head.tag === 1) {
-            if (matchValue$$8[0].head.fields[1].tag === 0) {
-              $target$$52 = 6;
-              emp = matchValue$$8[0].head.fields[1];
-              n1k$$2 = matchValue$$8[0].head.fields[0];
-              n1r = matchValue$$8[0].head.fields[2];
-              n2k$$2 = matchValue$$8[1].head.fields[0];
-              t1$$9 = matchValue$$8[0].tail;
-              t2$$9 = matchValue$$8[1].tail;
+    if (l1.tail != null) {
+      if (l2.tail != null) {
+        if (l2.head.tag === 2) {
+          if (l1.head.tag === 2) {
+            $target$$115 = 4;
+            n1k = l1.head.fields[0];
+            n2k = l2.head.fields[0];
+            t1$$7 = l1.tail;
+            t2$$7 = l2.tail;
+          } else if (l1.head.tag === 1) {
+            if (l1.head.fields[1].tag === 0) {
+              $target$$115 = 6;
+              emp = l1.head.fields[1];
+              n1k$$2 = l1.head.fields[0];
+              n1r = l1.head.fields[2];
+              n2k$$2 = l2.head.fields[0];
+              t1$$9 = l1.tail;
+              t2$$9 = l2.tail;
             } else {
-              $target$$52 = 9;
-              n1k$$5 = matchValue$$8[0].head.fields[0];
-              n1l = matchValue$$8[0].head.fields[1];
-              n1r$$2 = matchValue$$8[0].head.fields[2];
-              t1$$12 = matchValue$$8[0].tail;
+              $target$$115 = 9;
+              n1k$$5 = l1.head.fields[0];
+              n1l = l1.head.fields[1];
+              n1r$$2 = l1.head.fields[2];
+              t1$$12 = l1.tail;
             }
           } else {
-            $target$$52 = 10;
-            n2k$$4 = matchValue$$8[1].head.fields[0];
-            t2$$11 = matchValue$$8[1].tail;
+            $target$$115 = 10;
+            n2k$$4 = l2.head.fields[0];
+            t2$$11 = l2.tail;
           }
-        } else if (matchValue$$8[1].head.tag === 1) {
-          if (matchValue$$8[1].head.fields[1].tag === 0) {
-            if (matchValue$$8[0].head.tag === 2) {
-              $target$$52 = 5;
-              n1k$$1 = matchValue$$8[0].head.fields[0];
-              n2k$$1 = matchValue$$8[1].head.fields[0];
-              n2r = matchValue$$8[1].head.fields[2];
-              t1$$8 = matchValue$$8[0].tail;
-              t2$$8 = matchValue$$8[1].tail;
-            } else if (matchValue$$8[0].head.tag === 1) {
-              if (matchValue$$8[0].head.fields[1].tag === 0) {
-                $target$$52 = 7;
-                n1k$$3 = matchValue$$8[0].head.fields[0];
-                n1r$$1 = matchValue$$8[0].head.fields[2];
-                n2k$$3 = matchValue$$8[1].head.fields[0];
-                n2r$$1 = matchValue$$8[1].head.fields[2];
-                t1$$10 = matchValue$$8[0].tail;
-                t2$$10 = matchValue$$8[1].tail;
+        } else if (l2.head.tag === 1) {
+          if (l2.head.fields[1].tag === 0) {
+            if (l1.head.tag === 2) {
+              $target$$115 = 5;
+              n1k$$1 = l1.head.fields[0];
+              n2k$$1 = l2.head.fields[0];
+              n2r = l2.head.fields[2];
+              t1$$8 = l1.tail;
+              t2$$8 = l2.tail;
+            } else if (l1.head.tag === 1) {
+              if (l1.head.fields[1].tag === 0) {
+                $target$$115 = 7;
+                n1k$$3 = l1.head.fields[0];
+                n1r$$1 = l1.head.fields[2];
+                n2k$$3 = l2.head.fields[0];
+                n2r$$1 = l2.head.fields[2];
+                t1$$10 = l1.tail;
+                t2$$10 = l2.tail;
               } else {
-                $target$$52 = 9;
-                n1k$$5 = matchValue$$8[0].head.fields[0];
-                n1l = matchValue$$8[0].head.fields[1];
-                n1r$$2 = matchValue$$8[0].head.fields[2];
-                t1$$12 = matchValue$$8[0].tail;
+                $target$$115 = 9;
+                n1k$$5 = l1.head.fields[0];
+                n1l = l1.head.fields[1];
+                n1r$$2 = l1.head.fields[2];
+                t1$$12 = l1.tail;
               }
             } else {
-              $target$$52 = 11;
-              n2k$$5 = matchValue$$8[1].head.fields[0];
-              n2l = matchValue$$8[1].head.fields[1];
-              n2r$$2 = matchValue$$8[1].head.fields[2];
-              t2$$12 = matchValue$$8[1].tail;
+              $target$$115 = 11;
+              n2k$$5 = l2.head.fields[0];
+              n2l = l2.head.fields[1];
+              n2r$$2 = l2.head.fields[2];
+              t2$$12 = l2.tail;
             }
-          } else if (matchValue$$8[0].head.tag === 2) {
-            $target$$52 = 8;
-            n1k$$4 = matchValue$$8[0].head.fields[0];
-            t1$$11 = matchValue$$8[0].tail;
-          } else if (matchValue$$8[0].head.tag === 1) {
-            $target$$52 = 9;
-            n1k$$5 = matchValue$$8[0].head.fields[0];
-            n1l = matchValue$$8[0].head.fields[1];
-            n1r$$2 = matchValue$$8[0].head.fields[2];
-            t1$$12 = matchValue$$8[0].tail;
+          } else if (l1.head.tag === 2) {
+            $target$$115 = 8;
+            n1k$$4 = l1.head.fields[0];
+            t1$$11 = l1.tail;
+          } else if (l1.head.tag === 1) {
+            $target$$115 = 9;
+            n1k$$5 = l1.head.fields[0];
+            n1l = l1.head.fields[1];
+            n1r$$2 = l1.head.fields[2];
+            t1$$12 = l1.tail;
           } else {
-            $target$$52 = 11;
-            n2k$$5 = matchValue$$8[1].head.fields[0];
-            n2l = matchValue$$8[1].head.fields[1];
-            n2r$$2 = matchValue$$8[1].head.fields[2];
-            t2$$12 = matchValue$$8[1].tail;
+            $target$$115 = 11;
+            n2k$$5 = l2.head.fields[0];
+            n2l = l2.head.fields[1];
+            n2r$$2 = l2.head.fields[2];
+            t2$$12 = l2.tail;
           }
-        } else if (matchValue$$8[0].head.tag === 2) {
-          $target$$52 = 8;
-          n1k$$4 = matchValue$$8[0].head.fields[0];
-          t1$$11 = matchValue$$8[0].tail;
-        } else if (matchValue$$8[0].head.tag === 1) {
-          $target$$52 = 9;
-          n1k$$5 = matchValue$$8[0].head.fields[0];
-          n1l = matchValue$$8[0].head.fields[1];
-          n1r$$2 = matchValue$$8[0].head.fields[2];
-          t1$$12 = matchValue$$8[0].tail;
+        } else if (l1.head.tag === 2) {
+          $target$$115 = 8;
+          n1k$$4 = l1.head.fields[0];
+          t1$$11 = l1.tail;
+        } else if (l1.head.tag === 1) {
+          $target$$115 = 9;
+          n1k$$5 = l1.head.fields[0];
+          n1l = l1.head.fields[1];
+          n1r$$2 = l1.head.fields[2];
+          t1$$12 = l1.tail;
         } else {
-          $target$$52 = 3;
-          t1$$6 = matchValue$$8[0].tail;
-          t2$$6 = matchValue$$8[1].tail;
+          $target$$115 = 3;
+          t1$$6 = l1.tail;
+          t2$$6 = l2.tail;
         }
       } else {
-        $target$$52 = 2;
+        $target$$115 = 2;
       }
-    } else if (matchValue$$8[1].tail != null) {
-      $target$$52 = 1;
+    } else if (l2.tail != null) {
+      $target$$115 = 1;
     } else {
-      $target$$52 = 0;
+      $target$$115 = 0;
     }
 
-    switch ($target$$52) {
+    switch ($target$$115) {
       case 0:
         {
           return 0;
@@ -9043,10 +8772,9 @@ function SetTreeModule$$$compareStacks(comparer$$17, l1, l2) {
 
       case 3:
         {
-          const $comparer$$17$$53 = comparer$$17;
-          comparer$$17 = $comparer$$17$$53;
-          l1 = t1$$6;
-          l2 = t2$$6;
+          $comparer$$17$$112 = comparer$$17;
+          $l1$$113 = t1$$6;
+          $l2$$114 = t2$$6;
           continue SetTreeModule$$$compareStacks;
         }
 
@@ -9057,10 +8785,9 @@ function SetTreeModule$$$compareStacks(comparer$$17, l1, l2) {
           if (c$$7 !== 0) {
             return c$$7 | 0;
           } else {
-            const $comparer$$17$$54 = comparer$$17;
-            comparer$$17 = $comparer$$17$$54;
-            l1 = t1$$7;
-            l2 = t2$$7;
+            $comparer$$17$$112 = comparer$$17;
+            $l1$$113 = t1$$7;
+            $l2$$114 = t2$$7;
             continue SetTreeModule$$$compareStacks;
           }
         }
@@ -9072,10 +8799,9 @@ function SetTreeModule$$$compareStacks(comparer$$17, l1, l2) {
           if (c$$8 !== 0) {
             return c$$8 | 0;
           } else {
-            const $comparer$$17$$55 = comparer$$17;
-            comparer$$17 = $comparer$$17$$55;
-            l1 = new _Types__WEBPACK_IMPORTED_MODULE_0__["List"](new SetTree$00601(0, "SetEmpty"), t1$$8);
-            l2 = new _Types__WEBPACK_IMPORTED_MODULE_0__["List"](n2r, t2$$8);
+            $comparer$$17$$112 = comparer$$17;
+            $l1$$113 = new _Types_js__WEBPACK_IMPORTED_MODULE_0__["List"](new SetTree$00601(0, "SetEmpty"), t1$$8);
+            $l2$$114 = new _Types_js__WEBPACK_IMPORTED_MODULE_0__["List"](n2r, t2$$8);
             continue SetTreeModule$$$compareStacks;
           }
         }
@@ -9087,10 +8813,9 @@ function SetTreeModule$$$compareStacks(comparer$$17, l1, l2) {
           if (c$$9 !== 0) {
             return c$$9 | 0;
           } else {
-            const $comparer$$17$$56 = comparer$$17;
-            comparer$$17 = $comparer$$17$$56;
-            l1 = new _Types__WEBPACK_IMPORTED_MODULE_0__["List"](n1r, t1$$9);
-            l2 = new _Types__WEBPACK_IMPORTED_MODULE_0__["List"](emp, t2$$9);
+            $comparer$$17$$112 = comparer$$17;
+            $l1$$113 = new _Types_js__WEBPACK_IMPORTED_MODULE_0__["List"](n1r, t1$$9);
+            $l2$$114 = new _Types_js__WEBPACK_IMPORTED_MODULE_0__["List"](emp, t2$$9);
             continue SetTreeModule$$$compareStacks;
           }
         }
@@ -9102,51 +8827,42 @@ function SetTreeModule$$$compareStacks(comparer$$17, l1, l2) {
           if (c$$10 !== 0) {
             return c$$10 | 0;
           } else {
-            const $comparer$$17$$57 = comparer$$17;
-            comparer$$17 = $comparer$$17$$57;
-            l1 = new _Types__WEBPACK_IMPORTED_MODULE_0__["List"](n1r$$1, t1$$10);
-            l2 = new _Types__WEBPACK_IMPORTED_MODULE_0__["List"](n2r$$1, t2$$10);
+            $comparer$$17$$112 = comparer$$17;
+            $l1$$113 = new _Types_js__WEBPACK_IMPORTED_MODULE_0__["List"](n1r$$1, t1$$10);
+            $l2$$114 = new _Types_js__WEBPACK_IMPORTED_MODULE_0__["List"](n2r$$1, t2$$10);
             continue SetTreeModule$$$compareStacks;
           }
         }
 
       case 8:
         {
-          const $comparer$$17$$58 = comparer$$17;
-          const $l2$$59 = l2;
-          comparer$$17 = $comparer$$17$$58;
-          l1 = new _Types__WEBPACK_IMPORTED_MODULE_0__["List"](new SetTree$00601(0, "SetEmpty"), new _Types__WEBPACK_IMPORTED_MODULE_0__["List"](SetTreeModule$$$SetOne(n1k$$4), t1$$11));
-          l2 = $l2$$59;
+          $comparer$$17$$112 = comparer$$17;
+          $l1$$113 = new _Types_js__WEBPACK_IMPORTED_MODULE_0__["List"](new SetTree$00601(0, "SetEmpty"), new _Types_js__WEBPACK_IMPORTED_MODULE_0__["List"](SetTreeModule$$$SetOne(n1k$$4), t1$$11));
+          $l2$$114 = l2;
           continue SetTreeModule$$$compareStacks;
         }
 
       case 9:
         {
-          const $comparer$$17$$60 = comparer$$17;
-          const $l2$$61 = l2;
-          comparer$$17 = $comparer$$17$$60;
-          l1 = new _Types__WEBPACK_IMPORTED_MODULE_0__["List"](n1l, new _Types__WEBPACK_IMPORTED_MODULE_0__["List"](SetTreeModule$$$SetNode(n1k$$5, new SetTree$00601(0, "SetEmpty"), n1r$$2, 0), t1$$12));
-          l2 = $l2$$61;
+          $comparer$$17$$112 = comparer$$17;
+          $l1$$113 = new _Types_js__WEBPACK_IMPORTED_MODULE_0__["List"](n1l, new _Types_js__WEBPACK_IMPORTED_MODULE_0__["List"](SetTreeModule$$$SetNode(n1k$$5, new SetTree$00601(0, "SetEmpty"), n1r$$2, 0), t1$$12));
+          $l2$$114 = l2;
           continue SetTreeModule$$$compareStacks;
         }
 
       case 10:
         {
-          const $comparer$$17$$62 = comparer$$17;
-          const $l1$$63 = l1;
-          comparer$$17 = $comparer$$17$$62;
-          l1 = $l1$$63;
-          l2 = new _Types__WEBPACK_IMPORTED_MODULE_0__["List"](new SetTree$00601(0, "SetEmpty"), new _Types__WEBPACK_IMPORTED_MODULE_0__["List"](SetTreeModule$$$SetOne(n2k$$4), t2$$11));
+          $comparer$$17$$112 = comparer$$17;
+          $l1$$113 = l1;
+          $l2$$114 = new _Types_js__WEBPACK_IMPORTED_MODULE_0__["List"](new SetTree$00601(0, "SetEmpty"), new _Types_js__WEBPACK_IMPORTED_MODULE_0__["List"](SetTreeModule$$$SetOne(n2k$$4), t2$$11));
           continue SetTreeModule$$$compareStacks;
         }
 
       case 11:
         {
-          const $comparer$$17$$64 = comparer$$17;
-          const $l1$$65 = l1;
-          comparer$$17 = $comparer$$17$$64;
-          l1 = $l1$$65;
-          l2 = new _Types__WEBPACK_IMPORTED_MODULE_0__["List"](n2l, new _Types__WEBPACK_IMPORTED_MODULE_0__["List"](SetTreeModule$$$SetNode(n2k$$5, new SetTree$00601(0, "SetEmpty"), n2r$$2, 0), t2$$12));
+          $comparer$$17$$112 = comparer$$17;
+          $l1$$113 = l1;
+          $l2$$114 = new _Types_js__WEBPACK_IMPORTED_MODULE_0__["List"](n2l, new _Types_js__WEBPACK_IMPORTED_MODULE_0__["List"](SetTreeModule$$$SetNode(n2k$$5, new SetTree$00601(0, "SetEmpty"), n2r$$2, 0), t2$$12));
           continue SetTreeModule$$$compareStacks;
         }
     }
@@ -9155,30 +8871,30 @@ function SetTreeModule$$$compareStacks(comparer$$17, l1, l2) {
   }
 }
 function SetTreeModule$$$compare(comparer$$18, s1, s2) {
-  const matchValue$$9 = [s1, s2];
-
-  if (matchValue$$9[0].tag === 0) {
-    if (matchValue$$9[1].tag === 0) {
+  if (s1.tag === 0) {
+    if (s2.tag === 0) {
       return 0;
     } else {
       return -1 | 0;
     }
-  } else if (matchValue$$9[1].tag === 0) {
+  } else if (s2.tag === 0) {
     return 1;
   } else {
-    return SetTreeModule$$$compareStacks(comparer$$18, new _Types__WEBPACK_IMPORTED_MODULE_0__["List"](s1, new _Types__WEBPACK_IMPORTED_MODULE_0__["List"]()), new _Types__WEBPACK_IMPORTED_MODULE_0__["List"](s2, new _Types__WEBPACK_IMPORTED_MODULE_0__["List"]())) | 0;
+    return SetTreeModule$$$compareStacks(comparer$$18, new _Types_js__WEBPACK_IMPORTED_MODULE_0__["List"](s1, new _Types_js__WEBPACK_IMPORTED_MODULE_0__["List"]()), new _Types_js__WEBPACK_IMPORTED_MODULE_0__["List"](s2, new _Types_js__WEBPACK_IMPORTED_MODULE_0__["List"]())) | 0;
   }
 }
 function SetTreeModule$$$choose(s$$17) {
   return SetTreeModule$$$minimumElement(s$$17);
 }
-function SetTreeModule$$$loop(m$$8, acc$$10) {
+function SetTreeModule$$$loop($m$$8$$120, $acc$$10$$121) {
   SetTreeModule$$$loop: while (true) {
+    const m$$8 = $m$$8$$120,
+          acc$$10 = $acc$$10$$121;
+
     switch (m$$8.tag) {
       case 2:
         {
-          const k$$32 = m$$8.fields[0];
-          return new _Types__WEBPACK_IMPORTED_MODULE_0__["List"](k$$32, acc$$10);
+          return new _Types_js__WEBPACK_IMPORTED_MODULE_0__["List"](m$$8.fields[0], acc$$10);
         }
 
       case 0:
@@ -9188,12 +8904,8 @@ function SetTreeModule$$$loop(m$$8, acc$$10) {
 
       default:
         {
-          const r$$20 = m$$8.fields[2];
-          const l$$20 = m$$8.fields[1];
-          const k$$31 = m$$8.fields[0];
-          const $acc$$10$$66 = acc$$10;
-          m$$8 = l$$20;
-          acc$$10 = new _Types__WEBPACK_IMPORTED_MODULE_0__["List"](k$$31, SetTreeModule$$$loop(r$$20, $acc$$10$$66));
+          $m$$8$$120 = m$$8.fields[1];
+          $acc$$10$$121 = new _Types_js__WEBPACK_IMPORTED_MODULE_0__["List"](m$$8.fields[0], SetTreeModule$$$loop(m$$8.fields[2], acc$$10));
           continue SetTreeModule$$$loop;
         }
     }
@@ -9202,7 +8914,7 @@ function SetTreeModule$$$loop(m$$8, acc$$10) {
   }
 }
 function SetTreeModule$$$toList(s$$18) {
-  return SetTreeModule$$$loop(s$$18, new _Types__WEBPACK_IMPORTED_MODULE_0__["List"]());
+  return SetTreeModule$$$loop(s$$18, new _Types_js__WEBPACK_IMPORTED_MODULE_0__["List"]());
 }
 function SetTreeModule$$$copyToArray(s$$19, arr, i$$2) {
   let j = i$$2 | 0;
@@ -9211,15 +8923,16 @@ function SetTreeModule$$$copyToArray(s$$19, arr, i$$2) {
     j = j + 1;
   }, s$$19);
 }
-function SetTreeModule$$$mkFromEnumerator(comparer$$19, acc$$11, e) {
+function SetTreeModule$$$mkFromEnumerator($comparer$$19$$126, $acc$$11$$127, $e$$128) {
   SetTreeModule$$$mkFromEnumerator: while (true) {
+    const comparer$$19 = $comparer$$19$$126,
+          acc$$11 = $acc$$11$$127,
+          e = $e$$128;
+
     if (e.MoveNext()) {
-      const $acc$$11$$68 = acc$$11;
-      const $comparer$$19$$67 = comparer$$19;
-      const $e$$69 = e;
-      comparer$$19 = $comparer$$19$$67;
-      acc$$11 = SetTreeModule$$$add($comparer$$19$$67, $e$$69.Current, $acc$$11$$68);
-      e = $e$$69;
+      $comparer$$19$$126 = comparer$$19;
+      $acc$$11$$127 = SetTreeModule$$$add(comparer$$19, e.Current, acc$$11);
+      $e$$128 = e;
       continue SetTreeModule$$$mkFromEnumerator;
     } else {
       return acc$$11;
@@ -9229,12 +8942,12 @@ function SetTreeModule$$$mkFromEnumerator(comparer$$19, acc$$11, e) {
   }
 }
 function SetTreeModule$$$ofSeq(comparer$$20, c$$11) {
-  const ie = Object(_Seq__WEBPACK_IMPORTED_MODULE_3__["getEnumerator"])(c$$11);
+  const ie = Object(_Seq_js__WEBPACK_IMPORTED_MODULE_3__["getEnumerator"])(c$$11);
 
   try {
     return SetTreeModule$$$mkFromEnumerator(comparer$$20, new SetTree$00601(0, "SetEmpty"), ie);
   } finally {
-    if (Object(_Util__WEBPACK_IMPORTED_MODULE_4__["isDisposable"])(ie)) {
+    if (Object(_Util_js__WEBPACK_IMPORTED_MODULE_4__["isDisposable"])(ie)) {
       ie.Dispose();
     }
   }
@@ -9248,16 +8961,16 @@ function SetTreeModule$$$ofArray(comparer$$21, arr$$1) {
 
   return acc$$12;
 }
-const FSharpSet = Object(_Types__WEBPACK_IMPORTED_MODULE_0__["declare"])(function Set_Set(comparer$$22, tree) {
+const FSharpSet = Object(_Types_js__WEBPACK_IMPORTED_MODULE_0__["declare"])(function Set_Set(comparer$$22, tree) {
   const $this$$2 = this;
   $this$$2.comparer = comparer$$22;
   $this$$2.tree = tree;
 });
-function FSharpSet$reflection($gen$$70) {
-  return Object(_Reflection__WEBPACK_IMPORTED_MODULE_1__["type"])("Set.FSharpSet", [$gen$$70]);
+function FSharpSet$reflection($gen$$133) {
+  return Object(_Reflection_js__WEBPACK_IMPORTED_MODULE_1__["type"])("Set.FSharpSet", [$gen$$133]);
 }
 function FSharpSet$$$$002Ector$$2528C5CB(comparer$$22, tree) {
-  return this != null ? FSharpSet.call(this, comparer$$22, tree) : new FSharpSet(comparer$$22, tree);
+  return this instanceof FSharpSet ? FSharpSet.call(this, comparer$$22, tree) : new FSharpSet(comparer$$22, tree);
 }
 function FSharpSet$$get_Comparer(__$$4) {
   return __$$4.comparer;
@@ -9289,7 +9002,9 @@ function FSharpSet$$get_IsEmpty(s$$26) {
   return SetTreeModule$$$isEmpty(FSharpSet$$get_Tree(s$$26));
 }
 function FSharpSet$$Partition$$Z1D55A0D7(s$$27, f$$11) {
-  if (FSharpSet$$get_Tree(s$$27).tag === 0) {
+  const matchValue$$10 = FSharpSet$$get_Tree(s$$27);
+
+  if (matchValue$$10.tag === 0) {
     return [s$$27, s$$27];
   } else {
     const patternInput$$6 = SetTreeModule$$$partition(FSharpSet$$get_Comparer(s$$27), f$$11, FSharpSet$$get_Tree(s$$27));
@@ -9297,7 +9012,9 @@ function FSharpSet$$Partition$$Z1D55A0D7(s$$27, f$$11) {
   }
 }
 function FSharpSet$$Filter$$Z1D55A0D7(s$$28, f$$12) {
-  if (FSharpSet$$get_Tree(s$$28).tag === 0) {
+  const matchValue$$11 = FSharpSet$$get_Tree(s$$28);
+
+  if (matchValue$$11.tag === 0) {
     return s$$28;
   } else {
     return FSharpSet$$$$002Ector$$2528C5CB(FSharpSet$$get_Comparer(s$$28), SetTreeModule$$$filter(FSharpSet$$get_Comparer(s$$28), f$$12, FSharpSet$$get_Tree(s$$28)));
@@ -9315,34 +9032,52 @@ function FSharpSet$$ForAll$$Z1D55A0D7(s$$31, f$$15) {
   return SetTreeModule$$$forall(f$$15, FSharpSet$$get_Tree(s$$31));
 }
 function FSharpSet$$$op_Subtraction(a$$4, b$$5) {
-  if (FSharpSet$$get_Tree(a$$4).tag === 0) {
-    return a$$4;
-  } else if (FSharpSet$$get_Tree(b$$5).tag === 0) {
+  const matchValue$$12 = FSharpSet$$get_Tree(a$$4);
+
+  if (matchValue$$12.tag === 0) {
     return a$$4;
   } else {
-    return FSharpSet$$$$002Ector$$2528C5CB(FSharpSet$$get_Comparer(a$$4), SetTreeModule$$$diff(FSharpSet$$get_Comparer(a$$4), FSharpSet$$get_Tree(a$$4), FSharpSet$$get_Tree(b$$5)));
+    const matchValue$$13 = FSharpSet$$get_Tree(b$$5);
+
+    if (matchValue$$13.tag === 0) {
+      return a$$4;
+    } else {
+      return FSharpSet$$$$002Ector$$2528C5CB(FSharpSet$$get_Comparer(a$$4), SetTreeModule$$$diff(FSharpSet$$get_Comparer(a$$4), FSharpSet$$get_Tree(a$$4), FSharpSet$$get_Tree(b$$5)));
+    }
   }
 }
 function FSharpSet$$$op_Addition(a$$5, b$$6) {
-  if (FSharpSet$$get_Tree(b$$6).tag === 0) {
+  const matchValue$$14 = FSharpSet$$get_Tree(b$$6);
+
+  if (matchValue$$14.tag === 0) {
     return a$$5;
-  } else if (FSharpSet$$get_Tree(a$$5).tag === 0) {
-    return b$$6;
   } else {
-    return FSharpSet$$$$002Ector$$2528C5CB(FSharpSet$$get_Comparer(a$$5), SetTreeModule$$$union(FSharpSet$$get_Comparer(a$$5), FSharpSet$$get_Tree(a$$5), FSharpSet$$get_Tree(b$$6)));
+    const matchValue$$15 = FSharpSet$$get_Tree(a$$5);
+
+    if (matchValue$$15.tag === 0) {
+      return b$$6;
+    } else {
+      return FSharpSet$$$$002Ector$$2528C5CB(FSharpSet$$get_Comparer(a$$5), SetTreeModule$$$union(FSharpSet$$get_Comparer(a$$5), FSharpSet$$get_Tree(a$$5), FSharpSet$$get_Tree(b$$6)));
+    }
   }
 }
 function FSharpSet$$$Intersection$$Z3BE9BFE0(a$$6, b$$7) {
-  if (FSharpSet$$get_Tree(b$$7).tag === 0) {
+  const matchValue$$16 = FSharpSet$$get_Tree(b$$7);
+
+  if (matchValue$$16.tag === 0) {
     return b$$7;
-  } else if (FSharpSet$$get_Tree(a$$6).tag === 0) {
-    return a$$6;
   } else {
-    return FSharpSet$$$$002Ector$$2528C5CB(FSharpSet$$get_Comparer(a$$6), SetTreeModule$$$intersection(FSharpSet$$get_Comparer(a$$6), FSharpSet$$get_Tree(a$$6), FSharpSet$$get_Tree(b$$7)));
+    const matchValue$$17 = FSharpSet$$get_Tree(a$$6);
+
+    if (matchValue$$17.tag === 0) {
+      return a$$6;
+    } else {
+      return FSharpSet$$$$002Ector$$2528C5CB(FSharpSet$$get_Comparer(a$$6), SetTreeModule$$$intersection(FSharpSet$$get_Comparer(a$$6), FSharpSet$$get_Tree(a$$6), FSharpSet$$get_Tree(b$$7)));
+    }
   }
 }
 function FSharpSet$$$IntersectionMany$$Z15B59630(sets) {
-  return Object(_Seq__WEBPACK_IMPORTED_MODULE_3__["reduce"])(FSharpSet$$$Intersection$$Z3BE9BFE0, sets);
+  return Object(_Seq_js__WEBPACK_IMPORTED_MODULE_3__["reduce"])(FSharpSet$$$Intersection$$Z3BE9BFE0, sets);
 }
 function FSharpSet$$$Equality$$Z3BE9BFE0(a$$7, b$$8) {
   return SetTreeModule$$$compare(FSharpSet$$get_Comparer(a$$7), FSharpSet$$get_Tree(a$$7), FSharpSet$$get_Tree(b$$8)) === 0;
@@ -9373,22 +9108,23 @@ function FSharpSet$$IsProperSupersetOf$$6A20B1FF(x$$20, y$$3) {
 }
 
 FSharpSet.prototype.toString = function () {
+  var strings;
   const this$ = this;
-  return "set [" + Object(_String__WEBPACK_IMPORTED_MODULE_5__["join"])("; ", ...Object(_Seq__WEBPACK_IMPORTED_MODULE_3__["map"])(String, this$)) + "]";
+  return "set [" + (strings = Object(_Seq_js__WEBPACK_IMPORTED_MODULE_3__["map"])(function (x$$21) {
+    let copyOfStruct = x$$21;
+    return String(copyOfStruct);
+  }, this$), (Object(_String_js__WEBPACK_IMPORTED_MODULE_5__["join"])("; ", strings))) + "]";
 };
 
 FSharpSet.prototype.GetHashCode = function () {
   const this$$$1 = this;
-
-  const combineHash = function combineHash(x$$22, y$$4) {
-    return (x$$22 << 1) + y$$4 + 631;
-  };
-
   let res = 0;
   const e$$1 = SetTreeModule$$$mkIEnumerator(FSharpSet$$get_Tree(this$$$1));
 
   while (e$$1.MoveNext()) {
-    res = combineHash(res, Object(_Util__WEBPACK_IMPORTED_MODULE_4__["structuralHash"])(e$$1.Current));
+    const x$$22 = res | 0;
+    const y$$4 = Object(_Util_js__WEBPACK_IMPORTED_MODULE_4__["structuralHash"])(e$$1.Current) | 0;
+    res = (x$$22 << 1) + y$$4 + 631;
   }
 
   return Math.abs(res) | 0;
@@ -9406,7 +9142,7 @@ FSharpSet.prototype.CompareTo = function (that$$1) {
 
 FSharpSet.prototype[Symbol.iterator] = function () {
   const s$$32 = this;
-  return Object(_Seq__WEBPACK_IMPORTED_MODULE_3__["toIterator"])(SetTreeModule$$$mkIEnumerator(FSharpSet$$get_Tree(s$$32)));
+  return Object(_Seq_js__WEBPACK_IMPORTED_MODULE_3__["toIterator"])(SetTreeModule$$$mkIEnumerator(FSharpSet$$get_Tree(s$$32)));
 };
 
 function isEmpty(s$$33) {
@@ -9428,7 +9164,7 @@ function union(s1$$2, s2$$2) {
   return FSharpSet$$$op_Addition(s1$$2, s2$$2);
 }
 function unionMany(sets$$1, comparer$$25) {
-  return Object(_Seq__WEBPACK_IMPORTED_MODULE_3__["fold"])(FSharpSet$$$op_Addition, FSharpSet$$$$002Ector$$2528C5CB(comparer$$25, new SetTree$00601(0, "SetEmpty")), sets$$1);
+  return Object(_Seq_js__WEBPACK_IMPORTED_MODULE_3__["fold"])(FSharpSet$$$op_Addition, FSharpSet$$$$002Ector$$2528C5CB(comparer$$25, new SetTree$00601(0, "SetEmpty")), sets$$1);
 }
 function intersect(s1$$3, s2$$3) {
   return FSharpSet$$$Intersection$$Z3BE9BFE0(s1$$3, s2$$3);
@@ -9554,12 +9290,23 @@ function createMutablePrivate(comparer$$31, tree$0027) {
       return SetTreeModule$$$mem(comparer$$31, x$$36, tree$$1);
     },
 
+    keys() {
+      return SetTreeModule$$$toSeq(tree$$1);
+    },
+
     values() {
       return SetTreeModule$$$toSeq(tree$$1);
     },
 
+    entries() {
+      const source = SetTreeModule$$$toSeq(tree$$1);
+      return Object(_Seq_js__WEBPACK_IMPORTED_MODULE_3__["map"])(function mapping(v) {
+        return [v, v];
+      }, source);
+    },
+
     [Symbol.iterator]() {
-      return Object(_Seq__WEBPACK_IMPORTED_MODULE_3__["toIterator"])(SetTreeModule$$$mkIEnumerator(tree$$1));
+      return Object(_Seq_js__WEBPACK_IMPORTED_MODULE_3__["toIterator"])(SetTreeModule$$$mkIEnumerator(tree$$1));
     },
 
     GetEnumerator() {
@@ -9569,38 +9316,44 @@ function createMutablePrivate(comparer$$31, tree$0027) {
   };
 }
 
-function createMutable(source, comparer$$32) {
-  return createMutablePrivate(comparer$$32, SetTreeModule$$$ofSeq(comparer$$32, source));
+function createMutable(source$$1, comparer$$32) {
+  const set = Object(_MutableSet__WEBPACK_IMPORTED_MODULE_6__["MutableSet$00601$$$$002Ector$$Z6150332D"])(source$$1, comparer$$32);
+  return set;
 }
 function distinct(xs, comparer$$33) {
-  return createMutable(xs, comparer$$33);
+  return Object(_Seq_js__WEBPACK_IMPORTED_MODULE_3__["delay"])(function () {
+    const set$$1 = Object(_MutableSet__WEBPACK_IMPORTED_MODULE_6__["MutableSet$00601$$$$002Ector$$Z6150332D"])(Object(_Seq_js__WEBPACK_IMPORTED_MODULE_3__["empty"])(), comparer$$33);
+    return Object(_Seq_js__WEBPACK_IMPORTED_MODULE_3__["collect"])(function (x$$37) {
+      return Object(_MutableSet__WEBPACK_IMPORTED_MODULE_6__["MutableSet$00601$$Add$$2B595"])(set$$1, x$$37) ? Object(_Seq_js__WEBPACK_IMPORTED_MODULE_3__["singleton"])(x$$37) : Object(_Seq_js__WEBPACK_IMPORTED_MODULE_3__["empty"])();
+    }, xs);
+  });
 }
 function distinctBy(projection, xs$$1, comparer$$34) {
-  const li$$1 = [];
-  const hashSet = createMutable(Object(_Seq__WEBPACK_IMPORTED_MODULE_3__["empty"])(), comparer$$34);
-  Object(_Seq__WEBPACK_IMPORTED_MODULE_3__["iterate"])(function (x$$37) {
-    if (hashSet.add_(projection(x$$37))) {
-      li$$1.push(x$$37);
-    }
-  }, xs$$1);
-  return li$$1;
+  return Object(_Seq_js__WEBPACK_IMPORTED_MODULE_3__["delay"])(function () {
+    const set$$2 = Object(_MutableSet__WEBPACK_IMPORTED_MODULE_6__["MutableSet$00601$$$$002Ector$$Z6150332D"])(Object(_Seq_js__WEBPACK_IMPORTED_MODULE_3__["empty"])(), comparer$$34);
+    return Object(_Seq_js__WEBPACK_IMPORTED_MODULE_3__["collect"])(function (x$$38) {
+      return Object(_MutableSet__WEBPACK_IMPORTED_MODULE_6__["MutableSet$00601$$Add$$2B595"])(set$$2, projection(x$$38)) ? Object(_Seq_js__WEBPACK_IMPORTED_MODULE_3__["singleton"])(x$$38) : Object(_Seq_js__WEBPACK_IMPORTED_MODULE_3__["empty"])();
+    }, xs$$1);
+  });
 }
 function unionWith(s1$$4, s2$$4) {
-  return Object(_Seq__WEBPACK_IMPORTED_MODULE_3__["fold"])(function folder(acc$$14, x$$38) {
-    return acc$$14.add(x$$38);
+  return Object(_Seq_js__WEBPACK_IMPORTED_MODULE_3__["fold"])(function folder(acc$$14, x$$39) {
+    return acc$$14.add(x$$39);
   }, s1$$4, s2$$4);
 }
 function intersectWith(s1$$5, s2$$5, comparer$$35) {
   const s2$$6 = ofSeq(s2$$5, comparer$$35);
-  Object(_Seq__WEBPACK_IMPORTED_MODULE_3__["iterate"])(function (x$$39) {
-    if (!FSharpSet$$Contains$$2B595(s2$$6, x$$39)) {
-      s1$$5.delete(x$$39);
+  Object(_Seq_js__WEBPACK_IMPORTED_MODULE_3__["iterate"])(function (x$$40) {
+    if (!FSharpSet$$Contains$$2B595(s2$$6, x$$40)) {
+      const value = s1$$5.delete(x$$40);
+      value, null;
     }
   }, s1$$5);
 }
 function exceptWith(s1$$6, s2$$7) {
-  Object(_Seq__WEBPACK_IMPORTED_MODULE_3__["iterate"])(function (x$$40) {
-    s1$$6.delete(x$$40);
+  Object(_Seq_js__WEBPACK_IMPORTED_MODULE_3__["iterate"])(function (x$$41) {
+    const value$$1 = s1$$6.delete(x$$41);
+    value$$1, null;
   }, s2$$7);
 }
 function isSubsetOf(s1$$7, s2$$8, comparer$$36) {
@@ -9618,11 +9371,11 @@ function isProperSupersetOf(s1$$10, s2$$11, comparer$$39) {
 
 /***/ }),
 
-/***/ "./.fable/fable-library.2.1.12/String.js":
+/***/ "./.fable/fable-library.2.3.25/String.js":
 /*!***********************************************!*\
-  !*** ./.fable/fable-library.2.1.12/String.js ***!
+  !*** ./.fable/fable-library.2.3.25/String.js ***!
   \***********************************************/
-/*! exports provided: compare, compareOrdinal, compareTo, startsWith, indexOfAny, printf, toConsole, toConsoleError, toText, toFail, fsFormat, format, endsWith, initialize, insert, isNullOrEmpty, isNullOrWhiteSpace, join, joinWithIndices, validateGuid, newGuid, guidToArray, arrayToGuid, toBase64String, fromBase64String, padLeft, padRight, remove, replace, replicate, getCharAtIndex, split, trim, trimStart, trimEnd, filter */
+/*! exports provided: compare, compareOrdinal, compareTo, startsWith, indexOfAny, printf, toConsole, toConsoleError, toText, toFail, fsFormat, format, endsWith, initialize, insert, isNullOrEmpty, isNullOrWhiteSpace, concat, join, joinWithIndices, validateGuid, newGuid, guidToArray, arrayToGuid, toBase64String, fromBase64String, padLeft, padRight, remove, replace, replicate, getCharAtIndex, split, trim, trimStart, trimEnd, filter */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -9644,6 +9397,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "insert", function() { return insert; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isNullOrEmpty", function() { return isNullOrEmpty; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isNullOrWhiteSpace", function() { return isNullOrWhiteSpace; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "concat", function() { return concat; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "join", function() { return join; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "joinWithIndices", function() { return joinWithIndices; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "validateGuid", function() { return validateGuid; });
@@ -9663,16 +9417,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "trimStart", function() { return trimStart; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "trimEnd", function() { return trimEnd; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "filter", function() { return filter; });
-/* harmony import */ var _Date__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Date */ "./.fable/fable-library.2.1.12/Date.js");
-/* harmony import */ var _Decimal__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Decimal */ "./.fable/fable-library.2.1.12/Decimal.js");
-/* harmony import */ var _Long__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Long */ "./.fable/fable-library.2.1.12/Long.js");
-/* harmony import */ var _RegExp__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./RegExp */ "./.fable/fable-library.2.1.12/RegExp.js");
-
+/* harmony import */ var _Date__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Date */ "./.fable/fable-library.2.3.25/Date.js");
+/* harmony import */ var _Long__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Long */ "./.fable/fable-library.2.3.25/Long.js");
+/* harmony import */ var _RegExp__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./RegExp */ "./.fable/fable-library.2.3.25/RegExp.js");
 
 
 
 const fsFormatRegExp = /(^|[^%])%([0+ ]*)(-?\d+)?(?:\.(\d+))?(\w)/;
-const formatRegExp = /\{(\d+)(,-?\d+)?(?:\:(.+?))?\}/g;
+const formatRegExp = /\{(\d+)(,-?\d+)?(?:\:([a-zA-Z])(\d{0,2})|\:(.+?))?\}/g;
 // RFC 4122 compliant. From https://stackoverflow.com/a/13653180/3922220
 // const guidRegex = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/;
 // Relax GUID parsing, see #1637
@@ -9757,8 +9509,8 @@ function indexOfAny(str, anyOf, ...args) {
     return -1;
 }
 function toHex(x) {
-    if (x instanceof _Long__WEBPACK_IMPORTED_MODULE_2__["default"]) {
-        return Object(_Long__WEBPACK_IMPORTED_MODULE_2__["toString"])(x.unsigned ? x : Object(_Long__WEBPACK_IMPORTED_MODULE_2__["fromBytes"])(Object(_Long__WEBPACK_IMPORTED_MODULE_2__["toBytes"])(x), true), 16);
+    if (x instanceof _Long__WEBPACK_IMPORTED_MODULE_1__["default"]) {
+        return Object(_Long__WEBPACK_IMPORTED_MODULE_1__["toString"])(x.unsigned ? x : Object(_Long__WEBPACK_IMPORTED_MODULE_1__["fromBytes"])(Object(_Long__WEBPACK_IMPORTED_MODULE_1__["toBytes"])(x), true), 16);
     }
     else {
         return (Number(x) >>> 0).toString(16);
@@ -9844,32 +9596,39 @@ function format(str, ...args) {
         str = args[0];
         args.shift();
     }
-    return str.replace(formatRegExp, (match, idx, pad, pattern) => {
+    return str.replace(formatRegExp, (match, idx, pad, format, precision, pattern) => {
         let rep = args[idx];
         let padSymbol = " ";
-        if (typeof rep === "number" || rep instanceof _Long__WEBPACK_IMPORTED_MODULE_2__["default"] || rep instanceof _Decimal__WEBPACK_IMPORTED_MODULE_1__["default"]) {
-            switch ((pattern || "").substring(0, 1)) {
+        const isNumericType = (typeof rep === "number") || (rep instanceof _Long__WEBPACK_IMPORTED_MODULE_1__["default"]);
+        // TODO: || (rep instanceof Decimal) || (rep instanceof BigInt);
+        if (isNumericType) {
+            switch (format) {
                 case "f":
                 case "F":
-                    rep = pattern.length > 1 ? rep.toFixed(pattern.substring(1)) : rep.toFixed(2);
+                    rep = precision ? rep.toFixed(precision) : rep.toFixed(2);
                     break;
                 case "g":
                 case "G":
-                    rep = pattern.length > 1 ? rep.toPrecision(pattern.substring(1)) : rep.toPrecision();
+                    rep = precision ? rep.toPrecision(precision) : rep.toPrecision();
                     break;
                 case "e":
                 case "E":
-                    rep = pattern.length > 1 ? rep.toExponential(pattern.substring(1)) : rep.toExponential();
+                    rep = precision ? rep.toExponential(precision) : rep.toExponential();
                     break;
                 case "p":
                 case "P":
-                    rep = (pattern.length > 1 ? (rep * 100).toFixed(pattern.substring(1)) : (rep * 100).toFixed(2)) + " %";
+                    rep = (precision ? (rep * 100).toFixed(precision) : (rep * 100).toFixed(2)) + " %";
+                    break;
+                case "d":
+                case "D":
+                    rep = precision ? padLeft(rep.toString(), precision, "0") : rep.toString();
                     break;
                 case "x":
-                    rep = toHex(rep);
-                    break;
                 case "X":
-                    rep = toHex(rep).toUpperCase();
+                    rep = precision ? padLeft(toHex(rep), precision, "0") : toHex(rep);
+                    if (format === "X") {
+                        rep = rep.toUpperCase();
+                    }
                     break;
                 default:
                     const m = /^(0+)(\.0+)?$/.exec(pattern);
@@ -9887,7 +9646,7 @@ function format(str, ...args) {
             }
         }
         else if (rep instanceof Date) {
-            rep = Object(_Date__WEBPACK_IMPORTED_MODULE_0__["toString"])(rep, pattern);
+            rep = Object(_Date__WEBPACK_IMPORTED_MODULE_0__["toString"])(rep, pattern || format);
         }
         pad = parseInt((pad || "").substring(1), 10);
         if (!isNaN(pad)) {
@@ -9922,15 +9681,23 @@ function isNullOrEmpty(str) {
 function isNullOrWhiteSpace(str) {
     return typeof str !== "string" || /^\s*$/.test(str);
 }
-function join(delimiter, ...xs) {
-    return xs.map((x) => String(x)).join(delimiter);
+function concat(...xs) {
+    return xs.map((x) => String(x)).join("");
+}
+function join(delimiter, xs) {
+    if (Array.isArray(xs)) {
+        return xs.join(delimiter);
+    }
+    else {
+        return Array.from(xs).join(delimiter);
+    }
 }
 function joinWithIndices(delimiter, xs, startIndex, count) {
     const endIndexPlusOne = startIndex + count;
     if (endIndexPlusOne > xs.length) {
         throw new Error("Index and count must refer to a location within the buffer.");
     }
-    return join(delimiter, ...xs.slice(startIndex, endIndexPlusOne));
+    return xs.slice(startIndex, endIndexPlusOne).join(delimiter);
 }
 /** Validates UUID as specified in RFC4122 (versions 1-5). Trims braces. */
 function validateGuid(str, doNotThrow) {
@@ -10066,7 +9833,7 @@ function remove(str, startIndex, count) {
     return str.slice(0, startIndex) + (typeof count === "number" ? str.substr(startIndex + count) : "");
 }
 function replace(str, search, replace) {
-    return str.replace(new RegExp(Object(_RegExp__WEBPACK_IMPORTED_MODULE_3__["escape"])(search), "g"), replace);
+    return str.replace(new RegExp(Object(_RegExp__WEBPACK_IMPORTED_MODULE_2__["escape"])(search), "g"), replace);
 }
 function replicate(n, x) {
     return initialize(n, () => x);
@@ -10096,7 +9863,7 @@ function split(str, splitters, count, removeEmpty) {
             splitters[key - 1] = arguments[key];
         }
     }
-    splitters = splitters.map((x) => Object(_RegExp__WEBPACK_IMPORTED_MODULE_3__["escape"])(x));
+    splitters = splitters.map((x) => Object(_RegExp__WEBPACK_IMPORTED_MODULE_2__["escape"])(x));
     splitters = splitters.length > 0 ? splitters : [" "];
     let i = 0;
     const splits = [];
@@ -10121,31 +9888,31 @@ function trim(str, ...chars) {
     if (chars.length === 0) {
         return str.trim();
     }
-    const pattern = "[" + Object(_RegExp__WEBPACK_IMPORTED_MODULE_3__["escape"])(chars.join("")) + "]+";
+    const pattern = "[" + Object(_RegExp__WEBPACK_IMPORTED_MODULE_2__["escape"])(chars.join("")) + "]+";
     return str.replace(new RegExp("^" + pattern), "").replace(new RegExp(pattern + "$"), "");
 }
 function trimStart(str, ...chars) {
     return chars.length === 0
         ? str.trimStart()
-        : str.replace(new RegExp("^[" + Object(_RegExp__WEBPACK_IMPORTED_MODULE_3__["escape"])(chars.join("")) + "]+"), "");
+        : str.replace(new RegExp("^[" + Object(_RegExp__WEBPACK_IMPORTED_MODULE_2__["escape"])(chars.join("")) + "]+"), "");
 }
 function trimEnd(str, ...chars) {
     return chars.length === 0
         ? str.trimEnd()
-        : str.replace(new RegExp("[" + Object(_RegExp__WEBPACK_IMPORTED_MODULE_3__["escape"])(chars.join("")) + "]+$"), "");
+        : str.replace(new RegExp("[" + Object(_RegExp__WEBPACK_IMPORTED_MODULE_2__["escape"])(chars.join("")) + "]+$"), "");
 }
 function filter(pred, x) {
     return x.split("").filter((c) => pred(c)).join("");
 }
-
+//# sourceMappingURL=String.js.map
 
 /***/ }),
 
-/***/ "./.fable/fable-library.2.1.12/Types.js":
+/***/ "./.fable/fable-library.2.3.25/Types.js":
 /*!**********************************************!*\
-  !*** ./.fable/fable-library.2.1.12/Types.js ***!
+  !*** ./.fable/fable-library.2.3.25/Types.js ***!
   \**********************************************/
-/*! exports provided: declare, SystemObject, List, Union, Record, FSharpRef, Exception, isException, FSharpException, MatchFailureException, Attribute */
+/*! exports provided: declare, SystemObject, List, Union, Record, anonRecord, FSharpRef, Exception, isException, FSharpException, MatchFailureException, Attribute */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -10155,13 +9922,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "List", function() { return List; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Union", function() { return Union; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Record", function() { return Record; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "anonRecord", function() { return anonRecord; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FSharpRef", function() { return FSharpRef; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Exception", function() { return Exception; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isException", function() { return isException; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FSharpException", function() { return FSharpException; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MatchFailureException", function() { return MatchFailureException; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Attribute", function() { return Attribute; });
-/* harmony import */ var _Util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Util */ "./.fable/fable-library.2.1.12/Util.js");
+/* harmony import */ var _Util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Util */ "./.fable/fable-library.2.3.25/Util.js");
 
 function sameType(x, y) {
     return y != null && Object.getPrototypeOf(x).constructor === Object.getPrototypeOf(y).constructor;
@@ -10192,9 +9960,10 @@ function declare(cons, superClass) {
     return cons;
 }
 function SystemObject() {
+    return;
 }
 SystemObject.prototype.toString = function () {
-    return "{" + Object.keys(this).map(k => k + " = " + String(this[k])).join(";\n ") + "}";
+    return "{" + Object.keys(this).map((k) => k + " = " + String(this[k])).join(";\n ") + "}";
 };
 SystemObject.prototype.GetHashCode = function () {
     return Object(_Util__WEBPACK_IMPORTED_MODULE_0__["identityHash"])(this);
@@ -10229,7 +9998,7 @@ function List(head, tail) {
     this.tail = tail;
 }
 List.prototype.toString = function () {
-    return "[" + Array.from(this).map(x => String(x)).join("; ") + "]";
+    return "[" + Array.from(this).map((x) => String(x)).join("; ") + "]";
 };
 List.prototype.toJSON = function () {
     return Array.from(this);
@@ -10268,7 +10037,7 @@ Union.prototype.toString = function () {
         return this.name + " " + String(this.fields[0]);
     }
     else {
-        return this.name + " (" + this.fields.map(x => String(x)).join(",") + ")";
+        return this.name + " (" + this.fields.map((x) => String(x)).join(",") + ")";
     }
 };
 Union.prototype.toJSON = function () {
@@ -10277,7 +10046,7 @@ Union.prototype.toJSON = function () {
         : [this.name].concat(this.fields);
 };
 Union.prototype.GetHashCode = function () {
-    let hashes = this.fields.map(x => Object(_Util__WEBPACK_IMPORTED_MODULE_0__["structuralHash"])(x));
+    const hashes = this.fields.map((x) => Object(_Util__WEBPACK_IMPORTED_MODULE_0__["structuralHash"])(x));
     hashes.splice(0, 0, Object(_Util__WEBPACK_IMPORTED_MODULE_0__["numberHash"])(this.tag));
     return Object(_Util__WEBPACK_IMPORTED_MODULE_0__["combineHashCodes"])(hashes);
 };
@@ -10345,15 +10114,16 @@ function recordCompare(self, other, getFieldNames) {
     }
 }
 function Record() {
+    return;
 }
 Record.prototype.toString = function () {
-    return "{" + Object.keys(this).map(k => k + " = " + String(this[k])).join(";\n ") + "}";
+    return "{" + Object.keys(this).map((k) => k + " = " + String(this[k])).join(";\n ") + "}";
 };
 Record.prototype.toJSON = function () {
     return recordToJson(this);
 };
 Record.prototype.GetHashCode = function () {
-    const hashes = Object.keys(this).map(k => Object(_Util__WEBPACK_IMPORTED_MODULE_0__["structuralHash"])(this[k]));
+    const hashes = Object.keys(this).map((k) => Object(_Util__WEBPACK_IMPORTED_MODULE_0__["structuralHash"])(this[k]));
     return Object(_Util__WEBPACK_IMPORTED_MODULE_0__["combineHashCodes"])(hashes);
 };
 Record.prototype.Equals = function (other) {
@@ -10362,6 +10132,9 @@ Record.prototype.Equals = function (other) {
 Record.prototype.CompareTo = function (other) {
     return recordCompare(this, other);
 };
+function anonRecord(o) {
+    return Object.assign(Object.create(Record.prototype), o);
+}
 const FSharpRef = declare(function FSharpRef(contents) {
     this.contents = contents;
 }, Record);
@@ -10374,7 +10147,7 @@ function isException(x) {
     return x instanceof Error || x instanceof Exception;
 }
 function getFSharpExceptionFieldNames(self) {
-    return Object.keys(self).filter(k => k !== "message" && k !== "stack");
+    return Object.keys(self).filter((k) => k !== "message" && k !== "stack");
 }
 const FSharpException = declare(function FSharpException() {
     Exception.call(this);
@@ -10389,14 +10162,14 @@ FSharpException.prototype.toString = function () {
         return this.message + " " + String(this[fieldNames[0]]);
     }
     else {
-        return this.message + " (" + fieldNames.map(k => String(this[k])).join(",") + ")";
+        return this.message + " (" + fieldNames.map((k) => String(this[k])).join(",") + ")";
     }
 };
 FSharpException.prototype.toJSON = function () {
     return recordToJson(this, getFSharpExceptionFieldNames);
 };
 FSharpException.prototype.GetHashCode = function () {
-    const hashes = getFSharpExceptionFieldNames(this).map(k => Object(_Util__WEBPACK_IMPORTED_MODULE_0__["structuralHash"])(this[k]));
+    const hashes = getFSharpExceptionFieldNames(this).map((k) => Object(_Util__WEBPACK_IMPORTED_MODULE_0__["structuralHash"])(this[k]));
     return Object(_Util__WEBPACK_IMPORTED_MODULE_0__["combineHashCodes"])(hashes);
 };
 FSharpException.prototype.Equals = function (other) {
@@ -10409,17 +10182,18 @@ const MatchFailureException = declare(function MatchFailureException(arg1, arg2,
     this.arg1 = arg1;
     this.arg2 = arg2 | 0;
     this.arg3 = arg3 | 0;
+    this.message = "The match cases were incomplete";
 }, FSharpException);
-const Attribute = declare(function Attribute() { });
-
+const Attribute = declare(function Attribute() { return; });
+//# sourceMappingURL=Types.js.map
 
 /***/ }),
 
-/***/ "./.fable/fable-library.2.1.12/Util.js":
+/***/ "./.fable/fable-library.2.3.25/Util.js":
 /*!*********************************************!*\
-  !*** ./.fable/fable-library.2.1.12/Util.js ***!
+  !*** ./.fable/fable-library.2.3.25/Util.js ***!
   \*********************************************/
-/*! exports provided: extend, isDisposable, Comparer, comparerFromEqualityComparer, containsValue, tryGetValue, addToSet, assertEqual, assertNotEqual, Lazy, lazyFromValue, padWithZeros, padLeftAndRightWithZeros, dateOffset, int16ToString, int32ToString, ObjectRef, stringHash, numberHash, combineHashCodes, identityHash, structuralHash, isArray, isIterable, equalArraysWith, equalArrays, equals, compareDates, comparePrimitives, compareArraysWith, compareArrays, compareObjects, compare, min, max, createAtom, createObj, jsOptions, round, sign, randomNext, unescapeDataString, escapeDataString, escapeUriString, count, clear, uncurry, curry, partialApply */
+/*! exports provided: extend, isDisposable, Comparer, comparerFromEqualityComparer, containsValue, tryGetValue, addToSet, assertEqual, assertNotEqual, Lazy, lazyFromValue, padWithZeros, padLeftAndRightWithZeros, dateOffset, int16ToString, int32ToString, ObjectRef, stringHash, numberHash, combineHashCodes, identityHash, structuralHash, isArray, isIterable, equalArraysWith, equalArrays, equals, compareDates, comparePrimitives, compareArraysWith, compareArrays, compareObjects, compare, min, max, createAtom, createObj, jsOptions, round, sign, randomNext, randomBytes, unescapeDataString, escapeDataString, escapeUriString, count, clear, uncurry, curry, partialApply, mapCurriedArgs, addToDict, getItemFromDict */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -10465,6 +10239,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "round", function() { return round; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "sign", function() { return sign; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "randomNext", function() { return randomNext; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "randomBytes", function() { return randomBytes; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "unescapeDataString", function() { return unescapeDataString; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "escapeDataString", function() { return escapeDataString; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "escapeUriString", function() { return escapeUriString; });
@@ -10473,6 +10248,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "uncurry", function() { return uncurry; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "curry", function() { return curry; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "partialApply", function() { return partialApply; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "mapCurriedArgs", function() { return mapCurriedArgs; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "addToDict", function() { return addToDict; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getItemFromDict", function() { return getItemFromDict; });
 // tslint:disable:ban-types
 // Object.assign flattens getters and setters
 // See https://stackoverflow.com/questions/37054596/js-es5-how-to-assign-objects-with-setters-and-getters
@@ -10925,6 +10703,23 @@ function sign(x) {
 function randomNext(min, max) {
     return Math.floor(Math.random() * (max - min)) + min;
 }
+function randomBytes(buffer) {
+    if (buffer == null) {
+        throw new Error("Buffer cannot be null");
+    }
+    for (let i = 0; i < buffer.length; i += 6) {
+        // Pick random 48-bit number. Fill buffer in 2 24-bit chunks to avoid bitwise truncation.
+        let r = Math.floor(Math.random() * 281474976710656); // Low 24 bits = chunk 1.
+        const rhi = Math.floor(r / 16777216); // High 24 bits shifted via division = chunk 2.
+        for (let j = 0; j < 6 && i + j < buffer.length; j++) {
+            if (j === 3) {
+                r = rhi;
+            }
+            buffer[i + j] = r & 255;
+            r >>>= 8;
+        }
+    }
+}
 function unescapeDataString(s) {
     // https://stackoverflow.com/a/4458580/524236
     return decodeURIComponent((s).replace(/\+/g, "%20"));
@@ -10942,7 +10737,16 @@ function escapeUriString(s) {
 // ICollection.Clear and Count members can be called on Arrays
 // or Dictionaries so we need a runtime check (see #1120)
 function count(col) {
-    return isArray(col) ? col.length : col.size;
+    if (isArray(col)) {
+        return col.length;
+    }
+    else {
+        let count = 0;
+        for (const _ of col) {
+            count++;
+        }
+        return count;
+    }
 }
 function clear(col) {
     if (isArray(col)) {
@@ -10952,44 +10756,52 @@ function clear(col) {
         col.clear();
     }
 }
+const CURRIED_KEY = "__CURRIED__";
 function uncurry(arity, f) {
     // f may be a function option with None value
     if (f == null) {
         return null;
     }
-    // return (...args: any[]) => {
-    //   // In some cases there may be more arguments applied than necessary
-    //   // (e.g. index when mapping an array), discard them
-    //   args = args.slice(0, arity);
-    //   let res = f;
-    //   while (args.length > 0) {
-    //       const curArgs = args.splice(0, res.length);
-    //       res = res.apply(null, curArgs);
-    //   }
-    //   return res;
-    // };
+    // The function is already uncurried
+    if (f.length > 1) {
+        //   if (CURRIED_KEY in f) { // This doesn't always work
+        return f;
+    }
+    let uncurriedFn;
     switch (arity) {
         case 2:
-            return (a1, a2) => f(a1)(a2);
+            uncurriedFn = (a1, a2) => f(a1)(a2);
+            break;
         case 3:
-            return (a1, a2, a3) => f(a1)(a2)(a3);
+            uncurriedFn = (a1, a2, a3) => f(a1)(a2)(a3);
+            break;
         case 4:
-            return (a1, a2, a3, a4) => f(a1)(a2)(a3)(a4);
+            uncurriedFn = (a1, a2, a3, a4) => f(a1)(a2)(a3)(a4);
+            break;
         case 5:
-            return (a1, a2, a3, a4, a5) => f(a1)(a2)(a3)(a4)(a5);
+            uncurriedFn = (a1, a2, a3, a4, a5) => f(a1)(a2)(a3)(a4)(a5);
+            break;
         case 6:
-            return (a1, a2, a3, a4, a5, a6) => f(a1)(a2)(a3)(a4)(a5)(a6);
+            uncurriedFn = (a1, a2, a3, a4, a5, a6) => f(a1)(a2)(a3)(a4)(a5)(a6);
+            break;
         case 7:
-            return (a1, a2, a3, a4, a5, a6, a7) => f(a1)(a2)(a3)(a4)(a5)(a6)(a7);
+            uncurriedFn = (a1, a2, a3, a4, a5, a6, a7) => f(a1)(a2)(a3)(a4)(a5)(a6)(a7);
+            break;
         case 8:
-            return (a1, a2, a3, a4, a5, a6, a7, a8) => f(a1)(a2)(a3)(a4)(a5)(a6)(a7)(a8);
+            uncurriedFn = (a1, a2, a3, a4, a5, a6, a7, a8) => f(a1)(a2)(a3)(a4)(a5)(a6)(a7)(a8);
+            break;
         default:
             throw new Error("Uncurrying to more than 8-arity is not supported: " + arity);
     }
+    uncurriedFn[CURRIED_KEY] = f;
+    return uncurriedFn;
 }
 function curry(arity, f) {
     if (f == null) {
         return null;
+    }
+    if (CURRIED_KEY in f) {
+        return f[CURRIED_KEY];
     }
     switch (arity) {
         case 2:
@@ -11013,6 +10825,13 @@ function curry(arity, f) {
 function partialApply(arity, f, args) {
     if (f == null) {
         return null;
+    }
+    else if (CURRIED_KEY in f) {
+        f = f[CURRIED_KEY];
+        for (let i = 0; i < args.length; i++) {
+            f = f(args[i]);
+        }
+        return f;
     }
     else {
         switch (arity) {
@@ -11040,13 +10859,50 @@ function partialApply(arity, f, args) {
         }
     }
 }
-
+function mapCurriedArgs(fn, mappings) {
+    function mapArg(fn, arg, mappings, idx) {
+        const mapping = mappings[idx];
+        if (mapping !== 0) {
+            const expectedArity = mapping[0];
+            const actualArity = mapping[1];
+            if (expectedArity > 1) {
+                arg = curry(expectedArity, arg);
+            }
+            if (actualArity > 1) {
+                arg = uncurry(actualArity, arg);
+            }
+        }
+        const res = fn(arg);
+        if (idx + 1 === mappings.length) {
+            return res;
+        }
+        else {
+            return (arg) => mapArg(res, arg, mappings, idx + 1);
+        }
+    }
+    return (arg) => mapArg(fn, arg, mappings, 0);
+}
+function addToDict(dict, k, v) {
+    if (dict.has(k)) {
+        throw new Error("An item with the same key has already been added. Key: " + k);
+    }
+    dict.set(k, v);
+}
+function getItemFromDict(map, key) {
+    if (map.has(key)) {
+        return map.get(key);
+    }
+    else {
+        throw new Error(`The given key '${key}' was not present in the dictionary.`);
+    }
+}
+//# sourceMappingURL=Util.js.map
 
 /***/ }),
 
-/***/ "./.fable/fable-library.2.1.12/lib/big.js":
+/***/ "./.fable/fable-library.2.3.25/lib/big.js":
 /*!************************************************!*\
-  !*** ./.fable/fable-library.2.1.12/lib/big.js ***!
+  !*** ./.fable/fable-library.2.3.25/lib/big.js ***!
   \************************************************/
 /*! exports provided: Big, default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -11054,7 +10910,7 @@ function partialApply(arity, f, args) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Big", function() { return Big; });
-/* harmony import */ var _Util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../Util */ "./.fable/fable-library.2.1.12/Util.js");
+/* harmony import */ var _Util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../Util */ "./.fable/fable-library.2.3.25/Util.js");
 // https://github.com/MikeMcl/big.js/blob/01b3ce3a6b0ba7b42442ea48ec4ffc88d1669ec4/big.mjs
 /* tslint:disable */
 
@@ -11076,7 +10932,7 @@ var P = {
  * The maximum number of decimal places (DP) of the results of operations involving division:
  * div and sqrt, and pow with negative exponents.
  */
-var DP = 20, // 0 to MAX_DP
+var DP = 28, // 0 to MAX_DP
 /*
  * The rounding mode (RM) used when rounding to the above decimal places.
  *
@@ -11095,14 +10951,14 @@ MAX_POWER = 1E6, // 1 to 1000000
  * (JavaScript numbers: -7)
  * -1000000 is the minimum recommended exponent value of a Big.
  */
-NE = -7, // 0 to -1000000
+NE = -29, // 0 to -1000000
 /*
  * The positive exponent (PE) at and above which toString returns exponential notation.
  * (JavaScript numbers: 21)
  * 1000000 is the maximum recommended exponent value of a Big.
  * (This limit is not enforced or checked.)
  */
-PE = 21, // 0 to 1000000
+PE = 29, // 0 to 1000000
 /**************************************************************************************************/
 // Error messages.
 NAME = '[big.js] ', INVALID = NAME + 'Invalid ', INVALID_DP = INVALID + 'decimal places', INVALID_RM = INVALID + 'rounding mode', DIV_BY_ZERO = NAME + 'Division by zero', UNDEFINED = void 0, NUMERIC = /^-?(\d+(\.\d*)?|\.\d+)(e[+-]?\d+)?$/i;
@@ -11127,6 +10983,7 @@ function _Big_() {
             x.s = n.s;
             x.e = n.e;
             x.c = n.c.slice();
+            normalize(x);
         }
         else {
             parse(x, n);
@@ -11144,6 +11001,14 @@ function _Big_() {
     Big.PE = PE;
     Big.version = '5.2.2';
     return Big;
+}
+function normalize(x) {
+    x = round(x, DP, 0);
+    if (x.c.length > 1 && !x.c[0]) {
+        let i = x.c.findIndex(x => x);
+        x.c = x.c.slice(i);
+        x.e = x.e - i;
+    }
 }
 /*
  * Parse the number or string value passed to a Big constructor.
@@ -11176,23 +11041,29 @@ function parse(x, n) {
         e = n.length;
     }
     nl = n.length;
-    // Determine leading zeros.
-    for (i = 0; i < nl && n.charAt(i) == '0';)
+    // Determine leading zeros before decimal point.
+    for (i = 0; i < e && i < nl && n.charAt(i) == '0';)
         ++i;
+    // older version (ignores decimal point).
+    // // Determine leading zeros.
+    // for (i = 0; i < nl && n.charAt(i) == '0';) ++i;
     if (i == nl) {
         // Zero.
         x.c = [x.e = 0];
     }
     else {
-        // Determine trailing zeros.
-        for (; nl > 0 && n.charAt(--nl) == '0';)
-            ;
         x.e = e - i - 1;
         x.c = [];
-        // Convert string to array of digits without leading/trailing zeros.
-        for (e = 0; i <= nl;)
+        // Convert string to array of digits without leading zeros
+        for (e = 0; i < nl;)
             x.c[e++] = +n.charAt(i++);
+        // older version (doesn't keep trailing zeroes).
+        // // Determine trailing zeros.
+        // for (; nl > 0 && n.charAt(--nl) == '0';);
+        // // Convert string to array of digits without leading/trailing zeros.
+        // for (e = 0; i <= nl;) x.c[e++] = +n.charAt(i++);
     }
+    x = round(x, Big.DP, Big.RM);
     return x;
 }
 /*
@@ -11331,7 +11202,7 @@ P.abs = function () {
  *        0 if they have the same value.
 */
 P.cmp = function (y) {
-    var isneg, x = this, xc = x.c, yc = (y = new x.constructor(y)).c, i = x.s, j = y.s, k = x.e, l = y.e;
+    var isneg, Big = this.constructor, x = new Big(this), y = new Big(y), xc = x.c, yc = y.c, i = x.s, j = y.s, k = x.e, l = y.e;
     // Either zero?
     if (!xc[0] || !yc[0])
         return !xc[0] ? !yc[0] ? 0 : -j : i;
@@ -11342,22 +11213,31 @@ P.cmp = function (y) {
     // Compare exponents.
     if (k != l)
         return k > l ^ isneg ? 1 : -1;
-    j = (k = xc.length) < (l = yc.length) ? k : l;
     // Compare digit by digit.
-    for (i = -1; ++i < j;) {
-        if (xc[i] != yc[i])
-            return xc[i] > yc[i] ^ isneg ? 1 : -1;
+    j = Math.max(xc.length, yc.length);
+    for (i = 0; i < j; i++) {
+        k = i < xc.length ? xc[i] : 0;
+        l = i < yc.length ? yc[i] : 0;
+        if (k != l)
+            return k > l ^ isneg ? 1 : -1;
     }
-    // Compare lengths.
-    return k == l ? 0 : k > l ^ isneg ? 1 : -1;
+    return 0;
+    // old version (doesn't compare well trailing zeroes, e.g. 1.0 with 1.00)
+    // j = (k = xc.length) < (l = yc.length) ? k : l;
+    // // Compare digit by digit.
+    // for (i = -1; ++i < j;) {
+    //   if (xc[i] != yc[i]) return xc[i] > yc[i] ^ isneg ? 1 : -1;
+    // }
+    // // Compare lengths.
+    // return k == l ? 0 : k > l ^ isneg ? 1 : -1;
 };
 /*
  * Return a new Big whose value is the value of this Big divided by the value of Big y, rounded,
  * if necessary, to a maximum of Big.DP decimal places using rounding mode Big.RM.
  */
 P.div = function (y) {
-    var x = this, Big = x.constructor, a = x.c, // dividend
-    b = (y = new Big(y)).c, // divisor
+    var Big = this.constructor, x = new Big(this), y = new Big(y), a = x.c, // dividend
+    b = y.c, // divisor
     k = x.s == y.s ? 1 : -1, dp = Big.DP;
     if (dp !== ~~dp || dp < 0 || dp > MAX_DP)
         throw Error(INVALID_DP);
@@ -11469,7 +11349,7 @@ P.lte = function (y) {
  * Return a new Big whose value is the value of this Big minus the value of Big y.
  */
 P.minus = P.sub = function (y) {
-    var i, j, t, xlty, x = this, Big = x.constructor, a = x.s, b = (y = new Big(y)).s;
+    var i, j, t, xlty, Big = this.constructor, x = new Big(this), y = new Big(y), a = x.s, b = y.s;
     // Signs differ?
     if (a != b) {
         y.s = -b;
@@ -11552,7 +11432,7 @@ P.minus = P.sub = function (y) {
  * Return a new Big whose value is the value of this Big modulo the value of Big y.
  */
 P.mod = function (y) {
-    var ygtx, x = this, Big = x.constructor, a = x.s, b = (y = new Big(y)).s;
+    var ygtx, Big = this.constructor, x = new Big(this), y = new Big(y), a = x.s, b = y.s;
     if (!y.c[0])
         throw Error(DIV_BY_ZERO);
     x.s = y.s = 1;
@@ -11573,7 +11453,7 @@ P.mod = function (y) {
  * Return a new Big whose value is the value of this Big plus the value of Big y.
  */
 P.plus = P.add = function (y) {
-    var t, x = this, Big = x.constructor, a = x.s, b = (y = new Big(y)).s;
+    var t, Big = this.constructor, x = new Big(this), y = new Big(y), a = x.s, b = y.s;
     // Signs differ?
     if (a != b) {
         y.s = -b;
@@ -11630,7 +11510,7 @@ P.plus = P.add = function (y) {
  * n {number} Integer, -MAX_POWER to MAX_POWER inclusive.
  */
 P.pow = function (n) {
-    var x = this, one = new x.constructor(1), y = one, isneg = n < 0;
+    var Big = this.constructor, x = new Big(this), y = new Big(1), one = new Big(1), isneg = n < 0;
     if (n !== ~~n || n < -MAX_POWER || n > MAX_POWER)
         throw Error(INVALID + 'exponent');
     if (isneg)
@@ -11668,7 +11548,7 @@ P.round = function (dp, rm) {
  * necessary, to a maximum of Big.DP decimal places using rounding mode Big.RM.
  */
 P.sqrt = function () {
-    var r, c, t, x = this, Big = x.constructor, s = x.s, e = x.e, half = new Big(0.5);
+    var r, c, t, Big = this.constructor, x = new Big(this), s = x.s, e = x.e, half = new Big(0.5);
     // Zero?
     if (!x.c[0])
         return new Big(x);
@@ -11702,7 +11582,7 @@ P.sqrt = function () {
  * Return a new Big whose value is the value of this Big times the value of Big y.
  */
 P.times = P.mul = function (y) {
-    var c, x = this, Big = x.constructor, xc = x.c, yc = (y = new Big(y)).c, a = xc.length, b = yc.length, i = x.e, j = y.e;
+    var c, Big = this.constructor, x = new Big(this), y = new Big(y), xc = x.c, yc = y.c, a = xc.length, b = yc.length, i = x.e, j = y.e;
     // Determine sign of result.
     y.s = x.s == y.s ? 1 : -1;
     // Return signed 0 if either 0.
@@ -11799,7 +11679,1395 @@ P.valueOf = P.toJSON = function () {
 // Export
 var Big = _Big_();
 /* harmony default export */ __webpack_exports__["default"] = (Big);
+//# sourceMappingURL=big.js.map
 
+/***/ }),
+
+/***/ "./.fable/fable-library.2.3.25/lib/long.js":
+/*!*************************************************!*\
+  !*** ./.fable/fable-library.2.3.25/lib/long.js ***!
+  \*************************************************/
+/*! exports provided: default, Long, isLong, fromInt, fromNumber, fromBits, fromString, fromValue, ZERO, UZERO, ONE, UONE, NEG_ONE, MAX_VALUE, MAX_UNSIGNED_VALUE, MIN_VALUE, toInt, toNumber, toString, getHighBits, getHighBitsUnsigned, getLowBits, getLowBitsUnsigned, getNumBitsAbs, isZero, isNegative, isPositive, isOdd, isEven, equals, notEquals, lessThan, lessThanOrEqual, greaterThan, greaterThanOrEqual, compare, negate, add, subtract, multiply, divide, modulo, not, and, or, xor, shiftLeft, shiftRight, shiftRightUnsigned, rotateLeft, rotateRight, toSigned, toUnsigned, toBytes, toBytesLE, toBytesBE, fromBytes, fromBytesLE, fromBytesBE */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Long", function() { return Long; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isLong", function() { return isLong; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fromInt", function() { return fromInt; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fromNumber", function() { return fromNumber; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fromBits", function() { return fromBits; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fromString", function() { return fromString; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fromValue", function() { return fromValue; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ZERO", function() { return ZERO; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UZERO", function() { return UZERO; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ONE", function() { return ONE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UONE", function() { return UONE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NEG_ONE", function() { return NEG_ONE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MAX_VALUE", function() { return MAX_VALUE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MAX_UNSIGNED_VALUE", function() { return MAX_UNSIGNED_VALUE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MIN_VALUE", function() { return MIN_VALUE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "toInt", function() { return toInt; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "toNumber", function() { return toNumber; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "toString", function() { return toString; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getHighBits", function() { return getHighBits; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getHighBitsUnsigned", function() { return getHighBitsUnsigned; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getLowBits", function() { return getLowBits; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getLowBitsUnsigned", function() { return getLowBitsUnsigned; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getNumBitsAbs", function() { return getNumBitsAbs; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isZero", function() { return isZero; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isNegative", function() { return isNegative; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isPositive", function() { return isPositive; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isOdd", function() { return isOdd; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isEven", function() { return isEven; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "equals", function() { return equals; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "notEquals", function() { return notEquals; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "lessThan", function() { return lessThan; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "lessThanOrEqual", function() { return lessThanOrEqual; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "greaterThan", function() { return greaterThan; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "greaterThanOrEqual", function() { return greaterThanOrEqual; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "compare", function() { return compare; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "negate", function() { return negate; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "add", function() { return add; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "subtract", function() { return subtract; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "multiply", function() { return multiply; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "divide", function() { return divide; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "modulo", function() { return modulo; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "not", function() { return not; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "and", function() { return and; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "or", function() { return or; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "xor", function() { return xor; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "shiftLeft", function() { return shiftLeft; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "shiftRight", function() { return shiftRight; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "shiftRightUnsigned", function() { return shiftRightUnsigned; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "rotateLeft", function() { return rotateLeft; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "rotateRight", function() { return rotateRight; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "toSigned", function() { return toSigned; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "toUnsigned", function() { return toUnsigned; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "toBytes", function() { return toBytes; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "toBytesLE", function() { return toBytesLE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "toBytesBE", function() { return toBytesBE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fromBytes", function() { return fromBytes; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fromBytesLE", function() { return fromBytesLE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fromBytesBE", function() { return fromBytesBE; });
+// Adapted from: https://github.com/dcodeIO/long.js/blob/master/src/long.js
+// Apache License 2.0: https://github.com/dcodeIO/long.js/blob/master/LICENSE
+/* harmony default export */ __webpack_exports__["default"] = (Long);
+/**
+ * wasm optimizations, to do native i64 multiplication and divide
+ */
+var wasm = null;
+try {
+    wasm = new WebAssembly.Instance(new WebAssembly.Module(new Uint8Array([
+        0, 97, 115, 109, 1, 0, 0, 0, 1, 13, 2, 96, 0, 1, 127, 96, 4, 127, 127, 127, 127, 1, 127, 3, 7, 6, 0, 1, 1, 1, 1, 1, 6, 6, 1, 127, 1, 65, 0, 11, 7, 50, 6, 3, 109, 117, 108, 0, 1, 5, 100, 105, 118, 95, 115, 0, 2, 5, 100, 105, 118, 95, 117, 0, 3, 5, 114, 101, 109, 95, 115, 0, 4, 5, 114, 101, 109, 95, 117, 0, 5, 8, 103, 101, 116, 95, 104, 105, 103, 104, 0, 0, 10, 191, 1, 6, 4, 0, 35, 0, 11, 36, 1, 1, 126, 32, 0, 173, 32, 1, 173, 66, 32, 134, 132, 32, 2, 173, 32, 3, 173, 66, 32, 134, 132, 126, 34, 4, 66, 32, 135, 167, 36, 0, 32, 4, 167, 11, 36, 1, 1, 126, 32, 0, 173, 32, 1, 173, 66, 32, 134, 132, 32, 2, 173, 32, 3, 173, 66, 32, 134, 132, 127, 34, 4, 66, 32, 135, 167, 36, 0, 32, 4, 167, 11, 36, 1, 1, 126, 32, 0, 173, 32, 1, 173, 66, 32, 134, 132, 32, 2, 173, 32, 3, 173, 66, 32, 134, 132, 128, 34, 4, 66, 32, 135, 167, 36, 0, 32, 4, 167, 11, 36, 1, 1, 126, 32, 0, 173, 32, 1, 173, 66, 32, 134, 132, 32, 2, 173, 32, 3, 173, 66, 32, 134, 132, 129, 34, 4, 66, 32, 135, 167, 36, 0, 32, 4, 167, 11, 36, 1, 1, 126, 32, 0, 173, 32, 1, 173, 66, 32, 134, 132, 32, 2, 173, 32, 3, 173, 66, 32, 134, 132, 130, 34, 4, 66, 32, 135, 167, 36, 0, 32, 4, 167, 11
+    ])), {}).exports;
+}
+catch (e) {
+    // no wasm support :(
+}
+/**
+ * Constructs a 64 bit two's-complement integer, given its low and high 32 bit values as *signed* integers.
+ *  See the from* functions below for more convenient ways of constructing Longs.
+ * @exports Long
+ * @class A Long class for representing a 64 bit two's-complement integer value.
+ * @param {number} low The low (signed) 32 bits of the long
+ * @param {number} high The high (signed) 32 bits of the long
+ * @param {boolean=} unsigned Whether unsigned or not, defaults to signed
+ * @constructor
+ */
+function Long(low, high, unsigned) {
+    /**
+     * The low 32 bits as a signed value.
+     * @type {number}
+     */
+    this.low = low | 0;
+    /**
+     * The high 32 bits as a signed value.
+     * @type {number}
+     */
+    this.high = high | 0;
+    /**
+     * Whether unsigned or not.
+     * @type {boolean}
+     */
+    this.unsigned = !!unsigned;
+}
+Long.prototype.GetHashCode = function () {
+    let h1 = this.unsigned ? 1 : 0;
+    h1 = ((h1 << 5) + h1) ^ this.high;
+    h1 = ((h1 << 5) + h1) ^ this.low;
+    return h1;
+};
+Long.prototype.Equals = function (x) { return equals(this, x); };
+Long.prototype.CompareTo = function (x) { return compare(this, x); };
+Long.prototype.toString = function (radix) { return toString(this, radix); };
+Long.prototype.toJSON = function () { return toString(this); };
+// The internal representation of a long is the two given signed, 32-bit values.
+// We use 32-bit pieces because these are the size of integers on which
+// Javascript performs bit-operations.  For operations like addition and
+// multiplication, we split each number into 16 bit pieces, which can easily be
+// multiplied within Javascript's floating-point representation without overflow
+// or change in sign.
+//
+// In the algorithms below, we frequently reduce the negative case to the
+// positive case by negating the input(s) and then post-processing the result.
+// Note that we must ALWAYS check specially whether those values are MIN_VALUE
+// (-2^63) because -MIN_VALUE == MIN_VALUE (since 2^63 cannot be represented as
+// a positive number, it overflows back into a negative).  Not handling this
+// case would often result in infinite recursion.
+//
+// Common constant values ZERO, ONE, NEG_ONE, etc. are defined below the from*
+// methods on which they depend.
+/**
+ * An indicator used to reliably determine if an object is a Long or not.
+ * @type {boolean}
+ * @const
+ * @private
+ */
+Long.prototype.__isLong__;
+Object.defineProperty(Long.prototype, "__isLong__", { value: true });
+/**
+ * @function
+ * @param {*} obj Object
+ * @returns {boolean}
+ * @inner
+ */
+function isLong(obj) {
+    return (obj && obj["__isLong__"]) === true;
+}
+/**
+ * Tests if the specified object is a Long.
+ * @function
+ * @param {*} obj Object
+ * @returns {boolean}
+ */
+// Long.isLong = isLong;
+/**
+ * A cache of the Long representations of small integer values.
+ * @type {!Object}
+ * @inner
+ */
+var INT_CACHE = {};
+/**
+ * A cache of the Long representations of small unsigned integer values.
+ * @type {!Object}
+ * @inner
+ */
+var UINT_CACHE = {};
+/**
+ * @param {number} value
+ * @param {boolean=} unsigned
+ * @returns {!Long}
+ * @inner
+ */
+function fromInt(value, unsigned) {
+    var obj, cachedObj, cache;
+    if (unsigned) {
+        value >>>= 0;
+        if (cache = (0 <= value && value < 256)) {
+            cachedObj = UINT_CACHE[value];
+            if (cachedObj)
+                return cachedObj;
+        }
+        obj = fromBits(value, (value | 0) < 0 ? -1 : 0, true);
+        if (cache)
+            UINT_CACHE[value] = obj;
+        return obj;
+    }
+    else {
+        value |= 0;
+        if (cache = (-128 <= value && value < 128)) {
+            cachedObj = INT_CACHE[value];
+            if (cachedObj)
+                return cachedObj;
+        }
+        obj = fromBits(value, value < 0 ? -1 : 0, false);
+        if (cache)
+            INT_CACHE[value] = obj;
+        return obj;
+    }
+}
+/**
+ * Returns a Long representing the given 32 bit integer value.
+ * @function
+ * @param {number} value The 32 bit integer in question
+ * @param {boolean=} unsigned Whether unsigned or not, defaults to signed
+ * @returns {!Long} The corresponding Long value
+ */
+// Long.fromInt = fromInt;
+/**
+ * @param {number} value
+ * @param {boolean=} unsigned
+ * @returns {!Long}
+ * @inner
+ */
+function fromNumber(value, unsigned) {
+    if (isNaN(value))
+        return unsigned ? UZERO : ZERO;
+    if (unsigned) {
+        if (value < 0)
+            return UZERO;
+        if (value >= TWO_PWR_64_DBL)
+            return MAX_UNSIGNED_VALUE;
+    }
+    else {
+        if (value <= -TWO_PWR_63_DBL)
+            return MIN_VALUE;
+        if (value + 1 >= TWO_PWR_63_DBL)
+            return MAX_VALUE;
+    }
+    if (value < 0)
+        return negate(fromNumber(-value, unsigned));
+    return fromBits((value % TWO_PWR_32_DBL) | 0, (value / TWO_PWR_32_DBL) | 0, unsigned);
+}
+/**
+ * Returns a Long representing the given value, provided that it is a finite number. Otherwise, zero is returned.
+ * @function
+ * @param {number} value The number in question
+ * @param {boolean=} unsigned Whether unsigned or not, defaults to signed
+ * @returns {!Long} The corresponding Long value
+ */
+// Long.fromNumber = fromNumber;
+/**
+ * @param {number} lowBits
+ * @param {number} highBits
+ * @param {boolean=} unsigned
+ * @returns {!Long}
+ * @inner
+ */
+function fromBits(lowBits, highBits, unsigned) {
+    return new Long(lowBits, highBits, unsigned);
+}
+/**
+ * Returns a Long representing the 64 bit integer that comes by concatenating the given low and high bits. Each is
+ *  assumed to use 32 bits.
+ * @function
+ * @param {number} lowBits The low 32 bits
+ * @param {number} highBits The high 32 bits
+ * @param {boolean=} unsigned Whether unsigned or not, defaults to signed
+ * @returns {!Long} The corresponding Long value
+ */
+// Long.fromBits = fromBits;
+/**
+ * @function
+ * @param {number} base
+ * @param {number} exponent
+ * @returns {number}
+ * @inner
+ */
+var pow_dbl = Math.pow; // Used 4 times (4*8 to 15+4)
+/**
+ * @param {string} str
+ * @param {(boolean|number)=} unsigned
+ * @param {number=} radix
+ * @returns {!Long}
+ * @inner
+ */
+function fromString(str, unsigned, radix) {
+    if (str.length === 0)
+        throw Error('empty string');
+    if (str === "NaN" || str === "Infinity" || str === "+Infinity" || str === "-Infinity")
+        return ZERO;
+    if (typeof unsigned === 'number') {
+        // For goog.math.long compatibility
+        radix = unsigned,
+            unsigned = false;
+    }
+    else {
+        unsigned = !!unsigned;
+    }
+    radix = radix || 10;
+    if (radix < 2 || 36 < radix)
+        throw RangeError('radix');
+    var p = str.indexOf('-');
+    if (p > 0)
+        throw Error('interior hyphen');
+    else if (p === 0) {
+        return negate(fromString(str.substring(1), unsigned, radix));
+    }
+    // Do several (8) digits each time through the loop, so as to
+    // minimize the calls to the very expensive emulated div.
+    var radixToPower = fromNumber(pow_dbl(radix, 8));
+    var result = ZERO;
+    for (var i = 0; i < str.length; i += 8) {
+        var size = Math.min(8, str.length - i), value = parseInt(str.substring(i, i + size), radix);
+        if (size < 8) {
+            var power = fromNumber(pow_dbl(radix, size));
+            result = add(multiply(result, power), fromNumber(value));
+        }
+        else {
+            result = multiply(result, radixToPower);
+            result = add(result, fromNumber(value));
+        }
+    }
+    result.unsigned = unsigned;
+    return result;
+}
+/**
+ * Returns a Long representation of the given string, written using the specified radix.
+ * @function
+ * @param {string} str The textual representation of the Long
+ * @param {(boolean|number)=} unsigned Whether unsigned or not, defaults to signed
+ * @param {number=} radix The radix in which the text is written (2-36), defaults to 10
+ * @returns {!Long} The corresponding Long value
+ */
+// Long.fromString = fromString;
+/**
+ * @function
+ * @param {!Long|number|string|!{low: number, high: number, unsigned: boolean}} val
+ * @param {boolean=} unsigned
+ * @returns {!Long}
+ * @inner
+ */
+function fromValue(val, unsigned) {
+    if (typeof val === 'number')
+        return fromNumber(val, unsigned);
+    if (typeof val === 'string')
+        return fromString(val, unsigned);
+    // Throws for non-objects, converts non-instanceof Long:
+    return fromBits(val.low, val.high, typeof unsigned === 'boolean' ? unsigned : val.unsigned);
+}
+/**
+ * Converts the specified value to a Long using the appropriate from* function for its type.
+ * @function
+ * @param {!Long|number|string|!{low: number, high: number, unsigned: boolean}} val Value
+ * @param {boolean=} unsigned Whether unsigned or not, defaults to signed
+ * @returns {!Long}
+ */
+// Long.fromValue = fromValue;
+// NOTE: the compiler should inline these constant values below and then remove these variables, so there should be
+// no runtime penalty for these.
+/**
+ * @type {number}
+ * @const
+ * @inner
+ */
+var TWO_PWR_16_DBL = 1 << 16;
+/**
+ * @type {number}
+ * @const
+ * @inner
+ */
+var TWO_PWR_24_DBL = 1 << 24;
+/**
+ * @type {number}
+ * @const
+ * @inner
+ */
+var TWO_PWR_32_DBL = TWO_PWR_16_DBL * TWO_PWR_16_DBL;
+/**
+ * @type {number}
+ * @const
+ * @inner
+ */
+var TWO_PWR_64_DBL = TWO_PWR_32_DBL * TWO_PWR_32_DBL;
+/**
+ * @type {number}
+ * @const
+ * @inner
+ */
+var TWO_PWR_63_DBL = TWO_PWR_64_DBL / 2;
+/**
+ * @type {!Long}
+ * @const
+ * @inner
+ */
+var TWO_PWR_24 = fromInt(TWO_PWR_24_DBL);
+/**
+ * @type {!Long}
+ * @inner
+ */
+var ZERO = fromInt(0);
+/**
+ * Signed zero.
+ * @type {!Long}
+ */
+// Long.ZERO = ZERO;
+/**
+ * @type {!Long}
+ * @inner
+ */
+var UZERO = fromInt(0, true);
+/**
+ * Unsigned zero.
+ * @type {!Long}
+ */
+// Long.UZERO = UZERO;
+/**
+ * @type {!Long}
+ * @inner
+ */
+var ONE = fromInt(1);
+/**
+ * Signed one.
+ * @type {!Long}
+ */
+// Long.ONE = ONE;
+/**
+ * @type {!Long}
+ * @inner
+ */
+var UONE = fromInt(1, true);
+/**
+ * Unsigned one.
+ * @type {!Long}
+ */
+// Long.UONE = UONE;
+/**
+ * @type {!Long}
+ * @inner
+ */
+var NEG_ONE = fromInt(-1);
+/**
+ * Signed negative one.
+ * @type {!Long}
+ */
+// Long.NEG_ONE = NEG_ONE;
+/**
+ * @type {!Long}
+ * @inner
+ */
+var MAX_VALUE = fromBits(0xFFFFFFFF | 0, 0x7FFFFFFF | 0, false);
+/**
+ * Maximum signed value.
+ * @type {!Long}
+ */
+// Long.MAX_VALUE = MAX_VALUE;
+/**
+ * @type {!Long}
+ * @inner
+ */
+var MAX_UNSIGNED_VALUE = fromBits(0xFFFFFFFF | 0, 0xFFFFFFFF | 0, true);
+/**
+ * Maximum unsigned value.
+ * @type {!Long}
+ */
+// Long.MAX_UNSIGNED_VALUE = MAX_UNSIGNED_VALUE;
+/**
+ * @type {!Long}
+ * @inner
+ */
+var MIN_VALUE = fromBits(0, 0x80000000 | 0, false);
+/**
+ * Minimum signed value.
+ * @type {!Long}
+ */
+// Long.MIN_VALUE = MIN_VALUE;
+/**
+ * @alias Long.prototype
+ * @inner
+ */
+// var LongPrototype = Long.prototype;
+/**
+ * Converts the Long to a 32 bit integer, assuming it is a 32 bit integer.
+ * @this {!Long}
+ * @returns {number}
+ */
+function toInt($this) {
+    return $this.unsigned ? $this.low >>> 0 : $this.low;
+}
+;
+/**
+ * Converts the Long to a the nearest floating-point representation of this value (double, 53 bit mantissa).
+ * @this {!Long}
+ * @returns {number}
+ */
+function toNumber($this) {
+    if ($this.unsigned)
+        return (($this.high >>> 0) * TWO_PWR_32_DBL) + ($this.low >>> 0);
+    return $this.high * TWO_PWR_32_DBL + ($this.low >>> 0);
+}
+;
+/**
+ * Converts the Long to a string written in the specified radix.
+ * @this {!Long}
+ * @param {number=} radix Radix (2-36), defaults to 10
+ * @returns {string}
+ * @override
+ * @throws {RangeError} If `radix` is out of range
+ */
+function toString($this, radix) {
+    radix = radix || 10;
+    if (radix < 2 || 36 < radix)
+        throw RangeError('radix');
+    if (isZero($this))
+        return '0';
+    if (isNegative($this)) { // Unsigned Longs are never negative
+        if (equals($this, MIN_VALUE)) {
+            // We need to change the Long value before it can be negated, so we remove
+            // the bottom-most digit in this base and then recurse to do the rest.
+            var radixLong = fromNumber(radix), div = divide($this, radixLong), rem1 = subtract(multiply(div, radixLong), $this);
+            return toString(div, radix) + toInt(rem1).toString(radix);
+        }
+        else
+            return '-' + toString(negate($this), radix);
+    }
+    // Do several (6) digits each time through the loop, so as to
+    // minimize the calls to the very expensive emulated div.
+    var radixToPower = fromNumber(pow_dbl(radix, 6), $this.unsigned), rem = $this;
+    var result = '';
+    while (true) {
+        var remDiv = divide(rem, radixToPower), intval = toInt(subtract(rem, multiply(remDiv, radixToPower))) >>> 0, digits = intval.toString(radix);
+        rem = remDiv;
+        if (isZero(rem))
+            return digits + result;
+        else {
+            while (digits.length < 6)
+                digits = '0' + digits;
+            result = '' + digits + result;
+        }
+    }
+}
+;
+/**
+ * Gets the high 32 bits as a signed integer.
+ * @this {!Long}
+ * @returns {number} Signed high bits
+ */
+function getHighBits($this) {
+    return $this.high;
+}
+;
+/**
+ * Gets the high 32 bits as an unsigned integer.
+ * @this {!Long}
+ * @returns {number} Unsigned high bits
+ */
+function getHighBitsUnsigned($this) {
+    return $this.high >>> 0;
+}
+;
+/**
+ * Gets the low 32 bits as a signed integer.
+ * @this {!Long}
+ * @returns {number} Signed low bits
+ */
+function getLowBits($this) {
+    return $this.low;
+}
+;
+/**
+ * Gets the low 32 bits as an unsigned integer.
+ * @this {!Long}
+ * @returns {number} Unsigned low bits
+ */
+function getLowBitsUnsigned($this) {
+    return $this.low >>> 0;
+}
+;
+/**
+ * Gets the number of bits needed to represent the absolute value of this Long.
+ * @this {!Long}
+ * @returns {number}
+ */
+function getNumBitsAbs($this) {
+    if (isNegative($this)) // Unsigned Longs are never negative
+        return equals($this, MIN_VALUE) ? 64 : getNumBitsAbs(negate($this));
+    var val = $this.high != 0 ? $this.high : $this.low;
+    for (var bit = 31; bit > 0; bit--)
+        if ((val & (1 << bit)) != 0)
+            break;
+    return $this.high != 0 ? bit + 33 : bit + 1;
+}
+;
+/**
+ * Tests if this Long's value equals zero.
+ * @this {!Long}
+ * @returns {boolean}
+ */
+function isZero($this) {
+    return $this.high === 0 && $this.low === 0;
+}
+;
+/**
+ * Tests if this Long's value equals zero. This is an alias of {@link Long#isZero}.
+ * @returns {boolean}
+ */
+// LongPrototype.eqz = LongPrototype.isZero;
+/**
+ * Tests if this Long's value is negative.
+ * @this {!Long}
+ * @returns {boolean}
+ */
+function isNegative($this) {
+    return !$this.unsigned && $this.high < 0;
+}
+;
+/**
+ * Tests if this Long's value is positive.
+ * @this {!Long}
+ * @returns {boolean}
+ */
+function isPositive($this) {
+    return $this.unsigned || $this.high >= 0;
+}
+;
+/**
+ * Tests if this Long's value is odd.
+ * @this {!Long}
+ * @returns {boolean}
+ */
+function isOdd($this) {
+    return ($this.low & 1) === 1;
+}
+;
+/**
+ * Tests if this Long's value is even.
+ * @this {!Long}
+ * @returns {boolean}
+ */
+function isEven($this) {
+    return ($this.low & 1) === 0;
+}
+;
+/**
+ * Tests if this Long's value equals the specified's.
+ * @this {!Long}
+ * @param {!Long|number|string} other Other value
+ * @returns {boolean}
+ */
+function equals($this, other) {
+    if (!isLong(other))
+        other = fromValue(other);
+    if ($this.unsigned !== other.unsigned && ($this.high >>> 31) === 1 && (other.high >>> 31) === 1)
+        return false;
+    return $this.high === other.high && $this.low === other.low;
+}
+;
+/**
+ * Tests if this Long's value equals the specified's. This is an alias of {@link Long#equals}.
+ * @function
+ * @param {!Long|number|string} other Other value
+ * @returns {boolean}
+ */
+// LongPrototype.eq = LongPrototype.equals;
+/**
+ * Tests if this Long's value differs from the specified's.
+ * @this {!Long}
+ * @param {!Long|number|string} other Other value
+ * @returns {boolean}
+ */
+function notEquals($this, other) {
+    return !equals($this, /* validates */ other);
+}
+;
+/**
+ * Tests if this Long's value differs from the specified's. This is an alias of {@link Long#notEquals}.
+ * @function
+ * @param {!Long|number|string} other Other value
+ * @returns {boolean}
+ */
+// LongPrototype.neq = LongPrototype.notEquals;
+/**
+ * Tests if this Long's value differs from the specified's. This is an alias of {@link Long#notEquals}.
+ * @function
+ * @param {!Long|number|string} other Other value
+ * @returns {boolean}
+ */
+// LongPrototype.ne = LongPrototype.notEquals;
+/**
+ * Tests if this Long's value is less than the specified's.
+ * @this {!Long}
+ * @param {!Long|number|string} other Other value
+ * @returns {boolean}
+ */
+function lessThan($this, other) {
+    return compare($this, /* validates */ other) < 0;
+}
+;
+/**
+ * Tests if this Long's value is less than the specified's. This is an alias of {@link Long#lessThan}.
+ * @function
+ * @param {!Long|number|string} other Other value
+ * @returns {boolean}
+ */
+// LongPrototype.lt = LongPrototype.lessThan;
+/**
+ * Tests if this Long's value is less than or equal the specified's.
+ * @this {!Long}
+ * @param {!Long|number|string} other Other value
+ * @returns {boolean}
+ */
+function lessThanOrEqual($this, other) {
+    return compare($this, /* validates */ other) <= 0;
+}
+;
+/**
+ * Tests if this Long's value is less than or equal the specified's. This is an alias of {@link Long#lessThanOrEqual}.
+ * @function
+ * @param {!Long|number|string} other Other value
+ * @returns {boolean}
+ */
+// LongPrototype.lte = LongPrototype.lessThanOrEqual;
+/**
+ * Tests if this Long's value is less than or equal the specified's. This is an alias of {@link Long#lessThanOrEqual}.
+ * @function
+ * @param {!Long|number|string} other Other value
+ * @returns {boolean}
+ */
+// LongPrototype.le = LongPrototype.lessThanOrEqual;
+/**
+ * Tests if this Long's value is greater than the specified's.
+ * @this {!Long}
+ * @param {!Long|number|string} other Other value
+ * @returns {boolean}
+ */
+function greaterThan($this, other) {
+    return compare($this, /* validates */ other) > 0;
+}
+;
+/**
+ * Tests if this Long's value is greater than the specified's. This is an alias of {@link Long#greaterThan}.
+ * @function
+ * @param {!Long|number|string} other Other value
+ * @returns {boolean}
+ */
+// LongPrototype.gt = LongPrototype.greaterThan;
+/**
+ * Tests if this Long's value is greater than or equal the specified's.
+ * @this {!Long}
+ * @param {!Long|number|string} other Other value
+ * @returns {boolean}
+ */
+function greaterThanOrEqual($this, other) {
+    return compare($this, /* validates */ other) >= 0;
+}
+;
+/**
+ * Tests if this Long's value is greater than or equal the specified's. This is an alias of {@link Long#greaterThanOrEqual}.
+ * @function
+ * @param {!Long|number|string} other Other value
+ * @returns {boolean}
+ */
+// LongPrototype.gte = LongPrototype.greaterThanOrEqual;
+/**
+ * Tests if this Long's value is greater than or equal the specified's. This is an alias of {@link Long#greaterThanOrEqual}.
+ * @function
+ * @param {!Long|number|string} other Other value
+ * @returns {boolean}
+ */
+// LongPrototype.ge = LongPrototype.greaterThanOrEqual;
+/**
+ * Compares this Long's value with the specified's.
+ * @this {!Long}
+ * @param {!Long|number|string} other Other value
+ * @returns {number} 0 if they are the same, 1 if the this is greater and -1
+ *  if the given one is greater
+ */
+function compare($this, other) {
+    if (!isLong(other))
+        other = fromValue(other);
+    if (equals($this, other))
+        return 0;
+    var thisNeg = isNegative($this), otherNeg = isNegative(other);
+    if (thisNeg && !otherNeg)
+        return -1;
+    if (!thisNeg && otherNeg)
+        return 1;
+    // At this point the sign bits are the same
+    if (!$this.unsigned)
+        return isNegative(subtract($this, other)) ? -1 : 1;
+    // Both are positive if at least one is unsigned
+    return (other.high >>> 0) > ($this.high >>> 0) || (other.high === $this.high && (other.low >>> 0) > ($this.low >>> 0)) ? -1 : 1;
+}
+;
+/**
+ * Compares this Long's value with the specified's. This is an alias of {@link Long#compare}.
+ * @function
+ * @param {!Long|number|string} other Other value
+ * @returns {number} 0 if they are the same, 1 if the this is greater and -1
+ *  if the given one is greater
+ */
+// LongPrototype.comp = LongPrototype.compare;
+/**
+ * Negates this Long's value.
+ * @this {!Long}
+ * @returns {!Long} Negated Long
+ */
+function negate($this) {
+    if (!$this.unsigned && equals($this, MIN_VALUE))
+        return MIN_VALUE;
+    return add(not($this), ONE);
+}
+;
+/**
+ * Negates this Long's value. This is an alias of {@link Long#negate}.
+ * @function
+ * @returns {!Long} Negated Long
+ */
+// LongPrototype.neg = LongPrototype.negate;
+/**
+ * Returns the sum of this and the specified Long.
+ * @this {!Long}
+ * @param {!Long|number|string} addend Addend
+ * @returns {!Long} Sum
+ */
+function add($this, addend) {
+    if (!isLong(addend))
+        addend = fromValue(addend);
+    // Divide each number into 4 chunks of 16 bits, and then sum the chunks.
+    var a48 = $this.high >>> 16;
+    var a32 = $this.high & 0xFFFF;
+    var a16 = $this.low >>> 16;
+    var a00 = $this.low & 0xFFFF;
+    var b48 = addend.high >>> 16;
+    var b32 = addend.high & 0xFFFF;
+    var b16 = addend.low >>> 16;
+    var b00 = addend.low & 0xFFFF;
+    var c48 = 0, c32 = 0, c16 = 0, c00 = 0;
+    c00 += a00 + b00;
+    c16 += c00 >>> 16;
+    c00 &= 0xFFFF;
+    c16 += a16 + b16;
+    c32 += c16 >>> 16;
+    c16 &= 0xFFFF;
+    c32 += a32 + b32;
+    c48 += c32 >>> 16;
+    c32 &= 0xFFFF;
+    c48 += a48 + b48;
+    c48 &= 0xFFFF;
+    return fromBits((c16 << 16) | c00, (c48 << 16) | c32, $this.unsigned);
+}
+;
+/**
+ * Returns the difference of this and the specified Long.
+ * @this {!Long}
+ * @param {!Long|number|string} subtrahend Subtrahend
+ * @returns {!Long} Difference
+ */
+function subtract($this, subtrahend) {
+    if (!isLong(subtrahend))
+        subtrahend = fromValue(subtrahend);
+    return add($this, negate(subtrahend));
+}
+;
+/**
+ * Returns the difference of this and the specified Long. This is an alias of {@link Long#subtract}.
+ * @function
+ * @param {!Long|number|string} subtrahend Subtrahend
+ * @returns {!Long} Difference
+ */
+// LongPrototype.sub = LongPrototype.subtract;
+/**
+ * Returns the product of this and the specified Long.
+ * @this {!Long}
+ * @param {!Long|number|string} multiplier Multiplier
+ * @returns {!Long} Product
+ */
+function multiply($this, multiplier) {
+    if (isZero($this))
+        return $this.unsigned ? UZERO : ZERO;
+    if (!isLong(multiplier))
+        multiplier = fromValue(multiplier);
+    // use wasm support if present
+    if (wasm) {
+        var low = wasm.mul($this.low, $this.high, multiplier.low, multiplier.high);
+        return fromBits(low, wasm.get_high(), $this.unsigned);
+    }
+    if (isZero(multiplier))
+        return $this.unsigned ? UZERO : ZERO;
+    if (equals($this, MIN_VALUE))
+        return isOdd(multiplier) ? MIN_VALUE : ZERO;
+    if (equals(multiplier, MIN_VALUE))
+        return isOdd($this) ? MIN_VALUE : ZERO;
+    if (isNegative($this)) {
+        if (isNegative(multiplier))
+            return multiply(negate($this), negate(multiplier));
+        else
+            return negate(multiply(negate($this), multiplier));
+    }
+    else if (isNegative(multiplier))
+        return negate(multiply($this, negate(multiplier)));
+    // If both longs are small, use float multiplication
+    if (lessThan($this, TWO_PWR_24) && lessThan(multiplier, TWO_PWR_24))
+        return fromNumber(toNumber($this) * toNumber(multiplier), $this.unsigned);
+    // Divide each long into 4 chunks of 16 bits, and then add up 4x4 products.
+    // We can skip products that would overflow.
+    var a48 = $this.high >>> 16;
+    var a32 = $this.high & 0xFFFF;
+    var a16 = $this.low >>> 16;
+    var a00 = $this.low & 0xFFFF;
+    var b48 = multiplier.high >>> 16;
+    var b32 = multiplier.high & 0xFFFF;
+    var b16 = multiplier.low >>> 16;
+    var b00 = multiplier.low & 0xFFFF;
+    var c48 = 0, c32 = 0, c16 = 0, c00 = 0;
+    c00 += a00 * b00;
+    c16 += c00 >>> 16;
+    c00 &= 0xFFFF;
+    c16 += a16 * b00;
+    c32 += c16 >>> 16;
+    c16 &= 0xFFFF;
+    c16 += a00 * b16;
+    c32 += c16 >>> 16;
+    c16 &= 0xFFFF;
+    c32 += a32 * b00;
+    c48 += c32 >>> 16;
+    c32 &= 0xFFFF;
+    c32 += a16 * b16;
+    c48 += c32 >>> 16;
+    c32 &= 0xFFFF;
+    c32 += a00 * b32;
+    c48 += c32 >>> 16;
+    c32 &= 0xFFFF;
+    c48 += a48 * b00 + a32 * b16 + a16 * b32 + a00 * b48;
+    c48 &= 0xFFFF;
+    return fromBits((c16 << 16) | c00, (c48 << 16) | c32, $this.unsigned);
+}
+;
+/**
+ * Returns the product of this and the specified Long. This is an alias of {@link Long#multiply}.
+ * @function
+ * @param {!Long|number|string} multiplier Multiplier
+ * @returns {!Long} Product
+ */
+// LongPrototype.mul = LongPrototype.multiply;
+/**
+ * Returns this Long divided by the specified. The result is signed if this Long is signed or
+ *  unsigned if this Long is unsigned.
+ * @this {!Long}
+ * @param {!Long|number|string} divisor Divisor
+ * @returns {!Long} Quotient
+ */
+function divide($this, divisor) {
+    if (!isLong(divisor))
+        divisor = fromValue(divisor);
+    if (isZero(divisor))
+        throw Error('division by zero');
+    // use wasm support if present
+    if (wasm) {
+        // guard against signed division overflow: the largest
+        // negative number / -1 would be 1 larger than the largest
+        // positive number, due to two's complement.
+        if (!$this.unsigned &&
+            $this.high === -0x80000000 &&
+            divisor.low === -1 && divisor.high === -1) {
+            // be consistent with non-wasm code path
+            return $this;
+        }
+        var low = ($this.unsigned ? wasm.div_u : wasm.div_s)($this.low, $this.high, divisor.low, divisor.high);
+        return fromBits(low, wasm.get_high(), $this.unsigned);
+    }
+    if (isZero($this))
+        return $this.unsigned ? UZERO : ZERO;
+    var approx, rem, res;
+    if (!$this.unsigned) {
+        // This section is only relevant for signed longs and is derived from the
+        // closure library as a whole.
+        if (equals($this, MIN_VALUE)) {
+            if (equals(divisor, ONE) || equals(divisor, NEG_ONE))
+                return MIN_VALUE; // recall that -MIN_VALUE == MIN_VALUE
+            else if (equals(divisor, MIN_VALUE))
+                return ONE;
+            else {
+                // At this point, we have |other| >= 2, so |this/other| < |MIN_VALUE|.
+                var halfThis = shiftRight($this, 1);
+                approx = shiftLeft(divide(halfThis, divisor), 1);
+                if (equals(approx, ZERO)) {
+                    return isNegative(divisor) ? ONE : NEG_ONE;
+                }
+                else {
+                    rem = subtract($this, multiply(divisor, approx));
+                    res = add(approx, divide(rem, divisor));
+                    return res;
+                }
+            }
+        }
+        else if (equals(divisor, MIN_VALUE))
+            return $this.unsigned ? UZERO : ZERO;
+        if (isNegative($this)) {
+            if (isNegative(divisor))
+                return divide(negate($this), negate(divisor));
+            return negate(divide(negate($this), divisor));
+        }
+        else if (isNegative(divisor))
+            return negate(divide($this, negate(divisor)));
+        res = ZERO;
+    }
+    else {
+        // The algorithm below has not been made for unsigned longs. It's therefore
+        // required to take special care of the MSB prior to running it.
+        if (!divisor.unsigned)
+            divisor = toUnsigned(divisor);
+        if (greaterThan(divisor, $this))
+            return UZERO;
+        if (greaterThan(divisor, shiftRightUnsigned($this, 1))) // 15 >>> 1 = 7 ; with divisor = 8 ; true
+            return UONE;
+        res = UZERO;
+    }
+    // Repeat the following until the remainder is less than other:  find a
+    // floating-point that approximates remainder / other *from below*, add this
+    // into the result, and subtract it from the remainder.  It is critical that
+    // the approximate value is less than or equal to the real value so that the
+    // remainder never becomes negative.
+    rem = $this;
+    while (greaterThanOrEqual(rem, divisor)) {
+        // Approximate the result of division. This may be a little greater or
+        // smaller than the actual value.
+        approx = Math.max(1, Math.floor(toNumber(rem) / toNumber(divisor)));
+        // We will tweak the approximate result by changing it in the 48-th digit or
+        // the smallest non-fractional digit, whichever is larger.
+        var log2 = Math.ceil(Math.log(approx) / Math.LN2), delta = (log2 <= 48) ? 1 : pow_dbl(2, log2 - 48), 
+        // Decrease the approximation until it is smaller than the remainder.  Note
+        // that if it is too large, the product overflows and is negative.
+        approxRes = fromNumber(approx), approxRem = multiply(approxRes, divisor);
+        while (isNegative(approxRem) || greaterThan(approxRem, rem)) {
+            approx -= delta;
+            approxRes = fromNumber(approx, $this.unsigned);
+            approxRem = multiply(approxRes, divisor);
+        }
+        // We know the answer can't be zero... and actually, zero would cause
+        // infinite recursion since we would make no progress.
+        if (isZero(approxRes))
+            approxRes = ONE;
+        res = add(res, approxRes);
+        rem = subtract(rem, approxRem);
+    }
+    return res;
+}
+;
+/**
+ * Returns this Long divided by the specified. This is an alias of {@link Long#divide}.
+ * @function
+ * @param {!Long|number|string} divisor Divisor
+ * @returns {!Long} Quotient
+ */
+// LongPrototype.div = LongPrototype.divide;
+/**
+ * Returns this Long modulo the specified.
+ * @this {!Long}
+ * @param {!Long|number|string} divisor Divisor
+ * @returns {!Long} Remainder
+ */
+function modulo($this, divisor) {
+    if (!isLong(divisor))
+        divisor = fromValue(divisor);
+    // use wasm support if present
+    if (wasm) {
+        var low = ($this.unsigned ? wasm.rem_u : wasm.rem_s)($this.low, $this.high, divisor.low, divisor.high);
+        return fromBits(low, wasm.get_high(), $this.unsigned);
+    }
+    return subtract($this, multiply(divide($this, divisor), divisor));
+}
+;
+/**
+ * Returns this Long modulo the specified. This is an alias of {@link Long#modulo}.
+ * @function
+ * @param {!Long|number|string} divisor Divisor
+ * @returns {!Long} Remainder
+ */
+// LongPrototype.mod = LongPrototype.modulo;
+/**
+ * Returns this Long modulo the specified. This is an alias of {@link Long#modulo}.
+ * @function
+ * @param {!Long|number|string} divisor Divisor
+ * @returns {!Long} Remainder
+ */
+// LongPrototype.rem = LongPrototype.modulo;
+/**
+ * Returns the bitwise NOT of this Long.
+ * @this {!Long}
+ * @returns {!Long}
+ */
+function not($this) {
+    return fromBits(~$this.low, ~$this.high, $this.unsigned);
+}
+;
+/**
+ * Returns the bitwise AND of this Long and the specified.
+ * @this {!Long}
+ * @param {!Long|number|string} other Other Long
+ * @returns {!Long}
+ */
+function and($this, other) {
+    if (!isLong(other))
+        other = fromValue(other);
+    return fromBits($this.low & other.low, $this.high & other.high, $this.unsigned);
+}
+;
+/**
+ * Returns the bitwise OR of this Long and the specified.
+ * @this {!Long}
+ * @param {!Long|number|string} other Other Long
+ * @returns {!Long}
+ */
+function or($this, other) {
+    if (!isLong(other))
+        other = fromValue(other);
+    return fromBits($this.low | other.low, $this.high | other.high, $this.unsigned);
+}
+;
+/**
+ * Returns the bitwise XOR of this Long and the given one.
+ * @this {!Long}
+ * @param {!Long|number|string} other Other Long
+ * @returns {!Long}
+ */
+function xor($this, other) {
+    if (!isLong(other))
+        other = fromValue(other);
+    return fromBits($this.low ^ other.low, $this.high ^ other.high, $this.unsigned);
+}
+;
+/**
+ * Returns this Long with bits shifted to the left by the given amount.
+ * @this {!Long}
+ * @param {number|!Long} numBits Number of bits
+ * @returns {!Long} Shifted Long
+ */
+function shiftLeft($this, numBits) {
+    if (isLong(numBits))
+        numBits = toInt(numBits);
+    if ((numBits &= 63) === 0)
+        return $this;
+    else if (numBits < 32)
+        return fromBits($this.low << numBits, ($this.high << numBits) | ($this.low >>> (32 - numBits)), $this.unsigned);
+    else
+        return fromBits(0, $this.low << (numBits - 32), $this.unsigned);
+}
+;
+/**
+ * Returns this Long with bits shifted to the left by the given amount. This is an alias of {@link Long#shiftLeft}.
+ * @function
+ * @param {number|!Long} numBits Number of bits
+ * @returns {!Long} Shifted Long
+ */
+// LongPrototype.shl = LongPrototype.shiftLeft;
+/**
+ * Returns this Long with bits arithmetically shifted to the right by the given amount.
+ * @this {!Long}
+ * @param {number|!Long} numBits Number of bits
+ * @returns {!Long} Shifted Long
+ */
+function shiftRight($this, numBits) {
+    if (isLong(numBits))
+        numBits = toInt(numBits);
+    if ((numBits &= 63) === 0)
+        return $this;
+    else if (numBits < 32)
+        return fromBits(($this.low >>> numBits) | ($this.high << (32 - numBits)), $this.high >> numBits, $this.unsigned);
+    else
+        return fromBits($this.high >> (numBits - 32), $this.high >= 0 ? 0 : -1, $this.unsigned);
+}
+;
+/**
+ * Returns this Long with bits arithmetically shifted to the right by the given amount. This is an alias of {@link Long#shiftRight}.
+ * @function
+ * @param {number|!Long} numBits Number of bits
+ * @returns {!Long} Shifted Long
+ */
+// LongPrototype.shr = LongPrototype.shiftRight;
+/**
+ * Returns this Long with bits logically shifted to the right by the given amount.
+ * @this {!Long}
+ * @param {number|!Long} numBits Number of bits
+ * @returns {!Long} Shifted Long
+ */
+function shiftRightUnsigned($this, numBits) {
+    if (isLong(numBits))
+        numBits = toInt(numBits);
+    numBits &= 63;
+    if (numBits === 0)
+        return $this;
+    else {
+        var high = $this.high;
+        if (numBits < 32) {
+            var low = $this.low;
+            return fromBits((low >>> numBits) | (high << (32 - numBits)), high >>> numBits, $this.unsigned);
+        }
+        else if (numBits === 32)
+            return fromBits(high, 0, $this.unsigned);
+        else
+            return fromBits(high >>> (numBits - 32), 0, $this.unsigned);
+    }
+}
+;
+/**
+ * Returns this Long with bits logically shifted to the right by the given amount. This is an alias of {@link Long#shiftRightUnsigned}.
+ * @function
+ * @param {number|!Long} numBits Number of bits
+ * @returns {!Long} Shifted Long
+ */
+// LongPrototype.shru = LongPrototype.shiftRightUnsigned;
+/**
+ * Returns this Long with bits logically shifted to the right by the given amount. This is an alias of {@link Long#shiftRightUnsigned}.
+ * @function
+ * @param {number|!Long} numBits Number of bits
+ * @returns {!Long} Shifted Long
+ */
+// LongPrototype.shr_u = LongPrototype.shiftRightUnsigned;
+/**
+ * Returns this Long with bits rotated to the left by the given amount.
+ * @this {!Long}
+ * @param {number|!Long} numBits Number of bits
+ * @returns {!Long} Rotated Long
+ */
+const rotateLeft = function rotateLeft(numBits) {
+    var b;
+    if (isLong(numBits))
+        numBits = numBits.toInt();
+    if ((numBits &= 63) === 0)
+        return this;
+    if (numBits === 32)
+        return fromBits(this.high, this.low, this.unsigned);
+    if (numBits < 32) {
+        b = (32 - numBits);
+        return fromBits(((this.low << numBits) | (this.high >>> b)), ((this.high << numBits) | (this.low >>> b)), this.unsigned);
+    }
+    numBits -= 32;
+    b = (32 - numBits);
+    return fromBits(((this.high << numBits) | (this.low >>> b)), ((this.low << numBits) | (this.high >>> b)), this.unsigned);
+};
+/**
+ * Returns this Long with bits rotated to the left by the given amount. This is an alias of {@link Long#rotateLeft}.
+ * @function
+ * @param {number|!Long} numBits Number of bits
+ * @returns {!Long} Rotated Long
+ */
+// LongPrototype.rotl = LongPrototype.rotateLeft;
+/**
+ * Returns this Long with bits rotated to the right by the given amount.
+ * @this {!Long}
+ * @param {number|!Long} numBits Number of bits
+ * @returns {!Long} Rotated Long
+ */
+const rotateRight = function rotateRight(numBits) {
+    var b;
+    if (isLong(numBits))
+        numBits = numBits.toInt();
+    if ((numBits &= 63) === 0)
+        return this;
+    if (numBits === 32)
+        return fromBits(this.high, this.low, this.unsigned);
+    if (numBits < 32) {
+        b = (32 - numBits);
+        return fromBits(((this.high << b) | (this.low >>> numBits)), ((this.low << b) | (this.high >>> numBits)), this.unsigned);
+    }
+    numBits -= 32;
+    b = (32 - numBits);
+    return fromBits(((this.low << b) | (this.high >>> numBits)), ((this.high << b) | (this.low >>> numBits)), this.unsigned);
+};
+/**
+ * Returns this Long with bits rotated to the right by the given amount. This is an alias of {@link Long#rotateRight}.
+ * @function
+ * @param {number|!Long} numBits Number of bits
+ * @returns {!Long} Rotated Long
+ */
+// LongPrototype.rotr = LongPrototype.rotateRight;
+/**
+ * Converts this Long to signed.
+ * @this {!Long}
+ * @returns {!Long} Signed long
+ */
+function toSigned($this) {
+    if (!$this.unsigned)
+        return $this;
+    return fromBits($this.low, $this.high, false);
+}
+;
+/**
+ * Converts this Long to unsigned.
+ * @this {!Long}
+ * @returns {!Long} Unsigned long
+ */
+function toUnsigned($this) {
+    if ($this.unsigned)
+        return $this;
+    return fromBits($this.low, $this.high, true);
+}
+;
+/**
+ * Converts this Long to its byte representation.
+ * @param {boolean=} le Whether little or big endian, defaults to big endian
+ * @this {!Long}
+ * @returns {!Array.<number>} Byte representation
+ */
+function toBytes($this, le) {
+    return le ? toBytesLE($this) : toBytesBE($this);
+}
+;
+/**
+ * Converts this Long to its little endian byte representation.
+ * @this {!Long}
+ * @returns {!Array.<number>} Little endian byte representation
+ */
+function toBytesLE($this) {
+    var hi = $this.high, lo = $this.low;
+    return [
+        lo & 0xff,
+        lo >>> 8 & 0xff,
+        lo >>> 16 & 0xff,
+        lo >>> 24,
+        hi & 0xff,
+        hi >>> 8 & 0xff,
+        hi >>> 16 & 0xff,
+        hi >>> 24
+    ];
+}
+;
+/**
+ * Converts this Long to its big endian byte representation.
+ * @this {!Long}
+ * @returns {!Array.<number>} Big endian byte representation
+ */
+function toBytesBE($this) {
+    var hi = $this.high, lo = $this.low;
+    return [
+        hi >>> 24,
+        hi >>> 16 & 0xff,
+        hi >>> 8 & 0xff,
+        hi & 0xff,
+        lo >>> 24,
+        lo >>> 16 & 0xff,
+        lo >>> 8 & 0xff,
+        lo & 0xff
+    ];
+}
+;
+/**
+ * Creates a Long from its byte representation.
+ * @param {!Array.<number>} bytes Byte representation
+ * @param {boolean=} unsigned Whether unsigned or not, defaults to signed
+ * @param {boolean=} le Whether little or big endian, defaults to big endian
+ * @returns {Long} The corresponding Long value
+ */
+function fromBytes(bytes, unsigned, le) {
+    return le ? fromBytesLE(bytes, unsigned) : fromBytesBE(bytes, unsigned);
+}
+;
+/**
+ * Creates a Long from its little endian byte representation.
+ * @param {!Array.<number>} bytes Little endian byte representation
+ * @param {boolean=} unsigned Whether unsigned or not, defaults to signed
+ * @returns {Long} The corresponding Long value
+ */
+function fromBytesLE(bytes, unsigned) {
+    return new Long(bytes[0] |
+        bytes[1] << 8 |
+        bytes[2] << 16 |
+        bytes[3] << 24, bytes[4] |
+        bytes[5] << 8 |
+        bytes[6] << 16 |
+        bytes[7] << 24, unsigned);
+}
+;
+/**
+ * Creates a Long from its big endian byte representation.
+ * @param {!Array.<number>} bytes Big endian byte representation
+ * @param {boolean=} unsigned Whether unsigned or not, defaults to signed
+ * @returns {Long} The corresponding Long value
+ */
+function fromBytesBE(bytes, unsigned) {
+    return new Long(bytes[4] << 24 |
+        bytes[5] << 16 |
+        bytes[6] << 8 |
+        bytes[7], bytes[0] << 24 |
+        bytes[1] << 16 |
+        bytes[2] << 8 |
+        bytes[3], unsigned);
+}
+;
+//# sourceMappingURL=long.js.map
 
 /***/ }),
 
@@ -11814,10 +13082,10 @@ var Big = _Big_();
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "mainLoop", function() { return mainLoop; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "run", function() { return run; });
-/* harmony import */ var _home_lukasz_projects_fblocks_src_gameState_fs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./src/gameState.fs */ "./src/gameState.fs");
-/* harmony import */ var _fable_fable_library_2_1_12_Util__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../.fable/fable-library.2.1.12/Util */ "./.fable/fable-library.2.1.12/Util.js");
-/* harmony import */ var _home_lukasz_projects_fblocks_src_renderer_fs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./src/renderer.fs */ "./src/renderer.fs");
-/* harmony import */ var _home_lukasz_projects_fblocks_src_input_fs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./src/input.fs */ "./src/input.fs");
+/* harmony import */ var _gameState_fs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./gameState.fs */ "./src/gameState.fs");
+/* harmony import */ var _fable_fable_library_2_3_25_Util_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../.fable/fable-library.2.3.25/Util.js */ "./.fable/fable-library.2.3.25/Util.js");
+/* harmony import */ var _renderer_fs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./renderer.fs */ "./src/renderer.fs");
+/* harmony import */ var _input_fs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./input.fs */ "./src/input.fs");
 
 
 
@@ -11825,26 +13093,27 @@ __webpack_require__.r(__webpack_exports__);
 function mainLoop(gameState, renderer, lastTime, lastElapsedTime, currentTime) {
   const deltaTime = currentTime - lastTime;
   const elapsedTime = lastElapsedTime + deltaTime;
-  const newGameState = deltaTime > 0 ? Object(_home_lukasz_projects_fblocks_src_gameState_fs__WEBPACK_IMPORTED_MODULE_0__["update"])(elapsedTime, gameState) : gameState;
+  const newGameState = deltaTime > 0 ? Object(_gameState_fs__WEBPACK_IMPORTED_MODULE_0__["update"])(elapsedTime, gameState) : gameState;
 
-  if (!Object(_fable_fable_library_2_1_12_Util__WEBPACK_IMPORTED_MODULE_1__["equals"])(newGameState, gameState)) {
-    Object(_home_lukasz_projects_fblocks_src_renderer_fs__WEBPACK_IMPORTED_MODULE_2__["redraw"])(renderer, newGameState.grid, newGameState.block);
+  if (!Object(_fable_fable_library_2_3_25_Util_js__WEBPACK_IMPORTED_MODULE_1__["equals"])(newGameState, gameState)) {
+    Object(_renderer_fs__WEBPACK_IMPORTED_MODULE_2__["redraw"])(renderer, newGameState.grid, newGameState.block);
   }
 
-  window.requestAnimationFrame(function (currentTime$$1) {
+  const value = window.requestAnimationFrame(function (currentTime$$1) {
     mainLoop(newGameState, renderer, currentTime, elapsedTime, currentTime$$1);
   });
+  value, null;
 }
 function run(containerDivId) {
   const currentTime$$2 = performance.now();
-  const gameState$$1 = Object(_home_lukasz_projects_fblocks_src_gameState_fs__WEBPACK_IMPORTED_MODULE_0__["create"])();
-  const renderer$$1 = Object(_home_lukasz_projects_fblocks_src_renderer_fs__WEBPACK_IMPORTED_MODULE_2__["create"])(containerDivId, gameState$$1.grid);
+  const gameState$$1 = Object(_gameState_fs__WEBPACK_IMPORTED_MODULE_0__["create"])();
+  const renderer$$1 = Object(_renderer_fs__WEBPACK_IMPORTED_MODULE_2__["create"])(containerDivId, gameState$$1.grid);
 
   const redraw = function redraw() {
-    Object(_home_lukasz_projects_fblocks_src_renderer_fs__WEBPACK_IMPORTED_MODULE_2__["redraw"])(renderer$$1, gameState$$1.grid, gameState$$1.block);
+    Object(_renderer_fs__WEBPACK_IMPORTED_MODULE_2__["redraw"])(renderer$$1, gameState$$1.grid, gameState$$1.block);
   };
 
-  window.addEventListener("keydown", _home_lukasz_projects_fblocks_src_input_fs__WEBPACK_IMPORTED_MODULE_3__["onKeyDown"]);
+  window.addEventListener("keydown", _input_fs__WEBPACK_IMPORTED_MODULE_3__["onKeyDown"]);
   redraw();
   mainLoop(gameState$$1, renderer$$1, currentTime$$2, 0, currentTime$$2);
 }
@@ -11886,47 +13155,60 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "rotate", function() { return rotate; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getSquareCoords", function() { return getSquareCoords; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getFilledCells", function() { return getFilledCells; });
-/* harmony import */ var _fable_fable_library_2_1_12_Types__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../.fable/fable-library.2.1.12/Types */ "./.fable/fable-library.2.1.12/Types.js");
-/* harmony import */ var _home_lukasz_projects_fblocks_src_coord_fs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./src/coord.fs */ "./src/coord.fs");
-/* harmony import */ var _home_lukasz_projects_fblocks_src_shape_fs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./src/shape.fs */ "./src/shape.fs");
-/* harmony import */ var _home_lukasz_projects_fblocks_src_matrix_fs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./src/matrix.fs */ "./src/matrix.fs");
-/* harmony import */ var _fable_fable_library_2_1_12_Reflection__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../.fable/fable-library.2.1.12/Reflection */ "./.fable/fable-library.2.1.12/Reflection.js");
-/* harmony import */ var _fable_fable_library_2_1_12_Seq__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../.fable/fable-library.2.1.12/Seq */ "./.fable/fable-library.2.1.12/Seq.js");
+/* harmony import */ var _fable_fable_library_2_3_25_Types_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../.fable/fable-library.2.3.25/Types.js */ "./.fable/fable-library.2.3.25/Types.js");
+/* harmony import */ var _coord_fs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./coord.fs */ "./src/coord.fs");
+/* harmony import */ var _shape_fs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./shape.fs */ "./src/shape.fs");
+/* harmony import */ var _matrix_fs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./matrix.fs */ "./src/matrix.fs");
+/* harmony import */ var _fable_fable_library_2_3_25_Reflection_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../.fable/fable-library.2.3.25/Reflection.js */ "./.fable/fable-library.2.3.25/Reflection.js");
+/* harmony import */ var _fable_fable_library_2_3_25_Seq_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../.fable/fable-library.2.3.25/Seq.js */ "./.fable/fable-library.2.3.25/Seq.js");
 
 
 
 
 
 
-const Block = Object(_fable_fable_library_2_1_12_Types__WEBPACK_IMPORTED_MODULE_0__["declare"])(function FBlocks_Block_Block(arg1, arg2) {
+const Block = Object(_fable_fable_library_2_3_25_Types_js__WEBPACK_IMPORTED_MODULE_0__["declare"])(function FBlocks_Block_Block(arg1, arg2) {
   this.position = arg1;
   this.shape = arg2;
-}, _fable_fable_library_2_1_12_Types__WEBPACK_IMPORTED_MODULE_0__["Record"]);
+}, _fable_fable_library_2_3_25_Types_js__WEBPACK_IMPORTED_MODULE_0__["Record"]);
 function Block$reflection() {
-  return Object(_fable_fable_library_2_1_12_Reflection__WEBPACK_IMPORTED_MODULE_4__["record"])("FBlocks.Block.Block", [], Block, () => [["position", Object(_home_lukasz_projects_fblocks_src_coord_fs__WEBPACK_IMPORTED_MODULE_1__["Coord$reflection"])()], ["shape", Object(_home_lukasz_projects_fblocks_src_matrix_fs__WEBPACK_IMPORTED_MODULE_3__["Matrix$00601$reflection"])(Object(_home_lukasz_projects_fblocks_src_shape_fs__WEBPACK_IMPORTED_MODULE_2__["ShapeCell$reflection"])())]]);
+  return Object(_fable_fable_library_2_3_25_Reflection_js__WEBPACK_IMPORTED_MODULE_4__["record"])("FBlocks.Block.Block", [], Block, () => [["position", Object(_coord_fs__WEBPACK_IMPORTED_MODULE_1__["Coord$reflection"])()], ["shape", Object(_matrix_fs__WEBPACK_IMPORTED_MODULE_3__["Matrix$00601$reflection"])(Object(_shape_fs__WEBPACK_IMPORTED_MODULE_2__["ShapeCell$reflection"])())]]);
 }
 function create(shapeName) {
-  return new Block(new _home_lukasz_projects_fblocks_src_coord_fs__WEBPACK_IMPORTED_MODULE_1__["Coord"](0, 0), Object(_home_lukasz_projects_fblocks_src_shape_fs__WEBPACK_IMPORTED_MODULE_2__["getShapeMatrix"])(shapeName));
+  return new Block(new _coord_fs__WEBPACK_IMPORTED_MODULE_1__["Coord"](0, 0), Object(_shape_fs__WEBPACK_IMPORTED_MODULE_2__["getShapeMatrix"])(shapeName));
 }
 function moveBy(dx, dy, block) {
-  return new Block(Object(_home_lukasz_projects_fblocks_src_coord_fs__WEBPACK_IMPORTED_MODULE_1__["add"])(block.position, new _home_lukasz_projects_fblocks_src_coord_fs__WEBPACK_IMPORTED_MODULE_1__["Coord"](dx, dy)), block.shape);
+  return new Block(Object(_coord_fs__WEBPACK_IMPORTED_MODULE_1__["add"])(block.position, new _coord_fs__WEBPACK_IMPORTED_MODULE_1__["Coord"](dx, dy)), block.shape);
 }
 function rotate(block$$1) {
-  return new Block(block$$1.position, Object(_home_lukasz_projects_fblocks_src_matrix_fs__WEBPACK_IMPORTED_MODULE_3__["rotateClockwise"])(block$$1.shape));
+  const shape = Object(_matrix_fs__WEBPACK_IMPORTED_MODULE_3__["rotateClockwise"])(block$$1.shape);
+  return new Block(block$$1.position, shape);
 }
 function getSquareCoords(block$$2) {
-  return Object(_fable_fable_library_2_1_12_Seq__WEBPACK_IMPORTED_MODULE_5__["map"])(function mapping(coord) {
-    return Object(_home_lukasz_projects_fblocks_src_coord_fs__WEBPACK_IMPORTED_MODULE_1__["add"])(coord, block$$2.position);
-  }, Object(_home_lukasz_projects_fblocks_src_shape_fs__WEBPACK_IMPORTED_MODULE_2__["filledCellCoords"])(block$$2.shape));
+  let source;
+  const shape$$1 = block$$2.shape;
+  source = Object(_shape_fs__WEBPACK_IMPORTED_MODULE_2__["filledCellCoords"])(shape$$1);
+  return Object(_fable_fable_library_2_3_25_Seq_js__WEBPACK_IMPORTED_MODULE_5__["map"])(function mapping(coord) {
+    return Object(_coord_fs__WEBPACK_IMPORTED_MODULE_1__["add"])(coord, block$$2.position);
+  }, source);
 }
 function getFilledCells(block$$3) {
-  return Object(_fable_fable_library_2_1_12_Seq__WEBPACK_IMPORTED_MODULE_5__["map"])(function mapping$$2(tupledArg$$1) {
-    return [Object(_home_lukasz_projects_fblocks_src_coord_fs__WEBPACK_IMPORTED_MODULE_1__["add"])(tupledArg$$1[0], block$$3.position), tupledArg$$1[1]];
-  }, Object(_fable_fable_library_2_1_12_Seq__WEBPACK_IMPORTED_MODULE_5__["filter"])(function predicate(tupledArg) {
-    return Object(_home_lukasz_projects_fblocks_src_shape_fs__WEBPACK_IMPORTED_MODULE_2__["isCellFilled"])(tupledArg[1]);
-  }, Object(_home_lukasz_projects_fblocks_src_matrix_fs__WEBPACK_IMPORTED_MODULE_3__["flatmapi"])(function mapping$$1(x, y, cell) {
-    return [new _home_lukasz_projects_fblocks_src_coord_fs__WEBPACK_IMPORTED_MODULE_1__["Coord"](x, y), cell];
-  }, block$$3.shape)));
+  let source$$2;
+  let source$$1;
+  const matrix = block$$3.shape;
+  source$$1 = Object(_matrix_fs__WEBPACK_IMPORTED_MODULE_3__["flatmapi"])(function mapping$$1(x, y, cell) {
+    return [new _coord_fs__WEBPACK_IMPORTED_MODULE_1__["Coord"](x, y), cell];
+  }, matrix);
+  source$$2 = Object(_fable_fable_library_2_3_25_Seq_js__WEBPACK_IMPORTED_MODULE_5__["filter"])(function predicate(tupledArg) {
+    const coord$$1 = tupledArg[0];
+    const cell$$1 = tupledArg[1];
+    return Object(_shape_fs__WEBPACK_IMPORTED_MODULE_2__["isCellFilled"])(cell$$1);
+  }, source$$1);
+  return Object(_fable_fable_library_2_3_25_Seq_js__WEBPACK_IMPORTED_MODULE_5__["map"])(function mapping$$2(tupledArg$$1) {
+    const coord$$2 = tupledArg$$1[0];
+    const cell$$2 = tupledArg$$1[1];
+    return [Object(_coord_fs__WEBPACK_IMPORTED_MODULE_1__["add"])(coord$$2, block$$3.position), cell$$2];
+  }, source$$2);
 }
 
 /***/ }),
@@ -11943,16 +13225,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Coord", function() { return Coord; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Coord$reflection", function() { return Coord$reflection; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "add", function() { return add; });
-/* harmony import */ var _fable_fable_library_2_1_12_Types__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../.fable/fable-library.2.1.12/Types */ "./.fable/fable-library.2.1.12/Types.js");
-/* harmony import */ var _fable_fable_library_2_1_12_Reflection__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../.fable/fable-library.2.1.12/Reflection */ "./.fable/fable-library.2.1.12/Reflection.js");
+/* harmony import */ var _fable_fable_library_2_3_25_Types_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../.fable/fable-library.2.3.25/Types.js */ "./.fable/fable-library.2.3.25/Types.js");
+/* harmony import */ var _fable_fable_library_2_3_25_Reflection_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../.fable/fable-library.2.3.25/Reflection.js */ "./.fable/fable-library.2.3.25/Reflection.js");
 
 
-const Coord = Object(_fable_fable_library_2_1_12_Types__WEBPACK_IMPORTED_MODULE_0__["declare"])(function FBlocks_Coord_Coord(arg1, arg2) {
+const Coord = Object(_fable_fable_library_2_3_25_Types_js__WEBPACK_IMPORTED_MODULE_0__["declare"])(function FBlocks_Coord_Coord(arg1, arg2) {
   this.x = arg1 | 0;
   this.y = arg2 | 0;
-}, _fable_fable_library_2_1_12_Types__WEBPACK_IMPORTED_MODULE_0__["Record"]);
+}, _fable_fable_library_2_3_25_Types_js__WEBPACK_IMPORTED_MODULE_0__["Record"]);
 function Coord$reflection() {
-  return Object(_fable_fable_library_2_1_12_Reflection__WEBPACK_IMPORTED_MODULE_1__["record"])("FBlocks.Coord.Coord", [], Coord, () => [["x", _fable_fable_library_2_1_12_Reflection__WEBPACK_IMPORTED_MODULE_1__["int32"]], ["y", _fable_fable_library_2_1_12_Reflection__WEBPACK_IMPORTED_MODULE_1__["int32"]]]);
+  return Object(_fable_fable_library_2_3_25_Reflection_js__WEBPACK_IMPORTED_MODULE_1__["record"])("FBlocks.Coord.Coord", [], Coord, () => [["x", _fable_fable_library_2_3_25_Reflection_js__WEBPACK_IMPORTED_MODULE_1__["int32"]], ["y", _fable_fable_library_2_3_25_Reflection_js__WEBPACK_IMPORTED_MODULE_1__["int32"]]]);
 }
 function add(a, b) {
   return new Coord(a.x + b.x, a.y + b.y);
@@ -11978,14 +13260,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "processFalling", function() { return processFalling; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "update", function() { return update; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "create", function() { return create; });
-/* harmony import */ var _fable_fable_library_2_1_12_Types__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../.fable/fable-library.2.1.12/Types */ "./.fable/fable-library.2.1.12/Types.js");
-/* harmony import */ var _home_lukasz_projects_fblocks_src_block_fs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./src/block.fs */ "./src/block.fs");
-/* harmony import */ var _home_lukasz_projects_fblocks_src_grid_fs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./src/grid.fs */ "./src/grid.fs");
-/* harmony import */ var _fable_fable_library_2_1_12_Reflection__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../.fable/fable-library.2.1.12/Reflection */ "./.fable/fable-library.2.1.12/Reflection.js");
-/* harmony import */ var _home_lukasz_projects_fblocks_src_shape_fs__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./src/shape.fs */ "./src/shape.fs");
-/* harmony import */ var _fable_fable_library_2_1_12_Util__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../.fable/fable-library.2.1.12/Util */ "./.fable/fable-library.2.1.12/Util.js");
-/* harmony import */ var _fable_fable_library_2_1_12_Seq__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../.fable/fable-library.2.1.12/Seq */ "./.fable/fable-library.2.1.12/Seq.js");
-/* harmony import */ var _home_lukasz_projects_fblocks_src_input_fs__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./src/input.fs */ "./src/input.fs");
+/* harmony import */ var _fable_fable_library_2_3_25_Types_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../.fable/fable-library.2.3.25/Types.js */ "./.fable/fable-library.2.3.25/Types.js");
+/* harmony import */ var _block_fs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./block.fs */ "./src/block.fs");
+/* harmony import */ var _grid_fs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./grid.fs */ "./src/grid.fs");
+/* harmony import */ var _fable_fable_library_2_3_25_Reflection_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../.fable/fable-library.2.3.25/Reflection.js */ "./.fable/fable-library.2.3.25/Reflection.js");
+/* harmony import */ var _shape_fs__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./shape.fs */ "./src/shape.fs");
+/* harmony import */ var _fable_fable_library_2_3_25_Util_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../.fable/fable-library.2.3.25/Util.js */ "./.fable/fable-library.2.3.25/Util.js");
+/* harmony import */ var _fable_fable_library_2_3_25_Seq_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../.fable/fable-library.2.3.25/Seq.js */ "./.fable/fable-library.2.3.25/Seq.js");
+/* harmony import */ var _input_fs__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./input.fs */ "./src/input.fs");
 
 
 
@@ -11995,54 +13277,61 @@ __webpack_require__.r(__webpack_exports__);
 
 
 const blockFallInterval = 1000;
-const GameState = Object(_fable_fable_library_2_1_12_Types__WEBPACK_IMPORTED_MODULE_0__["declare"])(function FBlocks_GameState_GameState(arg1, arg2, arg3) {
+const GameState = Object(_fable_fable_library_2_3_25_Types_js__WEBPACK_IMPORTED_MODULE_0__["declare"])(function FBlocks_GameState_GameState(arg1, arg2, arg3) {
   this.block = arg1;
   this.grid = arg2;
   this.lastBlockFallTime = arg3;
-}, _fable_fable_library_2_1_12_Types__WEBPACK_IMPORTED_MODULE_0__["Record"]);
+}, _fable_fable_library_2_3_25_Types_js__WEBPACK_IMPORTED_MODULE_0__["Record"]);
 function GameState$reflection() {
-  return Object(_fable_fable_library_2_1_12_Reflection__WEBPACK_IMPORTED_MODULE_3__["record"])("FBlocks.GameState.GameState", [], GameState, () => [["block", Object(_home_lukasz_projects_fblocks_src_block_fs__WEBPACK_IMPORTED_MODULE_1__["Block$reflection"])()], ["grid", Object(_home_lukasz_projects_fblocks_src_grid_fs__WEBPACK_IMPORTED_MODULE_2__["Grid$reflection"])()], ["lastBlockFallTime", _fable_fable_library_2_1_12_Reflection__WEBPACK_IMPORTED_MODULE_3__["float64"]]]);
+  return Object(_fable_fable_library_2_3_25_Reflection_js__WEBPACK_IMPORTED_MODULE_3__["record"])("FBlocks.GameState.GameState", [], GameState, () => [["block", Object(_block_fs__WEBPACK_IMPORTED_MODULE_1__["Block$reflection"])()], ["grid", Object(_grid_fs__WEBPACK_IMPORTED_MODULE_2__["Grid$reflection"])()], ["lastBlockFallTime", _fable_fable_library_2_3_25_Reflection_js__WEBPACK_IMPORTED_MODULE_3__["float64"]]]);
 }
 function updateBlockIfValid(gameState, updater) {
   const updatedBlock = updater(gameState.block);
 
-  if (Object(_home_lukasz_projects_fblocks_src_grid_fs__WEBPACK_IMPORTED_MODULE_2__["isBlockValid"])(gameState.grid, updatedBlock)) {
+  if (Object(_grid_fs__WEBPACK_IMPORTED_MODULE_2__["isBlockValid"])(gameState.grid, updatedBlock)) {
     return new GameState(updatedBlock, gameState.grid, gameState.lastBlockFallTime);
   } else {
     return gameState;
   }
 }
 function moveBlockDown(currentTime, gameState$$1) {
-  const movedBlock = Object(_home_lukasz_projects_fblocks_src_block_fs__WEBPACK_IMPORTED_MODULE_1__["moveBy"])(0, 1, gameState$$1.block);
+  var shapeName;
+  const movedBlock = Object(_block_fs__WEBPACK_IMPORTED_MODULE_1__["moveBy"])(0, 1, gameState$$1.block);
 
-  if (Object(_home_lukasz_projects_fblocks_src_grid_fs__WEBPACK_IMPORTED_MODULE_2__["isBlockValid"])(gameState$$1.grid, movedBlock)) {
+  if (Object(_grid_fs__WEBPACK_IMPORTED_MODULE_2__["isBlockValid"])(gameState$$1.grid, movedBlock)) {
     return new GameState(movedBlock, gameState$$1.grid, currentTime);
   } else {
-    return new GameState(Object(_home_lukasz_projects_fblocks_src_block_fs__WEBPACK_IMPORTED_MODULE_1__["create"])(Object(_home_lukasz_projects_fblocks_src_shape_fs__WEBPACK_IMPORTED_MODULE_4__["random"])()), Object(_home_lukasz_projects_fblocks_src_grid_fs__WEBPACK_IMPORTED_MODULE_2__["placeBlock"])(gameState$$1.grid, gameState$$1.block), currentTime);
+    return new GameState((shapeName = Object(_shape_fs__WEBPACK_IMPORTED_MODULE_4__["random"])(), (Object(_block_fs__WEBPACK_IMPORTED_MODULE_1__["create"])(shapeName))), Object(_grid_fs__WEBPACK_IMPORTED_MODULE_2__["placeBlock"])(gameState$$1.grid, gameState$$1.block), currentTime);
   }
 }
 function processInput(currentTime$$1, inputs, gameState$$2) {
   const processAction = function processAction(gameState$$3, action) {
     const moveBlock = function moveBlock(dx, dy, gameState$$4) {
-      return updateBlockIfValid(gameState$$4, function (block) {
-        return Object(_home_lukasz_projects_fblocks_src_block_fs__WEBPACK_IMPORTED_MODULE_1__["moveBy"])(dx, dy, block);
-      });
+      const updater$$1 = function updater$$1(block) {
+        return Object(_block_fs__WEBPACK_IMPORTED_MODULE_1__["moveBy"])(dx, dy, block);
+      };
+
+      return updateBlockIfValid(gameState$$4, updater$$1);
     };
 
     const rotateBlock = function rotateBlock(gameState$$5) {
-      return updateBlockIfValid(gameState$$5, _home_lukasz_projects_fblocks_src_block_fs__WEBPACK_IMPORTED_MODULE_1__["rotate"]);
+      const updater$$2 = _block_fs__WEBPACK_IMPORTED_MODULE_1__["rotate"];
+      return updateBlockIfValid(gameState$$5, updater$$2);
     };
 
     const placeBlock = function placeBlock(gameState$$6) {
-      return new GameState(Object(_home_lukasz_projects_fblocks_src_block_fs__WEBPACK_IMPORTED_MODULE_1__["create"])(new _home_lukasz_projects_fblocks_src_shape_fs__WEBPACK_IMPORTED_MODULE_4__["ShapeName"](3, "L")), Object(_home_lukasz_projects_fblocks_src_grid_fs__WEBPACK_IMPORTED_MODULE_2__["placeBlock"])(gameState$$6.grid, gameState$$6.block), gameState$$6.lastBlockFallTime);
+      const grid = Object(_grid_fs__WEBPACK_IMPORTED_MODULE_2__["placeBlock"])(gameState$$6.grid, gameState$$6.block);
+      return new GameState(Object(_block_fs__WEBPACK_IMPORTED_MODULE_1__["create"])(new _shape_fs__WEBPACK_IMPORTED_MODULE_4__["ShapeName"](3, "L")), grid, gameState$$6.lastBlockFallTime);
     };
 
-    return (action.tag === 1 ? rotateBlock : action.tag === 2 ? placeBlock : action.fields[0].tag === 1 ? Object(_fable_fable_library_2_1_12_Util__WEBPACK_IMPORTED_MODULE_5__["partialApply"])(1, moveBlock, [1, 0]) : action.fields[0].tag === 2 ? Object(_fable_fable_library_2_1_12_Util__WEBPACK_IMPORTED_MODULE_5__["partialApply"])(1, moveBlock, [0, -1]) : action.fields[0].tag === 3 ? function (gameState$$7) {
+    return (action.tag === 1 ? rotateBlock : action.tag === 2 ? placeBlock : action.fields[0].tag === 1 ? Object(_fable_fable_library_2_3_25_Util_js__WEBPACK_IMPORTED_MODULE_5__["partialApply"])(1, moveBlock, [1, 0]) : action.fields[0].tag === 2 ? Object(_fable_fable_library_2_3_25_Util_js__WEBPACK_IMPORTED_MODULE_5__["partialApply"])(1, moveBlock, [0, -1]) : action.fields[0].tag === 3 ? function (gameState$$7) {
       return moveBlockDown(currentTime$$1, gameState$$7);
-    } : Object(_fable_fable_library_2_1_12_Util__WEBPACK_IMPORTED_MODULE_5__["partialApply"])(1, moveBlock, [-1, 0]))(gameState$$3);
+    } : Object(_fable_fable_library_2_3_25_Util_js__WEBPACK_IMPORTED_MODULE_5__["partialApply"])(1, moveBlock, [-1, 0]))(gameState$$3);
   };
 
-  const updatedGameState = Object(_fable_fable_library_2_1_12_Seq__WEBPACK_IMPORTED_MODULE_6__["fold"])(processAction, gameState$$2, inputs);
+  let updatedGameState;
+  const source = inputs;
+  updatedGameState = Object(_fable_fable_library_2_3_25_Seq_js__WEBPACK_IMPORTED_MODULE_6__["fold"])(processAction, gameState$$2, source);
   return updatedGameState;
 }
 function processFalling(currentTime$$2, gameState$$8) {
@@ -12053,11 +13342,17 @@ function processFalling(currentTime$$2, gameState$$8) {
   }
 }
 function update(currentTime$$3, gameState$$9) {
-  const newGameState = processFalling(currentTime$$3, processInput(currentTime$$3, Object(_home_lukasz_projects_fblocks_src_input_fs__WEBPACK_IMPORTED_MODULE_7__["getQueue"])(), gameState$$9));
+  let newGameState;
+  let gameState$$11;
+  const gameState$$10 = gameState$$9;
+  const inputs$$1 = Object(_input_fs__WEBPACK_IMPORTED_MODULE_7__["getQueue"])();
+  gameState$$11 = processInput(currentTime$$3, inputs$$1, gameState$$10);
+  newGameState = processFalling(currentTime$$3, gameState$$11);
   return newGameState;
 }
 function create() {
-  return new GameState(Object(_home_lukasz_projects_fblocks_src_block_fs__WEBPACK_IMPORTED_MODULE_1__["create"])(Object(_home_lukasz_projects_fblocks_src_shape_fs__WEBPACK_IMPORTED_MODULE_4__["random"])()), _home_lukasz_projects_fblocks_src_grid_fs__WEBPACK_IMPORTED_MODULE_2__["createDefault"], 0);
+  var shapeName$$1;
+  return new GameState((shapeName$$1 = Object(_shape_fs__WEBPACK_IMPORTED_MODULE_4__["random"])(), (Object(_block_fs__WEBPACK_IMPORTED_MODULE_1__["create"])(shapeName$$1))), _grid_fs__WEBPACK_IMPORTED_MODULE_2__["createDefault"], 0);
 }
 
 /***/ }),
@@ -12078,14 +13373,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isBlockValid", function() { return isBlockValid; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "removeCompletedRows", function() { return removeCompletedRows; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "placeBlock", function() { return placeBlock; });
-/* harmony import */ var _fable_fable_library_2_1_12_Types__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../.fable/fable-library.2.1.12/Types */ "./.fable/fable-library.2.1.12/Types.js");
-/* harmony import */ var _home_lukasz_projects_fblocks_src_shape_fs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./src/shape.fs */ "./src/shape.fs");
-/* harmony import */ var _home_lukasz_projects_fblocks_src_matrix_fs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./src/matrix.fs */ "./src/matrix.fs");
-/* harmony import */ var _fable_fable_library_2_1_12_Reflection__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../.fable/fable-library.2.1.12/Reflection */ "./.fable/fable-library.2.1.12/Reflection.js");
-/* harmony import */ var _fable_fable_library_2_1_12_Util__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../.fable/fable-library.2.1.12/Util */ "./.fable/fable-library.2.1.12/Util.js");
-/* harmony import */ var _fable_fable_library_2_1_12_Seq__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../.fable/fable-library.2.1.12/Seq */ "./.fable/fable-library.2.1.12/Seq.js");
-/* harmony import */ var _home_lukasz_projects_fblocks_src_block_fs__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./src/block.fs */ "./src/block.fs");
-/* harmony import */ var _home_lukasz_projects_fblocks_src_coord_fs__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./src/coord.fs */ "./src/coord.fs");
+/* harmony import */ var _fable_fable_library_2_3_25_Types_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../.fable/fable-library.2.3.25/Types.js */ "./.fable/fable-library.2.3.25/Types.js");
+/* harmony import */ var _shape_fs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./shape.fs */ "./src/shape.fs");
+/* harmony import */ var _matrix_fs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./matrix.fs */ "./src/matrix.fs");
+/* harmony import */ var _fable_fable_library_2_3_25_Reflection_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../.fable/fable-library.2.3.25/Reflection.js */ "./.fable/fable-library.2.3.25/Reflection.js");
+/* harmony import */ var _fable_fable_library_2_3_25_Util_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../.fable/fable-library.2.3.25/Util.js */ "./.fable/fable-library.2.3.25/Util.js");
+/* harmony import */ var _fable_fable_library_2_3_25_Seq_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../.fable/fable-library.2.3.25/Seq.js */ "./.fable/fable-library.2.3.25/Seq.js");
+/* harmony import */ var _block_fs__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./block.fs */ "./src/block.fs");
+/* harmony import */ var _coord_fs__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./coord.fs */ "./src/coord.fs");
 
 
 
@@ -12094,21 +13389,22 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-const Grid = Object(_fable_fable_library_2_1_12_Types__WEBPACK_IMPORTED_MODULE_0__["declare"])(function FBlocks_Grid_Grid(arg1, arg2, arg3) {
+const Grid = Object(_fable_fable_library_2_3_25_Types_js__WEBPACK_IMPORTED_MODULE_0__["declare"])(function FBlocks_Grid_Grid(arg1, arg2, arg3) {
   this.cells = arg1;
   this.height = arg2 | 0;
   this.width = arg3 | 0;
-}, _fable_fable_library_2_1_12_Types__WEBPACK_IMPORTED_MODULE_0__["Record"]);
+}, _fable_fable_library_2_3_25_Types_js__WEBPACK_IMPORTED_MODULE_0__["Record"]);
 function Grid$reflection() {
-  return Object(_fable_fable_library_2_1_12_Reflection__WEBPACK_IMPORTED_MODULE_3__["record"])("FBlocks.Grid.Grid", [], Grid, () => [["cells", Object(_home_lukasz_projects_fblocks_src_matrix_fs__WEBPACK_IMPORTED_MODULE_2__["Matrix$00601$reflection"])(Object(_home_lukasz_projects_fblocks_src_shape_fs__WEBPACK_IMPORTED_MODULE_1__["ShapeCell$reflection"])())], ["height", _fable_fable_library_2_1_12_Reflection__WEBPACK_IMPORTED_MODULE_3__["int32"]], ["width", _fable_fable_library_2_1_12_Reflection__WEBPACK_IMPORTED_MODULE_3__["int32"]]]);
+  return Object(_fable_fable_library_2_3_25_Reflection_js__WEBPACK_IMPORTED_MODULE_3__["record"])("FBlocks.Grid.Grid", [], Grid, () => [["cells", Object(_matrix_fs__WEBPACK_IMPORTED_MODULE_2__["Matrix$00601$reflection"])(Object(_shape_fs__WEBPACK_IMPORTED_MODULE_1__["ShapeCell$reflection"])())], ["height", _fable_fable_library_2_3_25_Reflection_js__WEBPACK_IMPORTED_MODULE_3__["int32"]], ["width", _fable_fable_library_2_3_25_Reflection_js__WEBPACK_IMPORTED_MODULE_3__["int32"]]]);
 }
 const createDefault = (() => {
   const width = 10;
   const height = 20;
-  return new Grid(Object(_home_lukasz_projects_fblocks_src_matrix_fs__WEBPACK_IMPORTED_MODULE_2__["create"])(width, height, new _home_lukasz_projects_fblocks_src_shape_fs__WEBPACK_IMPORTED_MODULE_1__["ShapeCell"](0, "EmptyCell")), height, width);
+  return new Grid(Object(_matrix_fs__WEBPACK_IMPORTED_MODULE_2__["create"])(width, height, new _shape_fs__WEBPACK_IMPORTED_MODULE_1__["ShapeCell"](0, "EmptyCell")), height, width);
 })();
 function getFilledCellCoords(grid) {
-  return Object(_home_lukasz_projects_fblocks_src_matrix_fs__WEBPACK_IMPORTED_MODULE_2__["coordsWhere"])(_home_lukasz_projects_fblocks_src_shape_fs__WEBPACK_IMPORTED_MODULE_1__["isCellFilled"], grid.cells);
+  const matrix = grid.cells;
+  return Object(_matrix_fs__WEBPACK_IMPORTED_MODULE_2__["coordsWhere"])(_shape_fs__WEBPACK_IMPORTED_MODULE_1__["isCellFilled"], matrix);
 }
 function isBlockValid(grid$$1, block) {
   const isCellInBounds = function isCellInBounds(coord) {
@@ -12120,9 +13416,12 @@ function isBlockValid(grid$$1, block) {
   };
 
   const isCellOverlappingFilledGrid = function isCellOverlappingFilledGrid(cellCoord) {
-    return Object(_fable_fable_library_2_1_12_Seq__WEBPACK_IMPORTED_MODULE_5__["exists"])(function predicate(gridCoord) {
-      return Object(_fable_fable_library_2_1_12_Util__WEBPACK_IMPORTED_MODULE_4__["equals"])(gridCoord, cellCoord);
-    }, getFilledCellCoords(grid$$1));
+    let source;
+    const grid$$2 = grid$$1;
+    source = getFilledCellCoords(grid$$2);
+    return Object(_fable_fable_library_2_3_25_Seq_js__WEBPACK_IMPORTED_MODULE_5__["exists"])(function predicate(gridCoord) {
+      return Object(_fable_fable_library_2_3_25_Util_js__WEBPACK_IMPORTED_MODULE_4__["equals"])(gridCoord, cellCoord);
+    }, source);
   };
 
   const isCellValid = function isCellValid(cell$$1) {
@@ -12133,38 +13432,50 @@ function isBlockValid(grid$$1, block) {
     }
   };
 
-  return Object(_fable_fable_library_2_1_12_Seq__WEBPACK_IMPORTED_MODULE_5__["forAll"])(isCellValid, Object(_home_lukasz_projects_fblocks_src_block_fs__WEBPACK_IMPORTED_MODULE_6__["getSquareCoords"])(block));
+  let source$$1;
+  const block$$1 = block;
+  source$$1 = Object(_block_fs__WEBPACK_IMPORTED_MODULE_6__["getSquareCoords"])(block$$1);
+  return Object(_fable_fable_library_2_3_25_Seq_js__WEBPACK_IMPORTED_MODULE_5__["forAll"])(isCellValid, source$$1);
 }
 function removeCompletedRows(matrix$$1) {
   let completeRowIndices;
 
   const isRowComplete = function isRowComplete(rowIndex) {
-    return Object(_fable_fable_library_2_1_12_Seq__WEBPACK_IMPORTED_MODULE_5__["forAll"])(_home_lukasz_projects_fblocks_src_shape_fs__WEBPACK_IMPORTED_MODULE_1__["isCellFilled"], Object(_home_lukasz_projects_fblocks_src_matrix_fs__WEBPACK_IMPORTED_MODULE_2__["getRow"])(rowIndex, matrix$$1));
+    let source$$2;
+    const matrix$$2 = matrix$$1;
+    source$$2 = Object(_matrix_fs__WEBPACK_IMPORTED_MODULE_2__["getRow"])(rowIndex, matrix$$2);
+    return Object(_fable_fable_library_2_3_25_Seq_js__WEBPACK_IMPORTED_MODULE_5__["forAll"])(_shape_fs__WEBPACK_IMPORTED_MODULE_1__["isCellFilled"], source$$2);
   };
 
-  completeRowIndices = Object(_fable_fable_library_2_1_12_Seq__WEBPACK_IMPORTED_MODULE_5__["filter"])(isRowComplete, Object(_fable_fable_library_2_1_12_Seq__WEBPACK_IMPORTED_MODULE_5__["rangeNumber"])(0, 1, matrix$$1.rowCount - 1));
+  const source$$3 = Object(_fable_fable_library_2_3_25_Seq_js__WEBPACK_IMPORTED_MODULE_5__["rangeNumber"])(0, 1, matrix$$1.rowCount - 1);
+  completeRowIndices = Object(_fable_fable_library_2_3_25_Seq_js__WEBPACK_IMPORTED_MODULE_5__["filter"])(isRowComplete, source$$3);
 
   const removeRow = function removeRow(matrix$$3, rowIndex$$1) {
     const mapCell = function mapCell(x, y, value) {
       if (y === 0) {
-        return new _home_lukasz_projects_fblocks_src_shape_fs__WEBPACK_IMPORTED_MODULE_1__["ShapeCell"](0, "EmptyCell");
+        return new _shape_fs__WEBPACK_IMPORTED_MODULE_1__["ShapeCell"](0, "EmptyCell");
       } else if (y <= rowIndex$$1) {
-        return Object(_home_lukasz_projects_fblocks_src_matrix_fs__WEBPACK_IMPORTED_MODULE_2__["getAt"])(x, y - 1, matrix$$3);
+        return Object(_matrix_fs__WEBPACK_IMPORTED_MODULE_2__["getAt"])(x, y - 1, matrix$$3);
       } else {
         return value;
       }
     };
 
-    return Object(_home_lukasz_projects_fblocks_src_matrix_fs__WEBPACK_IMPORTED_MODULE_2__["mapi"])(mapCell, matrix$$3);
+    return Object(_matrix_fs__WEBPACK_IMPORTED_MODULE_2__["mapi"])(mapCell, matrix$$3);
   };
 
-  return Object(_fable_fable_library_2_1_12_Seq__WEBPACK_IMPORTED_MODULE_5__["fold"])(removeRow, matrix$$1, completeRowIndices);
+  const source$$4 = completeRowIndices;
+  return Object(_fable_fable_library_2_3_25_Seq_js__WEBPACK_IMPORTED_MODULE_5__["fold"])(removeRow, matrix$$1, source$$4);
 }
 function placeBlock(grid$$3, block$$2) {
-  const filledCells = Object(_home_lukasz_projects_fblocks_src_block_fs__WEBPACK_IMPORTED_MODULE_6__["getFilledCells"])(block$$2);
-  const gridCells = removeCompletedRows(Object(_home_lukasz_projects_fblocks_src_matrix_fs__WEBPACK_IMPORTED_MODULE_2__["mapi"])(function mapping(x$$1, y$$1, value$$1) {
-    const matchingCell = Object(_fable_fable_library_2_1_12_Seq__WEBPACK_IMPORTED_MODULE_5__["tryFind"])(function (tupledArg) {
-      return Object(_fable_fable_library_2_1_12_Util__WEBPACK_IMPORTED_MODULE_4__["equals"])(tupledArg[0], new _home_lukasz_projects_fblocks_src_coord_fs__WEBPACK_IMPORTED_MODULE_7__["Coord"](x$$1, y$$1));
+  const filledCells = Object(_block_fs__WEBPACK_IMPORTED_MODULE_6__["getFilledCells"])(block$$2);
+  let gridCells;
+  let matrix$$5;
+  const matrix$$4 = grid$$3.cells;
+  matrix$$5 = Object(_matrix_fs__WEBPACK_IMPORTED_MODULE_2__["mapi"])(function mapping(x$$1, y$$1, value$$1) {
+    const matchingCell = Object(_fable_fable_library_2_3_25_Seq_js__WEBPACK_IMPORTED_MODULE_5__["tryFind"])(function (tupledArg) {
+      const coord$$1 = tupledArg[0];
+      return Object(_fable_fable_library_2_3_25_Util_js__WEBPACK_IMPORTED_MODULE_4__["equals"])(coord$$1, new _coord_fs__WEBPACK_IMPORTED_MODULE_7__["Coord"](x$$1, y$$1));
     }, filledCells);
 
     if (matchingCell != null) {
@@ -12173,7 +13484,8 @@ function placeBlock(grid$$3, block$$2) {
     } else {
       return value$$1;
     }
-  }, grid$$3.cells));
+  }, matrix$$4);
+  gridCells = removeCompletedRows(matrix$$5);
   return new Grid(gridCells, grid$$3.height, grid$$3.width);
 }
 
@@ -12195,30 +13507,30 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "inputQueue", function() { return inputQueue; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getQueue", function() { return getQueue; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "onKeyDown", function() { return onKeyDown; });
-/* harmony import */ var _fable_fable_library_2_1_12_Types__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../.fable/fable-library.2.1.12/Types */ "./.fable/fable-library.2.1.12/Types.js");
-/* harmony import */ var _fable_fable_library_2_1_12_Reflection__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../.fable/fable-library.2.1.12/Reflection */ "./.fable/fable-library.2.1.12/Reflection.js");
-/* harmony import */ var _fable_fable_library_2_1_12_Util__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../.fable/fable-library.2.1.12/Util */ "./.fable/fable-library.2.1.12/Util.js");
-/* harmony import */ var _fable_fable_library_2_1_12_List__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../.fable/fable-library.2.1.12/List */ "./.fable/fable-library.2.1.12/List.js");
+/* harmony import */ var _fable_fable_library_2_3_25_Types_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../.fable/fable-library.2.3.25/Types.js */ "./.fable/fable-library.2.3.25/Types.js");
+/* harmony import */ var _fable_fable_library_2_3_25_Reflection_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../.fable/fable-library.2.3.25/Reflection.js */ "./.fable/fable-library.2.3.25/Reflection.js");
+/* harmony import */ var _fable_fable_library_2_3_25_Util_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../.fable/fable-library.2.3.25/Util.js */ "./.fable/fable-library.2.3.25/Util.js");
+/* harmony import */ var _fable_fable_library_2_3_25_List_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../.fable/fable-library.2.3.25/List.js */ "./.fable/fable-library.2.3.25/List.js");
 
 
 
 
-const MoveDirection = Object(_fable_fable_library_2_1_12_Types__WEBPACK_IMPORTED_MODULE_0__["declare"])(function FBlocks_Input_MoveDirection(tag, name, ...fields) {
-  _fable_fable_library_2_1_12_Types__WEBPACK_IMPORTED_MODULE_0__["Union"].call(this, tag, name, ...fields);
-}, _fable_fable_library_2_1_12_Types__WEBPACK_IMPORTED_MODULE_0__["Union"]);
+const MoveDirection = Object(_fable_fable_library_2_3_25_Types_js__WEBPACK_IMPORTED_MODULE_0__["declare"])(function FBlocks_Input_MoveDirection(tag, name, ...fields) {
+  _fable_fable_library_2_3_25_Types_js__WEBPACK_IMPORTED_MODULE_0__["Union"].call(this, tag, name, ...fields);
+}, _fable_fable_library_2_3_25_Types_js__WEBPACK_IMPORTED_MODULE_0__["Union"]);
 function MoveDirection$reflection() {
-  return Object(_fable_fable_library_2_1_12_Reflection__WEBPACK_IMPORTED_MODULE_1__["union"])("FBlocks.Input.MoveDirection", [], MoveDirection, () => ["Left", "Right", "Up", "Down"]);
+  return Object(_fable_fable_library_2_3_25_Reflection_js__WEBPACK_IMPORTED_MODULE_1__["union"])("FBlocks.Input.MoveDirection", [], MoveDirection, () => ["Left", "Right", "Up", "Down"]);
 }
-const InputAction = Object(_fable_fable_library_2_1_12_Types__WEBPACK_IMPORTED_MODULE_0__["declare"])(function FBlocks_Input_InputAction(tag, name, ...fields) {
-  _fable_fable_library_2_1_12_Types__WEBPACK_IMPORTED_MODULE_0__["Union"].call(this, tag, name, ...fields);
-}, _fable_fable_library_2_1_12_Types__WEBPACK_IMPORTED_MODULE_0__["Union"]);
+const InputAction = Object(_fable_fable_library_2_3_25_Types_js__WEBPACK_IMPORTED_MODULE_0__["declare"])(function FBlocks_Input_InputAction(tag, name, ...fields) {
+  _fable_fable_library_2_3_25_Types_js__WEBPACK_IMPORTED_MODULE_0__["Union"].call(this, tag, name, ...fields);
+}, _fable_fable_library_2_3_25_Types_js__WEBPACK_IMPORTED_MODULE_0__["Union"]);
 function InputAction$reflection() {
-  return Object(_fable_fable_library_2_1_12_Reflection__WEBPACK_IMPORTED_MODULE_1__["union"])("FBlocks.Input.InputAction", [], InputAction, () => [["Move", [MoveDirection$reflection()]], "Rotate", "PlaceBlock"]);
+  return Object(_fable_fable_library_2_3_25_Reflection_js__WEBPACK_IMPORTED_MODULE_1__["union"])("FBlocks.Input.InputAction", [], InputAction, () => [["Move", [MoveDirection$reflection()]], "Rotate", "PlaceBlock"]);
 }
-const inputQueue = Object(_fable_fable_library_2_1_12_Util__WEBPACK_IMPORTED_MODULE_2__["createAtom"])(new _fable_fable_library_2_1_12_Types__WEBPACK_IMPORTED_MODULE_0__["List"]());
+const inputQueue = Object(_fable_fable_library_2_3_25_Util_js__WEBPACK_IMPORTED_MODULE_2__["createAtom"])(new _fable_fable_library_2_3_25_Types_js__WEBPACK_IMPORTED_MODULE_0__["List"]());
 function getQueue() {
-  const inputs = Object(_fable_fable_library_2_1_12_List__WEBPACK_IMPORTED_MODULE_3__["reverse"])(inputQueue());
-  inputQueue(new _fable_fable_library_2_1_12_Types__WEBPACK_IMPORTED_MODULE_0__["List"]());
+  const inputs = Object(_fable_fable_library_2_3_25_List_js__WEBPACK_IMPORTED_MODULE_3__["reverse"])(inputQueue());
+  inputQueue(new _fable_fable_library_2_3_25_Types_js__WEBPACK_IMPORTED_MODULE_0__["List"]());
   return inputs;
 }
 function onKeyDown(e) {
@@ -12270,7 +13582,7 @@ function onKeyDown(e) {
 
   if (maybeAction == null) {} else {
     const action = maybeAction;
-    inputQueue(new _fable_fable_library_2_1_12_Types__WEBPACK_IMPORTED_MODULE_0__["List"](action, inputQueue()));
+    inputQueue(new _fable_fable_library_2_3_25_Types_js__WEBPACK_IMPORTED_MODULE_0__["List"](action, inputQueue()));
   }
 }
 
@@ -12300,45 +13612,49 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "coordsWithValue", function() { return coordsWithValue; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "coordsWhere", function() { return coordsWhere; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "rotateClockwise", function() { return rotateClockwise; });
-/* harmony import */ var _fable_fable_library_2_1_12_Types__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../.fable/fable-library.2.1.12/Types */ "./.fable/fable-library.2.1.12/Types.js");
-/* harmony import */ var _fable_fable_library_2_1_12_Reflection__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../.fable/fable-library.2.1.12/Reflection */ "./.fable/fable-library.2.1.12/Reflection.js");
-/* harmony import */ var _fable_fable_library_2_1_12_Array__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../.fable/fable-library.2.1.12/Array */ "./.fable/fable-library.2.1.12/Array.js");
-/* harmony import */ var _fable_fable_library_2_1_12_Seq__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../.fable/fable-library.2.1.12/Seq */ "./.fable/fable-library.2.1.12/Seq.js");
-/* harmony import */ var _home_lukasz_projects_fblocks_src_coord_fs__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./src/coord.fs */ "./src/coord.fs");
-/* harmony import */ var _fable_fable_library_2_1_12_Util__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../.fable/fable-library.2.1.12/Util */ "./.fable/fable-library.2.1.12/Util.js");
+/* harmony import */ var _fable_fable_library_2_3_25_Types_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../.fable/fable-library.2.3.25/Types.js */ "./.fable/fable-library.2.3.25/Types.js");
+/* harmony import */ var _fable_fable_library_2_3_25_Reflection_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../.fable/fable-library.2.3.25/Reflection.js */ "./.fable/fable-library.2.3.25/Reflection.js");
+/* harmony import */ var _fable_fable_library_2_3_25_Array_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../.fable/fable-library.2.3.25/Array.js */ "./.fable/fable-library.2.3.25/Array.js");
+/* harmony import */ var _fable_fable_library_2_3_25_Seq_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../.fable/fable-library.2.3.25/Seq.js */ "./.fable/fable-library.2.3.25/Seq.js");
+/* harmony import */ var _fable_fable_library_2_3_25_Util_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../.fable/fable-library.2.3.25/Util.js */ "./.fable/fable-library.2.3.25/Util.js");
+/* harmony import */ var _coord_fs__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./coord.fs */ "./src/coord.fs");
 
 
 
 
 
 
-const Matrix$00601 = Object(_fable_fable_library_2_1_12_Types__WEBPACK_IMPORTED_MODULE_0__["declare"])(function FBlocks_Matrix_Matrix(arg1, arg2, arg3) {
+const Matrix$00601 = Object(_fable_fable_library_2_3_25_Types_js__WEBPACK_IMPORTED_MODULE_0__["declare"])(function FBlocks_Matrix_Matrix(arg1, arg2, arg3) {
   this.cells = arg1;
   this.columnCount = arg2 | 0;
   this.rowCount = arg3 | 0;
-}, _fable_fable_library_2_1_12_Types__WEBPACK_IMPORTED_MODULE_0__["Record"]);
+}, _fable_fable_library_2_3_25_Types_js__WEBPACK_IMPORTED_MODULE_0__["Record"]);
 function Matrix$00601$reflection($gen$$1) {
-  return Object(_fable_fable_library_2_1_12_Reflection__WEBPACK_IMPORTED_MODULE_1__["record"])("FBlocks.Matrix.Matrix`1", [$gen$$1], Matrix$00601, () => [["cells", Object(_fable_fable_library_2_1_12_Reflection__WEBPACK_IMPORTED_MODULE_1__["array"])($gen$$1)], ["columnCount", _fable_fable_library_2_1_12_Reflection__WEBPACK_IMPORTED_MODULE_1__["int32"]], ["rowCount", _fable_fable_library_2_1_12_Reflection__WEBPACK_IMPORTED_MODULE_1__["int32"]]]);
+  return Object(_fable_fable_library_2_3_25_Reflection_js__WEBPACK_IMPORTED_MODULE_1__["record"])("FBlocks.Matrix.Matrix`1", [$gen$$1], Matrix$00601, () => [["cells", Object(_fable_fable_library_2_3_25_Reflection_js__WEBPACK_IMPORTED_MODULE_1__["array"])($gen$$1)], ["columnCount", _fable_fable_library_2_3_25_Reflection_js__WEBPACK_IMPORTED_MODULE_1__["int32"]], ["rowCount", _fable_fable_library_2_3_25_Reflection_js__WEBPACK_IMPORTED_MODULE_1__["int32"]]]);
 }
 function create(columnCount, rowCount, value) {
-  return new Matrix$00601(Object(_fable_fable_library_2_1_12_Array__WEBPACK_IMPORTED_MODULE_2__["replicate"])(columnCount * rowCount, value, Array), columnCount, rowCount);
+  return new Matrix$00601(Object(_fable_fable_library_2_3_25_Array_js__WEBPACK_IMPORTED_MODULE_2__["replicate"])(columnCount * rowCount, value, Array), columnCount, rowCount);
 }
 function fromArray(input) {
+  var arrays;
+
   if (input.length === 0) {
     throw new Error("Input array can't have zero length\\nParameter name: input");
   }
 
   const rowCount$$1 = input.length | 0;
   const columnCount$$1 = input[0].length | 0;
-  const areSubarraysSameLength = Object(_fable_fable_library_2_1_12_Seq__WEBPACK_IMPORTED_MODULE_3__["forAll"])(function predicate(subarray) {
+  let areSubarraysSameLength;
+  const source = input;
+  areSubarraysSameLength = Object(_fable_fable_library_2_3_25_Seq_js__WEBPACK_IMPORTED_MODULE_3__["forAll"])(function predicate(subarray) {
     return subarray.length === columnCount$$1;
-  }, input);
+  }, source);
 
   if (!areSubarraysSameLength) {
     throw new Error("All subarrays in matrix must have same length\\nParameter name: input");
   }
 
-  return new Matrix$00601(Object(_fable_fable_library_2_1_12_Array__WEBPACK_IMPORTED_MODULE_2__["concat"])(input, Array), columnCount$$1, rowCount$$1);
+  return new Matrix$00601((arrays = input, (Object(_fable_fable_library_2_3_25_Array_js__WEBPACK_IMPORTED_MODULE_2__["concat"])(arrays, Array))), columnCount$$1, rowCount$$1);
 }
 function getAt(x, y, matrix) {
   return matrix.cells[x + y * matrix.columnCount];
@@ -12357,49 +13673,69 @@ function iteri(action$$1, matrix$$4) {
     action$$1(i % matrix$$4.columnCount, ~~(i / matrix$$4.columnCount), x$$1);
   };
 
-  Object(_fable_fable_library_2_1_12_Array__WEBPACK_IMPORTED_MODULE_2__["iterateIndexed"])(action$0027, matrix$$4.cells);
+  Object(_fable_fable_library_2_3_25_Array_js__WEBPACK_IMPORTED_MODULE_2__["iterateIndexed"])(action$0027, matrix$$4.cells);
 }
 function flatmapi(mapping, matrix$$5) {
   const mapping$0027 = function mapping$0027(i$$1, x$$2) {
     return mapping(i$$1 % matrix$$5.columnCount, ~~(i$$1 / matrix$$5.columnCount), x$$2);
   };
 
-  return Object(_fable_fable_library_2_1_12_Array__WEBPACK_IMPORTED_MODULE_2__["mapIndexed"])(mapping$0027, matrix$$5.cells, Array);
+  return Object(_fable_fable_library_2_3_25_Array_js__WEBPACK_IMPORTED_MODULE_2__["mapIndexed"])(mapping$0027, matrix$$5.cells, Array);
 }
 function map(mapping$$1, matrix$$6) {
-  return new Matrix$00601(Object(_fable_fable_library_2_1_12_Array__WEBPACK_IMPORTED_MODULE_2__["map"])(mapping$$1, matrix$$6.cells, Array), matrix$$6.columnCount, matrix$$6.rowCount);
+  var array;
+  return new Matrix$00601((array = matrix$$6.cells, (Object(_fable_fable_library_2_3_25_Array_js__WEBPACK_IMPORTED_MODULE_2__["map"])(mapping$$1, array, Array))), matrix$$6.columnCount, matrix$$6.rowCount);
 }
 function mapi(mapping$$2, matrix$$7) {
+  var array$$1;
+
   const mapping$0027$$1 = function mapping$0027$$1(i$$2, x$$3) {
     return mapping$$2(i$$2 % matrix$$7.columnCount, ~~(i$$2 / matrix$$7.columnCount), x$$3);
   };
 
-  return new Matrix$00601(Object(_fable_fable_library_2_1_12_Array__WEBPACK_IMPORTED_MODULE_2__["mapIndexed"])(mapping$0027$$1, matrix$$7.cells, Array), matrix$$7.columnCount, matrix$$7.rowCount);
+  return new Matrix$00601((array$$1 = matrix$$7.cells, (Object(_fable_fable_library_2_3_25_Array_js__WEBPACK_IMPORTED_MODULE_2__["mapIndexed"])(mapping$0027$$1, array$$1, Array))), matrix$$7.columnCount, matrix$$7.rowCount);
 }
 function coordsWithValue(value$$1, matrix$$8) {
-  return Object(_fable_fable_library_2_1_12_Seq__WEBPACK_IMPORTED_MODULE_3__["map"])(function mapping$$4(tupledArg$$1) {
-    return new _home_lukasz_projects_fblocks_src_coord_fs__WEBPACK_IMPORTED_MODULE_4__["Coord"](tupledArg$$1[0], tupledArg$$1[1]);
-  }, Object(_fable_fable_library_2_1_12_Seq__WEBPACK_IMPORTED_MODULE_3__["filter"])(function predicate$$2(tupledArg) {
-    return Object(_fable_fable_library_2_1_12_Util__WEBPACK_IMPORTED_MODULE_5__["equals"])(tupledArg[2], value$$1);
-  }, flatmapi(function mapping$$3(x$$4, y$$2, v) {
+  let source$$2;
+  let source$$1;
+  const matrix$$9 = matrix$$8;
+  source$$1 = flatmapi(function mapping$$3(x$$4, y$$2, v) {
     return [x$$4, y$$2, v];
-  }, matrix$$8)));
+  }, matrix$$9);
+  source$$2 = Object(_fable_fable_library_2_3_25_Seq_js__WEBPACK_IMPORTED_MODULE_3__["filter"])(function predicate$$2(tupledArg) {
+    const v$$1 = tupledArg[2];
+    return Object(_fable_fable_library_2_3_25_Util_js__WEBPACK_IMPORTED_MODULE_4__["equals"])(v$$1, value$$1);
+  }, source$$1);
+  return Object(_fable_fable_library_2_3_25_Seq_js__WEBPACK_IMPORTED_MODULE_3__["map"])(function mapping$$4(tupledArg$$1) {
+    const x$$5 = tupledArg$$1[0] | 0;
+    const y$$3 = tupledArg$$1[1] | 0;
+    return new _coord_fs__WEBPACK_IMPORTED_MODULE_5__["Coord"](x$$5, y$$3);
+  }, source$$2);
 }
 function coordsWhere(predicate$$3, matrix$$10) {
-  return Object(_fable_fable_library_2_1_12_Seq__WEBPACK_IMPORTED_MODULE_3__["map"])(function mapping$$6(tupledArg$$3) {
-    return new _home_lukasz_projects_fblocks_src_coord_fs__WEBPACK_IMPORTED_MODULE_4__["Coord"](tupledArg$$3[0], tupledArg$$3[1]);
-  }, Object(_fable_fable_library_2_1_12_Seq__WEBPACK_IMPORTED_MODULE_3__["filter"])(function predicate$$4(tupledArg$$2) {
-    return predicate$$3(tupledArg$$2[2]);
-  }, flatmapi(function mapping$$5(x$$6, y$$4, v$$2) {
+  let source$$4;
+  let source$$3;
+  const matrix$$11 = matrix$$10;
+  source$$3 = flatmapi(function mapping$$5(x$$6, y$$4, v$$2) {
     return [x$$6, y$$4, v$$2];
-  }, matrix$$10)));
+  }, matrix$$11);
+  source$$4 = Object(_fable_fable_library_2_3_25_Seq_js__WEBPACK_IMPORTED_MODULE_3__["filter"])(function predicate$$4(tupledArg$$2) {
+    const v$$3 = tupledArg$$2[2];
+    return predicate$$3(v$$3);
+  }, source$$3);
+  return Object(_fable_fable_library_2_3_25_Seq_js__WEBPACK_IMPORTED_MODULE_3__["map"])(function mapping$$6(tupledArg$$3) {
+    const x$$7 = tupledArg$$3[0] | 0;
+    const y$$5 = tupledArg$$3[1] | 0;
+    return new _coord_fs__WEBPACK_IMPORTED_MODULE_5__["Coord"](x$$7, y$$5);
+  }, source$$4);
 }
 function rotateClockwise(matrix$$12) {
   const rotateCell = function rotateCell(x$$8, y$$6, _arg1$$2) {
     return getAt(y$$6, matrix$$12.rowCount - 1 - x$$8, matrix$$12);
   };
 
-  return mapi(rotateCell, create(matrix$$12.rowCount, matrix$$12.columnCount, getAt(0, 0, matrix$$12)));
+  const matrix$$13 = create(matrix$$12.rowCount, matrix$$12.columnCount, getAt(0, 0, matrix$$12));
+  return mapi(rotateCell, matrix$$13);
 }
 
 /***/ }),
@@ -12422,17 +13758,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "drawGrid", function() { return drawGrid; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "drawShape", function() { return drawShape; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "redraw", function() { return redraw; });
-/* harmony import */ var _fable_fable_library_2_1_12_Types__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../.fable/fable-library.2.1.12/Types */ "./.fable/fable-library.2.1.12/Types.js");
-/* harmony import */ var _fable_fable_library_2_1_12_Reflection__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../.fable/fable-library.2.1.12/Reflection */ "./.fable/fable-library.2.1.12/Reflection.js");
-/* harmony import */ var _home_lukasz_projects_fblocks_src_matrix_fs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./src/matrix.fs */ "./src/matrix.fs");
+/* harmony import */ var _fable_fable_library_2_3_25_Types_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../.fable/fable-library.2.3.25/Types.js */ "./.fable/fable-library.2.3.25/Types.js");
+/* harmony import */ var _fable_fable_library_2_3_25_Reflection_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../.fable/fable-library.2.3.25/Reflection.js */ "./.fable/fable-library.2.3.25/Reflection.js");
+/* harmony import */ var _matrix_fs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./matrix.fs */ "./src/matrix.fs");
 
 
 
-const Renderer = Object(_fable_fable_library_2_1_12_Types__WEBPACK_IMPORTED_MODULE_0__["declare"])(function FBlocks_Renderer_Renderer(arg1) {
+const Renderer = Object(_fable_fable_library_2_3_25_Types_js__WEBPACK_IMPORTED_MODULE_0__["declare"])(function FBlocks_Renderer_Renderer(arg1) {
   this.canvas = arg1;
-}, _fable_fable_library_2_1_12_Types__WEBPACK_IMPORTED_MODULE_0__["Record"]);
+}, _fable_fable_library_2_3_25_Types_js__WEBPACK_IMPORTED_MODULE_0__["Record"]);
 function Renderer$reflection() {
-  return Object(_fable_fable_library_2_1_12_Reflection__WEBPACK_IMPORTED_MODULE_1__["record"])("FBlocks.Renderer.Renderer", [], Renderer, () => [["canvas", Object(_fable_fable_library_2_1_12_Reflection__WEBPACK_IMPORTED_MODULE_1__["type"])("Fable.Import.Browser.HTMLCanvasElement")]]);
+  return Object(_fable_fable_library_2_3_25_Reflection_js__WEBPACK_IMPORTED_MODULE_1__["record"])("FBlocks.Renderer.Renderer", [], Renderer, () => [["canvas", Object(_fable_fable_library_2_3_25_Reflection_js__WEBPACK_IMPORTED_MODULE_1__["type"])("Fable.Import.Browser.HTMLCanvasElement")]]);
 }
 const blockSize = 24;
 function create(containerElementId, grid) {
@@ -12440,7 +13776,8 @@ function create(containerElementId, grid) {
   const canvas = document.createElement("canvas");
   canvas.width = grid.width * blockSize;
   canvas.height = grid.height * blockSize;
-  elem.appendChild(canvas);
+  const value = elem.appendChild(canvas);
+  value, null;
   return new Renderer(canvas);
 }
 function clearCanvas(canvas$$1) {
@@ -12454,22 +13791,24 @@ function drawSquare(x, y, color, canvas$$2) {
   context$$1.fillRect(x * blockSize + 0.5, y * blockSize + 0.5, blockSize - 1, blockSize - 1);
 }
 function drawGrid(grid$$1, canvas$$3) {
-  Object(_home_lukasz_projects_fblocks_src_matrix_fs__WEBPACK_IMPORTED_MODULE_2__["iteri"])(function action(cellX, cellY, cell) {
+  const matrix = grid$$1.cells;
+  Object(_matrix_fs__WEBPACK_IMPORTED_MODULE_2__["iteri"])(function action(cellX, cellY, cell) {
     if (cell.tag === 1) {
       const color$$1 = cell.fields[0];
       drawSquare(cellX, cellY, color$$1, canvas$$3);
     }
-  }, grid$$1.cells);
+  }, matrix);
 }
 function drawShape(x$$1, y$$1, shape, canvas$$4) {
-  Object(_home_lukasz_projects_fblocks_src_matrix_fs__WEBPACK_IMPORTED_MODULE_2__["iteri"])(function action$$1(cellX$$1, cellY$$1, cell$$1) {
+  const matrix$$1 = shape;
+  Object(_matrix_fs__WEBPACK_IMPORTED_MODULE_2__["iteri"])(function action$$1(cellX$$1, cellY$$1, cell$$1) {
     if (cell$$1.tag === 0) {
       drawSquare(x$$1 + cellX$$1, y$$1 + cellY$$1, "#333", canvas$$4);
     } else {
       const color$$2 = cell$$1.fields[0];
       drawSquare(x$$1 + cellX$$1, y$$1 + cellY$$1, color$$2, canvas$$4);
     }
-  }, shape);
+  }, matrix$$1);
 }
 function redraw(renderer, grid$$2, block) {
   clearCanvas(renderer.canvas);
@@ -12498,33 +13837,33 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getShapeColor", function() { return getShapeColor; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getShapeMatrix", function() { return getShapeMatrix; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "filledCellCoords", function() { return filledCellCoords; });
-/* harmony import */ var _fable_fable_library_2_1_12_Types__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../.fable/fable-library.2.1.12/Types */ "./.fable/fable-library.2.1.12/Types.js");
-/* harmony import */ var _fable_fable_library_2_1_12_Reflection__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../.fable/fable-library.2.1.12/Reflection */ "./.fable/fable-library.2.1.12/Reflection.js");
-/* harmony import */ var _fable_fable_library_2_1_12_Util__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../.fable/fable-library.2.1.12/Util */ "./.fable/fable-library.2.1.12/Util.js");
-/* harmony import */ var _home_lukasz_projects_fblocks_src_matrix_fs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./src/matrix.fs */ "./src/matrix.fs");
-/* harmony import */ var _home_lukasz_projects_fblocks_src_coord_fs__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./src/coord.fs */ "./src/coord.fs");
-/* harmony import */ var _fable_fable_library_2_1_12_Seq__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../.fable/fable-library.2.1.12/Seq */ "./.fable/fable-library.2.1.12/Seq.js");
+/* harmony import */ var _fable_fable_library_2_3_25_Types_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../.fable/fable-library.2.3.25/Types.js */ "./.fable/fable-library.2.3.25/Types.js");
+/* harmony import */ var _fable_fable_library_2_3_25_Reflection_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../.fable/fable-library.2.3.25/Reflection.js */ "./.fable/fable-library.2.3.25/Reflection.js");
+/* harmony import */ var _fable_fable_library_2_3_25_Util_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../.fable/fable-library.2.3.25/Util.js */ "./.fable/fable-library.2.3.25/Util.js");
+/* harmony import */ var _matrix_fs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./matrix.fs */ "./src/matrix.fs");
+/* harmony import */ var _coord_fs__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./coord.fs */ "./src/coord.fs");
+/* harmony import */ var _fable_fable_library_2_3_25_Seq_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../.fable/fable-library.2.3.25/Seq.js */ "./.fable/fable-library.2.3.25/Seq.js");
 
 
 
 
 
 
-const ShapeCell = Object(_fable_fable_library_2_1_12_Types__WEBPACK_IMPORTED_MODULE_0__["declare"])(function FBlocks_Shape_ShapeCell(tag, name, ...fields) {
-  _fable_fable_library_2_1_12_Types__WEBPACK_IMPORTED_MODULE_0__["Union"].call(this, tag, name, ...fields);
-}, _fable_fable_library_2_1_12_Types__WEBPACK_IMPORTED_MODULE_0__["Union"]);
+const ShapeCell = Object(_fable_fable_library_2_3_25_Types_js__WEBPACK_IMPORTED_MODULE_0__["declare"])(function FBlocks_Shape_ShapeCell(tag, name, ...fields) {
+  _fable_fable_library_2_3_25_Types_js__WEBPACK_IMPORTED_MODULE_0__["Union"].call(this, tag, name, ...fields);
+}, _fable_fable_library_2_3_25_Types_js__WEBPACK_IMPORTED_MODULE_0__["Union"]);
 function ShapeCell$reflection() {
-  return Object(_fable_fable_library_2_1_12_Reflection__WEBPACK_IMPORTED_MODULE_1__["union"])("FBlocks.Shape.ShapeCell", [], ShapeCell, () => ["EmptyCell", ["FilledCell", [_fable_fable_library_2_1_12_Reflection__WEBPACK_IMPORTED_MODULE_1__["string"]]]]);
+  return Object(_fable_fable_library_2_3_25_Reflection_js__WEBPACK_IMPORTED_MODULE_1__["union"])("FBlocks.Shape.ShapeCell", [], ShapeCell, () => ["EmptyCell", ["FilledCell", [_fable_fable_library_2_3_25_Reflection_js__WEBPACK_IMPORTED_MODULE_1__["string"]]]]);
 }
-const ShapeName = Object(_fable_fable_library_2_1_12_Types__WEBPACK_IMPORTED_MODULE_0__["declare"])(function FBlocks_Shape_ShapeName(tag, name, ...fields) {
-  _fable_fable_library_2_1_12_Types__WEBPACK_IMPORTED_MODULE_0__["Union"].call(this, tag, name, ...fields);
-}, _fable_fable_library_2_1_12_Types__WEBPACK_IMPORTED_MODULE_0__["Union"]);
+const ShapeName = Object(_fable_fable_library_2_3_25_Types_js__WEBPACK_IMPORTED_MODULE_0__["declare"])(function FBlocks_Shape_ShapeName(tag, name, ...fields) {
+  _fable_fable_library_2_3_25_Types_js__WEBPACK_IMPORTED_MODULE_0__["Union"].call(this, tag, name, ...fields);
+}, _fable_fable_library_2_3_25_Types_js__WEBPACK_IMPORTED_MODULE_0__["Union"]);
 function ShapeName$reflection() {
-  return Object(_fable_fable_library_2_1_12_Reflection__WEBPACK_IMPORTED_MODULE_1__["union"])("FBlocks.Shape.ShapeName", [], ShapeName, () => ["D", "I", "J", "L", "O", "S", "Z"]);
+  return Object(_fable_fable_library_2_3_25_Reflection_js__WEBPACK_IMPORTED_MODULE_1__["union"])("FBlocks.Shape.ShapeName", [], ShapeName, () => ["D", "I", "J", "L", "O", "S", "Z"]);
 }
 const randomGenerator = {};
 function random() {
-  const matchValue = Object(_fable_fable_library_2_1_12_Util__WEBPACK_IMPORTED_MODULE_2__["randomNext"])(0, 7) | 0;
+  const matchValue = Object(_fable_fable_library_2_3_25_Util_js__WEBPACK_IMPORTED_MODULE_2__["randomNext"])(0, 7) | 0;
 
   switch (matchValue) {
     case 0:
@@ -12617,22 +13956,33 @@ function getShapeMatrix(shapeName$$1) {
   const x = 1;
   const matrixDefinition = shapeName$$1.tag === 1 ? [new Int32Array([0, 0, 0, 0]), new Int32Array([x, x, x, x]), new Int32Array([0, 0, 0, 0]), new Int32Array([0, 0, 0, 0])] : shapeName$$1.tag === 2 ? [new Int32Array([x, 0, 0]), new Int32Array([x, x, x]), new Int32Array([0, 0, 0])] : shapeName$$1.tag === 3 ? [new Int32Array([0, 0, x]), new Int32Array([x, x, x]), new Int32Array([0, 0, 0])] : shapeName$$1.tag === 4 ? [new Int32Array([x, x]), new Int32Array([x, x])] : shapeName$$1.tag === 5 ? [new Int32Array([0, x, x]), new Int32Array([x, x, 0]), new Int32Array([0, 0, 0])] : shapeName$$1.tag === 6 ? [new Int32Array([x, x, 0]), new Int32Array([0, x, x]), new Int32Array([0, 0, 0])] : [new Int32Array([0, x, 0]), new Int32Array([x, x, x]), new Int32Array([0, 0, 0])];
   const color = getShapeColor(shapeName$$1);
-  return Object(_home_lukasz_projects_fblocks_src_matrix_fs__WEBPACK_IMPORTED_MODULE_3__["map"])(function mapping(x$$1) {
+  let matrix;
+  const input = matrixDefinition;
+  matrix = Object(_matrix_fs__WEBPACK_IMPORTED_MODULE_3__["fromArray"])(input);
+  return Object(_matrix_fs__WEBPACK_IMPORTED_MODULE_3__["map"])(function mapping(x$$1) {
     if (x$$1 === 1) {
       return new ShapeCell(1, "FilledCell", color);
     } else {
       return new ShapeCell(0, "EmptyCell");
     }
-  }, Object(_home_lukasz_projects_fblocks_src_matrix_fs__WEBPACK_IMPORTED_MODULE_3__["fromArray"])(matrixDefinition));
+  }, matrix);
 }
 function filledCellCoords(shape) {
-  return Object(_fable_fable_library_2_1_12_Seq__WEBPACK_IMPORTED_MODULE_5__["map"])(function mapping$$2(tupledArg$$1) {
-    return tupledArg$$1[0];
-  }, Object(_fable_fable_library_2_1_12_Seq__WEBPACK_IMPORTED_MODULE_5__["filter"])(function predicate(tupledArg) {
-    return isCellFilled(tupledArg[1]);
-  }, Object(_home_lukasz_projects_fblocks_src_matrix_fs__WEBPACK_IMPORTED_MODULE_3__["flatmapi"])(function mapping$$1(x$$2, y, v) {
-    return [new _home_lukasz_projects_fblocks_src_coord_fs__WEBPACK_IMPORTED_MODULE_4__["Coord"](x$$2, y), v];
-  }, shape)));
+  let source$$1;
+  let source;
+  const matrix$$1 = shape;
+  source = Object(_matrix_fs__WEBPACK_IMPORTED_MODULE_3__["flatmapi"])(function mapping$$1(x$$2, y, v) {
+    return [new _coord_fs__WEBPACK_IMPORTED_MODULE_4__["Coord"](x$$2, y), v];
+  }, matrix$$1);
+  source$$1 = Object(_fable_fable_library_2_3_25_Seq_js__WEBPACK_IMPORTED_MODULE_5__["filter"])(function predicate(tupledArg) {
+    const coord = tupledArg[0];
+    const v$$1 = tupledArg[1];
+    return isCellFilled(v$$1);
+  }, source);
+  return Object(_fable_fable_library_2_3_25_Seq_js__WEBPACK_IMPORTED_MODULE_5__["map"])(function mapping$$2(tupledArg$$1) {
+    const coord$$1 = tupledArg$$1[0];
+    return coord$$1;
+  }, source$$1);
 }
 
 /***/ })
