@@ -31,8 +31,8 @@ let moveBlockDown currentTime gameState =
 
 let processInput currentTime inputs gameState =
     let processAction gameState action =
-        let moveBlock dx dy gameState =
-            Block.moveBy dx dy |> updateBlockIfValid gameState
+        let moveBlock dx gameState =
+            Block.moveBy dx 0 |> updateBlockIfValid gameState
 
         let rotateBlock gameState =
             Block.rotate |> updateBlockIfValid gameState
@@ -47,8 +47,8 @@ let processInput currentTime inputs gameState =
 
         gameState |>
             match action with
-            | Input.MoveLeft -> moveBlock -1 0
-            | Input.MoveRight -> moveBlock 1 0
+            | Input.MoveLeft -> moveBlock -1
+            | Input.MoveRight -> moveBlock 1
             | Input.IncreaseFallSpeed -> setFallInterval blockFastFallInterval
             | Input.DecreaseFallSpeed -> setFallInterval blockFallInterval
             | Input.Rotate -> rotateBlock
@@ -69,7 +69,7 @@ let processFalling currentTime gameState =
 let update currentTime gameState =
     let newGameState =
         gameState
-        |> processInput currentTime (Input.getQueue())
+        |> processInput currentTime (Input.getActions())
         |> processFalling currentTime
 
     newGameState
