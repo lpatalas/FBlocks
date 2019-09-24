@@ -28,7 +28,7 @@ let run containerDivId =
     let redraw() =
         Renderer.redraw renderer gameState.grid gameState.block
 
-    window.addEventListener_keydown Input.onKeyDown
+    Input.addEventListeners()
 
     redraw()
 

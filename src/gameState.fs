@@ -1,9 +1,11 @@
 module FBlocks.GameState
 
 let blockFallInterval = Time.fromMilliseconds 1000.0
+let blockFastFallInterval = Time.fromMilliseconds 50.0
 
 type GameState = {
     block: Block.Block
+    fallInterval: Time.Time
     grid: Grid.Grid
     lastBlockFallTime: Time.Time
 }
@@ -40,12 +42,17 @@ let processInput currentTime inputs gameState =
                 grid = Grid.placeBlock gameState.grid gameState.block
                 block = Block.create Shape.L }
 
+        let setFallInterval interval gameState =
+            { gameState with fallInterval = interval }
+
         gameState |>
             match action with
             | Input.Move Input.Left -> moveBlock -1 0
             | Input.Move Input.Right -> moveBlock 1 0
             | Input.Move Input.Up -> moveBlock 0 -1
             | Input.Move Input.Down -> moveBlockDown currentTime
+            | Input.IncreaseFallSpeed -> setFallInterval blockFastFallInterval
+            | Input.DecreaseFallSpeed -> setFallInterval blockFallInterval
             | Input.Rotate -> rotateBlock
             | Input.PlaceBlock -> placeBlock
 
@@ -56,7 +63,7 @@ let processInput currentTime inputs gameState =
     updatedGameState
 
 let processFalling currentTime gameState =
-    if Time.difference currentTime gameState.lastBlockFallTime >= blockFallInterval then
+    if Time.difference currentTime gameState.lastBlockFallTime >= gameState.fallInterval then
         moveBlockDown currentTime gameState
     else
         gameState
@@ -72,6 +79,7 @@ let update currentTime gameState =
 let create() =
     {
         block = Shape.random() |> Block.create
+        fallInterval = blockFallInterval
         grid = Grid.createDefault
         lastBlockFallTime = Time.zero
     }
