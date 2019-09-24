@@ -2,12 +2,15 @@ module FBlocks.GameState
 
 let blockFallInterval = Time.fromMilliseconds 1000.0
 let blockFastFallInterval = Time.fromMilliseconds 50.0
+let moveInterval = Time.fromMilliseconds 100.0
 
 type GameState = {
     block: Block.Block
     fallInterval: Time.Time
     grid: Grid.Grid
     lastBlockFallTime: Time.Time
+    lastMoveTime: Time.Time
+    moveDelta: int option
 }
 
 let updateBlockIfValid gameState updater =
@@ -31,9 +34,6 @@ let moveBlockDown currentTime gameState =
 
 let processInput currentTime inputs gameState =
     let processAction gameState action =
-        let moveBlock dx gameState =
-            Block.moveBy dx 0 |> updateBlockIfValid gameState
-
         let rotateBlock gameState =
             Block.rotate |> updateBlockIfValid gameState
 
@@ -42,13 +42,20 @@ let processInput currentTime inputs gameState =
                 grid = Grid.placeBlock gameState.grid gameState.block
                 block = Block.create Shape.L }
 
+        let setMovement dx gameState =
+            { gameState with moveDelta = Some dx }
+
+        let stopMovement gameState =
+            { gameState with moveDelta = None }
+
         let setFallInterval interval gameState =
             { gameState with fallInterval = interval }
 
         gameState |>
             match action with
-            | Input.MoveLeft -> moveBlock -1
-            | Input.MoveRight -> moveBlock 1
+            | Input.MoveLeft -> setMovement -1
+            | Input.MoveRight -> setMovement 1
+            | Input.StopMovement -> stopMovement
             | Input.IncreaseFallSpeed -> setFallInterval blockFastFallInterval
             | Input.DecreaseFallSpeed -> setFallInterval blockFallInterval
             | Input.Rotate -> rotateBlock
@@ -60,6 +67,20 @@ let processInput currentTime inputs gameState =
 
     updatedGameState
 
+let moveBlock dx gameState =
+    Block.moveBy dx 0
+    |> updateBlockIfValid gameState
+
+let processMovement currentTime gameState =
+    match gameState.moveDelta with
+    | Some dx ->
+        if Time.difference currentTime gameState.lastMoveTime >= moveInterval then
+            let newGameState = moveBlock dx gameState
+            { newGameState with lastMoveTime = currentTime }
+        else
+            gameState
+    | None -> gameState
+
 let processFalling currentTime gameState =
     if Time.difference currentTime gameState.lastBlockFallTime >= gameState.fallInterval then
         moveBlockDown currentTime gameState
@@ -70,6 +91,7 @@ let update currentTime gameState =
     let newGameState =
         gameState
         |> processInput currentTime (Input.getActions())
+        |> processMovement currentTime
         |> processFalling currentTime
 
     newGameState
@@ -80,4 +102,6 @@ let create() =
         fallInterval = blockFallInterval
         grid = Grid.createDefault
         lastBlockFallTime = Time.zero
+        lastMoveTime = Time.zero
+        moveDelta = None
     }

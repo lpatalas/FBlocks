@@ -6,6 +6,7 @@ open System.Collections.Generic
 type InputAction =
     | MoveLeft
     | MoveRight
+    | StopMovement
     | Rotate
     | PlaceBlock
     | IncreaseFallSpeed
@@ -39,6 +40,8 @@ let onKeyDown =
 
 let onKeyUp =
     handleInput (dict[
+        "ArrowLeft", StopMovement
+        "ArrowRight", StopMovement
         "ArrowDown", DecreaseFallSpeed
     ])
 
