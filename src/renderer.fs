@@ -10,6 +10,9 @@ type Renderer = {
 
 let blockSize = 24.0
 
+let setAlpha alpha color =
+    sprintf "%s%X" color alpha
+
 let create containerElementId (grid: Grid.Grid) =
     let elem = document.getElementById containerElementId
     let canvas = document.createElement_canvas()
@@ -20,7 +23,7 @@ let create containerElementId (grid: Grid.Grid) =
 
 let clearCanvas (canvas: HTMLCanvasElement) =
     let context = canvas.getContext_2d()
-    context.fillStyle <- !^ "#000"
+    context.fillStyle <- !^ "#246"
     context.fillRect(0.0, 0.0, canvas.width, canvas.height)
 
 let drawSquare (x: int) (y: int) (color: string) (canvas: HTMLCanvasElement) =
@@ -35,14 +38,20 @@ let drawGrid (grid: Grid.Grid) (canvas: HTMLCanvasElement) =
         | FilledCell color -> drawSquare cellX cellY color canvas
         | _ -> ())
 
-let drawShape (x: int) (y:int) (shape: ShapeMatrix) (canvas: HTMLCanvasElement) =
+let drawShape x y shape alpha canvas =
     shape
     |> Matrix.iteri (fun cellX cellY cell ->
         match cell with
-        | FilledCell color -> drawSquare (x + cellX) (y + cellY) color canvas
-        | EmptyCell -> drawSquare (x + cellX) (y + cellY) "#333" canvas)
+        | FilledCell color -> drawSquare (x + cellX) (y + cellY) (setAlpha alpha color) canvas
+        | EmptyCell -> ())
 
-let redraw renderer grid (block: Block.Block) =
+let drawBlock renderer alpha (block: Block.Block) =
+    drawShape block.position.x block.position.y block.shape alpha renderer.canvas
+
+let redraw renderer grid block =
     clearCanvas renderer.canvas
-    drawShape block.position.x block.position.y block.shape renderer.canvas
     drawGrid grid renderer.canvas
+
+    let ghost = Grid.moveBlockToBottom grid block
+    drawBlock renderer 64 ghost
+    drawBlock renderer 255 block

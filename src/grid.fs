@@ -89,4 +89,5 @@ let moveBlockToBottom grid (block: Block.Block) =
     [0..maxMoveY]
     |> Seq.map (fun dy -> Block.moveBy 0 dy block)
     |> Seq.takeWhile (isBlockValid grid)
-    |> Seq.last
+    |> Seq.tryLast
+    |> Option.defaultValue block
