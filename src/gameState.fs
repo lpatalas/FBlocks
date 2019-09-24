@@ -20,6 +20,15 @@ let updateBlockIfValid gameState updater =
     else
         gameState
 
+let placeBlock currentTime block gameState =
+    { gameState with
+        block = Shape.random() |> Block.create
+        grid = Grid.placeBlock gameState.grid block
+        lastBlockFallTime = currentTime }
+
+let placeCurrentBlock currentTime gameState =
+    placeBlock currentTime gameState.block gameState
+
 let moveBlockDown currentTime gameState =
     let movedBlock = Block.moveBy 0 1 gameState.block
     if Grid.isBlockValid gameState.grid movedBlock then
@@ -27,10 +36,7 @@ let moveBlockDown currentTime gameState =
             block = movedBlock
             lastBlockFallTime = currentTime }
     else
-        { gameState with
-            block = Shape.random() |> Block.create
-            grid = Grid.placeBlock gameState.grid gameState.block
-            lastBlockFallTime = currentTime }
+        placeCurrentBlock currentTime gameState
 
 let processInput currentTime inputs gameState =
     let processAction gameState action =
@@ -38,9 +44,8 @@ let processInput currentTime inputs gameState =
             Block.rotate |> updateBlockIfValid gameState
 
         let placeBlock gameState =
-            { gameState with
-                grid = Grid.placeBlock gameState.grid gameState.block
-                block = Block.create Shape.L }
+            let droppedBlock = Grid.moveBlockToBottom gameState.grid gameState.block
+            placeBlock currentTime droppedBlock gameState
 
         let setMovement dx gameState =
             { gameState with moveDelta = Some dx }

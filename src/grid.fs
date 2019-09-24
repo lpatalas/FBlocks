@@ -1,7 +1,7 @@
 module FBlocks.Grid
 
-open FBlocks.Coord
 open FBlocks
+open FBlocks.Coord
 
 type Grid = {
     cells: Matrix.Matrix<Shape.ShapeCell>
@@ -83,3 +83,10 @@ let placeBlock grid block =
         height = grid.height
         width = grid.width
     }
+
+let moveBlockToBottom grid (block: Block.Block) =
+    let maxMoveY = grid.height - 1 - block.position.y
+    [0..maxMoveY]
+    |> Seq.map (fun dy -> Block.moveBy 0 dy block)
+    |> Seq.takeWhile (isBlockValid grid)
+    |> Seq.last

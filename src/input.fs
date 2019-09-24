@@ -34,8 +34,8 @@ let onKeyDown =
         "ArrowLeft", MoveLeft
         "ArrowRight", MoveRight
         "ArrowDown", IncreaseFallSpeed
-        " ", Rotate
-        "Enter", PlaceBlock
+        "ArrowUp", Rotate
+        " ", PlaceBlock
     ])
 
 let onKeyUp =
