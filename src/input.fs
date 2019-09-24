@@ -2,10 +2,9 @@ module FBlocks.Input
 
 open Fable.Import.Browser
 
-type MoveDirection = Left | Right | Up | Down
-
 type InputAction =
-    | Move of direction: MoveDirection
+    | MoveLeft
+    | MoveRight
     | Rotate
     | PlaceBlock
     | IncreaseFallSpeed
@@ -21,9 +20,8 @@ let getQueue() =
 let onKeyDown (e: KeyboardEvent) =
     let maybeAction =
         match e.key with
-        | "ArrowLeft" -> Some (Move Left)
-        | "ArrowRight" -> Some (Move Right)
-        | "ArrowUp" -> Some (Move Up)
+        | "ArrowLeft" -> Some MoveLeft
+        | "ArrowRight" -> Some MoveRight
         | "ArrowDown" -> Some IncreaseFallSpeed
         | " " -> Some Rotate
         | "Enter" -> Some PlaceBlock

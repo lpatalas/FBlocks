@@ -47,10 +47,8 @@ let processInput currentTime inputs gameState =
 
         gameState |>
             match action with
-            | Input.Move Input.Left -> moveBlock -1 0
-            | Input.Move Input.Right -> moveBlock 1 0
-            | Input.Move Input.Up -> moveBlock 0 -1
-            | Input.Move Input.Down -> moveBlockDown currentTime
+            | Input.MoveLeft -> moveBlock -1 0
+            | Input.MoveRight -> moveBlock 1 0
             | Input.IncreaseFallSpeed -> setFallInterval blockFastFallInterval
             | Input.DecreaseFallSpeed -> setFallInterval blockFallInterval
             | Input.Rotate -> rotateBlock
