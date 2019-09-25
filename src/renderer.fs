@@ -13,11 +13,11 @@ let blockSize = 24.0
 let setAlpha alpha color =
     sprintf "%s%X" color alpha
 
-let create containerElementId (grid: Grid.Grid) =
+let create containerElementId width height =
     let elem = document.getElementById containerElementId
     let canvas = document.createElement_canvas()
-    canvas.width <- float grid.width * blockSize
-    canvas.height <- float grid.height * blockSize
+    canvas.width <- (float width) * blockSize
+    canvas.height <- (float height) * blockSize
     elem.appendChild(canvas) |> ignore
     { canvas = canvas }
 
@@ -55,3 +55,7 @@ let redraw renderer grid block =
     let ghost = Grid.moveBlockToBottom grid block
     drawBlock renderer 64 ghost
     drawBlock renderer 255 block
+
+let redrawBlock renderer (block: Block.Block) =
+    clearCanvas renderer.canvas
+    drawShape 0 0 block.shape 255 renderer.canvas

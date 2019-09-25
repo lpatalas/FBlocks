@@ -6,12 +6,32 @@
   <style type="text/css">
     body {
       background: #222;
+      color: #FFF;
+    }
+
+    .mainContainer {
+      display: flex;
+      flex-direction: row;
+    }
+
+    .statsContainer {
+      align-items: flex-start;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      justify-items: center;
     }
   </style>
 </head>
 
 <body>
-  <div id="mainContainer"></div>
+  <div class="mainContainer">
+    <div id="gameContainer"></div>
+    <div id="statsContainer">
+      <div>Next:</div>
+      <div id="nextBlockContainer"></div>
+    </div>
+  </div>
   <script src="bundle.generated.js" type="text/javascript"></script>
 </body>
 

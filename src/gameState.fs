@@ -11,6 +11,7 @@ type GameState = {
     lastBlockFallTime: Time.Time
     lastMoveTime: Time.Time
     moveDelta: int option
+    nextBlock: Block.Block
 }
 
 let updateBlockIfValid gameState updater =
@@ -22,9 +23,10 @@ let updateBlockIfValid gameState updater =
 
 let placeBlock currentTime block gameState =
     { gameState with
-        block = Shape.random() |> Block.create
+        block = gameState.nextBlock
         grid = Grid.placeBlock gameState.grid block
-        lastBlockFallTime = currentTime }
+        lastBlockFallTime = currentTime
+        nextBlock = Block.createRandom() }
 
 let placeCurrentBlock currentTime gameState =
     placeBlock currentTime gameState.block gameState
@@ -103,10 +105,11 @@ let update currentTime gameState =
 
 let create() =
     {
-        block = Shape.random() |> Block.create
+        block = Block.createRandom()
         fallInterval = blockFallInterval
         grid = Grid.createDefault
         lastBlockFallTime = Time.zero
         lastMoveTime = Time.zero
         moveDelta = None
+        nextBlock = Block.createRandom()
     }

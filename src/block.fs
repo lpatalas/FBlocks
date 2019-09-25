@@ -13,6 +13,10 @@ let create shapeName =
         shape = Shape.getShapeMatrix shapeName
     }
 
+let createRandom() =
+    Shape.random()
+    |> create
+
 let moveBy dx dy block =
     { block with position = add block.position { x = dx; y = dy } }
 

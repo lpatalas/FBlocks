@@ -5,7 +5,7 @@ open Fable.Import.Browser
 let onNextFrame callback =
     window.requestAnimationFrame (callback << Time.fromMilliseconds) |> ignore
 
-let rec mainLoop gameState renderer lastTime lastElapsedTime currentTime =
+let rec mainLoop gameState redraw lastTime lastElapsedTime currentTime =
     let deltaTime = Time.difference currentTime lastTime
     let elapsedTime = Time.add lastElapsedTime deltaTime
 
@@ -16,22 +16,22 @@ let rec mainLoop gameState renderer lastTime lastElapsedTime currentTime =
             gameState
 
     if newGameState <> gameState then
-        Renderer.redraw renderer newGameState.grid newGameState.block
+        newGameState |> redraw
 
-    onNextFrame (mainLoop newGameState renderer currentTime elapsedTime)
+    onNextFrame (mainLoop newGameState redraw currentTime elapsedTime)
 
-let run containerDivId =
+let run gameContainerDivId nextBlockDivId =
     let currentTime = Time.getCurrent()
     let gameState = GameState.create()
-    let renderer = Renderer.create containerDivId gameState.grid
+    let gameRenderer = Renderer.create gameContainerDivId gameState.grid.width gameState.grid.height
+    let nextBlockRenderer = Renderer.create nextBlockDivId 4 4
 
-    let redraw() =
-        Renderer.redraw renderer gameState.grid gameState.block
+    let redrawAll (gameState: GameState.GameState) =
+        Renderer.redraw gameRenderer gameState.grid gameState.block
+        Renderer.redrawBlock nextBlockRenderer gameState.nextBlock
 
     Input.addEventListeners()
 
-    redraw()
+    mainLoop gameState redrawAll currentTime Time.zero currentTime
 
-    mainLoop gameState renderer currentTime Time.zero currentTime
-
-run "mainContainer"
+run "gameContainer" "nextBlockContainer"
