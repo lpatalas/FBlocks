@@ -3,10 +3,12 @@
 
 <head>
   <title>FBlocks</title>
+  <link href="https://fonts.googleapis.com/css?family=Orbitron&display=swap" rel="stylesheet">
   <style type="text/css">
     body {
       background: #222;
       color: #FFF;
+      font-family: 'Orbitron', sans-serif;
     }
 
     .mainContainer {
@@ -15,11 +17,30 @@
     }
 
     .statsContainer {
-      align-items: flex-start;
+      align-items: stretch;
       display: flex;
       flex-direction: column;
-      justify-content: center;
-      justify-items: center;
+      justify-content: flex-start;
+      margin-left: 10px;
+    }
+
+    .statBox {
+      align-items: stretch;
+      border: solid 1px #FFF;
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 10px;
+    }
+
+    .statHeader {
+      background-color: #FFF;
+      color: #000;
+      text-align: center;
+    }
+
+    .statContent {
+      background-color: #000;
+      text-align: center;
     }
   </style>
 </head>
@@ -27,9 +48,25 @@
 <body>
   <div class="mainContainer">
     <div id="gameContainer"></div>
-    <div id="statsContainer">
-      <div>Next:</div>
-      <div id="nextBlockContainer"></div>
+    <div class="statsContainer">
+      <div class="statBox">
+        <div class="statHeader">SCORE</div>
+        <div class="statContent">
+          <div id="score">1234</div>
+        </div>
+      </div>
+      <div class="statBox">
+        <div class="statHeader">LINES</div>
+        <div class="statContent">
+          <div id="score">1234</div>
+        </div>
+      </div>
+      <div class="statBox">
+        <div class="statHeader">NEXT</div>
+        <div class="statContent">
+          <div id="nextBlockContainer"></div>
+        </div>
+      </div>
     </div>
   </div>
   <script src="bundle.generated.js" type="text/javascript"></script>
