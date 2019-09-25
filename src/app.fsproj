@@ -11,6 +11,7 @@
     <Compile Include="grid.fs" />
     <Compile Include="renderer.fs" />
     <Compile Include="input.fs" />
+    <Compile Include="score.fs" />
     <Compile Include="gameState.fs" />
     <Compile Include="app.fs" />
   </ItemGroup>
