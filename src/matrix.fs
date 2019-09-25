@@ -39,6 +39,10 @@ let getAt x y matrix =
 let getRow y matrix =
     matrix.cells.[(y * matrix.columnCount)..(matrix.columnCount + (y * matrix.columnCount) - 1)]
 
+let rows matrix =
+    seq { 0..(matrix.rowCount - 1) }
+    |> Seq.map (fun y -> getRow y matrix)
+
 let exists predicate matrix =
     Array.exists predicate matrix.cells
 

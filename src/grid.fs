@@ -42,7 +42,18 @@ let isBlockValid grid block =
     |> Block.getSquareCoords
     |> Seq.forall isCellValid
 
-let removeCompletedRows matrix =
+let countCompletedRows grid =
+    let isRowCompleted row =
+        row
+        |> Seq.forall Shape.isCellFilled
+
+    grid.cells
+    |> Matrix.rows
+    |> Seq.filter isRowCompleted
+    |> Seq.length
+
+let removeCompletedRows grid =
+    let matrix = grid.cells
     let completeRowIndices =
         let isRowComplete rowIndex =
             matrix
@@ -62,8 +73,11 @@ let removeCompletedRows matrix =
                 value
         Matrix.mapi mapCell matrix
 
-    completeRowIndices
-    |> Seq.fold removeRow matrix
+    let updatedCells =
+        completeRowIndices
+        |> Seq.fold removeRow matrix
+
+    { grid with cells = updatedCells }
 
 let placeBlock grid block =
     let filledCells = Block.getFilledCells block
@@ -76,7 +90,6 @@ let placeBlock grid block =
             match matchingCell with
             | Some (_, cell) -> cell
             | _ -> value)
-        |> removeCompletedRows
 
     {
         cells = gridCells

@@ -4,6 +4,27 @@ let blockFallInterval = Time.fromMilliseconds 1000.0
 let blockFastFallInterval = Time.fromMilliseconds 50.0
 let moveInterval = Time.fromMilliseconds 100.0
 
+type GameStats = {
+    linesCompleted: int
+    score: int
+}
+
+let emptyGameStats = { linesCompleted = 0; score = 0 }
+
+let calculateScore linesCompleted =
+    match linesCompleted with
+    | 0 -> 0
+    | 1 -> 40
+    | 2 -> 100
+    | 3 -> 300
+    | 4 -> 1200
+    | _ -> invalidArg "linesCompleted" (sprintf "Invalid number of lines completed: %i" linesCompleted)
+
+let updateStats stats completedRows =
+    { stats with
+        linesCompleted = stats.linesCompleted + completedRows
+        score = stats.score + calculateScore completedRows }
+
 type GameState = {
     block: Block.Block
     fallInterval: Time.Time
@@ -12,6 +33,7 @@ type GameState = {
     lastMoveTime: Time.Time
     moveDelta: int option
     nextBlock: Block.Block
+    stats: GameStats
 }
 
 let updateBlockIfValid gameState updater =
@@ -22,11 +44,15 @@ let updateBlockIfValid gameState updater =
         gameState
 
 let placeBlock currentTime block gameState =
+    let newGrid = Grid.placeBlock gameState.grid block
+    let completedRows = Grid.countCompletedRows newGrid
+
     { gameState with
         block = gameState.nextBlock
-        grid = Grid.placeBlock gameState.grid block
+        grid = Grid.removeCompletedRows newGrid
         lastBlockFallTime = currentTime
-        nextBlock = Block.createRandom() }
+        nextBlock = Block.createRandom()
+        stats = updateStats gameState.stats completedRows }
 
 let placeCurrentBlock currentTime gameState =
     placeBlock currentTime gameState.block gameState
@@ -112,4 +138,5 @@ let create() =
         lastMoveTime = Time.zero
         moveDelta = None
         nextBlock = Block.createRandom()
+        stats = emptyGameStats
     }

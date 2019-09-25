@@ -26,9 +26,14 @@ let run gameContainerDivId nextBlockDivId =
     let gameRenderer = Renderer.create gameContainerDivId gameState.grid.width gameState.grid.height
     let nextBlockRenderer = Renderer.create nextBlockDivId 4 4
 
+    let scoreElement = document.getElementById "score"
+    let linesCompletedElement = document.getElementById "linesCompleted"
+
     let redrawAll (gameState: GameState.GameState) =
         Renderer.redraw gameRenderer gameState.grid gameState.block
         Renderer.redrawBlock nextBlockRenderer gameState.nextBlock
+        scoreElement.innerText <- string gameState.stats.score
+        linesCompletedElement.innerText <- string gameState.stats.linesCompleted
 
     Input.addEventListeners()
 
