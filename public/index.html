@@ -34,13 +34,18 @@
       opacity: 1;
     }
 
-    .gameOver .overlay {
+    #gameContainer .gameOver .overlay {
       background-color: #000;
-      opacity: 0.5;
+      opacity: 0;
       height: 100%;
       position: absolute;
+      transition: all 1s;
       width: 100%;
       z-index: 1;
+    }
+
+    #gameContainer.is-over .gameOver .overlay {
+      opacity: 0.8;
     }
 
     #gameContainer .gameOver .message {

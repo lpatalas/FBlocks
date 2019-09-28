@@ -5,20 +5,23 @@ open Fable.Import.Browser
 let onNextFrame callback =
     window.requestAnimationFrame (callback << Time.fromMilliseconds) |> ignore
 
-let rec mainLoop gameState updateUI lastTime lastElapsedTime currentTime =
+let rec mainLoop game updateUI lastTime lastElapsedTime currentTime =
     let deltaTime = Time.difference currentTime lastTime
     let elapsedTime = Time.add lastElapsedTime deltaTime
 
-    let newGameState =
+    let updatedGame =
         if deltaTime > Time.zero then
-            GameState.update elapsedTime gameState
+            GameState.update elapsedTime game
         else
-            gameState
+            game
 
-    if newGameState <> gameState then
-        newGameState |> updateUI
+    if updatedGame <> game then
+        updatedGame |> updateUI
 
-    onNextFrame (mainLoop newGameState updateUI currentTime elapsedTime)
+    match updatedGame with
+    | GameState.RunningGame _ ->
+        onNextFrame (mainLoop updatedGame updateUI currentTime elapsedTime)
+    | _ -> ()
 
 
 let gridWidth = 10
@@ -26,7 +29,7 @@ let gridHeight = 20
 
 let run gameContainerDivId nextBlockDivId =
     let currentTime = Time.getCurrent()
-    let gameState = GameState.create gridWidth gridHeight currentTime
+    let game = GameState.newGame gridWidth gridHeight currentTime
     let gameRenderer = Renderer.create gameContainerDivId gridWidth gridHeight
     let nextBlockRenderer = Renderer.create nextBlockDivId 4 4
 
@@ -34,16 +37,22 @@ let run gameContainerDivId nextBlockDivId =
     let scoreElement = document.getElementById "score"
     let linesCompletedElement = document.getElementById "linesCompleted"
 
-    let updateUI (gameState: GameState.GameState) =
-        Renderer.redraw gameRenderer gameState.grid gameState.block
-        Renderer.drawNextBlock nextBlockRenderer gameState.nextShape
-        scoreElement.innerText <- string gameState.score.points
-        linesCompletedElement.innerText <- string gameState.score.linesCompleted
-        if gameState.isGameOver then
+    let updateScore (score: Score.Score) =
+        scoreElement.innerText <- string score.points
+        linesCompletedElement.innerText <- string score.linesCompleted
+
+    let updateUI (game: GameState.Game) =
+        match game with
+        | GameState.RunningGame gameState ->
+            Renderer.redraw gameRenderer gameState.grid gameState.block
+            Renderer.drawNextBlock nextBlockRenderer gameState.nextShape
+            updateScore gameState.score
+        | GameState.FinishedGame score ->
+            updateScore score
             gameContainerElement.classList.add("is-over")
 
     Input.addEventListeners()
 
-    mainLoop gameState updateUI currentTime Time.zero currentTime
+    mainLoop game updateUI currentTime Time.zero currentTime
 
 run "gameContainer" "nextBlockContainer"
