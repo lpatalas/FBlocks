@@ -20,3 +20,9 @@ let update score completedRows =
     { score with
         linesCompleted = score.linesCompleted + completedRows
         points = score.points + calculatePoints completedRows }
+
+let difference previous current =
+    {
+        linesCompleted = current.linesCompleted - previous.linesCompleted
+        points = current.points - previous.points
+    }
