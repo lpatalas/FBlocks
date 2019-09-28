@@ -1,4 +1,4 @@
-module FBlocks.GameState
+module FBlocks.Game
 
 let blockFallInterval = Time.fromMilliseconds 1000.0
 let blockFastFallInterval = Time.fromMilliseconds 50.0

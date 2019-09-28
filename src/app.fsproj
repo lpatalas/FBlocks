@@ -12,7 +12,7 @@
     <Compile Include="renderer.fs" />
     <Compile Include="input.fs" />
     <Compile Include="score.fs" />
-    <Compile Include="gameState.fs" />
+    <Compile Include="game.fs" />
     <Compile Include="app.fs" />
   </ItemGroup>
   <ItemGroup>

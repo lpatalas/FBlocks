@@ -11,7 +11,7 @@ let rec mainLoop game updateUI lastTime lastElapsedTime currentTime =
 
     let updatedGame =
         if deltaTime > Time.zero then
-            GameState.update elapsedTime game
+            Game.update elapsedTime game
         else
             game
 
@@ -19,7 +19,7 @@ let rec mainLoop game updateUI lastTime lastElapsedTime currentTime =
         updatedGame |> updateUI
 
     match updatedGame with
-    | GameState.RunningGame _ ->
+    | Game.RunningGame _ ->
         onNextFrame (mainLoop updatedGame updateUI currentTime elapsedTime)
     | _ -> ()
 
@@ -29,7 +29,7 @@ let gridHeight = 20
 
 let run gameContainerDivId nextBlockDivId =
     let currentTime = Time.getCurrent()
-    let game = GameState.newGame gridWidth gridHeight currentTime
+    let game = Game.newGame gridWidth gridHeight currentTime
     let gameRenderer = Renderer.create gameContainerDivId gridWidth gridHeight
     let nextBlockRenderer = Renderer.create nextBlockDivId 4 4
 
@@ -41,13 +41,13 @@ let run gameContainerDivId nextBlockDivId =
         scoreElement.innerText <- string score.points
         linesCompletedElement.innerText <- string score.linesCompleted
 
-    let updateUI (game: GameState.Game) =
+    let updateUI (game: Game.Game) =
         match game with
-        | GameState.RunningGame gameState ->
+        | Game.RunningGame gameState ->
             Renderer.redraw gameRenderer gameState.grid gameState.block
             Renderer.drawNextBlock nextBlockRenderer gameState.nextShape
             updateScore gameState.score
-        | GameState.FinishedGame score ->
+        | Game.FinishedGame score ->
             updateScore score
             gameContainerElement.classList.add("is-over")
 
