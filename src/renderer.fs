@@ -56,6 +56,7 @@ let redraw renderer grid block =
     drawBlock renderer 64 ghost
     drawBlock renderer 255 block
 
-let redrawBlock renderer (block: Block.Block) =
+let drawNextBlock renderer (shape: Shape.ShapeName) =
     clearCanvas renderer.canvas
-    drawShape 0 0 block.shape 255 renderer.canvas
+    let shapeMatrix = shape |> Shape.getShapeMatrix
+    drawShape 0 0 shapeMatrix 255 renderer.canvas

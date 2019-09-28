@@ -11,7 +11,7 @@ type GameState = {
     lastBlockFallTime: Time.Time
     lastMoveTime: Time.Time
     moveDelta: int option
-    nextBlock: Block.Block
+    nextShape: Shape.ShapeName
     score: Score.Score
 }
 
@@ -27,10 +27,10 @@ let placeBlock currentTime block gameState =
     let completedRows = Grid.countCompletedRows newGrid
 
     { gameState with
-        block = gameState.nextBlock
+        block = gameState.nextShape |> Block.create
         grid = Grid.removeCompletedRows newGrid
         lastBlockFallTime = currentTime
-        nextBlock = Block.createRandom()
+        nextShape = Shape.random()
         score = Score.update gameState.score completedRows }
 
 let placeCurrentBlock currentTime gameState =
@@ -116,6 +116,6 @@ let create() =
         lastBlockFallTime = Time.zero
         lastMoveTime = Time.zero
         moveDelta = None
-        nextBlock = Block.createRandom()
+        nextShape = Shape.random()
         score = Score.zero
     }

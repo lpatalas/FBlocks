@@ -31,7 +31,7 @@ let run gameContainerDivId nextBlockDivId =
 
     let redrawAll (gameState: GameState.GameState) =
         Renderer.redraw gameRenderer gameState.grid gameState.block
-        Renderer.redrawBlock nextBlockRenderer gameState.nextBlock
+        Renderer.drawNextBlock nextBlockRenderer gameState.nextShape
         scoreElement.innerText <- string gameState.score.points
         linesCompletedElement.innerText <- string gameState.score.linesCompleted
 
