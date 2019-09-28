@@ -27,7 +27,7 @@ let placeBlock currentTime block gameState =
     let completedRows = Grid.countCompletedRows newGrid
 
     { gameState with
-        block = gameState.nextShape |> Block.create
+        block = gameState.nextShape |> Block.create gameState.grid.width
         grid = Grid.removeCompletedRows newGrid
         lastBlockFallTime = currentTime
         nextShape = Shape.random()
@@ -108,12 +108,13 @@ let update currentTime gameState =
 
     newGameState
 
-let create() =
+let create gridWidth gridHeight currentTime =
+    let grid = Grid.create gridWidth gridHeight
     {
-        block = Block.createRandom()
+        block = Shape.random() |> Block.create grid.width
         fallInterval = blockFallInterval
-        grid = Grid.createDefault
-        lastBlockFallTime = Time.zero
+        grid = grid
+        lastBlockFallTime = currentTime
         lastMoveTime = Time.zero
         moveDelta = None
         nextShape = Shape.random()

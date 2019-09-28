@@ -7,15 +7,18 @@ type Block = {
     shape: Shape.ShapeMatrix
 }
 
-let create shapeName =
-    {
-        position = { x = 0; y = 0 }
-        shape = Shape.getShapeMatrix shapeName
-    }
+let create gridSize shapeName =
+    let shape = Shape.getShapeMatrix shapeName
+    let maxY =
+        shape
+        |> Shape.filledCellCoords
+        |> Seq.map Coord.getY
+        |> Seq.max
 
-let createRandom() =
-    Shape.random()
-    |> create
+    {
+        position = { x = (gridSize - shape.columnCount) / 2; y = -maxY }
+        shape = shape
+    }
 
 let moveBy dx dy block =
     { block with position = add block.position { x = dx; y = dy } }

@@ -9,9 +9,7 @@ type Grid = {
     width: int
 }
 
-let createDefault =
-    let width = 10
-    let height = 20
+let create width height =
     {
         cells = Matrix.create width height Shape.EmptyCell
         height = height
@@ -26,7 +24,6 @@ let isBlockValid grid block =
     let isCellInBounds coord =
         coord.x >= 0
         && coord.x < grid.width
-        && coord.y >= 0
         && coord.y < grid.height
 
     let isCellOverlappingFilledGrid cellCoord =

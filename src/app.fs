@@ -20,10 +20,14 @@ let rec mainLoop gameState redraw lastTime lastElapsedTime currentTime =
 
     onNextFrame (mainLoop newGameState redraw currentTime elapsedTime)
 
+
+let gridWidth = 10
+let gridHeight = 20
+
 let run gameContainerDivId nextBlockDivId =
     let currentTime = Time.getCurrent()
-    let gameState = GameState.create()
-    let gameRenderer = Renderer.create gameContainerDivId gameState.grid.width gameState.grid.height
+    let gameState = GameState.create gridWidth gridHeight currentTime
+    let gameRenderer = Renderer.create gameContainerDivId gridWidth gridHeight
     let nextBlockRenderer = Renderer.create nextBlockDivId 4 4
 
     let scoreElement = document.getElementById "score"
