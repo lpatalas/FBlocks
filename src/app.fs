@@ -5,7 +5,7 @@ open Fable.Import.Browser
 let onNextFrame callback =
     window.requestAnimationFrame (callback << Time.fromMilliseconds) |> ignore
 
-let rec mainLoop gameState redraw lastTime lastElapsedTime currentTime =
+let rec mainLoop gameState updateUI lastTime lastElapsedTime currentTime =
     let deltaTime = Time.difference currentTime lastTime
     let elapsedTime = Time.add lastElapsedTime deltaTime
 
@@ -16,9 +16,9 @@ let rec mainLoop gameState redraw lastTime lastElapsedTime currentTime =
             gameState
 
     if newGameState <> gameState then
-        newGameState |> redraw
+        newGameState |> updateUI
 
-    onNextFrame (mainLoop newGameState redraw currentTime elapsedTime)
+    onNextFrame (mainLoop newGameState updateUI currentTime elapsedTime)
 
 
 let gridWidth = 10
@@ -30,17 +30,20 @@ let run gameContainerDivId nextBlockDivId =
     let gameRenderer = Renderer.create gameContainerDivId gridWidth gridHeight
     let nextBlockRenderer = Renderer.create nextBlockDivId 4 4
 
+    let gameContainerElement = document.getElementById gameContainerDivId
     let scoreElement = document.getElementById "score"
     let linesCompletedElement = document.getElementById "linesCompleted"
 
-    let redrawAll (gameState: GameState.GameState) =
+    let updateUI (gameState: GameState.GameState) =
         Renderer.redraw gameRenderer gameState.grid gameState.block
         Renderer.drawNextBlock nextBlockRenderer gameState.nextShape
         scoreElement.innerText <- string gameState.score.points
         linesCompletedElement.innerText <- string gameState.score.linesCompleted
+        if gameState.isGameOver then
+            gameContainerElement.classList.add("is-over")
 
     Input.addEventListeners()
 
-    mainLoop gameState redrawAll currentTime Time.zero currentTime
+    mainLoop gameState updateUI currentTime Time.zero currentTime
 
 run "gameContainer" "nextBlockContainer"

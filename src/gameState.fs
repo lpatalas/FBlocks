@@ -8,6 +8,7 @@ type GameState = {
     block: Block.Block
     fallInterval: Time.Time
     grid: Grid.Grid
+    isGameOver: bool
     lastBlockFallTime: Time.Time
     lastMoveTime: Time.Time
     moveDelta: int option
@@ -99,14 +100,21 @@ let processFalling currentTime gameState =
     else
         gameState
 
+let checkGameOver gameState =
+    if Grid.isBlockValid gameState.grid gameState.block then
+        gameState
+    else
+        { gameState with isGameOver = true }
+
 let update currentTime gameState =
-    let newGameState =
+    if gameState.isGameOver then
+        gameState
+    else
         gameState
         |> processInput currentTime (Input.getActions())
         |> processMovement currentTime
         |> processFalling currentTime
-
-    newGameState
+        |> checkGameOver
 
 let create gridWidth gridHeight currentTime =
     let grid = Grid.create gridWidth gridHeight
@@ -114,6 +122,7 @@ let create gridWidth gridHeight currentTime =
         block = Shape.random() |> Block.create grid.width
         fallInterval = blockFallInterval
         grid = grid
+        isGameOver = false
         lastBlockFallTime = currentTime
         lastMoveTime = Time.zero
         moveDelta = None
