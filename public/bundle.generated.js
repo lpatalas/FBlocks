@@ -13075,19 +13075,25 @@ function fromBytesBE(bytes, unsigned) {
 /*!********************!*\
   !*** ./src/app.fs ***!
   \********************/
-/*! exports provided: onNextFrame, mainLoop, run */
+/*! exports provided: onNextFrame, mainLoop, gridWidth, gridHeight, run */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "onNextFrame", function() { return onNextFrame; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "mainLoop", function() { return mainLoop; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "gridWidth", function() { return gridWidth; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "gridHeight", function() { return gridHeight; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "run", function() { return run; });
 /* harmony import */ var _time_fs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./time.fs */ "./src/time.fs");
-/* harmony import */ var _gameState_fs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./gameState.fs */ "./src/gameState.fs");
+/* harmony import */ var _game_fs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./game.fs */ "./src/game.fs");
 /* harmony import */ var _fable_fable_library_2_3_25_Util_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../.fable/fable-library.2.3.25/Util.js */ "./.fable/fable-library.2.3.25/Util.js");
 /* harmony import */ var _renderer_fs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./renderer.fs */ "./src/renderer.fs");
-/* harmony import */ var _input_fs__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./input.fs */ "./src/input.fs");
+/* harmony import */ var _score_fs__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./score.fs */ "./src/score.fs");
+/* harmony import */ var _fable_fable_library_2_3_25_String_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../.fable/fable-library.2.3.25/String.js */ "./.fable/fable-library.2.3.25/String.js");
+/* harmony import */ var _input_fs__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./input.fs */ "./src/input.fs");
+
+
 
 
 
@@ -13100,33 +13106,104 @@ function onNextFrame(callback) {
   });
   value, null;
 }
-function mainLoop(gameState, renderer, lastTime, lastElapsedTime, currentTime) {
+function mainLoop(game, updateUI, lastTime, lastElapsedTime, currentTime) {
   const deltaTime = Object(_time_fs__WEBPACK_IMPORTED_MODULE_0__["difference"])(currentTime, lastTime);
   const elapsedTime = Object(_time_fs__WEBPACK_IMPORTED_MODULE_0__["add"])(lastElapsedTime, deltaTime);
-  const newGameState = deltaTime.CompareTo(_time_fs__WEBPACK_IMPORTED_MODULE_0__["zero"]) > 0 ? Object(_gameState_fs__WEBPACK_IMPORTED_MODULE_1__["update"])(elapsedTime, gameState) : gameState;
+  const updatedGame = deltaTime.CompareTo(_time_fs__WEBPACK_IMPORTED_MODULE_0__["zero"]) > 0 ? Object(_game_fs__WEBPACK_IMPORTED_MODULE_1__["update"])(elapsedTime, game) : game;
 
-  if (!Object(_fable_fable_library_2_3_25_Util_js__WEBPACK_IMPORTED_MODULE_2__["equals"])(newGameState, gameState)) {
-    Object(_renderer_fs__WEBPACK_IMPORTED_MODULE_3__["redraw"])(renderer, newGameState.grid, newGameState.block);
+  if (!Object(_fable_fable_library_2_3_25_Util_js__WEBPACK_IMPORTED_MODULE_2__["equals"])(updatedGame, game)) {
+    updateUI(game, updatedGame);
   }
 
-  onNextFrame(function (currentTime$$1) {
-    mainLoop(newGameState, renderer, currentTime, elapsedTime, currentTime$$1);
-  });
+  if (updatedGame.tag === 0) {
+    onNextFrame(function (currentTime$$1) {
+      mainLoop(updatedGame, updateUI, currentTime, elapsedTime, currentTime$$1);
+    });
+  }
 }
-function run(containerDivId) {
+const gridWidth = 10;
+const gridHeight = 20;
+function run(gameContainerDivId, nextBlockDivId) {
   const currentTime$$2 = Object(_time_fs__WEBPACK_IMPORTED_MODULE_0__["getCurrent"])();
-  const gameState$$1 = Object(_gameState_fs__WEBPACK_IMPORTED_MODULE_1__["create"])();
-  const renderer$$1 = Object(_renderer_fs__WEBPACK_IMPORTED_MODULE_3__["create"])(containerDivId, gameState$$1.grid);
+  const game$$1 = Object(_game_fs__WEBPACK_IMPORTED_MODULE_1__["newGame"])(gridWidth, gridHeight, currentTime$$2);
+  const gameRenderer = Object(_renderer_fs__WEBPACK_IMPORTED_MODULE_3__["create"])(gameContainerDivId, gridWidth, gridHeight);
+  const nextBlockRenderer = Object(_renderer_fs__WEBPACK_IMPORTED_MODULE_3__["create"])(nextBlockDivId, 4, 4);
+  const gameContainerElement = document.getElementById(gameContainerDivId);
+  const scoreElement = document.getElementById("score");
+  const linesCompletedElement = document.getElementById("linesCompleted");
 
-  const redraw = function redraw() {
-    Object(_renderer_fs__WEBPACK_IMPORTED_MODULE_3__["redraw"])(renderer$$1, gameState$$1.grid, gameState$$1.block);
+  const updateScore = function updateScore(score) {
+    scoreElement.innerText = Object(_fable_fable_library_2_3_25_Util_js__WEBPACK_IMPORTED_MODULE_2__["int32ToString"])(score.points);
+    linesCompletedElement.innerText = Object(_fable_fable_library_2_3_25_Util_js__WEBPACK_IMPORTED_MODULE_2__["int32ToString"])(score.linesCompleted);
   };
 
-  Object(_input_fs__WEBPACK_IMPORTED_MODULE_4__["addEventListeners"])();
-  redraw();
-  mainLoop(gameState$$1, renderer$$1, currentTime$$2, _time_fs__WEBPACK_IMPORTED_MODULE_0__["zero"], currentTime$$2);
+  const removeChildNodeCallback = function removeChildNodeCallback(node, e) {
+    console.log("Removing element");
+    node.remove();
+  };
+
+  const showScorePopup = function showScorePopup(previousScore, currentScore) {
+    if (!Object(_fable_fable_library_2_3_25_Util_js__WEBPACK_IMPORTED_MODULE_2__["equals"])(previousScore, currentScore)) {
+      const gainedScore = Object(_score_fs__WEBPACK_IMPORTED_MODULE_4__["difference"])(previousScore, currentScore);
+      let linesText;
+
+      if (gainedScore.linesCompleted > 1) {
+        const arg10 = gainedScore.linesCompleted | 0;
+        const clo1 = Object(_fable_fable_library_2_3_25_String_js__WEBPACK_IMPORTED_MODULE_5__["toText"])(Object(_fable_fable_library_2_3_25_String_js__WEBPACK_IMPORTED_MODULE_5__["printf"])("%i LINES"));
+        linesText = clo1(arg10);
+      } else {
+        const arg10$$1 = gainedScore.linesCompleted | 0;
+        const clo1$$1 = Object(_fable_fable_library_2_3_25_String_js__WEBPACK_IMPORTED_MODULE_5__["toText"])(Object(_fable_fable_library_2_3_25_String_js__WEBPACK_IMPORTED_MODULE_5__["printf"])("%i LINE"));
+        linesText = clo1$$1(arg10$$1);
+      }
+
+      let pointsText;
+      const arg10$$2 = gainedScore.points | 0;
+      const clo1$$2 = Object(_fable_fable_library_2_3_25_String_js__WEBPACK_IMPORTED_MODULE_5__["toText"])(Object(_fable_fable_library_2_3_25_String_js__WEBPACK_IMPORTED_MODULE_5__["printf"])("%i POINTS"));
+      pointsText = clo1$$2(arg10$$2);
+      const scoreElement$$1 = document.createElement("div");
+      scoreElement$$1.classList.add("score-popup");
+      const arg10$$3 = linesText;
+      const arg20 = pointsText;
+      const clo1$$3 = Object(_fable_fable_library_2_3_25_String_js__WEBPACK_IMPORTED_MODULE_5__["toText"])(Object(_fable_fable_library_2_3_25_String_js__WEBPACK_IMPORTED_MODULE_5__["printf"])("%s<br>+%s"));
+      const clo2 = clo1$$3(arg10$$3);
+      scoreElement$$1.innerHTML = clo2(arg20);
+      let callback$$1;
+      const arg00 = scoreElement$$1;
+      const clo1$$4 = Object(_fable_fable_library_2_3_25_Util_js__WEBPACK_IMPORTED_MODULE_2__["partialApply"])(1, removeChildNodeCallback, [arg00]);
+
+      callback$$1 = function (arg10$$4) {
+        clo1$$4(arg10$$4);
+      };
+
+      scoreElement$$1.addEventListener("animationend", callback$$1);
+      const value$$1 = gameContainerElement.appendChild(scoreElement$$1);
+      value$$1, null;
+    }
+  };
+
+  const updateUI$$1 = function updateUI$$1(previousState, currentState) {
+    if (currentState.tag === 1) {
+      const score$$1 = currentState.fields[0];
+      updateScore(score$$1);
+      gameContainerElement.classList.add("is-over");
+    } else {
+      const gameState = currentState.fields[0];
+      Object(_renderer_fs__WEBPACK_IMPORTED_MODULE_3__["redraw"])(gameRenderer, gameState.grid, gameState.block);
+      Object(_renderer_fs__WEBPACK_IMPORTED_MODULE_3__["drawNextBlock"])(nextBlockRenderer, gameState.nextShape);
+      updateScore(gameState.score);
+
+      if (previousState.tag === 0) {
+        const prevGameState = previousState.fields[0];
+        showScorePopup(prevGameState.score, gameState.score);
+      }
+    }
+  };
+
+  Object(_input_fs__WEBPACK_IMPORTED_MODULE_6__["addEventListeners"])();
+  mainLoop(game$$1, updateUI$$1, currentTime$$2, _time_fs__WEBPACK_IMPORTED_MODULE_0__["zero"], currentTime$$2);
 }
-run("mainContainer");
+run("gameContainer", "nextBlockContainer");
 
 /***/ }),
 
@@ -13134,7 +13211,7 @@ run("mainContainer");
 /*!************************!*\
   !*** ./src/app.fsproj ***!
   \************************/
-/*! exports provided: onNextFrame, mainLoop, run */
+/*! exports provided: onNextFrame, mainLoop, gridWidth, gridHeight, run */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -13143,6 +13220,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "onNextFrame", function() { return _app_fs__WEBPACK_IMPORTED_MODULE_0__["onNextFrame"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "mainLoop", function() { return _app_fs__WEBPACK_IMPORTED_MODULE_0__["mainLoop"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "gridWidth", function() { return _app_fs__WEBPACK_IMPORTED_MODULE_0__["gridWidth"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "gridHeight", function() { return _app_fs__WEBPACK_IMPORTED_MODULE_0__["gridHeight"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "run", function() { return _app_fs__WEBPACK_IMPORTED_MODULE_0__["run"]; });
 
@@ -13172,6 +13253,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _matrix_fs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./matrix.fs */ "./src/matrix.fs");
 /* harmony import */ var _fable_fable_library_2_3_25_Reflection_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../.fable/fable-library.2.3.25/Reflection.js */ "./.fable/fable-library.2.3.25/Reflection.js");
 /* harmony import */ var _fable_fable_library_2_3_25_Seq_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../.fable/fable-library.2.3.25/Seq.js */ "./.fable/fable-library.2.3.25/Seq.js");
+/* harmony import */ var _fable_fable_library_2_3_25_Util_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../.fable/fable-library.2.3.25/Util.js */ "./.fable/fable-library.2.3.25/Util.js");
+/* harmony import */ var _fable_fable_library_2_3_25_Int32_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../.fable/fable-library.2.3.25/Int32.js */ "./.fable/fable-library.2.3.25/Int32.js");
+
+
 
 
 
@@ -13185,41 +13270,51 @@ const Block = Object(_fable_fable_library_2_3_25_Types_js__WEBPACK_IMPORTED_MODU
 function Block$reflection() {
   return Object(_fable_fable_library_2_3_25_Reflection_js__WEBPACK_IMPORTED_MODULE_4__["record"])("FBlocks.Block.Block", [], Block, () => [["position", Object(_coord_fs__WEBPACK_IMPORTED_MODULE_1__["Coord$reflection"])()], ["shape", Object(_matrix_fs__WEBPACK_IMPORTED_MODULE_3__["Matrix$00601$reflection"])(Object(_shape_fs__WEBPACK_IMPORTED_MODULE_2__["ShapeCell$reflection"])())]]);
 }
-function create(shapeName) {
-  return new Block(new _coord_fs__WEBPACK_IMPORTED_MODULE_1__["Coord"](0, 0), Object(_shape_fs__WEBPACK_IMPORTED_MODULE_2__["getShapeMatrix"])(shapeName));
+function create(gridSize, shapeName) {
+  const shape = Object(_shape_fs__WEBPACK_IMPORTED_MODULE_2__["getShapeMatrix"])(shapeName);
+  let maxY;
+  let source$$1;
+  let source;
+  const shape$$1 = shape;
+  source = Object(_shape_fs__WEBPACK_IMPORTED_MODULE_2__["filledCellCoords"])(shape$$1);
+  source$$1 = Object(_fable_fable_library_2_3_25_Seq_js__WEBPACK_IMPORTED_MODULE_5__["map"])(_coord_fs__WEBPACK_IMPORTED_MODULE_1__["getY"], source);
+  maxY = Object(_fable_fable_library_2_3_25_Seq_js__WEBPACK_IMPORTED_MODULE_5__["max"])(source$$1, {
+    Compare: _fable_fable_library_2_3_25_Util_js__WEBPACK_IMPORTED_MODULE_6__["comparePrimitives"]
+  });
+  return new Block(new _coord_fs__WEBPACK_IMPORTED_MODULE_1__["Coord"](~~((gridSize - shape.columnCount) / 2), Object(_fable_fable_library_2_3_25_Int32_js__WEBPACK_IMPORTED_MODULE_7__["op_UnaryNegation_Int32"])(maxY)), shape);
 }
 function moveBy(dx, dy, block) {
   return new Block(Object(_coord_fs__WEBPACK_IMPORTED_MODULE_1__["add"])(block.position, new _coord_fs__WEBPACK_IMPORTED_MODULE_1__["Coord"](dx, dy)), block.shape);
 }
 function rotate(block$$1) {
-  const shape = Object(_matrix_fs__WEBPACK_IMPORTED_MODULE_3__["rotateClockwise"])(block$$1.shape);
-  return new Block(block$$1.position, shape);
+  const shape$$2 = Object(_matrix_fs__WEBPACK_IMPORTED_MODULE_3__["rotateClockwise"])(block$$1.shape);
+  return new Block(block$$1.position, shape$$2);
 }
 function getSquareCoords(block$$2) {
-  let source;
-  const shape$$1 = block$$2.shape;
-  source = Object(_shape_fs__WEBPACK_IMPORTED_MODULE_2__["filledCellCoords"])(shape$$1);
-  return Object(_fable_fable_library_2_3_25_Seq_js__WEBPACK_IMPORTED_MODULE_5__["map"])(function mapping(coord) {
-    return Object(_coord_fs__WEBPACK_IMPORTED_MODULE_1__["add"])(coord, block$$2.position);
-  }, source);
+  let source$$2;
+  const shape$$3 = block$$2.shape;
+  source$$2 = Object(_shape_fs__WEBPACK_IMPORTED_MODULE_2__["filledCellCoords"])(shape$$3);
+  return Object(_fable_fable_library_2_3_25_Seq_js__WEBPACK_IMPORTED_MODULE_5__["map"])(function mapping(coord$$1) {
+    return Object(_coord_fs__WEBPACK_IMPORTED_MODULE_1__["add"])(coord$$1, block$$2.position);
+  }, source$$2);
 }
 function getFilledCells(block$$3) {
-  let source$$2;
-  let source$$1;
+  let source$$4;
+  let source$$3;
   const matrix = block$$3.shape;
-  source$$1 = Object(_matrix_fs__WEBPACK_IMPORTED_MODULE_3__["flatmapi"])(function mapping$$1(x, y, cell) {
+  source$$3 = Object(_matrix_fs__WEBPACK_IMPORTED_MODULE_3__["flatmapi"])(function mapping$$1(x, y, cell) {
     return [new _coord_fs__WEBPACK_IMPORTED_MODULE_1__["Coord"](x, y), cell];
   }, matrix);
-  source$$2 = Object(_fable_fable_library_2_3_25_Seq_js__WEBPACK_IMPORTED_MODULE_5__["filter"])(function predicate(tupledArg) {
-    const coord$$1 = tupledArg[0];
+  source$$4 = Object(_fable_fable_library_2_3_25_Seq_js__WEBPACK_IMPORTED_MODULE_5__["filter"])(function predicate(tupledArg) {
+    const coord$$2 = tupledArg[0];
     const cell$$1 = tupledArg[1];
     return Object(_shape_fs__WEBPACK_IMPORTED_MODULE_2__["isCellFilled"])(cell$$1);
-  }, source$$1);
+  }, source$$3);
   return Object(_fable_fable_library_2_3_25_Seq_js__WEBPACK_IMPORTED_MODULE_5__["map"])(function mapping$$2(tupledArg$$1) {
-    const coord$$2 = tupledArg$$1[0];
+    const coord$$3 = tupledArg$$1[0];
     const cell$$2 = tupledArg$$1[1];
-    return [Object(_coord_fs__WEBPACK_IMPORTED_MODULE_1__["add"])(coord$$2, block$$3.position), cell$$2];
-  }, source$$2);
+    return [Object(_coord_fs__WEBPACK_IMPORTED_MODULE_1__["add"])(coord$$3, block$$3.position), cell$$2];
+  }, source$$4);
 }
 
 /***/ }),
@@ -13228,7 +13323,7 @@ function getFilledCells(block$$3) {
 /*!**********************!*\
   !*** ./src/coord.fs ***!
   \**********************/
-/*! exports provided: Coord, Coord$reflection, add */
+/*! exports provided: Coord, Coord$reflection, add, getY */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -13236,6 +13331,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Coord", function() { return Coord; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Coord$reflection", function() { return Coord$reflection; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "add", function() { return add; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getY", function() { return getY; });
 /* harmony import */ var _fable_fable_library_2_3_25_Types_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../.fable/fable-library.2.3.25/Types.js */ "./.fable/fable-library.2.3.25/Types.js");
 /* harmony import */ var _fable_fable_library_2_3_25_Reflection_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../.fable/fable-library.2.3.25/Reflection.js */ "./.fable/fable-library.2.3.25/Reflection.js");
 
@@ -13250,14 +13346,17 @@ function Coord$reflection() {
 function add(a, b) {
   return new Coord(a.x + b.x, a.y + b.y);
 }
+function getY(coord) {
+  return coord.y;
+}
 
 /***/ }),
 
-/***/ "./src/gameState.fs":
-/*!**************************!*\
-  !*** ./src/gameState.fs ***!
-  \**************************/
-/*! exports provided: blockFallInterval, blockFastFallInterval, moveInterval, GameState, GameState$reflection, updateBlockIfValid, placeBlock, placeCurrentBlock, moveBlockDown, processInput, moveBlock, processMovement, processFalling, update, create */
+/***/ "./src/game.fs":
+/*!*********************!*\
+  !*** ./src/game.fs ***!
+  \*********************/
+/*! exports provided: blockFallInterval, blockFastFallInterval, moveInterval, GameState, GameState$reflection, Game, Game$reflection, updateBlockIfValid, placeBlock, placeCurrentBlock, moveBlockDown, processInput, moveBlock, processMovement, processFalling, checkGameOver, update, newGame */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -13267,6 +13366,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "moveInterval", function() { return moveInterval; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GameState", function() { return GameState; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GameState$reflection", function() { return GameState$reflection; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Game", function() { return Game; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Game$reflection", function() { return Game$reflection; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "updateBlockIfValid", function() { return updateBlockIfValid; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "placeBlock", function() { return placeBlock; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "placeCurrentBlock", function() { return placeCurrentBlock; });
@@ -13275,17 +13376,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "moveBlock", function() { return moveBlock; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "processMovement", function() { return processMovement; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "processFalling", function() { return processFalling; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "checkGameOver", function() { return checkGameOver; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "update", function() { return update; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "create", function() { return create; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "newGame", function() { return newGame; });
 /* harmony import */ var _time_fs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./time.fs */ "./src/time.fs");
 /* harmony import */ var _fable_fable_library_2_3_25_Types_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../.fable/fable-library.2.3.25/Types.js */ "./.fable/fable-library.2.3.25/Types.js");
 /* harmony import */ var _block_fs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./block.fs */ "./src/block.fs");
 /* harmony import */ var _grid_fs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./grid.fs */ "./src/grid.fs");
 /* harmony import */ var _fable_fable_library_2_3_25_Reflection_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../.fable/fable-library.2.3.25/Reflection.js */ "./.fable/fable-library.2.3.25/Reflection.js");
 /* harmony import */ var _shape_fs__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./shape.fs */ "./src/shape.fs");
-/* harmony import */ var _fable_fable_library_2_3_25_Util_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../.fable/fable-library.2.3.25/Util.js */ "./.fable/fable-library.2.3.25/Util.js");
-/* harmony import */ var _fable_fable_library_2_3_25_Seq_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../.fable/fable-library.2.3.25/Seq.js */ "./.fable/fable-library.2.3.25/Seq.js");
-/* harmony import */ var _input_fs__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./input.fs */ "./src/input.fs");
+/* harmony import */ var _score_fs__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./score.fs */ "./src/score.fs");
+/* harmony import */ var _fable_fable_library_2_3_25_Util_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../.fable/fable-library.2.3.25/Util.js */ "./.fable/fable-library.2.3.25/Util.js");
+/* harmony import */ var _fable_fable_library_2_3_25_Seq_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../.fable/fable-library.2.3.25/Seq.js */ "./.fable/fable-library.2.3.25/Seq.js");
+/* harmony import */ var _input_fs__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./input.fs */ "./src/input.fs");
+
 
 
 
@@ -13298,32 +13402,44 @@ __webpack_require__.r(__webpack_exports__);
 const blockFallInterval = Object(_time_fs__WEBPACK_IMPORTED_MODULE_0__["fromMilliseconds"])(1000);
 const blockFastFallInterval = Object(_time_fs__WEBPACK_IMPORTED_MODULE_0__["fromMilliseconds"])(50);
 const moveInterval = Object(_time_fs__WEBPACK_IMPORTED_MODULE_0__["fromMilliseconds"])(100);
-const GameState = Object(_fable_fable_library_2_3_25_Types_js__WEBPACK_IMPORTED_MODULE_1__["declare"])(function FBlocks_GameState_GameState(arg1, arg2, arg3, arg4, arg5, arg6) {
+const GameState = Object(_fable_fable_library_2_3_25_Types_js__WEBPACK_IMPORTED_MODULE_1__["declare"])(function FBlocks_Game_GameState(arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8) {
   this.block = arg1;
   this.fallInterval = arg2;
   this.grid = arg3;
   this.lastBlockFallTime = arg4;
   this.lastMoveTime = arg5;
   this.moveDelta = arg6;
+  this.nextShape = arg7;
+  this.score = arg8;
 }, _fable_fable_library_2_3_25_Types_js__WEBPACK_IMPORTED_MODULE_1__["Record"]);
 function GameState$reflection() {
-  return Object(_fable_fable_library_2_3_25_Reflection_js__WEBPACK_IMPORTED_MODULE_4__["record"])("FBlocks.GameState.GameState", [], GameState, () => [["block", Object(_block_fs__WEBPACK_IMPORTED_MODULE_2__["Block$reflection"])()], ["fallInterval", Object(_time_fs__WEBPACK_IMPORTED_MODULE_0__["Time$reflection"])()], ["grid", Object(_grid_fs__WEBPACK_IMPORTED_MODULE_3__["Grid$reflection"])()], ["lastBlockFallTime", Object(_time_fs__WEBPACK_IMPORTED_MODULE_0__["Time$reflection"])()], ["lastMoveTime", Object(_time_fs__WEBPACK_IMPORTED_MODULE_0__["Time$reflection"])()], ["moveDelta", Object(_fable_fable_library_2_3_25_Reflection_js__WEBPACK_IMPORTED_MODULE_4__["option"])(_fable_fable_library_2_3_25_Reflection_js__WEBPACK_IMPORTED_MODULE_4__["int32"])]]);
+  return Object(_fable_fable_library_2_3_25_Reflection_js__WEBPACK_IMPORTED_MODULE_4__["record"])("FBlocks.Game.GameState", [], GameState, () => [["block", Object(_block_fs__WEBPACK_IMPORTED_MODULE_2__["Block$reflection"])()], ["fallInterval", Object(_time_fs__WEBPACK_IMPORTED_MODULE_0__["Time$reflection"])()], ["grid", Object(_grid_fs__WEBPACK_IMPORTED_MODULE_3__["Grid$reflection"])()], ["lastBlockFallTime", Object(_time_fs__WEBPACK_IMPORTED_MODULE_0__["Time$reflection"])()], ["lastMoveTime", Object(_time_fs__WEBPACK_IMPORTED_MODULE_0__["Time$reflection"])()], ["moveDelta", Object(_fable_fable_library_2_3_25_Reflection_js__WEBPACK_IMPORTED_MODULE_4__["option"])(_fable_fable_library_2_3_25_Reflection_js__WEBPACK_IMPORTED_MODULE_4__["int32"])], ["nextShape", Object(_shape_fs__WEBPACK_IMPORTED_MODULE_5__["ShapeName$reflection"])()], ["score", Object(_score_fs__WEBPACK_IMPORTED_MODULE_6__["Score$reflection"])()]]);
+}
+const Game = Object(_fable_fable_library_2_3_25_Types_js__WEBPACK_IMPORTED_MODULE_1__["declare"])(function FBlocks_Game_Game(tag, name, ...fields) {
+  _fable_fable_library_2_3_25_Types_js__WEBPACK_IMPORTED_MODULE_1__["Union"].call(this, tag, name, ...fields);
+}, _fable_fable_library_2_3_25_Types_js__WEBPACK_IMPORTED_MODULE_1__["Union"]);
+function Game$reflection() {
+  return Object(_fable_fable_library_2_3_25_Reflection_js__WEBPACK_IMPORTED_MODULE_4__["union"])("FBlocks.Game.Game", [], Game, () => [["RunningGame", [GameState$reflection()]], ["FinishedGame", [Object(_score_fs__WEBPACK_IMPORTED_MODULE_6__["Score$reflection"])()]]]);
 }
 function updateBlockIfValid(gameState, updater) {
   const updatedBlock = updater(gameState.block);
 
   if (Object(_grid_fs__WEBPACK_IMPORTED_MODULE_3__["isBlockValid"])(gameState.grid, updatedBlock)) {
-    return new GameState(updatedBlock, gameState.fallInterval, gameState.grid, gameState.lastBlockFallTime, gameState.lastMoveTime, gameState.moveDelta);
+    return new GameState(updatedBlock, gameState.fallInterval, gameState.grid, gameState.lastBlockFallTime, gameState.lastMoveTime, gameState.moveDelta, gameState.nextShape, gameState.score);
   } else {
     return gameState;
   }
 }
 function placeBlock(currentTime, block, gameState$$1) {
+  const newGrid = Object(_grid_fs__WEBPACK_IMPORTED_MODULE_3__["placeBlock"])(gameState$$1.grid, block);
+  const completedRows = Object(_grid_fs__WEBPACK_IMPORTED_MODULE_3__["countCompletedRows"])(newGrid) | 0;
   let block$$1;
-  const shapeName = Object(_shape_fs__WEBPACK_IMPORTED_MODULE_5__["random"])();
-  block$$1 = Object(_block_fs__WEBPACK_IMPORTED_MODULE_2__["create"])(shapeName);
-  const grid = Object(_grid_fs__WEBPACK_IMPORTED_MODULE_3__["placeBlock"])(gameState$$1.grid, block);
-  return new GameState(block$$1, gameState$$1.fallInterval, grid, currentTime, gameState$$1.lastMoveTime, gameState$$1.moveDelta);
+  const shapeName = gameState$$1.nextShape;
+  block$$1 = Object(_block_fs__WEBPACK_IMPORTED_MODULE_2__["create"])(gameState$$1.grid.width, shapeName);
+  const grid = Object(_grid_fs__WEBPACK_IMPORTED_MODULE_3__["removeCompletedRows"])(newGrid);
+  const nextShape = Object(_shape_fs__WEBPACK_IMPORTED_MODULE_5__["random"])();
+  const score = Object(_score_fs__WEBPACK_IMPORTED_MODULE_6__["update"])(gameState$$1.score, completedRows);
+  return new GameState(block$$1, gameState$$1.fallInterval, grid, currentTime, gameState$$1.lastMoveTime, gameState$$1.moveDelta, nextShape, score);
 }
 function placeCurrentBlock(currentTime$$1, gameState$$2) {
   return placeBlock(currentTime$$1, gameState$$2.block, gameState$$2);
@@ -13332,7 +13448,7 @@ function moveBlockDown(currentTime$$2, gameState$$3) {
   const movedBlock = Object(_block_fs__WEBPACK_IMPORTED_MODULE_2__["moveBy"])(0, 1, gameState$$3.block);
 
   if (Object(_grid_fs__WEBPACK_IMPORTED_MODULE_3__["isBlockValid"])(gameState$$3.grid, movedBlock)) {
-    return new GameState(movedBlock, gameState$$3.fallInterval, gameState$$3.grid, currentTime$$2, gameState$$3.lastMoveTime, gameState$$3.moveDelta);
+    return new GameState(movedBlock, gameState$$3.fallInterval, gameState$$3.grid, currentTime$$2, gameState$$3.lastMoveTime, gameState$$3.moveDelta, gameState$$3.nextShape, gameState$$3.score);
   } else {
     return placeCurrentBlock(currentTime$$2, gameState$$3);
   }
@@ -13351,24 +13467,24 @@ function processInput(currentTime$$3, inputs, gameState$$4) {
 
     const setMovement = function setMovement(dx, gameState$$8) {
       const moveDelta = dx;
-      return new GameState(gameState$$8.block, gameState$$8.fallInterval, gameState$$8.grid, gameState$$8.lastBlockFallTime, gameState$$8.lastMoveTime, moveDelta);
+      return new GameState(gameState$$8.block, gameState$$8.fallInterval, gameState$$8.grid, gameState$$8.lastBlockFallTime, gameState$$8.lastMoveTime, moveDelta, gameState$$8.nextShape, gameState$$8.score);
     };
 
     const stopMovement = function stopMovement(gameState$$9) {
       const moveDelta$$1 = null;
-      return new GameState(gameState$$9.block, gameState$$9.fallInterval, gameState$$9.grid, gameState$$9.lastBlockFallTime, gameState$$9.lastMoveTime, moveDelta$$1);
+      return new GameState(gameState$$9.block, gameState$$9.fallInterval, gameState$$9.grid, gameState$$9.lastBlockFallTime, gameState$$9.lastMoveTime, moveDelta$$1, gameState$$9.nextShape, gameState$$9.score);
     };
 
     const setFallInterval = function setFallInterval(interval, gameState$$10) {
-      return new GameState(gameState$$10.block, interval, gameState$$10.grid, gameState$$10.lastBlockFallTime, gameState$$10.lastMoveTime, gameState$$10.moveDelta);
+      return new GameState(gameState$$10.block, interval, gameState$$10.grid, gameState$$10.lastBlockFallTime, gameState$$10.lastMoveTime, gameState$$10.moveDelta, gameState$$10.nextShape, gameState$$10.score);
     };
 
-    return (action.tag === 1 ? Object(_fable_fable_library_2_3_25_Util_js__WEBPACK_IMPORTED_MODULE_6__["partialApply"])(1, setMovement, [1]) : action.tag === 2 ? stopMovement : action.tag === 5 ? Object(_fable_fable_library_2_3_25_Util_js__WEBPACK_IMPORTED_MODULE_6__["partialApply"])(1, setFallInterval, [blockFastFallInterval]) : action.tag === 6 ? Object(_fable_fable_library_2_3_25_Util_js__WEBPACK_IMPORTED_MODULE_6__["partialApply"])(1, setFallInterval, [blockFallInterval]) : action.tag === 3 ? rotateBlock : action.tag === 4 ? placeBlock$$1 : Object(_fable_fable_library_2_3_25_Util_js__WEBPACK_IMPORTED_MODULE_6__["partialApply"])(1, setMovement, [-1]))(gameState$$5);
+    return (action.tag === 1 ? Object(_fable_fable_library_2_3_25_Util_js__WEBPACK_IMPORTED_MODULE_7__["partialApply"])(1, setMovement, [1]) : action.tag === 2 ? stopMovement : action.tag === 5 ? Object(_fable_fable_library_2_3_25_Util_js__WEBPACK_IMPORTED_MODULE_7__["partialApply"])(1, setFallInterval, [blockFastFallInterval]) : action.tag === 6 ? Object(_fable_fable_library_2_3_25_Util_js__WEBPACK_IMPORTED_MODULE_7__["partialApply"])(1, setFallInterval, [blockFallInterval]) : action.tag === 3 ? rotateBlock : action.tag === 4 ? placeBlock$$1 : Object(_fable_fable_library_2_3_25_Util_js__WEBPACK_IMPORTED_MODULE_7__["partialApply"])(1, setMovement, [-1]))(gameState$$5);
   };
 
   let updatedGameState;
   const source = inputs;
-  updatedGameState = Object(_fable_fable_library_2_3_25_Seq_js__WEBPACK_IMPORTED_MODULE_7__["fold"])(processAction, gameState$$4, source);
+  updatedGameState = Object(_fable_fable_library_2_3_25_Seq_js__WEBPACK_IMPORTED_MODULE_8__["fold"])(processAction, gameState$$4, source);
   return updatedGameState;
 }
 function moveBlock(dx$$1, gameState$$11) {
@@ -13386,7 +13502,7 @@ function processMovement(currentTime$$4, gameState$$12) {
 
     if (Object(_time_fs__WEBPACK_IMPORTED_MODULE_0__["difference"])(currentTime$$4, gameState$$12.lastMoveTime).CompareTo(moveInterval) >= 0) {
       const newGameState = moveBlock(dx$$2, gameState$$12);
-      return new GameState(newGameState.block, newGameState.fallInterval, newGameState.grid, newGameState.lastBlockFallTime, currentTime$$4, newGameState.moveDelta);
+      return new GameState(newGameState.block, newGameState.fallInterval, newGameState.grid, newGameState.lastBlockFallTime, currentTime$$4, newGameState.moveDelta, newGameState.nextShape, newGameState.score);
     } else {
       return gameState$$12;
     }
@@ -13399,20 +13515,34 @@ function processFalling(currentTime$$5, gameState$$13) {
     return gameState$$13;
   }
 }
-function update(currentTime$$6, gameState$$14) {
-  let newGameState$$1;
-  let gameState$$17;
-  let gameState$$16;
-  const gameState$$15 = gameState$$14;
-  const inputs$$1 = Object(_input_fs__WEBPACK_IMPORTED_MODULE_8__["getActions"])();
-  gameState$$16 = processInput(currentTime$$6, inputs$$1, gameState$$15);
-  gameState$$17 = processMovement(currentTime$$6, gameState$$16);
-  newGameState$$1 = processFalling(currentTime$$6, gameState$$17);
-  return newGameState$$1;
+function checkGameOver(gameState$$14) {
+  if (Object(_grid_fs__WEBPACK_IMPORTED_MODULE_3__["isBlockValid"])(gameState$$14.grid, gameState$$14.block)) {
+    return new Game(0, "RunningGame", gameState$$14);
+  } else {
+    return new Game(1, "FinishedGame", gameState$$14.score);
+  }
 }
-function create() {
+function update(currentTime$$6, game) {
+  if (game.tag === 1) {
+    return game;
+  } else {
+    const gameState$$15 = game.fields[0];
+    let gameState$$19;
+    let gameState$$18;
+    let gameState$$17;
+    const gameState$$16 = gameState$$15;
+    const inputs$$1 = Object(_input_fs__WEBPACK_IMPORTED_MODULE_9__["getActions"])();
+    gameState$$17 = processInput(currentTime$$6, inputs$$1, gameState$$16);
+    gameState$$18 = processMovement(currentTime$$6, gameState$$17);
+    gameState$$19 = processFalling(currentTime$$6, gameState$$18);
+    return checkGameOver(gameState$$19);
+  }
+}
+function newGame(gridWidth, gridHeight, currentTime$$7) {
   var shapeName$$1;
-  return new GameState((shapeName$$1 = Object(_shape_fs__WEBPACK_IMPORTED_MODULE_5__["random"])(), (Object(_block_fs__WEBPACK_IMPORTED_MODULE_2__["create"])(shapeName$$1))), blockFallInterval, _grid_fs__WEBPACK_IMPORTED_MODULE_3__["createDefault"], _time_fs__WEBPACK_IMPORTED_MODULE_0__["zero"], _time_fs__WEBPACK_IMPORTED_MODULE_0__["zero"], null);
+  const grid$$1 = Object(_grid_fs__WEBPACK_IMPORTED_MODULE_3__["create"])(gridWidth, gridHeight);
+  const state = new GameState((shapeName$$1 = Object(_shape_fs__WEBPACK_IMPORTED_MODULE_5__["random"])(), (Object(_block_fs__WEBPACK_IMPORTED_MODULE_2__["create"])(grid$$1.width, shapeName$$1))), blockFallInterval, grid$$1, currentTime$$7, _time_fs__WEBPACK_IMPORTED_MODULE_0__["zero"], null, Object(_shape_fs__WEBPACK_IMPORTED_MODULE_5__["random"])(), _score_fs__WEBPACK_IMPORTED_MODULE_6__["zero"]);
+  return new Game(0, "RunningGame", state);
 }
 
 /***/ }),
@@ -13421,16 +13551,17 @@ function create() {
 /*!*********************!*\
   !*** ./src/grid.fs ***!
   \*********************/
-/*! exports provided: Grid, Grid$reflection, createDefault, getFilledCellCoords, isBlockValid, removeCompletedRows, placeBlock, moveBlockToBottom */
+/*! exports provided: Grid, Grid$reflection, create, getFilledCellCoords, isBlockValid, countCompletedRows, removeCompletedRows, placeBlock, moveBlockToBottom */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Grid", function() { return Grid; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Grid$reflection", function() { return Grid$reflection; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createDefault", function() { return createDefault; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "create", function() { return create; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getFilledCellCoords", function() { return getFilledCellCoords; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isBlockValid", function() { return isBlockValid; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "countCompletedRows", function() { return countCompletedRows; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "removeCompletedRows", function() { return removeCompletedRows; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "placeBlock", function() { return placeBlock; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "moveBlockToBottom", function() { return moveBlockToBottom; });
@@ -13462,18 +13593,16 @@ const Grid = Object(_fable_fable_library_2_3_25_Types_js__WEBPACK_IMPORTED_MODUL
 function Grid$reflection() {
   return Object(_fable_fable_library_2_3_25_Reflection_js__WEBPACK_IMPORTED_MODULE_3__["record"])("FBlocks.Grid.Grid", [], Grid, () => [["cells", Object(_matrix_fs__WEBPACK_IMPORTED_MODULE_2__["Matrix$00601$reflection"])(Object(_shape_fs__WEBPACK_IMPORTED_MODULE_1__["ShapeCell$reflection"])())], ["height", _fable_fable_library_2_3_25_Reflection_js__WEBPACK_IMPORTED_MODULE_3__["int32"]], ["width", _fable_fable_library_2_3_25_Reflection_js__WEBPACK_IMPORTED_MODULE_3__["int32"]]]);
 }
-const createDefault = (() => {
-  const width = 10;
-  const height = 20;
+function create(width, height) {
   return new Grid(Object(_matrix_fs__WEBPACK_IMPORTED_MODULE_2__["create"])(width, height, new _shape_fs__WEBPACK_IMPORTED_MODULE_1__["ShapeCell"](0, "EmptyCell")), height, width);
-})();
+}
 function getFilledCellCoords(grid) {
   const matrix = grid.cells;
   return Object(_matrix_fs__WEBPACK_IMPORTED_MODULE_2__["coordsWhere"])(_shape_fs__WEBPACK_IMPORTED_MODULE_1__["isCellFilled"], matrix);
 }
 function isBlockValid(grid$$1, block) {
   const isCellInBounds = function isCellInBounds(coord) {
-    if ((coord.x >= 0 ? coord.x < grid$$1.width : false) ? coord.y >= 0 : false) {
+    if (coord.x >= 0 ? coord.x < grid$$1.width : false) {
       return coord.y < grid$$1.height;
     } else {
       return false;
@@ -13502,70 +13631,86 @@ function isBlockValid(grid$$1, block) {
   source$$1 = Object(_block_fs__WEBPACK_IMPORTED_MODULE_6__["getSquareCoords"])(block$$1);
   return Object(_fable_fable_library_2_3_25_Seq_js__WEBPACK_IMPORTED_MODULE_5__["forAll"])(isCellValid, source$$1);
 }
-function removeCompletedRows(matrix$$1) {
-  let completeRowIndices;
-
-  const isRowComplete = function isRowComplete(rowIndex) {
-    let source$$2;
-    const matrix$$2 = matrix$$1;
-    source$$2 = Object(_matrix_fs__WEBPACK_IMPORTED_MODULE_2__["getRow"])(rowIndex, matrix$$2);
+function countCompletedRows(grid$$3) {
+  const isRowCompleted = function isRowCompleted(row) {
+    const source$$2 = row;
     return Object(_fable_fable_library_2_3_25_Seq_js__WEBPACK_IMPORTED_MODULE_5__["forAll"])(_shape_fs__WEBPACK_IMPORTED_MODULE_1__["isCellFilled"], source$$2);
   };
 
-  const source$$3 = Object(_fable_fable_library_2_3_25_Seq_js__WEBPACK_IMPORTED_MODULE_5__["rangeNumber"])(0, 1, matrix$$1.rowCount - 1);
-  completeRowIndices = Object(_fable_fable_library_2_3_25_Seq_js__WEBPACK_IMPORTED_MODULE_5__["filter"])(isRowComplete, source$$3);
+  let source$$4;
+  let source$$3;
+  const matrix$$1 = grid$$3.cells;
+  source$$3 = Object(_matrix_fs__WEBPACK_IMPORTED_MODULE_2__["rows"])(matrix$$1);
+  source$$4 = Object(_fable_fable_library_2_3_25_Seq_js__WEBPACK_IMPORTED_MODULE_5__["filter"])(function predicate$$1(arg00) {
+    return isRowCompleted(arg00);
+  }, source$$3);
+  return Object(_fable_fable_library_2_3_25_Seq_js__WEBPACK_IMPORTED_MODULE_5__["length"])(source$$4) | 0;
+}
+function removeCompletedRows(grid$$4) {
+  const matrix$$2 = grid$$4.cells;
+  let completeRowIndices;
 
-  const removeRow = function removeRow(matrix$$3, rowIndex$$1) {
+  const isRowComplete = function isRowComplete(rowIndex) {
+    let source$$5;
+    const matrix$$3 = matrix$$2;
+    source$$5 = Object(_matrix_fs__WEBPACK_IMPORTED_MODULE_2__["getRow"])(rowIndex, matrix$$3);
+    return Object(_fable_fable_library_2_3_25_Seq_js__WEBPACK_IMPORTED_MODULE_5__["forAll"])(_shape_fs__WEBPACK_IMPORTED_MODULE_1__["isCellFilled"], source$$5);
+  };
+
+  const source$$6 = Object(_fable_fable_library_2_3_25_Seq_js__WEBPACK_IMPORTED_MODULE_5__["rangeNumber"])(0, 1, matrix$$2.rowCount - 1);
+  completeRowIndices = Object(_fable_fable_library_2_3_25_Seq_js__WEBPACK_IMPORTED_MODULE_5__["filter"])(isRowComplete, source$$6);
+
+  const removeRow = function removeRow(matrix$$4, rowIndex$$1) {
     const mapCell = function mapCell(x, y, value) {
       if (y === 0) {
         return new _shape_fs__WEBPACK_IMPORTED_MODULE_1__["ShapeCell"](0, "EmptyCell");
       } else if (y <= rowIndex$$1) {
-        return Object(_matrix_fs__WEBPACK_IMPORTED_MODULE_2__["getAt"])(x, y - 1, matrix$$3);
+        return Object(_matrix_fs__WEBPACK_IMPORTED_MODULE_2__["getAt"])(x, y - 1, matrix$$4);
       } else {
         return value;
       }
     };
 
-    return Object(_matrix_fs__WEBPACK_IMPORTED_MODULE_2__["mapi"])(mapCell, matrix$$3);
+    return Object(_matrix_fs__WEBPACK_IMPORTED_MODULE_2__["mapi"])(mapCell, matrix$$4);
   };
 
-  const source$$4 = completeRowIndices;
-  return Object(_fable_fable_library_2_3_25_Seq_js__WEBPACK_IMPORTED_MODULE_5__["fold"])(removeRow, matrix$$1, source$$4);
+  let updatedCells;
+  const source$$7 = completeRowIndices;
+  updatedCells = Object(_fable_fable_library_2_3_25_Seq_js__WEBPACK_IMPORTED_MODULE_5__["fold"])(removeRow, matrix$$2, source$$7);
+  return new Grid(updatedCells, grid$$4.height, grid$$4.width);
 }
-function placeBlock(grid$$3, block$$2) {
+function placeBlock(grid$$5, block$$2) {
   const filledCells = Object(_block_fs__WEBPACK_IMPORTED_MODULE_6__["getFilledCells"])(block$$2);
   let gridCells;
-  let matrix$$5;
-  const matrix$$4 = grid$$3.cells;
-  matrix$$5 = Object(_matrix_fs__WEBPACK_IMPORTED_MODULE_2__["mapi"])(function mapping(x$$1, y$$1, value$$1) {
+  const matrix$$5 = grid$$5.cells;
+  gridCells = Object(_matrix_fs__WEBPACK_IMPORTED_MODULE_2__["mapi"])(function mapping(x$$1, y$$1, value$$1) {
     const matchingCell = Object(_fable_fable_library_2_3_25_Seq_js__WEBPACK_IMPORTED_MODULE_5__["tryFind"])(function (tupledArg) {
       const coord$$1 = tupledArg[0];
       return Object(_fable_fable_library_2_3_25_Util_js__WEBPACK_IMPORTED_MODULE_4__["equals"])(coord$$1, new _coord_fs__WEBPACK_IMPORTED_MODULE_7__["Coord"](x$$1, y$$1));
     }, filledCells);
 
     if (matchingCell != null) {
-      const cell$$3 = matchingCell[1];
-      return cell$$3;
+      const cell$$4 = matchingCell[1];
+      return cell$$4;
     } else {
       return value$$1;
     }
-  }, matrix$$4);
-  gridCells = removeCompletedRows(matrix$$5);
-  return new Grid(gridCells, grid$$3.height, grid$$3.width);
+  }, matrix$$5);
+  return new Grid(gridCells, grid$$5.height, grid$$5.width);
 }
-function moveBlockToBottom(grid$$4, block$$3) {
-  const maxMoveY = grid$$4.height - 1 - block$$3.position.y | 0;
+function moveBlockToBottom(grid$$6, block$$3) {
+  const maxMoveY = grid$$6.height - 1 - block$$3.position.y | 0;
   let option;
-  let source$$7;
-  let source$$6;
-  const source$$5 = Object(_fable_fable_library_2_3_25_List_js__WEBPACK_IMPORTED_MODULE_8__["ofSeq"])(Object(_fable_fable_library_2_3_25_Seq_js__WEBPACK_IMPORTED_MODULE_5__["rangeNumber"])(0, 1, maxMoveY));
-  source$$6 = Object(_fable_fable_library_2_3_25_Seq_js__WEBPACK_IMPORTED_MODULE_5__["map"])(function mapping$$1(dy) {
+  let source$$10;
+  let source$$9;
+  const source$$8 = Object(_fable_fable_library_2_3_25_List_js__WEBPACK_IMPORTED_MODULE_8__["ofSeq"])(Object(_fable_fable_library_2_3_25_Seq_js__WEBPACK_IMPORTED_MODULE_5__["rangeNumber"])(0, 1, maxMoveY));
+  source$$9 = Object(_fable_fable_library_2_3_25_Seq_js__WEBPACK_IMPORTED_MODULE_5__["map"])(function mapping$$1(dy) {
     return Object(_block_fs__WEBPACK_IMPORTED_MODULE_6__["moveBy"])(0, dy, block$$3);
-  }, source$$5);
-  source$$7 = Object(_fable_fable_library_2_3_25_Seq_js__WEBPACK_IMPORTED_MODULE_5__["takeWhile"])(function predicate$$1(block$$4) {
-    return isBlockValid(grid$$4, block$$4);
-  }, source$$6);
-  option = Object(_fable_fable_library_2_3_25_Seq_js__WEBPACK_IMPORTED_MODULE_5__["tryLast"])(source$$7);
+  }, source$$8);
+  source$$10 = Object(_fable_fable_library_2_3_25_Seq_js__WEBPACK_IMPORTED_MODULE_5__["takeWhile"])(function predicate$$2(block$$4) {
+    return isBlockValid(grid$$6, block$$4);
+  }, source$$9);
+  option = Object(_fable_fable_library_2_3_25_Seq_js__WEBPACK_IMPORTED_MODULE_5__["tryLast"])(source$$10);
   return Object(_fable_fable_library_2_3_25_Option_js__WEBPACK_IMPORTED_MODULE_9__["defaultArg"])(option, block$$3);
 }
 
@@ -13647,7 +13792,7 @@ function addEventListeners() {
 /*!***********************!*\
   !*** ./src/matrix.fs ***!
   \***********************/
-/*! exports provided: Matrix$00601, Matrix$00601$reflection, create, fromArray, getAt, getRow, exists, iter, iteri, flatmapi, map, mapi, coordsWithValue, coordsWhere, rotateClockwise */
+/*! exports provided: Matrix$00601, Matrix$00601$reflection, create, fromArray, getAt, getRow, rows, exists, iter, iteri, flatmapi, map, mapi, coordsWithValue, coordsWhere, rotateClockwise */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -13658,6 +13803,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fromArray", function() { return fromArray; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getAt", function() { return getAt; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getRow", function() { return getRow; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "rows", function() { return rows; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "exists", function() { return exists; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "iter", function() { return iter; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "iteri", function() { return iteri; });
@@ -13717,80 +13863,86 @@ function getAt(x, y, matrix) {
 function getRow(y$$1, matrix$$1) {
   return matrix$$1.cells.slice(y$$1 * matrix$$1.columnCount, matrix$$1.columnCount + y$$1 * matrix$$1.columnCount - 1 + 1);
 }
-function exists(predicate$$1, matrix$$2) {
-  return matrix$$2.cells.some(predicate$$1);
+function rows(matrix$$2) {
+  const source$$1 = Object(_fable_fable_library_2_3_25_Seq_js__WEBPACK_IMPORTED_MODULE_3__["rangeNumber"])(0, 1, matrix$$2.rowCount - 1);
+  return Object(_fable_fable_library_2_3_25_Seq_js__WEBPACK_IMPORTED_MODULE_3__["map"])(function mapping(y$$2) {
+    return getRow(y$$2, matrix$$2);
+  }, source$$1);
 }
-function iter(action, matrix$$3) {
-  matrix$$3.cells.forEach(action);
+function exists(predicate$$1, matrix$$3) {
+  return matrix$$3.cells.some(predicate$$1);
 }
-function iteri(action$$1, matrix$$4) {
+function iter(action, matrix$$4) {
+  matrix$$4.cells.forEach(action);
+}
+function iteri(action$$1, matrix$$5) {
   const action$0027 = function action$0027(i, x$$1) {
-    action$$1(i % matrix$$4.columnCount, ~~(i / matrix$$4.columnCount), x$$1);
+    action$$1(i % matrix$$5.columnCount, ~~(i / matrix$$5.columnCount), x$$1);
   };
 
-  Object(_fable_fable_library_2_3_25_Array_js__WEBPACK_IMPORTED_MODULE_2__["iterateIndexed"])(action$0027, matrix$$4.cells);
+  Object(_fable_fable_library_2_3_25_Array_js__WEBPACK_IMPORTED_MODULE_2__["iterateIndexed"])(action$0027, matrix$$5.cells);
 }
-function flatmapi(mapping, matrix$$5) {
+function flatmapi(mapping$$1, matrix$$6) {
   const mapping$0027 = function mapping$0027(i$$1, x$$2) {
-    return mapping(i$$1 % matrix$$5.columnCount, ~~(i$$1 / matrix$$5.columnCount), x$$2);
+    return mapping$$1(i$$1 % matrix$$6.columnCount, ~~(i$$1 / matrix$$6.columnCount), x$$2);
   };
 
-  return Object(_fable_fable_library_2_3_25_Array_js__WEBPACK_IMPORTED_MODULE_2__["mapIndexed"])(mapping$0027, matrix$$5.cells, Array);
+  return Object(_fable_fable_library_2_3_25_Array_js__WEBPACK_IMPORTED_MODULE_2__["mapIndexed"])(mapping$0027, matrix$$6.cells, Array);
 }
-function map(mapping$$1, matrix$$6) {
+function map(mapping$$2, matrix$$7) {
   var array;
-  return new Matrix$00601((array = matrix$$6.cells, (Object(_fable_fable_library_2_3_25_Array_js__WEBPACK_IMPORTED_MODULE_2__["map"])(mapping$$1, array, Array))), matrix$$6.columnCount, matrix$$6.rowCount);
+  return new Matrix$00601((array = matrix$$7.cells, (Object(_fable_fable_library_2_3_25_Array_js__WEBPACK_IMPORTED_MODULE_2__["map"])(mapping$$2, array, Array))), matrix$$7.columnCount, matrix$$7.rowCount);
 }
-function mapi(mapping$$2, matrix$$7) {
+function mapi(mapping$$3, matrix$$8) {
   var array$$1;
 
   const mapping$0027$$1 = function mapping$0027$$1(i$$2, x$$3) {
-    return mapping$$2(i$$2 % matrix$$7.columnCount, ~~(i$$2 / matrix$$7.columnCount), x$$3);
+    return mapping$$3(i$$2 % matrix$$8.columnCount, ~~(i$$2 / matrix$$8.columnCount), x$$3);
   };
 
-  return new Matrix$00601((array$$1 = matrix$$7.cells, (Object(_fable_fable_library_2_3_25_Array_js__WEBPACK_IMPORTED_MODULE_2__["mapIndexed"])(mapping$0027$$1, array$$1, Array))), matrix$$7.columnCount, matrix$$7.rowCount);
+  return new Matrix$00601((array$$1 = matrix$$8.cells, (Object(_fable_fable_library_2_3_25_Array_js__WEBPACK_IMPORTED_MODULE_2__["mapIndexed"])(mapping$0027$$1, array$$1, Array))), matrix$$8.columnCount, matrix$$8.rowCount);
 }
-function coordsWithValue(value$$1, matrix$$8) {
+function coordsWithValue(value$$1, matrix$$9) {
+  let source$$3;
   let source$$2;
-  let source$$1;
-  const matrix$$9 = matrix$$8;
-  source$$1 = flatmapi(function mapping$$3(x$$4, y$$2, v) {
-    return [x$$4, y$$2, v];
-  }, matrix$$9);
-  source$$2 = Object(_fable_fable_library_2_3_25_Seq_js__WEBPACK_IMPORTED_MODULE_3__["filter"])(function predicate$$2(tupledArg) {
+  const matrix$$10 = matrix$$9;
+  source$$2 = flatmapi(function mapping$$4(x$$4, y$$3, v) {
+    return [x$$4, y$$3, v];
+  }, matrix$$10);
+  source$$3 = Object(_fable_fable_library_2_3_25_Seq_js__WEBPACK_IMPORTED_MODULE_3__["filter"])(function predicate$$2(tupledArg) {
     const v$$1 = tupledArg[2];
     return Object(_fable_fable_library_2_3_25_Util_js__WEBPACK_IMPORTED_MODULE_4__["equals"])(v$$1, value$$1);
-  }, source$$1);
-  return Object(_fable_fable_library_2_3_25_Seq_js__WEBPACK_IMPORTED_MODULE_3__["map"])(function mapping$$4(tupledArg$$1) {
-    const x$$5 = tupledArg$$1[0] | 0;
-    const y$$3 = tupledArg$$1[1] | 0;
-    return new _coord_fs__WEBPACK_IMPORTED_MODULE_5__["Coord"](x$$5, y$$3);
   }, source$$2);
+  return Object(_fable_fable_library_2_3_25_Seq_js__WEBPACK_IMPORTED_MODULE_3__["map"])(function mapping$$5(tupledArg$$1) {
+    const x$$5 = tupledArg$$1[0] | 0;
+    const y$$4 = tupledArg$$1[1] | 0;
+    return new _coord_fs__WEBPACK_IMPORTED_MODULE_5__["Coord"](x$$5, y$$4);
+  }, source$$3);
 }
-function coordsWhere(predicate$$3, matrix$$10) {
+function coordsWhere(predicate$$3, matrix$$11) {
+  let source$$5;
   let source$$4;
-  let source$$3;
-  const matrix$$11 = matrix$$10;
-  source$$3 = flatmapi(function mapping$$5(x$$6, y$$4, v$$2) {
-    return [x$$6, y$$4, v$$2];
-  }, matrix$$11);
-  source$$4 = Object(_fable_fable_library_2_3_25_Seq_js__WEBPACK_IMPORTED_MODULE_3__["filter"])(function predicate$$4(tupledArg$$2) {
+  const matrix$$12 = matrix$$11;
+  source$$4 = flatmapi(function mapping$$6(x$$6, y$$5, v$$2) {
+    return [x$$6, y$$5, v$$2];
+  }, matrix$$12);
+  source$$5 = Object(_fable_fable_library_2_3_25_Seq_js__WEBPACK_IMPORTED_MODULE_3__["filter"])(function predicate$$4(tupledArg$$2) {
     const v$$3 = tupledArg$$2[2];
     return predicate$$3(v$$3);
-  }, source$$3);
-  return Object(_fable_fable_library_2_3_25_Seq_js__WEBPACK_IMPORTED_MODULE_3__["map"])(function mapping$$6(tupledArg$$3) {
-    const x$$7 = tupledArg$$3[0] | 0;
-    const y$$5 = tupledArg$$3[1] | 0;
-    return new _coord_fs__WEBPACK_IMPORTED_MODULE_5__["Coord"](x$$7, y$$5);
   }, source$$4);
+  return Object(_fable_fable_library_2_3_25_Seq_js__WEBPACK_IMPORTED_MODULE_3__["map"])(function mapping$$7(tupledArg$$3) {
+    const x$$7 = tupledArg$$3[0] | 0;
+    const y$$6 = tupledArg$$3[1] | 0;
+    return new _coord_fs__WEBPACK_IMPORTED_MODULE_5__["Coord"](x$$7, y$$6);
+  }, source$$5);
 }
-function rotateClockwise(matrix$$12) {
-  const rotateCell = function rotateCell(x$$8, y$$6, _arg1$$2) {
-    return getAt(y$$6, matrix$$12.rowCount - 1 - x$$8, matrix$$12);
+function rotateClockwise(matrix$$13) {
+  const rotateCell = function rotateCell(x$$8, y$$7, _arg1$$2) {
+    return getAt(y$$7, matrix$$13.rowCount - 1 - x$$8, matrix$$13);
   };
 
-  const matrix$$13 = create(matrix$$12.rowCount, matrix$$12.columnCount, getAt(0, 0, matrix$$12));
-  return mapi(rotateCell, matrix$$13);
+  const matrix$$14 = create(matrix$$13.rowCount, matrix$$13.columnCount, getAt(0, 0, matrix$$13));
+  return mapi(rotateCell, matrix$$14);
 }
 
 /***/ }),
@@ -13799,7 +13951,7 @@ function rotateClockwise(matrix$$12) {
 /*!*************************!*\
   !*** ./src/renderer.fs ***!
   \*************************/
-/*! exports provided: Renderer, Renderer$reflection, blockSize, setAlpha, create, clearCanvas, drawSquare, drawGrid, drawShape, drawBlock, redraw */
+/*! exports provided: Renderer, Renderer$reflection, blockSize, setAlpha, create, clearCanvas, drawSquare, drawGrid, drawShape, drawBlock, redraw, drawNextBlock */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -13815,11 +13967,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "drawShape", function() { return drawShape; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "drawBlock", function() { return drawBlock; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "redraw", function() { return redraw; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "drawNextBlock", function() { return drawNextBlock; });
 /* harmony import */ var _fable_fable_library_2_3_25_Types_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../.fable/fable-library.2.3.25/Types.js */ "./.fable/fable-library.2.3.25/Types.js");
 /* harmony import */ var _fable_fable_library_2_3_25_Reflection_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../.fable/fable-library.2.3.25/Reflection.js */ "./.fable/fable-library.2.3.25/Reflection.js");
 /* harmony import */ var _fable_fable_library_2_3_25_String_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../.fable/fable-library.2.3.25/String.js */ "./.fable/fable-library.2.3.25/String.js");
 /* harmony import */ var _matrix_fs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./matrix.fs */ "./src/matrix.fs");
 /* harmony import */ var _grid_fs__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./grid.fs */ "./src/grid.fs");
+/* harmony import */ var _shape_fs__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./shape.fs */ "./src/shape.fs");
+
 
 
 
@@ -13839,11 +13994,11 @@ function setAlpha(alpha, color) {
   const clo2 = clo1(arg10);
   return clo2(arg20);
 }
-function create(containerElementId, grid) {
+function create(containerElementId, width, height) {
   const elem = document.getElementById(containerElementId);
   const canvas = document.createElement("canvas");
-  canvas.width = grid.width * blockSize;
-  canvas.height = grid.height * blockSize;
+  canvas.width = width * blockSize;
+  canvas.height = height * blockSize;
   const value = elem.appendChild(canvas);
   value, null;
   return new Renderer(canvas);
@@ -13858,8 +14013,8 @@ function drawSquare(x, y, color$$1, canvas$$2) {
   context$$1.fillStyle = color$$1;
   context$$1.fillRect(x * blockSize + 0.5, y * blockSize + 0.5, blockSize - 1, blockSize - 1);
 }
-function drawGrid(grid$$1, canvas$$3) {
-  const matrix = grid$$1.cells;
+function drawGrid(grid, canvas$$3) {
+  const matrix = grid.cells;
   Object(_matrix_fs__WEBPACK_IMPORTED_MODULE_3__["iteri"])(function action(cellX, cellY, cell) {
     if (cell.tag === 1) {
       const color$$2 = cell.fields[0];
@@ -13879,12 +14034,92 @@ function drawShape(x$$1, y$$1, shape, alpha$$1, canvas$$4) {
 function drawBlock(renderer, alpha$$2, block) {
   drawShape(block.position.x, block.position.y, block.shape, alpha$$2, renderer.canvas);
 }
-function redraw(renderer$$1, grid$$2, block$$1) {
+function redraw(renderer$$1, grid$$1, block$$1) {
   clearCanvas(renderer$$1.canvas);
-  drawGrid(grid$$2, renderer$$1.canvas);
-  const ghost = Object(_grid_fs__WEBPACK_IMPORTED_MODULE_4__["moveBlockToBottom"])(grid$$2, block$$1);
+  drawGrid(grid$$1, renderer$$1.canvas);
+  const ghost = Object(_grid_fs__WEBPACK_IMPORTED_MODULE_4__["moveBlockToBottom"])(grid$$1, block$$1);
   drawBlock(renderer$$1, 64, ghost);
   drawBlock(renderer$$1, 255, block$$1);
+}
+function drawNextBlock(renderer$$2, shape$$1) {
+  clearCanvas(renderer$$2.canvas);
+  let shapeMatrix;
+  const shapeName = shape$$1;
+  shapeMatrix = Object(_shape_fs__WEBPACK_IMPORTED_MODULE_5__["getShapeMatrix"])(shapeName);
+  drawShape(0, 0, shapeMatrix, 255, renderer$$2.canvas);
+}
+
+/***/ }),
+
+/***/ "./src/score.fs":
+/*!**********************!*\
+  !*** ./src/score.fs ***!
+  \**********************/
+/*! exports provided: Score, Score$reflection, zero, calculatePoints, update, difference */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Score", function() { return Score; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Score$reflection", function() { return Score$reflection; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "zero", function() { return zero; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "calculatePoints", function() { return calculatePoints; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "update", function() { return update; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "difference", function() { return difference; });
+/* harmony import */ var _fable_fable_library_2_3_25_Types_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../.fable/fable-library.2.3.25/Types.js */ "./.fable/fable-library.2.3.25/Types.js");
+/* harmony import */ var _fable_fable_library_2_3_25_Reflection_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../.fable/fable-library.2.3.25/Reflection.js */ "./.fable/fable-library.2.3.25/Reflection.js");
+/* harmony import */ var _fable_fable_library_2_3_25_String_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../.fable/fable-library.2.3.25/String.js */ "./.fable/fable-library.2.3.25/String.js");
+
+
+
+const Score = Object(_fable_fable_library_2_3_25_Types_js__WEBPACK_IMPORTED_MODULE_0__["declare"])(function FBlocks_Score_Score(arg1, arg2) {
+  this.linesCompleted = arg1 | 0;
+  this.points = arg2 | 0;
+}, _fable_fable_library_2_3_25_Types_js__WEBPACK_IMPORTED_MODULE_0__["Record"]);
+function Score$reflection() {
+  return Object(_fable_fable_library_2_3_25_Reflection_js__WEBPACK_IMPORTED_MODULE_1__["record"])("FBlocks.Score.Score", [], Score, () => [["linesCompleted", _fable_fable_library_2_3_25_Reflection_js__WEBPACK_IMPORTED_MODULE_1__["int32"]], ["points", _fable_fable_library_2_3_25_Reflection_js__WEBPACK_IMPORTED_MODULE_1__["int32"]]]);
+}
+const zero = new Score(0, 0);
+function calculatePoints(linesCompleted) {
+  var arg10, clo1;
+
+  switch (linesCompleted) {
+    case 0:
+      {
+        return 0;
+      }
+
+    case 1:
+      {
+        return 40;
+      }
+
+    case 2:
+      {
+        return 100;
+      }
+
+    case 3:
+      {
+        return 300;
+      }
+
+    case 4:
+      {
+        return 1200;
+      }
+
+    default:
+      {
+        throw new Error((arg10 = linesCompleted | 0, (clo1 = Object(_fable_fable_library_2_3_25_String_js__WEBPACK_IMPORTED_MODULE_2__["toText"])(Object(_fable_fable_library_2_3_25_String_js__WEBPACK_IMPORTED_MODULE_2__["printf"])("Invalid number of lines completed: %i")), clo1(arg10))) + "\\nParameter name: " + "linesCompleted");
+      }
+  }
+}
+function update(score, completedRows) {
+  return new Score(score.linesCompleted + completedRows, score.points + calculatePoints(completedRows));
+}
+function difference(previous, current) {
+  return new Score(current.linesCompleted - previous.linesCompleted, current.points - previous.points);
 }
 
 /***/ }),
