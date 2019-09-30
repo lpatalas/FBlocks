@@ -1,7 +1,7 @@
 [CmdletBinding()]
 param(
     [String] $SourceDirectoryPath = (Resolve-Path "$PSScriptRoot\..\public"),
-    [String] $WebAppName = 'fblocks-webapp',
+    [String] $WebAppName = 'fblocks',
     [String] $ResourceGroupName = 'fblocks'
 )
 

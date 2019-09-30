@@ -20,7 +20,7 @@ RunCmd az appservice plan create `
     --resource-group $ResourceGroupName `
     --sku F1
 
-$webAppName = "$ResourceGroupName-webapp"
+$webAppName = "$ResourceGroupName"
 Write-Host "Creating app service '$webAppName'"
 RunCmd az webapp create `
     --name $webAppName `
