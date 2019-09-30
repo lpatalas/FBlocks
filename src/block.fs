@@ -1,6 +1,7 @@
 module FBlocks.Block
 
 open FBlocks.Coord
+open System
 
 type Block = {
     position: Coord.Coord
@@ -36,3 +37,8 @@ let getFilledCells block =
     |> Matrix.flatmapi (fun x y cell -> ({ x = x; y = y }, cell))
     |> Seq.filter (fun (coord, cell) -> Shape.isCellFilled cell)
     |> Seq.map (fun (coord, cell) -> ((add coord block.position), cell))
+
+let getBoundingRect block =
+    block
+    |> getSquareCoords
+    |> BoundingRect.fromCoords

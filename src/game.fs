@@ -49,10 +49,21 @@ let moveBlockDown currentTime gameState =
     else
         placeCurrentBlock currentTime gameState
 
+let offsetOutOfBoundsBlock gridWidth block =
+    let bounds = block |> Block.getBoundingRect
+    if bounds.left < 0 then
+        block |> Block.moveBy -bounds.left 0
+    else if bounds.right >= gridWidth then
+        block |> Block.moveBy (gridWidth - bounds.right - 1) 0
+    else
+        block
+
 let processInput currentTime inputs gameState =
     let processAction gameState action =
         let rotateBlock gameState =
-            Block.rotate |> updateBlockIfValid gameState
+            Block.rotate
+            >> offsetOutOfBoundsBlock gameState.grid.width
+            |> updateBlockIfValid gameState
 
         let placeBlock gameState =
             let droppedBlock = Grid.moveBlockToBottom gameState.grid gameState.block
