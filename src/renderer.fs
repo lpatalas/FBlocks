@@ -2,7 +2,6 @@ module FBlocks.Renderer
 
 open Fable.Core.JsInterop
 open Fable.Import.Browser
-open FBlocks.Shape
 
 type Renderer = {
     canvas: HTMLCanvasElement
@@ -35,15 +34,15 @@ let drawGrid (grid: Grid.Grid) (canvas: HTMLCanvasElement) =
     grid.cells
     |> Matrix.iteri (fun cellX cellY cell ->
         match cell with
-        | FilledCell color -> drawSquare cellX cellY color canvas
+        | Shape.FilledCell color -> drawSquare cellX cellY color canvas
         | _ -> ())
 
 let drawShape x y shape alpha canvas =
     shape
     |> Matrix.iteri (fun cellX cellY cell ->
         match cell with
-        | FilledCell color -> drawSquare (x + cellX) (y + cellY) (setAlpha alpha color) canvas
-        | EmptyCell -> ())
+        | Shape.FilledCell color -> drawSquare (x + cellX) (y + cellY) (setAlpha alpha color) canvas
+        | Shape.EmptyCell -> ())
 
 let drawBlock renderer alpha (block: Block.Block) =
     drawShape block.position.x block.position.y block.shape alpha renderer.canvas

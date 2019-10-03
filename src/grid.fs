@@ -1,8 +1,5 @@
 module FBlocks.Grid
 
-open FBlocks
-open FBlocks.Coord
-
 type Grid = {
     cells: Matrix.Matrix<Shape.ShapeCell>
     height: int
@@ -21,7 +18,7 @@ let getFilledCellCoords grid =
     |> Matrix.coordsWhere Shape.isCellFilled
 
 let isBlockValid grid block =
-    let isCellInBounds coord =
+    let isCellInBounds (coord: Coord.Coord) =
         coord.x >= 0
         && coord.x < grid.width
         && coord.y < grid.height
@@ -82,7 +79,7 @@ let placeBlock grid block =
         grid.cells
         |> Matrix.mapi (fun x y value ->
             let matchingCell =
-                Seq.tryFind (fun (coord, _) -> coord = { x = x; y = y }) filledCells
+                Seq.tryFind (fun (coord, _) -> coord = Coord.create x y) filledCells
 
             match matchingCell with
             | Some (_, cell) -> cell

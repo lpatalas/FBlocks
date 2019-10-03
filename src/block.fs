@@ -1,8 +1,5 @@
 module FBlocks.Block
 
-open FBlocks.Coord
-open System
-
 type Block = {
     position: Coord.Coord
     shape: Shape.ShapeMatrix
@@ -22,7 +19,7 @@ let create gridSize shapeName =
     }
 
 let moveBy dx dy block =
-    { block with position = add block.position { x = dx; y = dy } }
+    { block with position = Coord.add block.position { x = dx; y = dy } }
 
 let rotate block =
     { block with shape = Matrix.rotateClockwise block.shape }
@@ -30,13 +27,13 @@ let rotate block =
 let getSquareCoords block =
     block.shape
     |> Shape.filledCellCoords
-    |> Seq.map (fun coord -> add coord block.position)
+    |> Seq.map (fun coord -> Coord.add coord block.position)
 
 let getFilledCells block =
     block.shape
-    |> Matrix.flatmapi (fun x y cell -> ({ x = x; y = y }, cell))
+    |> Matrix.flatmapi (fun x y cell -> (Coord.create x y, cell))
     |> Seq.filter (fun (coord, cell) -> Shape.isCellFilled cell)
-    |> Seq.map (fun (coord, cell) -> ((add coord block.position), cell))
+    |> Seq.map (fun (coord, cell) -> ((Coord.add coord block.position), cell))
 
 let getBoundingRect block =
     block

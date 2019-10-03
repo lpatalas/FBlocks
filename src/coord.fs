@@ -5,6 +5,9 @@ type Coord = {
     y: int
 }
 
+let create x y =
+    { x = x; y = y }
+
 let add a b =
     { x = a.x + b.x; y = a.y + b.y }
 

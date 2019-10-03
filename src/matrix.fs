@@ -1,7 +1,5 @@
 module FBlocks.Matrix
 
-open Coord
-
 type Matrix<'T> = {
     cells: 'T array
     columnCount: int
@@ -79,13 +77,13 @@ let coordsWithValue value matrix =
     matrix
     |> flatmapi (fun x y v -> (x, y, v))
     |> Seq.filter (fun (_, _, v) -> v = value)
-    |> Seq.map (fun (x, y, _) -> { x = x; y = y })
+    |> Seq.map (fun (x, y, _) -> Coord.create x y)
 
 let coordsWhere predicate matrix =
     matrix
     |> flatmapi (fun x y v -> (x, y, v))
     |> Seq.filter (fun (_, _, v) -> predicate v)
-    |> Seq.map (fun (x, y, _) -> { x = x; y = y })
+    |> Seq.map (fun (x, y, _) -> Coord.create x y)
 
 let rotateClockwise matrix =
     let rotateCell x y _ =

@@ -1,7 +1,6 @@
 module FBlocks.Shape
 
 open System
-open FBlocks.Coord
 
 type Color = string
 type ShapeCell = EmptyCell | FilledCell of Color
@@ -76,6 +75,6 @@ let getShapeMatrix shapeName =
 
 let filledCellCoords shape =
     shape
-    |> Matrix.flatmapi (fun x y v -> ({ x = x; y = y }, v))
-    |> Seq.filter (fun (coord, v) -> isCellFilled v)
+    |> Matrix.flatmapi (fun x y v -> (Coord.create x y, v))
+    |> Seq.filter (fun (_, v) -> isCellFilled v)
     |> Seq.map (fun (coord, _) -> coord)
