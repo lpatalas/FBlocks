@@ -11,6 +11,7 @@ type InputAction =
     | PlaceBlock
     | IncreaseFallSpeed
     | DecreaseFallSpeed
+    | TogglePause
 
 let mutable inputActionQueue: InputAction list = []
 
@@ -43,6 +44,7 @@ let onKeyUp =
         "ArrowLeft", StopMovement
         "ArrowRight", StopMovement
         "ArrowDown", DecreaseFallSpeed
+        "p", TogglePause
     ])
 
 let addEventListeners() =

@@ -8,6 +8,7 @@ type GameState = {
     block: Block.Block
     fallInterval: Time.Time
     grid: Grid.Grid
+    isPaused: bool
     lastBlockFallTime: Time.Time
     lastMoveTime: Time.Time
     moveDelta: int option
@@ -78,6 +79,9 @@ let processInput currentTime inputs gameState =
         let setFallInterval interval gameState =
             { gameState with fallInterval = interval }
 
+        let togglePause gameState =
+            { gameState with isPaused = not gameState.isPaused }
+
         gameState |>
             match action with
             | Input.MoveLeft -> setMovement -1
@@ -87,6 +91,7 @@ let processInput currentTime inputs gameState =
             | Input.DecreaseFallSpeed -> setFallInterval blockFallInterval
             | Input.Rotate -> rotateBlock
             | Input.PlaceBlock -> placeBlock
+            | Input.TogglePause -> togglePause
 
     let updatedGameState =
         inputs
@@ -121,12 +126,18 @@ let checkGameOver gameState =
         FinishedGame gameState.score
 
 let update currentTime game =
+    let ifNotPaused action gameState =
+        if not gameState.isPaused then
+            action gameState
+        else
+            gameState
+
     match game with
     | RunningGame gameState ->
         gameState
         |> processInput currentTime (Input.getActions())
-        |> processMovement currentTime
-        |> processFalling currentTime
+        |> ifNotPaused (processMovement currentTime)
+        |> ifNotPaused (processFalling currentTime)
         |> checkGameOver
     | FinishedGame _ ->
         game
@@ -138,6 +149,7 @@ let newGame gridWidth gridHeight currentTime =
             block = Shape.random() |> Block.create grid.width
             fallInterval = blockFallInterval
             grid = grid
+            isPaused = false
             lastBlockFallTime = currentTime
             lastMoveTime = Time.zero
             moveDelta = None
