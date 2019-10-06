@@ -11,7 +11,7 @@ let allShapes = [| Shape.D; Shape.I; Shape.J; Shape.L; Shape.O; Shape.S; Shape.Z
 
 let shuffleList (array: 'T[]) =
     let arrayCopy = Array.copy array
-    for i in (arrayCopy.Length - 1)..0 do
+    for i = arrayCopy.Length - 1 downto 0 do
         let j = random.Next(0, i + 1)
         let temp = arrayCopy.[i]
         arrayCopy.[i] <- arrayCopy.[j]
