@@ -6,8 +6,8 @@ let moveInterval = 8<frame/cell>
 
 type GameState = {
     block: Block.Block
-    fallInterval: int<frame/cell>
     grid: Grid.Grid
+    isFastFallEnabled: bool
     isPaused: bool
     lastBlockFallFrame: int<frame>
     lastMoveFrame: int<frame>
@@ -81,8 +81,8 @@ let processInput currentFrame inputs gameState =
         let stopMovement gameState =
             { gameState with moveDelta = None }
 
-        let setFallInterval interval gameState =
-            { gameState with fallInterval = interval }
+        let enableFastFall enabled gameState =
+            { gameState with isFastFallEnabled = enabled }
 
         let togglePause gameState =
             { gameState with isPaused = not gameState.isPaused }
@@ -92,8 +92,8 @@ let processInput currentFrame inputs gameState =
             | Input.MoveLeft -> setMovement -1
             | Input.MoveRight -> setMovement 1
             | Input.StopMovement -> stopMovement
-            | Input.IncreaseFallSpeed -> setFallInterval fastFallInterval
-            | Input.DecreaseFallSpeed -> setFallInterval normalFallInterval
+            | Input.IncreaseFallSpeed -> enableFastFall true
+            | Input.DecreaseFallSpeed -> enableFastFall false
             | Input.Rotate -> rotateBlock
             | Input.PlaceBlock -> placeBlock
             | Input.TogglePause -> togglePause
@@ -119,9 +119,15 @@ let processMovement currentFrame gameState =
             gameState
     | None -> gameState
 
+let getFallInterval isFastFallEnabled =
+    if isFastFallEnabled then
+        fastFallInterval
+    else
+        normalFallInterval
+
 let processFalling currentFrame gameState =
     let frameDelta = currentFrame - gameState.lastBlockFallFrame
-    let cellsToFall = frameDelta / gameState.fallInterval
+    let cellsToFall = frameDelta / getFallInterval gameState.isFastFallEnabled
     if cellsToFall >= 1<cell> then
         moveBlockDown currentFrame gameState
     else
@@ -159,8 +165,8 @@ let newGame gridWidth gridHeight currentTime =
     let state =
         {
             block = initialShapes.[0] |> Block.create grid.width
-            fallInterval = normalFallInterval
             grid = grid
+            isFastFallEnabled = false
             isPaused = false
             lastBlockFallFrame = 0<frame>
             lastMoveFrame = 0<frame>
