@@ -38,6 +38,7 @@ let placeBlock currentFrame block gameState =
     { gameState with
         block = gameState.nextShape |> Block.create gameState.grid.width
         grid = Grid.removeCompletedRows newGrid
+        isFastFallEnabled = false
         lastBlockFallFrame = currentFrame
         nextShape = nextShape
         score = Score.update gameState.score completedRows

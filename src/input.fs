@@ -21,14 +21,15 @@ let getActions() =
     inputs
 
 let handleInput (mapping: IDictionary<string, InputAction>) (event: KeyboardEvent) =
-    let maybeAction =
-        match mapping.TryGetValue(event.key) with
-        | (true, action) -> Some action
-        | (false, _) -> None
+    if not event.repeat then
+        let maybeAction =
+            match mapping.TryGetValue(event.key) with
+            | (true, action) -> Some action
+            | (false, _) -> None
 
-    match maybeAction with
-    | Some action -> inputActionQueue <- action :: inputActionQueue
-    | None -> ()
+        match maybeAction with
+        | Some action -> inputActionQueue <- action :: inputActionQueue
+        | None -> ()
 
 let onKeyDown =
     handleInput (dict[
