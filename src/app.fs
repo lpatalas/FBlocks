@@ -37,13 +37,14 @@ let run gameContainerDivId nextBlockDivId =
             let pointsText =
                 sprintf "%i POINTS" gainedScore.points
 
-            let scoreElement = document.createElement "div"
-            scoreElement.classList.add("score-popup")
-            scoreElement.innerHTML <- sprintf "%s<br>+%s" linesText pointsText
+            if previousScore.level <> currentScore.level then
+                let levelUpElement = document.createElement "div"
+                levelUpElement.classList.add("level-up-popup")
+                levelUpElement.innerHTML <- "Level Up!"
 
-            let callback = removeChildNodeCallback scoreElement
-            scoreElement.addEventListener ("animationend", U2.Case1 callback)
-            gameContainerElement.appendChild scoreElement |> ignore
+                let callback = removeChildNodeCallback levelUpElement
+                levelUpElement.addEventListener ("animationend", U2.Case1 callback)
+                gameContainerElement.appendChild levelUpElement |> ignore
 
     let updateUI (previousState: Game.Game) (currentState: Game.Game) =
         match currentState with
