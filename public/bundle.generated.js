@@ -13389,11 +13389,12 @@ function getY(coord$$1) {
 /*!*********************!*\
   !*** ./src/game.fs ***!
   \*********************/
-/*! exports provided: fastFallInterval, moveInterval, GameState, GameState$reflection, Game, Game$reflection, updateBlockIfValid, placeBlock, placeCurrentBlock, moveBlockDown, offsetOutOfBoundsBlock, processInput, moveBlock, processMovement, calculateFallInterval, processFalling, checkGameOver, update, newGame */
+/*! exports provided: minimumFallInterval, fastFallInterval, moveInterval, GameState, GameState$reflection, Game, Game$reflection, updateBlockIfValid, placeBlock, placeCurrentBlock, moveBlockDown, offsetOutOfBoundsBlock, processInput, moveBlock, processMovement, calculateFallInterval, processFalling, checkGameOver, update, newGame */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "minimumFallInterval", function() { return minimumFallInterval; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fastFallInterval", function() { return fastFallInterval; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "moveInterval", function() { return moveInterval; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GameState", function() { return GameState; });
@@ -13437,6 +13438,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+const minimumFallInterval = 1;
 const fastFallInterval = 4;
 const moveInterval = 8;
 const GameState = Object(_fable_fable_library_2_3_25_Types_js__WEBPACK_IMPORTED_MODULE_0__["declare"])(function FBlocks_Game_GameState(arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10) {
@@ -13482,7 +13484,7 @@ function placeBlock(currentFrame, block, gameState$$1) {
   block$$1 = Object(_block_fs__WEBPACK_IMPORTED_MODULE_1__["create"])(gameState$$1.grid.width, shapeName);
   const grid = Object(_grid_fs__WEBPACK_IMPORTED_MODULE_2__["removeCompletedRows"])(newGrid);
   const score = Object(_score_fs__WEBPACK_IMPORTED_MODULE_5__["update"])(gameState$$1.score, completedRows);
-  return new GameState(block$$1, grid, gameState$$1.isFastFallEnabled, gameState$$1.isPaused, currentFrame, gameState$$1.lastMoveFrame, gameState$$1.moveDelta, nextShape, score, generatorState);
+  return new GameState(block$$1, grid, false, gameState$$1.isPaused, currentFrame, gameState$$1.lastMoveFrame, gameState$$1.moveDelta, nextShape, score, generatorState);
 }
 function placeCurrentBlock(currentFrame$$1, gameState$$2) {
   return placeBlock(currentFrame$$1, gameState$$2.block, gameState$$2);
@@ -13580,14 +13582,20 @@ function processMovement(currentFrame$$4, gameState$$13) {
     }
   }
 }
-function calculateFallInterval(isFastFallEnabled, level) {
-  if (isFastFallEnabled) {
-    return fastFallInterval | 0;
-  } else if (level <= 9) {
-    return (48 - level * 5) * 1 | 0;
+function calculateFallInterval(isFastFallEnabled$$1, level) {
+  let normalFallInterval;
+
+  if (level <= 9) {
+    normalFallInterval = (48 - level * 5) * 1;
   } else {
     const framesPerCell = 5 - ~~((level - 10) / 3) | 0;
-    return Object(_fable_fable_library_2_3_25_Util_js__WEBPACK_IMPORTED_MODULE_8__["max"])(_fable_fable_library_2_3_25_Util_js__WEBPACK_IMPORTED_MODULE_8__["comparePrimitives"], framesPerCell, 1) * 1 | 0;
+    normalFallInterval = Object(_fable_fable_library_2_3_25_Util_js__WEBPACK_IMPORTED_MODULE_8__["max"])(_fable_fable_library_2_3_25_Util_js__WEBPACK_IMPORTED_MODULE_8__["comparePrimitives"], framesPerCell, 1) * 1;
+  }
+
+  if (isFastFallEnabled$$1) {
+    return Object(_fable_fable_library_2_3_25_Util_js__WEBPACK_IMPORTED_MODULE_8__["min"])(_fable_fable_library_2_3_25_Util_js__WEBPACK_IMPORTED_MODULE_8__["comparePrimitives"], fastFallInterval, normalFallInterval) | 0;
+  } else {
+    return normalFallInterval | 0;
   }
 }
 function processFalling(currentFrame$$5, gameState$$14) {
@@ -13942,19 +13950,21 @@ function getActions() {
   return inputs;
 }
 function handleInput(mapping, event) {
-  let maybeAction;
-  const matchValue = Object(_fable_fable_library_2_3_25_Util_js__WEBPACK_IMPORTED_MODULE_2__["tryGetValue"])(mapping, event.key, null);
+  if (!event.repeat) {
+    let maybeAction;
+    const matchValue = Object(_fable_fable_library_2_3_25_Util_js__WEBPACK_IMPORTED_MODULE_2__["tryGetValue"])(mapping, event.key, null);
 
-  if (matchValue[0]) {
-    const action = matchValue[1];
-    maybeAction = action;
-  } else {
-    maybeAction = null;
-  }
+    if (matchValue[0]) {
+      const action = matchValue[1];
+      maybeAction = action;
+    } else {
+      maybeAction = null;
+    }
 
-  if (maybeAction == null) {} else {
-    const action$$1 = maybeAction;
-    inputActionQueue(new _fable_fable_library_2_3_25_Types_js__WEBPACK_IMPORTED_MODULE_0__["List"](action$$1, inputActionQueue()));
+    if (maybeAction == null) {} else {
+      const action$$1 = maybeAction;
+      inputActionQueue(new _fable_fable_library_2_3_25_Types_js__WEBPACK_IMPORTED_MODULE_0__["List"](action$$1, inputActionQueue()));
+    }
   }
 }
 const onKeyDown = (() => {
