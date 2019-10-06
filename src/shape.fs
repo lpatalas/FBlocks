@@ -1,24 +1,9 @@
 module FBlocks.Shape
 
-open System
-
 type Color = string
 type ShapeCell = EmptyCell | FilledCell of Color
 type ShapeName = D | I | J | L | O | S | Z
 type ShapeMatrix = Matrix.Matrix<ShapeCell>
-
-let randomGenerator = Random()
-
-let random() =
-    match randomGenerator.Next(7) with
-    | 0 -> D
-    | 1 -> I
-    | 2 -> J
-    | 3 -> L
-    | 4 -> O
-    | 5 -> S
-    | 6 -> Z
-    | _ -> invalidOp "Random number out of range of available shapes"
 
 let isCellFilled cell =
     match cell with

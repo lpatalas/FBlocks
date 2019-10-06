@@ -14,6 +14,7 @@ type GameState = {
     moveDelta: int option
     nextShape: Shape.ShapeName
     score: Score.Score
+    shapeGeneratorState: RandomShapeGenerator.GeneratorState
 }
 
 type Game =
@@ -30,13 +31,17 @@ let updateBlockIfValid gameState updater =
 let placeBlock currentTime block gameState =
     let newGrid = Grid.placeBlock gameState.grid block
     let completedRows = Grid.countCompletedRows newGrid
+    let (nextShape, generatorState) =
+        gameState.shapeGeneratorState
+        |> RandomShapeGenerator.getNext
 
     { gameState with
         block = gameState.nextShape |> Block.create gameState.grid.width
         grid = Grid.removeCompletedRows newGrid
         lastBlockFallTime = currentTime
-        nextShape = Shape.random()
-        score = Score.update gameState.score completedRows }
+        nextShape = nextShape
+        score = Score.update gameState.score completedRows
+        shapeGeneratorState = generatorState }
 
 let placeCurrentBlock currentTime gameState =
     placeBlock currentTime gameState.block gameState
@@ -144,16 +149,21 @@ let update currentTime game =
 
 let newGame gridWidth gridHeight currentTime =
     let grid = Grid.create gridWidth gridHeight
+    let (initialShapes, randomGeneratorState) =
+        RandomShapeGenerator.initialize()
+        |> RandomShapeGenerator.getList 2
+
     let state =
         {
-            block = Shape.random() |> Block.create grid.width
+            block = initialShapes.[0] |> Block.create grid.width
             fallInterval = blockFallInterval
             grid = grid
             isPaused = false
             lastBlockFallTime = currentTime
             lastMoveTime = Time.zero
             moveDelta = None
-            nextShape = Shape.random()
+            nextShape = initialShapes.[1]
             score = Score.zero
+            shapeGeneratorState = randomGeneratorState
         }
     RunningGame state
