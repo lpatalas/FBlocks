@@ -13075,23 +13075,22 @@ function fromBytesBE(bytes, unsigned) {
 /*!********************!*\
   !*** ./src/app.fs ***!
   \********************/
-/*! exports provided: onNextFrame, mainLoop, gridWidth, gridHeight, run */
+/*! exports provided: gridWidth, gridHeight, run */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "onNextFrame", function() { return onNextFrame; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "mainLoop", function() { return mainLoop; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "gridWidth", function() { return gridWidth; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "gridHeight", function() { return gridHeight; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "run", function() { return run; });
 /* harmony import */ var _time_fs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./time.fs */ "./src/time.fs");
 /* harmony import */ var _game_fs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./game.fs */ "./src/game.fs");
-/* harmony import */ var _fable_fable_library_2_3_25_Util_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../.fable/fable-library.2.3.25/Util.js */ "./.fable/fable-library.2.3.25/Util.js");
-/* harmony import */ var _renderer_fs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./renderer.fs */ "./src/renderer.fs");
+/* harmony import */ var _renderer_fs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./renderer.fs */ "./src/renderer.fs");
+/* harmony import */ var _fable_fable_library_2_3_25_Util_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../.fable/fable-library.2.3.25/Util.js */ "./.fable/fable-library.2.3.25/Util.js");
 /* harmony import */ var _score_fs__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./score.fs */ "./src/score.fs");
 /* harmony import */ var _fable_fable_library_2_3_25_String_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../.fable/fable-library.2.3.25/String.js */ "./.fable/fable-library.2.3.25/String.js");
 /* harmony import */ var _input_fs__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./input.fs */ "./src/input.fs");
+/* harmony import */ var _gameLoop_fs__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./gameLoop.fs */ "./src/gameLoop.fs");
 
 
 
@@ -13099,42 +13098,23 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-function onNextFrame(callback) {
-  const value = window.requestAnimationFrame(function ($arg$$1) {
-    var ms;
-    callback((ms = $arg$$1, (Object(_time_fs__WEBPACK_IMPORTED_MODULE_0__["fromMilliseconds"])(ms))));
-  });
-  value, null;
-}
-function mainLoop(game, updateUI, lastTime, lastElapsedTime, currentTime) {
-  const deltaTime = Object(_time_fs__WEBPACK_IMPORTED_MODULE_0__["difference"])(currentTime, lastTime);
-  const elapsedTime = Object(_time_fs__WEBPACK_IMPORTED_MODULE_0__["add"])(lastElapsedTime, deltaTime);
-  const updatedGame = deltaTime.CompareTo(_time_fs__WEBPACK_IMPORTED_MODULE_0__["zero"]) > 0 ? Object(_game_fs__WEBPACK_IMPORTED_MODULE_1__["update"])(elapsedTime, game) : game;
 
-  if (!Object(_fable_fable_library_2_3_25_Util_js__WEBPACK_IMPORTED_MODULE_2__["equals"])(updatedGame, game)) {
-    updateUI(game, updatedGame);
-  }
-
-  if (updatedGame.tag === 0) {
-    onNextFrame(function (currentTime$$1) {
-      mainLoop(updatedGame, updateUI, currentTime, elapsedTime, currentTime$$1);
-    });
-  }
-}
 const gridWidth = 10;
 const gridHeight = 20;
 function run(gameContainerDivId, nextBlockDivId) {
-  const currentTime$$2 = Object(_time_fs__WEBPACK_IMPORTED_MODULE_0__["getCurrent"])();
-  const game$$1 = Object(_game_fs__WEBPACK_IMPORTED_MODULE_1__["newGame"])(gridWidth, gridHeight, currentTime$$2);
-  const gameRenderer = Object(_renderer_fs__WEBPACK_IMPORTED_MODULE_3__["create"])(gameContainerDivId, gridWidth, gridHeight);
-  const nextBlockRenderer = Object(_renderer_fs__WEBPACK_IMPORTED_MODULE_3__["create"])(nextBlockDivId, 4, 4);
+  const currentTime = Object(_time_fs__WEBPACK_IMPORTED_MODULE_0__["getCurrent"])();
+  const game = Object(_game_fs__WEBPACK_IMPORTED_MODULE_1__["newGame"])(gridWidth, gridHeight, currentTime);
+  const gameRenderer = Object(_renderer_fs__WEBPACK_IMPORTED_MODULE_2__["create"])(gameContainerDivId, gridWidth, gridHeight);
+  const nextBlockRenderer = Object(_renderer_fs__WEBPACK_IMPORTED_MODULE_2__["create"])(nextBlockDivId, 4, 4);
   const gameContainerElement = document.getElementById(gameContainerDivId);
   const scoreElement = document.getElementById("score");
   const linesCompletedElement = document.getElementById("linesCompleted");
+  const levelElement = document.getElementById("level");
 
   const updateScore = function updateScore(score) {
-    scoreElement.innerText = Object(_fable_fable_library_2_3_25_Util_js__WEBPACK_IMPORTED_MODULE_2__["int32ToString"])(score.points);
-    linesCompletedElement.innerText = Object(_fable_fable_library_2_3_25_Util_js__WEBPACK_IMPORTED_MODULE_2__["int32ToString"])(score.linesCompleted);
+    scoreElement.innerText = Object(_fable_fable_library_2_3_25_Util_js__WEBPACK_IMPORTED_MODULE_3__["int32ToString"])(score.points);
+    linesCompletedElement.innerText = Object(_fable_fable_library_2_3_25_Util_js__WEBPACK_IMPORTED_MODULE_3__["int32ToString"])(score.linesCompleted);
+    levelElement.innerHTML = Object(_fable_fable_library_2_3_25_Util_js__WEBPACK_IMPORTED_MODULE_3__["int32ToString"])(score.level);
   };
 
   const removeChildNodeCallback = function removeChildNodeCallback(node, e) {
@@ -13143,7 +13123,7 @@ function run(gameContainerDivId, nextBlockDivId) {
   };
 
   const showScorePopup = function showScorePopup(previousScore, currentScore) {
-    if (!Object(_fable_fable_library_2_3_25_Util_js__WEBPACK_IMPORTED_MODULE_2__["equals"])(previousScore, currentScore)) {
+    if (!Object(_fable_fable_library_2_3_25_Util_js__WEBPACK_IMPORTED_MODULE_3__["equals"])(previousScore, currentScore)) {
       const gainedScore = Object(_score_fs__WEBPACK_IMPORTED_MODULE_4__["difference"])(previousScore, currentScore);
       let linesText;
 
@@ -13161,36 +13141,35 @@ function run(gameContainerDivId, nextBlockDivId) {
       const arg10$$2 = gainedScore.points | 0;
       const clo1$$2 = Object(_fable_fable_library_2_3_25_String_js__WEBPACK_IMPORTED_MODULE_5__["toText"])(Object(_fable_fable_library_2_3_25_String_js__WEBPACK_IMPORTED_MODULE_5__["printf"])("%i POINTS"));
       pointsText = clo1$$2(arg10$$2);
-      const scoreElement$$1 = document.createElement("div");
-      scoreElement$$1.classList.add("score-popup");
-      const arg10$$3 = linesText;
-      const arg20 = pointsText;
-      const clo1$$3 = Object(_fable_fable_library_2_3_25_String_js__WEBPACK_IMPORTED_MODULE_5__["toText"])(Object(_fable_fable_library_2_3_25_String_js__WEBPACK_IMPORTED_MODULE_5__["printf"])("%s<br>+%s"));
-      const clo2 = clo1$$3(arg10$$3);
-      scoreElement$$1.innerHTML = clo2(arg20);
-      let callback$$1;
-      const arg00 = scoreElement$$1;
-      const clo1$$4 = Object(_fable_fable_library_2_3_25_Util_js__WEBPACK_IMPORTED_MODULE_2__["partialApply"])(1, removeChildNodeCallback, [arg00]);
 
-      callback$$1 = function (arg10$$4) {
-        clo1$$4(arg10$$4);
-      };
+      if (previousScore.level !== currentScore.level) {
+        const levelUpElement = document.createElement("div");
+        levelUpElement.classList.add("level-up-popup");
+        levelUpElement.innerHTML = "Level Up!";
+        let callback;
+        const arg00 = levelUpElement;
+        const clo1$$3 = Object(_fable_fable_library_2_3_25_Util_js__WEBPACK_IMPORTED_MODULE_3__["partialApply"])(1, removeChildNodeCallback, [arg00]);
 
-      scoreElement$$1.addEventListener("animationend", callback$$1);
-      const value$$1 = gameContainerElement.appendChild(scoreElement$$1);
-      value$$1, null;
+        callback = function (arg10$$3) {
+          clo1$$3(arg10$$3);
+        };
+
+        levelUpElement.addEventListener("animationend", callback);
+        const value = gameContainerElement.appendChild(levelUpElement);
+        value, null;
+      }
     }
   };
 
-  const updateUI$$1 = function updateUI$$1(previousState, currentState) {
+  const updateUI = function updateUI(previousState, currentState) {
     if (currentState.tag === 1) {
       const score$$1 = currentState.fields[0];
       updateScore(score$$1);
       gameContainerElement.classList.add("is-over");
     } else {
       const gameState = currentState.fields[0];
-      Object(_renderer_fs__WEBPACK_IMPORTED_MODULE_3__["redraw"])(gameRenderer, gameState.grid, gameState.block);
-      Object(_renderer_fs__WEBPACK_IMPORTED_MODULE_3__["drawNextBlock"])(nextBlockRenderer, gameState.nextShape);
+      Object(_renderer_fs__WEBPACK_IMPORTED_MODULE_2__["redraw"])(gameRenderer, gameState.grid, gameState.block);
+      Object(_renderer_fs__WEBPACK_IMPORTED_MODULE_2__["drawNextBlock"])(nextBlockRenderer, gameState.nextShape);
       updateScore(gameState.score);
 
       if (previousState.tag === 0) {
@@ -13201,7 +13180,7 @@ function run(gameContainerDivId, nextBlockDivId) {
   };
 
   Object(_input_fs__WEBPACK_IMPORTED_MODULE_6__["addEventListeners"])();
-  mainLoop(game$$1, updateUI$$1, currentTime$$2, _time_fs__WEBPACK_IMPORTED_MODULE_0__["zero"], currentTime$$2);
+  Object(_gameLoop_fs__WEBPACK_IMPORTED_MODULE_7__["run"])(game, updateUI);
 }
 run("gameContainer", "nextBlockContainer");
 
@@ -13211,16 +13190,12 @@ run("gameContainer", "nextBlockContainer");
 /*!************************!*\
   !*** ./src/app.fsproj ***!
   \************************/
-/*! exports provided: onNextFrame, mainLoop, gridWidth, gridHeight, run */
+/*! exports provided: gridWidth, gridHeight, run */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _app_fs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./app.fs */ "./src/app.fs");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "onNextFrame", function() { return _app_fs__WEBPACK_IMPORTED_MODULE_0__["onNextFrame"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "mainLoop", function() { return _app_fs__WEBPACK_IMPORTED_MODULE_0__["mainLoop"]; });
-
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "gridWidth", function() { return _app_fs__WEBPACK_IMPORTED_MODULE_0__["gridWidth"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "gridHeight", function() { return _app_fs__WEBPACK_IMPORTED_MODULE_0__["gridHeight"]; });
@@ -13235,7 +13210,7 @@ __webpack_require__.r(__webpack_exports__);
 /*!**********************!*\
   !*** ./src/block.fs ***!
   \**********************/
-/*! exports provided: Block, Block$reflection, create, moveBy, rotate, getSquareCoords, getFilledCells */
+/*! exports provided: Block, Block$reflection, create, moveBy, rotate, getSquareCoords, getFilledCells, getBoundingRect */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -13247,6 +13222,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "rotate", function() { return rotate; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getSquareCoords", function() { return getSquareCoords; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getFilledCells", function() { return getFilledCells; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getBoundingRect", function() { return getBoundingRect; });
 /* harmony import */ var _fable_fable_library_2_3_25_Types_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../.fable/fable-library.2.3.25/Types.js */ "./.fable/fable-library.2.3.25/Types.js");
 /* harmony import */ var _coord_fs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./coord.fs */ "./src/coord.fs");
 /* harmony import */ var _shape_fs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./shape.fs */ "./src/shape.fs");
@@ -13255,6 +13231,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _fable_fable_library_2_3_25_Seq_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../.fable/fable-library.2.3.25/Seq.js */ "./.fable/fable-library.2.3.25/Seq.js");
 /* harmony import */ var _fable_fable_library_2_3_25_Util_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../.fable/fable-library.2.3.25/Util.js */ "./.fable/fable-library.2.3.25/Util.js");
 /* harmony import */ var _fable_fable_library_2_3_25_Int32_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../.fable/fable-library.2.3.25/Int32.js */ "./.fable/fable-library.2.3.25/Int32.js");
+/* harmony import */ var _boundingRect_fs__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./boundingRect.fs */ "./src/boundingRect.fs");
+
 
 
 
@@ -13303,7 +13281,7 @@ function getFilledCells(block$$3) {
   let source$$3;
   const matrix = block$$3.shape;
   source$$3 = Object(_matrix_fs__WEBPACK_IMPORTED_MODULE_3__["flatmapi"])(function mapping$$1(x, y, cell) {
-    return [new _coord_fs__WEBPACK_IMPORTED_MODULE_1__["Coord"](x, y), cell];
+    return [Object(_coord_fs__WEBPACK_IMPORTED_MODULE_1__["create"])(x, y), cell];
   }, matrix);
   source$$4 = Object(_fable_fable_library_2_3_25_Seq_js__WEBPACK_IMPORTED_MODULE_5__["filter"])(function predicate(tupledArg) {
     const coord$$2 = tupledArg[0];
@@ -13316,6 +13294,53 @@ function getFilledCells(block$$3) {
     return [Object(_coord_fs__WEBPACK_IMPORTED_MODULE_1__["add"])(coord$$3, block$$3.position), cell$$2];
   }, source$$4);
 }
+function getBoundingRect(block$$4) {
+  let coords;
+  const block$$5 = block$$4;
+  coords = getSquareCoords(block$$5);
+  return Object(_boundingRect_fs__WEBPACK_IMPORTED_MODULE_8__["fromCoords"])(coords);
+}
+
+/***/ }),
+
+/***/ "./src/boundingRect.fs":
+/*!*****************************!*\
+  !*** ./src/boundingRect.fs ***!
+  \*****************************/
+/*! exports provided: BoundingRect, BoundingRect$reflection, addPoint, fromCoords */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "BoundingRect", function() { return BoundingRect; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "BoundingRect$reflection", function() { return BoundingRect$reflection; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "addPoint", function() { return addPoint; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fromCoords", function() { return fromCoords; });
+/* harmony import */ var _fable_fable_library_2_3_25_Types_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../.fable/fable-library.2.3.25/Types.js */ "./.fable/fable-library.2.3.25/Types.js");
+/* harmony import */ var _fable_fable_library_2_3_25_Reflection_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../.fable/fable-library.2.3.25/Reflection.js */ "./.fable/fable-library.2.3.25/Reflection.js");
+/* harmony import */ var _fable_fable_library_2_3_25_Util_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../.fable/fable-library.2.3.25/Util.js */ "./.fable/fable-library.2.3.25/Util.js");
+/* harmony import */ var _fable_fable_library_2_3_25_Seq_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../.fable/fable-library.2.3.25/Seq.js */ "./.fable/fable-library.2.3.25/Seq.js");
+
+
+
+
+const BoundingRect = Object(_fable_fable_library_2_3_25_Types_js__WEBPACK_IMPORTED_MODULE_0__["declare"])(function FBlocks_BoundingRect_BoundingRect(arg1, arg2, arg3, arg4) {
+  this.bottom = arg1 | 0;
+  this.left = arg2 | 0;
+  this.right = arg3 | 0;
+  this.top = arg4 | 0;
+}, _fable_fable_library_2_3_25_Types_js__WEBPACK_IMPORTED_MODULE_0__["Record"]);
+function BoundingRect$reflection() {
+  return Object(_fable_fable_library_2_3_25_Reflection_js__WEBPACK_IMPORTED_MODULE_1__["record"])("FBlocks.BoundingRect.BoundingRect", [], BoundingRect, () => [["bottom", _fable_fable_library_2_3_25_Reflection_js__WEBPACK_IMPORTED_MODULE_1__["int32"]], ["left", _fable_fable_library_2_3_25_Reflection_js__WEBPACK_IMPORTED_MODULE_1__["int32"]], ["right", _fable_fable_library_2_3_25_Reflection_js__WEBPACK_IMPORTED_MODULE_1__["int32"]], ["top", _fable_fable_library_2_3_25_Reflection_js__WEBPACK_IMPORTED_MODULE_1__["int32"]]]);
+}
+function addPoint(bounds, coord) {
+  return new BoundingRect(Object(_fable_fable_library_2_3_25_Util_js__WEBPACK_IMPORTED_MODULE_2__["max"])(_fable_fable_library_2_3_25_Util_js__WEBPACK_IMPORTED_MODULE_2__["comparePrimitives"], bounds.bottom, coord.y), Object(_fable_fable_library_2_3_25_Util_js__WEBPACK_IMPORTED_MODULE_2__["min"])(_fable_fable_library_2_3_25_Util_js__WEBPACK_IMPORTED_MODULE_2__["comparePrimitives"], bounds.left, coord.x), Object(_fable_fable_library_2_3_25_Util_js__WEBPACK_IMPORTED_MODULE_2__["max"])(_fable_fable_library_2_3_25_Util_js__WEBPACK_IMPORTED_MODULE_2__["comparePrimitives"], bounds.right, coord.x), Object(_fable_fable_library_2_3_25_Util_js__WEBPACK_IMPORTED_MODULE_2__["min"])(_fable_fable_library_2_3_25_Util_js__WEBPACK_IMPORTED_MODULE_2__["comparePrimitives"], bounds.top, coord.y));
+}
+function fromCoords(coords) {
+  const initialBounds = new BoundingRect(-2147483648, 2147483647, -2147483648, -2147483648);
+  const source = coords;
+  return Object(_fable_fable_library_2_3_25_Seq_js__WEBPACK_IMPORTED_MODULE_3__["fold"])(addPoint, initialBounds, source);
+}
 
 /***/ }),
 
@@ -13323,14 +13348,16 @@ function getFilledCells(block$$3) {
 /*!**********************!*\
   !*** ./src/coord.fs ***!
   \**********************/
-/*! exports provided: Coord, Coord$reflection, add, getY */
+/*! exports provided: Coord, Coord$reflection, create, add, getX, getY */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Coord", function() { return Coord; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Coord$reflection", function() { return Coord$reflection; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "create", function() { return create; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "add", function() { return add; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getX", function() { return getX; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getY", function() { return getY; });
 /* harmony import */ var _fable_fable_library_2_3_25_Types_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../.fable/fable-library.2.3.25/Types.js */ "./.fable/fable-library.2.3.25/Types.js");
 /* harmony import */ var _fable_fable_library_2_3_25_Reflection_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../.fable/fable-library.2.3.25/Reflection.js */ "./.fable/fable-library.2.3.25/Reflection.js");
@@ -13343,11 +13370,17 @@ const Coord = Object(_fable_fable_library_2_3_25_Types_js__WEBPACK_IMPORTED_MODU
 function Coord$reflection() {
   return Object(_fable_fable_library_2_3_25_Reflection_js__WEBPACK_IMPORTED_MODULE_1__["record"])("FBlocks.Coord.Coord", [], Coord, () => [["x", _fable_fable_library_2_3_25_Reflection_js__WEBPACK_IMPORTED_MODULE_1__["int32"]], ["y", _fable_fable_library_2_3_25_Reflection_js__WEBPACK_IMPORTED_MODULE_1__["int32"]]]);
 }
+function create(x, y) {
+  return new Coord(x, y);
+}
 function add(a, b) {
   return new Coord(a.x + b.x, a.y + b.y);
 }
-function getY(coord) {
-  return coord.y;
+function getX(coord) {
+  return coord.x;
+}
+function getY(coord$$1) {
+  return coord$$1.y;
 }
 
 /***/ }),
@@ -13356,13 +13389,12 @@ function getY(coord) {
 /*!*********************!*\
   !*** ./src/game.fs ***!
   \*********************/
-/*! exports provided: blockFallInterval, blockFastFallInterval, moveInterval, GameState, GameState$reflection, Game, Game$reflection, updateBlockIfValid, placeBlock, placeCurrentBlock, moveBlockDown, processInput, moveBlock, processMovement, processFalling, checkGameOver, update, newGame */
+/*! exports provided: fastFallInterval, moveInterval, GameState, GameState$reflection, Game, Game$reflection, updateBlockIfValid, placeBlock, placeCurrentBlock, moveBlockDown, offsetOutOfBoundsBlock, processInput, moveBlock, processMovement, calculateFallInterval, processFalling, checkGameOver, update, newGame */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "blockFallInterval", function() { return blockFallInterval; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "blockFastFallInterval", function() { return blockFastFallInterval; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fastFallInterval", function() { return fastFallInterval; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "moveInterval", function() { return moveInterval; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GameState", function() { return GameState; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GameState$reflection", function() { return GameState$reflection; });
@@ -13372,23 +13404,27 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "placeBlock", function() { return placeBlock; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "placeCurrentBlock", function() { return placeCurrentBlock; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "moveBlockDown", function() { return moveBlockDown; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "offsetOutOfBoundsBlock", function() { return offsetOutOfBoundsBlock; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "processInput", function() { return processInput; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "moveBlock", function() { return moveBlock; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "processMovement", function() { return processMovement; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "calculateFallInterval", function() { return calculateFallInterval; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "processFalling", function() { return processFalling; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "checkGameOver", function() { return checkGameOver; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "update", function() { return update; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "newGame", function() { return newGame; });
-/* harmony import */ var _time_fs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./time.fs */ "./src/time.fs");
-/* harmony import */ var _fable_fable_library_2_3_25_Types_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../.fable/fable-library.2.3.25/Types.js */ "./.fable/fable-library.2.3.25/Types.js");
-/* harmony import */ var _block_fs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./block.fs */ "./src/block.fs");
-/* harmony import */ var _grid_fs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./grid.fs */ "./src/grid.fs");
-/* harmony import */ var _fable_fable_library_2_3_25_Reflection_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../.fable/fable-library.2.3.25/Reflection.js */ "./.fable/fable-library.2.3.25/Reflection.js");
-/* harmony import */ var _shape_fs__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./shape.fs */ "./src/shape.fs");
-/* harmony import */ var _score_fs__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./score.fs */ "./src/score.fs");
-/* harmony import */ var _fable_fable_library_2_3_25_Util_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../.fable/fable-library.2.3.25/Util.js */ "./.fable/fable-library.2.3.25/Util.js");
-/* harmony import */ var _fable_fable_library_2_3_25_Seq_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../.fable/fable-library.2.3.25/Seq.js */ "./.fable/fable-library.2.3.25/Seq.js");
-/* harmony import */ var _input_fs__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./input.fs */ "./src/input.fs");
+/* harmony import */ var _fable_fable_library_2_3_25_Types_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../.fable/fable-library.2.3.25/Types.js */ "./.fable/fable-library.2.3.25/Types.js");
+/* harmony import */ var _block_fs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./block.fs */ "./src/block.fs");
+/* harmony import */ var _grid_fs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./grid.fs */ "./src/grid.fs");
+/* harmony import */ var _fable_fable_library_2_3_25_Reflection_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../.fable/fable-library.2.3.25/Reflection.js */ "./.fable/fable-library.2.3.25/Reflection.js");
+/* harmony import */ var _shape_fs__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./shape.fs */ "./src/shape.fs");
+/* harmony import */ var _score_fs__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./score.fs */ "./src/score.fs");
+/* harmony import */ var _randomShapeGenerator_fs__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./randomShapeGenerator.fs */ "./src/randomShapeGenerator.fs");
+/* harmony import */ var _fable_fable_library_2_3_25_Int32_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../.fable/fable-library.2.3.25/Int32.js */ "./.fable/fable-library.2.3.25/Int32.js");
+/* harmony import */ var _fable_fable_library_2_3_25_Util_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../.fable/fable-library.2.3.25/Util.js */ "./.fable/fable-library.2.3.25/Util.js");
+/* harmony import */ var _fable_fable_library_2_3_25_Seq_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../.fable/fable-library.2.3.25/Seq.js */ "./.fable/fable-library.2.3.25/Seq.js");
+/* harmony import */ var _input_fs__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./input.fs */ "./src/input.fs");
+/* harmony import */ var _fable_fable_library_2_3_25_List_js__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../.fable/fable-library.2.3.25/List.js */ "./.fable/fable-library.2.3.25/List.js");
 
 
 
@@ -13399,150 +13435,302 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-const blockFallInterval = Object(_time_fs__WEBPACK_IMPORTED_MODULE_0__["fromMilliseconds"])(1000);
-const blockFastFallInterval = Object(_time_fs__WEBPACK_IMPORTED_MODULE_0__["fromMilliseconds"])(50);
-const moveInterval = Object(_time_fs__WEBPACK_IMPORTED_MODULE_0__["fromMilliseconds"])(100);
-const GameState = Object(_fable_fable_library_2_3_25_Types_js__WEBPACK_IMPORTED_MODULE_1__["declare"])(function FBlocks_Game_GameState(arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8) {
+
+
+const fastFallInterval = 4;
+const moveInterval = 8;
+const GameState = Object(_fable_fable_library_2_3_25_Types_js__WEBPACK_IMPORTED_MODULE_0__["declare"])(function FBlocks_Game_GameState(arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10) {
   this.block = arg1;
-  this.fallInterval = arg2;
-  this.grid = arg3;
-  this.lastBlockFallTime = arg4;
-  this.lastMoveTime = arg5;
-  this.moveDelta = arg6;
-  this.nextShape = arg7;
-  this.score = arg8;
-}, _fable_fable_library_2_3_25_Types_js__WEBPACK_IMPORTED_MODULE_1__["Record"]);
+  this.grid = arg2;
+  this.isFastFallEnabled = arg3;
+  this.isPaused = arg4;
+  this.lastBlockFallFrame = arg5;
+  this.lastMoveFrame = arg6;
+  this.moveDelta = arg7;
+  this.nextShape = arg8;
+  this.score = arg9;
+  this.shapeGeneratorState = arg10;
+}, _fable_fable_library_2_3_25_Types_js__WEBPACK_IMPORTED_MODULE_0__["Record"]);
 function GameState$reflection() {
-  return Object(_fable_fable_library_2_3_25_Reflection_js__WEBPACK_IMPORTED_MODULE_4__["record"])("FBlocks.Game.GameState", [], GameState, () => [["block", Object(_block_fs__WEBPACK_IMPORTED_MODULE_2__["Block$reflection"])()], ["fallInterval", Object(_time_fs__WEBPACK_IMPORTED_MODULE_0__["Time$reflection"])()], ["grid", Object(_grid_fs__WEBPACK_IMPORTED_MODULE_3__["Grid$reflection"])()], ["lastBlockFallTime", Object(_time_fs__WEBPACK_IMPORTED_MODULE_0__["Time$reflection"])()], ["lastMoveTime", Object(_time_fs__WEBPACK_IMPORTED_MODULE_0__["Time$reflection"])()], ["moveDelta", Object(_fable_fable_library_2_3_25_Reflection_js__WEBPACK_IMPORTED_MODULE_4__["option"])(_fable_fable_library_2_3_25_Reflection_js__WEBPACK_IMPORTED_MODULE_4__["int32"])], ["nextShape", Object(_shape_fs__WEBPACK_IMPORTED_MODULE_5__["ShapeName$reflection"])()], ["score", Object(_score_fs__WEBPACK_IMPORTED_MODULE_6__["Score$reflection"])()]]);
+  return Object(_fable_fable_library_2_3_25_Reflection_js__WEBPACK_IMPORTED_MODULE_3__["record"])("FBlocks.Game.GameState", [], GameState, () => [["block", Object(_block_fs__WEBPACK_IMPORTED_MODULE_1__["Block$reflection"])()], ["grid", Object(_grid_fs__WEBPACK_IMPORTED_MODULE_2__["Grid$reflection"])()], ["isFastFallEnabled", _fable_fable_library_2_3_25_Reflection_js__WEBPACK_IMPORTED_MODULE_3__["bool"]], ["isPaused", _fable_fable_library_2_3_25_Reflection_js__WEBPACK_IMPORTED_MODULE_3__["bool"]], ["lastBlockFallFrame", _fable_fable_library_2_3_25_Reflection_js__WEBPACK_IMPORTED_MODULE_3__["int32"]], ["lastMoveFrame", _fable_fable_library_2_3_25_Reflection_js__WEBPACK_IMPORTED_MODULE_3__["int32"]], ["moveDelta", Object(_fable_fable_library_2_3_25_Reflection_js__WEBPACK_IMPORTED_MODULE_3__["option"])(_fable_fable_library_2_3_25_Reflection_js__WEBPACK_IMPORTED_MODULE_3__["int32"])], ["nextShape", Object(_shape_fs__WEBPACK_IMPORTED_MODULE_4__["ShapeName$reflection"])()], ["score", Object(_score_fs__WEBPACK_IMPORTED_MODULE_5__["Score$reflection"])()], ["shapeGeneratorState", Object(_randomShapeGenerator_fs__WEBPACK_IMPORTED_MODULE_6__["GeneratorState$reflection"])()]]);
 }
-const Game = Object(_fable_fable_library_2_3_25_Types_js__WEBPACK_IMPORTED_MODULE_1__["declare"])(function FBlocks_Game_Game(tag, name, ...fields) {
-  _fable_fable_library_2_3_25_Types_js__WEBPACK_IMPORTED_MODULE_1__["Union"].call(this, tag, name, ...fields);
-}, _fable_fable_library_2_3_25_Types_js__WEBPACK_IMPORTED_MODULE_1__["Union"]);
+const Game = Object(_fable_fable_library_2_3_25_Types_js__WEBPACK_IMPORTED_MODULE_0__["declare"])(function FBlocks_Game_Game(tag, name, ...fields) {
+  _fable_fable_library_2_3_25_Types_js__WEBPACK_IMPORTED_MODULE_0__["Union"].call(this, tag, name, ...fields);
+}, _fable_fable_library_2_3_25_Types_js__WEBPACK_IMPORTED_MODULE_0__["Union"]);
 function Game$reflection() {
-  return Object(_fable_fable_library_2_3_25_Reflection_js__WEBPACK_IMPORTED_MODULE_4__["union"])("FBlocks.Game.Game", [], Game, () => [["RunningGame", [GameState$reflection()]], ["FinishedGame", [Object(_score_fs__WEBPACK_IMPORTED_MODULE_6__["Score$reflection"])()]]]);
+  return Object(_fable_fable_library_2_3_25_Reflection_js__WEBPACK_IMPORTED_MODULE_3__["union"])("FBlocks.Game.Game", [], Game, () => [["RunningGame", [GameState$reflection()]], ["FinishedGame", [Object(_score_fs__WEBPACK_IMPORTED_MODULE_5__["Score$reflection"])()]]]);
 }
 function updateBlockIfValid(gameState, updater) {
   const updatedBlock = updater(gameState.block);
 
-  if (Object(_grid_fs__WEBPACK_IMPORTED_MODULE_3__["isBlockValid"])(gameState.grid, updatedBlock)) {
-    return new GameState(updatedBlock, gameState.fallInterval, gameState.grid, gameState.lastBlockFallTime, gameState.lastMoveTime, gameState.moveDelta, gameState.nextShape, gameState.score);
+  if (Object(_grid_fs__WEBPACK_IMPORTED_MODULE_2__["isBlockValid"])(gameState.grid, updatedBlock)) {
+    return new GameState(updatedBlock, gameState.grid, gameState.isFastFallEnabled, gameState.isPaused, gameState.lastBlockFallFrame, gameState.lastMoveFrame, gameState.moveDelta, gameState.nextShape, gameState.score, gameState.shapeGeneratorState);
   } else {
     return gameState;
   }
 }
-function placeBlock(currentTime, block, gameState$$1) {
-  const newGrid = Object(_grid_fs__WEBPACK_IMPORTED_MODULE_3__["placeBlock"])(gameState$$1.grid, block);
-  const completedRows = Object(_grid_fs__WEBPACK_IMPORTED_MODULE_3__["countCompletedRows"])(newGrid) | 0;
+function placeBlock(currentFrame, block, gameState$$1) {
+  const newGrid = Object(_grid_fs__WEBPACK_IMPORTED_MODULE_2__["placeBlock"])(gameState$$1.grid, block);
+  const completedRows = Object(_grid_fs__WEBPACK_IMPORTED_MODULE_2__["countCompletedRows"])(newGrid) | 0;
+  let patternInput;
+  const state = gameState$$1.shapeGeneratorState;
+  patternInput = Object(_randomShapeGenerator_fs__WEBPACK_IMPORTED_MODULE_6__["getNext"])(state);
+  const nextShape = patternInput[0];
+  const generatorState = patternInput[1];
   let block$$1;
   const shapeName = gameState$$1.nextShape;
-  block$$1 = Object(_block_fs__WEBPACK_IMPORTED_MODULE_2__["create"])(gameState$$1.grid.width, shapeName);
-  const grid = Object(_grid_fs__WEBPACK_IMPORTED_MODULE_3__["removeCompletedRows"])(newGrid);
-  const nextShape = Object(_shape_fs__WEBPACK_IMPORTED_MODULE_5__["random"])();
-  const score = Object(_score_fs__WEBPACK_IMPORTED_MODULE_6__["update"])(gameState$$1.score, completedRows);
-  return new GameState(block$$1, gameState$$1.fallInterval, grid, currentTime, gameState$$1.lastMoveTime, gameState$$1.moveDelta, nextShape, score);
+  block$$1 = Object(_block_fs__WEBPACK_IMPORTED_MODULE_1__["create"])(gameState$$1.grid.width, shapeName);
+  const grid = Object(_grid_fs__WEBPACK_IMPORTED_MODULE_2__["removeCompletedRows"])(newGrid);
+  const score = Object(_score_fs__WEBPACK_IMPORTED_MODULE_5__["update"])(gameState$$1.score, completedRows);
+  return new GameState(block$$1, grid, gameState$$1.isFastFallEnabled, gameState$$1.isPaused, currentFrame, gameState$$1.lastMoveFrame, gameState$$1.moveDelta, nextShape, score, generatorState);
 }
-function placeCurrentBlock(currentTime$$1, gameState$$2) {
-  return placeBlock(currentTime$$1, gameState$$2.block, gameState$$2);
+function placeCurrentBlock(currentFrame$$1, gameState$$2) {
+  return placeBlock(currentFrame$$1, gameState$$2.block, gameState$$2);
 }
-function moveBlockDown(currentTime$$2, gameState$$3) {
-  const movedBlock = Object(_block_fs__WEBPACK_IMPORTED_MODULE_2__["moveBy"])(0, 1, gameState$$3.block);
+function moveBlockDown(currentFrame$$2, gameState$$3) {
+  const movedBlock = Object(_block_fs__WEBPACK_IMPORTED_MODULE_1__["moveBy"])(0, 1, gameState$$3.block);
 
-  if (Object(_grid_fs__WEBPACK_IMPORTED_MODULE_3__["isBlockValid"])(gameState$$3.grid, movedBlock)) {
-    return new GameState(movedBlock, gameState$$3.fallInterval, gameState$$3.grid, currentTime$$2, gameState$$3.lastMoveTime, gameState$$3.moveDelta, gameState$$3.nextShape, gameState$$3.score);
+  if (Object(_grid_fs__WEBPACK_IMPORTED_MODULE_2__["isBlockValid"])(gameState$$3.grid, movedBlock)) {
+    return new GameState(movedBlock, gameState$$3.grid, gameState$$3.isFastFallEnabled, gameState$$3.isPaused, currentFrame$$2, gameState$$3.lastMoveFrame, gameState$$3.moveDelta, gameState$$3.nextShape, gameState$$3.score, gameState$$3.shapeGeneratorState);
   } else {
-    return placeCurrentBlock(currentTime$$2, gameState$$3);
+    return placeCurrentBlock(currentFrame$$2, gameState$$3);
   }
 }
-function processInput(currentTime$$3, inputs, gameState$$4) {
+function offsetOutOfBoundsBlock(gridWidth, block$$2) {
+  let bounds;
+  const block$$3 = block$$2;
+  bounds = Object(_block_fs__WEBPACK_IMPORTED_MODULE_1__["getBoundingRect"])(block$$3);
+
+  if (bounds.left < 0) {
+    const block$$4 = block$$2;
+    const dx = Object(_fable_fable_library_2_3_25_Int32_js__WEBPACK_IMPORTED_MODULE_7__["op_UnaryNegation_Int32"])(bounds.left) | 0;
+    return Object(_block_fs__WEBPACK_IMPORTED_MODULE_1__["moveBy"])(dx, 0, block$$4);
+  } else if (bounds.right >= gridWidth) {
+    const block$$5 = block$$2;
+    const dx$$1 = gridWidth - bounds.right - 1 | 0;
+    return Object(_block_fs__WEBPACK_IMPORTED_MODULE_1__["moveBy"])(dx$$1, 0, block$$5);
+  } else {
+    return block$$2;
+  }
+}
+function processInput(currentFrame$$3, inputs, gameState$$4) {
   const processAction = function processAction(gameState$$5, action) {
     const rotateBlock = function rotateBlock(gameState$$6) {
-      const updater$$1 = _block_fs__WEBPACK_IMPORTED_MODULE_2__["rotate"];
+      const updater$$1 = function updater$$1($arg$$1) {
+        let block$$7;
+        const block$$6 = $arg$$1;
+        block$$7 = Object(_block_fs__WEBPACK_IMPORTED_MODULE_1__["rotate"])(block$$6);
+        return offsetOutOfBoundsBlock(gameState$$6.grid.width, block$$7);
+      };
+
       return updateBlockIfValid(gameState$$6, updater$$1);
     };
 
     const placeBlock$$1 = function placeBlock$$1(gameState$$7) {
-      const droppedBlock = Object(_grid_fs__WEBPACK_IMPORTED_MODULE_3__["moveBlockToBottom"])(gameState$$7.grid, gameState$$7.block);
-      return placeBlock(currentTime$$3, droppedBlock, gameState$$7);
+      const droppedBlock = Object(_grid_fs__WEBPACK_IMPORTED_MODULE_2__["moveBlockToBottom"])(gameState$$7.grid, gameState$$7.block);
+      return placeBlock(currentFrame$$3, droppedBlock, gameState$$7);
     };
 
-    const setMovement = function setMovement(dx, gameState$$8) {
-      const moveDelta = dx;
-      return new GameState(gameState$$8.block, gameState$$8.fallInterval, gameState$$8.grid, gameState$$8.lastBlockFallTime, gameState$$8.lastMoveTime, moveDelta, gameState$$8.nextShape, gameState$$8.score);
+    const setMovement = function setMovement(dx$$2, gameState$$8) {
+      const moveDelta = dx$$2;
+      return new GameState(gameState$$8.block, gameState$$8.grid, gameState$$8.isFastFallEnabled, gameState$$8.isPaused, gameState$$8.lastBlockFallFrame, gameState$$8.lastMoveFrame, moveDelta, gameState$$8.nextShape, gameState$$8.score, gameState$$8.shapeGeneratorState);
     };
 
     const stopMovement = function stopMovement(gameState$$9) {
       const moveDelta$$1 = null;
-      return new GameState(gameState$$9.block, gameState$$9.fallInterval, gameState$$9.grid, gameState$$9.lastBlockFallTime, gameState$$9.lastMoveTime, moveDelta$$1, gameState$$9.nextShape, gameState$$9.score);
+      return new GameState(gameState$$9.block, gameState$$9.grid, gameState$$9.isFastFallEnabled, gameState$$9.isPaused, gameState$$9.lastBlockFallFrame, gameState$$9.lastMoveFrame, moveDelta$$1, gameState$$9.nextShape, gameState$$9.score, gameState$$9.shapeGeneratorState);
     };
 
-    const setFallInterval = function setFallInterval(interval, gameState$$10) {
-      return new GameState(gameState$$10.block, interval, gameState$$10.grid, gameState$$10.lastBlockFallTime, gameState$$10.lastMoveTime, gameState$$10.moveDelta, gameState$$10.nextShape, gameState$$10.score);
+    const enableFastFall = function enableFastFall(enabled, gameState$$10) {
+      return new GameState(gameState$$10.block, gameState$$10.grid, enabled, gameState$$10.isPaused, gameState$$10.lastBlockFallFrame, gameState$$10.lastMoveFrame, gameState$$10.moveDelta, gameState$$10.nextShape, gameState$$10.score, gameState$$10.shapeGeneratorState);
     };
 
-    return (action.tag === 1 ? Object(_fable_fable_library_2_3_25_Util_js__WEBPACK_IMPORTED_MODULE_7__["partialApply"])(1, setMovement, [1]) : action.tag === 2 ? stopMovement : action.tag === 5 ? Object(_fable_fable_library_2_3_25_Util_js__WEBPACK_IMPORTED_MODULE_7__["partialApply"])(1, setFallInterval, [blockFastFallInterval]) : action.tag === 6 ? Object(_fable_fable_library_2_3_25_Util_js__WEBPACK_IMPORTED_MODULE_7__["partialApply"])(1, setFallInterval, [blockFallInterval]) : action.tag === 3 ? rotateBlock : action.tag === 4 ? placeBlock$$1 : Object(_fable_fable_library_2_3_25_Util_js__WEBPACK_IMPORTED_MODULE_7__["partialApply"])(1, setMovement, [-1]))(gameState$$5);
+    const togglePause = function togglePause(gameState$$11) {
+      const isPaused = !gameState$$11.isPaused;
+      return new GameState(gameState$$11.block, gameState$$11.grid, gameState$$11.isFastFallEnabled, isPaused, gameState$$11.lastBlockFallFrame, gameState$$11.lastMoveFrame, gameState$$11.moveDelta, gameState$$11.nextShape, gameState$$11.score, gameState$$11.shapeGeneratorState);
+    };
+
+    return (action.tag === 1 ? Object(_fable_fable_library_2_3_25_Util_js__WEBPACK_IMPORTED_MODULE_8__["partialApply"])(1, setMovement, [1]) : action.tag === 2 ? stopMovement : action.tag === 5 ? Object(_fable_fable_library_2_3_25_Util_js__WEBPACK_IMPORTED_MODULE_8__["partialApply"])(1, enableFastFall, [true]) : action.tag === 6 ? Object(_fable_fable_library_2_3_25_Util_js__WEBPACK_IMPORTED_MODULE_8__["partialApply"])(1, enableFastFall, [false]) : action.tag === 3 ? rotateBlock : action.tag === 4 ? placeBlock$$1 : action.tag === 7 ? togglePause : Object(_fable_fable_library_2_3_25_Util_js__WEBPACK_IMPORTED_MODULE_8__["partialApply"])(1, setMovement, [-1]))(gameState$$5);
   };
 
   let updatedGameState;
   const source = inputs;
-  updatedGameState = Object(_fable_fable_library_2_3_25_Seq_js__WEBPACK_IMPORTED_MODULE_8__["fold"])(processAction, gameState$$4, source);
+  updatedGameState = Object(_fable_fable_library_2_3_25_Seq_js__WEBPACK_IMPORTED_MODULE_9__["fold"])(processAction, gameState$$4, source);
   return updatedGameState;
 }
-function moveBlock(dx$$1, gameState$$11) {
-  const updater$$2 = function updater$$2(block$$3) {
-    return Object(_block_fs__WEBPACK_IMPORTED_MODULE_2__["moveBy"])(dx$$1, 0, block$$3);
+function moveBlock(dx$$3, gameState$$12) {
+  const updater$$2 = function updater$$2(block$$8) {
+    return Object(_block_fs__WEBPACK_IMPORTED_MODULE_1__["moveBy"])(dx$$3, 0, block$$8);
   };
 
-  return updateBlockIfValid(gameState$$11, updater$$2);
+  return updateBlockIfValid(gameState$$12, updater$$2);
 }
-function processMovement(currentTime$$4, gameState$$12) {
-  if (gameState$$12.moveDelta == null) {
-    return gameState$$12;
+function processMovement(currentFrame$$4, gameState$$13) {
+  if (gameState$$13.moveDelta == null) {
+    return gameState$$13;
   } else {
-    const dx$$2 = gameState$$12.moveDelta | 0;
+    const dx$$4 = gameState$$13.moveDelta | 0;
+    const cellsToMove = ~~((currentFrame$$4 - gameState$$13.lastMoveFrame) / moveInterval) | 0;
 
-    if (Object(_time_fs__WEBPACK_IMPORTED_MODULE_0__["difference"])(currentTime$$4, gameState$$12.lastMoveTime).CompareTo(moveInterval) >= 0) {
-      const newGameState = moveBlock(dx$$2, gameState$$12);
-      return new GameState(newGameState.block, newGameState.fallInterval, newGameState.grid, newGameState.lastBlockFallTime, currentTime$$4, newGameState.moveDelta, newGameState.nextShape, newGameState.score);
+    if (cellsToMove >= 1) {
+      const newGameState = moveBlock(dx$$4, gameState$$13);
+      return new GameState(newGameState.block, newGameState.grid, newGameState.isFastFallEnabled, newGameState.isPaused, newGameState.lastBlockFallFrame, currentFrame$$4, newGameState.moveDelta, newGameState.nextShape, newGameState.score, newGameState.shapeGeneratorState);
     } else {
-      return gameState$$12;
+      return gameState$$13;
     }
   }
 }
-function processFalling(currentTime$$5, gameState$$13) {
-  if (Object(_time_fs__WEBPACK_IMPORTED_MODULE_0__["difference"])(currentTime$$5, gameState$$13.lastBlockFallTime).CompareTo(gameState$$13.fallInterval) >= 0) {
-    return moveBlockDown(currentTime$$5, gameState$$13);
+function calculateFallInterval(isFastFallEnabled, level) {
+  if (isFastFallEnabled) {
+    return fastFallInterval | 0;
+  } else if (level <= 9) {
+    return (48 - level * 5) * 1 | 0;
   } else {
-    return gameState$$13;
+    const framesPerCell = 5 - ~~((level - 10) / 3) | 0;
+    return Object(_fable_fable_library_2_3_25_Util_js__WEBPACK_IMPORTED_MODULE_8__["max"])(_fable_fable_library_2_3_25_Util_js__WEBPACK_IMPORTED_MODULE_8__["comparePrimitives"], framesPerCell, 1) * 1 | 0;
   }
 }
-function checkGameOver(gameState$$14) {
-  if (Object(_grid_fs__WEBPACK_IMPORTED_MODULE_3__["isBlockValid"])(gameState$$14.grid, gameState$$14.block)) {
-    return new Game(0, "RunningGame", gameState$$14);
+function processFalling(currentFrame$$5, gameState$$14) {
+  const frameDelta = currentFrame$$5 - gameState$$14.lastBlockFallFrame | 0;
+  const fallInterval = calculateFallInterval(gameState$$14.isFastFallEnabled, gameState$$14.score.level) | 0;
+  const cellsToFall = ~~(frameDelta / fallInterval) | 0;
+
+  if (cellsToFall >= 1) {
+    return moveBlockDown(currentFrame$$5, gameState$$14);
   } else {
-    return new Game(1, "FinishedGame", gameState$$14.score);
+    return gameState$$14;
   }
 }
-function update(currentTime$$6, game) {
+function checkGameOver(gameState$$15) {
+  if (Object(_grid_fs__WEBPACK_IMPORTED_MODULE_2__["isBlockValid"])(gameState$$15.grid, gameState$$15.block)) {
+    return new Game(0, "RunningGame", gameState$$15);
+  } else {
+    return new Game(1, "FinishedGame", gameState$$15.score);
+  }
+}
+function update(currentFrame$$6, game) {
+  var gameState$$18, inputs$$1;
+
+  const ifNotPaused = function ifNotPaused(action$$1, gameState$$16) {
+    if (!gameState$$16.isPaused) {
+      return action$$1(gameState$$16);
+    } else {
+      return gameState$$16;
+    }
+  };
+
   if (game.tag === 1) {
     return game;
   } else {
-    const gameState$$15 = game.fields[0];
-    let gameState$$19;
-    let gameState$$18;
-    let gameState$$17;
-    const gameState$$16 = gameState$$15;
-    const inputs$$1 = Object(_input_fs__WEBPACK_IMPORTED_MODULE_9__["getActions"])();
-    gameState$$17 = processInput(currentTime$$6, inputs$$1, gameState$$16);
-    gameState$$18 = processMovement(currentTime$$6, gameState$$17);
-    gameState$$19 = processFalling(currentTime$$6, gameState$$18);
-    return checkGameOver(gameState$$19);
+    const gameState$$17 = game.fields[0];
+    const gameState$$21 = ifNotPaused(function (gameState$$20) {
+      return processFalling(currentFrame$$6, gameState$$20);
+    }, ifNotPaused(function (gameState$$19) {
+      return processMovement(currentFrame$$6, gameState$$19);
+    }, (gameState$$18 = gameState$$17, (inputs$$1 = Object(_input_fs__WEBPACK_IMPORTED_MODULE_10__["getActions"])(), processInput(currentFrame$$6, inputs$$1, gameState$$18)))));
+    return checkGameOver(gameState$$21);
   }
 }
-function newGame(gridWidth, gridHeight, currentTime$$7) {
+function newGame(gridWidth$$2, gridHeight, currentTime) {
   var shapeName$$1;
-  const grid$$1 = Object(_grid_fs__WEBPACK_IMPORTED_MODULE_3__["create"])(gridWidth, gridHeight);
-  const state = new GameState((shapeName$$1 = Object(_shape_fs__WEBPACK_IMPORTED_MODULE_5__["random"])(), (Object(_block_fs__WEBPACK_IMPORTED_MODULE_2__["create"])(grid$$1.width, shapeName$$1))), blockFallInterval, grid$$1, currentTime$$7, _time_fs__WEBPACK_IMPORTED_MODULE_0__["zero"], null, Object(_shape_fs__WEBPACK_IMPORTED_MODULE_5__["random"])(), _score_fs__WEBPACK_IMPORTED_MODULE_6__["zero"]);
-  return new Game(0, "RunningGame", state);
+  const grid$$1 = Object(_grid_fs__WEBPACK_IMPORTED_MODULE_2__["create"])(gridWidth$$2, gridHeight);
+  let patternInput$$1;
+  const state$$1 = Object(_randomShapeGenerator_fs__WEBPACK_IMPORTED_MODULE_6__["initialize"])();
+  patternInput$$1 = Object(_randomShapeGenerator_fs__WEBPACK_IMPORTED_MODULE_6__["getList"])(2, state$$1);
+  const randomGeneratorState = patternInput$$1[1];
+  const initialShapes = patternInput$$1[0];
+  const state$$2 = new GameState((shapeName$$1 = Object(_fable_fable_library_2_3_25_List_js__WEBPACK_IMPORTED_MODULE_11__["item"])(0, initialShapes), (Object(_block_fs__WEBPACK_IMPORTED_MODULE_1__["create"])(grid$$1.width, shapeName$$1))), grid$$1, false, false, 0, 0, null, Object(_fable_fable_library_2_3_25_List_js__WEBPACK_IMPORTED_MODULE_11__["item"])(1, initialShapes), _score_fs__WEBPACK_IMPORTED_MODULE_5__["initial"], randomGeneratorState);
+  return new Game(0, "RunningGame", state$$2);
+}
+
+/***/ }),
+
+/***/ "./src/gameLoop.fs":
+/*!*************************!*\
+  !*** ./src/gameLoop.fs ***!
+  \*************************/
+/*! exports provided: framesPerSecond, msPerFrame, frameDuration, onNextFrame, updateFrame, mainLoop, run */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "framesPerSecond", function() { return framesPerSecond; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "msPerFrame", function() { return msPerFrame; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "frameDuration", function() { return frameDuration; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "onNextFrame", function() { return onNextFrame; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "updateFrame", function() { return updateFrame; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "mainLoop", function() { return mainLoop; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "run", function() { return run; });
+/* harmony import */ var _unitsOfMeasure_fs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./unitsOfMeasure.fs */ "./src/unitsOfMeasure.fs");
+/* harmony import */ var _time_fs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./time.fs */ "./src/time.fs");
+/* harmony import */ var _game_fs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./game.fs */ "./src/game.fs");
+/* harmony import */ var _fable_fable_library_2_3_25_Util_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../.fable/fable-library.2.3.25/Util.js */ "./.fable/fable-library.2.3.25/Util.js");
+
+
+
+
+const framesPerSecond = 60;
+const msPerFrame = (() => {
+  const seconds = 1 / framesPerSecond;
+  return Object(_unitsOfMeasure_fs__WEBPACK_IMPORTED_MODULE_0__["secondsToMilliseconds"])(seconds);
+})();
+const frameDuration = Object(_time_fs__WEBPACK_IMPORTED_MODULE_1__["fromMilliseconds"])(msPerFrame);
+function onNextFrame(callback) {
+  const value = window.requestAnimationFrame(callback);
+  value, null;
+}
+function updateFrame($state$$2, $lastFrameNumber$$3, $currentTime$$4, $lastFrameTime$$5) {
+  updateFrame: while (true) {
+    const state = $state$$2,
+          lastFrameNumber = $lastFrameNumber$$3,
+          currentTime = $currentTime$$4,
+          lastFrameTime = $lastFrameTime$$5;
+    const frameNumber = lastFrameNumber + 1 | 0;
+    const frameTime = Object(_time_fs__WEBPACK_IMPORTED_MODULE_1__["add"])(lastFrameTime, frameDuration);
+
+    if (frameTime.CompareTo(currentTime) < 0) {
+      let updatedState;
+      const game = state;
+      updatedState = Object(_game_fs__WEBPACK_IMPORTED_MODULE_2__["update"])(frameNumber, game);
+      $state$$2 = updatedState;
+      $lastFrameNumber$$3 = frameNumber;
+      $currentTime$$4 = currentTime;
+      $lastFrameTime$$5 = frameTime;
+      continue updateFrame;
+    } else {
+      return [state, lastFrameNumber, lastFrameTime];
+    }
+
+    break;
+  }
+}
+function mainLoop(game$$1, updateUI, lastFrameNumber$$1, lastFrameTime$$1, lastGameTime, lastRealTime) {
+  const realTime = Object(_time_fs__WEBPACK_IMPORTED_MODULE_1__["getCurrent"])();
+  const realTimeDelta = Object(_time_fs__WEBPACK_IMPORTED_MODULE_1__["difference"])(realTime, lastRealTime);
+  const gameTime = Object(_time_fs__WEBPACK_IMPORTED_MODULE_1__["add"])(lastGameTime, realTimeDelta);
+  const patternInput = updateFrame(game$$1, lastFrameNumber$$1, gameTime, lastFrameTime$$1);
+  const updatedLastFrameTime = patternInput[2];
+  const updatedGame = patternInput[0];
+  const frameNumber$$1 = patternInput[1] | 0;
+
+  if (!Object(_fable_fable_library_2_3_25_Util_js__WEBPACK_IMPORTED_MODULE_3__["equals"])(updatedGame, game$$1)) {
+    updateUI(game$$1, updatedGame);
+  }
+
+  if (updatedGame.tag === 0) {
+    onNextFrame(function (_arg1) {
+      mainLoop(updatedGame, updateUI, frameNumber$$1, updatedLastFrameTime, gameTime, realTime);
+    });
+  }
+}
+function run(game$$2, updateUI$$1) {
+  const realTime$$1 = Object(_time_fs__WEBPACK_IMPORTED_MODULE_1__["getCurrent"])();
+  const gameTime$$1 = _time_fs__WEBPACK_IMPORTED_MODULE_1__["zero"];
+  const frameTime$$1 = _time_fs__WEBPACK_IMPORTED_MODULE_1__["zero"];
+  const frameNumber$$2 = 0;
+  onNextFrame(function (_arg1$$1) {
+    mainLoop(game$$2, updateUI$$1, frameNumber$$2, frameTime$$1, gameTime$$1, realTime$$1);
+  });
 }
 
 /***/ }),
@@ -13686,7 +13874,7 @@ function placeBlock(grid$$5, block$$2) {
   gridCells = Object(_matrix_fs__WEBPACK_IMPORTED_MODULE_2__["mapi"])(function mapping(x$$1, y$$1, value$$1) {
     const matchingCell = Object(_fable_fable_library_2_3_25_Seq_js__WEBPACK_IMPORTED_MODULE_5__["tryFind"])(function (tupledArg) {
       const coord$$1 = tupledArg[0];
-      return Object(_fable_fable_library_2_3_25_Util_js__WEBPACK_IMPORTED_MODULE_4__["equals"])(coord$$1, new _coord_fs__WEBPACK_IMPORTED_MODULE_7__["Coord"](x$$1, y$$1));
+      return Object(_fable_fable_library_2_3_25_Util_js__WEBPACK_IMPORTED_MODULE_4__["equals"])(coord$$1, Object(_coord_fs__WEBPACK_IMPORTED_MODULE_7__["create"])(x$$1, y$$1));
     }, filledCells);
 
     if (matchingCell != null) {
@@ -13745,7 +13933,7 @@ const InputAction = Object(_fable_fable_library_2_3_25_Types_js__WEBPACK_IMPORTE
   _fable_fable_library_2_3_25_Types_js__WEBPACK_IMPORTED_MODULE_0__["Union"].call(this, tag, name, ...fields);
 }, _fable_fable_library_2_3_25_Types_js__WEBPACK_IMPORTED_MODULE_0__["Union"]);
 function InputAction$reflection() {
-  return Object(_fable_fable_library_2_3_25_Reflection_js__WEBPACK_IMPORTED_MODULE_1__["union"])("FBlocks.Input.InputAction", [], InputAction, () => ["MoveLeft", "MoveRight", "StopMovement", "Rotate", "PlaceBlock", "IncreaseFallSpeed", "DecreaseFallSpeed"]);
+  return Object(_fable_fable_library_2_3_25_Reflection_js__WEBPACK_IMPORTED_MODULE_1__["union"])("FBlocks.Input.InputAction", [], InputAction, () => ["MoveLeft", "MoveRight", "StopMovement", "Rotate", "PlaceBlock", "IncreaseFallSpeed", "DecreaseFallSpeed", "TogglePause"]);
 }
 const inputActionQueue = Object(_fable_fable_library_2_3_25_Util_js__WEBPACK_IMPORTED_MODULE_2__["createAtom"])(new _fable_fable_library_2_3_25_Types_js__WEBPACK_IMPORTED_MODULE_0__["List"]());
 function getActions() {
@@ -13776,7 +13964,7 @@ const onKeyDown = (() => {
   };
 })();
 const onKeyUp = (() => {
-  const mapping$$2 = new Map([["ArrowLeft", new InputAction(2, "StopMovement")], ["ArrowRight", new InputAction(2, "StopMovement")], ["ArrowDown", new InputAction(6, "DecreaseFallSpeed")]]);
+  const mapping$$2 = new Map([["ArrowLeft", new InputAction(2, "StopMovement")], ["ArrowRight", new InputAction(2, "StopMovement")], ["ArrowDown", new InputAction(6, "DecreaseFallSpeed")], ["p", new InputAction(7, "TogglePause")]]);
   return function (event$$2) {
     handleInput(mapping$$2, event$$2);
   };
@@ -13916,7 +14104,7 @@ function coordsWithValue(value$$1, matrix$$9) {
   return Object(_fable_fable_library_2_3_25_Seq_js__WEBPACK_IMPORTED_MODULE_3__["map"])(function mapping$$5(tupledArg$$1) {
     const x$$5 = tupledArg$$1[0] | 0;
     const y$$4 = tupledArg$$1[1] | 0;
-    return new _coord_fs__WEBPACK_IMPORTED_MODULE_5__["Coord"](x$$5, y$$4);
+    return Object(_coord_fs__WEBPACK_IMPORTED_MODULE_5__["create"])(x$$5, y$$4);
   }, source$$3);
 }
 function coordsWhere(predicate$$3, matrix$$11) {
@@ -13933,7 +14121,7 @@ function coordsWhere(predicate$$3, matrix$$11) {
   return Object(_fable_fable_library_2_3_25_Seq_js__WEBPACK_IMPORTED_MODULE_3__["map"])(function mapping$$7(tupledArg$$3) {
     const x$$7 = tupledArg$$3[0] | 0;
     const y$$6 = tupledArg$$3[1] | 0;
-    return new _coord_fs__WEBPACK_IMPORTED_MODULE_5__["Coord"](x$$7, y$$6);
+    return Object(_coord_fs__WEBPACK_IMPORTED_MODULE_5__["create"])(x$$7, y$$6);
   }, source$$5);
 }
 function rotateClockwise(matrix$$13) {
@@ -13943,6 +14131,104 @@ function rotateClockwise(matrix$$13) {
 
   const matrix$$14 = create(matrix$$13.rowCount, matrix$$13.columnCount, getAt(0, 0, matrix$$13));
   return mapi(rotateCell, matrix$$14);
+}
+
+/***/ }),
+
+/***/ "./src/randomShapeGenerator.fs":
+/*!*************************************!*\
+  !*** ./src/randomShapeGenerator.fs ***!
+  \*************************************/
+/*! exports provided: GeneratorState, GeneratorState$reflection, random, allShapes, shuffleList, getShuffledShapes, getNext, getList, initialize */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GeneratorState", function() { return GeneratorState; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GeneratorState$reflection", function() { return GeneratorState$reflection; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "random", function() { return random; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "allShapes", function() { return allShapes; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "shuffleList", function() { return shuffleList; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getShuffledShapes", function() { return getShuffledShapes; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getNext", function() { return getNext; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getList", function() { return getList; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "initialize", function() { return initialize; });
+/* harmony import */ var _fable_fable_library_2_3_25_Types_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../.fable/fable-library.2.3.25/Types.js */ "./.fable/fable-library.2.3.25/Types.js");
+/* harmony import */ var _shape_fs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./shape.fs */ "./src/shape.fs");
+/* harmony import */ var _fable_fable_library_2_3_25_Reflection_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../.fable/fable-library.2.3.25/Reflection.js */ "./.fable/fable-library.2.3.25/Reflection.js");
+/* harmony import */ var _fable_fable_library_2_3_25_Array_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../.fable/fable-library.2.3.25/Array.js */ "./.fable/fable-library.2.3.25/Array.js");
+/* harmony import */ var _fable_fable_library_2_3_25_Util_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../.fable/fable-library.2.3.25/Util.js */ "./.fable/fable-library.2.3.25/Util.js");
+/* harmony import */ var _fable_fable_library_2_3_25_List_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../.fable/fable-library.2.3.25/List.js */ "./.fable/fable-library.2.3.25/List.js");
+/* harmony import */ var _fable_fable_library_2_3_25_Seq_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../.fable/fable-library.2.3.25/Seq.js */ "./.fable/fable-library.2.3.25/Seq.js");
+
+
+
+
+
+
+
+const GeneratorState = Object(_fable_fable_library_2_3_25_Types_js__WEBPACK_IMPORTED_MODULE_0__["declare"])(function FBlocks_RandomShapeGenerator_GeneratorState(arg1) {
+  this.nextShapes = arg1;
+}, _fable_fable_library_2_3_25_Types_js__WEBPACK_IMPORTED_MODULE_0__["Record"]);
+function GeneratorState$reflection() {
+  return Object(_fable_fable_library_2_3_25_Reflection_js__WEBPACK_IMPORTED_MODULE_2__["record"])("FBlocks.RandomShapeGenerator.GeneratorState", [], GeneratorState, () => [["nextShapes", Object(_fable_fable_library_2_3_25_Reflection_js__WEBPACK_IMPORTED_MODULE_2__["list"])(Object(_shape_fs__WEBPACK_IMPORTED_MODULE_1__["ShapeName$reflection"])())]]);
+}
+const random = {};
+const allShapes = [new _shape_fs__WEBPACK_IMPORTED_MODULE_1__["ShapeName"](0, "D"), new _shape_fs__WEBPACK_IMPORTED_MODULE_1__["ShapeName"](1, "I"), new _shape_fs__WEBPACK_IMPORTED_MODULE_1__["ShapeName"](2, "J"), new _shape_fs__WEBPACK_IMPORTED_MODULE_1__["ShapeName"](3, "L"), new _shape_fs__WEBPACK_IMPORTED_MODULE_1__["ShapeName"](4, "O"), new _shape_fs__WEBPACK_IMPORTED_MODULE_1__["ShapeName"](5, "S"), new _shape_fs__WEBPACK_IMPORTED_MODULE_1__["ShapeName"](6, "Z")];
+function shuffleList(array) {
+  const arrayCopy = Object(_fable_fable_library_2_3_25_Array_js__WEBPACK_IMPORTED_MODULE_3__["copy"])(array, Array);
+
+  for (let i = arrayCopy.length - 1; i >= 0; i--) {
+    const j = Object(_fable_fable_library_2_3_25_Util_js__WEBPACK_IMPORTED_MODULE_4__["randomNext"])(0, i + 1) | 0;
+    const temp = arrayCopy[i];
+    arrayCopy[i] = arrayCopy[j];
+    arrayCopy[j] = temp;
+  }
+
+  const array$$1 = arrayCopy;
+  return Object(_fable_fable_library_2_3_25_Array_js__WEBPACK_IMPORTED_MODULE_3__["toList"])(array$$1);
+}
+function getShuffledShapes() {
+  const array$$2 = allShapes;
+  return shuffleList(array$$2);
+}
+function getNext(state) {
+  if (state.nextShapes.tail != null) {
+    if (state.nextShapes.tail.tail == null) {
+      const next = state.nextShapes.head;
+      return [next, new GeneratorState(getShuffledShapes())];
+    } else {
+      const next$$1 = state.nextShapes.head;
+      const remaining = state.nextShapes.tail;
+      return [next$$1, new GeneratorState(remaining)];
+    }
+  } else {
+    throw new Error("Unexpected empty list of next shapes");
+  }
+}
+function getList(count, state$$1) {
+  let initialState;
+  const patternInput = getNext(state$$1);
+  const shape = patternInput[0];
+  const nextState = patternInput[1];
+  initialState = [new _fable_fable_library_2_3_25_Types_js__WEBPACK_IMPORTED_MODULE_0__["List"](shape, new _fable_fable_library_2_3_25_Types_js__WEBPACK_IMPORTED_MODULE_0__["List"]()), nextState];
+
+  const folder = function folder(tupledArg) {
+    const shapes = tupledArg[0];
+    const lastState = tupledArg[1];
+    return function (_arg1) {
+      const patternInput$$1 = getNext(lastState);
+      const nextState$$1 = patternInput$$1[1];
+      const nextShape = patternInput$$1[0];
+      return [Object(_fable_fable_library_2_3_25_List_js__WEBPACK_IMPORTED_MODULE_5__["append"])(shapes, new _fable_fable_library_2_3_25_Types_js__WEBPACK_IMPORTED_MODULE_0__["List"](nextShape, new _fable_fable_library_2_3_25_Types_js__WEBPACK_IMPORTED_MODULE_0__["List"]())), nextState$$1];
+    };
+  };
+
+  const source = Object(_fable_fable_library_2_3_25_Seq_js__WEBPACK_IMPORTED_MODULE_6__["rangeNumber"])(1, 1, count);
+  return Object(_fable_fable_library_2_3_25_Seq_js__WEBPACK_IMPORTED_MODULE_6__["fold"])(Object(_fable_fable_library_2_3_25_Util_js__WEBPACK_IMPORTED_MODULE_4__["uncurry"])(2, folder), initialState, source);
+}
+function initialize() {
+  return new GeneratorState(getShuffledShapes());
 }
 
 /***/ }),
@@ -14055,15 +14341,17 @@ function drawNextBlock(renderer$$2, shape$$1) {
 /*!**********************!*\
   !*** ./src/score.fs ***!
   \**********************/
-/*! exports provided: Score, Score$reflection, zero, calculatePoints, update, difference */
+/*! exports provided: Score, Score$reflection, initial, linesToNextLevel, calculatePoints, calculateLevel, update, difference */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Score", function() { return Score; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Score$reflection", function() { return Score$reflection; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "zero", function() { return zero; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "initial", function() { return initial; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "linesToNextLevel", function() { return linesToNextLevel; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "calculatePoints", function() { return calculatePoints; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "calculateLevel", function() { return calculateLevel; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "update", function() { return update; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "difference", function() { return difference; });
 /* harmony import */ var _fable_fable_library_2_3_25_Types_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../.fable/fable-library.2.3.25/Types.js */ "./.fable/fable-library.2.3.25/Types.js");
@@ -14072,14 +14360,36 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-const Score = Object(_fable_fable_library_2_3_25_Types_js__WEBPACK_IMPORTED_MODULE_0__["declare"])(function FBlocks_Score_Score(arg1, arg2) {
-  this.linesCompleted = arg1 | 0;
-  this.points = arg2 | 0;
+const Score = Object(_fable_fable_library_2_3_25_Types_js__WEBPACK_IMPORTED_MODULE_0__["declare"])(function FBlocks_Score_Score(arg1, arg2, arg3) {
+  this.level = arg1 | 0;
+  this.linesCompleted = arg2 | 0;
+  this.points = arg3 | 0;
 }, _fable_fable_library_2_3_25_Types_js__WEBPACK_IMPORTED_MODULE_0__["Record"]);
 function Score$reflection() {
-  return Object(_fable_fable_library_2_3_25_Reflection_js__WEBPACK_IMPORTED_MODULE_1__["record"])("FBlocks.Score.Score", [], Score, () => [["linesCompleted", _fable_fable_library_2_3_25_Reflection_js__WEBPACK_IMPORTED_MODULE_1__["int32"]], ["points", _fable_fable_library_2_3_25_Reflection_js__WEBPACK_IMPORTED_MODULE_1__["int32"]]]);
+  return Object(_fable_fable_library_2_3_25_Reflection_js__WEBPACK_IMPORTED_MODULE_1__["record"])("FBlocks.Score.Score", [], Score, () => [["level", _fable_fable_library_2_3_25_Reflection_js__WEBPACK_IMPORTED_MODULE_1__["int32"]], ["linesCompleted", _fable_fable_library_2_3_25_Reflection_js__WEBPACK_IMPORTED_MODULE_1__["int32"]], ["points", _fable_fable_library_2_3_25_Reflection_js__WEBPACK_IMPORTED_MODULE_1__["int32"]]]);
 }
-const zero = new Score(0, 0);
+const initial = new Score(0, 0, 0);
+function linesToNextLevel(currentLevel) {
+  const calcLinesToNextLevel = function calcLinesToNextLevel($level$$2, $total$$3) {
+    calcLinesToNextLevel: while (true) {
+      const level = $level$$2,
+            total = $total$$3;
+
+      if (level < 0) {
+        return total | 0;
+      } else {
+        const linesAtCurrentLevel = (level + 1) * 10 | 0;
+        $level$$2 = level - 1;
+        $total$$3 = total + linesAtCurrentLevel;
+        continue calcLinesToNextLevel;
+      }
+
+      break;
+    }
+  };
+
+  return calcLinesToNextLevel(currentLevel, 0) | 0;
+}
 function calculatePoints(linesCompleted) {
   var arg10, clo1;
 
@@ -14115,11 +14425,21 @@ function calculatePoints(linesCompleted) {
       }
   }
 }
-function update(score, completedRows) {
-  return new Score(score.linesCompleted + completedRows, score.points + calculatePoints(completedRows));
+function calculateLevel(level$$1, totalLinesCompleted) {
+  const linesNeeded = linesToNextLevel(level$$1) | 0;
+
+  if (totalLinesCompleted >= linesNeeded) {
+    return level$$1 + 1 | 0;
+  } else {
+    return level$$1 | 0;
+  }
+}
+function update(score, linesCompleted$$1) {
+  const totalLinesCompleted$$1 = score.linesCompleted + linesCompleted$$1 | 0;
+  return new Score(calculateLevel(score.level, totalLinesCompleted$$1), totalLinesCompleted$$1, score.points + calculatePoints(linesCompleted$$1));
 }
 function difference(previous, current) {
-  return new Score(current.linesCompleted - previous.linesCompleted, current.points - previous.points);
+  return new Score(current.level - previous.level, current.linesCompleted - previous.linesCompleted, current.points - previous.points);
 }
 
 /***/ }),
@@ -14128,7 +14448,7 @@ function difference(previous, current) {
 /*!**********************!*\
   !*** ./src/shape.fs ***!
   \**********************/
-/*! exports provided: ShapeCell, ShapeCell$reflection, ShapeName, ShapeName$reflection, randomGenerator, random, isCellFilled, getShapeColor, getShapeMatrix, filledCellCoords */
+/*! exports provided: ShapeCell, ShapeCell$reflection, ShapeName, ShapeName$reflection, isCellFilled, getShapeColor, getShapeMatrix, filledCellCoords */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -14137,19 +14457,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ShapeCell$reflection", function() { return ShapeCell$reflection; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ShapeName", function() { return ShapeName; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ShapeName$reflection", function() { return ShapeName$reflection; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "randomGenerator", function() { return randomGenerator; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "random", function() { return random; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isCellFilled", function() { return isCellFilled; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getShapeColor", function() { return getShapeColor; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getShapeMatrix", function() { return getShapeMatrix; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "filledCellCoords", function() { return filledCellCoords; });
 /* harmony import */ var _fable_fable_library_2_3_25_Types_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../.fable/fable-library.2.3.25/Types.js */ "./.fable/fable-library.2.3.25/Types.js");
 /* harmony import */ var _fable_fable_library_2_3_25_Reflection_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../.fable/fable-library.2.3.25/Reflection.js */ "./.fable/fable-library.2.3.25/Reflection.js");
-/* harmony import */ var _fable_fable_library_2_3_25_Util_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../.fable/fable-library.2.3.25/Util.js */ "./.fable/fable-library.2.3.25/Util.js");
-/* harmony import */ var _matrix_fs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./matrix.fs */ "./src/matrix.fs");
-/* harmony import */ var _coord_fs__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./coord.fs */ "./src/coord.fs");
-/* harmony import */ var _fable_fable_library_2_3_25_Seq_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../.fable/fable-library.2.3.25/Seq.js */ "./.fable/fable-library.2.3.25/Seq.js");
-
+/* harmony import */ var _matrix_fs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./matrix.fs */ "./src/matrix.fs");
+/* harmony import */ var _coord_fs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./coord.fs */ "./src/coord.fs");
+/* harmony import */ var _fable_fable_library_2_3_25_Seq_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../.fable/fable-library.2.3.25/Seq.js */ "./.fable/fable-library.2.3.25/Seq.js");
 
 
 
@@ -14166,52 +14482,6 @@ const ShapeName = Object(_fable_fable_library_2_3_25_Types_js__WEBPACK_IMPORTED_
 }, _fable_fable_library_2_3_25_Types_js__WEBPACK_IMPORTED_MODULE_0__["Union"]);
 function ShapeName$reflection() {
   return Object(_fable_fable_library_2_3_25_Reflection_js__WEBPACK_IMPORTED_MODULE_1__["union"])("FBlocks.Shape.ShapeName", [], ShapeName, () => ["D", "I", "J", "L", "O", "S", "Z"]);
-}
-const randomGenerator = {};
-function random() {
-  const matchValue = Object(_fable_fable_library_2_3_25_Util_js__WEBPACK_IMPORTED_MODULE_2__["randomNext"])(0, 7) | 0;
-
-  switch (matchValue) {
-    case 0:
-      {
-        return new ShapeName(0, "D");
-      }
-
-    case 1:
-      {
-        return new ShapeName(1, "I");
-      }
-
-    case 2:
-      {
-        return new ShapeName(2, "J");
-      }
-
-    case 3:
-      {
-        return new ShapeName(3, "L");
-      }
-
-    case 4:
-      {
-        return new ShapeName(4, "O");
-      }
-
-    case 5:
-      {
-        return new ShapeName(5, "S");
-      }
-
-    case 6:
-      {
-        return new ShapeName(6, "Z");
-      }
-
-    default:
-      {
-        throw new Error("Random number out of range of available shapes");
-      }
-  }
 }
 function isCellFilled(cell) {
   if (cell.tag === 0) {
@@ -14264,8 +14534,8 @@ function getShapeMatrix(shapeName$$1) {
   const color = getShapeColor(shapeName$$1);
   let matrix;
   const input = matrixDefinition;
-  matrix = Object(_matrix_fs__WEBPACK_IMPORTED_MODULE_3__["fromArray"])(input);
-  return Object(_matrix_fs__WEBPACK_IMPORTED_MODULE_3__["map"])(function mapping(x$$1) {
+  matrix = Object(_matrix_fs__WEBPACK_IMPORTED_MODULE_2__["fromArray"])(input);
+  return Object(_matrix_fs__WEBPACK_IMPORTED_MODULE_2__["map"])(function mapping(x$$1) {
     if (x$$1 === 1) {
       return new ShapeCell(1, "FilledCell", color);
     } else {
@@ -14277,17 +14547,16 @@ function filledCellCoords(shape) {
   let source$$1;
   let source;
   const matrix$$1 = shape;
-  source = Object(_matrix_fs__WEBPACK_IMPORTED_MODULE_3__["flatmapi"])(function mapping$$1(x$$2, y, v) {
-    return [new _coord_fs__WEBPACK_IMPORTED_MODULE_4__["Coord"](x$$2, y), v];
+  source = Object(_matrix_fs__WEBPACK_IMPORTED_MODULE_2__["flatmapi"])(function mapping$$1(x$$2, y, v) {
+    return [Object(_coord_fs__WEBPACK_IMPORTED_MODULE_3__["create"])(x$$2, y), v];
   }, matrix$$1);
-  source$$1 = Object(_fable_fable_library_2_3_25_Seq_js__WEBPACK_IMPORTED_MODULE_5__["filter"])(function predicate(tupledArg) {
-    const coord = tupledArg[0];
+  source$$1 = Object(_fable_fable_library_2_3_25_Seq_js__WEBPACK_IMPORTED_MODULE_4__["filter"])(function predicate(tupledArg) {
     const v$$1 = tupledArg[1];
     return isCellFilled(v$$1);
   }, source);
-  return Object(_fable_fable_library_2_3_25_Seq_js__WEBPACK_IMPORTED_MODULE_5__["map"])(function mapping$$2(tupledArg$$1) {
-    const coord$$1 = tupledArg$$1[0];
-    return coord$$1;
+  return Object(_fable_fable_library_2_3_25_Seq_js__WEBPACK_IMPORTED_MODULE_4__["map"])(function mapping$$2(tupledArg$$1) {
+    const coord = tupledArg$$1[0];
+    return coord;
   }, source$$1);
 }
 
@@ -14334,8 +14603,26 @@ function fromMilliseconds(ms) {
   return new Time(0, "Time", ms);
 }
 function getCurrent() {
-  const ms$$1 = performance.now();
+  const ms$$1 = performance.now() * 1;
   return fromMilliseconds(ms$$1);
+}
+
+/***/ }),
+
+/***/ "./src/unitsOfMeasure.fs":
+/*!*******************************!*\
+  !*** ./src/unitsOfMeasure.fs ***!
+  \*******************************/
+/*! exports provided: millisecondsPerSecond, secondsToMilliseconds */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "millisecondsPerSecond", function() { return millisecondsPerSecond; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "secondsToMilliseconds", function() { return secondsToMilliseconds; });
+const millisecondsPerSecond = 1000;
+function secondsToMilliseconds(seconds) {
+  return seconds * millisecondsPerSecond;
 }
 
 /***/ })
