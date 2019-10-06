@@ -37,10 +37,12 @@ let run gameContainerDivId nextBlockDivId =
     let gameContainerElement = document.getElementById gameContainerDivId
     let scoreElement = document.getElementById "score"
     let linesCompletedElement = document.getElementById "linesCompleted"
+    let levelElement = document.getElementById "level"
 
     let updateScore (score: Score.Score) =
         scoreElement.innerText <- string score.points
         linesCompletedElement.innerText <- string score.linesCompleted
+        levelElement.innerHTML <- string score.level
 
     let removeChildNodeCallback (node: ChildNode) (e: Event) =
         console.log("Removing element")

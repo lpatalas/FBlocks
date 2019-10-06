@@ -163,7 +163,7 @@ let newGame gridWidth gridHeight currentTime =
             lastMoveTime = Time.zero
             moveDelta = None
             nextShape = initialShapes.[1]
-            score = Score.zero
+            score = Score.initial
             shapeGeneratorState = randomGeneratorState
         }
     RunningGame state
