@@ -1,5 +1,6 @@
 module FBlocks.Game
 
+let minimumFallInterval = 1<frame/cell>
 let fastFallInterval = 4<frame/cell>
 let moveInterval = 8<frame/cell>
 
@@ -119,13 +120,17 @@ let processMovement currentFrame gameState =
     | None -> gameState
 
 let calculateFallInterval isFastFallEnabled level =
+    let normalFallInterval =
+        if level <= 9 then
+            (48 - level * 5) * 1<frame/cell>
+        else
+            let framesPerCell = 5 - (level - 10) / 3
+            (max framesPerCell 1) * 1<frame/cell>
+
     if isFastFallEnabled then
-        fastFallInterval
-    else if level <= 9 then
-        (48 - level * 5) * 1<frame/cell>
+        min fastFallInterval normalFallInterval
     else
-        let framesPerCell = 5 - (level - 10) / 3
-        int (max framesPerCell 1) * 1<frame/cell>
+        normalFallInterval
 
 let processFalling currentFrame gameState =
     let frameDelta = currentFrame - gameState.lastBlockFallFrame
