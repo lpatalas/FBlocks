@@ -3,28 +3,6 @@ module FBlocks.App
 open Fable.Import.Browser
 open Fable.Core
 
-let onNextFrame callback =
-    window.requestAnimationFrame (callback << Time.fromMilliseconds) |> ignore
-
-let rec mainLoop game updateUI lastTime lastElapsedTime currentTime =
-    let deltaTime = Time.difference currentTime lastTime
-    let elapsedTime = Time.add lastElapsedTime deltaTime
-
-    let updatedGame =
-        if deltaTime > Time.zero then
-            Game.update elapsedTime game
-        else
-            game
-
-    if updatedGame <> game then
-        updateUI game updatedGame
-
-    match updatedGame with
-    | Game.RunningGame _ ->
-        onNextFrame (mainLoop updatedGame updateUI currentTime elapsedTime)
-    | _ -> ()
-
-
 let gridWidth = 10
 let gridHeight = 20
 
@@ -83,6 +61,6 @@ let run gameContainerDivId nextBlockDivId =
 
     Input.addEventListeners()
 
-    mainLoop game updateUI currentTime Time.zero currentTime
+    GameLoop.run game updateUI
 
 run "gameContainer" "nextBlockContainer"

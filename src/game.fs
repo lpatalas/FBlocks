@@ -1,16 +1,16 @@
 module FBlocks.Game
 
-let blockFallInterval = Time.fromMilliseconds 1000.0
-let blockFastFallInterval = Time.fromMilliseconds 50.0
-let moveInterval = Time.fromMilliseconds 100.0
+let normalFallInterval = 48<frame/cell>
+let fastFallInterval = 5<frame/cell>
+let moveInterval = 8<frame/cell>
 
 type GameState = {
     block: Block.Block
-    fallInterval: Time.Time
+    fallInterval: int<frame/cell>
     grid: Grid.Grid
     isPaused: bool
-    lastBlockFallTime: Time.Time
-    lastMoveTime: Time.Time
+    lastBlockFallFrame: int<frame>
+    lastMoveFrame: int<frame>
     moveDelta: int option
     nextShape: Shape.ShapeName
     score: Score.Score
@@ -28,7 +28,7 @@ let updateBlockIfValid gameState updater =
     else
         gameState
 
-let placeBlock currentTime block gameState =
+let placeBlock currentFrame block gameState =
     let newGrid = Grid.placeBlock gameState.grid block
     let completedRows = Grid.countCompletedRows newGrid
     let (nextShape, generatorState) =
@@ -38,22 +38,22 @@ let placeBlock currentTime block gameState =
     { gameState with
         block = gameState.nextShape |> Block.create gameState.grid.width
         grid = Grid.removeCompletedRows newGrid
-        lastBlockFallTime = currentTime
+        lastBlockFallFrame = currentFrame
         nextShape = nextShape
         score = Score.update gameState.score completedRows
         shapeGeneratorState = generatorState }
 
-let placeCurrentBlock currentTime gameState =
-    placeBlock currentTime gameState.block gameState
+let placeCurrentBlock currentFrame gameState =
+    placeBlock currentFrame gameState.block gameState
 
-let moveBlockDown currentTime gameState =
+let moveBlockDown currentFrame gameState =
     let movedBlock = Block.moveBy 0 1 gameState.block
     if Grid.isBlockValid gameState.grid movedBlock then
         { gameState with
             block = movedBlock
-            lastBlockFallTime = currentTime }
+            lastBlockFallFrame = currentFrame }
     else
-        placeCurrentBlock currentTime gameState
+        placeCurrentBlock currentFrame gameState
 
 let offsetOutOfBoundsBlock gridWidth block =
     let bounds = block |> Block.getBoundingRect
@@ -64,7 +64,7 @@ let offsetOutOfBoundsBlock gridWidth block =
     else
         block
 
-let processInput currentTime inputs gameState =
+let processInput currentFrame inputs gameState =
     let processAction gameState action =
         let rotateBlock gameState =
             Block.rotate
@@ -73,7 +73,7 @@ let processInput currentTime inputs gameState =
 
         let placeBlock gameState =
             let droppedBlock = Grid.moveBlockToBottom gameState.grid gameState.block
-            placeBlock currentTime droppedBlock gameState
+            placeBlock currentFrame droppedBlock gameState
 
         let setMovement dx gameState =
             { gameState with moveDelta = Some dx }
@@ -92,8 +92,8 @@ let processInput currentTime inputs gameState =
             | Input.MoveLeft -> setMovement -1
             | Input.MoveRight -> setMovement 1
             | Input.StopMovement -> stopMovement
-            | Input.IncreaseFallSpeed -> setFallInterval blockFastFallInterval
-            | Input.DecreaseFallSpeed -> setFallInterval blockFallInterval
+            | Input.IncreaseFallSpeed -> setFallInterval fastFallInterval
+            | Input.DecreaseFallSpeed -> setFallInterval normalFallInterval
             | Input.Rotate -> rotateBlock
             | Input.PlaceBlock -> placeBlock
             | Input.TogglePause -> togglePause
@@ -108,19 +108,22 @@ let moveBlock dx gameState =
     Block.moveBy dx 0
     |> updateBlockIfValid gameState
 
-let processMovement currentTime gameState =
+let processMovement currentFrame gameState =
     match gameState.moveDelta with
     | Some dx ->
-        if Time.difference currentTime gameState.lastMoveTime >= moveInterval then
+        let cellsToMove = (currentFrame - gameState.lastMoveFrame) / moveInterval
+        if cellsToMove >= 1<cell> then
             let newGameState = moveBlock dx gameState
-            { newGameState with lastMoveTime = currentTime }
+            { newGameState with lastMoveFrame = currentFrame }
         else
             gameState
     | None -> gameState
 
-let processFalling currentTime gameState =
-    if Time.difference currentTime gameState.lastBlockFallTime >= gameState.fallInterval then
-        moveBlockDown currentTime gameState
+let processFalling currentFrame gameState =
+    let frameDelta = currentFrame - gameState.lastBlockFallFrame
+    let cellsToFall = frameDelta / gameState.fallInterval
+    if cellsToFall >= 1<cell> then
+        moveBlockDown currentFrame gameState
     else
         gameState
 
@@ -130,7 +133,7 @@ let checkGameOver gameState =
     else
         FinishedGame gameState.score
 
-let update currentTime game =
+let update currentFrame game =
     let ifNotPaused action gameState =
         if not gameState.isPaused then
             action gameState
@@ -140,9 +143,9 @@ let update currentTime game =
     match game with
     | RunningGame gameState ->
         gameState
-        |> processInput currentTime (Input.getActions())
-        |> ifNotPaused (processMovement currentTime)
-        |> ifNotPaused (processFalling currentTime)
+        |> processInput currentFrame (Input.getActions())
+        |> ifNotPaused (processMovement currentFrame)
+        |> ifNotPaused (processFalling currentFrame)
         |> checkGameOver
     | FinishedGame _ ->
         game
@@ -156,11 +159,11 @@ let newGame gridWidth gridHeight currentTime =
     let state =
         {
             block = initialShapes.[0] |> Block.create grid.width
-            fallInterval = blockFallInterval
+            fallInterval = normalFallInterval
             grid = grid
             isPaused = false
-            lastBlockFallTime = currentTime
-            lastMoveTime = Time.zero
+            lastBlockFallFrame = 0<frame>
+            lastMoveFrame = 0<frame>
             moveDelta = None
             nextShape = initialShapes.[1]
             score = Score.initial
