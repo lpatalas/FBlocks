@@ -86,11 +86,11 @@
 /************************************************************************/
 /******/ ({
 
-/***/ "./.fable/fable-library.2.3.25/Array.js":
+/***/ "./.fable/fable-library.2.4.11/Array.js":
 /*!**********************************************!*\
-  !*** ./.fable/fable-library.2.3.25/Array.js ***!
+  !*** ./.fable/fable-library.2.4.11/Array.js ***!
   \**********************************************/
-/*! exports provided: append, filter, fill, getSubArray, last, tryLast, mapIndexed, map, mapIndexed2, map2, mapIndexed3, map3, mapFold, mapFoldBack, indexed, truncate, concat, collect, countBy, distinctBy, distinct, where, contains, except, groupBy, empty, singleton, initialize, pairwise, replicate, copy, reverse, scan, scanBack, skip, skipWhile, take, takeWhile, addRangeInPlace, removeInPlace, removeAllInPlace, copyTo, partition, find, tryFind, findIndex, tryFindIndex, pick, tryPick, findBack, tryFindBack, findLastIndex, findIndexBack, tryFindIndexBack, choose, foldIndexed, fold, iterate, iterateIndexed, iterate2, iterateIndexed2, isEmpty, forAll, permute, setSlice, sortInPlaceBy, sortInPlace, sort, sortBy, sortDescending, sortByDescending, sortWith, unfold, unzip, unzip3, zip, zip3, chunkBySize, splitAt, compareWith, equalsWith, exactlyOne, head, tryHead, tail, item, tryItem, foldBackIndexed, foldBack, foldIndexed2, fold2, foldBackIndexed2, foldBack2, reduce, reduceBack, forAll2, existsOffset, exists, existsOffset2, exists2, sum, sumBy, maxBy, max, minBy, min, average, averageBy, ofSeq, ofList, toList, windowed */
+/*! exports provided: append, filter, fill, getSubArray, last, tryLast, mapIndexed, map, mapIndexed2, map2, mapIndexed3, map3, mapFold, mapFoldBack, indexed, truncate, concat, collect, countBy, distinctBy, distinct, where, contains, except, groupBy, empty, singleton, initialize, pairwise, replicate, copy, reverse, scan, scanBack, skip, skipWhile, take, takeWhile, addRangeInPlace, removeInPlace, removeAllInPlace, copyTo, partition, find, tryFind, findIndex, tryFindIndex, pick, tryPick, findBack, tryFindBack, findLastIndex, findIndexBack, tryFindIndexBack, choose, foldIndexed, fold, iterate, iterateIndexed, iterate2, iterateIndexed2, isEmpty, forAll, permute, setSlice, sortInPlaceBy, sortInPlace, sort, sortBy, sortDescending, sortByDescending, sortWith, unfold, unzip, unzip3, zip, zip3, chunkBySize, splitAt, compareWith, equalsWith, exactlyOne, head, tryHead, tail, item, tryItem, foldBackIndexed, foldBack, foldIndexed2, fold2, foldBackIndexed2, foldBack2, reduce, reduceBack, forAll2, existsOffset, exists, existsOffset2, exists2, sum, sumBy, maxBy, max, minBy, min, average, averageBy, ofSeq, ofList, toList, windowed, splitInto */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -207,12 +207,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ofList", function() { return ofList; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "toList", function() { return toList; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "windowed", function() { return windowed; });
-/* harmony import */ var _Option_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Option.js */ "./.fable/fable-library.2.3.25/Option.js");
-/* harmony import */ var _Util_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Util.js */ "./.fable/fable-library.2.3.25/Util.js");
-/* harmony import */ var _Map_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Map.js */ "./.fable/fable-library.2.3.25/Map.js");
-/* harmony import */ var _Set_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Set.js */ "./.fable/fable-library.2.3.25/Set.js");
-/* harmony import */ var _Types_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Types.js */ "./.fable/fable-library.2.3.25/Types.js");
-/* harmony import */ var _Seq_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Seq.js */ "./.fable/fable-library.2.3.25/Seq.js");
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "splitInto", function() { return splitInto; });
+/* harmony import */ var _Option_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Option.js */ "./.fable/fable-library.2.4.11/Option.js");
+/* harmony import */ var _Util_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Util.js */ "./.fable/fable-library.2.4.11/Util.js");
+/* harmony import */ var _Map_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Map.js */ "./.fable/fable-library.2.4.11/Map.js");
+/* harmony import */ var _Set_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Set.js */ "./.fable/fable-library.2.4.11/Set.js");
+/* harmony import */ var _Types_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Types.js */ "./.fable/fable-library.2.4.11/Types.js");
+/* harmony import */ var _Seq_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Seq.js */ "./.fable/fable-library.2.4.11/Seq.js");
 
 
 
@@ -489,16 +490,16 @@ function where(predicate$$3, array$$20) {
   return array$$20.filter(predicate$$3);
 }
 function contains(value$$4, array$$22, eq$$3) {
-  const loop = function loop($i$$12$$75) {
+  const loop = function loop($i$$12$$79) {
     loop: while (true) {
-      const i$$12 = $i$$12$$75;
+      const i$$12 = $i$$12$$79;
 
       if (i$$12 >= array$$22.length) {
         return false;
       } else if (eq$$3.Equals(value$$4, array$$22[i$$12])) {
         return true;
       } else {
-        $i$$12$$75 = i$$12 + 1;
+        $i$$12$$79 = i$$12 + 1;
         continue loop;
       }
 
@@ -762,9 +763,9 @@ function tryFindIndex(predicate$$17, array$$63) {
   }
 }
 function pick(chooser, array$$65) {
-  const loop$$1 = function loop$$1($i$$22$$143) {
+  const loop$$1 = function loop$$1($i$$22$$147) {
     loop$$1: while (true) {
-      const i$$22 = $i$$22$$143;
+      const i$$22 = $i$$22$$147;
 
       if (i$$22 >= array$$65.length) {
         return indexNotFound();
@@ -775,7 +776,7 @@ function pick(chooser, array$$65) {
           const res$$5 = Object(_Option_js__WEBPACK_IMPORTED_MODULE_0__["value"])(matchValue$$8);
           return res$$5;
         } else {
-          $i$$22$$143 = i$$22 + 1;
+          $i$$22$$147 = i$$22 + 1;
           continue loop$$1;
         }
       }
@@ -787,9 +788,9 @@ function pick(chooser, array$$65) {
   return loop$$1(0);
 }
 function tryPick(chooser$$1, array$$66) {
-  const loop$$2 = function loop$$2($i$$23$$146) {
+  const loop$$2 = function loop$$2($i$$23$$150) {
     loop$$2: while (true) {
-      const i$$23 = $i$$23$$146;
+      const i$$23 = $i$$23$$150;
 
       if (i$$23 >= array$$66.length) {
         return null;
@@ -797,7 +798,7 @@ function tryPick(chooser$$1, array$$66) {
         const matchValue$$9 = chooser$$1(array$$66[i$$23]);
 
         if (matchValue$$9 == null) {
-          $i$$23$$146 = i$$23 + 1;
+          $i$$23$$150 = i$$23 + 1;
           continue loop$$2;
         } else {
           return matchValue$$9;
@@ -811,16 +812,16 @@ function tryPick(chooser$$1, array$$66) {
   return loop$$2(0);
 }
 function findBack(predicate$$19, array$$67) {
-  const loop$$3 = function loop$$3($i$$24$$149) {
+  const loop$$3 = function loop$$3($i$$24$$153) {
     loop$$3: while (true) {
-      const i$$24 = $i$$24$$149;
+      const i$$24 = $i$$24$$153;
 
       if (i$$24 < 0) {
         return indexNotFound();
       } else if (predicate$$19(array$$67[i$$24])) {
         return array$$67[i$$24];
       } else {
-        $i$$24$$149 = i$$24 - 1;
+        $i$$24$$153 = i$$24 - 1;
         continue loop$$3;
       }
 
@@ -831,16 +832,16 @@ function findBack(predicate$$19, array$$67) {
   return loop$$3(array$$67.length - 1);
 }
 function tryFindBack(predicate$$20, array$$68) {
-  const loop$$4 = function loop$$4($i$$25$$152) {
+  const loop$$4 = function loop$$4($i$$25$$156) {
     loop$$4: while (true) {
-      const i$$25 = $i$$25$$152;
+      const i$$25 = $i$$25$$156;
 
       if (i$$25 < 0) {
         return null;
       } else if (predicate$$20(array$$68[i$$25])) {
         return Object(_Option_js__WEBPACK_IMPORTED_MODULE_0__["some"])(array$$68[i$$25]);
       } else {
-        $i$$25$$152 = i$$25 - 1;
+        $i$$25$$156 = i$$25 - 1;
         continue loop$$4;
       }
 
@@ -851,16 +852,16 @@ function tryFindBack(predicate$$20, array$$68) {
   return loop$$4(array$$68.length - 1);
 }
 function findLastIndex(predicate$$21, array$$69) {
-  const loop$$5 = function loop$$5($i$$26$$155) {
+  const loop$$5 = function loop$$5($i$$26$$159) {
     loop$$5: while (true) {
-      const i$$26 = $i$$26$$155;
+      const i$$26 = $i$$26$$159;
 
       if (i$$26 < 0) {
         return -1 | 0;
       } else if (predicate$$21(array$$69[i$$26])) {
         return i$$26 | 0;
       } else {
-        $i$$26$$155 = i$$26 - 1;
+        $i$$26$$159 = i$$26 - 1;
         continue loop$$5;
       }
 
@@ -871,16 +872,16 @@ function findLastIndex(predicate$$21, array$$69) {
   return loop$$5(array$$69.length - 1) | 0;
 }
 function findIndexBack(predicate$$22, array$$70) {
-  const loop$$6 = function loop$$6($i$$27$$158) {
+  const loop$$6 = function loop$$6($i$$27$$162) {
     loop$$6: while (true) {
-      const i$$27 = $i$$27$$158;
+      const i$$27 = $i$$27$$162;
 
       if (i$$27 < 0) {
         return indexNotFound() | 0;
       } else if (predicate$$22(array$$70[i$$27])) {
         return i$$27 | 0;
       } else {
-        $i$$27$$158 = i$$27 - 1;
+        $i$$27$$162 = i$$27 - 1;
         continue loop$$6;
       }
 
@@ -891,16 +892,16 @@ function findIndexBack(predicate$$22, array$$70) {
   return loop$$6(array$$70.length - 1) | 0;
 }
 function tryFindIndexBack(predicate$$23, array$$71) {
-  const loop$$7 = function loop$$7($i$$28$$161) {
+  const loop$$7 = function loop$$7($i$$28$$165) {
     loop$$7: while (true) {
-      const i$$28 = $i$$28$$161;
+      const i$$28 = $i$$28$$165;
 
       if (i$$28 < 0) {
         return null;
       } else if (predicate$$23(array$$71[i$$28])) {
         return i$$28;
       } else {
-        $i$$28$$161 = i$$28 - 1;
+        $i$$28$$165 = i$$28 - 1;
         continue loop$$7;
       }
 
@@ -1060,9 +1061,9 @@ function sortWith(comparer$$10, xs$$10) {
 function unfold(generator, state$$8) {
   const res$$8 = [];
 
-  const loop$$8 = function loop$$8($state$$9$$220) {
+  const loop$$8 = function loop$$8($state$$9$$224) {
     loop$$8: while (true) {
-      const state$$9 = $state$$9$$220;
+      const state$$9 = $state$$9$$224;
       const matchValue$$10 = generator(state$$9);
 
       if (matchValue$$10 != null) {
@@ -1070,7 +1071,7 @@ function unfold(generator, state$$8) {
         const s$0027$$2 = matchValue$$10[1];
         const value$$10 = res$$8.push(x$$16);
         value$$10, null;
-        $state$$9$$220 = s$0027$$2;
+        $state$$9$$224 = s$0027$$2;
         continue loop$$8;
       }
 
@@ -1303,20 +1304,20 @@ function forAll2(predicate$$27, array1$$12, array2$$12) {
     return acc$$10 ? predicate$$27(x$$22, y$$9) : false;
   }, true, array1$$12, array2$$12);
 }
-function existsOffset($predicate$$28$$275, $array$$109$$276, $index$$7$$277) {
+function existsOffset($predicate$$28$$279, $array$$109$$280, $index$$7$$281) {
   existsOffset: while (true) {
-    const predicate$$28 = $predicate$$28$$275,
-          array$$109 = $array$$109$$276,
-          index$$7 = $index$$7$$277;
+    const predicate$$28 = $predicate$$28$$279,
+          array$$109 = $array$$109$$280,
+          index$$7 = $index$$7$$281;
 
     if (index$$7 === array$$109.length) {
       return false;
     } else if (predicate$$28(array$$109[index$$7])) {
       return true;
     } else {
-      $predicate$$28$$275 = predicate$$28;
-      $array$$109$$276 = array$$109;
-      $index$$7$$277 = index$$7 + 1;
+      $predicate$$28$$279 = predicate$$28;
+      $array$$109$$280 = array$$109;
+      $index$$7$$281 = index$$7 + 1;
       continue existsOffset;
     }
 
@@ -1326,22 +1327,22 @@ function existsOffset($predicate$$28$$275, $array$$109$$276, $index$$7$$277) {
 function exists(predicate$$29, array$$110) {
   return existsOffset(predicate$$29, array$$110, 0);
 }
-function existsOffset2($predicate$$30$$280, $array1$$13$$281, $array2$$13$$282, $index$$8$$283) {
+function existsOffset2($predicate$$30$$284, $array1$$13$$285, $array2$$13$$286, $index$$8$$287) {
   existsOffset2: while (true) {
-    const predicate$$30 = $predicate$$30$$280,
-          array1$$13 = $array1$$13$$281,
-          array2$$13 = $array2$$13$$282,
-          index$$8 = $index$$8$$283;
+    const predicate$$30 = $predicate$$30$$284,
+          array1$$13 = $array1$$13$$285,
+          array2$$13 = $array2$$13$$286,
+          index$$8 = $index$$8$$287;
 
     if (index$$8 === array1$$13.length) {
       return false;
     } else if (predicate$$30(array1$$13[index$$8], array2$$13[index$$8])) {
       return true;
     } else {
-      $predicate$$30$$280 = predicate$$30;
-      $array1$$13$$281 = array1$$13;
-      $array2$$13$$282 = array2$$13;
-      $index$$8$$283 = index$$8 + 1;
+      $predicate$$30$$284 = predicate$$30;
+      $array1$$13$$285 = array1$$13;
+      $array2$$13$$286 = array2$$13;
+      $index$$8$$287 = index$$8 + 1;
       continue existsOffset2;
     }
 
@@ -1450,12 +1451,36 @@ function windowed(windowSize, source$$10) {
 
   return res$$9;
 }
+function splitInto(chunks, array$$115) {
+  if (chunks < 1) {
+    throw new Error("The input must be positive.\\nParameter name: chunks");
+  }
+
+  if (array$$115.length === 0) {
+    return [[]];
+  } else {
+    const result$$15 = [];
+    const chunks$$1 = Object(_Util_js__WEBPACK_IMPORTED_MODULE_1__["min"])(_Util_js__WEBPACK_IMPORTED_MODULE_1__["comparePrimitives"], chunks, array$$115.length) | 0;
+    const minChunkSize = ~~(array$$115.length / chunks$$1) | 0;
+    const chunksWithExtraItem = array$$115.length % chunks$$1 | 0;
+
+    for (let i$$51 = 0; i$$51 <= chunks$$1 - 1; i$$51++) {
+      const chunkSize$$1 = (i$$51 < chunksWithExtraItem ? minChunkSize + 1 : minChunkSize) | 0;
+      const start$$11 = i$$51 * minChunkSize + Object(_Util_js__WEBPACK_IMPORTED_MODULE_1__["min"])(_Util_js__WEBPACK_IMPORTED_MODULE_1__["comparePrimitives"], chunksWithExtraItem, i$$51) | 0;
+      const slice$$1 = array$$115.slice(start$$11, start$$11 + chunkSize$$1);
+      const value$$12 = result$$15.push(slice$$1);
+      value$$12, null;
+    }
+
+    return result$$15;
+  }
+}
 
 /***/ }),
 
-/***/ "./.fable/fable-library.2.3.25/Date.js":
+/***/ "./.fable/fable-library.2.4.11/Date.js":
 /*!*********************************************!*\
-  !*** ./.fable/fable-library.2.3.25/Date.js ***!
+  !*** ./.fable/fable-library.2.4.11/Date.js ***!
   \*********************************************/
 /*! exports provided: offsetRegex, dateOffsetToString, dateToHalfUTCString, toString, default, fromTicks, fromDateTimeOffset, getTicks, minValue, maxValue, parseRaw, parse, tryParse, create, now, utcNow, today, isLeapYear, daysInMonth, toUniversalTime, toLocalTime, specifyKind, timeOfDay, date, day, hour, millisecond, minute, month, second, year, dayOfWeek, dayOfYear, add, addDays, addHours, addMinutes, addSeconds, addMilliseconds, addYears, addMonths, subtract, toLongDateString, toShortDateString, toLongTimeString, toShortTimeString, equals, compare, compareTo, op_Addition, op_Subtraction, isDaylightSavingTime */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -1514,8 +1539,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "op_Addition", function() { return op_Addition; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "op_Subtraction", function() { return op_Subtraction; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isDaylightSavingTime", function() { return isDaylightSavingTime; });
-/* harmony import */ var _Long__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Long */ "./.fable/fable-library.2.3.25/Long.js");
-/* harmony import */ var _Util__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Util */ "./.fable/fable-library.2.3.25/Util.js");
+/* harmony import */ var _Long__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Long */ "./.fable/fable-library.2.4.11/Long.js");
+/* harmony import */ var _Util__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Util */ "./.fable/fable-library.2.4.11/Util.js");
 /**
  * DateTimeOffset functions.
  *
@@ -1700,9 +1725,10 @@ function parseRaw(str) {
             let timeInSeconds = 0;
             if (m[2] != null) {
                 const timeParts = m[2].split(":");
-                timeInSeconds = parseInt(timeParts[0], 10) * 3600 +
-                    parseInt(timeParts[1] || "0", 10) * 60 +
-                    parseFloat(timeParts[2] || "0");
+                timeInSeconds =
+                    parseInt(timeParts[0], 10) * 3600 +
+                        parseInt(timeParts[1] || "0", 10) * 60 +
+                        parseFloat(timeParts[2] || "0");
                 if (m[3] != null && m[3].toUpperCase() === "PM") {
                     timeInSeconds += 720;
                 }
@@ -1845,22 +1871,32 @@ function dayOfYear(d) {
     return _day;
 }
 function add(d, ts) {
-    return DateTime(d.getTime() + ts, d.kind);
+    const newDate = DateTime(d.getTime() + ts, d.kind);
+    if (d.kind === 2 /* Local */) {
+        const oldTzOffset = d.getTimezoneOffset();
+        const newTzOffset = newDate.getTimezoneOffset();
+        return oldTzOffset !== newTzOffset
+            ? DateTime(newDate.getTime() + (newTzOffset - oldTzOffset) * 60000, d.kind)
+            : newDate;
+    }
+    else {
+        return newDate;
+    }
 }
 function addDays(d, v) {
-    return DateTime(d.getTime() + v * 86400000, d.kind);
+    return add(d, v * 86400000);
 }
 function addHours(d, v) {
-    return DateTime(d.getTime() + v * 3600000, d.kind);
+    return add(d, v * 3600000);
 }
 function addMinutes(d, v) {
-    return DateTime(d.getTime() + v * 60000, d.kind);
+    return add(d, v * 60000);
 }
 function addSeconds(d, v) {
-    return DateTime(d.getTime() + v * 1000, d.kind);
+    return add(d, v * 1000);
 }
 function addMilliseconds(d, v) {
-    return DateTime(d.getTime() + v, d.kind);
+    return add(d, v);
 }
 function addYears(d, v) {
     const newMonth = month(d);
@@ -1889,9 +1925,7 @@ function addMonths(d, v) {
     return create(newYear, newMonth, newDay, hour(d), minute(d), second(d), millisecond(d), d.kind);
 }
 function subtract(d, that) {
-    return typeof that === "number"
-        ? DateTime(d.getTime() - that, d.kind)
-        : d.getTime() - that.getTime();
+    return typeof that === "number" ? add(d, -that) : d.getTime() - that.getTime();
 }
 function toLongDateString(d) {
     return d.toDateString();
@@ -1928,9 +1962,9 @@ function isDST(janOffset, julOffset, tOffset) {
 
 /***/ }),
 
-/***/ "./.fable/fable-library.2.3.25/Decimal.js":
+/***/ "./.fable/fable-library.2.4.11/Decimal.js":
 /*!************************************************!*\
-  !*** ./.fable/fable-library.2.3.25/Decimal.js ***!
+  !*** ./.fable/fable-library.2.4.11/Decimal.js ***!
   \************************************************/
 /*! exports provided: default, get_Zero, get_One, get_MinusOne, get_MaxValue, get_MinValue, compare, equals, abs, round, truncate, ceiling, floor, pow, sqrt, op_Addition, op_Subtraction, op_Multiply, op_Division, op_Modulus, op_UnaryNegation, add, subtract, multiply, divide, remainder, negate, toString, tryParse, parse, toNumber, fromIntArray, fromInts, fromParts, getBits, makeRangeStepFunction */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -1972,7 +2006,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fromParts", function() { return fromParts; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getBits", function() { return getBits; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "makeRangeStepFunction", function() { return makeRangeStepFunction; });
-/* harmony import */ var _lib_big__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./lib/big */ "./.fable/fable-library.2.3.25/lib/big.js");
+/* harmony import */ var _lib_big__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./lib/big */ "./.fable/fable-library.2.4.11/lib/big.js");
 
 /* harmony default export */ __webpack_exports__["default"] = (_lib_big__WEBPACK_IMPORTED_MODULE_0__["default"]);
 const get_Zero = new _lib_big__WEBPACK_IMPORTED_MODULE_0__["default"](0);
@@ -2158,9 +2192,9 @@ function makeRangeStepFunction(step, last) {
 
 /***/ }),
 
-/***/ "./.fable/fable-library.2.3.25/Int32.js":
+/***/ "./.fable/fable-library.2.4.11/Int32.js":
 /*!**********************************************!*\
-  !*** ./.fable/fable-library.2.3.25/Int32.js ***!
+  !*** ./.fable/fable-library.2.4.11/Int32.js ***!
   \**********************************************/
 /*! exports provided: NumberStyles, isValid, parse, tryParse, op_UnaryNegation_Int8, op_UnaryNegation_Int16, op_UnaryNegation_Int32 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -2294,11 +2328,11 @@ function op_UnaryNegation_Int32(x) {
 
 /***/ }),
 
-/***/ "./.fable/fable-library.2.3.25/List.js":
+/***/ "./.fable/fable-library.2.4.11/List.js":
 /*!*********************************************!*\
-  !*** ./.fable/fable-library.2.3.25/List.js ***!
+  !*** ./.fable/fable-library.2.4.11/List.js ***!
   \*********************************************/
-/*! exports provided: head, tryHead, tail, last, tryLast, compareWith, foldIndexedAux, foldIndexed, fold, reverse, foldBack, toSeq, ofSeq, concat, foldIndexed2Aux, foldIndexed2, fold2, foldBack2, unfold, foldIndexed3Aux, foldIndexed3, fold3, scan, scanBack, length, append, collect, map, mapIndexed, indexed, map2, mapIndexed2, map3, mapIndexed3, mapFold, mapFoldBack, iterate, iterate2, iterateIndexed, iterateIndexed2, ofArray, empty, isEmpty, tryPickIndexedAux, tryPickIndexed, tryPick, pick, tryFindIndexed, tryFind, findIndexed, find, findBack, tryFindBack, tryFindIndex, tryFindIndexBack, findIndex, findIndexBack, item, tryItem, filter, partition, choose, contains, except, initialize, replicate, reduce, reduceBack, forAll, forAll2, exists, exists2, unzip, unzip3, zip, zip3, sort, sortBy, sortDescending, sortByDescending, sortWith, sum, sumBy, maxBy, max, minBy, min, average, averageBy, permute, skip, skipWhile, takeSplitAux, take, takeWhile, truncate, splitAt, outOfRange, slice, distinctBy, distinct, exactlyOne, groupBy, countBy, where, pairwise, windowed */
+/*! exports provided: head, tryHead, tail, last, tryLast, compareWith, foldIndexedAux, foldIndexed, fold, reverse, foldBack, toSeq, ofSeq, concat, foldIndexed2Aux, foldIndexed2, fold2, foldBack2, unfold, foldIndexed3Aux, foldIndexed3, fold3, scan, scanBack, length, append, collect, map, mapIndexed, indexed, map2, mapIndexed2, map3, mapIndexed3, mapFold, mapFoldBack, iterate, iterate2, iterateIndexed, iterateIndexed2, ofArray, empty, isEmpty, tryPickIndexedAux, tryPickIndexed, tryPick, pick, tryFindIndexed, tryFind, findIndexed, find, findBack, tryFindBack, tryFindIndex, tryFindIndexBack, findIndex, findIndexBack, item, tryItem, filter, partition, choose, contains, except, initialize, replicate, reduce, reduceBack, forAll, forAll2, exists, exists2, unzip, unzip3, zip, zip3, sort, sortBy, sortDescending, sortByDescending, sortWith, sum, sumBy, maxBy, max, minBy, min, average, averageBy, permute, chunkBySize, skip, skipWhile, takeSplitAux, take, takeWhile, truncate, splitAt, outOfRange, slice, distinctBy, distinct, exactlyOne, groupBy, countBy, where, pairwise, windowed, splitInto */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2393,6 +2427,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "average", function() { return average; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "averageBy", function() { return averageBy; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "permute", function() { return permute; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "chunkBySize", function() { return chunkBySize; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "skip", function() { return skip; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "skipWhile", function() { return skipWhile; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "takeSplitAux", function() { return takeSplitAux; });
@@ -2410,13 +2445,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "where", function() { return where; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "pairwise", function() { return pairwise; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "windowed", function() { return windowed; });
-/* harmony import */ var _Option_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Option.js */ "./.fable/fable-library.2.3.25/Option.js");
-/* harmony import */ var _Types_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Types.js */ "./.fable/fable-library.2.3.25/Types.js");
-/* harmony import */ var _Seq_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Seq.js */ "./.fable/fable-library.2.3.25/Seq.js");
-/* harmony import */ var _Util_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Util.js */ "./.fable/fable-library.2.3.25/Util.js");
-/* harmony import */ var _Array_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Array.js */ "./.fable/fable-library.2.3.25/Array.js");
-/* harmony import */ var _Set_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Set.js */ "./.fable/fable-library.2.3.25/Set.js");
-/* harmony import */ var _Map_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Map.js */ "./.fable/fable-library.2.3.25/Map.js");
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "splitInto", function() { return splitInto; });
+/* harmony import */ var _Option_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Option.js */ "./.fable/fable-library.2.4.11/Option.js");
+/* harmony import */ var _Types_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Types.js */ "./.fable/fable-library.2.4.11/Types.js");
+/* harmony import */ var _Seq_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Seq.js */ "./.fable/fable-library.2.4.11/Seq.js");
+/* harmony import */ var _Util_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Util.js */ "./.fable/fable-library.2.4.11/Util.js");
+/* harmony import */ var _Array_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Array.js */ "./.fable/fable-library.2.4.11/Array.js");
+/* harmony import */ var _Set_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Set.js */ "./.fable/fable-library.2.4.11/Set.js");
+/* harmony import */ var _Map_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Map.js */ "./.fable/fable-library.2.4.11/Map.js");
 
 
 
@@ -3240,17 +3276,28 @@ function permute(f$$55, xs$$109) {
   xs$$110 = Object(_Array_js__WEBPACK_IMPORTED_MODULE_4__["permute"])(f$$55, array$$3);
   return ofArray(xs$$110);
 }
-function skip(i$$16, xs$$111) {
-  const skipInner = function skipInner($i$$17$$237, $xs$$112$$238) {
+function chunkBySize(chunkSize, xs$$111) {
+  let xs$$114;
+  let xs$$112;
+  let array$$4;
+  array$$4 = Object(_Array_js__WEBPACK_IMPORTED_MODULE_4__["ofList"])(xs$$111, Array);
+  xs$$112 = Object(_Array_js__WEBPACK_IMPORTED_MODULE_4__["chunkBySize"])(chunkSize, array$$4);
+  xs$$114 = ofArray(xs$$112);
+  return map(function f$$56(xs$$113) {
+    return ofArray(xs$$113);
+  }, xs$$114);
+}
+function skip(i$$16, xs$$115) {
+  const skipInner = function skipInner($i$$17$$240, $xs$$116$$241) {
     skipInner: while (true) {
-      const i$$17 = $i$$17$$237,
-            xs$$112 = $xs$$112$$238;
+      const i$$17 = $i$$17$$240,
+            xs$$116 = $xs$$116$$241;
 
       if (i$$17 === 0) {
-        return xs$$112;
-      } else if (xs$$112.tail != null) {
-        $i$$17$$237 = i$$17 - 1;
-        $xs$$112$$238 = xs$$112.tail;
+        return xs$$116;
+      } else if (xs$$116.tail != null) {
+        $i$$17$$240 = i$$17 - 1;
+        $xs$$116$$241 = xs$$116.tail;
         continue skipInner;
       } else {
         throw new Error("The input sequence has an insufficient number of elements.");
@@ -3263,186 +3310,126 @@ function skip(i$$16, xs$$111) {
   if (i$$16 < 0) {
     throw new Error("The input must be non-negative.");
   } else {
-    var $target$$239, i$$20, xs$$115;
+    var $target$$242, i$$20, xs$$119;
 
     if (i$$16 === 0) {
-      $target$$239 = 0;
+      $target$$242 = 0;
     } else if (i$$16 === 1) {
-      if (xs$$111.tail != null) {
-        $target$$239 = 1;
-      } else {
-        $target$$239 = 2;
-        i$$20 = i$$16;
-        xs$$115 = xs$$111;
-      }
-    } else {
-      $target$$239 = 2;
-      i$$20 = i$$16;
-      xs$$115 = xs$$111;
-    }
-
-    switch ($target$$239) {
-      case 0:
-        {
-          return xs$$111;
-        }
-
-      case 1:
-        {
-          return xs$$111.tail;
-        }
-
-      case 2:
-        {
-          return skipInner(i$$20, xs$$115);
-        }
-    }
-  }
-}
-function skipWhile($predicate$$240, $xs$$116$$241) {
-  skipWhile: while (true) {
-    const predicate = $predicate$$240,
-          xs$$116 = $xs$$116$$241;
-    var $target$$242, h$$4, t$$4;
-
-    if (xs$$116.tail != null) {
-      if (predicate(xs$$116.head)) {
-        $target$$242 = 0;
-        h$$4 = xs$$116.head;
-        t$$4 = xs$$116.tail;
-      } else {
+      if (xs$$115.tail != null) {
         $target$$242 = 1;
+      } else {
+        $target$$242 = 2;
+        i$$20 = i$$16;
+        xs$$119 = xs$$115;
       }
     } else {
-      $target$$242 = 1;
+      $target$$242 = 2;
+      i$$20 = i$$16;
+      xs$$119 = xs$$115;
     }
 
     switch ($target$$242) {
       case 0:
         {
-          $predicate$$240 = predicate;
-          $xs$$116$$241 = t$$4;
+          return xs$$115;
+        }
+
+      case 1:
+        {
+          return xs$$115.tail;
+        }
+
+      case 2:
+        {
+          return skipInner(i$$20, xs$$119);
+        }
+    }
+  }
+}
+function skipWhile($predicate$$243, $xs$$120$$244) {
+  skipWhile: while (true) {
+    const predicate = $predicate$$243,
+          xs$$120 = $xs$$120$$244;
+    var $target$$245, h$$4, t$$4;
+
+    if (xs$$120.tail != null) {
+      if (predicate(xs$$120.head)) {
+        $target$$245 = 0;
+        h$$4 = xs$$120.head;
+        t$$4 = xs$$120.tail;
+      } else {
+        $target$$245 = 1;
+      }
+    } else {
+      $target$$245 = 1;
+    }
+
+    switch ($target$$245) {
+      case 0:
+        {
+          $predicate$$243 = predicate;
+          $xs$$120$$244 = t$$4;
           continue skipWhile;
         }
 
       case 1:
         {
-          return xs$$116;
+          return xs$$120;
         }
     }
 
     break;
   }
 }
-function takeSplitAux($error$$243, $i$$21$$244, $acc$$25$$245, $xs$$117$$246) {
+function takeSplitAux($error$$246, $i$$21$$247, $acc$$25$$248, $xs$$121$$249) {
   takeSplitAux: while (true) {
-    const error = $error$$243,
-          i$$21 = $i$$21$$244,
-          acc$$25 = $acc$$25$$245,
-          xs$$117 = $xs$$117$$246;
+    const error = $error$$246,
+          i$$21 = $i$$21$$247,
+          acc$$25 = $acc$$25$$248,
+          xs$$121 = $xs$$121$$249;
 
     if (i$$21 === 0) {
-      return [reverse(acc$$25), xs$$117];
-    } else if (xs$$117.tail != null) {
-      $error$$243 = error;
-      $i$$21$$244 = i$$21 - 1;
-      $acc$$25$$245 = new _Types_js__WEBPACK_IMPORTED_MODULE_1__["List"](xs$$117.head, acc$$25);
-      $xs$$117$$246 = xs$$117.tail;
+      return [reverse(acc$$25), xs$$121];
+    } else if (xs$$121.tail != null) {
+      $error$$246 = error;
+      $i$$21$$247 = i$$21 - 1;
+      $acc$$25$$248 = new _Types_js__WEBPACK_IMPORTED_MODULE_1__["List"](xs$$121.head, acc$$25);
+      $xs$$121$$249 = xs$$121.tail;
       continue takeSplitAux;
     } else {
       if (error) {
         throw new Error("The input sequence has an insufficient number of elements.");
       } else {
-        return [reverse(acc$$25), xs$$117];
+        return [reverse(acc$$25), xs$$121];
       }
     }
 
     break;
   }
 }
-function take(i$$22, xs$$119) {
+function take(i$$22, xs$$123) {
   if (i$$22 < 0) {
     throw new Error("The input must be non-negative.");
   } else {
-    var $target$$249, i$$25, xs$$120;
+    var $target$$252, i$$25, xs$$124;
 
     if (i$$22 === 0) {
-      $target$$249 = 0;
+      $target$$252 = 0;
     } else if (i$$22 === 1) {
-      if (xs$$119.tail != null) {
-        $target$$249 = 1;
-      } else {
-        $target$$249 = 2;
-        i$$25 = i$$22;
-        xs$$120 = xs$$119;
-      }
-    } else {
-      $target$$249 = 2;
-      i$$25 = i$$22;
-      xs$$120 = xs$$119;
-    }
-
-    switch ($target$$249) {
-      case 0:
-        {
-          return new _Types_js__WEBPACK_IMPORTED_MODULE_1__["List"]();
-        }
-
-      case 1:
-        {
-          return new _Types_js__WEBPACK_IMPORTED_MODULE_1__["List"](xs$$119.head, new _Types_js__WEBPACK_IMPORTED_MODULE_1__["List"]());
-        }
-
-      case 2:
-        {
-          const tuple = takeSplitAux(true, i$$25, new _Types_js__WEBPACK_IMPORTED_MODULE_1__["List"](), xs$$120);
-          return tuple[0];
-        }
-    }
-  }
-}
-function takeWhile(predicate$$1, xs$$121) {
-  if (xs$$121.tail != null) {
-    if (xs$$121.tail.tail == null) {
-      if (predicate$$1(xs$$121.head)) {
-        return xs$$121;
-      } else {
-        return xs$$121.tail;
-      }
-    } else {
-      if (!predicate$$1(xs$$121.head)) {
-        return new _Types_js__WEBPACK_IMPORTED_MODULE_1__["List"]();
-      } else {
-        return new _Types_js__WEBPACK_IMPORTED_MODULE_1__["List"](xs$$121.head, takeWhile(predicate$$1, xs$$121.tail));
-      }
-    }
-  } else {
-    return xs$$121;
-  }
-}
-function truncate(i$$26, xs$$123) {
-  if (i$$26 < 0) {
-    throw new Error("The input must be non-negative.");
-  } else {
-    var $target$$254, i$$29, xs$$124;
-
-    if (i$$26 === 0) {
-      $target$$254 = 0;
-    } else if (i$$26 === 1) {
       if (xs$$123.tail != null) {
-        $target$$254 = 1;
+        $target$$252 = 1;
       } else {
-        $target$$254 = 2;
-        i$$29 = i$$26;
+        $target$$252 = 2;
+        i$$25 = i$$22;
         xs$$124 = xs$$123;
       }
     } else {
-      $target$$254 = 2;
-      i$$29 = i$$26;
+      $target$$252 = 2;
+      i$$25 = i$$22;
       xs$$124 = xs$$123;
     }
 
-    switch ($target$$254) {
+    switch ($target$$252) {
       case 0:
         {
           return new _Types_js__WEBPACK_IMPORTED_MODULE_1__["List"]();
@@ -3455,48 +3442,108 @@ function truncate(i$$26, xs$$123) {
 
       case 2:
         {
-          const tuple$$1 = takeSplitAux(false, i$$29, new _Types_js__WEBPACK_IMPORTED_MODULE_1__["List"](), xs$$124);
-          return tuple$$1[0];
+          const tuple = takeSplitAux(true, i$$25, new _Types_js__WEBPACK_IMPORTED_MODULE_1__["List"](), xs$$124);
+          return tuple[0];
         }
     }
   }
 }
-function splitAt(i$$30, xs$$125) {
-  if (i$$30 < 0) {
+function takeWhile(predicate$$1, xs$$125) {
+  if (xs$$125.tail != null) {
+    if (xs$$125.tail.tail == null) {
+      if (predicate$$1(xs$$125.head)) {
+        return xs$$125;
+      } else {
+        return xs$$125.tail;
+      }
+    } else {
+      if (!predicate$$1(xs$$125.head)) {
+        return new _Types_js__WEBPACK_IMPORTED_MODULE_1__["List"]();
+      } else {
+        return new _Types_js__WEBPACK_IMPORTED_MODULE_1__["List"](xs$$125.head, takeWhile(predicate$$1, xs$$125.tail));
+      }
+    }
+  } else {
+    return xs$$125;
+  }
+}
+function truncate(i$$26, xs$$127) {
+  if (i$$26 < 0) {
     throw new Error("The input must be non-negative.");
   } else {
-    var $target$$257, i$$33, xs$$127;
+    var $target$$257, i$$29, xs$$128;
 
-    if (i$$30 === 0) {
+    if (i$$26 === 0) {
       $target$$257 = 0;
-    } else if (i$$30 === 1) {
-      if (xs$$125.tail != null) {
+    } else if (i$$26 === 1) {
+      if (xs$$127.tail != null) {
         $target$$257 = 1;
       } else {
         $target$$257 = 2;
-        i$$33 = i$$30;
-        xs$$127 = xs$$125;
+        i$$29 = i$$26;
+        xs$$128 = xs$$127;
       }
     } else {
       $target$$257 = 2;
-      i$$33 = i$$30;
-      xs$$127 = xs$$125;
+      i$$29 = i$$26;
+      xs$$128 = xs$$127;
     }
 
     switch ($target$$257) {
       case 0:
         {
-          return [new _Types_js__WEBPACK_IMPORTED_MODULE_1__["List"](), xs$$125];
+          return new _Types_js__WEBPACK_IMPORTED_MODULE_1__["List"]();
         }
 
       case 1:
         {
-          return [new _Types_js__WEBPACK_IMPORTED_MODULE_1__["List"](xs$$125.head, new _Types_js__WEBPACK_IMPORTED_MODULE_1__["List"]()), xs$$125.tail];
+          return new _Types_js__WEBPACK_IMPORTED_MODULE_1__["List"](xs$$127.head, new _Types_js__WEBPACK_IMPORTED_MODULE_1__["List"]());
         }
 
       case 2:
         {
-          return takeSplitAux(true, i$$33, new _Types_js__WEBPACK_IMPORTED_MODULE_1__["List"](), xs$$127);
+          const tuple$$1 = takeSplitAux(false, i$$29, new _Types_js__WEBPACK_IMPORTED_MODULE_1__["List"](), xs$$128);
+          return tuple$$1[0];
+        }
+    }
+  }
+}
+function splitAt(i$$30, xs$$129) {
+  if (i$$30 < 0) {
+    throw new Error("The input must be non-negative.");
+  } else {
+    var $target$$260, i$$33, xs$$131;
+
+    if (i$$30 === 0) {
+      $target$$260 = 0;
+    } else if (i$$30 === 1) {
+      if (xs$$129.tail != null) {
+        $target$$260 = 1;
+      } else {
+        $target$$260 = 2;
+        i$$33 = i$$30;
+        xs$$131 = xs$$129;
+      }
+    } else {
+      $target$$260 = 2;
+      i$$33 = i$$30;
+      xs$$131 = xs$$129;
+    }
+
+    switch ($target$$260) {
+      case 0:
+        {
+          return [new _Types_js__WEBPACK_IMPORTED_MODULE_1__["List"](), xs$$129];
+        }
+
+      case 1:
+        {
+          return [new _Types_js__WEBPACK_IMPORTED_MODULE_1__["List"](xs$$129.head, new _Types_js__WEBPACK_IMPORTED_MODULE_1__["List"]()), xs$$129.tail];
+        }
+
+      case 2:
+        {
+          return takeSplitAux(true, i$$33, new _Types_js__WEBPACK_IMPORTED_MODULE_1__["List"](), xs$$131);
         }
     }
   }
@@ -3504,7 +3551,7 @@ function splitAt(i$$30, xs$$125) {
 function outOfRange() {
   throw new Error("Index out of range");
 }
-function slice(lower, upper, xs$$128) {
+function slice(lower, upper, xs$$132) {
   const lower$$1 = Object(_Option_js__WEBPACK_IMPORTED_MODULE_0__["defaultArg"])(lower, 0) | 0;
   const hasUpper = upper != null;
 
@@ -3516,7 +3563,7 @@ function slice(lower, upper, xs$$128) {
     let lastIndex = -1 | 0;
     let res$$2;
     const state$$13 = new _Types_js__WEBPACK_IMPORTED_MODULE_1__["List"]();
-    res$$2 = foldIndexed(function f$$56(i$$34, acc$$26, x$$67) {
+    res$$2 = foldIndexed(function f$$57(i$$34, acc$$26, x$$67) {
       lastIndex = i$$34;
 
       if (lower$$1 <= i$$34 ? !hasUpper ? true : i$$34 <= upper : false) {
@@ -3524,7 +3571,7 @@ function slice(lower, upper, xs$$128) {
       } else {
         return acc$$26;
       }
-    }, state$$13, xs$$128);
+    }, state$$13, xs$$132);
 
     if (lower$$1 > lastIndex + 1 ? true : hasUpper ? upper > lastIndex : false) {
       outOfRange();
@@ -3533,33 +3580,33 @@ function slice(lower, upper, xs$$128) {
     return reverse(res$$2);
   }
 }
-function distinctBy(projection$$4, xs$$130, eq$$2) {
+function distinctBy(projection$$4, xs$$134, eq$$2) {
   const hashSet = Object(_Set_js__WEBPACK_IMPORTED_MODULE_5__["createMutable"])([], eq$$2);
-  return filter(function f$$57($arg$$1) {
+  return filter(function f$$58($arg$$1) {
     const arg00$$1 = projection$$4($arg$$1);
     return Object(_Util_js__WEBPACK_IMPORTED_MODULE_3__["addToSet"])(arg00$$1, hashSet);
-  }, xs$$130);
+  }, xs$$134);
 }
-function distinct(xs$$132, eq$$3) {
+function distinct(xs$$136, eq$$3) {
   return distinctBy(function (x$$68) {
     return x$$68;
-  }, xs$$132, eq$$3);
+  }, xs$$136, eq$$3);
 }
-function exactlyOne(xs$$133) {
-  if (xs$$133.tail != null) {
-    if (xs$$133.tail.tail != null) {
+function exactlyOne(xs$$137) {
+  if (xs$$137.tail != null) {
+    if (xs$$137.tail.tail != null) {
       throw new Error("Input list too long\\nParameter name: list");
     } else {
-      return xs$$133.head;
+      return xs$$137.head;
     }
   } else {
     throw new Error("The input sequence was empty\\nParameter name: list");
   }
 }
-function groupBy(projection$$5, xs$$135, eq$$4) {
+function groupBy(projection$$5, xs$$139, eq$$4) {
   const dict = Object(_Map_js__WEBPACK_IMPORTED_MODULE_6__["createMutable"])([], eq$$4);
   let keys = new _Types_js__WEBPACK_IMPORTED_MODULE_1__["List"]();
-  iterate(function f$$58(v$$2) {
+  iterate(function f$$59(v$$2) {
     const key = projection$$5(v$$2);
     const matchValue$$16 = Object(_Util_js__WEBPACK_IMPORTED_MODULE_3__["tryGetValue"])(dict, key, null);
 
@@ -3569,18 +3616,18 @@ function groupBy(projection$$5, xs$$135, eq$$4) {
       Object(_Util_js__WEBPACK_IMPORTED_MODULE_3__["addToDict"])(dict, key, new _Types_js__WEBPACK_IMPORTED_MODULE_1__["List"](v$$2, new _Types_js__WEBPACK_IMPORTED_MODULE_1__["List"]()));
       keys = new _Types_js__WEBPACK_IMPORTED_MODULE_1__["List"](key, keys);
     }
-  }, xs$$135);
+  }, xs$$139);
   let result$$1 = new _Types_js__WEBPACK_IMPORTED_MODULE_1__["List"]();
-  const xs$$137 = keys;
-  iterate(function f$$59(key$$1) {
+  const xs$$141 = keys;
+  iterate(function f$$60(key$$1) {
     result$$1 = new _Types_js__WEBPACK_IMPORTED_MODULE_1__["List"]([key$$1, reverse(Object(_Util_js__WEBPACK_IMPORTED_MODULE_3__["getItemFromDict"])(dict, key$$1))], result$$1);
-  }, xs$$137);
+  }, xs$$141);
   return result$$1;
 }
-function countBy(projection$$6, xs$$138, eq$$5) {
+function countBy(projection$$6, xs$$142, eq$$5) {
   const dict$$1 = Object(_Map_js__WEBPACK_IMPORTED_MODULE_6__["createMutable"])([], eq$$5);
   let keys$$1 = new _Types_js__WEBPACK_IMPORTED_MODULE_1__["List"]();
-  iterate(function f$$60(v$$3) {
+  iterate(function f$$61(v$$3) {
     const key$$2 = projection$$6(v$$3);
     const matchValue$$17 = Object(_Util_js__WEBPACK_IMPORTED_MODULE_3__["tryGetValue"])(dict$$1, key$$2, 0);
 
@@ -3590,30 +3637,30 @@ function countBy(projection$$6, xs$$138, eq$$5) {
       dict$$1.set(key$$2, 1);
       keys$$1 = new _Types_js__WEBPACK_IMPORTED_MODULE_1__["List"](key$$2, keys$$1);
     }
-  }, xs$$138);
+  }, xs$$142);
   let result$$2 = new _Types_js__WEBPACK_IMPORTED_MODULE_1__["List"]();
-  const xs$$140 = keys$$1;
-  iterate(function f$$61(key$$3) {
+  const xs$$144 = keys$$1;
+  iterate(function f$$62(key$$3) {
     result$$2 = new _Types_js__WEBPACK_IMPORTED_MODULE_1__["List"]([key$$3, Object(_Util_js__WEBPACK_IMPORTED_MODULE_3__["getItemFromDict"])(dict$$1, key$$3)], result$$2);
-  }, xs$$140);
+  }, xs$$144);
   return result$$2;
 }
-function where(predicate$$2, xs$$141) {
-  return filter(predicate$$2, xs$$141);
+function where(predicate$$2, xs$$145) {
+  return filter(predicate$$2, xs$$145);
 }
-function pairwise(xs$$142) {
-  const inner = function inner($xs$$143$$284, $acc$$27$$285, $x1$$1$$286) {
+function pairwise(xs$$146) {
+  const inner = function inner($xs$$147$$287, $acc$$27$$288, $x1$$1$$289) {
     inner: while (true) {
-      const xs$$143 = $xs$$143$$284,
-            acc$$27 = $acc$$27$$285,
-            x1$$1 = $x1$$1$$286;
+      const xs$$147 = $xs$$147$$287,
+            acc$$27 = $acc$$27$$288,
+            x1$$1 = $x1$$1$$289;
 
-      if (xs$$143.tail != null) {
+      if (xs$$147.tail != null) {
         let copyOfStruct = acc$$27;
-        copyOfStruct.push([x1$$1, xs$$143.head]);
-        $xs$$143$$284 = xs$$143.tail;
-        $acc$$27$$285 = acc$$27;
-        $x1$$1$$286 = xs$$143.head;
+        copyOfStruct.push([x1$$1, xs$$147.head]);
+        $xs$$147$$287 = xs$$147.tail;
+        $acc$$27$$288 = acc$$27;
+        $x1$$1$$289 = xs$$147.head;
         continue inner;
       } else {
         return ofArray(acc$$27);
@@ -3623,22 +3670,22 @@ function pairwise(xs$$142) {
     }
   };
 
-  var $target$$287, x1$$2, x2$$2, xs$$145;
+  var $target$$290, x1$$2, x2$$2, xs$$149;
 
-  if (xs$$142.tail != null) {
-    if (xs$$142.tail.tail != null) {
-      $target$$287 = 1;
-      x1$$2 = xs$$142.head;
-      x2$$2 = xs$$142.tail.head;
-      xs$$145 = xs$$142.tail.tail;
+  if (xs$$146.tail != null) {
+    if (xs$$146.tail.tail != null) {
+      $target$$290 = 1;
+      x1$$2 = xs$$146.head;
+      x2$$2 = xs$$146.tail.head;
+      xs$$149 = xs$$146.tail.tail;
     } else {
-      $target$$287 = 0;
+      $target$$290 = 0;
     }
   } else {
-    $target$$287 = 0;
+    $target$$290 = 0;
   }
 
-  switch ($target$$287) {
+  switch ($target$$290) {
     case 0:
       {
         return new _Types_js__WEBPACK_IMPORTED_MODULE_1__["List"]();
@@ -3648,7 +3695,7 @@ function pairwise(xs$$142) {
       {
         const acc$$28 = [];
         acc$$28.push([x1$$2, x2$$2]);
-        const clo1 = Object(_Util_js__WEBPACK_IMPORTED_MODULE_3__["partialApply"])(2, inner, [xs$$145]);
+        const clo1 = Object(_Util_js__WEBPACK_IMPORTED_MODULE_3__["partialApply"])(2, inner, [xs$$149]);
         const clo2 = clo1(acc$$28);
         return clo2(x2$$2);
       }
@@ -3667,12 +3714,23 @@ function windowed(windowSize, source) {
 
   return res$$3;
 }
+function splitInto(chunks, source$$1) {
+  let xs$$152;
+  let xs$$150;
+  let array$$5;
+  array$$5 = Object(_Array_js__WEBPACK_IMPORTED_MODULE_4__["ofList"])(source$$1, Array);
+  xs$$150 = Object(_Array_js__WEBPACK_IMPORTED_MODULE_4__["splitInto"])(chunks, array$$5);
+  xs$$152 = ofArray(xs$$150);
+  return map(function f$$63(xs$$151) {
+    return ofArray(xs$$151);
+  }, xs$$152);
+}
 
 /***/ }),
 
-/***/ "./.fable/fable-library.2.3.25/Long.js":
+/***/ "./.fable/fable-library.2.4.11/Long.js":
 /*!*********************************************!*\
-  !*** ./.fable/fable-library.2.3.25/Long.js ***!
+  !*** ./.fable/fable-library.2.4.11/Long.js ***!
   \*********************************************/
 /*! exports provided: default, get_Zero, get_One, op_Addition, op_Subtraction, op_Multiply, op_Division, op_Modulus, op_UnaryNegation, op_LeftShift, op_RightShift, op_RightShiftUnsigned, op_BitwiseAnd, op_BitwiseOr, op_ExclusiveOr, op_LogicalNot, op_LessThan, op_LessThanOrEqual, op_GreaterThan, op_GreaterThanOrEqual, op_Equality, op_Inequality, equals, compare, fromInt, fromBits, fromBytes, fromNumber, fromString, fromValue, toInt, toBytes, toNumber, toString, getLowBits, getHighBits, getLowBitsUnsigned, getHighBitsUnsigned, abs, fromInteger, parse, tryParse, unixEpochMillisecondsToTicks, ticksToUnixEpochMilliseconds, makeRangeStepFunction */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -3723,8 +3781,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "unixEpochMillisecondsToTicks", function() { return unixEpochMillisecondsToTicks; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ticksToUnixEpochMilliseconds", function() { return ticksToUnixEpochMilliseconds; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "makeRangeStepFunction", function() { return makeRangeStepFunction; });
-/* harmony import */ var _Int32__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Int32 */ "./.fable/fable-library.2.3.25/Int32.js");
-/* harmony import */ var _lib_long__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./lib/long */ "./.fable/fable-library.2.3.25/lib/long.js");
+/* harmony import */ var _Int32__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Int32 */ "./.fable/fable-library.2.4.11/Int32.js");
+/* harmony import */ var _lib_long__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./lib/long */ "./.fable/fable-library.2.4.11/lib/long.js");
 
 
 /* harmony default export */ __webpack_exports__["default"] = (_lib_long__WEBPACK_IMPORTED_MODULE_1__["Long"]);
@@ -3872,9 +3930,9 @@ function makeRangeStepFunction(step, last, unsigned) {
 
 /***/ }),
 
-/***/ "./.fable/fable-library.2.3.25/Map.js":
+/***/ "./.fable/fable-library.2.4.11/Map.js":
 /*!********************************************!*\
-  !*** ./.fable/fable-library.2.3.25/Map.js ***!
+  !*** ./.fable/fable-library.2.4.11/Map.js ***!
   \********************************************/
 /*! exports provided: MapTree$00602, MapTree$00602$reflection, MapTreeModule$$$sizeAux, MapTreeModule$$$size, MapTreeModule$$$empty, MapTreeModule$$$height, MapTreeModule$$$isEmpty, MapTreeModule$$$mk, MapTreeModule$$$rebalance, MapTreeModule$$$add, MapTreeModule$$$find, MapTreeModule$$$tryFind, MapTreeModule$$$partition1, MapTreeModule$$$partitionAux, MapTreeModule$$$partition, MapTreeModule$$$filter1, MapTreeModule$$$filterAux, MapTreeModule$$$filter, MapTreeModule$$$spliceOutSuccessor, MapTreeModule$$$remove, MapTreeModule$$$mem, MapTreeModule$$$iter, MapTreeModule$$$tryPick, MapTreeModule$$$exists, MapTreeModule$$$forall, MapTreeModule$$$map, MapTreeModule$$$mapi, MapTreeModule$$$foldBack, MapTreeModule$$$fold, MapTreeModule$$$foldFromTo, MapTreeModule$$$foldSection, MapTreeModule$$$loop, MapTreeModule$$$toList, MapTreeModule$$$ofList, MapTreeModule$$$mkFromEnumerator, MapTreeModule$$$ofArray, MapTreeModule$$$ofSeq, MapTreeModule$$$copyToArray, MapTreeModule$002EMapIterator$00602, MapTreeModule$002EMapIterator$00602$reflection, MapTreeModule$$$collapseLHS, MapTreeModule$$$mkIterator, MapTreeModule$$$notStarted, MapTreeModule$$$alreadyFinished, MapTreeModule$$$current, MapTreeModule$$$moveNext, MapTreeModule$002EmkIEnumerator$0027$00602, MapTreeModule$002EmkIEnumerator$0027$00602$reflection, MapTreeModule$002EmkIEnumerator$0027$00602$$$$002Ector$$Z26BC498C, MapTreeModule$$$mkIEnumerator, MapTreeModule$$$toSeq, FSharpMap, FSharpMap$reflection, FSharpMap$$$$002Ector$$58ADD115, FSharpMap$$get_Comparer, FSharpMap$$get_Tree, FSharpMap$$Add$$5BDDA1, FSharpMap$$get_IsEmpty, FSharpMap$$get_Item$$2B595, FSharpMap$$TryGetValue$$5BDDA1, FSharpMap$$TryPick$$72321DD7, FSharpMap$$Exists$$Z395DDC35, FSharpMap$$Filter$$Z395DDC35, FSharpMap$$ForAll$$Z395DDC35, FSharpMap$$Fold, FSharpMap$$FoldSection, FSharpMap$$Iterate$$1DCFB91D, FSharpMap$$MapRange$$6DC7247, FSharpMap$$Map$$Z6F6B671C, FSharpMap$$Partition$$Z395DDC35, FSharpMap$$get_Count, FSharpMap$$ContainsKey$$2B595, FSharpMap$$Remove$$2B595, FSharpMap$$TryFind$$2B595, FSharpMap$$ToList, isEmpty, add, find, tryFind, remove, containsKey, iterate, tryPick, pick, exists, filter, partition, forAll, mapRange, map, fold, foldBack, toSeq, findKey, tryFindKey, ofList, ofSeq, ofArray, toList, toArray, empty, createMutable, groupBy, countBy, count */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -3986,13 +4044,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "groupBy", function() { return groupBy; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "countBy", function() { return countBy; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "count", function() { return count; });
-/* harmony import */ var _Types_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Types.js */ "./.fable/fable-library.2.3.25/Types.js");
-/* harmony import */ var _Reflection_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Reflection.js */ "./.fable/fable-library.2.3.25/Reflection.js");
-/* harmony import */ var _Option_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Option.js */ "./.fable/fable-library.2.3.25/Option.js");
-/* harmony import */ var _Seq_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Seq.js */ "./.fable/fable-library.2.3.25/Seq.js");
-/* harmony import */ var _Util_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Util.js */ "./.fable/fable-library.2.3.25/Util.js");
-/* harmony import */ var _String_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./String.js */ "./.fable/fable-library.2.3.25/String.js");
-/* harmony import */ var _MutableMap__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./MutableMap */ "./.fable/fable-library.2.3.25/MutableMap.js");
+/* harmony import */ var _Types_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Types.js */ "./.fable/fable-library.2.4.11/Types.js");
+/* harmony import */ var _Reflection_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Reflection.js */ "./.fable/fable-library.2.4.11/Reflection.js");
+/* harmony import */ var _Option_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Option.js */ "./.fable/fable-library.2.4.11/Option.js");
+/* harmony import */ var _Seq_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Seq.js */ "./.fable/fable-library.2.4.11/Seq.js");
+/* harmony import */ var _Util_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Util.js */ "./.fable/fable-library.2.4.11/Util.js");
+/* harmony import */ var _String_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./String.js */ "./.fable/fable-library.2.4.11/String.js");
+/* harmony import */ var _MutableMap__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./MutableMap */ "./.fable/fable-library.2.4.11/MutableMap.js");
 
 
 
@@ -5010,9 +5068,9 @@ FSharpMap.prototype.GetHashCode = function () {
 
   while (e$$1.MoveNext()) {
     const patternInput$$5 = e$$1.Current;
-    const activePatternResult3676 = patternInput$$5;
-    res$$3 = combineHash(res$$3, Object(_Util_js__WEBPACK_IMPORTED_MODULE_4__["structuralHash"])(activePatternResult3676[0]));
-    res$$3 = combineHash(res$$3, Object(_Util_js__WEBPACK_IMPORTED_MODULE_4__["structuralHash"])(activePatternResult3676[1]));
+    const activePatternResult3692 = patternInput$$5;
+    res$$3 = combineHash(res$$3, Object(_Util_js__WEBPACK_IMPORTED_MODULE_4__["structuralHash"])(activePatternResult3692[0]));
+    res$$3 = combineHash(res$$3, Object(_Util_js__WEBPACK_IMPORTED_MODULE_4__["structuralHash"])(activePatternResult3692[1]));
   }
 
   return Math.abs(res$$3) | 0;
@@ -5333,9 +5391,9 @@ function count(m$$47) {
 
 /***/ }),
 
-/***/ "./.fable/fable-library.2.3.25/MutableMap.js":
+/***/ "./.fable/fable-library.2.4.11/MutableMap.js":
 /*!***************************************************!*\
-  !*** ./.fable/fable-library.2.3.25/MutableMap.js ***!
+  !*** ./.fable/fable-library.2.4.11/MutableMap.js ***!
   \***************************************************/
 /*! exports provided: MutableMap$00602, MutableMap$00602$reflection, MutableMap$00602$$$$002Ector$$6623D9B3, MutableMap$00602$$TryFind$$2B595, MutableMap$00602$$get_Comparer, MutableMap$00602$$Clear, MutableMap$00602$$get_Count, MutableMap$00602$$get_Item$$2B595, MutableMap$00602$$set_Item$$5BDDA1, MutableMap$00602$$Add$$5BDDA1, MutableMap$00602$$ContainsKey$$2B595, MutableMap$00602$$Remove$$2B595 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -5354,11 +5412,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MutableMap$00602$$Add$$5BDDA1", function() { return MutableMap$00602$$Add$$5BDDA1; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MutableMap$00602$$ContainsKey$$2B595", function() { return MutableMap$00602$$ContainsKey$$2B595; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MutableMap$00602$$Remove$$2B595", function() { return MutableMap$00602$$Remove$$2B595; });
-/* harmony import */ var _Types_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Types.js */ "./.fable/fable-library.2.3.25/Types.js");
-/* harmony import */ var _Seq_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Seq.js */ "./.fable/fable-library.2.3.25/Seq.js");
-/* harmony import */ var _Reflection_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Reflection.js */ "./.fable/fable-library.2.3.25/Reflection.js");
-/* harmony import */ var _Util_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Util.js */ "./.fable/fable-library.2.3.25/Util.js");
-/* harmony import */ var _String_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./String.js */ "./.fable/fable-library.2.3.25/String.js");
+/* harmony import */ var _Types_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Types.js */ "./.fable/fable-library.2.4.11/Types.js");
+/* harmony import */ var _Seq_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Seq.js */ "./.fable/fable-library.2.4.11/Seq.js");
+/* harmony import */ var _Reflection_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Reflection.js */ "./.fable/fable-library.2.4.11/Reflection.js");
+/* harmony import */ var _Util_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Util.js */ "./.fable/fable-library.2.4.11/Util.js");
+/* harmony import */ var _String_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./String.js */ "./.fable/fable-library.2.4.11/String.js");
 
 
 
@@ -5721,9 +5779,9 @@ MutableMap$00602.prototype.values = function () {
 
 /***/ }),
 
-/***/ "./.fable/fable-library.2.3.25/MutableSet.js":
+/***/ "./.fable/fable-library.2.4.11/MutableSet.js":
 /*!***************************************************!*\
-  !*** ./.fable/fable-library.2.3.25/MutableSet.js ***!
+  !*** ./.fable/fable-library.2.4.11/MutableSet.js ***!
   \***************************************************/
 /*! exports provided: MutableSet$00601, MutableSet$00601$reflection, MutableSet$00601$$$$002Ector$$Z6150332D, MutableSet$00601$$get_Comparer, MutableSet$00601$$Clear, MutableSet$00601$$get_Count, MutableSet$00601$$Add$$2B595, MutableSet$00601$$Contains$$2B595, MutableSet$00601$$Remove$$2B595 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -5739,11 +5797,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MutableSet$00601$$Add$$2B595", function() { return MutableSet$00601$$Add$$2B595; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MutableSet$00601$$Contains$$2B595", function() { return MutableSet$00601$$Contains$$2B595; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MutableSet$00601$$Remove$$2B595", function() { return MutableSet$00601$$Remove$$2B595; });
-/* harmony import */ var _Types_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Types.js */ "./.fable/fable-library.2.3.25/Types.js");
-/* harmony import */ var _Seq_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Seq.js */ "./.fable/fable-library.2.3.25/Seq.js");
-/* harmony import */ var _Reflection_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Reflection.js */ "./.fable/fable-library.2.3.25/Reflection.js");
-/* harmony import */ var _Util_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Util.js */ "./.fable/fable-library.2.3.25/Util.js");
-/* harmony import */ var _Option_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Option.js */ "./.fable/fable-library.2.3.25/Option.js");
+/* harmony import */ var _Types_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Types.js */ "./.fable/fable-library.2.4.11/Types.js");
+/* harmony import */ var _Seq_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Seq.js */ "./.fable/fable-library.2.4.11/Seq.js");
+/* harmony import */ var _Reflection_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Reflection.js */ "./.fable/fable-library.2.4.11/Reflection.js");
+/* harmony import */ var _Util_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Util.js */ "./.fable/fable-library.2.4.11/Util.js");
+/* harmony import */ var _Option_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Option.js */ "./.fable/fable-library.2.4.11/Option.js");
 
 
 
@@ -6025,11 +6083,11 @@ MutableSet$00601.prototype.entries = function () {
 
 /***/ }),
 
-/***/ "./.fable/fable-library.2.3.25/Option.js":
+/***/ "./.fable/fable-library.2.4.11/Option.js":
 /*!***********************************************!*\
-  !*** ./.fable/fable-library.2.3.25/Option.js ***!
+  !*** ./.fable/fable-library.2.4.11/Option.js ***!
   \***********************************************/
-/*! exports provided: Some, some, value, defaultArg, defaultArgWith, filter, map, Choice, choice1, choice2, tryValueIfChoice1, tryValueIfChoice2, Result, ok, error, mapOk, mapError, bindOk */
+/*! exports provided: Some, some, value, defaultArg, defaultArgWith, filter, map, mapMultiple, bind, tryOp, Choice, choice1, choice2, tryValueIfChoice1, tryValueIfChoice2, Result, ok, error, mapOk, mapError, bindOk */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -6041,6 +6099,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "defaultArgWith", function() { return defaultArgWith; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "filter", function() { return filter; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "map", function() { return map; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "mapMultiple", function() { return mapMultiple; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "bind", function() { return bind; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "tryOp", function() { return tryOp; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Choice", function() { return Choice; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "choice1", function() { return choice1; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "choice2", function() { return choice2; });
@@ -6052,8 +6113,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "mapOk", function() { return mapOk; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "mapError", function() { return mapError; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "bindOk", function() { return bindOk; });
-/* harmony import */ var _Types__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Types */ "./.fable/fable-library.2.3.25/Types.js");
-/* harmony import */ var _Util__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Util */ "./.fable/fable-library.2.3.25/Util.js");
+/* harmony import */ var _Types__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Types */ "./.fable/fable-library.2.4.11/Types.js");
+/* harmony import */ var _Util__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Util */ "./.fable/fable-library.2.4.11/Util.js");
 
 
 // Using a class here for better compatibility with TS files importing Some
@@ -6112,8 +6173,22 @@ function defaultArgWith(arg, defThunk) {
 function filter(predicate, arg) {
     return arg != null ? (!predicate(value(arg)) ? null : arg) : arg;
 }
-function map(predicate, ...args) {
+function map(f, arg) {
+    return arg == null ? arg : some(f(value(arg)));
+}
+function mapMultiple(predicate, ...args) {
     return args.every((x) => x != null) ? predicate.apply(null, args) : null;
+}
+function bind(f, arg) {
+    return arg == null ? arg : f(value(arg));
+}
+function tryOp(op, arg) {
+    try {
+        return some(op(arg));
+    }
+    catch (_a) {
+        return null;
+    }
 }
 // CHOICE
 const Choice = Object(_Types__WEBPACK_IMPORTED_MODULE_0__["declare"])(function Choice(tag, name, field) {
@@ -6154,11 +6229,11 @@ function bindOk(f, result) {
 
 /***/ }),
 
-/***/ "./.fable/fable-library.2.3.25/Reflection.js":
+/***/ "./.fable/fable-library.2.4.11/Reflection.js":
 /*!***************************************************!*\
-  !*** ./.fable/fable-library.2.3.25/Reflection.js ***!
+  !*** ./.fable/fable-library.2.4.11/Reflection.js ***!
   \***************************************************/
-/*! exports provided: CaseInfo, TypeInfo, getGenerics, equals, compare, type, record, anonRecord, union, tuple, delegate, lambda, option, list, array, obj, unit, char, string, bool, int8, uint8, int16, uint16, int32, uint32, float32, float64, decimal, name, fullName, namespace, isArray, getElementType, isGenericType, getGenericTypeDefinition, getUnionCases, getRecordElements, getTupleElements, getFunctionElements, isUnion, isRecord, isTuple, isFunction, getUnionFields, getUnionCaseFields, getRecordFields, getRecordField, getTupleFields, getTupleField, makeUnion, makeRecord, makeTuple, getCaseTag, getCaseName, getCaseFields */
+/*! exports provided: CaseInfo, TypeInfo, getGenerics, equals, compare, type, record, anonRecord, union, tuple, delegate, lambda, option, list, array, enumType, obj, unit, char, string, bool, int8, uint8, int16, uint16, int32, uint32, float32, float64, decimal, name, fullName, namespace, isArray, getElementType, isGenericType, isEnum, getGenericTypeDefinition, getEnumUnderlyingType, getEnumValues, getEnumNames, parseEnum, tryParseEnum, getEnumName, isEnumDefined, getUnionCases, getRecordElements, getTupleElements, getFunctionElements, isUnion, isRecord, isTuple, isFunction, getUnionFields, getUnionCaseFields, getRecordFields, getRecordField, getTupleFields, getTupleField, makeUnion, makeRecord, makeTuple, getCaseTag, getCaseName, getCaseFields */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -6178,6 +6253,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "option", function() { return option; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "list", function() { return list; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "array", function() { return array; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "enumType", function() { return enumType; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "obj", function() { return obj; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "unit", function() { return unit; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "char", function() { return char; });
@@ -6198,7 +6274,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isArray", function() { return isArray; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getElementType", function() { return getElementType; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isGenericType", function() { return isGenericType; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isEnum", function() { return isEnum; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getGenericTypeDefinition", function() { return getGenericTypeDefinition; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getEnumUnderlyingType", function() { return getEnumUnderlyingType; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getEnumValues", function() { return getEnumValues; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getEnumNames", function() { return getEnumNames; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "parseEnum", function() { return parseEnum; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "tryParseEnum", function() { return tryParseEnum; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getEnumName", function() { return getEnumName; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isEnumDefined", function() { return isEnumDefined; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getUnionCases", function() { return getUnionCases; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getRecordElements", function() { return getRecordElements; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getTupleElements", function() { return getTupleElements; });
@@ -6219,8 +6303,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getCaseTag", function() { return getCaseTag; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getCaseName", function() { return getCaseName; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getCaseFields", function() { return getCaseFields; });
-/* harmony import */ var _Types__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Types */ "./.fable/fable-library.2.3.25/Types.js");
-/* harmony import */ var _Util__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Util */ "./.fable/fable-library.2.3.25/Util.js");
+/* harmony import */ var _Types__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Types */ "./.fable/fable-library.2.4.11/Types.js");
+/* harmony import */ var _Util__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Util */ "./.fable/fable-library.2.4.11/Util.js");
 
 
 class CaseInfo {
@@ -6232,12 +6316,13 @@ class CaseInfo {
     }
 }
 class TypeInfo {
-    constructor(fullname, generics, constructor, fields, cases) {
+    constructor(fullname, generics, constructor, fields, cases, enumCases) {
         this.fullname = fullname;
         this.generics = generics;
         this.constructor = constructor;
         this.fields = fields;
         this.cases = cases;
+        this.enumCases = enumCases;
     }
     toString() {
         return fullName(this);
@@ -6303,6 +6388,9 @@ function list(generic) {
 function array(generic) {
     return new TypeInfo(generic.fullname + "[]", [generic]);
 }
+function enumType(fullname, underlyingType, enumCases) {
+    return new TypeInfo(fullname, [underlyingType], null, null, null, enumCases);
+}
 const obj = new TypeInfo("System.Object");
 const unit = new TypeInfo("Microsoft.FSharp.Core.Unit");
 const char = new TypeInfo("System.Char");
@@ -6351,12 +6439,86 @@ function getElementType(t) {
 function isGenericType(t) {
     return t.generics != null && t.generics.length > 0;
 }
+function isEnum(t) {
+    return t.enumCases != null && t.enumCases.length > 0;
+}
 /**
  * This doesn't replace types for fields (records) or cases (unions)
  * but it should be enough for type comparison purposes
  */
 function getGenericTypeDefinition(t) {
     return t.generics == null ? t : new TypeInfo(t.fullname, t.generics.map(() => obj));
+}
+function getEnumUnderlyingType(t) {
+    return t.generics[0];
+}
+function getEnumValues(t) {
+    if (isEnum(t)) {
+        return t.enumCases.map((kv) => kv[1]);
+    }
+    else {
+        throw new Error(`${t.fullname} is not an enum type`);
+    }
+}
+function getEnumNames(t) {
+    if (isEnum(t)) {
+        return t.enumCases.map((kv) => kv[0]);
+    }
+    else {
+        throw new Error(`${t.fullname} is not an enum type`);
+    }
+}
+function getEnumCase(t, v) {
+    if (t.enumCases != null) {
+        if (typeof v === "string") {
+            for (const kv of t.enumCases) {
+                if (kv[0] === v) {
+                    return kv;
+                }
+            }
+            throw new Error(`'${v}' was not found in ${t.fullname}`);
+        }
+        else {
+            for (const kv of t.enumCases) {
+                if (kv[1] === v) {
+                    return kv;
+                }
+            }
+            // .NET returns the number even if it doesn't match any of the cases
+            return [null, v];
+        }
+    }
+    else {
+        throw new Error(`${t.fullname} is not an enum type`);
+    }
+}
+function parseEnum(t, str) {
+    // TODO: better int parsing here, parseInt ceils floats: "4.8" -> 4
+    const value = parseInt(str, 10);
+    return getEnumCase(t, isNaN(value) ? str : value)[1];
+}
+function tryParseEnum(t, str) {
+    try {
+        const v = parseEnum(t, str);
+        return [true, v];
+    }
+    catch (_a) {
+        // supress error
+    }
+    return [false, null];
+}
+function getEnumName(t, v) {
+    return getEnumCase(t, v)[0];
+}
+function isEnumDefined(t, v) {
+    try {
+        const kv = getEnumCase(t, v);
+        return kv[0] != null;
+    }
+    catch (_a) {
+        // supress error
+    }
+    return false;
 }
 // FSharpType
 function getUnionCases(t) {
@@ -6473,9 +6635,9 @@ function getCaseFields(x) {
 
 /***/ }),
 
-/***/ "./.fable/fable-library.2.3.25/RegExp.js":
+/***/ "./.fable/fable-library.2.4.11/RegExp.js":
 /*!***********************************************!*\
-  !*** ./.fable/fable-library.2.3.25/RegExp.js ***!
+  !*** ./.fable/fable-library.2.4.11/RegExp.js ***!
   \***********************************************/
 /*! exports provided: create, escape, unescape, isMatch, match, matches, options, replace, split */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -6605,9 +6767,9 @@ function split(reg, input, limit, offset = 0) {
 
 /***/ }),
 
-/***/ "./.fable/fable-library.2.3.25/Seq.js":
+/***/ "./.fable/fable-library.2.4.11/Seq.js":
 /*!********************************************!*\
-  !*** ./.fable/fable-library.2.3.25/Seq.js ***!
+  !*** ./.fable/fable-library.2.4.11/Seq.js ***!
   \********************************************/
 /*! exports provided: Enumerator, getEnumerator, toIterator, ofArray, allPairs, append, average, averageBy, concat, collect, choose, compareWith, delay, empty, enumerateFromFunctions, enumerateWhile, enumerateThenFinally, enumerateUsing, exactlyOne, except, exists, exists2, forAll, forAll2, contains, filter, where, fold, foldBack, fold2, foldBack2, tryHead, head, initialize, initializeInfinite, tryItem, item, iterate, iterate2, iterateIndexed, iterateIndexed2, isEmpty, tryLast, last, length, map, mapIndexed, indexed, map2, mapIndexed2, map3, mapFold, mapFoldBack, max, maxBy, min, minBy, pairwise, rangeChar, rangeLong, rangeDecimal, rangeNumber, readOnly, reduce, reduceBack, replicate, reverse, scan, scanBack, singleton, skip, skipWhile, sortWith, sum, sumBy, tail, take, truncate, takeWhile, tryFind, find, tryFindBack, findBack, tryFindIndex, findIndex, tryFindIndexBack, findIndexBack, tryPick, pick, unfold, zip, zip3, windowed */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -6707,10 +6869,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "zip", function() { return zip; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "zip3", function() { return zip3; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "windowed", function() { return windowed; });
-/* harmony import */ var _Decimal__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Decimal */ "./.fable/fable-library.2.3.25/Decimal.js");
-/* harmony import */ var _Long__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Long */ "./.fable/fable-library.2.3.25/Long.js");
-/* harmony import */ var _Option__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Option */ "./.fable/fable-library.2.3.25/Option.js");
-/* harmony import */ var _Util__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Util */ "./.fable/fable-library.2.3.25/Util.js");
+/* harmony import */ var _Decimal__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Decimal */ "./.fable/fable-library.2.4.11/Decimal.js");
+/* harmony import */ var _Long__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Long */ "./.fable/fable-library.2.4.11/Long.js");
+/* harmony import */ var _Option__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Option */ "./.fable/fable-library.2.4.11/Option.js");
+/* harmony import */ var _Util__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Util */ "./.fable/fable-library.2.4.11/Util.js");
 
 
 
@@ -7471,11 +7633,11 @@ function windowed(windowSize, source) {
 
 /***/ }),
 
-/***/ "./.fable/fable-library.2.3.25/Set.js":
+/***/ "./.fable/fable-library.2.4.11/Set.js":
 /*!********************************************!*\
-  !*** ./.fable/fable-library.2.3.25/Set.js ***!
+  !*** ./.fable/fable-library.2.4.11/Set.js ***!
   \********************************************/
-/*! exports provided: SetTree$00601, SetTree$00601$reflection, SetTreeModule$$$countAux, SetTreeModule$$$count, SetTreeModule$$$SetOne, SetTreeModule$$$SetNode, SetTreeModule$$$height, SetTreeModule$$$tolerance, SetTreeModule$$$mk, SetTreeModule$$$rebalance, SetTreeModule$$$add, SetTreeModule$$$balance, SetTreeModule$$$split, SetTreeModule$$$spliceOutSuccessor, SetTreeModule$$$remove, SetTreeModule$$$mem, SetTreeModule$$$iter, SetTreeModule$$$foldBack, SetTreeModule$$$fold, SetTreeModule$$$forall, SetTreeModule$$$exists, SetTreeModule$$$isEmpty, SetTreeModule$$$subset, SetTreeModule$$$psubset, SetTreeModule$$$filterAux, SetTreeModule$$$filter, SetTreeModule$$$diffAux, SetTreeModule$$$diff, SetTreeModule$$$union, SetTreeModule$$$intersectionAux, SetTreeModule$$$intersection, SetTreeModule$$$partition1, SetTreeModule$$$partitionAux, SetTreeModule$$$partition, SetTreeModule$$$$007CMatchSetNode$007CMatchSetEmpty$007C, SetTreeModule$$$minimumElementAux, SetTreeModule$$$minimumElementOpt, SetTreeModule$$$maximumElementAux, SetTreeModule$$$maximumElementOpt, SetTreeModule$$$minimumElement, SetTreeModule$$$maximumElement, SetTreeModule$002ESetIterator$00601, SetTreeModule$002ESetIterator$00601$reflection, SetTreeModule$$$collapseLHS, SetTreeModule$$$mkIterator, SetTreeModule$$$notStarted, SetTreeModule$$$alreadyFinished, SetTreeModule$$$current, SetTreeModule$$$moveNext, SetTreeModule$002EmkIEnumerator$00601, SetTreeModule$002EmkIEnumerator$00601$reflection, SetTreeModule$002EmkIEnumerator$00601$$$$002Ector$$Z5B395D56, SetTreeModule$$$mkIEnumerator, SetTreeModule$$$toSeq, SetTreeModule$$$compareStacks, SetTreeModule$$$compare, SetTreeModule$$$choose, SetTreeModule$$$loop, SetTreeModule$$$toList, SetTreeModule$$$copyToArray, SetTreeModule$$$mkFromEnumerator, SetTreeModule$$$ofSeq, SetTreeModule$$$ofArray, FSharpSet, FSharpSet$reflection, FSharpSet$$$$002Ector$$2528C5CB, FSharpSet$$get_Comparer, FSharpSet$$get_Tree, FSharpSet$$Add$$2B595, FSharpSet$$Remove$$2B595, FSharpSet$$get_Count, FSharpSet$$Contains$$2B595, FSharpSet$$Iterate$$5028453F, FSharpSet$$Fold, FSharpSet$$get_IsEmpty, FSharpSet$$Partition$$Z1D55A0D7, FSharpSet$$Filter$$Z1D55A0D7, FSharpSet$$Map$$38806891, FSharpSet$$Exists$$Z1D55A0D7, FSharpSet$$ForAll$$Z1D55A0D7, FSharpSet$$$op_Subtraction, FSharpSet$$$op_Addition, FSharpSet$$$Intersection$$Z3BE9BFE0, FSharpSet$$$IntersectionMany$$Z15B59630, FSharpSet$$$Equality$$Z3BE9BFE0, FSharpSet$$$Compare$$Z3BE9BFE0, FSharpSet$$get_Choose, FSharpSet$$get_MinimumElement, FSharpSet$$get_MaximumElement, FSharpSet$$IsSubsetOf$$6A20B1FF, FSharpSet$$IsSupersetOf$$6A20B1FF, FSharpSet$$IsProperSubsetOf$$6A20B1FF, FSharpSet$$IsProperSupersetOf$$6A20B1FF, isEmpty, contains, add, singleton, remove, union, unionMany, intersect, intersectMany, iterate, empty, forAll, exists, filter, partition, fold, foldBack, map, count, minimumElement, maximumElement, ofList, ofArray, toList, toArray, toSeq, ofSeq, difference, isSubset, isSuperset, isProperSubset, isProperSuperset, minElement, maxElement, createMutable, distinct, distinctBy, unionWith, intersectWith, exceptWith, isSubsetOf, isSupersetOf, isProperSubsetOf, isProperSupersetOf */
+/*! exports provided: SetTree$00601, SetTree$00601$reflection, SetTreeModule$$$countAux, SetTreeModule$$$count, SetTreeModule$$$SetOne, SetTreeModule$$$SetNode, SetTreeModule$$$height, SetTreeModule$$$tolerance, SetTreeModule$$$mk, SetTreeModule$$$rebalance, SetTreeModule$$$add, SetTreeModule$$$balance, SetTreeModule$$$split, SetTreeModule$$$spliceOutSuccessor, SetTreeModule$$$remove, SetTreeModule$$$mem, SetTreeModule$$$iter, SetTreeModule$$$foldBack, SetTreeModule$$$fold, SetTreeModule$$$forall, SetTreeModule$$$exists, SetTreeModule$$$isEmpty, SetTreeModule$$$subset, SetTreeModule$$$psubset, SetTreeModule$$$filterAux, SetTreeModule$$$filter, SetTreeModule$$$diffAux, SetTreeModule$$$diff, SetTreeModule$$$union, SetTreeModule$$$intersectionAux, SetTreeModule$$$intersection, SetTreeModule$$$partition1, SetTreeModule$$$partitionAux, SetTreeModule$$$partition, SetTreeModule$$$$007CMatchSetNode$007CMatchSetEmpty$007C, SetTreeModule$$$minimumElementAux, SetTreeModule$$$minimumElementOpt, SetTreeModule$$$maximumElementAux, SetTreeModule$$$maximumElementOpt, SetTreeModule$$$minimumElement, SetTreeModule$$$maximumElement, SetTreeModule$002ESetIterator$00601, SetTreeModule$002ESetIterator$00601$reflection, SetTreeModule$$$collapseLHS, SetTreeModule$$$mkIterator, SetTreeModule$$$notStarted, SetTreeModule$$$alreadyFinished, SetTreeModule$$$current, SetTreeModule$$$moveNext, SetTreeModule$002EmkIEnumerator$00601, SetTreeModule$002EmkIEnumerator$00601$reflection, SetTreeModule$002EmkIEnumerator$00601$$$$002Ector$$Z5B395D56, SetTreeModule$$$mkIEnumerator, SetTreeModule$$$toSeq, SetTreeModule$$$compareStacks, SetTreeModule$$$compare, SetTreeModule$$$choose, SetTreeModule$$$loop, SetTreeModule$$$toList, SetTreeModule$$$copyToArray, SetTreeModule$$$mkFromEnumerator, SetTreeModule$$$ofSeq, SetTreeModule$$$ofArray, FSharpSet, FSharpSet$reflection, FSharpSet$$$$002Ector$$2528C5CB, FSharpSet$$get_Comparer, FSharpSet$$get_Tree, FSharpSet$$Add$$2B595, FSharpSet$$Remove$$2B595, FSharpSet$$get_Count, FSharpSet$$Contains$$2B595, FSharpSet$$Iterate$$5028453F, FSharpSet$$Fold, FSharpSet$$get_IsEmpty, FSharpSet$$Partition$$Z1D55A0D7, FSharpSet$$Filter$$Z1D55A0D7, FSharpSet$$Map$$7597B8F7, FSharpSet$$Exists$$Z1D55A0D7, FSharpSet$$ForAll$$Z1D55A0D7, FSharpSet$$$op_Subtraction, FSharpSet$$$op_Addition, FSharpSet$$$Intersection$$Z3BE9BFE0, FSharpSet$$$IntersectionMany$$Z15B59630, FSharpSet$$$Equality$$Z3BE9BFE0, FSharpSet$$$Compare$$Z3BE9BFE0, FSharpSet$$get_Choose, FSharpSet$$get_MinimumElement, FSharpSet$$get_MaximumElement, FSharpSet$$IsSubsetOf$$6A20B1FF, FSharpSet$$IsSupersetOf$$6A20B1FF, FSharpSet$$IsProperSubsetOf$$6A20B1FF, FSharpSet$$IsProperSupersetOf$$6A20B1FF, isEmpty, contains, add, singleton, remove, union, unionMany, intersect, intersectMany, iterate, empty, forAll, exists, filter, partition, fold, foldBack, map, count, minimumElement, maximumElement, ofList, ofArray, toList, toArray, toSeq, ofSeq, difference, isSubset, isSuperset, isProperSubset, isProperSuperset, minElement, maxElement, createMutable, distinct, distinctBy, unionWith, intersectWith, exceptWith, isSubsetOf, isSupersetOf, isProperSubsetOf, isProperSupersetOf */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -7557,7 +7719,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FSharpSet$$get_IsEmpty", function() { return FSharpSet$$get_IsEmpty; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FSharpSet$$Partition$$Z1D55A0D7", function() { return FSharpSet$$Partition$$Z1D55A0D7; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FSharpSet$$Filter$$Z1D55A0D7", function() { return FSharpSet$$Filter$$Z1D55A0D7; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FSharpSet$$Map$$38806891", function() { return FSharpSet$$Map$$38806891; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FSharpSet$$Map$$7597B8F7", function() { return FSharpSet$$Map$$7597B8F7; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FSharpSet$$Exists$$Z1D55A0D7", function() { return FSharpSet$$Exists$$Z1D55A0D7; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FSharpSet$$ForAll$$Z1D55A0D7", function() { return FSharpSet$$ForAll$$Z1D55A0D7; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FSharpSet$$$op_Subtraction", function() { return FSharpSet$$$op_Subtraction; });
@@ -7617,13 +7779,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isSupersetOf", function() { return isSupersetOf; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isProperSubsetOf", function() { return isProperSubsetOf; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isProperSupersetOf", function() { return isProperSupersetOf; });
-/* harmony import */ var _Types_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Types.js */ "./.fable/fable-library.2.3.25/Types.js");
-/* harmony import */ var _Reflection_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Reflection.js */ "./.fable/fable-library.2.3.25/Reflection.js");
-/* harmony import */ var _Option_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Option.js */ "./.fable/fable-library.2.3.25/Option.js");
-/* harmony import */ var _Seq_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Seq.js */ "./.fable/fable-library.2.3.25/Seq.js");
-/* harmony import */ var _Util_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Util.js */ "./.fable/fable-library.2.3.25/Util.js");
-/* harmony import */ var _String_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./String.js */ "./.fable/fable-library.2.3.25/String.js");
-/* harmony import */ var _MutableSet__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./MutableSet */ "./.fable/fable-library.2.3.25/MutableSet.js");
+/* harmony import */ var _Types_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Types.js */ "./.fable/fable-library.2.4.11/Types.js");
+/* harmony import */ var _Reflection_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Reflection.js */ "./.fable/fable-library.2.4.11/Reflection.js");
+/* harmony import */ var _Option_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Option.js */ "./.fable/fable-library.2.4.11/Option.js");
+/* harmony import */ var _Seq_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Seq.js */ "./.fable/fable-library.2.4.11/Seq.js");
+/* harmony import */ var _Util_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Util.js */ "./.fable/fable-library.2.4.11/Util.js");
+/* harmony import */ var _String_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./String.js */ "./.fable/fable-library.2.4.11/String.js");
+/* harmony import */ var _MutableSet__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./MutableSet */ "./.fable/fable-library.2.4.11/MutableSet.js");
 
 
 
@@ -9020,7 +9182,7 @@ function FSharpSet$$Filter$$Z1D55A0D7(s$$28, f$$12) {
     return FSharpSet$$$$002Ector$$2528C5CB(FSharpSet$$get_Comparer(s$$28), SetTreeModule$$$filter(FSharpSet$$get_Comparer(s$$28), f$$12, FSharpSet$$get_Tree(s$$28)));
   }
 }
-function FSharpSet$$Map$$38806891(s$$29, f$$13, comparer$$23) {
+function FSharpSet$$Map$$7597B8F7(s$$29, f$$13, comparer$$23) {
   return FSharpSet$$$$002Ector$$2528C5CB(comparer$$23, SetTreeModule$$$fold(function (acc$$13, k$$33) {
     return SetTreeModule$$$add(comparer$$23, f$$13(k$$33), acc$$13);
   }, new SetTree$00601(0, "SetEmpty"), FSharpSet$$get_Tree(s$$29)));
@@ -9197,7 +9359,7 @@ function foldBack(f$$22, s$$43, z$$3) {
   return SetTreeModule$$$foldBack(f$$22, FSharpSet$$get_Tree(s$$43), z$$3);
 }
 function map(f$$23, s$$44, comparer$$27) {
-  return FSharpSet$$Map$$38806891(s$$44, f$$23, comparer$$27);
+  return FSharpSet$$Map$$7597B8F7(s$$44, f$$23, comparer$$27);
 }
 function count(s$$45) {
   return FSharpSet$$get_Count(s$$45);
@@ -9371,9 +9533,9 @@ function isProperSupersetOf(s1$$10, s2$$11, comparer$$39) {
 
 /***/ }),
 
-/***/ "./.fable/fable-library.2.3.25/String.js":
+/***/ "./.fable/fable-library.2.4.11/String.js":
 /*!***********************************************!*\
-  !*** ./.fable/fable-library.2.3.25/String.js ***!
+  !*** ./.fable/fable-library.2.4.11/String.js ***!
   \***********************************************/
 /*! exports provided: compare, compareOrdinal, compareTo, startsWith, indexOfAny, printf, toConsole, toConsoleError, toText, toFail, fsFormat, format, endsWith, initialize, insert, isNullOrEmpty, isNullOrWhiteSpace, concat, join, joinWithIndices, validateGuid, newGuid, guidToArray, arrayToGuid, toBase64String, fromBase64String, padLeft, padRight, remove, replace, replicate, getCharAtIndex, split, trim, trimStart, trimEnd, filter */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -9417,18 +9579,70 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "trimStart", function() { return trimStart; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "trimEnd", function() { return trimEnd; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "filter", function() { return filter; });
-/* harmony import */ var _Date__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Date */ "./.fable/fable-library.2.3.25/Date.js");
-/* harmony import */ var _Long__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Long */ "./.fable/fable-library.2.3.25/Long.js");
-/* harmony import */ var _RegExp__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./RegExp */ "./.fable/fable-library.2.3.25/RegExp.js");
+/* harmony import */ var _Date__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Date */ "./.fable/fable-library.2.4.11/Date.js");
+/* harmony import */ var _Decimal__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Decimal */ "./.fable/fable-library.2.4.11/Decimal.js");
+/* harmony import */ var _Long__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Long */ "./.fable/fable-library.2.4.11/Long.js");
+/* harmony import */ var _RegExp__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./RegExp */ "./.fable/fable-library.2.4.11/RegExp.js");
 
 
 
-const fsFormatRegExp = /(^|[^%])%([0+ ]*)(-?\d+)?(?:\.(\d+))?(\w)/;
+
+const fsFormatRegExp = /(^|[^%])%([0+\- ]*)(\d+)?(?:\.(\d+))?(\w)/;
 const formatRegExp = /\{(\d+)(,-?\d+)?(?:\:([a-zA-Z])(\d{0,2})|\:(.+?))?\}/g;
 // RFC 4122 compliant. From https://stackoverflow.com/a/13653180/3922220
 // const guidRegex = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/;
 // Relax GUID parsing, see #1637
 const guidRegex = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/;
+// These are used for formatting and only take longs and decimals into account (no bigint)
+function isNumeric(x) {
+    return typeof x === "number" || x instanceof _Long__WEBPACK_IMPORTED_MODULE_2__["default"] || x instanceof _Decimal__WEBPACK_IMPORTED_MODULE_1__["default"];
+}
+function isLessThan(x, y) {
+    if (x instanceof _Long__WEBPACK_IMPORTED_MODULE_2__["default"]) {
+        return _Long__WEBPACK_IMPORTED_MODULE_2__["compare"](x, y) < 0;
+    }
+    else if (x instanceof _Decimal__WEBPACK_IMPORTED_MODULE_1__["default"]) {
+        return x.cmp(y) < 0;
+    }
+    else {
+        return x < y;
+    }
+}
+function multiply(x, y) {
+    if (x instanceof _Long__WEBPACK_IMPORTED_MODULE_2__["default"]) {
+        return _Long__WEBPACK_IMPORTED_MODULE_2__["op_Multiply"](x, y);
+    }
+    else if (x instanceof _Decimal__WEBPACK_IMPORTED_MODULE_1__["default"]) {
+        return x.mul(y);
+    }
+    else {
+        return x * y;
+    }
+}
+function toFixed(x, dp) {
+    if (x instanceof _Long__WEBPACK_IMPORTED_MODULE_2__["default"]) {
+        return String(x) + (0).toFixed(dp).substr(1);
+    }
+    else {
+        return x.toFixed(dp);
+    }
+}
+function toPrecision(x, sd) {
+    if (x instanceof _Long__WEBPACK_IMPORTED_MODULE_2__["default"]) {
+        return String(x) + (0).toPrecision(sd).substr(1);
+    }
+    else {
+        return x.toPrecision(sd);
+    }
+}
+function toExponential(x, dp) {
+    if (x instanceof _Long__WEBPACK_IMPORTED_MODULE_2__["default"]) {
+        return String(x) + (0).toExponential(dp).substr(1);
+    }
+    else {
+        return x.toExponential(dp);
+    }
+}
 function cmp(x, y, ic) {
     function isIgnoreCase(i) {
         return i === true ||
@@ -9509,8 +9723,8 @@ function indexOfAny(str, anyOf, ...args) {
     return -1;
 }
 function toHex(x) {
-    if (x instanceof _Long__WEBPACK_IMPORTED_MODULE_1__["default"]) {
-        return Object(_Long__WEBPACK_IMPORTED_MODULE_1__["toString"])(x.unsigned ? x : Object(_Long__WEBPACK_IMPORTED_MODULE_1__["fromBytes"])(Object(_Long__WEBPACK_IMPORTED_MODULE_1__["toBytes"])(x), true), 16);
+    if (x instanceof _Long__WEBPACK_IMPORTED_MODULE_2__["default"]) {
+        return _Long__WEBPACK_IMPORTED_MODULE_2__["toString"](x.unsigned ? x : _Long__WEBPACK_IMPORTED_MODULE_2__["fromBytes"](_Long__WEBPACK_IMPORTED_MODULE_2__["toBytes"](x), true), 16);
     }
     else {
         return (Number(x) >>> 0).toString(16);
@@ -9536,38 +9750,66 @@ function toFail(arg) {
     return arg.cont((x) => { throw new Error(x); });
 }
 function formatOnce(str2, rep) {
-    return str2.replace(fsFormatRegExp, (_, prefix, flags, pad, precision, format) => {
-        switch (format) {
-            case "f":
-            case "F":
-                rep = Number(rep).toFixed(precision || 6);
-                break;
-            case "g":
-            case "G":
-                rep = Number(rep).toPrecision(precision);
-                break;
-            case "e":
-            case "E":
-                rep = Number(rep).toExponential(precision);
-                break;
-            case "O":
-            case "A":
-                rep = String(rep);
-                break;
-            case "x":
-                rep = toHex(rep);
-                break;
-            case "X":
-                rep = toHex(rep).toUpperCase();
-                break;
+    return str2.replace(fsFormatRegExp, (_, prefix, flags, padLength, precision, format) => {
+        let sign = "";
+        if (isNumeric(rep)) {
+            if (format.toLowerCase() !== "x") {
+                if (isLessThan(rep, 0)) {
+                    rep = multiply(rep, -1);
+                    sign = "-";
+                }
+                else {
+                    if (flags.indexOf(" ") >= 0) {
+                        sign = " ";
+                    }
+                    else if (flags.indexOf("+") >= 0) {
+                        sign = "+";
+                    }
+                }
+            }
+            precision = precision == null ? null : parseInt(precision, 10);
+            switch (format) {
+                case "f":
+                case "F":
+                    precision = precision != null ? precision : 6;
+                    rep = toFixed(rep, precision);
+                    break;
+                case "g":
+                case "G":
+                    rep = precision != null ? toPrecision(rep, precision) : toPrecision(rep);
+                    break;
+                case "e":
+                case "E":
+                    rep = precision != null ? toExponential(rep, precision) : toExponential(rep);
+                    break;
+                case "x":
+                    rep = toHex(rep);
+                    break;
+                case "X":
+                    rep = toHex(rep).toUpperCase();
+                    break;
+                default: // AOid
+                    rep = String(rep);
+                    break;
+            }
         }
-        const plusPrefix = flags.indexOf("+") >= 0 && parseInt(rep, 10) >= 0;
-        pad = parseInt(pad, 10);
-        if (!isNaN(pad)) {
-            const ch = pad >= 0 && flags.indexOf("0") >= 0 ? "0" : " ";
-            rep = padLeft(String(rep), Math.abs(pad) - (plusPrefix ? 1 : 0), ch, pad < 0);
+        padLength = parseInt(padLength, 10);
+        if (!isNaN(padLength)) {
+            const zeroFlag = flags.indexOf("0") >= 0; // Use '0' for left padding
+            const minusFlag = flags.indexOf("-") >= 0; // Right padding
+            const ch = minusFlag || !zeroFlag ? " " : "0";
+            if (ch === "0") {
+                rep = padLeft(rep, padLength - sign.length, ch, minusFlag);
+                rep = sign + rep;
+            }
+            else {
+                rep = padLeft(sign + rep, padLength, ch, minusFlag);
+            }
         }
-        const once = prefix + (plusPrefix ? "+" + rep : rep);
+        else {
+            rep = sign + rep;
+        }
+        const once = prefix + rep;
         return once.replace(/%/g, "%%");
     });
 }
@@ -9596,61 +9838,61 @@ function format(str, ...args) {
         str = args[0];
         args.shift();
     }
-    return str.replace(formatRegExp, (match, idx, pad, format, precision, pattern) => {
+    return str.replace(formatRegExp, (_, idx, padLength, format, precision, pattern) => {
         let rep = args[idx];
-        let padSymbol = " ";
-        const isNumericType = (typeof rep === "number") || (rep instanceof _Long__WEBPACK_IMPORTED_MODULE_1__["default"]);
-        // TODO: || (rep instanceof Decimal) || (rep instanceof BigInt);
-        if (isNumericType) {
+        if (isNumeric(rep)) {
+            precision = precision == null ? null : parseInt(precision, 10);
             switch (format) {
                 case "f":
                 case "F":
-                    rep = precision ? rep.toFixed(precision) : rep.toFixed(2);
+                    precision = precision != null ? precision : 2;
+                    rep = toFixed(rep, precision);
                     break;
                 case "g":
                 case "G":
-                    rep = precision ? rep.toPrecision(precision) : rep.toPrecision();
+                    rep = precision != null ? toPrecision(rep, precision) : toPrecision(rep);
                     break;
                 case "e":
                 case "E":
-                    rep = precision ? rep.toExponential(precision) : rep.toExponential();
+                    rep = precision != null ? toExponential(rep, precision) : toExponential(rep);
                     break;
                 case "p":
                 case "P":
-                    rep = (precision ? (rep * 100).toFixed(precision) : (rep * 100).toFixed(2)) + " %";
+                    precision = precision != null ? precision : 2;
+                    rep = toFixed(multiply(rep, 100), precision) + " %";
                     break;
                 case "d":
                 case "D":
-                    rep = precision ? padLeft(rep.toString(), precision, "0") : rep.toString();
+                    rep = precision != null ? padLeft(String(rep), precision, "0") : String(rep);
                     break;
                 case "x":
                 case "X":
-                    rep = precision ? padLeft(toHex(rep), precision, "0") : toHex(rep);
+                    rep = precision != null ? padLeft(toHex(rep), precision, "0") : toHex(rep);
                     if (format === "X") {
                         rep = rep.toUpperCase();
                     }
                     break;
                 default:
-                    const m = /^(0+)(\.0+)?$/.exec(pattern);
-                    if (m != null) {
-                        let decs = 0;
-                        if (m[2] != null) {
-                            rep = rep.toFixed(decs = m[2].length - 1);
-                        }
-                        pad = "," + (m[1].length + (decs ? decs + 1 : 0)).toString();
-                        padSymbol = "0";
-                    }
-                    else if (pattern) {
-                        rep = pattern;
+                    if (pattern) {
+                        let sign = "";
+                        rep = pattern.replace(/(0+)(\.0+)?/, (_, intPart, decimalPart) => {
+                            if (isLessThan(rep, 0)) {
+                                rep = multiply(rep, -1);
+                                sign = "-";
+                            }
+                            rep = toFixed(rep, decimalPart != null ? decimalPart.length - 1 : 0);
+                            return padLeft(rep, (intPart || "").length - sign.length + (decimalPart != null ? decimalPart.length : 0), "0");
+                        });
+                        rep = sign + rep;
                     }
             }
         }
         else if (rep instanceof Date) {
             rep = Object(_Date__WEBPACK_IMPORTED_MODULE_0__["toString"])(rep, pattern || format);
         }
-        pad = parseInt((pad || "").substring(1), 10);
-        if (!isNaN(pad)) {
-            rep = padLeft(String(rep), Math.abs(pad), padSymbol, pad < 0);
+        padLength = parseInt((padLength || " ").substring(1), 10);
+        if (!isNaN(padLength)) {
+            rep = padLeft(String(rep), Math.abs(padLength), " ", padLength < 0);
         }
         return rep;
     });
@@ -9785,7 +10027,7 @@ function arrayToGuid(buf) {
     if (!_convertMapsInitialized) {
         initConvertMaps();
     }
-    return _byteToHex[buf[3]] + _byteToHex[buf[2]] +
+    const guid = _byteToHex[buf[3]] + _byteToHex[buf[2]] +
         _byteToHex[buf[1]] + _byteToHex[buf[0]] + "-" +
         _byteToHex[buf[5]] + _byteToHex[buf[4]] + "-" +
         _byteToHex[buf[7]] + _byteToHex[buf[6]] + "-" +
@@ -9793,6 +10035,7 @@ function arrayToGuid(buf) {
         _byteToHex[buf[10]] + _byteToHex[buf[11]] +
         _byteToHex[buf[12]] + _byteToHex[buf[13]] +
         _byteToHex[buf[14]] + _byteToHex[buf[15]];
+    return guid;
 }
 function notSupported(name) {
     throw new Error("The environment doesn't support '" + name + "', please use a polyfill.");
@@ -9833,7 +10076,7 @@ function remove(str, startIndex, count) {
     return str.slice(0, startIndex) + (typeof count === "number" ? str.substr(startIndex + count) : "");
 }
 function replace(str, search, replace) {
-    return str.replace(new RegExp(Object(_RegExp__WEBPACK_IMPORTED_MODULE_2__["escape"])(search), "g"), replace);
+    return str.replace(new RegExp(Object(_RegExp__WEBPACK_IMPORTED_MODULE_3__["escape"])(search), "g"), replace);
 }
 function replicate(n, x) {
     return initialize(n, () => x);
@@ -9863,7 +10106,7 @@ function split(str, splitters, count, removeEmpty) {
             splitters[key - 1] = arguments[key];
         }
     }
-    splitters = splitters.map((x) => Object(_RegExp__WEBPACK_IMPORTED_MODULE_2__["escape"])(x));
+    splitters = splitters.map((x) => Object(_RegExp__WEBPACK_IMPORTED_MODULE_3__["escape"])(x));
     splitters = splitters.length > 0 ? splitters : [" "];
     let i = 0;
     const splits = [];
@@ -9888,18 +10131,18 @@ function trim(str, ...chars) {
     if (chars.length === 0) {
         return str.trim();
     }
-    const pattern = "[" + Object(_RegExp__WEBPACK_IMPORTED_MODULE_2__["escape"])(chars.join("")) + "]+";
+    const pattern = "[" + Object(_RegExp__WEBPACK_IMPORTED_MODULE_3__["escape"])(chars.join("")) + "]+";
     return str.replace(new RegExp("^" + pattern), "").replace(new RegExp(pattern + "$"), "");
 }
 function trimStart(str, ...chars) {
     return chars.length === 0
         ? str.trimStart()
-        : str.replace(new RegExp("^[" + Object(_RegExp__WEBPACK_IMPORTED_MODULE_2__["escape"])(chars.join("")) + "]+"), "");
+        : str.replace(new RegExp("^[" + Object(_RegExp__WEBPACK_IMPORTED_MODULE_3__["escape"])(chars.join("")) + "]+"), "");
 }
 function trimEnd(str, ...chars) {
     return chars.length === 0
         ? str.trimEnd()
-        : str.replace(new RegExp("[" + Object(_RegExp__WEBPACK_IMPORTED_MODULE_2__["escape"])(chars.join("")) + "]+$"), "");
+        : str.replace(new RegExp("[" + Object(_RegExp__WEBPACK_IMPORTED_MODULE_3__["escape"])(chars.join("")) + "]+$"), "");
 }
 function filter(pred, x) {
     return x.split("").filter((c) => pred(c)).join("");
@@ -9908,9 +10151,9 @@ function filter(pred, x) {
 
 /***/ }),
 
-/***/ "./.fable/fable-library.2.3.25/Types.js":
+/***/ "./.fable/fable-library.2.4.11/Types.js":
 /*!**********************************************!*\
-  !*** ./.fable/fable-library.2.3.25/Types.js ***!
+  !*** ./.fable/fable-library.2.4.11/Types.js ***!
   \**********************************************/
 /*! exports provided: declare, SystemObject, List, Union, Record, anonRecord, FSharpRef, Exception, isException, FSharpException, MatchFailureException, Attribute */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -9929,7 +10172,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FSharpException", function() { return FSharpException; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MatchFailureException", function() { return MatchFailureException; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Attribute", function() { return Attribute; });
-/* harmony import */ var _Util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Util */ "./.fable/fable-library.2.3.25/Util.js");
+/* harmony import */ var _Util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Util */ "./.fable/fable-library.2.4.11/Util.js");
 
 function sameType(x, y) {
     return y != null && Object.getPrototypeOf(x).constructor === Object.getPrototypeOf(y).constructor;
@@ -10189,9 +10432,9 @@ const Attribute = declare(function Attribute() { return; });
 
 /***/ }),
 
-/***/ "./.fable/fable-library.2.3.25/Util.js":
+/***/ "./.fable/fable-library.2.4.11/Util.js":
 /*!*********************************************!*\
-  !*** ./.fable/fable-library.2.3.25/Util.js ***!
+  !*** ./.fable/fable-library.2.4.11/Util.js ***!
   \*********************************************/
 /*! exports provided: extend, isDisposable, Comparer, comparerFromEqualityComparer, containsValue, tryGetValue, addToSet, assertEqual, assertNotEqual, Lazy, lazyFromValue, padWithZeros, padLeftAndRightWithZeros, dateOffset, int16ToString, int32ToString, ObjectRef, stringHash, numberHash, combineHashCodes, identityHash, structuralHash, isArray, isIterable, equalArraysWith, equalArrays, equals, compareDates, comparePrimitives, compareArraysWith, compareArrays, compareObjects, compare, min, max, createAtom, createObj, jsOptions, round, sign, randomNext, randomBytes, unescapeDataString, escapeDataString, escapeUriString, count, clear, uncurry, curry, partialApply, mapCurriedArgs, addToDict, getItemFromDict */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -10632,11 +10875,25 @@ function createAtom(value) {
 const CaseRules = {
     None: 0,
     LowerFirst: 1,
+    SnakeCase: 2,
+    SnakeCaseAllCaps: 3,
+    KebabCase: 4,
 };
+function dashify(str, separator) {
+    return str.replace(/[a-z]?[A-Z]/g, (m) => m.length === 1
+        ? m.toLowerCase()
+        : m.charAt(0) + separator + m.charAt(1).toLowerCase());
+}
 function changeCase(str, caseRule) {
     switch (caseRule) {
         case CaseRules.LowerFirst:
             return str.charAt(0).toLowerCase() + str.slice(1);
+        case CaseRules.SnakeCase:
+            return dashify(str, "_");
+        case CaseRules.SnakeCaseAllCaps:
+            return dashify(str, "_").toUpperCase();
+        case CaseRules.KebabCase:
+            return dashify(str, "-");
         case CaseRules.None:
         default:
             return str;
@@ -10764,7 +11021,7 @@ function uncurry(arity, f) {
     }
     // The function is already uncurried
     if (f.length > 1) {
-        //   if (CURRIED_KEY in f) { // This doesn't always work
+        // if (CURRIED_KEY in f) { // This doesn't always work
         return f;
     }
     let uncurriedFn;
@@ -10900,9 +11157,9 @@ function getItemFromDict(map, key) {
 
 /***/ }),
 
-/***/ "./.fable/fable-library.2.3.25/lib/big.js":
+/***/ "./.fable/fable-library.2.4.11/lib/big.js":
 /*!************************************************!*\
-  !*** ./.fable/fable-library.2.3.25/lib/big.js ***!
+  !*** ./.fable/fable-library.2.4.11/lib/big.js ***!
   \************************************************/
 /*! exports provided: Big, default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -10910,7 +11167,7 @@ function getItemFromDict(map, key) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Big", function() { return Big; });
-/* harmony import */ var _Util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../Util */ "./.fable/fable-library.2.3.25/Util.js");
+/* harmony import */ var _Util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../Util */ "./.fable/fable-library.2.4.11/Util.js");
 // https://github.com/MikeMcl/big.js/blob/01b3ce3a6b0ba7b42442ea48ec4ffc88d1669ec4/big.mjs
 /* tslint:disable */
 
@@ -11683,9 +11940,9 @@ var Big = _Big_();
 
 /***/ }),
 
-/***/ "./.fable/fable-library.2.3.25/lib/long.js":
+/***/ "./.fable/fable-library.2.4.11/lib/long.js":
 /*!*************************************************!*\
-  !*** ./.fable/fable-library.2.3.25/lib/long.js ***!
+  !*** ./.fable/fable-library.2.4.11/lib/long.js ***!
   \*************************************************/
 /*! exports provided: default, Long, isLong, fromInt, fromNumber, fromBits, fromString, fromValue, ZERO, UZERO, ONE, UONE, NEG_ONE, MAX_VALUE, MAX_UNSIGNED_VALUE, MIN_VALUE, toInt, toNumber, toString, getHighBits, getHighBitsUnsigned, getLowBits, getLowBitsUnsigned, getNumBitsAbs, isZero, isNegative, isPositive, isOdd, isEven, equals, notEquals, lessThan, lessThanOrEqual, greaterThan, greaterThanOrEqual, compare, negate, add, subtract, multiply, divide, modulo, not, and, or, xor, shiftLeft, shiftRight, shiftRightUnsigned, rotateLeft, rotateRight, toSigned, toUnsigned, toBytes, toBytesLE, toBytesBE, fromBytes, fromBytesLE, fromBytesBE */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -13086,9 +13343,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _time_fs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./time.fs */ "./src/time.fs");
 /* harmony import */ var _game_fs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./game.fs */ "./src/game.fs");
 /* harmony import */ var _renderer_fs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./renderer.fs */ "./src/renderer.fs");
-/* harmony import */ var _fable_fable_library_2_3_25_Util_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../.fable/fable-library.2.3.25/Util.js */ "./.fable/fable-library.2.3.25/Util.js");
+/* harmony import */ var _fable_fable_library_2_4_11_Util_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../.fable/fable-library.2.4.11/Util.js */ "./.fable/fable-library.2.4.11/Util.js");
 /* harmony import */ var _score_fs__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./score.fs */ "./src/score.fs");
-/* harmony import */ var _fable_fable_library_2_3_25_String_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../.fable/fable-library.2.3.25/String.js */ "./.fable/fable-library.2.3.25/String.js");
+/* harmony import */ var _fable_fable_library_2_4_11_String_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../.fable/fable-library.2.4.11/String.js */ "./.fable/fable-library.2.4.11/String.js");
 /* harmony import */ var _input_fs__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./input.fs */ "./src/input.fs");
 /* harmony import */ var _gameLoop_fs__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./gameLoop.fs */ "./src/gameLoop.fs");
 
@@ -13112,9 +13369,9 @@ function run(gameContainerDivId, nextBlockDivId) {
   const levelElement = document.getElementById("level");
 
   const updateScore = function updateScore(score) {
-    scoreElement.innerText = Object(_fable_fable_library_2_3_25_Util_js__WEBPACK_IMPORTED_MODULE_3__["int32ToString"])(score.points);
-    linesCompletedElement.innerText = Object(_fable_fable_library_2_3_25_Util_js__WEBPACK_IMPORTED_MODULE_3__["int32ToString"])(score.linesCompleted);
-    levelElement.innerHTML = Object(_fable_fable_library_2_3_25_Util_js__WEBPACK_IMPORTED_MODULE_3__["int32ToString"])(score.level);
+    scoreElement.innerText = Object(_fable_fable_library_2_4_11_Util_js__WEBPACK_IMPORTED_MODULE_3__["int32ToString"])(score.points);
+    linesCompletedElement.innerText = Object(_fable_fable_library_2_4_11_Util_js__WEBPACK_IMPORTED_MODULE_3__["int32ToString"])(score.linesCompleted);
+    levelElement.innerHTML = Object(_fable_fable_library_2_4_11_Util_js__WEBPACK_IMPORTED_MODULE_3__["int32ToString"])(score.level);
   };
 
   const removeChildNodeCallback = function removeChildNodeCallback(node, e) {
@@ -13123,23 +13380,23 @@ function run(gameContainerDivId, nextBlockDivId) {
   };
 
   const showScorePopup = function showScorePopup(previousScore, currentScore) {
-    if (!Object(_fable_fable_library_2_3_25_Util_js__WEBPACK_IMPORTED_MODULE_3__["equals"])(previousScore, currentScore)) {
+    if (!Object(_fable_fable_library_2_4_11_Util_js__WEBPACK_IMPORTED_MODULE_3__["equals"])(previousScore, currentScore)) {
       const gainedScore = Object(_score_fs__WEBPACK_IMPORTED_MODULE_4__["difference"])(previousScore, currentScore);
       let linesText;
 
       if (gainedScore.linesCompleted > 1) {
         const arg10 = gainedScore.linesCompleted | 0;
-        const clo1 = Object(_fable_fable_library_2_3_25_String_js__WEBPACK_IMPORTED_MODULE_5__["toText"])(Object(_fable_fable_library_2_3_25_String_js__WEBPACK_IMPORTED_MODULE_5__["printf"])("%i LINES"));
+        const clo1 = Object(_fable_fable_library_2_4_11_String_js__WEBPACK_IMPORTED_MODULE_5__["toText"])(Object(_fable_fable_library_2_4_11_String_js__WEBPACK_IMPORTED_MODULE_5__["printf"])("%i LINES"));
         linesText = clo1(arg10);
       } else {
         const arg10$$1 = gainedScore.linesCompleted | 0;
-        const clo1$$1 = Object(_fable_fable_library_2_3_25_String_js__WEBPACK_IMPORTED_MODULE_5__["toText"])(Object(_fable_fable_library_2_3_25_String_js__WEBPACK_IMPORTED_MODULE_5__["printf"])("%i LINE"));
+        const clo1$$1 = Object(_fable_fable_library_2_4_11_String_js__WEBPACK_IMPORTED_MODULE_5__["toText"])(Object(_fable_fable_library_2_4_11_String_js__WEBPACK_IMPORTED_MODULE_5__["printf"])("%i LINE"));
         linesText = clo1$$1(arg10$$1);
       }
 
       let pointsText;
       const arg10$$2 = gainedScore.points | 0;
-      const clo1$$2 = Object(_fable_fable_library_2_3_25_String_js__WEBPACK_IMPORTED_MODULE_5__["toText"])(Object(_fable_fable_library_2_3_25_String_js__WEBPACK_IMPORTED_MODULE_5__["printf"])("%i POINTS"));
+      const clo1$$2 = Object(_fable_fable_library_2_4_11_String_js__WEBPACK_IMPORTED_MODULE_5__["toText"])(Object(_fable_fable_library_2_4_11_String_js__WEBPACK_IMPORTED_MODULE_5__["printf"])("%i POINTS"));
       pointsText = clo1$$2(arg10$$2);
 
       if (previousScore.level !== currentScore.level) {
@@ -13148,7 +13405,7 @@ function run(gameContainerDivId, nextBlockDivId) {
         levelUpElement.innerHTML = "Level Up!";
         let callback;
         const arg00 = levelUpElement;
-        const clo1$$3 = Object(_fable_fable_library_2_3_25_Util_js__WEBPACK_IMPORTED_MODULE_3__["partialApply"])(1, removeChildNodeCallback, [arg00]);
+        const clo1$$3 = Object(_fable_fable_library_2_4_11_Util_js__WEBPACK_IMPORTED_MODULE_3__["partialApply"])(1, removeChildNodeCallback, [arg00]);
 
         callback = function (arg10$$3) {
           clo1$$3(arg10$$3);
@@ -13223,14 +13480,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getSquareCoords", function() { return getSquareCoords; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getFilledCells", function() { return getFilledCells; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getBoundingRect", function() { return getBoundingRect; });
-/* harmony import */ var _fable_fable_library_2_3_25_Types_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../.fable/fable-library.2.3.25/Types.js */ "./.fable/fable-library.2.3.25/Types.js");
+/* harmony import */ var _fable_fable_library_2_4_11_Types_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../.fable/fable-library.2.4.11/Types.js */ "./.fable/fable-library.2.4.11/Types.js");
 /* harmony import */ var _coord_fs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./coord.fs */ "./src/coord.fs");
 /* harmony import */ var _shape_fs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./shape.fs */ "./src/shape.fs");
 /* harmony import */ var _matrix_fs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./matrix.fs */ "./src/matrix.fs");
-/* harmony import */ var _fable_fable_library_2_3_25_Reflection_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../.fable/fable-library.2.3.25/Reflection.js */ "./.fable/fable-library.2.3.25/Reflection.js");
-/* harmony import */ var _fable_fable_library_2_3_25_Seq_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../.fable/fable-library.2.3.25/Seq.js */ "./.fable/fable-library.2.3.25/Seq.js");
-/* harmony import */ var _fable_fable_library_2_3_25_Util_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../.fable/fable-library.2.3.25/Util.js */ "./.fable/fable-library.2.3.25/Util.js");
-/* harmony import */ var _fable_fable_library_2_3_25_Int32_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../.fable/fable-library.2.3.25/Int32.js */ "./.fable/fable-library.2.3.25/Int32.js");
+/* harmony import */ var _fable_fable_library_2_4_11_Reflection_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../.fable/fable-library.2.4.11/Reflection.js */ "./.fable/fable-library.2.4.11/Reflection.js");
+/* harmony import */ var _fable_fable_library_2_4_11_Seq_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../.fable/fable-library.2.4.11/Seq.js */ "./.fable/fable-library.2.4.11/Seq.js");
+/* harmony import */ var _fable_fable_library_2_4_11_Util_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../.fable/fable-library.2.4.11/Util.js */ "./.fable/fable-library.2.4.11/Util.js");
+/* harmony import */ var _fable_fable_library_2_4_11_Int32_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../.fable/fable-library.2.4.11/Int32.js */ "./.fable/fable-library.2.4.11/Int32.js");
 /* harmony import */ var _boundingRect_fs__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./boundingRect.fs */ "./src/boundingRect.fs");
 
 
@@ -13241,12 +13498,12 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-const Block = Object(_fable_fable_library_2_3_25_Types_js__WEBPACK_IMPORTED_MODULE_0__["declare"])(function FBlocks_Block_Block(arg1, arg2) {
+const Block = Object(_fable_fable_library_2_4_11_Types_js__WEBPACK_IMPORTED_MODULE_0__["declare"])(function FBlocks_Block_Block(arg1, arg2) {
   this.position = arg1;
   this.shape = arg2;
-}, _fable_fable_library_2_3_25_Types_js__WEBPACK_IMPORTED_MODULE_0__["Record"]);
+}, _fable_fable_library_2_4_11_Types_js__WEBPACK_IMPORTED_MODULE_0__["Record"]);
 function Block$reflection() {
-  return Object(_fable_fable_library_2_3_25_Reflection_js__WEBPACK_IMPORTED_MODULE_4__["record"])("FBlocks.Block.Block", [], Block, () => [["position", Object(_coord_fs__WEBPACK_IMPORTED_MODULE_1__["Coord$reflection"])()], ["shape", Object(_matrix_fs__WEBPACK_IMPORTED_MODULE_3__["Matrix$00601$reflection"])(Object(_shape_fs__WEBPACK_IMPORTED_MODULE_2__["ShapeCell$reflection"])())]]);
+  return Object(_fable_fable_library_2_4_11_Reflection_js__WEBPACK_IMPORTED_MODULE_4__["record"])("FBlocks.Block.Block", [], Block, () => [["position", Object(_coord_fs__WEBPACK_IMPORTED_MODULE_1__["Coord$reflection"])()], ["shape", Object(_matrix_fs__WEBPACK_IMPORTED_MODULE_3__["Matrix$00601$reflection"])(Object(_shape_fs__WEBPACK_IMPORTED_MODULE_2__["ShapeCell$reflection"])())]]);
 }
 function create(gridSize, shapeName) {
   const shape = Object(_shape_fs__WEBPACK_IMPORTED_MODULE_2__["getShapeMatrix"])(shapeName);
@@ -13255,11 +13512,11 @@ function create(gridSize, shapeName) {
   let source;
   const shape$$1 = shape;
   source = Object(_shape_fs__WEBPACK_IMPORTED_MODULE_2__["filledCellCoords"])(shape$$1);
-  source$$1 = Object(_fable_fable_library_2_3_25_Seq_js__WEBPACK_IMPORTED_MODULE_5__["map"])(_coord_fs__WEBPACK_IMPORTED_MODULE_1__["getY"], source);
-  maxY = Object(_fable_fable_library_2_3_25_Seq_js__WEBPACK_IMPORTED_MODULE_5__["max"])(source$$1, {
-    Compare: _fable_fable_library_2_3_25_Util_js__WEBPACK_IMPORTED_MODULE_6__["comparePrimitives"]
+  source$$1 = Object(_fable_fable_library_2_4_11_Seq_js__WEBPACK_IMPORTED_MODULE_5__["map"])(_coord_fs__WEBPACK_IMPORTED_MODULE_1__["getY"], source);
+  maxY = Object(_fable_fable_library_2_4_11_Seq_js__WEBPACK_IMPORTED_MODULE_5__["max"])(source$$1, {
+    Compare: _fable_fable_library_2_4_11_Util_js__WEBPACK_IMPORTED_MODULE_6__["comparePrimitives"]
   });
-  return new Block(new _coord_fs__WEBPACK_IMPORTED_MODULE_1__["Coord"](~~((gridSize - shape.columnCount) / 2), Object(_fable_fable_library_2_3_25_Int32_js__WEBPACK_IMPORTED_MODULE_7__["op_UnaryNegation_Int32"])(maxY)), shape);
+  return new Block(new _coord_fs__WEBPACK_IMPORTED_MODULE_1__["Coord"](~~((gridSize - shape.columnCount) / 2), Object(_fable_fable_library_2_4_11_Int32_js__WEBPACK_IMPORTED_MODULE_7__["op_UnaryNegation_Int32"])(maxY)), shape);
 }
 function moveBy(dx, dy, block) {
   return new Block(Object(_coord_fs__WEBPACK_IMPORTED_MODULE_1__["add"])(block.position, new _coord_fs__WEBPACK_IMPORTED_MODULE_1__["Coord"](dx, dy)), block.shape);
@@ -13272,7 +13529,7 @@ function getSquareCoords(block$$2) {
   let source$$2;
   const shape$$3 = block$$2.shape;
   source$$2 = Object(_shape_fs__WEBPACK_IMPORTED_MODULE_2__["filledCellCoords"])(shape$$3);
-  return Object(_fable_fable_library_2_3_25_Seq_js__WEBPACK_IMPORTED_MODULE_5__["map"])(function mapping(coord$$1) {
+  return Object(_fable_fable_library_2_4_11_Seq_js__WEBPACK_IMPORTED_MODULE_5__["map"])(function mapping(coord$$1) {
     return Object(_coord_fs__WEBPACK_IMPORTED_MODULE_1__["add"])(coord$$1, block$$2.position);
   }, source$$2);
 }
@@ -13283,12 +13540,12 @@ function getFilledCells(block$$3) {
   source$$3 = Object(_matrix_fs__WEBPACK_IMPORTED_MODULE_3__["flatmapi"])(function mapping$$1(x, y, cell) {
     return [Object(_coord_fs__WEBPACK_IMPORTED_MODULE_1__["create"])(x, y), cell];
   }, matrix);
-  source$$4 = Object(_fable_fable_library_2_3_25_Seq_js__WEBPACK_IMPORTED_MODULE_5__["filter"])(function predicate(tupledArg) {
+  source$$4 = Object(_fable_fable_library_2_4_11_Seq_js__WEBPACK_IMPORTED_MODULE_5__["filter"])(function predicate(tupledArg) {
     const coord$$2 = tupledArg[0];
     const cell$$1 = tupledArg[1];
     return Object(_shape_fs__WEBPACK_IMPORTED_MODULE_2__["isCellFilled"])(cell$$1);
   }, source$$3);
-  return Object(_fable_fable_library_2_3_25_Seq_js__WEBPACK_IMPORTED_MODULE_5__["map"])(function mapping$$2(tupledArg$$1) {
+  return Object(_fable_fable_library_2_4_11_Seq_js__WEBPACK_IMPORTED_MODULE_5__["map"])(function mapping$$2(tupledArg$$1) {
     const coord$$3 = tupledArg$$1[0];
     const cell$$2 = tupledArg$$1[1];
     return [Object(_coord_fs__WEBPACK_IMPORTED_MODULE_1__["add"])(coord$$3, block$$3.position), cell$$2];
@@ -13316,30 +13573,30 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "BoundingRect$reflection", function() { return BoundingRect$reflection; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "addPoint", function() { return addPoint; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fromCoords", function() { return fromCoords; });
-/* harmony import */ var _fable_fable_library_2_3_25_Types_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../.fable/fable-library.2.3.25/Types.js */ "./.fable/fable-library.2.3.25/Types.js");
-/* harmony import */ var _fable_fable_library_2_3_25_Reflection_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../.fable/fable-library.2.3.25/Reflection.js */ "./.fable/fable-library.2.3.25/Reflection.js");
-/* harmony import */ var _fable_fable_library_2_3_25_Util_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../.fable/fable-library.2.3.25/Util.js */ "./.fable/fable-library.2.3.25/Util.js");
-/* harmony import */ var _fable_fable_library_2_3_25_Seq_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../.fable/fable-library.2.3.25/Seq.js */ "./.fable/fable-library.2.3.25/Seq.js");
+/* harmony import */ var _fable_fable_library_2_4_11_Types_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../.fable/fable-library.2.4.11/Types.js */ "./.fable/fable-library.2.4.11/Types.js");
+/* harmony import */ var _fable_fable_library_2_4_11_Reflection_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../.fable/fable-library.2.4.11/Reflection.js */ "./.fable/fable-library.2.4.11/Reflection.js");
+/* harmony import */ var _fable_fable_library_2_4_11_Util_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../.fable/fable-library.2.4.11/Util.js */ "./.fable/fable-library.2.4.11/Util.js");
+/* harmony import */ var _fable_fable_library_2_4_11_Seq_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../.fable/fable-library.2.4.11/Seq.js */ "./.fable/fable-library.2.4.11/Seq.js");
 
 
 
 
-const BoundingRect = Object(_fable_fable_library_2_3_25_Types_js__WEBPACK_IMPORTED_MODULE_0__["declare"])(function FBlocks_BoundingRect_BoundingRect(arg1, arg2, arg3, arg4) {
+const BoundingRect = Object(_fable_fable_library_2_4_11_Types_js__WEBPACK_IMPORTED_MODULE_0__["declare"])(function FBlocks_BoundingRect_BoundingRect(arg1, arg2, arg3, arg4) {
   this.bottom = arg1 | 0;
   this.left = arg2 | 0;
   this.right = arg3 | 0;
   this.top = arg4 | 0;
-}, _fable_fable_library_2_3_25_Types_js__WEBPACK_IMPORTED_MODULE_0__["Record"]);
+}, _fable_fable_library_2_4_11_Types_js__WEBPACK_IMPORTED_MODULE_0__["Record"]);
 function BoundingRect$reflection() {
-  return Object(_fable_fable_library_2_3_25_Reflection_js__WEBPACK_IMPORTED_MODULE_1__["record"])("FBlocks.BoundingRect.BoundingRect", [], BoundingRect, () => [["bottom", _fable_fable_library_2_3_25_Reflection_js__WEBPACK_IMPORTED_MODULE_1__["int32"]], ["left", _fable_fable_library_2_3_25_Reflection_js__WEBPACK_IMPORTED_MODULE_1__["int32"]], ["right", _fable_fable_library_2_3_25_Reflection_js__WEBPACK_IMPORTED_MODULE_1__["int32"]], ["top", _fable_fable_library_2_3_25_Reflection_js__WEBPACK_IMPORTED_MODULE_1__["int32"]]]);
+  return Object(_fable_fable_library_2_4_11_Reflection_js__WEBPACK_IMPORTED_MODULE_1__["record"])("FBlocks.BoundingRect.BoundingRect", [], BoundingRect, () => [["bottom", _fable_fable_library_2_4_11_Reflection_js__WEBPACK_IMPORTED_MODULE_1__["int32"]], ["left", _fable_fable_library_2_4_11_Reflection_js__WEBPACK_IMPORTED_MODULE_1__["int32"]], ["right", _fable_fable_library_2_4_11_Reflection_js__WEBPACK_IMPORTED_MODULE_1__["int32"]], ["top", _fable_fable_library_2_4_11_Reflection_js__WEBPACK_IMPORTED_MODULE_1__["int32"]]]);
 }
 function addPoint(bounds, coord) {
-  return new BoundingRect(Object(_fable_fable_library_2_3_25_Util_js__WEBPACK_IMPORTED_MODULE_2__["max"])(_fable_fable_library_2_3_25_Util_js__WEBPACK_IMPORTED_MODULE_2__["comparePrimitives"], bounds.bottom, coord.y), Object(_fable_fable_library_2_3_25_Util_js__WEBPACK_IMPORTED_MODULE_2__["min"])(_fable_fable_library_2_3_25_Util_js__WEBPACK_IMPORTED_MODULE_2__["comparePrimitives"], bounds.left, coord.x), Object(_fable_fable_library_2_3_25_Util_js__WEBPACK_IMPORTED_MODULE_2__["max"])(_fable_fable_library_2_3_25_Util_js__WEBPACK_IMPORTED_MODULE_2__["comparePrimitives"], bounds.right, coord.x), Object(_fable_fable_library_2_3_25_Util_js__WEBPACK_IMPORTED_MODULE_2__["min"])(_fable_fable_library_2_3_25_Util_js__WEBPACK_IMPORTED_MODULE_2__["comparePrimitives"], bounds.top, coord.y));
+  return new BoundingRect(Object(_fable_fable_library_2_4_11_Util_js__WEBPACK_IMPORTED_MODULE_2__["max"])(_fable_fable_library_2_4_11_Util_js__WEBPACK_IMPORTED_MODULE_2__["comparePrimitives"], bounds.bottom, coord.y), Object(_fable_fable_library_2_4_11_Util_js__WEBPACK_IMPORTED_MODULE_2__["min"])(_fable_fable_library_2_4_11_Util_js__WEBPACK_IMPORTED_MODULE_2__["comparePrimitives"], bounds.left, coord.x), Object(_fable_fable_library_2_4_11_Util_js__WEBPACK_IMPORTED_MODULE_2__["max"])(_fable_fable_library_2_4_11_Util_js__WEBPACK_IMPORTED_MODULE_2__["comparePrimitives"], bounds.right, coord.x), Object(_fable_fable_library_2_4_11_Util_js__WEBPACK_IMPORTED_MODULE_2__["min"])(_fable_fable_library_2_4_11_Util_js__WEBPACK_IMPORTED_MODULE_2__["comparePrimitives"], bounds.top, coord.y));
 }
 function fromCoords(coords) {
   const initialBounds = new BoundingRect(-2147483648, 2147483647, -2147483648, -2147483648);
   const source = coords;
-  return Object(_fable_fable_library_2_3_25_Seq_js__WEBPACK_IMPORTED_MODULE_3__["fold"])(addPoint, initialBounds, source);
+  return Object(_fable_fable_library_2_4_11_Seq_js__WEBPACK_IMPORTED_MODULE_3__["fold"])(addPoint, initialBounds, source);
 }
 
 /***/ }),
@@ -13359,16 +13616,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "add", function() { return add; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getX", function() { return getX; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getY", function() { return getY; });
-/* harmony import */ var _fable_fable_library_2_3_25_Types_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../.fable/fable-library.2.3.25/Types.js */ "./.fable/fable-library.2.3.25/Types.js");
-/* harmony import */ var _fable_fable_library_2_3_25_Reflection_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../.fable/fable-library.2.3.25/Reflection.js */ "./.fable/fable-library.2.3.25/Reflection.js");
+/* harmony import */ var _fable_fable_library_2_4_11_Types_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../.fable/fable-library.2.4.11/Types.js */ "./.fable/fable-library.2.4.11/Types.js");
+/* harmony import */ var _fable_fable_library_2_4_11_Reflection_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../.fable/fable-library.2.4.11/Reflection.js */ "./.fable/fable-library.2.4.11/Reflection.js");
 
 
-const Coord = Object(_fable_fable_library_2_3_25_Types_js__WEBPACK_IMPORTED_MODULE_0__["declare"])(function FBlocks_Coord_Coord(arg1, arg2) {
+const Coord = Object(_fable_fable_library_2_4_11_Types_js__WEBPACK_IMPORTED_MODULE_0__["declare"])(function FBlocks_Coord_Coord(arg1, arg2) {
   this.x = arg1 | 0;
   this.y = arg2 | 0;
-}, _fable_fable_library_2_3_25_Types_js__WEBPACK_IMPORTED_MODULE_0__["Record"]);
+}, _fable_fable_library_2_4_11_Types_js__WEBPACK_IMPORTED_MODULE_0__["Record"]);
 function Coord$reflection() {
-  return Object(_fable_fable_library_2_3_25_Reflection_js__WEBPACK_IMPORTED_MODULE_1__["record"])("FBlocks.Coord.Coord", [], Coord, () => [["x", _fable_fable_library_2_3_25_Reflection_js__WEBPACK_IMPORTED_MODULE_1__["int32"]], ["y", _fable_fable_library_2_3_25_Reflection_js__WEBPACK_IMPORTED_MODULE_1__["int32"]]]);
+  return Object(_fable_fable_library_2_4_11_Reflection_js__WEBPACK_IMPORTED_MODULE_1__["record"])("FBlocks.Coord.Coord", [], Coord, () => [["x", _fable_fable_library_2_4_11_Reflection_js__WEBPACK_IMPORTED_MODULE_1__["int32"]], ["y", _fable_fable_library_2_4_11_Reflection_js__WEBPACK_IMPORTED_MODULE_1__["int32"]]]);
 }
 function create(x, y) {
   return new Coord(x, y);
@@ -13414,18 +13671,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "checkGameOver", function() { return checkGameOver; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "update", function() { return update; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "newGame", function() { return newGame; });
-/* harmony import */ var _fable_fable_library_2_3_25_Types_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../.fable/fable-library.2.3.25/Types.js */ "./.fable/fable-library.2.3.25/Types.js");
+/* harmony import */ var _fable_fable_library_2_4_11_Types_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../.fable/fable-library.2.4.11/Types.js */ "./.fable/fable-library.2.4.11/Types.js");
 /* harmony import */ var _block_fs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./block.fs */ "./src/block.fs");
 /* harmony import */ var _grid_fs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./grid.fs */ "./src/grid.fs");
-/* harmony import */ var _fable_fable_library_2_3_25_Reflection_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../.fable/fable-library.2.3.25/Reflection.js */ "./.fable/fable-library.2.3.25/Reflection.js");
+/* harmony import */ var _fable_fable_library_2_4_11_Reflection_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../.fable/fable-library.2.4.11/Reflection.js */ "./.fable/fable-library.2.4.11/Reflection.js");
 /* harmony import */ var _shape_fs__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./shape.fs */ "./src/shape.fs");
 /* harmony import */ var _score_fs__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./score.fs */ "./src/score.fs");
 /* harmony import */ var _randomShapeGenerator_fs__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./randomShapeGenerator.fs */ "./src/randomShapeGenerator.fs");
-/* harmony import */ var _fable_fable_library_2_3_25_Int32_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../.fable/fable-library.2.3.25/Int32.js */ "./.fable/fable-library.2.3.25/Int32.js");
-/* harmony import */ var _fable_fable_library_2_3_25_Util_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../.fable/fable-library.2.3.25/Util.js */ "./.fable/fable-library.2.3.25/Util.js");
-/* harmony import */ var _fable_fable_library_2_3_25_Seq_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../.fable/fable-library.2.3.25/Seq.js */ "./.fable/fable-library.2.3.25/Seq.js");
+/* harmony import */ var _fable_fable_library_2_4_11_Int32_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../.fable/fable-library.2.4.11/Int32.js */ "./.fable/fable-library.2.4.11/Int32.js");
+/* harmony import */ var _fable_fable_library_2_4_11_Util_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../.fable/fable-library.2.4.11/Util.js */ "./.fable/fable-library.2.4.11/Util.js");
+/* harmony import */ var _fable_fable_library_2_4_11_Seq_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../.fable/fable-library.2.4.11/Seq.js */ "./.fable/fable-library.2.4.11/Seq.js");
 /* harmony import */ var _input_fs__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./input.fs */ "./src/input.fs");
-/* harmony import */ var _fable_fable_library_2_3_25_List_js__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../.fable/fable-library.2.3.25/List.js */ "./.fable/fable-library.2.3.25/List.js");
+/* harmony import */ var _fable_fable_library_2_4_11_List_js__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../.fable/fable-library.2.4.11/List.js */ "./.fable/fable-library.2.4.11/List.js");
 
 
 
@@ -13441,7 +13698,7 @@ __webpack_require__.r(__webpack_exports__);
 const minimumFallInterval = 1;
 const fastFallInterval = 4;
 const moveInterval = 8;
-const GameState = Object(_fable_fable_library_2_3_25_Types_js__WEBPACK_IMPORTED_MODULE_0__["declare"])(function FBlocks_Game_GameState(arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10) {
+const GameState = Object(_fable_fable_library_2_4_11_Types_js__WEBPACK_IMPORTED_MODULE_0__["declare"])(function FBlocks_Game_GameState(arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10) {
   this.block = arg1;
   this.grid = arg2;
   this.isFastFallEnabled = arg3;
@@ -13452,15 +13709,15 @@ const GameState = Object(_fable_fable_library_2_3_25_Types_js__WEBPACK_IMPORTED_
   this.nextShape = arg8;
   this.score = arg9;
   this.shapeGeneratorState = arg10;
-}, _fable_fable_library_2_3_25_Types_js__WEBPACK_IMPORTED_MODULE_0__["Record"]);
+}, _fable_fable_library_2_4_11_Types_js__WEBPACK_IMPORTED_MODULE_0__["Record"]);
 function GameState$reflection() {
-  return Object(_fable_fable_library_2_3_25_Reflection_js__WEBPACK_IMPORTED_MODULE_3__["record"])("FBlocks.Game.GameState", [], GameState, () => [["block", Object(_block_fs__WEBPACK_IMPORTED_MODULE_1__["Block$reflection"])()], ["grid", Object(_grid_fs__WEBPACK_IMPORTED_MODULE_2__["Grid$reflection"])()], ["isFastFallEnabled", _fable_fable_library_2_3_25_Reflection_js__WEBPACK_IMPORTED_MODULE_3__["bool"]], ["isPaused", _fable_fable_library_2_3_25_Reflection_js__WEBPACK_IMPORTED_MODULE_3__["bool"]], ["lastBlockFallFrame", _fable_fable_library_2_3_25_Reflection_js__WEBPACK_IMPORTED_MODULE_3__["int32"]], ["lastMoveFrame", _fable_fable_library_2_3_25_Reflection_js__WEBPACK_IMPORTED_MODULE_3__["int32"]], ["moveDelta", Object(_fable_fable_library_2_3_25_Reflection_js__WEBPACK_IMPORTED_MODULE_3__["option"])(_fable_fable_library_2_3_25_Reflection_js__WEBPACK_IMPORTED_MODULE_3__["int32"])], ["nextShape", Object(_shape_fs__WEBPACK_IMPORTED_MODULE_4__["ShapeName$reflection"])()], ["score", Object(_score_fs__WEBPACK_IMPORTED_MODULE_5__["Score$reflection"])()], ["shapeGeneratorState", Object(_randomShapeGenerator_fs__WEBPACK_IMPORTED_MODULE_6__["GeneratorState$reflection"])()]]);
+  return Object(_fable_fable_library_2_4_11_Reflection_js__WEBPACK_IMPORTED_MODULE_3__["record"])("FBlocks.Game.GameState", [], GameState, () => [["block", Object(_block_fs__WEBPACK_IMPORTED_MODULE_1__["Block$reflection"])()], ["grid", Object(_grid_fs__WEBPACK_IMPORTED_MODULE_2__["Grid$reflection"])()], ["isFastFallEnabled", _fable_fable_library_2_4_11_Reflection_js__WEBPACK_IMPORTED_MODULE_3__["bool"]], ["isPaused", _fable_fable_library_2_4_11_Reflection_js__WEBPACK_IMPORTED_MODULE_3__["bool"]], ["lastBlockFallFrame", _fable_fable_library_2_4_11_Reflection_js__WEBPACK_IMPORTED_MODULE_3__["int32"]], ["lastMoveFrame", _fable_fable_library_2_4_11_Reflection_js__WEBPACK_IMPORTED_MODULE_3__["int32"]], ["moveDelta", Object(_fable_fable_library_2_4_11_Reflection_js__WEBPACK_IMPORTED_MODULE_3__["option"])(_fable_fable_library_2_4_11_Reflection_js__WEBPACK_IMPORTED_MODULE_3__["int32"])], ["nextShape", Object(_shape_fs__WEBPACK_IMPORTED_MODULE_4__["ShapeName$reflection"])()], ["score", Object(_score_fs__WEBPACK_IMPORTED_MODULE_5__["Score$reflection"])()], ["shapeGeneratorState", Object(_randomShapeGenerator_fs__WEBPACK_IMPORTED_MODULE_6__["GeneratorState$reflection"])()]]);
 }
-const Game = Object(_fable_fable_library_2_3_25_Types_js__WEBPACK_IMPORTED_MODULE_0__["declare"])(function FBlocks_Game_Game(tag, name, ...fields) {
-  _fable_fable_library_2_3_25_Types_js__WEBPACK_IMPORTED_MODULE_0__["Union"].call(this, tag, name, ...fields);
-}, _fable_fable_library_2_3_25_Types_js__WEBPACK_IMPORTED_MODULE_0__["Union"]);
+const Game = Object(_fable_fable_library_2_4_11_Types_js__WEBPACK_IMPORTED_MODULE_0__["declare"])(function FBlocks_Game_Game(tag, name, ...fields) {
+  _fable_fable_library_2_4_11_Types_js__WEBPACK_IMPORTED_MODULE_0__["Union"].call(this, tag, name, ...fields);
+}, _fable_fable_library_2_4_11_Types_js__WEBPACK_IMPORTED_MODULE_0__["Union"]);
 function Game$reflection() {
-  return Object(_fable_fable_library_2_3_25_Reflection_js__WEBPACK_IMPORTED_MODULE_3__["union"])("FBlocks.Game.Game", [], Game, () => [["RunningGame", [GameState$reflection()]], ["FinishedGame", [Object(_score_fs__WEBPACK_IMPORTED_MODULE_5__["Score$reflection"])()]]]);
+  return Object(_fable_fable_library_2_4_11_Reflection_js__WEBPACK_IMPORTED_MODULE_3__["union"])("FBlocks.Game.Game", [], Game, () => [["RunningGame", [GameState$reflection()]], ["FinishedGame", [Object(_score_fs__WEBPACK_IMPORTED_MODULE_5__["Score$reflection"])()]]]);
 }
 function updateBlockIfValid(gameState, updater) {
   const updatedBlock = updater(gameState.block);
@@ -13505,7 +13762,7 @@ function offsetOutOfBoundsBlock(gridWidth, block$$2) {
 
   if (bounds.left < 0) {
     const block$$4 = block$$2;
-    const dx = Object(_fable_fable_library_2_3_25_Int32_js__WEBPACK_IMPORTED_MODULE_7__["op_UnaryNegation_Int32"])(bounds.left) | 0;
+    const dx = Object(_fable_fable_library_2_4_11_Int32_js__WEBPACK_IMPORTED_MODULE_7__["op_UnaryNegation_Int32"])(bounds.left) | 0;
     return Object(_block_fs__WEBPACK_IMPORTED_MODULE_1__["moveBy"])(dx, 0, block$$4);
   } else if (bounds.right >= gridWidth) {
     const block$$5 = block$$2;
@@ -13552,12 +13809,12 @@ function processInput(currentFrame$$3, inputs, gameState$$4) {
       return new GameState(gameState$$11.block, gameState$$11.grid, gameState$$11.isFastFallEnabled, isPaused, gameState$$11.lastBlockFallFrame, gameState$$11.lastMoveFrame, gameState$$11.moveDelta, gameState$$11.nextShape, gameState$$11.score, gameState$$11.shapeGeneratorState);
     };
 
-    return (action.tag === 1 ? Object(_fable_fable_library_2_3_25_Util_js__WEBPACK_IMPORTED_MODULE_8__["partialApply"])(1, setMovement, [1]) : action.tag === 2 ? stopMovement : action.tag === 5 ? Object(_fable_fable_library_2_3_25_Util_js__WEBPACK_IMPORTED_MODULE_8__["partialApply"])(1, enableFastFall, [true]) : action.tag === 6 ? Object(_fable_fable_library_2_3_25_Util_js__WEBPACK_IMPORTED_MODULE_8__["partialApply"])(1, enableFastFall, [false]) : action.tag === 3 ? rotateBlock : action.tag === 4 ? placeBlock$$1 : action.tag === 7 ? togglePause : Object(_fable_fable_library_2_3_25_Util_js__WEBPACK_IMPORTED_MODULE_8__["partialApply"])(1, setMovement, [-1]))(gameState$$5);
+    return (action.tag === 1 ? Object(_fable_fable_library_2_4_11_Util_js__WEBPACK_IMPORTED_MODULE_8__["partialApply"])(1, setMovement, [1]) : action.tag === 2 ? stopMovement : action.tag === 5 ? Object(_fable_fable_library_2_4_11_Util_js__WEBPACK_IMPORTED_MODULE_8__["partialApply"])(1, enableFastFall, [true]) : action.tag === 6 ? Object(_fable_fable_library_2_4_11_Util_js__WEBPACK_IMPORTED_MODULE_8__["partialApply"])(1, enableFastFall, [false]) : action.tag === 3 ? rotateBlock : action.tag === 4 ? placeBlock$$1 : action.tag === 7 ? togglePause : Object(_fable_fable_library_2_4_11_Util_js__WEBPACK_IMPORTED_MODULE_8__["partialApply"])(1, setMovement, [-1]))(gameState$$5);
   };
 
   let updatedGameState;
   const source = inputs;
-  updatedGameState = Object(_fable_fable_library_2_3_25_Seq_js__WEBPACK_IMPORTED_MODULE_9__["fold"])(processAction, gameState$$4, source);
+  updatedGameState = Object(_fable_fable_library_2_4_11_Seq_js__WEBPACK_IMPORTED_MODULE_9__["fold"])(processAction, gameState$$4, source);
   return updatedGameState;
 }
 function moveBlock(dx$$3, gameState$$12) {
@@ -13589,11 +13846,11 @@ function calculateFallInterval(isFastFallEnabled$$1, level) {
     normalFallInterval = (48 - level * 5) * 1;
   } else {
     const framesPerCell = 5 - ~~((level - 10) / 3) | 0;
-    normalFallInterval = Object(_fable_fable_library_2_3_25_Util_js__WEBPACK_IMPORTED_MODULE_8__["max"])(_fable_fable_library_2_3_25_Util_js__WEBPACK_IMPORTED_MODULE_8__["comparePrimitives"], framesPerCell, 1) * 1;
+    normalFallInterval = Object(_fable_fable_library_2_4_11_Util_js__WEBPACK_IMPORTED_MODULE_8__["max"])(_fable_fable_library_2_4_11_Util_js__WEBPACK_IMPORTED_MODULE_8__["comparePrimitives"], framesPerCell, 1) * 1;
   }
 
   if (isFastFallEnabled$$1) {
-    return Object(_fable_fable_library_2_3_25_Util_js__WEBPACK_IMPORTED_MODULE_8__["min"])(_fable_fable_library_2_3_25_Util_js__WEBPACK_IMPORTED_MODULE_8__["comparePrimitives"], fastFallInterval, normalFallInterval) | 0;
+    return Object(_fable_fable_library_2_4_11_Util_js__WEBPACK_IMPORTED_MODULE_8__["min"])(_fable_fable_library_2_4_11_Util_js__WEBPACK_IMPORTED_MODULE_8__["comparePrimitives"], fastFallInterval, normalFallInterval) | 0;
   } else {
     return normalFallInterval | 0;
   }
@@ -13647,7 +13904,7 @@ function newGame(gridWidth$$2, gridHeight, currentTime) {
   patternInput$$1 = Object(_randomShapeGenerator_fs__WEBPACK_IMPORTED_MODULE_6__["getList"])(2, state$$1);
   const randomGeneratorState = patternInput$$1[1];
   const initialShapes = patternInput$$1[0];
-  const state$$2 = new GameState((shapeName$$1 = Object(_fable_fable_library_2_3_25_List_js__WEBPACK_IMPORTED_MODULE_11__["item"])(0, initialShapes), (Object(_block_fs__WEBPACK_IMPORTED_MODULE_1__["create"])(grid$$1.width, shapeName$$1))), grid$$1, false, false, 0, 0, null, Object(_fable_fable_library_2_3_25_List_js__WEBPACK_IMPORTED_MODULE_11__["item"])(1, initialShapes), _score_fs__WEBPACK_IMPORTED_MODULE_5__["initial"], randomGeneratorState);
+  const state$$2 = new GameState((shapeName$$1 = Object(_fable_fable_library_2_4_11_List_js__WEBPACK_IMPORTED_MODULE_11__["item"])(0, initialShapes), (Object(_block_fs__WEBPACK_IMPORTED_MODULE_1__["create"])(grid$$1.width, shapeName$$1))), grid$$1, false, false, 0, 0, null, Object(_fable_fable_library_2_4_11_List_js__WEBPACK_IMPORTED_MODULE_11__["item"])(1, initialShapes), _score_fs__WEBPACK_IMPORTED_MODULE_5__["initial"], randomGeneratorState);
   return new Game(0, "RunningGame", state$$2);
 }
 
@@ -13672,7 +13929,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _unitsOfMeasure_fs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./unitsOfMeasure.fs */ "./src/unitsOfMeasure.fs");
 /* harmony import */ var _time_fs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./time.fs */ "./src/time.fs");
 /* harmony import */ var _game_fs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./game.fs */ "./src/game.fs");
-/* harmony import */ var _fable_fable_library_2_3_25_Util_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../.fable/fable-library.2.3.25/Util.js */ "./.fable/fable-library.2.3.25/Util.js");
+/* harmony import */ var _fable_fable_library_2_4_11_Util_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../.fable/fable-library.2.4.11/Util.js */ "./.fable/fable-library.2.4.11/Util.js");
 
 
 
@@ -13721,7 +13978,7 @@ function mainLoop(game$$1, updateUI, lastFrameNumber$$1, lastFrameTime$$1, lastG
   const updatedGame = patternInput[0];
   const frameNumber$$1 = patternInput[1] | 0;
 
-  if (!Object(_fable_fable_library_2_3_25_Util_js__WEBPACK_IMPORTED_MODULE_3__["equals"])(updatedGame, game$$1)) {
+  if (!Object(_fable_fable_library_2_4_11_Util_js__WEBPACK_IMPORTED_MODULE_3__["equals"])(updatedGame, game$$1)) {
     updateUI(game$$1, updatedGame);
   }
 
@@ -13761,16 +14018,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "removeCompletedRows", function() { return removeCompletedRows; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "placeBlock", function() { return placeBlock; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "moveBlockToBottom", function() { return moveBlockToBottom; });
-/* harmony import */ var _fable_fable_library_2_3_25_Types_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../.fable/fable-library.2.3.25/Types.js */ "./.fable/fable-library.2.3.25/Types.js");
+/* harmony import */ var _fable_fable_library_2_4_11_Types_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../.fable/fable-library.2.4.11/Types.js */ "./.fable/fable-library.2.4.11/Types.js");
 /* harmony import */ var _shape_fs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./shape.fs */ "./src/shape.fs");
 /* harmony import */ var _matrix_fs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./matrix.fs */ "./src/matrix.fs");
-/* harmony import */ var _fable_fable_library_2_3_25_Reflection_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../.fable/fable-library.2.3.25/Reflection.js */ "./.fable/fable-library.2.3.25/Reflection.js");
-/* harmony import */ var _fable_fable_library_2_3_25_Util_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../.fable/fable-library.2.3.25/Util.js */ "./.fable/fable-library.2.3.25/Util.js");
-/* harmony import */ var _fable_fable_library_2_3_25_Seq_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../.fable/fable-library.2.3.25/Seq.js */ "./.fable/fable-library.2.3.25/Seq.js");
+/* harmony import */ var _fable_fable_library_2_4_11_Reflection_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../.fable/fable-library.2.4.11/Reflection.js */ "./.fable/fable-library.2.4.11/Reflection.js");
+/* harmony import */ var _fable_fable_library_2_4_11_Util_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../.fable/fable-library.2.4.11/Util.js */ "./.fable/fable-library.2.4.11/Util.js");
+/* harmony import */ var _fable_fable_library_2_4_11_Seq_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../.fable/fable-library.2.4.11/Seq.js */ "./.fable/fable-library.2.4.11/Seq.js");
 /* harmony import */ var _block_fs__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./block.fs */ "./src/block.fs");
 /* harmony import */ var _coord_fs__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./coord.fs */ "./src/coord.fs");
-/* harmony import */ var _fable_fable_library_2_3_25_List_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../.fable/fable-library.2.3.25/List.js */ "./.fable/fable-library.2.3.25/List.js");
-/* harmony import */ var _fable_fable_library_2_3_25_Option_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../.fable/fable-library.2.3.25/Option.js */ "./.fable/fable-library.2.3.25/Option.js");
+/* harmony import */ var _fable_fable_library_2_4_11_List_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../.fable/fable-library.2.4.11/List.js */ "./.fable/fable-library.2.4.11/List.js");
+/* harmony import */ var _fable_fable_library_2_4_11_Option_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../.fable/fable-library.2.4.11/Option.js */ "./.fable/fable-library.2.4.11/Option.js");
 
 
 
@@ -13781,13 +14038,13 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-const Grid = Object(_fable_fable_library_2_3_25_Types_js__WEBPACK_IMPORTED_MODULE_0__["declare"])(function FBlocks_Grid_Grid(arg1, arg2, arg3) {
+const Grid = Object(_fable_fable_library_2_4_11_Types_js__WEBPACK_IMPORTED_MODULE_0__["declare"])(function FBlocks_Grid_Grid(arg1, arg2, arg3) {
   this.cells = arg1;
   this.height = arg2 | 0;
   this.width = arg3 | 0;
-}, _fable_fable_library_2_3_25_Types_js__WEBPACK_IMPORTED_MODULE_0__["Record"]);
+}, _fable_fable_library_2_4_11_Types_js__WEBPACK_IMPORTED_MODULE_0__["Record"]);
 function Grid$reflection() {
-  return Object(_fable_fable_library_2_3_25_Reflection_js__WEBPACK_IMPORTED_MODULE_3__["record"])("FBlocks.Grid.Grid", [], Grid, () => [["cells", Object(_matrix_fs__WEBPACK_IMPORTED_MODULE_2__["Matrix$00601$reflection"])(Object(_shape_fs__WEBPACK_IMPORTED_MODULE_1__["ShapeCell$reflection"])())], ["height", _fable_fable_library_2_3_25_Reflection_js__WEBPACK_IMPORTED_MODULE_3__["int32"]], ["width", _fable_fable_library_2_3_25_Reflection_js__WEBPACK_IMPORTED_MODULE_3__["int32"]]]);
+  return Object(_fable_fable_library_2_4_11_Reflection_js__WEBPACK_IMPORTED_MODULE_3__["record"])("FBlocks.Grid.Grid", [], Grid, () => [["cells", Object(_matrix_fs__WEBPACK_IMPORTED_MODULE_2__["Matrix$00601$reflection"])(Object(_shape_fs__WEBPACK_IMPORTED_MODULE_1__["ShapeCell$reflection"])())], ["height", _fable_fable_library_2_4_11_Reflection_js__WEBPACK_IMPORTED_MODULE_3__["int32"]], ["width", _fable_fable_library_2_4_11_Reflection_js__WEBPACK_IMPORTED_MODULE_3__["int32"]]]);
 }
 function create(width, height) {
   return new Grid(Object(_matrix_fs__WEBPACK_IMPORTED_MODULE_2__["create"])(width, height, new _shape_fs__WEBPACK_IMPORTED_MODULE_1__["ShapeCell"](0, "EmptyCell")), height, width);
@@ -13809,8 +14066,8 @@ function isBlockValid(grid$$1, block) {
     let source;
     const grid$$2 = grid$$1;
     source = getFilledCellCoords(grid$$2);
-    return Object(_fable_fable_library_2_3_25_Seq_js__WEBPACK_IMPORTED_MODULE_5__["exists"])(function predicate(gridCoord) {
-      return Object(_fable_fable_library_2_3_25_Util_js__WEBPACK_IMPORTED_MODULE_4__["equals"])(gridCoord, cellCoord);
+    return Object(_fable_fable_library_2_4_11_Seq_js__WEBPACK_IMPORTED_MODULE_5__["exists"])(function predicate(gridCoord) {
+      return Object(_fable_fable_library_2_4_11_Util_js__WEBPACK_IMPORTED_MODULE_4__["equals"])(gridCoord, cellCoord);
     }, source);
   };
 
@@ -13825,22 +14082,22 @@ function isBlockValid(grid$$1, block) {
   let source$$1;
   const block$$1 = block;
   source$$1 = Object(_block_fs__WEBPACK_IMPORTED_MODULE_6__["getSquareCoords"])(block$$1);
-  return Object(_fable_fable_library_2_3_25_Seq_js__WEBPACK_IMPORTED_MODULE_5__["forAll"])(isCellValid, source$$1);
+  return Object(_fable_fable_library_2_4_11_Seq_js__WEBPACK_IMPORTED_MODULE_5__["forAll"])(isCellValid, source$$1);
 }
 function countCompletedRows(grid$$3) {
   const isRowCompleted = function isRowCompleted(row) {
     const source$$2 = row;
-    return Object(_fable_fable_library_2_3_25_Seq_js__WEBPACK_IMPORTED_MODULE_5__["forAll"])(_shape_fs__WEBPACK_IMPORTED_MODULE_1__["isCellFilled"], source$$2);
+    return Object(_fable_fable_library_2_4_11_Seq_js__WEBPACK_IMPORTED_MODULE_5__["forAll"])(_shape_fs__WEBPACK_IMPORTED_MODULE_1__["isCellFilled"], source$$2);
   };
 
   let source$$4;
   let source$$3;
   const matrix$$1 = grid$$3.cells;
   source$$3 = Object(_matrix_fs__WEBPACK_IMPORTED_MODULE_2__["rows"])(matrix$$1);
-  source$$4 = Object(_fable_fable_library_2_3_25_Seq_js__WEBPACK_IMPORTED_MODULE_5__["filter"])(function predicate$$1(arg00) {
+  source$$4 = Object(_fable_fable_library_2_4_11_Seq_js__WEBPACK_IMPORTED_MODULE_5__["filter"])(function predicate$$1(arg00) {
     return isRowCompleted(arg00);
   }, source$$3);
-  return Object(_fable_fable_library_2_3_25_Seq_js__WEBPACK_IMPORTED_MODULE_5__["length"])(source$$4) | 0;
+  return Object(_fable_fable_library_2_4_11_Seq_js__WEBPACK_IMPORTED_MODULE_5__["length"])(source$$4) | 0;
 }
 function removeCompletedRows(grid$$4) {
   const matrix$$2 = grid$$4.cells;
@@ -13850,11 +14107,11 @@ function removeCompletedRows(grid$$4) {
     let source$$5;
     const matrix$$3 = matrix$$2;
     source$$5 = Object(_matrix_fs__WEBPACK_IMPORTED_MODULE_2__["getRow"])(rowIndex, matrix$$3);
-    return Object(_fable_fable_library_2_3_25_Seq_js__WEBPACK_IMPORTED_MODULE_5__["forAll"])(_shape_fs__WEBPACK_IMPORTED_MODULE_1__["isCellFilled"], source$$5);
+    return Object(_fable_fable_library_2_4_11_Seq_js__WEBPACK_IMPORTED_MODULE_5__["forAll"])(_shape_fs__WEBPACK_IMPORTED_MODULE_1__["isCellFilled"], source$$5);
   };
 
-  const source$$6 = Object(_fable_fable_library_2_3_25_Seq_js__WEBPACK_IMPORTED_MODULE_5__["rangeNumber"])(0, 1, matrix$$2.rowCount - 1);
-  completeRowIndices = Object(_fable_fable_library_2_3_25_Seq_js__WEBPACK_IMPORTED_MODULE_5__["filter"])(isRowComplete, source$$6);
+  const source$$6 = Object(_fable_fable_library_2_4_11_Seq_js__WEBPACK_IMPORTED_MODULE_5__["rangeNumber"])(0, 1, matrix$$2.rowCount - 1);
+  completeRowIndices = Object(_fable_fable_library_2_4_11_Seq_js__WEBPACK_IMPORTED_MODULE_5__["filter"])(isRowComplete, source$$6);
 
   const removeRow = function removeRow(matrix$$4, rowIndex$$1) {
     const mapCell = function mapCell(x, y, value) {
@@ -13872,7 +14129,7 @@ function removeCompletedRows(grid$$4) {
 
   let updatedCells;
   const source$$7 = completeRowIndices;
-  updatedCells = Object(_fable_fable_library_2_3_25_Seq_js__WEBPACK_IMPORTED_MODULE_5__["fold"])(removeRow, matrix$$2, source$$7);
+  updatedCells = Object(_fable_fable_library_2_4_11_Seq_js__WEBPACK_IMPORTED_MODULE_5__["fold"])(removeRow, matrix$$2, source$$7);
   return new Grid(updatedCells, grid$$4.height, grid$$4.width);
 }
 function placeBlock(grid$$5, block$$2) {
@@ -13880,9 +14137,9 @@ function placeBlock(grid$$5, block$$2) {
   let gridCells;
   const matrix$$5 = grid$$5.cells;
   gridCells = Object(_matrix_fs__WEBPACK_IMPORTED_MODULE_2__["mapi"])(function mapping(x$$1, y$$1, value$$1) {
-    const matchingCell = Object(_fable_fable_library_2_3_25_Seq_js__WEBPACK_IMPORTED_MODULE_5__["tryFind"])(function (tupledArg) {
+    const matchingCell = Object(_fable_fable_library_2_4_11_Seq_js__WEBPACK_IMPORTED_MODULE_5__["tryFind"])(function (tupledArg) {
       const coord$$1 = tupledArg[0];
-      return Object(_fable_fable_library_2_3_25_Util_js__WEBPACK_IMPORTED_MODULE_4__["equals"])(coord$$1, Object(_coord_fs__WEBPACK_IMPORTED_MODULE_7__["create"])(x$$1, y$$1));
+      return Object(_fable_fable_library_2_4_11_Util_js__WEBPACK_IMPORTED_MODULE_4__["equals"])(coord$$1, Object(_coord_fs__WEBPACK_IMPORTED_MODULE_7__["create"])(x$$1, y$$1));
     }, filledCells);
 
     if (matchingCell != null) {
@@ -13899,15 +14156,15 @@ function moveBlockToBottom(grid$$6, block$$3) {
   let option;
   let source$$10;
   let source$$9;
-  const source$$8 = Object(_fable_fable_library_2_3_25_List_js__WEBPACK_IMPORTED_MODULE_8__["ofSeq"])(Object(_fable_fable_library_2_3_25_Seq_js__WEBPACK_IMPORTED_MODULE_5__["rangeNumber"])(0, 1, maxMoveY));
-  source$$9 = Object(_fable_fable_library_2_3_25_Seq_js__WEBPACK_IMPORTED_MODULE_5__["map"])(function mapping$$1(dy) {
+  const source$$8 = Object(_fable_fable_library_2_4_11_List_js__WEBPACK_IMPORTED_MODULE_8__["ofSeq"])(Object(_fable_fable_library_2_4_11_Seq_js__WEBPACK_IMPORTED_MODULE_5__["rangeNumber"])(0, 1, maxMoveY));
+  source$$9 = Object(_fable_fable_library_2_4_11_Seq_js__WEBPACK_IMPORTED_MODULE_5__["map"])(function mapping$$1(dy) {
     return Object(_block_fs__WEBPACK_IMPORTED_MODULE_6__["moveBy"])(0, dy, block$$3);
   }, source$$8);
-  source$$10 = Object(_fable_fable_library_2_3_25_Seq_js__WEBPACK_IMPORTED_MODULE_5__["takeWhile"])(function predicate$$2(block$$4) {
+  source$$10 = Object(_fable_fable_library_2_4_11_Seq_js__WEBPACK_IMPORTED_MODULE_5__["takeWhile"])(function predicate$$2(block$$4) {
     return isBlockValid(grid$$6, block$$4);
   }, source$$9);
-  option = Object(_fable_fable_library_2_3_25_Seq_js__WEBPACK_IMPORTED_MODULE_5__["tryLast"])(source$$10);
-  return Object(_fable_fable_library_2_3_25_Option_js__WEBPACK_IMPORTED_MODULE_9__["defaultArg"])(option, block$$3);
+  option = Object(_fable_fable_library_2_4_11_Seq_js__WEBPACK_IMPORTED_MODULE_5__["tryLast"])(source$$10);
+  return Object(_fable_fable_library_2_4_11_Option_js__WEBPACK_IMPORTED_MODULE_9__["defaultArg"])(option, block$$3);
 }
 
 /***/ }),
@@ -13929,30 +14186,30 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "onKeyDown", function() { return onKeyDown; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "onKeyUp", function() { return onKeyUp; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "addEventListeners", function() { return addEventListeners; });
-/* harmony import */ var _fable_fable_library_2_3_25_Types_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../.fable/fable-library.2.3.25/Types.js */ "./.fable/fable-library.2.3.25/Types.js");
-/* harmony import */ var _fable_fable_library_2_3_25_Reflection_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../.fable/fable-library.2.3.25/Reflection.js */ "./.fable/fable-library.2.3.25/Reflection.js");
-/* harmony import */ var _fable_fable_library_2_3_25_Util_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../.fable/fable-library.2.3.25/Util.js */ "./.fable/fable-library.2.3.25/Util.js");
-/* harmony import */ var _fable_fable_library_2_3_25_List_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../.fable/fable-library.2.3.25/List.js */ "./.fable/fable-library.2.3.25/List.js");
+/* harmony import */ var _fable_fable_library_2_4_11_Types_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../.fable/fable-library.2.4.11/Types.js */ "./.fable/fable-library.2.4.11/Types.js");
+/* harmony import */ var _fable_fable_library_2_4_11_Reflection_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../.fable/fable-library.2.4.11/Reflection.js */ "./.fable/fable-library.2.4.11/Reflection.js");
+/* harmony import */ var _fable_fable_library_2_4_11_Util_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../.fable/fable-library.2.4.11/Util.js */ "./.fable/fable-library.2.4.11/Util.js");
+/* harmony import */ var _fable_fable_library_2_4_11_List_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../.fable/fable-library.2.4.11/List.js */ "./.fable/fable-library.2.4.11/List.js");
 
 
 
 
-const InputAction = Object(_fable_fable_library_2_3_25_Types_js__WEBPACK_IMPORTED_MODULE_0__["declare"])(function FBlocks_Input_InputAction(tag, name, ...fields) {
-  _fable_fable_library_2_3_25_Types_js__WEBPACK_IMPORTED_MODULE_0__["Union"].call(this, tag, name, ...fields);
-}, _fable_fable_library_2_3_25_Types_js__WEBPACK_IMPORTED_MODULE_0__["Union"]);
+const InputAction = Object(_fable_fable_library_2_4_11_Types_js__WEBPACK_IMPORTED_MODULE_0__["declare"])(function FBlocks_Input_InputAction(tag, name, ...fields) {
+  _fable_fable_library_2_4_11_Types_js__WEBPACK_IMPORTED_MODULE_0__["Union"].call(this, tag, name, ...fields);
+}, _fable_fable_library_2_4_11_Types_js__WEBPACK_IMPORTED_MODULE_0__["Union"]);
 function InputAction$reflection() {
-  return Object(_fable_fable_library_2_3_25_Reflection_js__WEBPACK_IMPORTED_MODULE_1__["union"])("FBlocks.Input.InputAction", [], InputAction, () => ["MoveLeft", "MoveRight", "StopMovement", "Rotate", "PlaceBlock", "IncreaseFallSpeed", "DecreaseFallSpeed", "TogglePause"]);
+  return Object(_fable_fable_library_2_4_11_Reflection_js__WEBPACK_IMPORTED_MODULE_1__["union"])("FBlocks.Input.InputAction", [], InputAction, () => ["MoveLeft", "MoveRight", "StopMovement", "Rotate", "PlaceBlock", "IncreaseFallSpeed", "DecreaseFallSpeed", "TogglePause"]);
 }
-const inputActionQueue = Object(_fable_fable_library_2_3_25_Util_js__WEBPACK_IMPORTED_MODULE_2__["createAtom"])(new _fable_fable_library_2_3_25_Types_js__WEBPACK_IMPORTED_MODULE_0__["List"]());
+const inputActionQueue = Object(_fable_fable_library_2_4_11_Util_js__WEBPACK_IMPORTED_MODULE_2__["createAtom"])(new _fable_fable_library_2_4_11_Types_js__WEBPACK_IMPORTED_MODULE_0__["List"]());
 function getActions() {
-  const inputs = Object(_fable_fable_library_2_3_25_List_js__WEBPACK_IMPORTED_MODULE_3__["reverse"])(inputActionQueue());
-  inputActionQueue(new _fable_fable_library_2_3_25_Types_js__WEBPACK_IMPORTED_MODULE_0__["List"]());
+  const inputs = Object(_fable_fable_library_2_4_11_List_js__WEBPACK_IMPORTED_MODULE_3__["reverse"])(inputActionQueue());
+  inputActionQueue(new _fable_fable_library_2_4_11_Types_js__WEBPACK_IMPORTED_MODULE_0__["List"]());
   return inputs;
 }
 function handleInput(mapping, event) {
   if (!event.repeat) {
     let maybeAction;
-    const matchValue = Object(_fable_fable_library_2_3_25_Util_js__WEBPACK_IMPORTED_MODULE_2__["tryGetValue"])(mapping, event.key, null);
+    const matchValue = Object(_fable_fable_library_2_4_11_Util_js__WEBPACK_IMPORTED_MODULE_2__["tryGetValue"])(mapping, event.key, null);
 
     if (matchValue[0]) {
       const action = matchValue[1];
@@ -13963,7 +14220,7 @@ function handleInput(mapping, event) {
 
     if (maybeAction == null) {} else {
       const action$$1 = maybeAction;
-      inputActionQueue(new _fable_fable_library_2_3_25_Types_js__WEBPACK_IMPORTED_MODULE_0__["List"](action$$1, inputActionQueue()));
+      inputActionQueue(new _fable_fable_library_2_4_11_Types_js__WEBPACK_IMPORTED_MODULE_0__["List"](action$$1, inputActionQueue()));
     }
   }
 }
@@ -14011,11 +14268,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "coordsWithValue", function() { return coordsWithValue; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "coordsWhere", function() { return coordsWhere; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "rotateClockwise", function() { return rotateClockwise; });
-/* harmony import */ var _fable_fable_library_2_3_25_Types_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../.fable/fable-library.2.3.25/Types.js */ "./.fable/fable-library.2.3.25/Types.js");
-/* harmony import */ var _fable_fable_library_2_3_25_Reflection_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../.fable/fable-library.2.3.25/Reflection.js */ "./.fable/fable-library.2.3.25/Reflection.js");
-/* harmony import */ var _fable_fable_library_2_3_25_Array_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../.fable/fable-library.2.3.25/Array.js */ "./.fable/fable-library.2.3.25/Array.js");
-/* harmony import */ var _fable_fable_library_2_3_25_Seq_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../.fable/fable-library.2.3.25/Seq.js */ "./.fable/fable-library.2.3.25/Seq.js");
-/* harmony import */ var _fable_fable_library_2_3_25_Util_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../.fable/fable-library.2.3.25/Util.js */ "./.fable/fable-library.2.3.25/Util.js");
+/* harmony import */ var _fable_fable_library_2_4_11_Types_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../.fable/fable-library.2.4.11/Types.js */ "./.fable/fable-library.2.4.11/Types.js");
+/* harmony import */ var _fable_fable_library_2_4_11_Reflection_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../.fable/fable-library.2.4.11/Reflection.js */ "./.fable/fable-library.2.4.11/Reflection.js");
+/* harmony import */ var _fable_fable_library_2_4_11_Array_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../.fable/fable-library.2.4.11/Array.js */ "./.fable/fable-library.2.4.11/Array.js");
+/* harmony import */ var _fable_fable_library_2_4_11_Seq_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../.fable/fable-library.2.4.11/Seq.js */ "./.fable/fable-library.2.4.11/Seq.js");
+/* harmony import */ var _fable_fable_library_2_4_11_Util_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../.fable/fable-library.2.4.11/Util.js */ "./.fable/fable-library.2.4.11/Util.js");
 /* harmony import */ var _coord_fs__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./coord.fs */ "./src/coord.fs");
 
 
@@ -14023,16 +14280,16 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-const Matrix$00601 = Object(_fable_fable_library_2_3_25_Types_js__WEBPACK_IMPORTED_MODULE_0__["declare"])(function FBlocks_Matrix_Matrix(arg1, arg2, arg3) {
+const Matrix$00601 = Object(_fable_fable_library_2_4_11_Types_js__WEBPACK_IMPORTED_MODULE_0__["declare"])(function FBlocks_Matrix_Matrix(arg1, arg2, arg3) {
   this.cells = arg1;
   this.columnCount = arg2 | 0;
   this.rowCount = arg3 | 0;
-}, _fable_fable_library_2_3_25_Types_js__WEBPACK_IMPORTED_MODULE_0__["Record"]);
+}, _fable_fable_library_2_4_11_Types_js__WEBPACK_IMPORTED_MODULE_0__["Record"]);
 function Matrix$00601$reflection($gen$$1) {
-  return Object(_fable_fable_library_2_3_25_Reflection_js__WEBPACK_IMPORTED_MODULE_1__["record"])("FBlocks.Matrix.Matrix`1", [$gen$$1], Matrix$00601, () => [["cells", Object(_fable_fable_library_2_3_25_Reflection_js__WEBPACK_IMPORTED_MODULE_1__["array"])($gen$$1)], ["columnCount", _fable_fable_library_2_3_25_Reflection_js__WEBPACK_IMPORTED_MODULE_1__["int32"]], ["rowCount", _fable_fable_library_2_3_25_Reflection_js__WEBPACK_IMPORTED_MODULE_1__["int32"]]]);
+  return Object(_fable_fable_library_2_4_11_Reflection_js__WEBPACK_IMPORTED_MODULE_1__["record"])("FBlocks.Matrix.Matrix`1", [$gen$$1], Matrix$00601, () => [["cells", Object(_fable_fable_library_2_4_11_Reflection_js__WEBPACK_IMPORTED_MODULE_1__["array"])($gen$$1)], ["columnCount", _fable_fable_library_2_4_11_Reflection_js__WEBPACK_IMPORTED_MODULE_1__["int32"]], ["rowCount", _fable_fable_library_2_4_11_Reflection_js__WEBPACK_IMPORTED_MODULE_1__["int32"]]]);
 }
 function create(columnCount, rowCount, value) {
-  return new Matrix$00601(Object(_fable_fable_library_2_3_25_Array_js__WEBPACK_IMPORTED_MODULE_2__["replicate"])(columnCount * rowCount, value, Array), columnCount, rowCount);
+  return new Matrix$00601(Object(_fable_fable_library_2_4_11_Array_js__WEBPACK_IMPORTED_MODULE_2__["replicate"])(columnCount * rowCount, value, Array), columnCount, rowCount);
 }
 function fromArray(input) {
   var arrays;
@@ -14045,7 +14302,7 @@ function fromArray(input) {
   const columnCount$$1 = input[0].length | 0;
   let areSubarraysSameLength;
   const source = input;
-  areSubarraysSameLength = Object(_fable_fable_library_2_3_25_Seq_js__WEBPACK_IMPORTED_MODULE_3__["forAll"])(function predicate(subarray) {
+  areSubarraysSameLength = Object(_fable_fable_library_2_4_11_Seq_js__WEBPACK_IMPORTED_MODULE_3__["forAll"])(function predicate(subarray) {
     return subarray.length === columnCount$$1;
   }, source);
 
@@ -14053,7 +14310,7 @@ function fromArray(input) {
     throw new Error("All subarrays in matrix must have same length\\nParameter name: input");
   }
 
-  return new Matrix$00601((arrays = input, (Object(_fable_fable_library_2_3_25_Array_js__WEBPACK_IMPORTED_MODULE_2__["concat"])(arrays, Array))), columnCount$$1, rowCount$$1);
+  return new Matrix$00601((arrays = input, (Object(_fable_fable_library_2_4_11_Array_js__WEBPACK_IMPORTED_MODULE_2__["concat"])(arrays, Array))), columnCount$$1, rowCount$$1);
 }
 function getAt(x, y, matrix) {
   return matrix.cells[x + y * matrix.columnCount];
@@ -14062,8 +14319,8 @@ function getRow(y$$1, matrix$$1) {
   return matrix$$1.cells.slice(y$$1 * matrix$$1.columnCount, matrix$$1.columnCount + y$$1 * matrix$$1.columnCount - 1 + 1);
 }
 function rows(matrix$$2) {
-  const source$$1 = Object(_fable_fable_library_2_3_25_Seq_js__WEBPACK_IMPORTED_MODULE_3__["rangeNumber"])(0, 1, matrix$$2.rowCount - 1);
-  return Object(_fable_fable_library_2_3_25_Seq_js__WEBPACK_IMPORTED_MODULE_3__["map"])(function mapping(y$$2) {
+  const source$$1 = Object(_fable_fable_library_2_4_11_Seq_js__WEBPACK_IMPORTED_MODULE_3__["rangeNumber"])(0, 1, matrix$$2.rowCount - 1);
+  return Object(_fable_fable_library_2_4_11_Seq_js__WEBPACK_IMPORTED_MODULE_3__["map"])(function mapping(y$$2) {
     return getRow(y$$2, matrix$$2);
   }, source$$1);
 }
@@ -14078,18 +14335,18 @@ function iteri(action$$1, matrix$$5) {
     action$$1(i % matrix$$5.columnCount, ~~(i / matrix$$5.columnCount), x$$1);
   };
 
-  Object(_fable_fable_library_2_3_25_Array_js__WEBPACK_IMPORTED_MODULE_2__["iterateIndexed"])(action$0027, matrix$$5.cells);
+  Object(_fable_fable_library_2_4_11_Array_js__WEBPACK_IMPORTED_MODULE_2__["iterateIndexed"])(action$0027, matrix$$5.cells);
 }
 function flatmapi(mapping$$1, matrix$$6) {
   const mapping$0027 = function mapping$0027(i$$1, x$$2) {
     return mapping$$1(i$$1 % matrix$$6.columnCount, ~~(i$$1 / matrix$$6.columnCount), x$$2);
   };
 
-  return Object(_fable_fable_library_2_3_25_Array_js__WEBPACK_IMPORTED_MODULE_2__["mapIndexed"])(mapping$0027, matrix$$6.cells, Array);
+  return Object(_fable_fable_library_2_4_11_Array_js__WEBPACK_IMPORTED_MODULE_2__["mapIndexed"])(mapping$0027, matrix$$6.cells, Array);
 }
 function map(mapping$$2, matrix$$7) {
   var array;
-  return new Matrix$00601((array = matrix$$7.cells, (Object(_fable_fable_library_2_3_25_Array_js__WEBPACK_IMPORTED_MODULE_2__["map"])(mapping$$2, array, Array))), matrix$$7.columnCount, matrix$$7.rowCount);
+  return new Matrix$00601((array = matrix$$7.cells, (Object(_fable_fable_library_2_4_11_Array_js__WEBPACK_IMPORTED_MODULE_2__["map"])(mapping$$2, array, Array))), matrix$$7.columnCount, matrix$$7.rowCount);
 }
 function mapi(mapping$$3, matrix$$8) {
   var array$$1;
@@ -14098,7 +14355,7 @@ function mapi(mapping$$3, matrix$$8) {
     return mapping$$3(i$$2 % matrix$$8.columnCount, ~~(i$$2 / matrix$$8.columnCount), x$$3);
   };
 
-  return new Matrix$00601((array$$1 = matrix$$8.cells, (Object(_fable_fable_library_2_3_25_Array_js__WEBPACK_IMPORTED_MODULE_2__["mapIndexed"])(mapping$0027$$1, array$$1, Array))), matrix$$8.columnCount, matrix$$8.rowCount);
+  return new Matrix$00601((array$$1 = matrix$$8.cells, (Object(_fable_fable_library_2_4_11_Array_js__WEBPACK_IMPORTED_MODULE_2__["mapIndexed"])(mapping$0027$$1, array$$1, Array))), matrix$$8.columnCount, matrix$$8.rowCount);
 }
 function coordsWithValue(value$$1, matrix$$9) {
   let source$$3;
@@ -14107,11 +14364,11 @@ function coordsWithValue(value$$1, matrix$$9) {
   source$$2 = flatmapi(function mapping$$4(x$$4, y$$3, v) {
     return [x$$4, y$$3, v];
   }, matrix$$10);
-  source$$3 = Object(_fable_fable_library_2_3_25_Seq_js__WEBPACK_IMPORTED_MODULE_3__["filter"])(function predicate$$2(tupledArg) {
+  source$$3 = Object(_fable_fable_library_2_4_11_Seq_js__WEBPACK_IMPORTED_MODULE_3__["filter"])(function predicate$$2(tupledArg) {
     const v$$1 = tupledArg[2];
-    return Object(_fable_fable_library_2_3_25_Util_js__WEBPACK_IMPORTED_MODULE_4__["equals"])(v$$1, value$$1);
+    return Object(_fable_fable_library_2_4_11_Util_js__WEBPACK_IMPORTED_MODULE_4__["equals"])(v$$1, value$$1);
   }, source$$2);
-  return Object(_fable_fable_library_2_3_25_Seq_js__WEBPACK_IMPORTED_MODULE_3__["map"])(function mapping$$5(tupledArg$$1) {
+  return Object(_fable_fable_library_2_4_11_Seq_js__WEBPACK_IMPORTED_MODULE_3__["map"])(function mapping$$5(tupledArg$$1) {
     const x$$5 = tupledArg$$1[0] | 0;
     const y$$4 = tupledArg$$1[1] | 0;
     return Object(_coord_fs__WEBPACK_IMPORTED_MODULE_5__["create"])(x$$5, y$$4);
@@ -14124,11 +14381,11 @@ function coordsWhere(predicate$$3, matrix$$11) {
   source$$4 = flatmapi(function mapping$$6(x$$6, y$$5, v$$2) {
     return [x$$6, y$$5, v$$2];
   }, matrix$$12);
-  source$$5 = Object(_fable_fable_library_2_3_25_Seq_js__WEBPACK_IMPORTED_MODULE_3__["filter"])(function predicate$$4(tupledArg$$2) {
+  source$$5 = Object(_fable_fable_library_2_4_11_Seq_js__WEBPACK_IMPORTED_MODULE_3__["filter"])(function predicate$$4(tupledArg$$2) {
     const v$$3 = tupledArg$$2[2];
     return predicate$$3(v$$3);
   }, source$$4);
-  return Object(_fable_fable_library_2_3_25_Seq_js__WEBPACK_IMPORTED_MODULE_3__["map"])(function mapping$$7(tupledArg$$3) {
+  return Object(_fable_fable_library_2_4_11_Seq_js__WEBPACK_IMPORTED_MODULE_3__["map"])(function mapping$$7(tupledArg$$3) {
     const x$$7 = tupledArg$$3[0] | 0;
     const y$$6 = tupledArg$$3[1] | 0;
     return Object(_coord_fs__WEBPACK_IMPORTED_MODULE_5__["create"])(x$$7, y$$6);
@@ -14163,13 +14420,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getNext", function() { return getNext; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getList", function() { return getList; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "initialize", function() { return initialize; });
-/* harmony import */ var _fable_fable_library_2_3_25_Types_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../.fable/fable-library.2.3.25/Types.js */ "./.fable/fable-library.2.3.25/Types.js");
+/* harmony import */ var _fable_fable_library_2_4_11_Types_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../.fable/fable-library.2.4.11/Types.js */ "./.fable/fable-library.2.4.11/Types.js");
 /* harmony import */ var _shape_fs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./shape.fs */ "./src/shape.fs");
-/* harmony import */ var _fable_fable_library_2_3_25_Reflection_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../.fable/fable-library.2.3.25/Reflection.js */ "./.fable/fable-library.2.3.25/Reflection.js");
-/* harmony import */ var _fable_fable_library_2_3_25_Array_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../.fable/fable-library.2.3.25/Array.js */ "./.fable/fable-library.2.3.25/Array.js");
-/* harmony import */ var _fable_fable_library_2_3_25_Util_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../.fable/fable-library.2.3.25/Util.js */ "./.fable/fable-library.2.3.25/Util.js");
-/* harmony import */ var _fable_fable_library_2_3_25_List_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../.fable/fable-library.2.3.25/List.js */ "./.fable/fable-library.2.3.25/List.js");
-/* harmony import */ var _fable_fable_library_2_3_25_Seq_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../.fable/fable-library.2.3.25/Seq.js */ "./.fable/fable-library.2.3.25/Seq.js");
+/* harmony import */ var _fable_fable_library_2_4_11_Reflection_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../.fable/fable-library.2.4.11/Reflection.js */ "./.fable/fable-library.2.4.11/Reflection.js");
+/* harmony import */ var _fable_fable_library_2_4_11_Array_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../.fable/fable-library.2.4.11/Array.js */ "./.fable/fable-library.2.4.11/Array.js");
+/* harmony import */ var _fable_fable_library_2_4_11_Util_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../.fable/fable-library.2.4.11/Util.js */ "./.fable/fable-library.2.4.11/Util.js");
+/* harmony import */ var _fable_fable_library_2_4_11_List_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../.fable/fable-library.2.4.11/List.js */ "./.fable/fable-library.2.4.11/List.js");
+/* harmony import */ var _fable_fable_library_2_4_11_Seq_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../.fable/fable-library.2.4.11/Seq.js */ "./.fable/fable-library.2.4.11/Seq.js");
 
 
 
@@ -14177,26 +14434,26 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-const GeneratorState = Object(_fable_fable_library_2_3_25_Types_js__WEBPACK_IMPORTED_MODULE_0__["declare"])(function FBlocks_RandomShapeGenerator_GeneratorState(arg1) {
+const GeneratorState = Object(_fable_fable_library_2_4_11_Types_js__WEBPACK_IMPORTED_MODULE_0__["declare"])(function FBlocks_RandomShapeGenerator_GeneratorState(arg1) {
   this.nextShapes = arg1;
-}, _fable_fable_library_2_3_25_Types_js__WEBPACK_IMPORTED_MODULE_0__["Record"]);
+}, _fable_fable_library_2_4_11_Types_js__WEBPACK_IMPORTED_MODULE_0__["Record"]);
 function GeneratorState$reflection() {
-  return Object(_fable_fable_library_2_3_25_Reflection_js__WEBPACK_IMPORTED_MODULE_2__["record"])("FBlocks.RandomShapeGenerator.GeneratorState", [], GeneratorState, () => [["nextShapes", Object(_fable_fable_library_2_3_25_Reflection_js__WEBPACK_IMPORTED_MODULE_2__["list"])(Object(_shape_fs__WEBPACK_IMPORTED_MODULE_1__["ShapeName$reflection"])())]]);
+  return Object(_fable_fable_library_2_4_11_Reflection_js__WEBPACK_IMPORTED_MODULE_2__["record"])("FBlocks.RandomShapeGenerator.GeneratorState", [], GeneratorState, () => [["nextShapes", Object(_fable_fable_library_2_4_11_Reflection_js__WEBPACK_IMPORTED_MODULE_2__["list"])(Object(_shape_fs__WEBPACK_IMPORTED_MODULE_1__["ShapeName$reflection"])())]]);
 }
 const random = {};
 const allShapes = [new _shape_fs__WEBPACK_IMPORTED_MODULE_1__["ShapeName"](0, "D"), new _shape_fs__WEBPACK_IMPORTED_MODULE_1__["ShapeName"](1, "I"), new _shape_fs__WEBPACK_IMPORTED_MODULE_1__["ShapeName"](2, "J"), new _shape_fs__WEBPACK_IMPORTED_MODULE_1__["ShapeName"](3, "L"), new _shape_fs__WEBPACK_IMPORTED_MODULE_1__["ShapeName"](4, "O"), new _shape_fs__WEBPACK_IMPORTED_MODULE_1__["ShapeName"](5, "S"), new _shape_fs__WEBPACK_IMPORTED_MODULE_1__["ShapeName"](6, "Z")];
 function shuffleList(array) {
-  const arrayCopy = Object(_fable_fable_library_2_3_25_Array_js__WEBPACK_IMPORTED_MODULE_3__["copy"])(array, Array);
+  const arrayCopy = Object(_fable_fable_library_2_4_11_Array_js__WEBPACK_IMPORTED_MODULE_3__["copy"])(array, Array);
 
   for (let i = arrayCopy.length - 1; i >= 0; i--) {
-    const j = Object(_fable_fable_library_2_3_25_Util_js__WEBPACK_IMPORTED_MODULE_4__["randomNext"])(0, i + 1) | 0;
+    const j = Object(_fable_fable_library_2_4_11_Util_js__WEBPACK_IMPORTED_MODULE_4__["randomNext"])(0, i + 1) | 0;
     const temp = arrayCopy[i];
     arrayCopy[i] = arrayCopy[j];
     arrayCopy[j] = temp;
   }
 
   const array$$1 = arrayCopy;
-  return Object(_fable_fable_library_2_3_25_Array_js__WEBPACK_IMPORTED_MODULE_3__["toList"])(array$$1);
+  return Object(_fable_fable_library_2_4_11_Array_js__WEBPACK_IMPORTED_MODULE_3__["toList"])(array$$1);
 }
 function getShuffledShapes() {
   const array$$2 = allShapes;
@@ -14221,7 +14478,7 @@ function getList(count, state$$1) {
   const patternInput = getNext(state$$1);
   const shape = patternInput[0];
   const nextState = patternInput[1];
-  initialState = [new _fable_fable_library_2_3_25_Types_js__WEBPACK_IMPORTED_MODULE_0__["List"](shape, new _fable_fable_library_2_3_25_Types_js__WEBPACK_IMPORTED_MODULE_0__["List"]()), nextState];
+  initialState = [new _fable_fable_library_2_4_11_Types_js__WEBPACK_IMPORTED_MODULE_0__["List"](shape, new _fable_fable_library_2_4_11_Types_js__WEBPACK_IMPORTED_MODULE_0__["List"]()), nextState];
 
   const folder = function folder(tupledArg) {
     const shapes = tupledArg[0];
@@ -14230,12 +14487,12 @@ function getList(count, state$$1) {
       const patternInput$$1 = getNext(lastState);
       const nextState$$1 = patternInput$$1[1];
       const nextShape = patternInput$$1[0];
-      return [Object(_fable_fable_library_2_3_25_List_js__WEBPACK_IMPORTED_MODULE_5__["append"])(shapes, new _fable_fable_library_2_3_25_Types_js__WEBPACK_IMPORTED_MODULE_0__["List"](nextShape, new _fable_fable_library_2_3_25_Types_js__WEBPACK_IMPORTED_MODULE_0__["List"]())), nextState$$1];
+      return [Object(_fable_fable_library_2_4_11_List_js__WEBPACK_IMPORTED_MODULE_5__["append"])(shapes, new _fable_fable_library_2_4_11_Types_js__WEBPACK_IMPORTED_MODULE_0__["List"](nextShape, new _fable_fable_library_2_4_11_Types_js__WEBPACK_IMPORTED_MODULE_0__["List"]())), nextState$$1];
     };
   };
 
-  const source = Object(_fable_fable_library_2_3_25_Seq_js__WEBPACK_IMPORTED_MODULE_6__["rangeNumber"])(1, 1, count);
-  return Object(_fable_fable_library_2_3_25_Seq_js__WEBPACK_IMPORTED_MODULE_6__["fold"])(Object(_fable_fable_library_2_3_25_Util_js__WEBPACK_IMPORTED_MODULE_4__["uncurry"])(2, folder), initialState, source);
+  const source = Object(_fable_fable_library_2_4_11_Seq_js__WEBPACK_IMPORTED_MODULE_6__["rangeNumber"])(1, 1, count);
+  return Object(_fable_fable_library_2_4_11_Seq_js__WEBPACK_IMPORTED_MODULE_6__["fold"])(Object(_fable_fable_library_2_4_11_Util_js__WEBPACK_IMPORTED_MODULE_4__["uncurry"])(2, folder), initialState, source);
 }
 function initialize() {
   return new GeneratorState(getShuffledShapes());
@@ -14264,9 +14521,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "drawBlock", function() { return drawBlock; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "redraw", function() { return redraw; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "drawNextBlock", function() { return drawNextBlock; });
-/* harmony import */ var _fable_fable_library_2_3_25_Types_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../.fable/fable-library.2.3.25/Types.js */ "./.fable/fable-library.2.3.25/Types.js");
-/* harmony import */ var _fable_fable_library_2_3_25_Reflection_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../.fable/fable-library.2.3.25/Reflection.js */ "./.fable/fable-library.2.3.25/Reflection.js");
-/* harmony import */ var _fable_fable_library_2_3_25_String_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../.fable/fable-library.2.3.25/String.js */ "./.fable/fable-library.2.3.25/String.js");
+/* harmony import */ var _fable_fable_library_2_4_11_Types_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../.fable/fable-library.2.4.11/Types.js */ "./.fable/fable-library.2.4.11/Types.js");
+/* harmony import */ var _fable_fable_library_2_4_11_Reflection_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../.fable/fable-library.2.4.11/Reflection.js */ "./.fable/fable-library.2.4.11/Reflection.js");
+/* harmony import */ var _fable_fable_library_2_4_11_String_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../.fable/fable-library.2.4.11/String.js */ "./.fable/fable-library.2.4.11/String.js");
 /* harmony import */ var _matrix_fs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./matrix.fs */ "./src/matrix.fs");
 /* harmony import */ var _grid_fs__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./grid.fs */ "./src/grid.fs");
 /* harmony import */ var _shape_fs__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./shape.fs */ "./src/shape.fs");
@@ -14276,17 +14533,17 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-const Renderer = Object(_fable_fable_library_2_3_25_Types_js__WEBPACK_IMPORTED_MODULE_0__["declare"])(function FBlocks_Renderer_Renderer(arg1) {
+const Renderer = Object(_fable_fable_library_2_4_11_Types_js__WEBPACK_IMPORTED_MODULE_0__["declare"])(function FBlocks_Renderer_Renderer(arg1) {
   this.canvas = arg1;
-}, _fable_fable_library_2_3_25_Types_js__WEBPACK_IMPORTED_MODULE_0__["Record"]);
+}, _fable_fable_library_2_4_11_Types_js__WEBPACK_IMPORTED_MODULE_0__["Record"]);
 function Renderer$reflection() {
-  return Object(_fable_fable_library_2_3_25_Reflection_js__WEBPACK_IMPORTED_MODULE_1__["record"])("FBlocks.Renderer.Renderer", [], Renderer, () => [["canvas", Object(_fable_fable_library_2_3_25_Reflection_js__WEBPACK_IMPORTED_MODULE_1__["type"])("Fable.Import.Browser.HTMLCanvasElement")]]);
+  return Object(_fable_fable_library_2_4_11_Reflection_js__WEBPACK_IMPORTED_MODULE_1__["record"])("FBlocks.Renderer.Renderer", [], Renderer, () => [["canvas", Object(_fable_fable_library_2_4_11_Reflection_js__WEBPACK_IMPORTED_MODULE_1__["type"])("Fable.Import.Browser.HTMLCanvasElement")]]);
 }
 const blockSize = 24;
 function setAlpha(alpha, color) {
   const arg10 = color;
   const arg20 = alpha | 0;
-  const clo1 = Object(_fable_fable_library_2_3_25_String_js__WEBPACK_IMPORTED_MODULE_2__["toText"])(Object(_fable_fable_library_2_3_25_String_js__WEBPACK_IMPORTED_MODULE_2__["printf"])("%s%X"));
+  const clo1 = Object(_fable_fable_library_2_4_11_String_js__WEBPACK_IMPORTED_MODULE_2__["toText"])(Object(_fable_fable_library_2_4_11_String_js__WEBPACK_IMPORTED_MODULE_2__["printf"])("%s%X"));
   const clo2 = clo1(arg10);
   return clo2(arg20);
 }
@@ -14364,19 +14621,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "calculateLevel", function() { return calculateLevel; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "update", function() { return update; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "difference", function() { return difference; });
-/* harmony import */ var _fable_fable_library_2_3_25_Types_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../.fable/fable-library.2.3.25/Types.js */ "./.fable/fable-library.2.3.25/Types.js");
-/* harmony import */ var _fable_fable_library_2_3_25_Reflection_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../.fable/fable-library.2.3.25/Reflection.js */ "./.fable/fable-library.2.3.25/Reflection.js");
-/* harmony import */ var _fable_fable_library_2_3_25_String_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../.fable/fable-library.2.3.25/String.js */ "./.fable/fable-library.2.3.25/String.js");
+/* harmony import */ var _fable_fable_library_2_4_11_Types_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../.fable/fable-library.2.4.11/Types.js */ "./.fable/fable-library.2.4.11/Types.js");
+/* harmony import */ var _fable_fable_library_2_4_11_Reflection_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../.fable/fable-library.2.4.11/Reflection.js */ "./.fable/fable-library.2.4.11/Reflection.js");
+/* harmony import */ var _fable_fable_library_2_4_11_String_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../.fable/fable-library.2.4.11/String.js */ "./.fable/fable-library.2.4.11/String.js");
 
 
 
-const Score = Object(_fable_fable_library_2_3_25_Types_js__WEBPACK_IMPORTED_MODULE_0__["declare"])(function FBlocks_Score_Score(arg1, arg2, arg3) {
+const Score = Object(_fable_fable_library_2_4_11_Types_js__WEBPACK_IMPORTED_MODULE_0__["declare"])(function FBlocks_Score_Score(arg1, arg2, arg3) {
   this.level = arg1 | 0;
   this.linesCompleted = arg2 | 0;
   this.points = arg3 | 0;
-}, _fable_fable_library_2_3_25_Types_js__WEBPACK_IMPORTED_MODULE_0__["Record"]);
+}, _fable_fable_library_2_4_11_Types_js__WEBPACK_IMPORTED_MODULE_0__["Record"]);
 function Score$reflection() {
-  return Object(_fable_fable_library_2_3_25_Reflection_js__WEBPACK_IMPORTED_MODULE_1__["record"])("FBlocks.Score.Score", [], Score, () => [["level", _fable_fable_library_2_3_25_Reflection_js__WEBPACK_IMPORTED_MODULE_1__["int32"]], ["linesCompleted", _fable_fable_library_2_3_25_Reflection_js__WEBPACK_IMPORTED_MODULE_1__["int32"]], ["points", _fable_fable_library_2_3_25_Reflection_js__WEBPACK_IMPORTED_MODULE_1__["int32"]]]);
+  return Object(_fable_fable_library_2_4_11_Reflection_js__WEBPACK_IMPORTED_MODULE_1__["record"])("FBlocks.Score.Score", [], Score, () => [["level", _fable_fable_library_2_4_11_Reflection_js__WEBPACK_IMPORTED_MODULE_1__["int32"]], ["linesCompleted", _fable_fable_library_2_4_11_Reflection_js__WEBPACK_IMPORTED_MODULE_1__["int32"]], ["points", _fable_fable_library_2_4_11_Reflection_js__WEBPACK_IMPORTED_MODULE_1__["int32"]]]);
 }
 const initial = new Score(0, 0, 0);
 function linesToNextLevel(currentLevel) {
@@ -14431,7 +14688,7 @@ function calculatePoints(linesCompleted) {
 
     default:
       {
-        throw new Error((arg10 = linesCompleted | 0, (clo1 = Object(_fable_fable_library_2_3_25_String_js__WEBPACK_IMPORTED_MODULE_2__["toText"])(Object(_fable_fable_library_2_3_25_String_js__WEBPACK_IMPORTED_MODULE_2__["printf"])("Invalid number of lines completed: %i")), clo1(arg10))) + "\\nParameter name: " + "linesCompleted");
+        throw new Error((arg10 = linesCompleted | 0, (clo1 = Object(_fable_fable_library_2_4_11_String_js__WEBPACK_IMPORTED_MODULE_2__["toText"])(Object(_fable_fable_library_2_4_11_String_js__WEBPACK_IMPORTED_MODULE_2__["printf"])("Invalid number of lines completed: %i")), clo1(arg10))) + "\\nParameter name: " + "linesCompleted");
       }
   }
 }
@@ -14471,27 +14728,27 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getShapeColor", function() { return getShapeColor; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getShapeMatrix", function() { return getShapeMatrix; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "filledCellCoords", function() { return filledCellCoords; });
-/* harmony import */ var _fable_fable_library_2_3_25_Types_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../.fable/fable-library.2.3.25/Types.js */ "./.fable/fable-library.2.3.25/Types.js");
-/* harmony import */ var _fable_fable_library_2_3_25_Reflection_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../.fable/fable-library.2.3.25/Reflection.js */ "./.fable/fable-library.2.3.25/Reflection.js");
+/* harmony import */ var _fable_fable_library_2_4_11_Types_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../.fable/fable-library.2.4.11/Types.js */ "./.fable/fable-library.2.4.11/Types.js");
+/* harmony import */ var _fable_fable_library_2_4_11_Reflection_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../.fable/fable-library.2.4.11/Reflection.js */ "./.fable/fable-library.2.4.11/Reflection.js");
 /* harmony import */ var _matrix_fs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./matrix.fs */ "./src/matrix.fs");
 /* harmony import */ var _coord_fs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./coord.fs */ "./src/coord.fs");
-/* harmony import */ var _fable_fable_library_2_3_25_Seq_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../.fable/fable-library.2.3.25/Seq.js */ "./.fable/fable-library.2.3.25/Seq.js");
+/* harmony import */ var _fable_fable_library_2_4_11_Seq_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../.fable/fable-library.2.4.11/Seq.js */ "./.fable/fable-library.2.4.11/Seq.js");
 
 
 
 
 
-const ShapeCell = Object(_fable_fable_library_2_3_25_Types_js__WEBPACK_IMPORTED_MODULE_0__["declare"])(function FBlocks_Shape_ShapeCell(tag, name, ...fields) {
-  _fable_fable_library_2_3_25_Types_js__WEBPACK_IMPORTED_MODULE_0__["Union"].call(this, tag, name, ...fields);
-}, _fable_fable_library_2_3_25_Types_js__WEBPACK_IMPORTED_MODULE_0__["Union"]);
+const ShapeCell = Object(_fable_fable_library_2_4_11_Types_js__WEBPACK_IMPORTED_MODULE_0__["declare"])(function FBlocks_Shape_ShapeCell(tag, name, ...fields) {
+  _fable_fable_library_2_4_11_Types_js__WEBPACK_IMPORTED_MODULE_0__["Union"].call(this, tag, name, ...fields);
+}, _fable_fable_library_2_4_11_Types_js__WEBPACK_IMPORTED_MODULE_0__["Union"]);
 function ShapeCell$reflection() {
-  return Object(_fable_fable_library_2_3_25_Reflection_js__WEBPACK_IMPORTED_MODULE_1__["union"])("FBlocks.Shape.ShapeCell", [], ShapeCell, () => ["EmptyCell", ["FilledCell", [_fable_fable_library_2_3_25_Reflection_js__WEBPACK_IMPORTED_MODULE_1__["string"]]]]);
+  return Object(_fable_fable_library_2_4_11_Reflection_js__WEBPACK_IMPORTED_MODULE_1__["union"])("FBlocks.Shape.ShapeCell", [], ShapeCell, () => ["EmptyCell", ["FilledCell", [_fable_fable_library_2_4_11_Reflection_js__WEBPACK_IMPORTED_MODULE_1__["string"]]]]);
 }
-const ShapeName = Object(_fable_fable_library_2_3_25_Types_js__WEBPACK_IMPORTED_MODULE_0__["declare"])(function FBlocks_Shape_ShapeName(tag, name, ...fields) {
-  _fable_fable_library_2_3_25_Types_js__WEBPACK_IMPORTED_MODULE_0__["Union"].call(this, tag, name, ...fields);
-}, _fable_fable_library_2_3_25_Types_js__WEBPACK_IMPORTED_MODULE_0__["Union"]);
+const ShapeName = Object(_fable_fable_library_2_4_11_Types_js__WEBPACK_IMPORTED_MODULE_0__["declare"])(function FBlocks_Shape_ShapeName(tag, name, ...fields) {
+  _fable_fable_library_2_4_11_Types_js__WEBPACK_IMPORTED_MODULE_0__["Union"].call(this, tag, name, ...fields);
+}, _fable_fable_library_2_4_11_Types_js__WEBPACK_IMPORTED_MODULE_0__["Union"]);
 function ShapeName$reflection() {
-  return Object(_fable_fable_library_2_3_25_Reflection_js__WEBPACK_IMPORTED_MODULE_1__["union"])("FBlocks.Shape.ShapeName", [], ShapeName, () => ["D", "I", "J", "L", "O", "S", "Z"]);
+  return Object(_fable_fable_library_2_4_11_Reflection_js__WEBPACK_IMPORTED_MODULE_1__["union"])("FBlocks.Shape.ShapeName", [], ShapeName, () => ["D", "I", "J", "L", "O", "S", "Z"]);
 }
 function isCellFilled(cell) {
   if (cell.tag === 0) {
@@ -14560,11 +14817,11 @@ function filledCellCoords(shape) {
   source = Object(_matrix_fs__WEBPACK_IMPORTED_MODULE_2__["flatmapi"])(function mapping$$1(x$$2, y, v) {
     return [Object(_coord_fs__WEBPACK_IMPORTED_MODULE_3__["create"])(x$$2, y), v];
   }, matrix$$1);
-  source$$1 = Object(_fable_fable_library_2_3_25_Seq_js__WEBPACK_IMPORTED_MODULE_4__["filter"])(function predicate(tupledArg) {
+  source$$1 = Object(_fable_fable_library_2_4_11_Seq_js__WEBPACK_IMPORTED_MODULE_4__["filter"])(function predicate(tupledArg) {
     const v$$1 = tupledArg[1];
     return isCellFilled(v$$1);
   }, source);
-  return Object(_fable_fable_library_2_3_25_Seq_js__WEBPACK_IMPORTED_MODULE_4__["map"])(function mapping$$2(tupledArg$$1) {
+  return Object(_fable_fable_library_2_4_11_Seq_js__WEBPACK_IMPORTED_MODULE_4__["map"])(function mapping$$2(tupledArg$$1) {
     const coord = tupledArg$$1[0];
     return coord;
   }, source$$1);
@@ -14588,15 +14845,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "difference", function() { return difference; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fromMilliseconds", function() { return fromMilliseconds; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getCurrent", function() { return getCurrent; });
-/* harmony import */ var _fable_fable_library_2_3_25_Types_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../.fable/fable-library.2.3.25/Types.js */ "./.fable/fable-library.2.3.25/Types.js");
-/* harmony import */ var _fable_fable_library_2_3_25_Reflection_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../.fable/fable-library.2.3.25/Reflection.js */ "./.fable/fable-library.2.3.25/Reflection.js");
+/* harmony import */ var _fable_fable_library_2_4_11_Types_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../.fable/fable-library.2.4.11/Types.js */ "./.fable/fable-library.2.4.11/Types.js");
+/* harmony import */ var _fable_fable_library_2_4_11_Reflection_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../.fable/fable-library.2.4.11/Reflection.js */ "./.fable/fable-library.2.4.11/Reflection.js");
 
 
-const Time = Object(_fable_fable_library_2_3_25_Types_js__WEBPACK_IMPORTED_MODULE_0__["declare"])(function FBlocks_Time_Time(tag, name, ...fields) {
-  _fable_fable_library_2_3_25_Types_js__WEBPACK_IMPORTED_MODULE_0__["Union"].call(this, tag, name, ...fields);
-}, _fable_fable_library_2_3_25_Types_js__WEBPACK_IMPORTED_MODULE_0__["Union"]);
+const Time = Object(_fable_fable_library_2_4_11_Types_js__WEBPACK_IMPORTED_MODULE_0__["declare"])(function FBlocks_Time_Time(tag, name, ...fields) {
+  _fable_fable_library_2_4_11_Types_js__WEBPACK_IMPORTED_MODULE_0__["Union"].call(this, tag, name, ...fields);
+}, _fable_fable_library_2_4_11_Types_js__WEBPACK_IMPORTED_MODULE_0__["Union"]);
 function Time$reflection() {
-  return Object(_fable_fable_library_2_3_25_Reflection_js__WEBPACK_IMPORTED_MODULE_1__["union"])("FBlocks.Time.Time", [], Time, () => [["Time", [_fable_fable_library_2_3_25_Reflection_js__WEBPACK_IMPORTED_MODULE_1__["float64"]]]]);
+  return Object(_fable_fable_library_2_4_11_Reflection_js__WEBPACK_IMPORTED_MODULE_1__["union"])("FBlocks.Time.Time", [], Time, () => [["Time", [_fable_fable_library_2_4_11_Reflection_js__WEBPACK_IMPORTED_MODULE_1__["float64"]]]]);
 }
 const zero = new Time(0, "Time", 0);
 function add(_arg2, _arg1) {
