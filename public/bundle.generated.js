@@ -14637,25 +14637,7 @@ function Score$reflection() {
 }
 const initial = new Score(0, 0, 0);
 function linesToNextLevel(currentLevel) {
-  const calcLinesToNextLevel = function calcLinesToNextLevel($level$$2, $total$$3) {
-    calcLinesToNextLevel: while (true) {
-      const level = $level$$2,
-            total = $total$$3;
-
-      if (level < 0) {
-        return total | 0;
-      } else {
-        const linesAtCurrentLevel = (level + 1) * 10 | 0;
-        $level$$2 = level - 1;
-        $total$$3 = total + linesAtCurrentLevel;
-        continue calcLinesToNextLevel;
-      }
-
-      break;
-    }
-  };
-
-  return calcLinesToNextLevel(currentLevel, 0) | 0;
+  return (currentLevel + 1) * 10;
 }
 function calculatePoints(linesCompleted) {
   var arg10, clo1;
@@ -14692,13 +14674,13 @@ function calculatePoints(linesCompleted) {
       }
   }
 }
-function calculateLevel(level$$1, totalLinesCompleted) {
-  const linesNeeded = linesToNextLevel(level$$1) | 0;
+function calculateLevel(level, totalLinesCompleted) {
+  const linesNeeded = linesToNextLevel(level) | 0;
 
   if (totalLinesCompleted >= linesNeeded) {
-    return level$$1 + 1 | 0;
+    return level + 1 | 0;
   } else {
-    return level$$1 | 0;
+    return level | 0;
   }
 }
 function update(score, linesCompleted$$1) {

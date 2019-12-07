@@ -16,14 +16,7 @@ let initial =
     }
 
 let linesToNextLevel currentLevel =
-    let rec calcLinesToNextLevel level total =
-        if level < 0 then
-            total
-        else
-            let linesAtCurrentLevel = (level + 1) * 10
-            calcLinesToNextLevel (level - 1) (total + linesAtCurrentLevel)
-
-    calcLinesToNextLevel currentLevel 0
+    (currentLevel + 1) * 10
 
 let calculatePoints linesCompleted =
     match linesCompleted with
