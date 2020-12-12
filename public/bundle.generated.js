@@ -86,9 +86,9 @@
 /************************************************************************/
 /******/ ({
 
-/***/ "./.fable/fable-library.2.4.21/Array.js":
+/***/ "./.fable/fable-library.2.13.0/Array.js":
 /*!**********************************************!*\
-  !*** ./.fable/fable-library.2.4.21/Array.js ***!
+  !*** ./.fable/fable-library.2.13.0/Array.js ***!
   \**********************************************/
 /*! exports provided: append, filter, fill, getSubArray, last, tryLast, mapIndexed, map, mapIndexed2, map2, mapIndexed3, map3, mapFold, mapFoldBack, indexed, truncate, concat, collect, countBy, distinctBy, distinct, where, contains, except, groupBy, empty, singleton, initialize, pairwise, replicate, copy, reverse, scan, scanBack, skip, skipWhile, take, takeWhile, addInPlace, addRangeInPlace, removeInPlace, removeAllInPlace, copyTo, partition, find, tryFind, findIndex, tryFindIndex, pick, tryPick, findBack, tryFindBack, findLastIndex, findIndexBack, tryFindIndexBack, choose, foldIndexed, fold, iterate, iterateIndexed, iterate2, iterateIndexed2, isEmpty, forAll, permute, setSlice, sortInPlaceBy, sortInPlace, sort, sortBy, sortDescending, sortByDescending, sortWith, unfold, unzip, unzip3, zip, zip3, chunkBySize, splitAt, compareWith, equalsWith, exactlyOne, head, tryHead, tail, item, tryItem, foldBackIndexed, foldBack, foldIndexed2, fold2, foldBackIndexed2, foldBack2, reduce, reduceBack, forAll2, existsOffset, exists, existsOffset2, exists2, sum, sumBy, maxBy, max, minBy, min, average, averageBy, ofSeq, ofList, toList, windowed, splitInto, transpose */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -210,12 +210,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "windowed", function() { return windowed; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "splitInto", function() { return splitInto; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "transpose", function() { return transpose; });
-/* harmony import */ var _Option_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Option.js */ "./.fable/fable-library.2.4.21/Option.js");
-/* harmony import */ var _Util_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Util.js */ "./.fable/fable-library.2.4.21/Util.js");
-/* harmony import */ var _Map_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Map.js */ "./.fable/fable-library.2.4.21/Map.js");
-/* harmony import */ var _Set_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Set.js */ "./.fable/fable-library.2.4.21/Set.js");
-/* harmony import */ var _Types_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Types.js */ "./.fable/fable-library.2.4.21/Types.js");
-/* harmony import */ var _Seq_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Seq.js */ "./.fable/fable-library.2.4.21/Seq.js");
+/* harmony import */ var _Option_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Option.js */ "./.fable/fable-library.2.13.0/Option.js");
+/* harmony import */ var _Util_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Util.js */ "./.fable/fable-library.2.13.0/Util.js");
+/* harmony import */ var _Map_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Map.js */ "./.fable/fable-library.2.13.0/Map.js");
+/* harmony import */ var _Set_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Set.js */ "./.fable/fable-library.2.13.0/Set.js");
+/* harmony import */ var _Types_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Types.js */ "./.fable/fable-library.2.13.0/Types.js");
+/* harmony import */ var _Seq_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Seq.js */ "./.fable/fable-library.2.13.0/Seq.js");
 
 
 
@@ -255,13 +255,15 @@ function getSubArray(array$$3, start$$1, count$$2) {
 function last(array$$5) {
   if (array$$5.length === 0) {
     throw new Error("The input array was empty\\nParameter name: array");
+  } else {
+    void null;
   }
 
   return array$$5[array$$5.length - 1];
 }
 function tryLast(array$$6) {
   if (array$$6.length === 0) {
-    return null;
+    return undefined;
   } else {
     return Object(_Option_js__WEBPACK_IMPORTED_MODULE_0__["some"])(array$$6[array$$6.length - 1]);
   }
@@ -301,6 +303,8 @@ function map(f$$1, source$$1, cons$$2) {
 function mapIndexed2(f$$2, source1, source2, cons$$3) {
   if (source1.length !== source2.length) {
     throw new Error("Arrays had different lengths");
+  } else {
+    void null;
   }
 
   const result = new cons$$3(source1.length);
@@ -314,6 +318,8 @@ function mapIndexed2(f$$2, source1, source2, cons$$3) {
 function map2(f$$3, source1$$1, source2$$1, cons$$4) {
   if (source1$$1.length !== source2$$1.length) {
     throw new Error("Arrays had different lengths");
+  } else {
+    void null;
   }
 
   const result$$1 = new cons$$4(source1$$1.length);
@@ -327,6 +333,8 @@ function map2(f$$3, source1$$1, source2$$1, cons$$4) {
 function mapIndexed3(f$$4, source1$$2, source2$$2, source3, cons$$5) {
   if (source1$$2.length !== source2$$2.length ? true : source2$$2.length !== source3.length) {
     throw new Error("Arrays had different lengths");
+  } else {
+    void null;
   }
 
   const result$$2 = new cons$$5(source1$$2.length);
@@ -340,6 +348,8 @@ function mapIndexed3(f$$4, source1$$2, source2$$2, source3, cons$$5) {
 function map3(f$$5, source1$$3, source2$$3, source3$$1, cons$$6) {
   if (source1$$3.length !== source2$$3.length ? true : source2$$3.length !== source3$$1.length) {
     throw new Error("Arrays had different lengths");
+  } else {
+    void null;
   }
 
   const result$$3 = new cons$$6(source1$$3.length);
@@ -552,6 +562,8 @@ function singleton(value$$6, cons$$14) {
 function initialize(count$$8, initializer, cons$$15) {
   if (count$$8 < 0) {
     throw new Error("The input must be non-negative\\nParameter name: count");
+  } else {
+    void null;
   }
 
   const result$$7 = new cons$$15(count$$8);
@@ -579,6 +591,8 @@ function pairwise(array$$30) {
 function replicate(count$$10, initial, cons$$16) {
   if (count$$10 < 0) {
     throw new Error("The input must be non-negative\\nParameter name: count");
+  } else {
+    void null;
   }
 
   const result$$9 = new cons$$16(count$$10);
@@ -619,6 +633,8 @@ function scanBack(folder$$1, array$$38, state$$3, cons$$20) {
 function skip(count$$11, array$$39, cons$$21) {
   if (count$$11 > array$$39.length) {
     throw new Error("count is greater than array length\\nParameter name: count");
+  } else {
+    void null;
   }
 
   if (count$$11 === array$$39.length) {
@@ -645,10 +661,14 @@ function skipWhile(predicate$$7, array$$41, cons$$23) {
 function take(count$$16, array$$43, cons$$25) {
   if (count$$16 < 0) {
     throw new Error("The input must be non-negative\\nParameter name: count");
+  } else {
+    void null;
   }
 
   if (count$$16 > array$$43.length) {
     throw new Error("count is greater than array length\\nParameter name: count");
+  } else {
+    void null;
   }
 
   if (count$$16 === 0) {
@@ -761,7 +781,7 @@ function tryFindIndex(predicate$$17, array$$65) {
   if (matchValue$$7 > -1) {
     return matchValue$$7;
   } else {
-    return null;
+    return undefined;
   }
 }
 function pick(chooser, array$$67) {
@@ -795,7 +815,7 @@ function tryPick(chooser$$1, array$$68) {
       const i$$23 = $i$$23$$152;
 
       if (i$$23 >= array$$68.length) {
-        return null;
+        return undefined;
       } else {
         const matchValue$$9 = chooser$$1(array$$68[i$$23]);
 
@@ -839,7 +859,7 @@ function tryFindBack(predicate$$20, array$$70) {
       const i$$25 = $i$$25$$158;
 
       if (i$$25 < 0) {
-        return null;
+        return undefined;
       } else if (predicate$$20(array$$70[i$$25])) {
         return Object(_Option_js__WEBPACK_IMPORTED_MODULE_0__["some"])(array$$70[i$$25]);
       } else {
@@ -899,7 +919,7 @@ function tryFindIndexBack(predicate$$23, array$$73) {
       const i$$28 = $i$$28$$167;
 
       if (i$$28 < 0) {
-        return null;
+        return undefined;
       } else if (predicate$$23(array$$73[i$$28])) {
         return i$$28;
       } else {
@@ -946,6 +966,8 @@ function iterateIndexed(action$$1, array$$81) {
 function iterate2(action$$2, array1$$2, array2$$2) {
   if (array1$$2.length !== array2$$2.length) {
     throw new Error("Arrays had different lengths");
+  } else {
+    void null;
   }
 
   for (let i$$32 = 0; i$$32 <= array1$$2.length - 1; i$$32++) {
@@ -955,6 +977,8 @@ function iterate2(action$$2, array1$$2, array2$$2) {
 function iterateIndexed2(action$$3, array1$$3, array2$$3) {
   if (array1$$3.length !== array2$$3.length) {
     throw new Error("Arrays had different lengths");
+  } else {
+    void null;
   }
 
   for (let i$$33 = 0; i$$33 <= array1$$3.length - 1; i$$33++) {
@@ -976,6 +1000,8 @@ function permute(f$$8, array$$85) {
 
     if (j$$1 < 0 ? true : j$$1 >= size) {
       throw new Error("Not a valid permutation");
+    } else {
+      void null;
     }
 
     res$$7[j$$1] = x$$9;
@@ -988,6 +1014,8 @@ function permute(f$$8, array$$85) {
 
   if (!isValid) {
     throw new Error("Not a valid permutation");
+  } else {
+    void null;
   }
 
   return res$$7;
@@ -1059,6 +1087,8 @@ function unfold(generator, state$$8) {
         void value$$11;
         $state$$9$$226 = s$$2;
         continue loop$$8;
+      } else {
+        void null;
       }
 
       break;
@@ -1093,6 +1123,8 @@ function unzip3(array$$96) {
 function zip(array1$$4, array2$$4) {
   if (array1$$4.length !== array2$$4.length) {
     throw new Error("Arrays had different lengths");
+  } else {
+    void null;
   }
 
   let result$$10;
@@ -1108,6 +1140,8 @@ function zip(array1$$4, array2$$4) {
 function zip3(array1$$5, array2$$5, array3) {
   if (array1$$5.length !== array2$$5.length ? true : array2$$5.length !== array3.length) {
     throw new Error("Arrays had different lengths");
+  } else {
+    void null;
   }
 
   let result$$11;
@@ -1123,6 +1157,8 @@ function zip3(array1$$5, array2$$5, array3) {
 function chunkBySize(chunkSize, array$$97) {
   if (chunkSize < 1) {
     throw new Error("The input must be positive.\\nParameter name: size");
+  } else {
+    void null;
   }
 
   if (array$$97.length === 0) {
@@ -1143,10 +1179,14 @@ function chunkBySize(chunkSize, array$$97) {
 function splitAt(index$$4, array$$100) {
   if (index$$4 < 0) {
     throw new Error("The input must be non-negative\\nParameter name: index");
+  } else {
+    void null;
   }
 
   if (index$$4 > array$$100.length) {
     throw new Error("The input sequence has an insufficient number of elements.\\nParameter name: index");
+  } else {
+    void null;
   }
 
   return [array$$100.slice(0, 0 + index$$4), array$$100.slice(index$$4)];
@@ -1201,7 +1241,7 @@ function head(array$$104) {
 }
 function tryHead(array$$105) {
   if (array$$105.length === 0) {
-    return null;
+    return undefined;
   } else {
     return Object(_Option_js__WEBPACK_IMPORTED_MODULE_0__["some"])(array$$105[0]);
   }
@@ -1209,6 +1249,8 @@ function tryHead(array$$105) {
 function tail(array$$106) {
   if (array$$106.length === 0) {
     throw new Error("Not enough elements\\nParameter name: array");
+  } else {
+    void null;
   }
 
   return array$$106.slice(1);
@@ -1218,7 +1260,7 @@ function item(index$$5, array$$108) {
 }
 function tryItem(index$$6, array$$109) {
   if (index$$6 < 0 ? true : index$$6 >= array$$109.length) {
-    return null;
+    return undefined;
   } else {
     return Object(_Option_js__WEBPACK_IMPORTED_MODULE_0__["some"])(array$$109[index$$6]);
   }
@@ -1238,6 +1280,8 @@ function foldIndexed2(folder$$10, state$$14, array1$$8, array2$$8) {
 
   if (array1$$8.length !== array2$$8.length) {
     throw new Error("Arrays have different lengths");
+  } else {
+    void null;
   }
 
   for (let i$$42 = 0; i$$42 <= array1$$8.length - 1; i$$42++) {
@@ -1256,6 +1300,8 @@ function foldBackIndexed2(folder$$12, array1$$10, array2$$10, state$$16) {
 
   if (array1$$10.length !== array2$$10.length) {
     throw new Error("Arrays had different lengths");
+  } else {
+    void null;
   }
 
   const size$$1 = array1$$10.length | 0;
@@ -1274,6 +1320,8 @@ function foldBack2(f$$9, array1$$11, array2$$11, state$$17) {
 function reduce(reduction, array$$114) {
   if (array$$114.length === 0) {
     throw new Error("The input array was empty");
+  } else {
+    void null;
   }
 
   return array$$114.reduce(reduction);
@@ -1281,6 +1329,8 @@ function reduce(reduction, array$$114) {
 function reduceBack(reduction$$2, array$$116) {
   if (array$$116.length === 0) {
     throw new Error("The input array was empty");
+  } else {
+    void null;
   }
 
   return array$$116.reduceRight(reduction$$2);
@@ -1338,6 +1388,8 @@ function existsOffset2($predicate$$32$$286, $array1$$13$$287, $array2$$13$$288, 
 function exists2(predicate$$33, array1$$14, array2$$14) {
   if (array1$$14.length !== array2$$14.length) {
     throw new Error("Arrays had different lengths");
+  } else {
+    void null;
   }
 
   return existsOffset2(predicate$$33, array1$$14, array2$$14, 0);
@@ -1383,6 +1435,8 @@ function min(xs$$15, comparer$$17) {
 function average(array$$122, averager) {
   if (array$$122.length === 0) {
     throw new Error("The input array was empty\\nParameter name: array");
+  } else {
+    void null;
   }
 
   let total = averager.GetZero();
@@ -1396,6 +1450,8 @@ function average(array$$122, averager) {
 function averageBy(projection$$9, array$$123, averager$$1) {
   if (array$$123.length === 0) {
     throw new Error("The input array was empty\\nParameter name: array");
+  } else {
+    void null;
   }
 
   let total$$1 = averager$$1.GetZero();
@@ -1425,6 +1481,8 @@ function toList(source$$8) {
 function windowed(windowSize, source$$9) {
   if (windowSize <= 0) {
     throw new Error("windowSize must be positive");
+  } else {
+    void null;
   }
 
   let res$$9;
@@ -1440,6 +1498,8 @@ function windowed(windowSize, source$$9) {
 function splitInto(chunks, array$$124) {
   if (chunks < 1) {
     throw new Error("The input must be positive.\\nParameter name: chunks");
+  } else {
+    void null;
   }
 
   if (array$$124.length === 0) {
@@ -1475,6 +1535,8 @@ function transpose(arrays$$2, cons$$33) {
       return a.length === lenInner;
     }, arrays$$3)), (!value$$14)) {
       throw new Error("Arrays had different lengths");
+    } else {
+      void null;
     }
 
     const result$$15 = new Array(lenInner);
@@ -1493,11 +1555,11 @@ function transpose(arrays$$2, cons$$33) {
 
 /***/ }),
 
-/***/ "./.fable/fable-library.2.4.21/Date.js":
+/***/ "./.fable/fable-library.2.13.0/Date.js":
 /*!*********************************************!*\
-  !*** ./.fable/fable-library.2.4.21/Date.js ***!
+  !*** ./.fable/fable-library.2.13.0/Date.js ***!
   \*********************************************/
-/*! exports provided: offsetRegex, dateOffsetToString, dateToHalfUTCString, toString, default, fromTicks, fromDateTimeOffset, getTicks, minValue, maxValue, parseRaw, parse, tryParse, create, now, utcNow, today, isLeapYear, daysInMonth, toUniversalTime, toLocalTime, specifyKind, timeOfDay, date, day, hour, millisecond, minute, month, second, year, dayOfWeek, dayOfYear, add, addDays, addHours, addMinutes, addSeconds, addMilliseconds, addYears, addMonths, subtract, toLongDateString, toShortDateString, toLongTimeString, toShortTimeString, equals, compare, compareTo, op_Addition, op_Subtraction, isDaylightSavingTime */
+/*! exports provided: offsetRegex, dateOffsetToString, dateToHalfUTCString, toString, DateTime, fromTicks, fromDateTimeOffset, getTicks, minValue, maxValue, parseRaw, parse, tryParse, create, now, utcNow, today, isLeapYear, daysInMonth, toUniversalTime, toLocalTime, specifyKind, timeOfDay, date, day, hour, millisecond, minute, month, second, year, dayOfWeek, dayOfYear, add, addDays, addHours, addMinutes, addSeconds, addMilliseconds, addYears, addMonths, subtract, toLongDateString, toShortDateString, toLongTimeString, toShortTimeString, equals, compare, compareTo, op_Addition, op_Subtraction, isDaylightSavingTime, default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1506,7 +1568,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "dateOffsetToString", function() { return dateOffsetToString; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "dateToHalfUTCString", function() { return dateToHalfUTCString; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "toString", function() { return toString; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return DateTime; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DateTime", function() { return DateTime; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fromTicks", function() { return fromTicks; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fromDateTimeOffset", function() { return fromDateTimeOffset; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getTicks", function() { return getTicks; });
@@ -1554,8 +1616,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "op_Addition", function() { return op_Addition; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "op_Subtraction", function() { return op_Subtraction; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isDaylightSavingTime", function() { return isDaylightSavingTime; });
-/* harmony import */ var _Long__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Long */ "./.fable/fable-library.2.4.21/Long.js");
-/* harmony import */ var _Util__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Util */ "./.fable/fable-library.2.4.21/Util.js");
+/* harmony import */ var _Long__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Long */ "./.fable/fable-library.2.13.0/Long.js");
+/* harmony import */ var _Util__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Util */ "./.fable/fable-library.2.13.0/Util.js");
 /**
  * DateTimeOffset functions.
  *
@@ -1731,12 +1793,18 @@ function maxValue() {
     // This is "9999-12-31T23:59:59.999Z", actual JS max value is 8640000000000000
     return DateTime(253402300799999, 0 /* Unspecified */);
 }
-function parseRaw(str) {
-    let date = new Date(str);
+function parseRaw(input) {
+    if (input === null) {
+        throw new Error("Value cannot be null when parsing DateTime");
+    }
+    if (input.trim() === "") {
+        throw new Error("An empty string is not recognized as a valid DateTime");
+    }
+    let date = new Date(input);
     if (isNaN(date.getTime())) {
         // Try to check strings JS Date cannot parse (see #1045, #1422)
         // tslint:disable-next-line:max-line-length
-        const m = /^\s*(\d+[^\w\s:]\d+[^\w\s:]\d+)?\s*(\d+:\d+(?::\d+(?:\.\d+)?)?)?\s*([AaPp][Mm])?\s*([+-]\d+(?::\d+)?)?\s*$/.exec(str);
+        const m = /^\s*(\d+[^\w\s:]\d+[^\w\s:]\d+)?\s*(\d+:\d+(?::\d+(?:\.\d+)?)?)?\s*([AaPp][Mm])?\s*([+-]\d+(?::\d+)?)?\s*$/.exec(input);
         if (m != null) {
             let baseDate;
             let timeInSeconds = 0;
@@ -1796,10 +1864,6 @@ function parse(str, detectUTC = false) {
 }
 function tryParse(v, _refValue) {
     try {
-        // if value is null or whitespace, parsing fails
-        if (v == null || v.trim() === "") {
-            return [false, minValue()];
-        }
         return [true, parse(v)];
     }
     catch (_err) {
@@ -1977,13 +2041,14 @@ function isDaylightSavingTime(x) {
 function isDST(janOffset, julOffset, tOffset) {
     return Math.min(janOffset, julOffset) === tOffset;
 }
+/* harmony default export */ __webpack_exports__["default"] = (DateTime);
 //# sourceMappingURL=Date.js.map
 
 /***/ }),
 
-/***/ "./.fable/fable-library.2.4.21/Decimal.js":
+/***/ "./.fable/fable-library.2.13.0/Decimal.js":
 /*!************************************************!*\
-  !*** ./.fable/fable-library.2.4.21/Decimal.js ***!
+  !*** ./.fable/fable-library.2.13.0/Decimal.js ***!
   \************************************************/
 /*! exports provided: default, get_Zero, get_One, get_MinusOne, get_MaxValue, get_MinValue, compare, equals, abs, round, truncate, ceiling, floor, pow, sqrt, op_Addition, op_Subtraction, op_Multiply, op_Division, op_Modulus, op_UnaryNegation, add, subtract, multiply, divide, remainder, negate, toString, tryParse, parse, toNumber, fromIntArray, fromInts, fromParts, getBits, makeRangeStepFunction */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -2025,7 +2090,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fromParts", function() { return fromParts; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getBits", function() { return getBits; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "makeRangeStepFunction", function() { return makeRangeStepFunction; });
-/* harmony import */ var _lib_big__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./lib/big */ "./.fable/fable-library.2.4.21/lib/big.js");
+/* harmony import */ var _lib_big__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./lib/big */ "./.fable/fable-library.2.13.0/lib/big.js");
 
 /* harmony default export */ __webpack_exports__["default"] = (_lib_big__WEBPACK_IMPORTED_MODULE_0__["default"]);
 const get_Zero = new _lib_big__WEBPACK_IMPORTED_MODULE_0__["default"](0);
@@ -2203,7 +2268,7 @@ function makeRangeStepFunction(step, last) {
             return [x, op_Addition(x, step)];
         }
         else {
-            return null;
+            return undefined;
         }
     };
 }
@@ -2211,9 +2276,9 @@ function makeRangeStepFunction(step, last) {
 
 /***/ }),
 
-/***/ "./.fable/fable-library.2.4.21/Int32.js":
+/***/ "./.fable/fable-library.2.13.0/Int32.js":
 /*!**********************************************!*\
-  !*** ./.fable/fable-library.2.4.21/Int32.js ***!
+  !*** ./.fable/fable-library.2.13.0/Int32.js ***!
   \**********************************************/
 /*! exports provided: NumberStyles, isValid, parse, tryParse, op_UnaryNegation_Int8, op_UnaryNegation_Int16, op_UnaryNegation_Int32 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -2348,9 +2413,9 @@ function op_UnaryNegation_Int32(x) {
 
 /***/ }),
 
-/***/ "./.fable/fable-library.2.4.21/List.js":
+/***/ "./.fable/fable-library.2.13.0/List.js":
 /*!*********************************************!*\
-  !*** ./.fable/fable-library.2.4.21/List.js ***!
+  !*** ./.fable/fable-library.2.13.0/List.js ***!
   \*********************************************/
 /*! exports provided: head, tryHead, tail, last, tryLast, compareWith, foldIndexedAux, foldIndexed, fold, reverse, foldBack, toSeq, ofSeq, concat, foldIndexed2Aux, foldIndexed2, fold2, foldBack2, unfold, foldIndexed3Aux, foldIndexed3, fold3, scan, scanBack, length, append, collect, map, mapIndexed, indexed, map2, mapIndexed2, map3, mapIndexed3, mapFold, mapFoldBack, iterate, iterate2, iterateIndexed, iterateIndexed2, ofArray, empty, isEmpty, tryPickIndexedAux, tryPickIndexed, tryPick, pick, tryFindIndexed, tryFind, findIndexed, find, findBack, tryFindBack, tryFindIndex, tryFindIndexBack, findIndex, findIndexBack, item, tryItem, filter, partition, choose, contains, except, initialize, replicate, reduce, reduceBack, forAll, forAll2, exists, exists2, unzip, unzip3, zip, zip3, sort, sortBy, sortDescending, sortByDescending, sortWith, sum, sumBy, maxBy, max, minBy, min, average, averageBy, permute, chunkBySize, skip, skipWhile, takeSplitAux, take, takeWhile, truncate, splitAt, outOfRange, slice, distinctBy, distinct, exactlyOne, groupBy, countBy, where, pairwise, windowed, splitInto, transpose */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -2467,13 +2532,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "windowed", function() { return windowed; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "splitInto", function() { return splitInto; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "transpose", function() { return transpose; });
-/* harmony import */ var _Option_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Option.js */ "./.fable/fable-library.2.4.21/Option.js");
-/* harmony import */ var _Types_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Types.js */ "./.fable/fable-library.2.4.21/Types.js");
-/* harmony import */ var _Seq_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Seq.js */ "./.fable/fable-library.2.4.21/Seq.js");
-/* harmony import */ var _Util_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Util.js */ "./.fable/fable-library.2.4.21/Util.js");
-/* harmony import */ var _Array_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Array.js */ "./.fable/fable-library.2.4.21/Array.js");
-/* harmony import */ var _Set_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Set.js */ "./.fable/fable-library.2.4.21/Set.js");
-/* harmony import */ var _Map_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Map.js */ "./.fable/fable-library.2.4.21/Map.js");
+/* harmony import */ var _Option_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Option.js */ "./.fable/fable-library.2.13.0/Option.js");
+/* harmony import */ var _Types_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Types.js */ "./.fable/fable-library.2.13.0/Types.js");
+/* harmony import */ var _Seq_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Seq.js */ "./.fable/fable-library.2.13.0/Seq.js");
+/* harmony import */ var _Util_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Util.js */ "./.fable/fable-library.2.13.0/Util.js");
+/* harmony import */ var _Array_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Array.js */ "./.fable/fable-library.2.13.0/Array.js");
+/* harmony import */ var _Set_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Set.js */ "./.fable/fable-library.2.13.0/Set.js");
+/* harmony import */ var _Map_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Map.js */ "./.fable/fable-library.2.13.0/Map.js");
 
 
 
@@ -2493,7 +2558,7 @@ function tryHead(_arg1$$1) {
   if (_arg1$$1.tail != null) {
     return Object(_Option_js__WEBPACK_IMPORTED_MODULE_0__["some"])(_arg1$$1.head);
   } else {
-    return null;
+    return undefined;
   }
 }
 function tail(_arg1$$2) {
@@ -2533,7 +2598,7 @@ function tryLast($_arg1$$4$$6) {
         continue tryLast;
       }
     } else {
-      return null;
+      return undefined;
     }
 
     break;
@@ -2875,22 +2940,22 @@ function mapFoldBack(f$$23, xs$$45, s$$2) {
 function iterate(f$$24, xs$$46) {
   fold(function (unitVar0, x$$24) {
     f$$24(x$$24);
-  }, null, xs$$46);
+  }, void null, xs$$46);
 }
 function iterate2(f$$25, xs$$47, ys$$15) {
   fold2(function (unitVar0$$1, x$$25, y$$8) {
     f$$25(x$$25, y$$8);
-  }, null, xs$$47, ys$$15);
+  }, void null, xs$$47, ys$$15);
 }
 function iterateIndexed(f$$26, xs$$48) {
   foldIndexed(function (i$$7, unitVar1, x$$26) {
     f$$26(i$$7, x$$26);
-  }, null, xs$$48);
+  }, void null, xs$$48);
 }
 function iterateIndexed2(f$$27, xs$$49, ys$$16) {
   foldIndexed2(function (i$$8, unitVar1$$1, x$$27, y$$9) {
     f$$27(i$$8, x$$27, y$$9);
-  }, null, xs$$49, ys$$16);
+  }, void null, xs$$49, ys$$16);
 }
 function ofArray(xs$$50) {
   let res$$1 = new _Types_js__WEBPACK_IMPORTED_MODULE_1__["List"]();
@@ -2929,7 +2994,7 @@ function tryPickIndexedAux($f$$28$$120, $i$$10$$121, $_arg1$$9$$122) {
         return result;
       }
     } else {
-      return null;
+      return undefined;
     }
 
     break;
@@ -2955,12 +3020,12 @@ function pick(f$$31, xs$$54) {
 }
 function tryFindIndexed(f$$32, xs$$55) {
   return tryPickIndexed(function (i$$11, x$$31) {
-    return f$$32(i$$11, x$$31) ? Object(_Option_js__WEBPACK_IMPORTED_MODULE_0__["some"])(x$$31) : null;
+    return f$$32(i$$11, x$$31) ? Object(_Option_js__WEBPACK_IMPORTED_MODULE_0__["some"])(x$$31) : undefined;
   }, xs$$55);
 }
 function tryFind(f$$33, xs$$56) {
   return tryPickIndexed(function (_arg1$$11, x$$32) {
-    return f$$33(x$$32) ? Object(_Option_js__WEBPACK_IMPORTED_MODULE_0__["some"])(x$$32) : null;
+    return f$$33(x$$32) ? Object(_Option_js__WEBPACK_IMPORTED_MODULE_0__["some"])(x$$32) : undefined;
   }, xs$$56);
 }
 function findIndexed(f$$34, xs$$57) {
@@ -2990,7 +3055,7 @@ function tryFindBack(f$$37, xs$$62) {
 }
 function tryFindIndex(f$$38, xs$$65) {
   return tryPickIndexed(function (i$$12, x$$35) {
-    return f$$38(x$$35) ? i$$12 : null;
+    return f$$38(x$$35) ? i$$12 : undefined;
   }, xs$$65);
 }
 function tryFindIndexBack(f$$39, xs$$66) {
@@ -3080,11 +3145,11 @@ function except(itemsToExclude, array$$2, eq$$1) {
 function initialize(n$$2, f$$46) {
   let xs$$78 = new _Types_js__WEBPACK_IMPORTED_MODULE_1__["List"]();
 
-  for (let i$$15 = 1; i$$15 <= n$$2; i$$15++) {
-    xs$$78 = new _Types_js__WEBPACK_IMPORTED_MODULE_1__["List"](f$$46(n$$2 - i$$15), xs$$78);
+  for (let i$$15 = 0; i$$15 <= n$$2 - 1; i$$15++) {
+    xs$$78 = new _Types_js__WEBPACK_IMPORTED_MODULE_1__["List"](f$$46(i$$15), xs$$78);
   }
 
-  return xs$$78;
+  return reverse(xs$$78);
 }
 function replicate(n$$3, x$$40) {
   return initialize(n$$3, function (_arg1$$15) {
@@ -3596,6 +3661,8 @@ function slice(lower, upper, xs$$132) {
 
     if (lower$$1 > lastIndex + 1 ? true : hasUpper ? upper > lastIndex : false) {
       outOfRange();
+    } else {
+      void null;
     }
 
     return reverse(res$$2);
@@ -3676,6 +3743,8 @@ function pairwise(source$$1) {
 function windowed(windowSize, source$$2) {
   if (windowSize <= 0) {
     throw new Error("windowSize must be positive");
+  } else {
+    void null;
   }
 
   let res$$3 = new _Types_js__WEBPACK_IMPORTED_MODULE_1__["List"]();
@@ -3707,9 +3776,9 @@ function transpose(lists$$1) {
 
 /***/ }),
 
-/***/ "./.fable/fable-library.2.4.21/Long.js":
+/***/ "./.fable/fable-library.2.13.0/Long.js":
 /*!*********************************************!*\
-  !*** ./.fable/fable-library.2.4.21/Long.js ***!
+  !*** ./.fable/fable-library.2.13.0/Long.js ***!
   \*********************************************/
 /*! exports provided: default, get_Zero, get_One, op_Addition, op_Subtraction, op_Multiply, op_Division, op_Modulus, op_UnaryNegation, op_LeftShift, op_RightShift, op_RightShiftUnsigned, op_BitwiseAnd, op_BitwiseOr, op_ExclusiveOr, op_LogicalNot, op_LessThan, op_LessThanOrEqual, op_GreaterThan, op_GreaterThanOrEqual, op_Equality, op_Inequality, equals, compare, fromInt, fromBits, fromBytes, fromNumber, fromString, fromValue, toInt, toBytes, toNumber, toString, getLowBits, getHighBits, getLowBitsUnsigned, getHighBitsUnsigned, abs, fromInteger, parse, tryParse, unixEpochMillisecondsToTicks, ticksToUnixEpochMilliseconds, makeRangeStepFunction */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -3760,8 +3829,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "unixEpochMillisecondsToTicks", function() { return unixEpochMillisecondsToTicks; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ticksToUnixEpochMilliseconds", function() { return ticksToUnixEpochMilliseconds; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "makeRangeStepFunction", function() { return makeRangeStepFunction; });
-/* harmony import */ var _Int32__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Int32 */ "./.fable/fable-library.2.4.21/Int32.js");
-/* harmony import */ var _lib_long__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./lib/long */ "./.fable/fable-library.2.4.21/lib/long.js");
+/* harmony import */ var _Int32__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Int32 */ "./.fable/fable-library.2.13.0/Int32.js");
+/* harmony import */ var _lib_long__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./lib/long */ "./.fable/fable-library.2.13.0/lib/long.js");
 
 
 /* harmony default export */ __webpack_exports__["default"] = (_lib_long__WEBPACK_IMPORTED_MODULE_1__["Long"]);
@@ -3901,7 +3970,7 @@ function makeRangeStepFunction(step, last, unsigned) {
             return [x, op_Addition(x, step)];
         }
         else {
-            return null;
+            return undefined;
         }
     };
 }
@@ -3909,9 +3978,9 @@ function makeRangeStepFunction(step, last, unsigned) {
 
 /***/ }),
 
-/***/ "./.fable/fable-library.2.4.21/Map.js":
+/***/ "./.fable/fable-library.2.13.0/Map.js":
 /*!********************************************!*\
-  !*** ./.fable/fable-library.2.4.21/Map.js ***!
+  !*** ./.fable/fable-library.2.13.0/Map.js ***!
   \********************************************/
 /*! exports provided: MapTree$00602, MapTree$00602$reflection, MapTreeModule$$$sizeAux, MapTreeModule$$$size, MapTreeModule$$$empty, MapTreeModule$$$height, MapTreeModule$$$isEmpty, MapTreeModule$$$mk, MapTreeModule$$$rebalance, MapTreeModule$$$add, MapTreeModule$$$find, MapTreeModule$$$tryFind, MapTreeModule$$$partition1, MapTreeModule$$$partitionAux, MapTreeModule$$$partition, MapTreeModule$$$filter1, MapTreeModule$$$filterAux, MapTreeModule$$$filter, MapTreeModule$$$spliceOutSuccessor, MapTreeModule$$$remove, MapTreeModule$$$mem, MapTreeModule$$$iter, MapTreeModule$$$tryPick, MapTreeModule$$$exists, MapTreeModule$$$forall, MapTreeModule$$$map, MapTreeModule$$$mapi, MapTreeModule$$$foldBack, MapTreeModule$$$fold, MapTreeModule$$$foldFromTo, MapTreeModule$$$foldSection, MapTreeModule$$$loop, MapTreeModule$$$toList, MapTreeModule$$$ofList, MapTreeModule$$$mkFromEnumerator, MapTreeModule$$$ofArray, MapTreeModule$$$ofSeq, MapTreeModule$$$copyToArray, MapTreeModule$002EMapIterator$00602, MapTreeModule$002EMapIterator$00602$reflection, MapTreeModule$$$collapseLHS, MapTreeModule$$$mkIterator, MapTreeModule$$$notStarted, MapTreeModule$$$alreadyFinished, MapTreeModule$$$current, MapTreeModule$$$moveNext, MapTreeModule$002EmkIEnumerator$0027$00602, MapTreeModule$002EmkIEnumerator$0027$00602$reflection, MapTreeModule$002EmkIEnumerator$0027$00602$$$$002Ector$$Z26BC498C, MapTreeModule$$$mkIEnumerator, MapTreeModule$$$toSeq, FSharpMap, FSharpMap$reflection, FSharpMap$$$$002Ector$$58ADD115, FSharpMap$$get_Comparer, FSharpMap$$get_Tree, FSharpMap$$Add$$5BDDA1, FSharpMap$$get_IsEmpty, FSharpMap$$get_Item$$2B595, FSharpMap$$TryGetValue$$5BDDA1, FSharpMap$$TryPick$$72321DD7, FSharpMap$$Exists$$Z395DDC35, FSharpMap$$Filter$$Z395DDC35, FSharpMap$$ForAll$$Z395DDC35, FSharpMap$$Fold, FSharpMap$$FoldSection, FSharpMap$$Iterate$$1DCFB91D, FSharpMap$$MapRange$$6DC7247, FSharpMap$$Map$$Z6F6B671C, FSharpMap$$Partition$$Z395DDC35, FSharpMap$$get_Count, FSharpMap$$ContainsKey$$2B595, FSharpMap$$Remove$$2B595, FSharpMap$$TryFind$$2B595, FSharpMap$$ToList, isEmpty, add, find, tryFind, remove, containsKey, iterate, tryPick, pick, exists, filter, partition, forAll, mapRange, map, fold, foldBack, toSeq, findKey, tryFindKey, ofList, ofSeq, ofArray, toList, toArray, empty, createMutable, groupBy, countBy, count */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -4023,15 +4092,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "groupBy", function() { return groupBy; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "countBy", function() { return countBy; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "count", function() { return count; });
-/* harmony import */ var _Types_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Types.js */ "./.fable/fable-library.2.4.21/Types.js");
-/* harmony import */ var _Reflection_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Reflection.js */ "./.fable/fable-library.2.4.21/Reflection.js");
-/* harmony import */ var _Option_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Option.js */ "./.fable/fable-library.2.4.21/Option.js");
-/* harmony import */ var _Seq_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Seq.js */ "./.fable/fable-library.2.4.21/Seq.js");
-/* harmony import */ var _Util_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Util.js */ "./.fable/fable-library.2.4.21/Util.js");
-/* harmony import */ var _String_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./String.js */ "./.fable/fable-library.2.4.21/String.js");
-/* harmony import */ var _MutableMap__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./MutableMap */ "./.fable/fable-library.2.4.21/MutableMap.js");
-/* harmony import */ var _Array_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./Array.js */ "./.fable/fable-library.2.4.21/Array.js");
-
+/* harmony import */ var _Types_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Types.js */ "./.fable/fable-library.2.13.0/Types.js");
+/* harmony import */ var _Reflection_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Reflection.js */ "./.fable/fable-library.2.13.0/Reflection.js");
+/* harmony import */ var _Option_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Option.js */ "./.fable/fable-library.2.13.0/Option.js");
+/* harmony import */ var _Seq_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Seq.js */ "./.fable/fable-library.2.13.0/Seq.js");
+/* harmony import */ var _Util_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Util.js */ "./.fable/fable-library.2.13.0/Util.js");
+/* harmony import */ var _String_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./String.js */ "./.fable/fable-library.2.13.0/String.js");
+/* harmony import */ var _MutableMap__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./MutableMap */ "./.fable/fable-library.2.13.0/MutableMap.js");
 
 
 
@@ -4040,10 +4107,12 @@ __webpack_require__.r(__webpack_exports__);
 
 
 const MapTree$00602 = Object(_Types_js__WEBPACK_IMPORTED_MODULE_0__["declare"])(function Map_MapTree(tag, name, ...fields) {
-  _Types_js__WEBPACK_IMPORTED_MODULE_0__["Union"].call(this, tag, name, ...fields);
+  this.tag = tag | 0;
+  this.name = name;
+  this.fields = fields;
 }, _Types_js__WEBPACK_IMPORTED_MODULE_0__["Union"]);
 function MapTree$00602$reflection($gen$$3, $gen$$4) {
-  return Object(_Reflection_js__WEBPACK_IMPORTED_MODULE_1__["union"])("Map.MapTree`2", [$gen$$3, $gen$$4], MapTree$00602, () => ["MapEmpty", ["MapOne", [$gen$$3, $gen$$4]], ["MapNode", [$gen$$3, $gen$$4, MapTree$00602$reflection($gen$$3, $gen$$4), MapTree$00602$reflection($gen$$3, $gen$$4), _Reflection_js__WEBPACK_IMPORTED_MODULE_1__["int32"]]]]);
+  return Object(_Reflection_js__WEBPACK_IMPORTED_MODULE_1__["union_type"])("Map.MapTree`2", [$gen$$3, $gen$$4], MapTree$00602, () => ["MapEmpty", ["MapOne", [["Item1", $gen$$3], ["Item2", $gen$$4]]], ["MapNode", [["Item1", $gen$$3], ["Item2", $gen$$4], ["Item3", MapTree$00602$reflection($gen$$3, $gen$$4)], ["Item4", MapTree$00602$reflection($gen$$3, $gen$$4)], ["Item5", _Reflection_js__WEBPACK_IMPORTED_MODULE_1__["int32_type"]]]]]);
 }
 function MapTreeModule$$$sizeAux($acc$$5, $m$$6) {
   MapTreeModule$$$sizeAux: while (true) {
@@ -4261,7 +4330,7 @@ function MapTreeModule$$$tryFind($comparer$$2$$26, $k$$4$$27, $m$$5$$28) {
           if (c$$4 === 0) {
             return Object(_Option_js__WEBPACK_IMPORTED_MODULE_2__["some"])(m$$5.fields[1]);
           } else {
-            return null;
+            return undefined;
           }
         }
 
@@ -4286,7 +4355,7 @@ function MapTreeModule$$$tryFind($comparer$$2$$26, $k$$4$$27, $m$$5$$28) {
 
       default:
         {
-          return null;
+          return undefined;
         }
     }
 
@@ -4506,7 +4575,9 @@ function MapTreeModule$$$iter($f$$6$$62, $m$$9$$63) {
         }
 
       default:
-        {}
+        {
+          void null;
+        }
     }
 
     break;
@@ -4544,7 +4615,7 @@ function MapTreeModule$$$tryPick($f$$7$$64, $m$$10$$65) {
 
       default:
         {
-          return null;
+          return undefined;
         }
     }
 
@@ -4822,6 +4893,8 @@ function MapTreeModule$$$ofSeq(comparer$$16, c$$9) {
   } finally {
     if (Object(_Util_js__WEBPACK_IMPORTED_MODULE_4__["isDisposable"])(ie)) {
       ie.Dispose();
+    } else {
+      void null;
     }
   }
 }
@@ -4832,12 +4905,12 @@ function MapTreeModule$$$copyToArray(s$$4, arr$$1, i$$1) {
     j = j + 1;
   }, s$$4);
 }
-const MapTreeModule$002EMapIterator$00602 = Object(_Types_js__WEBPACK_IMPORTED_MODULE_0__["declare"])(function Map_MapTreeModule_MapIterator(arg1, arg2) {
-  this.stack = arg1;
-  this.started = arg2;
+const MapTreeModule$002EMapIterator$00602 = Object(_Types_js__WEBPACK_IMPORTED_MODULE_0__["declare"])(function Map_MapTreeModule_MapIterator(stack, started) {
+  this.stack = stack;
+  this.started = started;
 }, _Types_js__WEBPACK_IMPORTED_MODULE_0__["Record"]);
 function MapTreeModule$002EMapIterator$00602$reflection($gen$$109, $gen$$110) {
-  return Object(_Reflection_js__WEBPACK_IMPORTED_MODULE_1__["record"])("Map.MapTreeModule.MapIterator`2", [$gen$$109, $gen$$110], MapTreeModule$002EMapIterator$00602, () => [["stack", Object(_Reflection_js__WEBPACK_IMPORTED_MODULE_1__["list"])(MapTree$00602$reflection($gen$$109, $gen$$110))], ["started", _Reflection_js__WEBPACK_IMPORTED_MODULE_1__["bool"]]]);
+  return Object(_Reflection_js__WEBPACK_IMPORTED_MODULE_1__["record_type"])("Map.MapTreeModule.MapIterator`2", [$gen$$109, $gen$$110], MapTreeModule$002EMapIterator$00602, () => [["stack", Object(_Reflection_js__WEBPACK_IMPORTED_MODULE_1__["list_type"])(MapTree$00602$reflection($gen$$109, $gen$$110))], ["started", _Reflection_js__WEBPACK_IMPORTED_MODULE_1__["bool_type"]]]);
 }
 function MapTreeModule$$$collapseLHS($stack$$111) {
   MapTreeModule$$$collapseLHS: while (true) {
@@ -4905,9 +4978,10 @@ const MapTreeModule$002EmkIEnumerator$0027$00602 = Object(_Types_js__WEBPACK_IMP
   const $this$$1 = this;
   $this$$1.s = s$$6;
   $this$$1.i = MapTreeModule$$$mkIterator($this$$1.s);
+  void null;
 });
 function MapTreeModule$002EmkIEnumerator$0027$00602$reflection($gen$$115, $gen$$116) {
-  return Object(_Reflection_js__WEBPACK_IMPORTED_MODULE_1__["type"])("Map.MapTreeModule.mkIEnumerator'`2", [$gen$$115, $gen$$116]);
+  return Object(_Reflection_js__WEBPACK_IMPORTED_MODULE_1__["class_type"])("Map.MapTreeModule.mkIEnumerator'`2", [$gen$$115, $gen$$116], MapTreeModule$002EmkIEnumerator$0027$00602);
 }
 function MapTreeModule$002EmkIEnumerator$0027$00602$$$$002Ector$$Z26BC498C(s$$6) {
   return this instanceof MapTreeModule$002EmkIEnumerator$0027$00602 ? MapTreeModule$002EmkIEnumerator$0027$00602.call(this, s$$6) : new MapTreeModule$002EmkIEnumerator$0027$00602(s$$6);
@@ -4929,7 +5003,9 @@ MapTreeModule$002EmkIEnumerator$0027$00602.prototype.Reset = function () {
   __$$2.i = MapTreeModule$$$mkIterator(__$$2.s);
 };
 
-MapTreeModule$002EmkIEnumerator$0027$00602.prototype.Dispose = function () {};
+MapTreeModule$002EmkIEnumerator$0027$00602.prototype.Dispose = function () {
+  void null;
+};
 
 function MapTreeModule$$$mkIEnumerator(s$$7) {
   return MapTreeModule$002EmkIEnumerator$0027$00602$$$$002Ector$$Z26BC498C(s$$7);
@@ -4940,7 +5016,7 @@ function MapTreeModule$$$toSeq(s$$8) {
     if (en$$1.MoveNext()) {
       return [en$$1.Current, en$$1];
     } else {
-      return null;
+      return undefined;
     }
   }, en);
 }
@@ -4948,9 +5024,10 @@ const FSharpMap = Object(_Types_js__WEBPACK_IMPORTED_MODULE_0__["declare"])(func
   const $this$$2 = this;
   $this$$2.comparer = comparer$$17;
   $this$$2.tree = tree;
+  void null;
 });
 function FSharpMap$reflection($gen$$120, $gen$$121) {
-  return Object(_Reflection_js__WEBPACK_IMPORTED_MODULE_1__["type"])("Map.FSharpMap", [$gen$$120, $gen$$121]);
+  return Object(_Reflection_js__WEBPACK_IMPORTED_MODULE_1__["class_type"])("Map.FSharpMap", [$gen$$120, $gen$$121], FSharpMap);
 }
 function FSharpMap$$$$002Ector$$58ADD115(comparer$$17, tree) {
   return this instanceof FSharpMap ? FSharpMap.call(this, comparer$$17, tree) : new FSharpMap(comparer$$17, tree);
@@ -5050,9 +5127,9 @@ FSharpMap.prototype.GetHashCode = function () {
 
   while (e$$1.MoveNext()) {
     const patternInput$$5 = e$$1.Current;
-    const activePatternResult3692 = patternInput$$5;
-    res$$3 = combineHash(res$$3, Object(_Util_js__WEBPACK_IMPORTED_MODULE_4__["structuralHash"])(activePatternResult3692[0]));
-    res$$3 = combineHash(res$$3, Object(_Util_js__WEBPACK_IMPORTED_MODULE_4__["structuralHash"])(activePatternResult3692[1]));
+    const activePatternResult3682 = patternInput$$5;
+    res$$3 = combineHash(res$$3, Object(_Util_js__WEBPACK_IMPORTED_MODULE_4__["structuralHash"])(activePatternResult3682[0]));
+    res$$3 = combineHash(res$$3, Object(_Util_js__WEBPACK_IMPORTED_MODULE_4__["structuralHash"])(activePatternResult3682[1]));
   }
 
   return Math.abs(res$$3) | 0;
@@ -5101,11 +5178,15 @@ FSharpMap.prototype.CompareTo = function (obj) {
     } finally {
       if (Object(_Util_js__WEBPACK_IMPORTED_MODULE_4__["isDisposable"])(e2)) {
         e2.Dispose();
+      } else {
+        void null;
       }
     }
   } finally {
     if (Object(_Util_js__WEBPACK_IMPORTED_MODULE_4__["isDisposable"])(e1)) {
       e1.Dispose();
+    } else {
+      void null;
     }
   }
 };
@@ -5229,7 +5310,7 @@ function findKey(f$$38, m$$41) {
     if (f$$38(k$$42, v$$28)) {
       return Object(_Option_js__WEBPACK_IMPORTED_MODULE_2__["some"])(k$$42);
     } else {
-      return null;
+      return undefined;
     }
   }, m$$42);
 
@@ -5246,7 +5327,7 @@ function tryFindKey(f$$40, m$$43) {
     if (f$$40(k$$44, v$$29)) {
       return Object(_Option_js__WEBPACK_IMPORTED_MODULE_2__["some"])(k$$44);
     } else {
-      return null;
+      return undefined;
     }
   }, m$$44);
 }
@@ -5272,99 +5353,35 @@ function toArray(m$$46) {
 function empty(comparer$$21) {
   return FSharpMap$$$$002Ector$$58ADD115(comparer$$21, new MapTree$00602(0, "MapEmpty"));
 }
-
-function createMutablePrivate(comparer$$22, tree$0027) {
-  let tree$$1 = tree$0027;
-  return {
-    get size() {
-      return MapTreeModule$$$size(tree$$1);
-    },
-
-    clear() {
-      tree$$1 = new MapTree$00602(0, "MapEmpty");
-    },
-
-    delete(x$$18) {
-      if (MapTreeModule$$$mem(comparer$$22, x$$18, tree$$1)) {
-        tree$$1 = MapTreeModule$$$remove(comparer$$22, x$$18, tree$$1);
-        return true;
-      } else {
-        return false;
-      }
-    },
-
-    entries() {
-      return MapTreeModule$$$toSeq(tree$$1);
-    },
-
-    get(k$$45) {
-      return MapTreeModule$$$find(comparer$$22, k$$45, tree$$1);
-    },
-
-    has(x$$19) {
-      return MapTreeModule$$$mem(comparer$$22, x$$19, tree$$1);
-    },
-
-    keys() {
-      const source$$3 = MapTreeModule$$$toSeq(tree$$1);
-      return Object(_Seq_js__WEBPACK_IMPORTED_MODULE_3__["map"])(function mapping$$2(kv$$3) {
-        return kv$$3[0];
-      }, source$$3);
-    },
-
-    set(k$$46, v$$30) {
-      const this$$$9 = this;
-      tree$$1 = MapTreeModule$$$add(comparer$$22, k$$46, v$$30, tree$$1);
-      return this$$$9;
-    },
-
-    values() {
-      const source$$4 = MapTreeModule$$$toSeq(tree$$1);
-      return Object(_Seq_js__WEBPACK_IMPORTED_MODULE_3__["map"])(function mapping$$3(kv$$4) {
-        return kv$$4[1];
-      }, source$$4);
-    },
-
-    [Symbol.iterator]() {
-      return Object(_Seq_js__WEBPACK_IMPORTED_MODULE_3__["toIterator"])(MapTreeModule$$$mkIEnumerator(tree$$1));
-    },
-
-    GetEnumerator() {
-      return MapTreeModule$$$mkIEnumerator(tree$$1);
-    }
-
-  };
-}
-
-function createMutable(source$$5, comparer$$23) {
-  const map$$1 = Object(_MutableMap__WEBPACK_IMPORTED_MODULE_6__["MutableMap$00602$$$$002Ector$$6623D9B3"])(source$$5, comparer$$23);
+function createMutable(source$$3, comparer$$22) {
+  const map$$1 = Object(_MutableMap__WEBPACK_IMPORTED_MODULE_6__["MutableMap$00602$$$$002Ector$$6623D9B3"])(source$$3, comparer$$22);
   return map$$1;
 }
-function groupBy(projection, xs, comparer$$24) {
-  const dict = createMutable(Object(_Seq_js__WEBPACK_IMPORTED_MODULE_3__["empty"])(), comparer$$24);
-  Object(_Seq_js__WEBPACK_IMPORTED_MODULE_3__["iterate"])(function (v$$31) {
-    const key = projection(v$$31);
+function groupBy(projection, xs, comparer$$23) {
+  const dict = createMutable(Object(_Seq_js__WEBPACK_IMPORTED_MODULE_3__["empty"])(), comparer$$23);
+  Object(_Seq_js__WEBPACK_IMPORTED_MODULE_3__["iterate"])(function (v$$30) {
+    const key = projection(v$$30);
 
     if (dict.has(key)) {
-      Object(_Array_js__WEBPACK_IMPORTED_MODULE_7__["addInPlace"])(v$$31, dict.get(key));
+      void dict.get(key).push(v$$30);
     } else {
-      const value = dict.set(key, [v$$31]);
+      const value = dict.set(key, [v$$30]);
       void value;
     }
   }, xs);
-  return Object(_Seq_js__WEBPACK_IMPORTED_MODULE_3__["map"])(function mapping$$4(kv$$5) {
-    return [kv$$5[0], kv$$5[1]];
+  return Object(_Seq_js__WEBPACK_IMPORTED_MODULE_3__["map"])(function mapping$$2(kv$$3) {
+    return [kv$$3[0], kv$$3[1]];
   }, dict);
 }
-function countBy(projection$$1, xs$$1, comparer$$25) {
-  const dict$$1 = createMutable(Object(_Seq_js__WEBPACK_IMPORTED_MODULE_3__["empty"])(), comparer$$25);
+function countBy(projection$$1, xs$$1, comparer$$24) {
+  const dict$$1 = createMutable(Object(_Seq_js__WEBPACK_IMPORTED_MODULE_3__["empty"])(), comparer$$24);
   Object(_Seq_js__WEBPACK_IMPORTED_MODULE_3__["iterate"])(function (value$$1) {
     const key$$1 = projection$$1(value$$1);
     const value$$2 = dict$$1.has(key$$1) ? dict$$1.set(key$$1, dict$$1.get(key$$1) + 1) : dict$$1.set(key$$1, 1);
     void value$$2;
   }, xs$$1);
-  return Object(_Seq_js__WEBPACK_IMPORTED_MODULE_3__["map"])(function mapping$$5(kv$$6) {
-    return [kv$$6[0], kv$$6[1]];
+  return Object(_Seq_js__WEBPACK_IMPORTED_MODULE_3__["map"])(function mapping$$3(kv$$4) {
+    return [kv$$4[0], kv$$4[1]];
   }, dict$$1);
 }
 function count(m$$47) {
@@ -5373,9 +5390,9 @@ function count(m$$47) {
 
 /***/ }),
 
-/***/ "./.fable/fable-library.2.4.21/MutableMap.js":
+/***/ "./.fable/fable-library.2.13.0/MutableMap.js":
 /*!***************************************************!*\
-  !*** ./.fable/fable-library.2.4.21/MutableMap.js ***!
+  !*** ./.fable/fable-library.2.13.0/MutableMap.js ***!
   \***************************************************/
 /*! exports provided: MutableMap$00602, MutableMap$00602$reflection, MutableMap$00602$$$$002Ector$$6623D9B3, MutableMap$00602$$TryFind$$2B595, MutableMap$00602$$get_Comparer, MutableMap$00602$$Clear, MutableMap$00602$$get_Count, MutableMap$00602$$get_Item$$2B595, MutableMap$00602$$set_Item$$5BDDA1, MutableMap$00602$$Add$$5BDDA1, MutableMap$00602$$ContainsKey$$2B595, MutableMap$00602$$Remove$$2B595 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -5394,13 +5411,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MutableMap$00602$$Add$$5BDDA1", function() { return MutableMap$00602$$Add$$5BDDA1; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MutableMap$00602$$ContainsKey$$2B595", function() { return MutableMap$00602$$ContainsKey$$2B595; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MutableMap$00602$$Remove$$2B595", function() { return MutableMap$00602$$Remove$$2B595; });
-/* harmony import */ var _Types_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Types.js */ "./.fable/fable-library.2.4.21/Types.js");
-/* harmony import */ var _Seq_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Seq.js */ "./.fable/fable-library.2.4.21/Seq.js");
-/* harmony import */ var _Reflection_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Reflection.js */ "./.fable/fable-library.2.4.21/Reflection.js");
-/* harmony import */ var _Util_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Util.js */ "./.fable/fable-library.2.4.21/Util.js");
-/* harmony import */ var _Array_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Array.js */ "./.fable/fable-library.2.4.21/Array.js");
-/* harmony import */ var _String_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./String.js */ "./.fable/fable-library.2.4.21/String.js");
-
+/* harmony import */ var _Types_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Types.js */ "./.fable/fable-library.2.13.0/Types.js");
+/* harmony import */ var _Seq_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Seq.js */ "./.fable/fable-library.2.13.0/Seq.js");
+/* harmony import */ var _Reflection_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Reflection.js */ "./.fable/fable-library.2.13.0/Reflection.js");
+/* harmony import */ var _Util_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Util.js */ "./.fable/fable-library.2.13.0/Util.js");
+/* harmony import */ var _String_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./String.js */ "./.fable/fable-library.2.13.0/String.js");
 
 
 
@@ -5416,9 +5431,10 @@ const MutableMap$00602 = Object(_Types_js__WEBPACK_IMPORTED_MODULE_0__["declare"
   Object(_Seq_js__WEBPACK_IMPORTED_MODULE_1__["iterate"])(function (pair) {
     MutableMap$00602$$Add$$5BDDA1(this$.contents, pair[0], pair[1]);
   }, pairs);
+  void null;
 });
 function MutableMap$00602$reflection($gen$$4, $gen$$5) {
-  return Object(_Reflection_js__WEBPACK_IMPORTED_MODULE_2__["type"])("Fable.Collections.MutableMap`2", [$gen$$4, $gen$$5]);
+  return Object(_Reflection_js__WEBPACK_IMPORTED_MODULE_2__["class_type"])("Fable.Collections.MutableMap`2", [$gen$$4, $gen$$5], MutableMap$00602);
 }
 function MutableMap$00602$$$$002Ector$$6623D9B3(pairs, comparer) {
   return this instanceof MutableMap$00602 ? MutableMap$00602.call(this, pairs, comparer) : new MutableMap$00602(pairs, comparer);
@@ -5459,7 +5475,7 @@ function MutableMap$00602$$TryFind$$2B595(this$$$2, k$$1) {
 
     case 1:
       {
-        return null;
+        return undefined;
       }
   }
 }
@@ -5518,7 +5534,7 @@ function MutableMap$00602$$set_Item$$5BDDA1(this$$$7, k$$3, v) {
     case 1:
       {
         if (matchValue$$3[0]) {
-          const value = Object(_Array_js__WEBPACK_IMPORTED_MODULE_4__["addInPlace"])([k$$3, v], Object(_Util_js__WEBPACK_IMPORTED_MODULE_3__["getItemFromDict"])(this$$$7.hashMap, matchValue$$3[1]));
+          const value = void Object(_Util_js__WEBPACK_IMPORTED_MODULE_3__["getItemFromDict"])(this$$$7.hashMap, matchValue$$3[1]).push([k$$3, v]);
           void null;
         } else {
           this$$$7.hashMap.set(matchValue$$3[1], [[k$$3, v]]);
@@ -5545,7 +5561,7 @@ function MutableMap$00602$$Add$$5BDDA1(this$$$8, k$$4, v$$1) {
   switch ($target$$24) {
     case 0:
       {
-        const msg = Object(_String_js__WEBPACK_IMPORTED_MODULE_5__["format"])("An item with the same key has already been added. Key: {0}", k$$4);
+        const msg = Object(_String_js__WEBPACK_IMPORTED_MODULE_4__["format"])("An item with the same key has already been added. Key: {0}", k$$4);
         throw new Error(msg);
         break;
       }
@@ -5553,7 +5569,7 @@ function MutableMap$00602$$Add$$5BDDA1(this$$$8, k$$4, v$$1) {
     case 1:
       {
         if (matchValue$$4[0]) {
-          const value$$1 = Object(_Array_js__WEBPACK_IMPORTED_MODULE_4__["addInPlace"])([k$$4, v$$1], Object(_Util_js__WEBPACK_IMPORTED_MODULE_3__["getItemFromDict"])(this$$$8.hashMap, matchValue$$4[1]));
+          const value$$1 = void Object(_Util_js__WEBPACK_IMPORTED_MODULE_3__["getItemFromDict"])(this$$$8.hashMap, matchValue$$4[1]).push([k$$4, v$$1]);
           void null;
         } else {
           this$$$8.hashMap.set(matchValue$$4[1], [[k$$4, v$$1]]);
@@ -5697,6 +5713,8 @@ MutableMap$00602.prototype.Remove = function (item$$2) {
     if (Object(_Util_js__WEBPACK_IMPORTED_MODULE_3__["equals"])(pair$$4[1], item$$2[1])) {
       const value$$2 = MutableMap$00602$$Remove$$2B595(this$$$18, item$$2[0]);
       void value$$2;
+    } else {
+      void null;
     }
 
     return true;
@@ -5761,9 +5779,9 @@ MutableMap$00602.prototype.values = function () {
 
 /***/ }),
 
-/***/ "./.fable/fable-library.2.4.21/MutableSet.js":
+/***/ "./.fable/fable-library.2.13.0/MutableSet.js":
 /*!***************************************************!*\
-  !*** ./.fable/fable-library.2.4.21/MutableSet.js ***!
+  !*** ./.fable/fable-library.2.13.0/MutableSet.js ***!
   \***************************************************/
 /*! exports provided: MutableSet$00601, MutableSet$00601$reflection, MutableSet$00601$$$$002Ector$$Z6150332D, MutableSet$00601$$get_Comparer, MutableSet$00601$$Clear, MutableSet$00601$$get_Count, MutableSet$00601$$Add$$2B595, MutableSet$00601$$Contains$$2B595, MutableSet$00601$$Remove$$2B595 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -5779,13 +5797,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MutableSet$00601$$Add$$2B595", function() { return MutableSet$00601$$Add$$2B595; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MutableSet$00601$$Contains$$2B595", function() { return MutableSet$00601$$Contains$$2B595; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MutableSet$00601$$Remove$$2B595", function() { return MutableSet$00601$$Remove$$2B595; });
-/* harmony import */ var _Types_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Types.js */ "./.fable/fable-library.2.4.21/Types.js");
-/* harmony import */ var _Seq_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Seq.js */ "./.fable/fable-library.2.4.21/Seq.js");
-/* harmony import */ var _Reflection_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Reflection.js */ "./.fable/fable-library.2.4.21/Reflection.js");
-/* harmony import */ var _Util_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Util.js */ "./.fable/fable-library.2.4.21/Util.js");
-/* harmony import */ var _Option_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Option.js */ "./.fable/fable-library.2.4.21/Option.js");
-/* harmony import */ var _Array_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Array.js */ "./.fable/fable-library.2.4.21/Array.js");
-
+/* harmony import */ var _Types_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Types.js */ "./.fable/fable-library.2.13.0/Types.js");
+/* harmony import */ var _Seq_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Seq.js */ "./.fable/fable-library.2.13.0/Seq.js");
+/* harmony import */ var _Reflection_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Reflection.js */ "./.fable/fable-library.2.13.0/Reflection.js");
+/* harmony import */ var _Util_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Util.js */ "./.fable/fable-library.2.13.0/Util.js");
+/* harmony import */ var _Option_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Option.js */ "./.fable/fable-library.2.13.0/Option.js");
 
 
 
@@ -5802,9 +5818,10 @@ const MutableSet$00601 = Object(_Types_js__WEBPACK_IMPORTED_MODULE_0__["declare"
     const value = MutableSet$00601$$Add$$2B595(this$.contents, item);
     void value;
   }, items);
+  void null;
 });
 function MutableSet$00601$reflection($gen$$4) {
-  return Object(_Reflection_js__WEBPACK_IMPORTED_MODULE_2__["type"])("Fable.Collections.MutableSet`1", [$gen$$4]);
+  return Object(_Reflection_js__WEBPACK_IMPORTED_MODULE_2__["class_type"])("Fable.Collections.MutableSet`1", [$gen$$4], MutableSet$00601);
 }
 function MutableSet$00601$$$$002Ector$$Z6150332D(items, comparer) {
   return this instanceof MutableSet$00601 ? MutableSet$00601.call(this, items, comparer) : new MutableSet$00601(items, comparer);
@@ -5845,7 +5862,7 @@ function MutableSet$00601$$TryFind$$2B595(this$$$2, k$$1) {
 
     case 1:
       {
-        return null;
+        return undefined;
       }
   }
 }
@@ -5894,7 +5911,7 @@ function MutableSet$00601$$Add$$2B595(this$$$6, k$$2) {
     case 1:
       {
         if (matchValue$$2[0]) {
-          const value$$1 = Object(_Array_js__WEBPACK_IMPORTED_MODULE_5__["addInPlace"])(k$$2, Object(_Util_js__WEBPACK_IMPORTED_MODULE_3__["getItemFromDict"])(this$$$6.hashMap, matchValue$$2[1]));
+          const value$$1 = void Object(_Util_js__WEBPACK_IMPORTED_MODULE_3__["getItemFromDict"])(this$$$6.hashMap, matchValue$$2[1]).push(k$$2);
           void null;
           return true;
         } else {
@@ -6067,11 +6084,11 @@ MutableSet$00601.prototype.entries = function () {
 
 /***/ }),
 
-/***/ "./.fable/fable-library.2.4.21/Option.js":
+/***/ "./.fable/fable-library.2.13.0/Option.js":
 /*!***********************************************!*\
-  !*** ./.fable/fable-library.2.4.21/Option.js ***!
+  !*** ./.fable/fable-library.2.13.0/Option.js ***!
   \***********************************************/
-/*! exports provided: Some, some, value, tryValue, toArray, defaultArg, defaultArgWith, filter, map, map2, map3, bind, tryOp, Choice, choice1, choice2, tryValueIfChoice1, tryValueIfChoice2, Result, ok, error, mapOk, mapError, bindOk */
+/*! exports provided: Some, some, value, tryValue, toArray, defaultArg, defaultArgWith, filter, map, map2, map3, bind, tryOp, Choice, Choice3, Choice4, Choice5, Choice6, Choice7, choice1Of2, choice2Of2, tryValueIfChoice1Of2, tryValueIfChoice2Of2, Result, ok, error, mapOk, mapError, bindOk */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -6090,18 +6107,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "bind", function() { return bind; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "tryOp", function() { return tryOp; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Choice", function() { return Choice; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "choice1", function() { return choice1; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "choice2", function() { return choice2; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "tryValueIfChoice1", function() { return tryValueIfChoice1; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "tryValueIfChoice2", function() { return tryValueIfChoice2; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Choice3", function() { return Choice3; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Choice4", function() { return Choice4; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Choice5", function() { return Choice5; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Choice6", function() { return Choice6; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Choice7", function() { return Choice7; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "choice1Of2", function() { return choice1Of2; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "choice2Of2", function() { return choice2Of2; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "tryValueIfChoice1Of2", function() { return tryValueIfChoice1Of2; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "tryValueIfChoice2Of2", function() { return tryValueIfChoice2Of2; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Result", function() { return Result; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ok", function() { return ok; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "error", function() { return error; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "mapOk", function() { return mapOk; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "mapError", function() { return mapError; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "bindOk", function() { return bindOk; });
-/* harmony import */ var _Types__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Types */ "./.fable/fable-library.2.4.21/Types.js");
-/* harmony import */ var _Util__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Util */ "./.fable/fable-library.2.4.21/Util.js");
+/* harmony import */ var _Types__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Types */ "./.fable/fable-library.2.13.0/Types.js");
+/* harmony import */ var _Util__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Util */ "./.fable/fable-library.2.13.0/Util.js");
 
 
 // Using a class here for better compatibility with TS files importing Some
@@ -6160,46 +6182,56 @@ function defaultArgWith(opt, defThunk) {
     return (opt != null) ? value(opt) : defThunk();
 }
 function filter(predicate, opt) {
-    return (opt != null) ? (predicate(value(opt)) ? opt : null) : opt;
+    return (opt != null) ? (predicate(value(opt)) ? opt : undefined) : opt;
 }
 function map(mapping, opt) {
-    return (opt != null) ? some(mapping(value(opt))) : null;
+    return (opt != null) ? some(mapping(value(opt))) : undefined;
 }
 function map2(mapping, opt1, opt2) {
-    return (opt1 != null && opt2 != null) ? mapping(value(opt1), value(opt2)) : null;
+    return (opt1 != null && opt2 != null) ? mapping(value(opt1), value(opt2)) : undefined;
 }
 function map3(mapping, opt1, opt2, opt3) {
-    return (opt1 != null && opt2 != null && opt3 != null) ? mapping(value(opt1), value(opt2), value(opt3)) : null;
+    return (opt1 != null && opt2 != null && opt3 != null) ? mapping(value(opt1), value(opt2), value(opt3)) : undefined;
 }
 function bind(binder, opt) {
-    return opt != null ? binder(value(opt)) : null;
+    return opt != null ? binder(value(opt)) : undefined;
 }
 function tryOp(op, arg) {
     try {
         return some(op(arg));
     }
     catch (_a) {
-        return null;
+        return undefined;
     }
 }
-const Choice = Object(_Types__WEBPACK_IMPORTED_MODULE_0__["declare"])(function Choice(tag, name, field) {
-    _Types__WEBPACK_IMPORTED_MODULE_0__["Union"].call(this, tag, name, field);
-}, _Types__WEBPACK_IMPORTED_MODULE_0__["Union"]);
-function choice1(x) {
+// CHOICE
+class Choice extends _Types__WEBPACK_IMPORTED_MODULE_0__["Union"] {
+}
+class Choice3 extends _Types__WEBPACK_IMPORTED_MODULE_0__["Union"] {
+}
+class Choice4 extends _Types__WEBPACK_IMPORTED_MODULE_0__["Union"] {
+}
+class Choice5 extends _Types__WEBPACK_IMPORTED_MODULE_0__["Union"] {
+}
+class Choice6 extends _Types__WEBPACK_IMPORTED_MODULE_0__["Union"] {
+}
+class Choice7 extends _Types__WEBPACK_IMPORTED_MODULE_0__["Union"] {
+}
+function choice1Of2(x) {
     return new Choice(0, "Choice1Of2", x);
 }
-function choice2(x) {
+function choice2Of2(x) {
     return new Choice(1, "Choice2Of2", x);
 }
-function tryValueIfChoice1(x) {
-    return x.tag === 0 ? some(x.fields[0]) : null;
+function tryValueIfChoice1Of2(x) {
+    return x.tag === 0 ? some(x.fields[0]) : undefined;
 }
-function tryValueIfChoice2(x) {
-    return x.tag === 1 ? some(x.fields[0]) : null;
+function tryValueIfChoice2Of2(x) {
+    return x.tag === 1 ? some(x.fields[0]) : undefined;
 }
-const Result = Object(_Types__WEBPACK_IMPORTED_MODULE_0__["declare"])(function Result(tag, name, field) {
-    _Types__WEBPACK_IMPORTED_MODULE_0__["Union"].call(this, tag, name, field);
-}, _Types__WEBPACK_IMPORTED_MODULE_0__["Union"]);
+// RESULT
+class Result extends _Types__WEBPACK_IMPORTED_MODULE_0__["Union"] {
+}
 function ok(x) {
     return new Result(0, "Ok", x);
 }
@@ -6219,11 +6251,11 @@ function bindOk(f, result) {
 
 /***/ }),
 
-/***/ "./.fable/fable-library.2.4.21/Reflection.js":
+/***/ "./.fable/fable-library.2.13.0/Reflection.js":
 /*!***************************************************!*\
-  !*** ./.fable/fable-library.2.4.21/Reflection.js ***!
+  !*** ./.fable/fable-library.2.13.0/Reflection.js ***!
   \***************************************************/
-/*! exports provided: CaseInfo, TypeInfo, getGenerics, equals, compare, type, record, anonRecord, union, tuple, delegate, lambda, option, list, array, enumType, obj, unit, char, string, bool, int8, uint8, int16, uint16, int32, uint32, float32, float64, decimal, name, fullName, namespace, isArray, getElementType, isGenericType, isEnum, getGenericTypeDefinition, getEnumUnderlyingType, getEnumValues, getEnumNames, parseEnum, tryParseEnum, getEnumName, isEnumDefined, getUnionCases, getRecordElements, getTupleElements, getFunctionElements, isUnion, isRecord, isTuple, isFunction, getUnionFields, getUnionCaseFields, getRecordFields, getRecordField, getTupleFields, getTupleField, makeUnion, makeRecord, makeTuple, getCaseTag, getCaseName, getCaseFields */
+/*! exports provided: CaseInfo, TypeInfo, getGenerics, equals, compare, class_type, record_type, anonRecord_type, union_type, tuple_type, delegate_type, lambda_type, option_type, list_type, array_type, enum_type, obj_type, unit_type, char_type, string_type, bool_type, int8_type, uint8_type, int16_type, uint16_type, int32_type, uint32_type, float32_type, float64_type, decimal_type, name, fullName, namespace, isArray, getElementType, isGenericType, isEnum, getGenericTypeDefinition, getEnumUnderlyingType, getEnumValues, getEnumNames, parseEnum, tryParseEnum, getEnumName, isEnumDefined, getUnionCases, getRecordElements, getTupleElements, getFunctionElements, isUnion, isRecord, isTuple, isFunction, getUnionFields, getUnionCaseFields, getRecordFields, getRecordField, getTupleFields, getTupleField, makeUnion, makeRecord, makeTuple, makeGenericType, createInstance, getValue, getCaseTag, getCaseName, getCaseFields */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -6233,31 +6265,31 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getGenerics", function() { return getGenerics; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "equals", function() { return equals; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "compare", function() { return compare; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "type", function() { return type; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "record", function() { return record; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "anonRecord", function() { return anonRecord; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "union", function() { return union; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "tuple", function() { return tuple; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "delegate", function() { return delegate; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "lambda", function() { return lambda; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "option", function() { return option; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "list", function() { return list; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "array", function() { return array; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "enumType", function() { return enumType; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "obj", function() { return obj; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "unit", function() { return unit; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "char", function() { return char; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "string", function() { return string; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "bool", function() { return bool; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "int8", function() { return int8; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "uint8", function() { return uint8; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "int16", function() { return int16; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "uint16", function() { return uint16; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "int32", function() { return int32; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "uint32", function() { return uint32; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "float32", function() { return float32; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "float64", function() { return float64; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "decimal", function() { return decimal; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "class_type", function() { return class_type; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "record_type", function() { return record_type; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "anonRecord_type", function() { return anonRecord_type; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "union_type", function() { return union_type; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "tuple_type", function() { return tuple_type; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "delegate_type", function() { return delegate_type; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "lambda_type", function() { return lambda_type; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "option_type", function() { return option_type; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "list_type", function() { return list_type; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "array_type", function() { return array_type; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "enum_type", function() { return enum_type; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "obj_type", function() { return obj_type; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "unit_type", function() { return unit_type; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "char_type", function() { return char_type; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "string_type", function() { return string_type; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "bool_type", function() { return bool_type; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "int8_type", function() { return int8_type; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "uint8_type", function() { return uint8_type; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "int16_type", function() { return int16_type; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "uint16_type", function() { return uint16_type; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "int32_type", function() { return int32_type; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "uint32_type", function() { return uint32_type; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "float32_type", function() { return float32_type; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "float64_type", function() { return float64_type; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "decimal_type", function() { return decimal_type; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "name", function() { return name; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fullName", function() { return fullName; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "namespace", function() { return namespace; });
@@ -6290,11 +6322,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "makeUnion", function() { return makeUnion; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "makeRecord", function() { return makeRecord; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "makeTuple", function() { return makeTuple; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "makeGenericType", function() { return makeGenericType; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createInstance", function() { return createInstance; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getValue", function() { return getValue; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getCaseTag", function() { return getCaseTag; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getCaseName", function() { return getCaseName; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getCaseFields", function() { return getCaseFields; });
-/* harmony import */ var _Types__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Types */ "./.fable/fable-library.2.4.21/Types.js");
-/* harmony import */ var _Util__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Util */ "./.fable/fable-library.2.4.21/Util.js");
+/* harmony import */ var _Types__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Types */ "./.fable/fable-library.2.13.0/Types.js");
+/* harmony import */ var _Util__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Util */ "./.fable/fable-library.2.13.0/Util.js");
 
 
 class CaseInfo {
@@ -6306,10 +6341,10 @@ class CaseInfo {
     }
 }
 class TypeInfo {
-    constructor(fullname, generics, constructor, fields, cases, enumCases) {
+    constructor(fullname, generics, construct, fields, cases, enumCases) {
         this.fullname = fullname;
         this.generics = generics;
-        this.constructor = constructor;
+        this.construct = construct;
         this.fields = fields;
         this.cases = cases;
         this.enumCases = enumCases;
@@ -6347,54 +6382,56 @@ function compare(t1, t2) {
         return Object(_Util__WEBPACK_IMPORTED_MODULE_1__["compareArraysWith"])(getGenerics(t1), getGenerics(t2), compare);
     }
 }
-function type(fullname, generics) {
-    return new TypeInfo(fullname, generics);
+function class_type(fullname, generics, construct) {
+    return new TypeInfo(fullname, generics, construct);
 }
-function record(fullname, generics, constructor, fields) {
-    return new TypeInfo(fullname, generics, constructor, fields);
+function record_type(fullname, generics, construct, fields) {
+    return new TypeInfo(fullname, generics, construct, fields);
 }
-function anonRecord(...fields) {
+function anonRecord_type(...fields) {
     return new TypeInfo("", undefined, undefined, () => fields);
 }
-function union(fullname, generics, constructor, cases) {
-    const t = new TypeInfo(fullname, generics, constructor, undefined, () => cases().map((x, i) => typeof x === "string" ? new CaseInfo(t, i, x) : new CaseInfo(t, i, x[0], x[1])));
+function union_type(fullname, generics, construct, cases) {
+    const t = new TypeInfo(fullname, generics, construct, undefined, () => cases().map((x, i) => typeof x === "string"
+        ? new CaseInfo(t, i, x)
+        : new CaseInfo(t, i, x[0], x[1])));
     return t;
 }
-function tuple(...generics) {
+function tuple_type(...generics) {
     return new TypeInfo("System.Tuple`" + generics.length, generics);
 }
-function delegate(...generics) {
+function delegate_type(...generics) {
     return new TypeInfo("System.Func`" + generics.length, generics);
 }
-function lambda(argType, returnType) {
+function lambda_type(argType, returnType) {
     return new TypeInfo("Microsoft.FSharp.Core.FSharpFunc`2", [argType, returnType]);
 }
-function option(generic) {
+function option_type(generic) {
     return new TypeInfo("Microsoft.FSharp.Core.FSharpOption`1", [generic]);
 }
-function list(generic) {
+function list_type(generic) {
     return new TypeInfo("Microsoft.FSharp.Collections.FSharpList`1", [generic]);
 }
-function array(generic) {
+function array_type(generic) {
     return new TypeInfo(generic.fullname + "[]", [generic]);
 }
-function enumType(fullname, underlyingType, enumCases) {
+function enum_type(fullname, underlyingType, enumCases) {
     return new TypeInfo(fullname, [underlyingType], undefined, undefined, undefined, enumCases);
 }
-const obj = new TypeInfo("System.Object");
-const unit = new TypeInfo("Microsoft.FSharp.Core.Unit");
-const char = new TypeInfo("System.Char");
-const string = new TypeInfo("System.String");
-const bool = new TypeInfo("System.Boolean");
-const int8 = new TypeInfo("System.SByte");
-const uint8 = new TypeInfo("System.Byte");
-const int16 = new TypeInfo("System.Int16");
-const uint16 = new TypeInfo("System.UInt16");
-const int32 = new TypeInfo("System.Int32");
-const uint32 = new TypeInfo("System.UInt32");
-const float32 = new TypeInfo("System.Single");
-const float64 = new TypeInfo("System.Double");
-const decimal = new TypeInfo("System.Decimal");
+const obj_type = new TypeInfo("System.Object");
+const unit_type = new TypeInfo("Microsoft.FSharp.Core.Unit");
+const char_type = new TypeInfo("System.Char");
+const string_type = new TypeInfo("System.String");
+const bool_type = new TypeInfo("System.Boolean");
+const int8_type = new TypeInfo("System.SByte");
+const uint8_type = new TypeInfo("System.Byte");
+const int16_type = new TypeInfo("System.Int16");
+const uint16_type = new TypeInfo("System.UInt16");
+const int32_type = new TypeInfo("System.Int32");
+const uint32_type = new TypeInfo("System.UInt32");
+const float32_type = new TypeInfo("System.Single");
+const float64_type = new TypeInfo("System.Double");
+const decimal_type = new TypeInfo("System.Decimal");
 function name(info) {
     if (Array.isArray(info)) {
         return info[0];
@@ -6438,7 +6475,7 @@ function isEnum(t) {
  * but it should be enough for type comparison purposes
  */
 function getGenericTypeDefinition(t) {
-    return t.generics == null ? t : new TypeInfo(t.fullname, t.generics.map(() => obj));
+    return t.generics == null ? t : new TypeInfo(t.fullname, t.generics.map(() => obj_type));
 }
 function getEnumUnderlyingType(t) {
     var _a;
@@ -6569,7 +6606,7 @@ function getUnionFields(v, t) {
     return [case_, v.fields];
 }
 function getUnionCaseFields(uci) {
-    return uci.fields == null ? [] : uci.fields.map((t, i) => ["Data" + i, t]);
+    return uci.fields == null ? [] : uci.fields;
 }
 function getRecordFields(v) {
     return Object.keys(v).map((k) => v[k]);
@@ -6588,8 +6625,8 @@ function makeUnion(uci, values) {
     if (values.length !== expectedLength) {
         throw new Error(`Expected an array of length ${expectedLength} but got ${values.length}`);
     }
-    return uci.declaringType.constructor != null
-        ? new uci.declaringType.constructor(uci.tag, uci.name, ...values)
+    return uci.declaringType.construct != null
+        ? new uci.declaringType.construct(uci.tag, uci.name, ...values)
         : {};
 }
 function makeRecord(t, values) {
@@ -6597,8 +6634,8 @@ function makeRecord(t, values) {
     if (fields.length !== values.length) {
         throw new Error(`Expected an array of length ${fields.length} but got ${values.length}`);
     }
-    return t.constructor != null
-        ? new t.constructor(...values)
+    return t.construct != null
+        ? new t.construct(...values)
         : Object(_Types__WEBPACK_IMPORTED_MODULE_0__["anonRecord"])(fields.reduce((obj, [key, _t], i) => {
             obj[key] = values[i];
             return obj;
@@ -6606,6 +6643,22 @@ function makeRecord(t, values) {
 }
 function makeTuple(values, _t) {
     return values;
+}
+function makeGenericType(t, generics) {
+    return new TypeInfo(t.fullname, generics, t.construct, t.fields, t.cases);
+}
+function createInstance(t, consArgs) {
+    // TODO: Check if consArgs length is same as t.construct?
+    // (Arg types can still be different)
+    if (typeof t.construct === "function") {
+        return new t.construct(...(consArgs !== null && consArgs !== void 0 ? consArgs : []));
+    }
+    else {
+        throw new Error(`Cannot access constructor of ${t.fullname}`);
+    }
+}
+function getValue(propertyInfo, v) {
+    return v[propertyInfo[0]];
 }
 // Fable.Core.Reflection
 function assertUnion(x) {
@@ -6629,9 +6682,9 @@ function getCaseFields(x) {
 
 /***/ }),
 
-/***/ "./.fable/fable-library.2.4.21/RegExp.js":
+/***/ "./.fable/fable-library.2.13.0/RegExp.js":
 /*!***********************************************!*\
-  !*** ./.fable/fable-library.2.4.21/RegExp.js ***!
+  !*** ./.fable/fable-library.2.13.0/RegExp.js ***!
   \***********************************************/
 /*! exports provided: create, escape, unescape, isMatch, match, matches, options, replace, split */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -6761,11 +6814,11 @@ function split(reg, input, limit, offset = 0) {
 
 /***/ }),
 
-/***/ "./.fable/fable-library.2.4.21/Seq.js":
+/***/ "./.fable/fable-library.2.13.0/Seq.js":
 /*!********************************************!*\
-  !*** ./.fable/fable-library.2.4.21/Seq.js ***!
+  !*** ./.fable/fable-library.2.13.0/Seq.js ***!
   \********************************************/
-/*! exports provided: Enumerator, getEnumerator, toIterator, ofArray, allPairs, append, average, averageBy, concat, collect, choose, compareWith, delay, empty, enumerateFromFunctions, enumerateWhile, enumerateThenFinally, enumerateUsing, exactlyOne, except, exists, exists2, forAll, forAll2, contains, filter, where, fold, foldBack, fold2, foldBack2, tryHead, head, initialize, initializeInfinite, tryItem, item, iterate, iterate2, iterateIndexed, iterateIndexed2, isEmpty, tryLast, last, length, map, mapIndexed, indexed, map2, mapIndexed2, map3, mapFold, mapFoldBack, max, maxBy, min, minBy, pairwise, rangeChar, rangeLong, rangeDecimal, rangeNumber, readOnly, reduce, reduceBack, replicate, reverse, scan, scanBack, singleton, skip, skipWhile, sortWith, sum, sumBy, tail, take, truncate, takeWhile, tryFind, find, tryFindBack, findBack, tryFindIndex, findIndex, tryFindIndexBack, findIndexBack, tryPick, pick, unfold, zip, zip3, windowed, transpose */
+/*! exports provided: Enumerator, getEnumerator, toIterator, ofArray, allPairs, append, average, averageBy, concat, collect, choose, compareWith, delay, empty, singleton, enumerateFromFunctions, enumerateWhile, enumerateThenFinally, enumerateUsing, exactlyOne, except, exists, exists2, forAll, forAll2, contains, filter, where, fold, foldBack, fold2, foldBack2, tryHead, head, initialize, initializeInfinite, tryItem, item, iterate, iterate2, iterateIndexed, iterateIndexed2, isEmpty, tryLast, last, length, map, mapIndexed, indexed, map2, mapIndexed2, map3, mapFold, mapFoldBack, max, maxBy, min, minBy, pairwise, rangeChar, rangeLong, rangeDecimal, rangeNumber, readOnly, reduce, reduceBack, replicate, reverse, scan, scanBack, skip, skipWhile, sortWith, sum, sumBy, tail, take, truncate, takeWhile, tryFind, find, tryFindBack, findBack, tryFindIndex, findIndex, tryFindIndexBack, findIndexBack, tryPick, pick, unfold, zip, zip3, windowed, transpose */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -6784,6 +6837,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "compareWith", function() { return compareWith; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "delay", function() { return delay; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "empty", function() { return empty; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "singleton", function() { return singleton; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "enumerateFromFunctions", function() { return enumerateFromFunctions; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "enumerateWhile", function() { return enumerateWhile; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "enumerateThenFinally", function() { return enumerateThenFinally; });
@@ -6839,7 +6893,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "reverse", function() { return reverse; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "scan", function() { return scan; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "scanBack", function() { return scanBack; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "singleton", function() { return singleton; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "skip", function() { return skip; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "skipWhile", function() { return skipWhile; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "sortWith", function() { return sortWith; });
@@ -6864,10 +6917,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "zip3", function() { return zip3; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "windowed", function() { return windowed; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "transpose", function() { return transpose; });
-/* harmony import */ var _Decimal__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Decimal */ "./.fable/fable-library.2.4.21/Decimal.js");
-/* harmony import */ var _Long__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Long */ "./.fable/fable-library.2.4.21/Long.js");
-/* harmony import */ var _Option__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Option */ "./.fable/fable-library.2.4.21/Option.js");
-/* harmony import */ var _Util__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Util */ "./.fable/fable-library.2.4.21/Util.js");
+/* harmony import */ var _Decimal__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Decimal */ "./.fable/fable-library.2.13.0/Decimal.js");
+/* harmony import */ var _Long__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Long */ "./.fable/fable-library.2.13.0/Long.js");
+/* harmony import */ var _Option__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Option */ "./.fable/fable-library.2.13.0/Option.js");
+/* harmony import */ var _Util__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Util */ "./.fable/fable-library.2.13.0/Util.js");
 
 
 
@@ -6899,7 +6952,7 @@ function toIterator(en) {
         next() {
             return en.MoveNext()
                 ? { done: false, value: en.Current }
-                : { done: true, value: null };
+                : { done: true, value: undefined };
         },
     };
 }
@@ -6924,7 +6977,7 @@ function makeSeq(f) {
     return seq;
 }
 function ofArray(xs) {
-    return delay(() => unfold((i) => i != null && i < xs.length ? [xs[i], i + 1] : null, 0));
+    return delay(() => unfold((i) => i != null && i < xs.length ? [xs[i], i + 1] : undefined, 0));
 }
 function allPairs(xs, ys) {
     let firstEl = true;
@@ -6949,7 +7002,7 @@ function append(xs, ys) {
     return delay(() => {
         let firstDone = false;
         const i = xs[Symbol.iterator]();
-        let iters = [i, null];
+        let iters = [i, undefined];
         return unfold(() => {
             var _a, _b;
             let cur;
@@ -6960,11 +7013,11 @@ function append(xs, ys) {
                 }
                 else {
                     firstDone = true;
-                    iters = [null, ys[Symbol.iterator]()];
+                    iters = [undefined, ys[Symbol.iterator]()];
                 }
             }
             cur = (_b = iters[1]) === null || _b === void 0 ? void 0 : _b.next();
-            return cur != null && !cur.done ? [cur.value, iters] : null;
+            return cur != null && !cur.done ? [cur.value, iters] : undefined;
         }, iters);
     });
 }
@@ -6987,7 +7040,7 @@ function averageBy(f, xs, averager) {
 function concat(xs) {
     return delay(() => {
         const iter = xs[Symbol.iterator]();
-        let output = { value: null };
+        let output;
         return unfold((innerIter) => {
             let hasFinished = false;
             while (!hasFinished) {
@@ -7003,16 +7056,16 @@ function concat(xs) {
                 else {
                     const cur = innerIter.next();
                     if (!cur.done) {
-                        output = { value: cur.value };
+                        output = cur.value;
                         hasFinished = true;
                     }
                     else {
-                        innerIter = null;
+                        innerIter = undefined;
                     }
                 }
             }
-            return innerIter != null && output != null ? [output.value, innerIter] : null;
-        }, null);
+            return innerIter != null ? [output, innerIter] : undefined;
+        }, undefined);
     });
 }
 function collect(f, xs) {
@@ -7028,24 +7081,27 @@ function choose(f, xs) {
             }
             cur = iter.next();
         }
-        return null;
+        return undefined;
     }, xs[Symbol.iterator]()));
 }
 function compareWith(f, xs, ys) {
-    const nonZero = tryFind((i) => i !== 0, map2((x, y) => f(x, y), xs, ys));
+    const nonZero = tryFind((i) => i !== 0, map2(f, xs, ys));
     return nonZero != null ? Object(_Option__WEBPACK_IMPORTED_MODULE_2__["value"])(nonZero) : length(xs) - length(ys);
 }
 function delay(f) {
     return makeSeq(() => f()[Symbol.iterator]());
 }
 function empty() {
-    return unfold(() => null, undefined);
+    return [];
+}
+function singleton(y) {
+    return [y];
 }
 function enumerateFromFunctions(factory, moveNext, current) {
-    return delay(() => unfold((e) => moveNext(e) ? [current(e), e] : null, factory()));
+    return delay(() => unfold((e) => moveNext(e) ? [current(e), e] : undefined, factory()));
 }
 function enumerateWhile(cond, xs) {
-    return concat(unfold(() => cond() ? [xs, true] : null, undefined));
+    return concat(unfold(() => cond() ? [xs, true] : undefined, undefined));
 }
 function enumerateThenFinally(xs, finalFn) {
     return delay(() => {
@@ -7054,18 +7110,20 @@ function enumerateThenFinally(xs, finalFn) {
             iter = xs[Symbol.iterator]();
         }
         catch (err) {
-            return empty();
-        }
-        finally {
-            finalFn();
+            try {
+                return empty();
+            }
+            finally {
+                finalFn();
+            }
         }
         return unfold((it) => {
             try {
                 const cur = it.next();
-                return !cur.done ? [cur.value, it] : null;
+                return !cur.done ? [cur.value, it] : undefined;
             }
             catch (err) {
-                return null;
+                return undefined;
             }
             finally {
                 finalFn();
@@ -7154,7 +7212,7 @@ function filter(f, xs) {
             }
             cur = iter.next();
         }
-        return null;
+        return undefined;
     }, xs[Symbol.iterator]()));
 }
 function where(f, xs) {
@@ -7209,23 +7267,23 @@ function foldBack2(f, xs, ys, acc) {
 function tryHead(xs) {
     const iter = xs[Symbol.iterator]();
     const cur = iter.next();
-    return cur.done ? null : Object(_Option__WEBPACK_IMPORTED_MODULE_2__["some"])(cur.value);
+    return cur.done ? undefined : Object(_Option__WEBPACK_IMPORTED_MODULE_2__["some"])(cur.value);
 }
 function head(xs) {
     return __failIfNone(tryHead(xs));
 }
 function initialize(n, f) {
-    return delay(() => unfold((i) => i < n ? [f(i), i + 1] : null, 0));
+    return delay(() => unfold((i) => i < n ? [f(i), i + 1] : undefined, 0));
 }
 function initializeInfinite(f) {
     return delay(() => unfold((i) => [f(i), i + 1], 0));
 }
 function tryItem(i, xs) {
     if (i < 0) {
-        return null;
+        return undefined;
     }
     if (Array.isArray(xs) || ArrayBuffer.isView(xs)) {
-        return i < xs.length ? Object(_Option__WEBPACK_IMPORTED_MODULE_2__["some"])(xs[i]) : null;
+        return i < xs.length ? Object(_Option__WEBPACK_IMPORTED_MODULE_2__["some"])(xs[i]) : undefined;
     }
     for (let j = 0, iter = xs[Symbol.iterator]();; j++) {
         const cur = iter.next();
@@ -7236,29 +7294,29 @@ function tryItem(i, xs) {
             return Object(_Option__WEBPACK_IMPORTED_MODULE_2__["some"])(cur.value);
         }
     }
-    return null;
+    return undefined;
 }
 function item(i, xs) {
     return __failIfNone(tryItem(i, xs));
 }
 function iterate(f, xs) {
-    fold((_, x) => (f(x), null), null, xs);
+    fold((_, x) => (f(x), undefined), undefined, xs);
 }
 function iterate2(f, xs, ys) {
-    fold2((_, x, y) => (f(x, y), null), null, xs, ys);
+    fold2((_, x, y) => (f(x, y), undefined), undefined, xs, ys);
 }
 function iterateIndexed(f, xs) {
-    fold((_, x, i) => (f(i !== null && i !== void 0 ? i : 0, x), null), null, xs);
+    fold((_, x, i) => (f(i !== null && i !== void 0 ? i : 0, x), undefined), undefined, xs);
 }
 function iterateIndexed2(f, xs, ys) {
-    fold2((_, x, y, i) => (f(i !== null && i !== void 0 ? i : 0, x, y), null), null, xs, ys);
+    fold2((_, x, y, i) => (f(i !== null && i !== void 0 ? i : 0, x, y), undefined), undefined, xs, ys);
 }
 function isEmpty(xs) {
     const i = xs[Symbol.iterator]();
     return i.next().done;
 }
 function tryLast(xs) {
-    return isEmpty(xs) ? null : Object(_Option__WEBPACK_IMPORTED_MODULE_2__["some"])(reduce((_, x) => x, xs));
+    return isEmpty(xs) ? undefined : Object(_Option__WEBPACK_IMPORTED_MODULE_2__["some"])(reduce((_, x) => x, xs));
 }
 function last(xs) {
     return __failIfNone(tryLast(xs));
@@ -7271,7 +7329,7 @@ function length(xs) {
 function map(f, xs) {
     return delay(() => unfold((iter) => {
         const cur = iter.next();
-        return !cur.done ? [f(cur.value), iter] : null;
+        return !cur.done ? [f(cur.value), iter] : undefined;
     }, xs[Symbol.iterator]()));
 }
 function mapIndexed(f, xs) {
@@ -7279,7 +7337,7 @@ function mapIndexed(f, xs) {
         let i = 0;
         return unfold((iter) => {
             const cur = iter.next();
-            return !cur.done ? [f(i++, cur.value), iter] : null;
+            return !cur.done ? [f(i++, cur.value), iter] : undefined;
         }, xs[Symbol.iterator]());
     });
 }
@@ -7293,7 +7351,7 @@ function map2(f, xs, ys) {
         return unfold(() => {
             const cur1 = iter1.next();
             const cur2 = iter2.next();
-            return !cur1.done && !cur2.done ? [f(cur1.value, cur2.value), null] : null;
+            return !cur1.done && !cur2.done ? [f(cur1.value, cur2.value), undefined] : undefined;
         }, undefined);
     });
 }
@@ -7305,7 +7363,7 @@ function mapIndexed2(f, xs, ys) {
         return unfold(() => {
             const cur1 = iter1.next();
             const cur2 = iter2.next();
-            return !cur1.done && !cur2.done ? [f(i++, cur1.value, cur2.value), null] : null;
+            return !cur1.done && !cur2.done ? [f(i++, cur1.value, cur2.value), undefined] : undefined;
         }, undefined);
     });
 }
@@ -7318,7 +7376,7 @@ function map3(f, xs, ys, zs) {
             const cur1 = iter1.next();
             const cur2 = iter2.next();
             const cur3 = iter3.next();
-            return !cur1.done && !cur2.done && !cur3.done ? [f(cur1.value, cur2.value, cur3.value), null] : null;
+            return !cur1.done && !cur2.done && !cur3.done ? [f(cur1.value, cur2.value, cur3.value), undefined] : undefined;
         }, undefined);
     });
 }
@@ -7376,7 +7434,7 @@ function pairwise(xs) {
     });
 }
 function rangeChar(first, last) {
-    return delay(() => unfold((x) => x <= last ? [x, String.fromCharCode(x.charCodeAt(0) + 1)] : null, first));
+    return delay(() => unfold((x) => x <= last ? [x, String.fromCharCode(x.charCodeAt(0) + 1)] : undefined, first));
 }
 function rangeLong(first, step, last, unsigned) {
     const stepFn = Object(_Long__WEBPACK_IMPORTED_MODULE_1__["makeRangeStepFunction"])(step, last, unsigned);
@@ -7390,7 +7448,7 @@ function rangeNumber(first, step, last) {
     if (step === 0) {
         throw new Error("Step cannot be 0");
     }
-    return delay(() => unfold((x) => step > 0 && x <= last || step < 0 && x >= last ? [x, x + step] : null, first));
+    return delay(() => unfold((x) => step > 0 && x <= last || step < 0 && x >= last ? [x, x + step] : undefined, first));
 }
 function readOnly(xs) {
     return map((x) => x, xs);
@@ -7444,15 +7502,12 @@ function scan(f, seed, xs) {
                 acc = f(acc, cur.value);
                 return [acc, acc];
             }
-            return null;
-        }, null);
+            return undefined;
+        }, undefined);
     });
 }
 function scanBack(f, xs, seed) {
     return reverse(scan((acc, x) => f(x, acc), seed, reverse(xs)));
-}
-function singleton(y) {
-    return [y];
 }
 function skip(n, xs) {
     return makeSeq(() => {
@@ -7497,7 +7552,7 @@ function take(n, xs, truncate = false) {
                     throw new Error("Seq has not enough elements");
                 }
             }
-            return null;
+            return undefined;
         }, 0);
     });
 }
@@ -7510,9 +7565,9 @@ function takeWhile(f, xs) {
         return unfold(() => {
             const cur = iter.next();
             if (!cur.done && f(cur.value)) {
-                return [cur.value, null];
+                return [cur.value, undefined];
             }
-            return null;
+            return undefined;
         }, 0);
     });
 }
@@ -7526,7 +7581,7 @@ function tryFind(f, xs, defaultValue) {
             return Object(_Option__WEBPACK_IMPORTED_MODULE_2__["some"])(cur.value);
         }
     }
-    return defaultValue === void 0 ? null : Object(_Option__WEBPACK_IMPORTED_MODULE_2__["some"])(defaultValue);
+    return defaultValue === void 0 ? undefined : Object(_Option__WEBPACK_IMPORTED_MODULE_2__["some"])(defaultValue);
 }
 function find(f, xs) {
     return __failIfNone(tryFind(f, xs));
@@ -7548,7 +7603,7 @@ function tryFindIndex(f, xs) {
             return i;
         }
     }
-    return null;
+    return undefined;
 }
 function findIndex(f, xs) {
     return __failIfNone(tryFindIndex(f, xs));
@@ -7560,7 +7615,7 @@ function tryFindIndexBack(f, xs) {
             return i;
         }
     }
-    return null;
+    return undefined;
 }
 function findIndexBack(f, xs) {
     return __failIfNone(tryFindIndexBack(f, xs));
@@ -7576,7 +7631,7 @@ function tryPick(f, xs) {
             return y;
         }
     }
-    return null;
+    return undefined;
 }
 function pick(f, xs) {
     return __failIfNone(tryPick(f, xs));
@@ -7587,7 +7642,7 @@ function unfold(f, fst) {
         // so the sequence is restarted every time, see #1230
         let acc = fst;
         const iter = {
-            next: () => {
+            next() {
                 const res = f(acc);
                 if (res != null) {
                     const v = Object(_Option__WEBPACK_IMPORTED_MODULE_2__["value"])(res);
@@ -7616,7 +7671,7 @@ function windowed(windowSize, source) {
         let window = [];
         const iter = source[Symbol.iterator]();
         const iter2 = {
-            next: () => {
+            next() {
                 let cur;
                 while (window.length < windowSize) {
                     if ((cur = iter.next()).done) {
@@ -7636,7 +7691,7 @@ function transpose(source) {
     return makeSeq(() => {
         const iters = Array.from(source, (x) => x[Symbol.iterator]());
         const iter = {
-            next: () => {
+            next() {
                 if (iters.length === 0) {
                     return { done: true, value: undefined }; // empty sequence
                 }
@@ -7663,9 +7718,9 @@ function transpose(source) {
 
 /***/ }),
 
-/***/ "./.fable/fable-library.2.4.21/Set.js":
+/***/ "./.fable/fable-library.2.13.0/Set.js":
 /*!********************************************!*\
-  !*** ./.fable/fable-library.2.4.21/Set.js ***!
+  !*** ./.fable/fable-library.2.13.0/Set.js ***!
   \********************************************/
 /*! exports provided: SetTree$00601, SetTree$00601$reflection, SetTreeModule$$$countAux, SetTreeModule$$$count, SetTreeModule$$$SetOne, SetTreeModule$$$SetNode, SetTreeModule$$$height, SetTreeModule$$$tolerance, SetTreeModule$$$mk, SetTreeModule$$$rebalance, SetTreeModule$$$add, SetTreeModule$$$balance, SetTreeModule$$$split, SetTreeModule$$$spliceOutSuccessor, SetTreeModule$$$remove, SetTreeModule$$$mem, SetTreeModule$$$iter, SetTreeModule$$$foldBack, SetTreeModule$$$fold, SetTreeModule$$$forall, SetTreeModule$$$exists, SetTreeModule$$$isEmpty, SetTreeModule$$$subset, SetTreeModule$$$psubset, SetTreeModule$$$filterAux, SetTreeModule$$$filter, SetTreeModule$$$diffAux, SetTreeModule$$$diff, SetTreeModule$$$union, SetTreeModule$$$intersectionAux, SetTreeModule$$$intersection, SetTreeModule$$$partition1, SetTreeModule$$$partitionAux, SetTreeModule$$$partition, SetTreeModule$$$$007CMatchSetNode$007CMatchSetEmpty$007C, SetTreeModule$$$minimumElementAux, SetTreeModule$$$minimumElementOpt, SetTreeModule$$$maximumElementAux, SetTreeModule$$$maximumElementOpt, SetTreeModule$$$minimumElement, SetTreeModule$$$maximumElement, SetTreeModule$002ESetIterator$00601, SetTreeModule$002ESetIterator$00601$reflection, SetTreeModule$$$collapseLHS, SetTreeModule$$$mkIterator, SetTreeModule$$$notStarted, SetTreeModule$$$alreadyFinished, SetTreeModule$$$current, SetTreeModule$$$moveNext, SetTreeModule$002EmkIEnumerator$00601, SetTreeModule$002EmkIEnumerator$00601$reflection, SetTreeModule$002EmkIEnumerator$00601$$$$002Ector$$Z5B395D56, SetTreeModule$$$mkIEnumerator, SetTreeModule$$$toSeq, SetTreeModule$$$compareStacks, SetTreeModule$$$compare, SetTreeModule$$$choose, SetTreeModule$$$loop, SetTreeModule$$$toList, SetTreeModule$$$copyToArray, SetTreeModule$$$mkFromEnumerator, SetTreeModule$$$ofSeq, SetTreeModule$$$ofArray, FSharpSet, FSharpSet$reflection, FSharpSet$$$$002Ector$$2528C5CB, FSharpSet$$get_Comparer, FSharpSet$$get_Tree, FSharpSet$$Add$$2B595, FSharpSet$$Remove$$2B595, FSharpSet$$get_Count, FSharpSet$$Contains$$2B595, FSharpSet$$Iterate$$5028453F, FSharpSet$$Fold, FSharpSet$$get_IsEmpty, FSharpSet$$Partition$$Z1D55A0D7, FSharpSet$$Filter$$Z1D55A0D7, FSharpSet$$Map$$7597B8F7, FSharpSet$$Exists$$Z1D55A0D7, FSharpSet$$ForAll$$Z1D55A0D7, FSharpSet$$$op_Subtraction, FSharpSet$$$op_Addition, FSharpSet$$$Intersection$$Z3BE9BFE0, FSharpSet$$$IntersectionMany$$Z15B59630, FSharpSet$$$Equality$$Z3BE9BFE0, FSharpSet$$$Compare$$Z3BE9BFE0, FSharpSet$$get_Choose, FSharpSet$$get_MinimumElement, FSharpSet$$get_MaximumElement, FSharpSet$$IsSubsetOf$$6A20B1FF, FSharpSet$$IsSupersetOf$$6A20B1FF, FSharpSet$$IsProperSubsetOf$$6A20B1FF, FSharpSet$$IsProperSupersetOf$$6A20B1FF, isEmpty, contains, add, singleton, remove, union, unionMany, intersect, intersectMany, iterate, empty, forAll, exists, filter, partition, fold, foldBack, map, count, minimumElement, maximumElement, ofList, ofArray, toList, toArray, toSeq, ofSeq, difference, isSubset, isSuperset, isProperSubset, isProperSuperset, minElement, maxElement, createMutable, distinct, distinctBy, unionWith, intersectWith, exceptWith, isSubsetOf, isSupersetOf, isProperSubsetOf, isProperSupersetOf */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -7809,13 +7864,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isSupersetOf", function() { return isSupersetOf; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isProperSubsetOf", function() { return isProperSubsetOf; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isProperSupersetOf", function() { return isProperSupersetOf; });
-/* harmony import */ var _Types_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Types.js */ "./.fable/fable-library.2.4.21/Types.js");
-/* harmony import */ var _Reflection_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Reflection.js */ "./.fable/fable-library.2.4.21/Reflection.js");
-/* harmony import */ var _Option_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Option.js */ "./.fable/fable-library.2.4.21/Option.js");
-/* harmony import */ var _Seq_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Seq.js */ "./.fable/fable-library.2.4.21/Seq.js");
-/* harmony import */ var _Util_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Util.js */ "./.fable/fable-library.2.4.21/Util.js");
-/* harmony import */ var _String_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./String.js */ "./.fable/fable-library.2.4.21/String.js");
-/* harmony import */ var _MutableSet__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./MutableSet */ "./.fable/fable-library.2.4.21/MutableSet.js");
+/* harmony import */ var _Types_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Types.js */ "./.fable/fable-library.2.13.0/Types.js");
+/* harmony import */ var _Reflection_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Reflection.js */ "./.fable/fable-library.2.13.0/Reflection.js");
+/* harmony import */ var _Option_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Option.js */ "./.fable/fable-library.2.13.0/Option.js");
+/* harmony import */ var _Seq_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Seq.js */ "./.fable/fable-library.2.13.0/Seq.js");
+/* harmony import */ var _Util_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Util.js */ "./.fable/fable-library.2.13.0/Util.js");
+/* harmony import */ var _String_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./String.js */ "./.fable/fable-library.2.13.0/String.js");
+/* harmony import */ var _MutableSet__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./MutableSet */ "./.fable/fable-library.2.13.0/MutableSet.js");
 
 
 
@@ -7824,10 +7879,12 @@ __webpack_require__.r(__webpack_exports__);
 
 
 const SetTree$00601 = Object(_Types_js__WEBPACK_IMPORTED_MODULE_0__["declare"])(function Set_SetTree(tag, name, ...fields) {
-  _Types_js__WEBPACK_IMPORTED_MODULE_0__["Union"].call(this, tag, name, ...fields);
+  this.tag = tag | 0;
+  this.name = name;
+  this.fields = fields;
 }, _Types_js__WEBPACK_IMPORTED_MODULE_0__["Union"]);
 function SetTree$00601$reflection($gen$$3) {
-  return Object(_Reflection_js__WEBPACK_IMPORTED_MODULE_1__["union"])("Set.SetTree`1", [$gen$$3], SetTree$00601, () => ["SetEmpty", ["SetNode", [$gen$$3, SetTree$00601$reflection($gen$$3), SetTree$00601$reflection($gen$$3), _Reflection_js__WEBPACK_IMPORTED_MODULE_1__["int32"]]], ["SetOne", [$gen$$3]]]);
+  return Object(_Reflection_js__WEBPACK_IMPORTED_MODULE_1__["union_type"])("Set.SetTree`1", [$gen$$3], SetTree$00601, () => ["SetEmpty", ["SetNode", [["Item1", $gen$$3], ["Item2", SetTree$00601$reflection($gen$$3)], ["Item3", SetTree$00601$reflection($gen$$3)], ["Item4", _Reflection_js__WEBPACK_IMPORTED_MODULE_1__["int32_type"]]]], ["SetOne", [["Item", $gen$$3]]]]);
 }
 function SetTreeModule$$$countAux($s$$4, $acc$$5) {
   SetTreeModule$$$countAux: while (true) {
@@ -8207,6 +8264,7 @@ function SetTreeModule$$$iter($f$$38, $t$$6$$39) {
 
       case 0:
         {
+          void null;
           break;
         }
 
@@ -8605,7 +8663,7 @@ function SetTreeModule$$$$007CMatchSetNode$007CMatchSetEmpty$007C(s$$6) {
 
     case 0:
       {
-        return new _Option_js__WEBPACK_IMPORTED_MODULE_2__["Choice"](1, "Choice2Of2", null);
+        return new _Option_js__WEBPACK_IMPORTED_MODULE_2__["Choice"](1, "Choice2Of2", void null);
       }
 
     default:
@@ -8650,7 +8708,7 @@ function SetTreeModule$$$minimumElementOpt(s$$8) {
 
     case 0:
       {
-        return null;
+        return undefined;
       }
 
     default:
@@ -8695,7 +8753,7 @@ function SetTreeModule$$$maximumElementOpt(s$$10) {
 
     case 0:
       {
-        return null;
+        return undefined;
       }
 
     default:
@@ -8724,12 +8782,12 @@ function SetTreeModule$$$maximumElement(s$$12) {
     return k$$28;
   }
 }
-const SetTreeModule$002ESetIterator$00601 = Object(_Types_js__WEBPACK_IMPORTED_MODULE_0__["declare"])(function Set_SetTreeModule_SetIterator(arg1, arg2) {
-  this.stack = arg1;
-  this.started = arg2;
+const SetTreeModule$002ESetIterator$00601 = Object(_Types_js__WEBPACK_IMPORTED_MODULE_0__["declare"])(function Set_SetTreeModule_SetIterator(stack, started) {
+  this.stack = stack;
+  this.started = started;
 }, _Types_js__WEBPACK_IMPORTED_MODULE_0__["Record"]);
 function SetTreeModule$002ESetIterator$00601$reflection($gen$$103) {
-  return Object(_Reflection_js__WEBPACK_IMPORTED_MODULE_1__["record"])("Set.SetTreeModule.SetIterator`1", [$gen$$103], SetTreeModule$002ESetIterator$00601, () => [["stack", Object(_Reflection_js__WEBPACK_IMPORTED_MODULE_1__["list"])(SetTree$00601$reflection($gen$$103))], ["started", _Reflection_js__WEBPACK_IMPORTED_MODULE_1__["bool"]]]);
+  return Object(_Reflection_js__WEBPACK_IMPORTED_MODULE_1__["record_type"])("Set.SetTreeModule.SetIterator`1", [$gen$$103], SetTreeModule$002ESetIterator$00601, () => [["stack", Object(_Reflection_js__WEBPACK_IMPORTED_MODULE_1__["list_type"])(SetTree$00601$reflection($gen$$103))], ["started", _Reflection_js__WEBPACK_IMPORTED_MODULE_1__["bool_type"]]]);
 }
 function SetTreeModule$$$collapseLHS($stack$$104) {
   SetTreeModule$$$collapseLHS: while (true) {
@@ -8797,9 +8855,10 @@ const SetTreeModule$002EmkIEnumerator$00601 = Object(_Types_js__WEBPACK_IMPORTED
   const $this$$1 = this;
   $this$$1.s = s$$14;
   $this$$1.i = SetTreeModule$$$mkIterator($this$$1.s);
+  void null;
 });
 function SetTreeModule$002EmkIEnumerator$00601$reflection($gen$$108) {
-  return Object(_Reflection_js__WEBPACK_IMPORTED_MODULE_1__["type"])("Set.SetTreeModule.mkIEnumerator`1", [$gen$$108]);
+  return Object(_Reflection_js__WEBPACK_IMPORTED_MODULE_1__["class_type"])("Set.SetTreeModule.mkIEnumerator`1", [$gen$$108], SetTreeModule$002EmkIEnumerator$00601);
 }
 function SetTreeModule$002EmkIEnumerator$00601$$$$002Ector$$Z5B395D56(s$$14) {
   return this instanceof SetTreeModule$002EmkIEnumerator$00601 ? SetTreeModule$002EmkIEnumerator$00601.call(this, s$$14) : new SetTreeModule$002EmkIEnumerator$00601(s$$14);
@@ -8821,7 +8880,9 @@ SetTreeModule$002EmkIEnumerator$00601.prototype.Reset = function () {
   __$$2.i = SetTreeModule$$$mkIterator(__$$2.s);
 };
 
-SetTreeModule$002EmkIEnumerator$00601.prototype.Dispose = function () {};
+SetTreeModule$002EmkIEnumerator$00601.prototype.Dispose = function () {
+  void null;
+};
 
 function SetTreeModule$$$mkIEnumerator(s$$15) {
   return SetTreeModule$002EmkIEnumerator$00601$$$$002Ector$$Z5B395D56(s$$15);
@@ -8832,7 +8893,7 @@ function SetTreeModule$$$toSeq(s$$16) {
     if (en$$1.MoveNext()) {
       return [en$$1.Current, en$$1];
     } else {
-      return null;
+      return undefined;
     }
   }, en);
 }
@@ -9141,6 +9202,8 @@ function SetTreeModule$$$ofSeq(comparer$$20, c$$11) {
   } finally {
     if (Object(_Util_js__WEBPACK_IMPORTED_MODULE_4__["isDisposable"])(ie)) {
       ie.Dispose();
+    } else {
+      void null;
     }
   }
 }
@@ -9157,9 +9220,10 @@ const FSharpSet = Object(_Types_js__WEBPACK_IMPORTED_MODULE_0__["declare"])(func
   const $this$$2 = this;
   $this$$2.comparer = comparer$$22;
   $this$$2.tree = tree;
+  void null;
 });
 function FSharpSet$reflection($gen$$133) {
-  return Object(_Reflection_js__WEBPACK_IMPORTED_MODULE_1__["type"])("Set.FSharpSet", [$gen$$133]);
+  return Object(_Reflection_js__WEBPACK_IMPORTED_MODULE_1__["class_type"])("Set.FSharpSet", [$gen$$133], FSharpSet);
 }
 function FSharpSet$$$$002Ector$$2528C5CB(comparer$$22, tree) {
   return this instanceof FSharpSet ? FSharpSet.call(this, comparer$$22, tree) : new FSharpSet(comparer$$22, tree);
@@ -9442,132 +9506,68 @@ function minElement(s$$51) {
 function maxElement(s$$52) {
   return FSharpSet$$get_MaximumElement(s$$52);
 }
-
-function createMutablePrivate(comparer$$31, tree$0027) {
-  let tree$$1 = tree$0027;
-  return {
-    get size() {
-      return SetTreeModule$$$count(tree$$1);
-    },
-
-    add(x$$33) {
-      const this$$$4 = this;
-      tree$$1 = SetTreeModule$$$add(comparer$$31, x$$33, tree$$1);
-      return this$$$4;
-    },
-
-    add_(x$$34) {
-      if (SetTreeModule$$$mem(comparer$$31, x$$34, tree$$1)) {
-        return false;
-      } else {
-        tree$$1 = SetTreeModule$$$add(comparer$$31, x$$34, tree$$1);
-        return true;
-      }
-    },
-
-    clear() {
-      tree$$1 = new SetTree$00601(0, "SetEmpty");
-    },
-
-    delete(x$$35) {
-      if (SetTreeModule$$$mem(comparer$$31, x$$35, tree$$1)) {
-        tree$$1 = SetTreeModule$$$remove(comparer$$31, x$$35, tree$$1);
-        return true;
-      } else {
-        return false;
-      }
-    },
-
-    has(x$$36) {
-      return SetTreeModule$$$mem(comparer$$31, x$$36, tree$$1);
-    },
-
-    keys() {
-      return SetTreeModule$$$toSeq(tree$$1);
-    },
-
-    values() {
-      return SetTreeModule$$$toSeq(tree$$1);
-    },
-
-    entries() {
-      const source = SetTreeModule$$$toSeq(tree$$1);
-      return Object(_Seq_js__WEBPACK_IMPORTED_MODULE_3__["map"])(function mapping(v) {
-        return [v, v];
-      }, source);
-    },
-
-    [Symbol.iterator]() {
-      return Object(_Seq_js__WEBPACK_IMPORTED_MODULE_3__["toIterator"])(SetTreeModule$$$mkIEnumerator(tree$$1));
-    },
-
-    GetEnumerator() {
-      return SetTreeModule$$$mkIEnumerator(tree$$1);
-    }
-
-  };
-}
-
-function createMutable(source$$1, comparer$$32) {
-  const set = Object(_MutableSet__WEBPACK_IMPORTED_MODULE_6__["MutableSet$00601$$$$002Ector$$Z6150332D"])(source$$1, comparer$$32);
+function createMutable(source, comparer$$31) {
+  const set = Object(_MutableSet__WEBPACK_IMPORTED_MODULE_6__["MutableSet$00601$$$$002Ector$$Z6150332D"])(source, comparer$$31);
   return set;
 }
-function distinct(xs, comparer$$33) {
+function distinct(xs, comparer$$32) {
   return Object(_Seq_js__WEBPACK_IMPORTED_MODULE_3__["delay"])(function () {
-    const set$$1 = Object(_MutableSet__WEBPACK_IMPORTED_MODULE_6__["MutableSet$00601$$$$002Ector$$Z6150332D"])(Object(_Seq_js__WEBPACK_IMPORTED_MODULE_3__["empty"])(), comparer$$33);
-    return Object(_Seq_js__WEBPACK_IMPORTED_MODULE_3__["collect"])(function (x$$37) {
-      return Object(_MutableSet__WEBPACK_IMPORTED_MODULE_6__["MutableSet$00601$$Add$$2B595"])(set$$1, x$$37) ? Object(_Seq_js__WEBPACK_IMPORTED_MODULE_3__["singleton"])(x$$37) : Object(_Seq_js__WEBPACK_IMPORTED_MODULE_3__["empty"])();
+    const set$$1 = Object(_MutableSet__WEBPACK_IMPORTED_MODULE_6__["MutableSet$00601$$$$002Ector$$Z6150332D"])(Object(_Seq_js__WEBPACK_IMPORTED_MODULE_3__["empty"])(), comparer$$32);
+    return Object(_Seq_js__WEBPACK_IMPORTED_MODULE_3__["collect"])(function (x$$33) {
+      return Object(_MutableSet__WEBPACK_IMPORTED_MODULE_6__["MutableSet$00601$$Add$$2B595"])(set$$1, x$$33) ? Object(_Seq_js__WEBPACK_IMPORTED_MODULE_3__["singleton"])(x$$33) : Object(_Seq_js__WEBPACK_IMPORTED_MODULE_3__["empty"])();
     }, xs);
   });
 }
-function distinctBy(projection, xs$$1, comparer$$34) {
+function distinctBy(projection, xs$$1, comparer$$33) {
   return Object(_Seq_js__WEBPACK_IMPORTED_MODULE_3__["delay"])(function () {
-    const set$$2 = Object(_MutableSet__WEBPACK_IMPORTED_MODULE_6__["MutableSet$00601$$$$002Ector$$Z6150332D"])(Object(_Seq_js__WEBPACK_IMPORTED_MODULE_3__["empty"])(), comparer$$34);
-    return Object(_Seq_js__WEBPACK_IMPORTED_MODULE_3__["collect"])(function (x$$38) {
-      return Object(_MutableSet__WEBPACK_IMPORTED_MODULE_6__["MutableSet$00601$$Add$$2B595"])(set$$2, projection(x$$38)) ? Object(_Seq_js__WEBPACK_IMPORTED_MODULE_3__["singleton"])(x$$38) : Object(_Seq_js__WEBPACK_IMPORTED_MODULE_3__["empty"])();
+    const set$$2 = Object(_MutableSet__WEBPACK_IMPORTED_MODULE_6__["MutableSet$00601$$$$002Ector$$Z6150332D"])(Object(_Seq_js__WEBPACK_IMPORTED_MODULE_3__["empty"])(), comparer$$33);
+    return Object(_Seq_js__WEBPACK_IMPORTED_MODULE_3__["collect"])(function (x$$34) {
+      return Object(_MutableSet__WEBPACK_IMPORTED_MODULE_6__["MutableSet$00601$$Add$$2B595"])(set$$2, projection(x$$34)) ? Object(_Seq_js__WEBPACK_IMPORTED_MODULE_3__["singleton"])(x$$34) : Object(_Seq_js__WEBPACK_IMPORTED_MODULE_3__["empty"])();
     }, xs$$1);
   });
 }
 function unionWith(s1$$4, s2$$4) {
-  return Object(_Seq_js__WEBPACK_IMPORTED_MODULE_3__["fold"])(function folder(acc$$14, x$$39) {
-    return acc$$14.add(x$$39);
+  return Object(_Seq_js__WEBPACK_IMPORTED_MODULE_3__["fold"])(function folder(acc$$14, x$$35) {
+    return acc$$14.add(x$$35);
   }, s1$$4, s2$$4);
 }
-function intersectWith(s1$$5, s2$$5, comparer$$35) {
-  const s2$$6 = ofSeq(s2$$5, comparer$$35);
-  Object(_Seq_js__WEBPACK_IMPORTED_MODULE_3__["iterate"])(function (x$$40) {
-    if (!FSharpSet$$Contains$$2B595(s2$$6, x$$40)) {
-      const value = s1$$5.delete(x$$40);
+function intersectWith(s1$$5, s2$$5, comparer$$34) {
+  const s2$$6 = ofSeq(s2$$5, comparer$$34);
+  Object(_Seq_js__WEBPACK_IMPORTED_MODULE_3__["iterate"])(function (x$$36) {
+    if (!FSharpSet$$Contains$$2B595(s2$$6, x$$36)) {
+      const value = s1$$5.delete(x$$36);
       void value;
+    } else {
+      void null;
     }
   }, s1$$5);
 }
 function exceptWith(s1$$6, s2$$7) {
-  Object(_Seq_js__WEBPACK_IMPORTED_MODULE_3__["iterate"])(function (x$$41) {
-    const value$$1 = s1$$6.delete(x$$41);
+  Object(_Seq_js__WEBPACK_IMPORTED_MODULE_3__["iterate"])(function (x$$37) {
+    const value$$1 = s1$$6.delete(x$$37);
     void value$$1;
   }, s2$$7);
 }
-function isSubsetOf(s1$$7, s2$$8, comparer$$36) {
-  return isSubset(ofSeq(s1$$7, comparer$$36), ofSeq(s2$$8, comparer$$36));
+function isSubsetOf(s1$$7, s2$$8, comparer$$35) {
+  return isSubset(ofSeq(s1$$7, comparer$$35), ofSeq(s2$$8, comparer$$35));
 }
-function isSupersetOf(s1$$8, s2$$9, comparer$$37) {
-  return isSuperset(ofSeq(s1$$8, comparer$$37), ofSeq(s2$$9, comparer$$37));
+function isSupersetOf(s1$$8, s2$$9, comparer$$36) {
+  return isSuperset(ofSeq(s1$$8, comparer$$36), ofSeq(s2$$9, comparer$$36));
 }
-function isProperSubsetOf(s1$$9, s2$$10, comparer$$38) {
-  return isProperSubset(ofSeq(s1$$9, comparer$$38), ofSeq(s2$$10, comparer$$38));
+function isProperSubsetOf(s1$$9, s2$$10, comparer$$37) {
+  return isProperSubset(ofSeq(s1$$9, comparer$$37), ofSeq(s2$$10, comparer$$37));
 }
-function isProperSupersetOf(s1$$10, s2$$11, comparer$$39) {
-  return isProperSuperset(ofSeq(s1$$10, comparer$$39), ofSeq(s2$$11, comparer$$39));
+function isProperSupersetOf(s1$$10, s2$$11, comparer$$38) {
+  return isProperSuperset(ofSeq(s1$$10, comparer$$38), ofSeq(s2$$11, comparer$$38));
 }
 
 /***/ }),
 
-/***/ "./.fable/fable-library.2.4.21/String.js":
+/***/ "./.fable/fable-library.2.13.0/String.js":
 /*!***********************************************!*\
-  !*** ./.fable/fable-library.2.4.21/String.js ***!
+  !*** ./.fable/fable-library.2.13.0/String.js ***!
   \***********************************************/
-/*! exports provided: compare, compareOrdinal, compareTo, startsWith, indexOfAny, printf, toConsole, toConsoleError, toText, toFail, fsFormat, format, endsWith, initialize, insert, isNullOrEmpty, isNullOrWhiteSpace, concat, join, joinWithIndices, validateGuid, newGuid, guidToArray, arrayToGuid, toBase64String, fromBase64String, padLeft, padRight, remove, replace, replicate, getCharAtIndex, split, trim, trimStart, trimEnd, filter, substring */
+/*! exports provided: compare, compareOrdinal, compareTo, startsWith, indexOfAny, printf, toConsole, toConsoleError, toText, toFail, fsFormat, format, endsWith, initialize, insert, isNullOrEmpty, isNullOrWhiteSpace, concat, join, joinWithIndices, toBase64String, fromBase64String, padLeft, padRight, remove, replace, replicate, getCharAtIndex, split, trim, trimStart, trimEnd, filter, substring */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -9592,10 +9592,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "concat", function() { return concat; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "join", function() { return join; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "joinWithIndices", function() { return joinWithIndices; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "validateGuid", function() { return validateGuid; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "newGuid", function() { return newGuid; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "guidToArray", function() { return guidToArray; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "arrayToGuid", function() { return arrayToGuid; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "toBase64String", function() { return toBase64String; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fromBase64String", function() { return fromBase64String; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "padLeft", function() { return padLeft; });
@@ -9610,20 +9606,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "trimEnd", function() { return trimEnd; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "filter", function() { return filter; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "substring", function() { return substring; });
-/* harmony import */ var _Date__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Date */ "./.fable/fable-library.2.4.21/Date.js");
-/* harmony import */ var _Decimal__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Decimal */ "./.fable/fable-library.2.4.21/Decimal.js");
-/* harmony import */ var _Long__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Long */ "./.fable/fable-library.2.4.21/Long.js");
-/* harmony import */ var _RegExp__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./RegExp */ "./.fable/fable-library.2.4.21/RegExp.js");
+/* harmony import */ var _Date__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Date */ "./.fable/fable-library.2.13.0/Date.js");
+/* harmony import */ var _Decimal__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Decimal */ "./.fable/fable-library.2.13.0/Decimal.js");
+/* harmony import */ var _Long__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Long */ "./.fable/fable-library.2.13.0/Long.js");
+/* harmony import */ var _RegExp__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./RegExp */ "./.fable/fable-library.2.13.0/RegExp.js");
 
 
 
 
 const fsFormatRegExp = /(^|[^%])%([0+\- ]*)(\d+)?(?:\.(\d+))?(\w)/;
 const formatRegExp = /\{(\d+)(,-?\d+)?(?:\:([a-zA-Z])(\d{0,2})|\:(.+?))?\}/g;
-// RFC 4122 compliant. From https://stackoverflow.com/a/13653180/3922220
-// const guidRegex = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/;
-// Relax GUID parsing, see #1637
-const guidRegex = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/;
 // These are used for formatting and only take longs and decimals into account (no bigint)
 function isNumeric(x) {
     return typeof x === "number" || x instanceof _Long__WEBPACK_IMPORTED_MODULE_2__["default"] || x instanceof _Decimal__WEBPACK_IMPORTED_MODULE_1__["default"];
@@ -9972,102 +9964,6 @@ function joinWithIndices(delimiter, xs, startIndex, count) {
     }
     return xs.slice(startIndex, endIndexPlusOne).join(delimiter);
 }
-/** Validates UUID as specified in RFC4122 (versions 1-5). Trims braces. */
-function validateGuid(str, doNotThrow) {
-    const trimmedAndLowered = trim(str, "{", "}").toLowerCase();
-    if (guidRegex.test(trimmedAndLowered)) {
-        return doNotThrow ? [true, trimmedAndLowered] : trimmedAndLowered;
-    }
-    else if (doNotThrow) {
-        return [false, "00000000-0000-0000-0000-000000000000"];
-    }
-    throw new Error("Guid should contain 32 digits with 4 dashes: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx");
-}
-// From https://gist.github.com/LeverOne/1308368
-function newGuid() {
-    let b = "";
-    for (let a = 0; a++ < 36;) {
-        b += a * 51 & 52
-            ? (a ^ 15 ? 8 ^ Math.random() * (a ^ 20 ? 16 : 4) : 4).toString(16)
-            : "-";
-    }
-    return b;
-}
-// Maps for number <-> hex string conversion
-let _convertMapsInitialized = false;
-let _byteToHex;
-let _hexToByte;
-function initConvertMaps() {
-    _byteToHex = new Array(256);
-    _hexToByte = {};
-    for (let i = 0; i < 256; i++) {
-        _byteToHex[i] = (i + 0x100).toString(16).substr(1);
-        _hexToByte[_byteToHex[i]] = i;
-    }
-    _convertMapsInitialized = true;
-}
-/** Parse a UUID into it's component bytes */
-// Adapted from https://github.com/zefferus/uuid-parse
-function guidToArray(s) {
-    if (!_convertMapsInitialized) {
-        initConvertMaps();
-    }
-    let i = 0;
-    const buf = new Uint8Array(16);
-    s.toLowerCase().replace(/[0-9a-f]{2}/g, ((oct) => {
-        switch (i) {
-            // .NET saves first three byte groups with different endianness
-            // See https://stackoverflow.com/a/16722909/3922220
-            case 0:
-            case 1:
-            case 2:
-            case 3:
-                buf[3 - i++] = _hexToByte[oct];
-                break;
-            case 4:
-            case 5:
-                buf[9 - i++] = _hexToByte[oct];
-                break;
-            case 6:
-            case 7:
-                buf[13 - i++] = _hexToByte[oct];
-                break;
-            case 8:
-            case 9:
-            case 10:
-            case 11:
-            case 12:
-            case 13:
-            case 14:
-            case 15:
-                buf[i++] = _hexToByte[oct];
-                break;
-        }
-    }));
-    // Zero out remaining bytes if string was short
-    while (i < 16) {
-        buf[i++] = 0;
-    }
-    return buf;
-}
-/** Convert UUID byte array into a string */
-function arrayToGuid(buf) {
-    if (buf.length !== 16) {
-        throw new Error("Byte array for GUID must be exactly 16 bytes long");
-    }
-    if (!_convertMapsInitialized) {
-        initConvertMaps();
-    }
-    const guid = _byteToHex[buf[3]] + _byteToHex[buf[2]] +
-        _byteToHex[buf[1]] + _byteToHex[buf[0]] + "-" +
-        _byteToHex[buf[5]] + _byteToHex[buf[4]] + "-" +
-        _byteToHex[buf[7]] + _byteToHex[buf[6]] + "-" +
-        _byteToHex[buf[8]] + _byteToHex[buf[9]] + "-" +
-        _byteToHex[buf[10]] + _byteToHex[buf[11]] +
-        _byteToHex[buf[12]] + _byteToHex[buf[13]] +
-        _byteToHex[buf[14]] + _byteToHex[buf[15]];
-    return guid;
-}
 function notSupported(name) {
     throw new Error("The environment doesn't support '" + name + "', please use a polyfill.");
 }
@@ -10188,9 +10084,9 @@ function substring(str, startIndex, length) {
 
 /***/ }),
 
-/***/ "./.fable/fable-library.2.4.21/Types.js":
+/***/ "./.fable/fable-library.2.13.0/Types.js":
 /*!**********************************************!*\
-  !*** ./.fable/fable-library.2.4.21/Types.js ***!
+  !*** ./.fable/fable-library.2.13.0/Types.js ***!
   \**********************************************/
 /*! exports provided: declare, SystemObject, List, Union, Record, anonRecord, FSharpRef, Exception, isException, FSharpException, MatchFailureException, Attribute */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -10209,7 +10105,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FSharpException", function() { return FSharpException; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MatchFailureException", function() { return MatchFailureException; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Attribute", function() { return Attribute; });
-/* harmony import */ var _Util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Util */ "./.fable/fable-library.2.4.21/Util.js");
+/* harmony import */ var _Util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Util */ "./.fable/fable-library.2.13.0/Util.js");
 // tslint:disable: space-before-function-paren
 
 function sameType(x, y) {
@@ -10240,18 +10136,17 @@ function declare(cons, superClass) {
     inherits(cons, superClass || SystemObject);
     return cons;
 }
-function SystemObject() {
-    return;
+class SystemObject {
+    toString() {
+        return "{" + Object.entries(this).map(([k, v]) => k + " = " + String(v)).join(";\n ") + "}";
+    }
+    GetHashCode(x) {
+        return Object(_Util__WEBPACK_IMPORTED_MODULE_0__["identityHash"])(x !== null && x !== void 0 ? x : this);
+    }
+    Equals(x, y) {
+        return x === (y !== null && y !== void 0 ? y : this);
+    }
 }
-SystemObject.prototype.toString = function () {
-    return "{" + Object.keys(this).map((k) => k + " = " + String(this[k])).join(";\n ") + "}";
-};
-SystemObject.prototype.GetHashCode = function () {
-    return Object(_Util__WEBPACK_IMPORTED_MODULE_0__["identityHash"])(this);
-};
-SystemObject.prototype.Equals = function (other) {
-    return this === other;
-};
 function compareList(self, other) {
     if (self === other) {
         return 0;
@@ -10307,53 +10202,56 @@ class List {
         return compareList(this, other);
     }
 }
-function Union(tag, name, ...fields) {
-    this.tag = tag | 0;
-    this.name = name;
-    this.fields = fields;
+class Union extends SystemObject {
+    constructor(tag, name, ...fields) {
+        super();
+        this.tag = tag | 0;
+        this.name = name;
+        this.fields = fields;
+    }
+    toString() {
+        const len = this.fields.length;
+        if (len === 0) {
+            return this.name;
+        }
+        else if (len === 1) {
+            return this.name + " " + String(this.fields[0]);
+        }
+        else {
+            return this.name + " (" + this.fields.map((x) => String(x)).join(",") + ")";
+        }
+    }
+    toJSON() {
+        return this.fields.length === 0
+            ? this.name
+            : [this.name].concat(this.fields);
+    }
+    GetHashCode() {
+        const hashes = this.fields.map((x) => Object(_Util__WEBPACK_IMPORTED_MODULE_0__["structuralHash"])(x));
+        hashes.splice(0, 0, Object(_Util__WEBPACK_IMPORTED_MODULE_0__["numberHash"])(this.tag));
+        return Object(_Util__WEBPACK_IMPORTED_MODULE_0__["combineHashCodes"])(hashes);
+    }
+    Equals(other) {
+        return this === other
+            || (sameType(this, other)
+                && this.tag === other.tag
+                && Object(_Util__WEBPACK_IMPORTED_MODULE_0__["equalArrays"])(this.fields, other.fields));
+    }
+    CompareTo(other) {
+        if (this === other) {
+            return 0;
+        }
+        else if (!sameType(this, other)) {
+            return -1;
+        }
+        else if (this.tag === other.tag) {
+            return Object(_Util__WEBPACK_IMPORTED_MODULE_0__["compareArrays"])(this.fields, other.fields);
+        }
+        else {
+            return this.tag < other.tag ? -1 : 1;
+        }
+    }
 }
-Union.prototype.toString = function () {
-    const len = this.fields.length;
-    if (len === 0) {
-        return this.name;
-    }
-    else if (len === 1) {
-        return this.name + " " + String(this.fields[0]);
-    }
-    else {
-        return this.name + " (" + this.fields.map((x) => String(x)).join(",") + ")";
-    }
-};
-Union.prototype.toJSON = function () {
-    return this.fields.length === 0
-        ? this.name
-        : [this.name].concat(this.fields);
-};
-Union.prototype.GetHashCode = function () {
-    const hashes = this.fields.map((x) => Object(_Util__WEBPACK_IMPORTED_MODULE_0__["structuralHash"])(x));
-    hashes.splice(0, 0, Object(_Util__WEBPACK_IMPORTED_MODULE_0__["numberHash"])(this.tag));
-    return Object(_Util__WEBPACK_IMPORTED_MODULE_0__["combineHashCodes"])(hashes);
-};
-Union.prototype.Equals = function (other) {
-    return this === other
-        || (sameType(this, other)
-            && this.tag === other.tag
-            && Object(_Util__WEBPACK_IMPORTED_MODULE_0__["equalArrays"])(this.fields, other.fields));
-};
-Union.prototype.CompareTo = function (other) {
-    if (this === other) {
-        return 0;
-    }
-    else if (!sameType(this, other)) {
-        return -1;
-    }
-    else if (this.tag === other.tag) {
-        return Object(_Util__WEBPACK_IMPORTED_MODULE_0__["compareArrays"])(this.fields, other.fields);
-    }
-    else {
-        return this.tag < other.tag ? -1 : 1;
-    }
-};
 function recordToJson(record, getFieldNames) {
     const o = {};
     const keys = getFieldNames == null ? Object.keys(record) : getFieldNames(record);
@@ -10397,31 +10295,33 @@ function recordCompare(self, other, getFieldNames) {
         return 0;
     }
 }
-function Record() {
-    return;
+class Record extends SystemObject {
+    toString() {
+        return "{" + Object.entries(this).map(([k, v]) => k + " = " + String(v)).join(";\n ") + "}";
+    }
+    toJSON() {
+        return recordToJson(this);
+    }
+    GetHashCode() {
+        const hashes = Object.values(this).map((v) => Object(_Util__WEBPACK_IMPORTED_MODULE_0__["structuralHash"])(v));
+        return Object(_Util__WEBPACK_IMPORTED_MODULE_0__["combineHashCodes"])(hashes);
+    }
+    Equals(other) {
+        return recordEquals(this, other);
+    }
+    CompareTo(other) {
+        return recordCompare(this, other);
+    }
 }
-Record.prototype.toString = function () {
-    return "{" + Object.keys(this).map((k) => k + " = " + String(this[k])).join(";\n ") + "}";
-};
-Record.prototype.toJSON = function () {
-    return recordToJson(this);
-};
-Record.prototype.GetHashCode = function () {
-    const hashes = Object.keys(this).map((k) => Object(_Util__WEBPACK_IMPORTED_MODULE_0__["structuralHash"])(this[k]));
-    return Object(_Util__WEBPACK_IMPORTED_MODULE_0__["combineHashCodes"])(hashes);
-};
-Record.prototype.Equals = function (other) {
-    return recordEquals(this, other);
-};
-Record.prototype.CompareTo = function (other) {
-    return recordCompare(this, other);
-};
 function anonRecord(o) {
     return Object.assign(Object.create(Record.prototype), o);
 }
-const FSharpRef = declare(function FSharpRef(contents) {
-    this.contents = contents;
-}, Record);
+class FSharpRef extends Record {
+    constructor(contents) {
+        super();
+        this.contents = contents;
+    }
+}
 const Exception = declare(function Exception(message) {
     this.stack = Error().stack;
     this.message = message;
@@ -10432,55 +10332,61 @@ function isException(x) {
 function getFSharpExceptionFieldNames(self) {
     return Object.keys(self).filter((k) => k !== "message" && k !== "stack");
 }
-const FSharpException = declare(function FSharpException() {
-    Exception.call(this);
-}, Exception);
-FSharpException.prototype.toString = function () {
-    const fieldNames = getFSharpExceptionFieldNames(this);
-    const len = fieldNames.length;
-    if (len === 0) {
-        return this.message;
+class FSharpException extends Exception {
+    toString() {
+        var _a;
+        // const fieldNames = getFSharpExceptionFieldNames(this);
+        const fields = Object.entries(this).filter(([k, _]) => k !== "message" && k !== "stack");
+        const len = fields.length;
+        if (len === 0) {
+            return (_a = this.message) !== null && _a !== void 0 ? _a : "";
+        }
+        else if (len === 1) {
+            return this.message + " " + String(fields[1]);
+        }
+        else {
+            return this.message + " (" + fields.map(([_, v]) => String(v)).join(",") + ")";
+        }
     }
-    else if (len === 1) {
-        return this.message + " " + String(this[fieldNames[0]]);
+    toJSON() {
+        return recordToJson(this, getFSharpExceptionFieldNames);
     }
-    else {
-        return this.message + " (" + fieldNames.map((k) => String(this[k])).join(",") + ")";
+    GetHashCode() {
+        const fields = Object.entries(this).filter(([k, _]) => k !== "message" && k !== "stack");
+        const hashes = fields.map(([_, v]) => Object(_Util__WEBPACK_IMPORTED_MODULE_0__["structuralHash"])(v));
+        return Object(_Util__WEBPACK_IMPORTED_MODULE_0__["combineHashCodes"])(hashes);
     }
-};
-FSharpException.prototype.toJSON = function () {
-    return recordToJson(this, getFSharpExceptionFieldNames);
-};
-FSharpException.prototype.GetHashCode = function () {
-    const hashes = getFSharpExceptionFieldNames(this).map((k) => Object(_Util__WEBPACK_IMPORTED_MODULE_0__["structuralHash"])(this[k]));
-    return Object(_Util__WEBPACK_IMPORTED_MODULE_0__["combineHashCodes"])(hashes);
-};
-FSharpException.prototype.Equals = function (other) {
-    return recordEquals(this, other, getFSharpExceptionFieldNames);
-};
-FSharpException.prototype.CompareTo = function (other) {
-    return recordCompare(this, other, getFSharpExceptionFieldNames);
-};
-const MatchFailureException = declare(function MatchFailureException(arg1, arg2, arg3) {
-    this.arg1 = arg1;
-    this.arg2 = arg2 | 0;
-    this.arg3 = arg3 | 0;
-    this.message = "The match cases were incomplete";
-}, FSharpException);
+    Equals(other) {
+        return recordEquals(this, other, getFSharpExceptionFieldNames);
+    }
+    CompareTo(other) {
+        return recordCompare(this, other, getFSharpExceptionFieldNames);
+    }
+}
+class MatchFailureException extends FSharpException {
+    constructor(arg1, arg2, arg3) {
+        super();
+        this.arg1 = arg1;
+        this.arg2 = arg2 | 0;
+        this.arg3 = arg3 | 0;
+        this.message = "The match cases were incomplete";
+    }
+}
 const Attribute = declare(function Attribute() { return; }, SystemObject);
 //# sourceMappingURL=Types.js.map
 
 /***/ }),
 
-/***/ "./.fable/fable-library.2.4.21/Util.js":
+/***/ "./.fable/fable-library.2.13.0/Util.js":
 /*!*********************************************!*\
-  !*** ./.fable/fable-library.2.4.21/Util.js ***!
+  !*** ./.fable/fable-library.2.13.0/Util.js ***!
   \*********************************************/
-/*! exports provided: extend, isIterable, isArrayLike, isComparer, isComparable, isEquatable, isHashable, isDisposable, Comparer, comparerFromEqualityComparer, containsValue, tryGetValue, addToSet, assertEqual, assertNotEqual, Lazy, lazyFromValue, padWithZeros, padLeftAndRightWithZeros, dateOffset, int16ToString, int32ToString, ObjectRef, stringHash, numberHash, combineHashCodes, identityHash, structuralHash, equalArraysWith, equalArrays, equals, compareDates, comparePrimitives, compareArraysWith, compareArrays, compareObjects, compare, min, max, createAtom, createObj, jsOptions, round, sign, randomNext, randomBytes, unescapeDataString, escapeDataString, escapeUriString, count, clear, uncurry, curry, partialApply, mapCurriedArgs, addToDict, getItemFromDict */
+/*! exports provided: bindThis, extend, isIterable, isArrayLike, isComparer, isComparable, isEquatable, isHashable, isDisposable, Comparer, comparerFromEqualityComparer, containsValue, tryGetValue, addToSet, assertEqual, assertNotEqual, Lazy, lazyFromValue, padWithZeros, padLeftAndRightWithZeros, dateOffset, int16ToString, int32ToString, ObjectRef, stringHash, numberHash, combineHashCodes, identityHash, structuralHash, equalArraysWith, equalArrays, equals, compareDates, comparePrimitives, compareArraysWith, compareArrays, compareObjects, compare, min, max, createAtom, createObj, jsOptions, round, sign, randomNext, randomBytes, unescapeDataString, escapeDataString, escapeUriString, count, clear, uncurry, curry, partialApply, mapCurriedArgs, addToDict, getItemFromDict */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "bindThis", function() { return bindThis; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "extend", function() { return extend; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isIterable", function() { return isIterable; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isArrayLike", function() { return isArrayLike; });
@@ -10539,6 +10445,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "addToDict", function() { return addToDict; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getItemFromDict", function() { return getItemFromDict; });
 // tslint:disable:ban-types
+function bindThis(this$, source) {
+    for (const key of Object.keys(source)) {
+        if (typeof source[key] === "function") {
+            source[key] = source[key].bind(this$);
+        }
+    }
+    return source;
+}
 // Object.assign flattens getters and setters
 // See https://stackoverflow.com/questions/37054596/js-es5-how-to-assign-objects-with-setters-and-getters
 function extend(target, ...sources) {
@@ -10682,16 +10596,20 @@ function int32ToString(i, radix) {
     i = i < 0 && radix != null && radix !== 10 ? 0xFFFFFFFF + i + 1 : i;
     return i.toString(radix);
 }
-class ObjectRef {
-    static id(o) {
-        if (!ObjectRef.idMap.has(o)) {
-            ObjectRef.idMap.set(o, ++ObjectRef.count);
+let ObjectRef = /** @class */ (() => {
+    class ObjectRef {
+        static id(o) {
+            if (!ObjectRef.idMap.has(o)) {
+                ObjectRef.idMap.set(o, ++ObjectRef.count);
+            }
+            return ObjectRef.idMap.get(o);
         }
-        return ObjectRef.idMap.get(o);
     }
-}
-ObjectRef.idMap = new WeakMap();
-ObjectRef.count = 0;
+    ObjectRef.idMap = new WeakMap();
+    ObjectRef.count = 0;
+    return ObjectRef;
+})();
+
 function stringHash(s) {
     let i = 0;
     let h = 5381;
@@ -10920,8 +10838,8 @@ function max(comparer, x, y) {
 }
 function createAtom(value) {
     let atom = value;
-    return (value) => {
-        if (value === void 0) {
+    return (value, isSetter) => {
+        if (!isSetter) {
             return atom;
         }
         else {
@@ -11075,7 +10993,7 @@ const CURRIED_KEY = "__CURRIED__";
 function uncurry(arity, f) {
     // f may be a function option with None value
     if (f == null) {
-        return null;
+        return undefined;
     }
     // The function is already uncurried
     if (f.length > 1) {
@@ -11139,7 +11057,7 @@ function curry(arity, f) {
 }
 function partialApply(arity, f, args) {
     if (f == null) {
-        return null;
+        return undefined;
     }
     else if (CURRIED_KEY in f) {
         f = f[CURRIED_KEY];
@@ -11154,21 +11072,21 @@ function partialApply(arity, f, args) {
                 // Wrap arguments to make sure .concat doesn't destruct arrays. Example
                 // [1,2].concat([3,4],5)   --> [1,2,3,4,5]    // fails
                 // [1,2].concat([[3,4],5]) --> [1,2,[3,4],5]  // ok
-                return (a1) => f.apply(null, args.concat([a1]));
+                return (a1) => f.apply(undefined, args.concat([a1]));
             case 2:
-                return (a1) => (a2) => f.apply(null, args.concat([a1, a2]));
+                return (a1) => (a2) => f.apply(undefined, args.concat([a1, a2]));
             case 3:
-                return (a1) => (a2) => (a3) => f.apply(null, args.concat([a1, a2, a3]));
+                return (a1) => (a2) => (a3) => f.apply(undefined, args.concat([a1, a2, a3]));
             case 4:
-                return (a1) => (a2) => (a3) => (a4) => f.apply(null, args.concat([a1, a2, a3, a4]));
+                return (a1) => (a2) => (a3) => (a4) => f.apply(undefined, args.concat([a1, a2, a3, a4]));
             case 5:
-                return (a1) => (a2) => (a3) => (a4) => (a5) => f.apply(null, args.concat([a1, a2, a3, a4, a5]));
+                return (a1) => (a2) => (a3) => (a4) => (a5) => f.apply(undefined, args.concat([a1, a2, a3, a4, a5]));
             case 6:
-                return (a1) => (a2) => (a3) => (a4) => (a5) => (a6) => f.apply(null, args.concat([a1, a2, a3, a4, a5, a6]));
+                return (a1) => (a2) => (a3) => (a4) => (a5) => (a6) => f.apply(undefined, args.concat([a1, a2, a3, a4, a5, a6]));
             case 7:
-                return (a1) => (a2) => (a3) => (a4) => (a5) => (a6) => (a7) => f.apply(null, args.concat([a1, a2, a3, a4, a5, a6, a7]));
+                return (a1) => (a2) => (a3) => (a4) => (a5) => (a6) => (a7) => f.apply(undefined, args.concat([a1, a2, a3, a4, a5, a6, a7]));
             case 8:
-                return (a1) => (a2) => (a3) => (a4) => (a5) => (a6) => (a7) => (a8) => f.apply(null, args.concat([a1, a2, a3, a4, a5, a6, a7, a8]));
+                return (a1) => (a2) => (a3) => (a4) => (a5) => (a6) => (a7) => (a8) => f.apply(undefined, args.concat([a1, a2, a3, a4, a5, a6, a7, a8]));
             default:
                 throw new Error("Partially applying to more than 8-arity is not supported: " + arity);
         }
@@ -11215,9 +11133,9 @@ function getItemFromDict(map, key) {
 
 /***/ }),
 
-/***/ "./.fable/fable-library.2.4.21/lib/big.js":
+/***/ "./.fable/fable-library.2.13.0/lib/big.js":
 /*!************************************************!*\
-  !*** ./.fable/fable-library.2.4.21/lib/big.js ***!
+  !*** ./.fable/fable-library.2.13.0/lib/big.js ***!
   \************************************************/
 /*! exports provided: Big, default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -11225,7 +11143,7 @@ function getItemFromDict(map, key) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Big", function() { return Big; });
-/* harmony import */ var _Util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../Util */ "./.fable/fable-library.2.4.21/Util.js");
+/* harmony import */ var _Util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../Util */ "./.fable/fable-library.2.13.0/Util.js");
 // https://github.com/MikeMcl/big.js/blob/01b3ce3a6b0ba7b42442ea48ec4ffc88d1669ec4/big.mjs
 /* tslint:disable */
 
@@ -11998,9 +11916,9 @@ var Big = _Big_();
 
 /***/ }),
 
-/***/ "./.fable/fable-library.2.4.21/lib/long.js":
+/***/ "./.fable/fable-library.2.13.0/lib/long.js":
 /*!*************************************************!*\
-  !*** ./.fable/fable-library.2.4.21/lib/long.js ***!
+  !*** ./.fable/fable-library.2.13.0/lib/long.js ***!
   \*************************************************/
 /*! exports provided: default, Long, isLong, fromInt, fromNumber, fromBits, fromString, fromValue, ZERO, UZERO, ONE, UONE, NEG_ONE, MAX_VALUE, MAX_UNSIGNED_VALUE, MIN_VALUE, toInt, toNumber, toString, getHighBits, getHighBitsUnsigned, getLowBits, getLowBitsUnsigned, getNumBitsAbs, isZero, isNegative, isPositive, isOdd, isEven, equals, notEquals, lessThan, lessThanOrEqual, greaterThan, greaterThanOrEqual, compare, negate, add, subtract, multiply, divide, modulo, not, and, or, xor, shiftLeft, shiftRight, shiftRightUnsigned, rotateLeft, rotateRight, toSigned, toUnsigned, toBytes, toBytesLE, toBytesBE, fromBytes, fromBytesLE, fromBytesBE */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -13401,9 +13319,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _time_fs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./time.fs */ "./src/time.fs");
 /* harmony import */ var _game_fs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./game.fs */ "./src/game.fs");
 /* harmony import */ var _renderer_fs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./renderer.fs */ "./src/renderer.fs");
-/* harmony import */ var _fable_fable_library_2_4_21_Util_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../.fable/fable-library.2.4.21/Util.js */ "./.fable/fable-library.2.4.21/Util.js");
+/* harmony import */ var _fable_fable_library_2_13_0_Util_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../.fable/fable-library.2.13.0/Util.js */ "./.fable/fable-library.2.13.0/Util.js");
 /* harmony import */ var _score_fs__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./score.fs */ "./src/score.fs");
-/* harmony import */ var _fable_fable_library_2_4_21_String_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../.fable/fable-library.2.4.21/String.js */ "./.fable/fable-library.2.4.21/String.js");
+/* harmony import */ var _fable_fable_library_2_13_0_String_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../.fable/fable-library.2.13.0/String.js */ "./.fable/fable-library.2.13.0/String.js");
 /* harmony import */ var _input_fs__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./input.fs */ "./src/input.fs");
 /* harmony import */ var _gameLoop_fs__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./gameLoop.fs */ "./src/gameLoop.fs");
 
@@ -13427,9 +13345,9 @@ function run(gameContainerDivId, nextBlockDivId) {
   const levelElement = document.getElementById("level");
 
   const updateScore = function updateScore(score) {
-    scoreElement.innerText = Object(_fable_fable_library_2_4_21_Util_js__WEBPACK_IMPORTED_MODULE_3__["int32ToString"])(score.points);
-    linesCompletedElement.innerText = Object(_fable_fable_library_2_4_21_Util_js__WEBPACK_IMPORTED_MODULE_3__["int32ToString"])(score.linesCompleted);
-    levelElement.innerHTML = Object(_fable_fable_library_2_4_21_Util_js__WEBPACK_IMPORTED_MODULE_3__["int32ToString"])(score.level);
+    scoreElement.innerText = Object(_fable_fable_library_2_13_0_Util_js__WEBPACK_IMPORTED_MODULE_3__["int32ToString"])(score.points);
+    linesCompletedElement.innerText = Object(_fable_fable_library_2_13_0_Util_js__WEBPACK_IMPORTED_MODULE_3__["int32ToString"])(score.linesCompleted);
+    levelElement.innerHTML = Object(_fable_fable_library_2_13_0_Util_js__WEBPACK_IMPORTED_MODULE_3__["int32ToString"])(score.level);
   };
 
   const removeChildNodeCallback = function removeChildNodeCallback(node, e) {
@@ -13438,23 +13356,23 @@ function run(gameContainerDivId, nextBlockDivId) {
   };
 
   const showScorePopup = function showScorePopup(previousScore, currentScore) {
-    if (!Object(_fable_fable_library_2_4_21_Util_js__WEBPACK_IMPORTED_MODULE_3__["equals"])(previousScore, currentScore)) {
+    if (!Object(_fable_fable_library_2_13_0_Util_js__WEBPACK_IMPORTED_MODULE_3__["equals"])(previousScore, currentScore)) {
       const gainedScore = Object(_score_fs__WEBPACK_IMPORTED_MODULE_4__["difference"])(previousScore, currentScore);
       let linesText;
 
       if (gainedScore.linesCompleted > 1) {
         const arg10 = gainedScore.linesCompleted | 0;
-        const clo1 = Object(_fable_fable_library_2_4_21_String_js__WEBPACK_IMPORTED_MODULE_5__["toText"])(Object(_fable_fable_library_2_4_21_String_js__WEBPACK_IMPORTED_MODULE_5__["printf"])("%i LINES"));
+        const clo1 = Object(_fable_fable_library_2_13_0_String_js__WEBPACK_IMPORTED_MODULE_5__["toText"])(Object(_fable_fable_library_2_13_0_String_js__WEBPACK_IMPORTED_MODULE_5__["printf"])("%i LINES"));
         linesText = clo1(arg10);
       } else {
         const arg10$$1 = gainedScore.linesCompleted | 0;
-        const clo1$$1 = Object(_fable_fable_library_2_4_21_String_js__WEBPACK_IMPORTED_MODULE_5__["toText"])(Object(_fable_fable_library_2_4_21_String_js__WEBPACK_IMPORTED_MODULE_5__["printf"])("%i LINE"));
+        const clo1$$1 = Object(_fable_fable_library_2_13_0_String_js__WEBPACK_IMPORTED_MODULE_5__["toText"])(Object(_fable_fable_library_2_13_0_String_js__WEBPACK_IMPORTED_MODULE_5__["printf"])("%i LINE"));
         linesText = clo1$$1(arg10$$1);
       }
 
       let pointsText;
       const arg10$$2 = gainedScore.points | 0;
-      const clo1$$2 = Object(_fable_fable_library_2_4_21_String_js__WEBPACK_IMPORTED_MODULE_5__["toText"])(Object(_fable_fable_library_2_4_21_String_js__WEBPACK_IMPORTED_MODULE_5__["printf"])("%i POINTS"));
+      const clo1$$2 = Object(_fable_fable_library_2_13_0_String_js__WEBPACK_IMPORTED_MODULE_5__["toText"])(Object(_fable_fable_library_2_13_0_String_js__WEBPACK_IMPORTED_MODULE_5__["printf"])("%i POINTS"));
       pointsText = clo1$$2(arg10$$2);
 
       if (previousScore.level !== currentScore.level) {
@@ -13463,7 +13381,7 @@ function run(gameContainerDivId, nextBlockDivId) {
         levelUpElement.innerHTML = "Level Up!";
         let callback;
         const arg00 = levelUpElement;
-        const clo1$$3 = Object(_fable_fable_library_2_4_21_Util_js__WEBPACK_IMPORTED_MODULE_3__["partialApply"])(1, removeChildNodeCallback, [arg00]);
+        const clo1$$3 = Object(_fable_fable_library_2_13_0_Util_js__WEBPACK_IMPORTED_MODULE_3__["partialApply"])(1, removeChildNodeCallback, [arg00]);
 
         callback = function (arg10$$3) {
           clo1$$3(arg10$$3);
@@ -13472,7 +13390,11 @@ function run(gameContainerDivId, nextBlockDivId) {
         levelUpElement.addEventListener("animationend", callback);
         const value = gameContainerElement.appendChild(levelUpElement);
         void value;
+      } else {
+        void null;
       }
+    } else {
+      void null;
     }
   };
 
@@ -13490,6 +13412,8 @@ function run(gameContainerDivId, nextBlockDivId) {
       if (previousState.tag === 0) {
         const prevGameState = previousState.fields[0];
         showScorePopup(prevGameState.score, gameState.score);
+      } else {
+        void null;
       }
     }
   };
@@ -13538,14 +13462,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getSquareCoords", function() { return getSquareCoords; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getFilledCells", function() { return getFilledCells; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getBoundingRect", function() { return getBoundingRect; });
-/* harmony import */ var _fable_fable_library_2_4_21_Types_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../.fable/fable-library.2.4.21/Types.js */ "./.fable/fable-library.2.4.21/Types.js");
+/* harmony import */ var _fable_fable_library_2_13_0_Types_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../.fable/fable-library.2.13.0/Types.js */ "./.fable/fable-library.2.13.0/Types.js");
 /* harmony import */ var _coord_fs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./coord.fs */ "./src/coord.fs");
 /* harmony import */ var _shape_fs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./shape.fs */ "./src/shape.fs");
 /* harmony import */ var _matrix_fs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./matrix.fs */ "./src/matrix.fs");
-/* harmony import */ var _fable_fable_library_2_4_21_Reflection_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../.fable/fable-library.2.4.21/Reflection.js */ "./.fable/fable-library.2.4.21/Reflection.js");
-/* harmony import */ var _fable_fable_library_2_4_21_Seq_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../.fable/fable-library.2.4.21/Seq.js */ "./.fable/fable-library.2.4.21/Seq.js");
-/* harmony import */ var _fable_fable_library_2_4_21_Util_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../.fable/fable-library.2.4.21/Util.js */ "./.fable/fable-library.2.4.21/Util.js");
-/* harmony import */ var _fable_fable_library_2_4_21_Int32_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../.fable/fable-library.2.4.21/Int32.js */ "./.fable/fable-library.2.4.21/Int32.js");
+/* harmony import */ var _fable_fable_library_2_13_0_Reflection_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../.fable/fable-library.2.13.0/Reflection.js */ "./.fable/fable-library.2.13.0/Reflection.js");
+/* harmony import */ var _fable_fable_library_2_13_0_Seq_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../.fable/fable-library.2.13.0/Seq.js */ "./.fable/fable-library.2.13.0/Seq.js");
+/* harmony import */ var _fable_fable_library_2_13_0_Util_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../.fable/fable-library.2.13.0/Util.js */ "./.fable/fable-library.2.13.0/Util.js");
+/* harmony import */ var _fable_fable_library_2_13_0_Int32_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../.fable/fable-library.2.13.0/Int32.js */ "./.fable/fable-library.2.13.0/Int32.js");
 /* harmony import */ var _boundingRect_fs__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./boundingRect.fs */ "./src/boundingRect.fs");
 
 
@@ -13556,12 +13480,12 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-const Block = Object(_fable_fable_library_2_4_21_Types_js__WEBPACK_IMPORTED_MODULE_0__["declare"])(function FBlocks_Block_Block(arg1, arg2) {
-  this.position = arg1;
-  this.shape = arg2;
-}, _fable_fable_library_2_4_21_Types_js__WEBPACK_IMPORTED_MODULE_0__["Record"]);
+const Block = Object(_fable_fable_library_2_13_0_Types_js__WEBPACK_IMPORTED_MODULE_0__["declare"])(function FBlocks_Block_Block(position, shape) {
+  this.position = position;
+  this.shape = shape;
+}, _fable_fable_library_2_13_0_Types_js__WEBPACK_IMPORTED_MODULE_0__["Record"]);
 function Block$reflection() {
-  return Object(_fable_fable_library_2_4_21_Reflection_js__WEBPACK_IMPORTED_MODULE_4__["record"])("FBlocks.Block.Block", [], Block, () => [["position", Object(_coord_fs__WEBPACK_IMPORTED_MODULE_1__["Coord$reflection"])()], ["shape", Object(_matrix_fs__WEBPACK_IMPORTED_MODULE_3__["Matrix$00601$reflection"])(Object(_shape_fs__WEBPACK_IMPORTED_MODULE_2__["ShapeCell$reflection"])())]]);
+  return Object(_fable_fable_library_2_13_0_Reflection_js__WEBPACK_IMPORTED_MODULE_4__["record_type"])("FBlocks.Block.Block", [], Block, () => [["position", Object(_coord_fs__WEBPACK_IMPORTED_MODULE_1__["Coord$reflection"])()], ["shape", Object(_matrix_fs__WEBPACK_IMPORTED_MODULE_3__["Matrix$00601$reflection"])(Object(_shape_fs__WEBPACK_IMPORTED_MODULE_2__["ShapeCell$reflection"])())]]);
 }
 function create(gridSize, shapeName) {
   const shape = Object(_shape_fs__WEBPACK_IMPORTED_MODULE_2__["getShapeMatrix"])(shapeName);
@@ -13570,11 +13494,11 @@ function create(gridSize, shapeName) {
   let source;
   const shape$$1 = shape;
   source = Object(_shape_fs__WEBPACK_IMPORTED_MODULE_2__["filledCellCoords"])(shape$$1);
-  source$$1 = Object(_fable_fable_library_2_4_21_Seq_js__WEBPACK_IMPORTED_MODULE_5__["map"])(_coord_fs__WEBPACK_IMPORTED_MODULE_1__["getY"], source);
-  maxY = Object(_fable_fable_library_2_4_21_Seq_js__WEBPACK_IMPORTED_MODULE_5__["max"])(source$$1, {
-    Compare: _fable_fable_library_2_4_21_Util_js__WEBPACK_IMPORTED_MODULE_6__["comparePrimitives"]
+  source$$1 = Object(_fable_fable_library_2_13_0_Seq_js__WEBPACK_IMPORTED_MODULE_5__["map"])(_coord_fs__WEBPACK_IMPORTED_MODULE_1__["getY"], source);
+  maxY = Object(_fable_fable_library_2_13_0_Seq_js__WEBPACK_IMPORTED_MODULE_5__["max"])(source$$1, {
+    Compare: _fable_fable_library_2_13_0_Util_js__WEBPACK_IMPORTED_MODULE_6__["comparePrimitives"]
   });
-  return new Block(new _coord_fs__WEBPACK_IMPORTED_MODULE_1__["Coord"](~~((gridSize - shape.columnCount) / 2), Object(_fable_fable_library_2_4_21_Int32_js__WEBPACK_IMPORTED_MODULE_7__["op_UnaryNegation_Int32"])(maxY)), shape);
+  return new Block(new _coord_fs__WEBPACK_IMPORTED_MODULE_1__["Coord"](~~((gridSize - shape.columnCount) / 2), Object(_fable_fable_library_2_13_0_Int32_js__WEBPACK_IMPORTED_MODULE_7__["op_UnaryNegation_Int32"])(maxY)), shape);
 }
 function moveBy(dx, dy, block) {
   return new Block(Object(_coord_fs__WEBPACK_IMPORTED_MODULE_1__["add"])(block.position, new _coord_fs__WEBPACK_IMPORTED_MODULE_1__["Coord"](dx, dy)), block.shape);
@@ -13587,7 +13511,7 @@ function getSquareCoords(block$$2) {
   let source$$2;
   const shape$$3 = block$$2.shape;
   source$$2 = Object(_shape_fs__WEBPACK_IMPORTED_MODULE_2__["filledCellCoords"])(shape$$3);
-  return Object(_fable_fable_library_2_4_21_Seq_js__WEBPACK_IMPORTED_MODULE_5__["map"])(function mapping(coord$$1) {
+  return Object(_fable_fable_library_2_13_0_Seq_js__WEBPACK_IMPORTED_MODULE_5__["map"])(function mapping(coord$$1) {
     return Object(_coord_fs__WEBPACK_IMPORTED_MODULE_1__["add"])(coord$$1, block$$2.position);
   }, source$$2);
 }
@@ -13598,12 +13522,12 @@ function getFilledCells(block$$3) {
   source$$3 = Object(_matrix_fs__WEBPACK_IMPORTED_MODULE_3__["flatmapi"])(function mapping$$1(x, y, cell) {
     return [Object(_coord_fs__WEBPACK_IMPORTED_MODULE_1__["create"])(x, y), cell];
   }, matrix);
-  source$$4 = Object(_fable_fable_library_2_4_21_Seq_js__WEBPACK_IMPORTED_MODULE_5__["filter"])(function predicate(tupledArg) {
+  source$$4 = Object(_fable_fable_library_2_13_0_Seq_js__WEBPACK_IMPORTED_MODULE_5__["filter"])(function predicate(tupledArg) {
     const coord$$2 = tupledArg[0];
     const cell$$1 = tupledArg[1];
     return Object(_shape_fs__WEBPACK_IMPORTED_MODULE_2__["isCellFilled"])(cell$$1);
   }, source$$3);
-  return Object(_fable_fable_library_2_4_21_Seq_js__WEBPACK_IMPORTED_MODULE_5__["map"])(function mapping$$2(tupledArg$$1) {
+  return Object(_fable_fable_library_2_13_0_Seq_js__WEBPACK_IMPORTED_MODULE_5__["map"])(function mapping$$2(tupledArg$$1) {
     const coord$$3 = tupledArg$$1[0];
     const cell$$2 = tupledArg$$1[1];
     return [Object(_coord_fs__WEBPACK_IMPORTED_MODULE_1__["add"])(coord$$3, block$$3.position), cell$$2];
@@ -13631,30 +13555,30 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "BoundingRect$reflection", function() { return BoundingRect$reflection; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "addPoint", function() { return addPoint; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fromCoords", function() { return fromCoords; });
-/* harmony import */ var _fable_fable_library_2_4_21_Types_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../.fable/fable-library.2.4.21/Types.js */ "./.fable/fable-library.2.4.21/Types.js");
-/* harmony import */ var _fable_fable_library_2_4_21_Reflection_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../.fable/fable-library.2.4.21/Reflection.js */ "./.fable/fable-library.2.4.21/Reflection.js");
-/* harmony import */ var _fable_fable_library_2_4_21_Util_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../.fable/fable-library.2.4.21/Util.js */ "./.fable/fable-library.2.4.21/Util.js");
-/* harmony import */ var _fable_fable_library_2_4_21_Seq_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../.fable/fable-library.2.4.21/Seq.js */ "./.fable/fable-library.2.4.21/Seq.js");
+/* harmony import */ var _fable_fable_library_2_13_0_Types_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../.fable/fable-library.2.13.0/Types.js */ "./.fable/fable-library.2.13.0/Types.js");
+/* harmony import */ var _fable_fable_library_2_13_0_Reflection_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../.fable/fable-library.2.13.0/Reflection.js */ "./.fable/fable-library.2.13.0/Reflection.js");
+/* harmony import */ var _fable_fable_library_2_13_0_Util_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../.fable/fable-library.2.13.0/Util.js */ "./.fable/fable-library.2.13.0/Util.js");
+/* harmony import */ var _fable_fable_library_2_13_0_Seq_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../.fable/fable-library.2.13.0/Seq.js */ "./.fable/fable-library.2.13.0/Seq.js");
 
 
 
 
-const BoundingRect = Object(_fable_fable_library_2_4_21_Types_js__WEBPACK_IMPORTED_MODULE_0__["declare"])(function FBlocks_BoundingRect_BoundingRect(arg1, arg2, arg3, arg4) {
-  this.bottom = arg1 | 0;
-  this.left = arg2 | 0;
-  this.right = arg3 | 0;
-  this.top = arg4 | 0;
-}, _fable_fable_library_2_4_21_Types_js__WEBPACK_IMPORTED_MODULE_0__["Record"]);
+const BoundingRect = Object(_fable_fable_library_2_13_0_Types_js__WEBPACK_IMPORTED_MODULE_0__["declare"])(function FBlocks_BoundingRect_BoundingRect(bottom, left, right, top) {
+  this.bottom = bottom | 0;
+  this.left = left | 0;
+  this.right = right | 0;
+  this.top = top | 0;
+}, _fable_fable_library_2_13_0_Types_js__WEBPACK_IMPORTED_MODULE_0__["Record"]);
 function BoundingRect$reflection() {
-  return Object(_fable_fable_library_2_4_21_Reflection_js__WEBPACK_IMPORTED_MODULE_1__["record"])("FBlocks.BoundingRect.BoundingRect", [], BoundingRect, () => [["bottom", _fable_fable_library_2_4_21_Reflection_js__WEBPACK_IMPORTED_MODULE_1__["int32"]], ["left", _fable_fable_library_2_4_21_Reflection_js__WEBPACK_IMPORTED_MODULE_1__["int32"]], ["right", _fable_fable_library_2_4_21_Reflection_js__WEBPACK_IMPORTED_MODULE_1__["int32"]], ["top", _fable_fable_library_2_4_21_Reflection_js__WEBPACK_IMPORTED_MODULE_1__["int32"]]]);
+  return Object(_fable_fable_library_2_13_0_Reflection_js__WEBPACK_IMPORTED_MODULE_1__["record_type"])("FBlocks.BoundingRect.BoundingRect", [], BoundingRect, () => [["bottom", _fable_fable_library_2_13_0_Reflection_js__WEBPACK_IMPORTED_MODULE_1__["int32_type"]], ["left", _fable_fable_library_2_13_0_Reflection_js__WEBPACK_IMPORTED_MODULE_1__["int32_type"]], ["right", _fable_fable_library_2_13_0_Reflection_js__WEBPACK_IMPORTED_MODULE_1__["int32_type"]], ["top", _fable_fable_library_2_13_0_Reflection_js__WEBPACK_IMPORTED_MODULE_1__["int32_type"]]]);
 }
 function addPoint(bounds, coord) {
-  return new BoundingRect(Object(_fable_fable_library_2_4_21_Util_js__WEBPACK_IMPORTED_MODULE_2__["max"])(_fable_fable_library_2_4_21_Util_js__WEBPACK_IMPORTED_MODULE_2__["comparePrimitives"], bounds.bottom, coord.y), Object(_fable_fable_library_2_4_21_Util_js__WEBPACK_IMPORTED_MODULE_2__["min"])(_fable_fable_library_2_4_21_Util_js__WEBPACK_IMPORTED_MODULE_2__["comparePrimitives"], bounds.left, coord.x), Object(_fable_fable_library_2_4_21_Util_js__WEBPACK_IMPORTED_MODULE_2__["max"])(_fable_fable_library_2_4_21_Util_js__WEBPACK_IMPORTED_MODULE_2__["comparePrimitives"], bounds.right, coord.x), Object(_fable_fable_library_2_4_21_Util_js__WEBPACK_IMPORTED_MODULE_2__["min"])(_fable_fable_library_2_4_21_Util_js__WEBPACK_IMPORTED_MODULE_2__["comparePrimitives"], bounds.top, coord.y));
+  return new BoundingRect(Object(_fable_fable_library_2_13_0_Util_js__WEBPACK_IMPORTED_MODULE_2__["max"])(_fable_fable_library_2_13_0_Util_js__WEBPACK_IMPORTED_MODULE_2__["comparePrimitives"], bounds.bottom, coord.y), Object(_fable_fable_library_2_13_0_Util_js__WEBPACK_IMPORTED_MODULE_2__["min"])(_fable_fable_library_2_13_0_Util_js__WEBPACK_IMPORTED_MODULE_2__["comparePrimitives"], bounds.left, coord.x), Object(_fable_fable_library_2_13_0_Util_js__WEBPACK_IMPORTED_MODULE_2__["max"])(_fable_fable_library_2_13_0_Util_js__WEBPACK_IMPORTED_MODULE_2__["comparePrimitives"], bounds.right, coord.x), Object(_fable_fable_library_2_13_0_Util_js__WEBPACK_IMPORTED_MODULE_2__["min"])(_fable_fable_library_2_13_0_Util_js__WEBPACK_IMPORTED_MODULE_2__["comparePrimitives"], bounds.top, coord.y));
 }
 function fromCoords(coords) {
   const initialBounds = new BoundingRect(-2147483648, 2147483647, -2147483648, -2147483648);
   const source = coords;
-  return Object(_fable_fable_library_2_4_21_Seq_js__WEBPACK_IMPORTED_MODULE_3__["fold"])(addPoint, initialBounds, source);
+  return Object(_fable_fable_library_2_13_0_Seq_js__WEBPACK_IMPORTED_MODULE_3__["fold"])(addPoint, initialBounds, source);
 }
 
 /***/ }),
@@ -13674,16 +13598,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "add", function() { return add; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getX", function() { return getX; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getY", function() { return getY; });
-/* harmony import */ var _fable_fable_library_2_4_21_Types_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../.fable/fable-library.2.4.21/Types.js */ "./.fable/fable-library.2.4.21/Types.js");
-/* harmony import */ var _fable_fable_library_2_4_21_Reflection_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../.fable/fable-library.2.4.21/Reflection.js */ "./.fable/fable-library.2.4.21/Reflection.js");
+/* harmony import */ var _fable_fable_library_2_13_0_Types_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../.fable/fable-library.2.13.0/Types.js */ "./.fable/fable-library.2.13.0/Types.js");
+/* harmony import */ var _fable_fable_library_2_13_0_Reflection_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../.fable/fable-library.2.13.0/Reflection.js */ "./.fable/fable-library.2.13.0/Reflection.js");
 
 
-const Coord = Object(_fable_fable_library_2_4_21_Types_js__WEBPACK_IMPORTED_MODULE_0__["declare"])(function FBlocks_Coord_Coord(arg1, arg2) {
-  this.x = arg1 | 0;
-  this.y = arg2 | 0;
-}, _fable_fable_library_2_4_21_Types_js__WEBPACK_IMPORTED_MODULE_0__["Record"]);
+const Coord = Object(_fable_fable_library_2_13_0_Types_js__WEBPACK_IMPORTED_MODULE_0__["declare"])(function FBlocks_Coord_Coord(x, y) {
+  this.x = x | 0;
+  this.y = y | 0;
+}, _fable_fable_library_2_13_0_Types_js__WEBPACK_IMPORTED_MODULE_0__["Record"]);
 function Coord$reflection() {
-  return Object(_fable_fable_library_2_4_21_Reflection_js__WEBPACK_IMPORTED_MODULE_1__["record"])("FBlocks.Coord.Coord", [], Coord, () => [["x", _fable_fable_library_2_4_21_Reflection_js__WEBPACK_IMPORTED_MODULE_1__["int32"]], ["y", _fable_fable_library_2_4_21_Reflection_js__WEBPACK_IMPORTED_MODULE_1__["int32"]]]);
+  return Object(_fable_fable_library_2_13_0_Reflection_js__WEBPACK_IMPORTED_MODULE_1__["record_type"])("FBlocks.Coord.Coord", [], Coord, () => [["x", _fable_fable_library_2_13_0_Reflection_js__WEBPACK_IMPORTED_MODULE_1__["int32_type"]], ["y", _fable_fable_library_2_13_0_Reflection_js__WEBPACK_IMPORTED_MODULE_1__["int32_type"]]]);
 }
 function create(x, y) {
   return new Coord(x, y);
@@ -13729,18 +13653,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "checkGameOver", function() { return checkGameOver; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "update", function() { return update; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "newGame", function() { return newGame; });
-/* harmony import */ var _fable_fable_library_2_4_21_Types_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../.fable/fable-library.2.4.21/Types.js */ "./.fable/fable-library.2.4.21/Types.js");
+/* harmony import */ var _fable_fable_library_2_13_0_Types_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../.fable/fable-library.2.13.0/Types.js */ "./.fable/fable-library.2.13.0/Types.js");
 /* harmony import */ var _block_fs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./block.fs */ "./src/block.fs");
 /* harmony import */ var _grid_fs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./grid.fs */ "./src/grid.fs");
-/* harmony import */ var _fable_fable_library_2_4_21_Reflection_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../.fable/fable-library.2.4.21/Reflection.js */ "./.fable/fable-library.2.4.21/Reflection.js");
+/* harmony import */ var _fable_fable_library_2_13_0_Reflection_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../.fable/fable-library.2.13.0/Reflection.js */ "./.fable/fable-library.2.13.0/Reflection.js");
 /* harmony import */ var _shape_fs__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./shape.fs */ "./src/shape.fs");
 /* harmony import */ var _score_fs__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./score.fs */ "./src/score.fs");
 /* harmony import */ var _randomShapeGenerator_fs__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./randomShapeGenerator.fs */ "./src/randomShapeGenerator.fs");
-/* harmony import */ var _fable_fable_library_2_4_21_Int32_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../.fable/fable-library.2.4.21/Int32.js */ "./.fable/fable-library.2.4.21/Int32.js");
-/* harmony import */ var _fable_fable_library_2_4_21_Util_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../.fable/fable-library.2.4.21/Util.js */ "./.fable/fable-library.2.4.21/Util.js");
-/* harmony import */ var _fable_fable_library_2_4_21_Seq_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../.fable/fable-library.2.4.21/Seq.js */ "./.fable/fable-library.2.4.21/Seq.js");
+/* harmony import */ var _fable_fable_library_2_13_0_Int32_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../.fable/fable-library.2.13.0/Int32.js */ "./.fable/fable-library.2.13.0/Int32.js");
+/* harmony import */ var _fable_fable_library_2_13_0_Util_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../.fable/fable-library.2.13.0/Util.js */ "./.fable/fable-library.2.13.0/Util.js");
+/* harmony import */ var _fable_fable_library_2_13_0_Seq_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../.fable/fable-library.2.13.0/Seq.js */ "./.fable/fable-library.2.13.0/Seq.js");
 /* harmony import */ var _input_fs__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./input.fs */ "./src/input.fs");
-/* harmony import */ var _fable_fable_library_2_4_21_List_js__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../.fable/fable-library.2.4.21/List.js */ "./.fable/fable-library.2.4.21/List.js");
+/* harmony import */ var _fable_fable_library_2_13_0_List_js__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../.fable/fable-library.2.13.0/List.js */ "./.fable/fable-library.2.13.0/List.js");
 
 
 
@@ -13756,26 +13680,28 @@ __webpack_require__.r(__webpack_exports__);
 const minimumFallInterval = 1;
 const fastFallInterval = 4;
 const moveInterval = 8;
-const GameState = Object(_fable_fable_library_2_4_21_Types_js__WEBPACK_IMPORTED_MODULE_0__["declare"])(function FBlocks_Game_GameState(arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10) {
-  this.block = arg1;
-  this.grid = arg2;
-  this.isFastFallEnabled = arg3;
-  this.isPaused = arg4;
-  this.lastBlockFallFrame = arg5;
-  this.lastMoveFrame = arg6;
-  this.moveDelta = arg7;
-  this.nextShape = arg8;
-  this.score = arg9;
-  this.shapeGeneratorState = arg10;
-}, _fable_fable_library_2_4_21_Types_js__WEBPACK_IMPORTED_MODULE_0__["Record"]);
+const GameState = Object(_fable_fable_library_2_13_0_Types_js__WEBPACK_IMPORTED_MODULE_0__["declare"])(function FBlocks_Game_GameState(block, grid, isFastFallEnabled, isPaused, lastBlockFallFrame, lastMoveFrame, moveDelta, nextShape, score, shapeGeneratorState) {
+  this.block = block;
+  this.grid = grid;
+  this.isFastFallEnabled = isFastFallEnabled;
+  this.isPaused = isPaused;
+  this.lastBlockFallFrame = lastBlockFallFrame;
+  this.lastMoveFrame = lastMoveFrame;
+  this.moveDelta = moveDelta;
+  this.nextShape = nextShape;
+  this.score = score;
+  this.shapeGeneratorState = shapeGeneratorState;
+}, _fable_fable_library_2_13_0_Types_js__WEBPACK_IMPORTED_MODULE_0__["Record"]);
 function GameState$reflection() {
-  return Object(_fable_fable_library_2_4_21_Reflection_js__WEBPACK_IMPORTED_MODULE_3__["record"])("FBlocks.Game.GameState", [], GameState, () => [["block", Object(_block_fs__WEBPACK_IMPORTED_MODULE_1__["Block$reflection"])()], ["grid", Object(_grid_fs__WEBPACK_IMPORTED_MODULE_2__["Grid$reflection"])()], ["isFastFallEnabled", _fable_fable_library_2_4_21_Reflection_js__WEBPACK_IMPORTED_MODULE_3__["bool"]], ["isPaused", _fable_fable_library_2_4_21_Reflection_js__WEBPACK_IMPORTED_MODULE_3__["bool"]], ["lastBlockFallFrame", _fable_fable_library_2_4_21_Reflection_js__WEBPACK_IMPORTED_MODULE_3__["int32"]], ["lastMoveFrame", _fable_fable_library_2_4_21_Reflection_js__WEBPACK_IMPORTED_MODULE_3__["int32"]], ["moveDelta", Object(_fable_fable_library_2_4_21_Reflection_js__WEBPACK_IMPORTED_MODULE_3__["option"])(_fable_fable_library_2_4_21_Reflection_js__WEBPACK_IMPORTED_MODULE_3__["int32"])], ["nextShape", Object(_shape_fs__WEBPACK_IMPORTED_MODULE_4__["ShapeName$reflection"])()], ["score", Object(_score_fs__WEBPACK_IMPORTED_MODULE_5__["Score$reflection"])()], ["shapeGeneratorState", Object(_randomShapeGenerator_fs__WEBPACK_IMPORTED_MODULE_6__["GeneratorState$reflection"])()]]);
+  return Object(_fable_fable_library_2_13_0_Reflection_js__WEBPACK_IMPORTED_MODULE_3__["record_type"])("FBlocks.Game.GameState", [], GameState, () => [["block", Object(_block_fs__WEBPACK_IMPORTED_MODULE_1__["Block$reflection"])()], ["grid", Object(_grid_fs__WEBPACK_IMPORTED_MODULE_2__["Grid$reflection"])()], ["isFastFallEnabled", _fable_fable_library_2_13_0_Reflection_js__WEBPACK_IMPORTED_MODULE_3__["bool_type"]], ["isPaused", _fable_fable_library_2_13_0_Reflection_js__WEBPACK_IMPORTED_MODULE_3__["bool_type"]], ["lastBlockFallFrame", _fable_fable_library_2_13_0_Reflection_js__WEBPACK_IMPORTED_MODULE_3__["int32_type"]], ["lastMoveFrame", _fable_fable_library_2_13_0_Reflection_js__WEBPACK_IMPORTED_MODULE_3__["int32_type"]], ["moveDelta", Object(_fable_fable_library_2_13_0_Reflection_js__WEBPACK_IMPORTED_MODULE_3__["option_type"])(_fable_fable_library_2_13_0_Reflection_js__WEBPACK_IMPORTED_MODULE_3__["int32_type"])], ["nextShape", Object(_shape_fs__WEBPACK_IMPORTED_MODULE_4__["ShapeName$reflection"])()], ["score", Object(_score_fs__WEBPACK_IMPORTED_MODULE_5__["Score$reflection"])()], ["shapeGeneratorState", Object(_randomShapeGenerator_fs__WEBPACK_IMPORTED_MODULE_6__["GeneratorState$reflection"])()]]);
 }
-const Game = Object(_fable_fable_library_2_4_21_Types_js__WEBPACK_IMPORTED_MODULE_0__["declare"])(function FBlocks_Game_Game(tag, name, ...fields) {
-  _fable_fable_library_2_4_21_Types_js__WEBPACK_IMPORTED_MODULE_0__["Union"].call(this, tag, name, ...fields);
-}, _fable_fable_library_2_4_21_Types_js__WEBPACK_IMPORTED_MODULE_0__["Union"]);
+const Game = Object(_fable_fable_library_2_13_0_Types_js__WEBPACK_IMPORTED_MODULE_0__["declare"])(function FBlocks_Game_Game(tag, name, ...fields) {
+  this.tag = tag | 0;
+  this.name = name;
+  this.fields = fields;
+}, _fable_fable_library_2_13_0_Types_js__WEBPACK_IMPORTED_MODULE_0__["Union"]);
 function Game$reflection() {
-  return Object(_fable_fable_library_2_4_21_Reflection_js__WEBPACK_IMPORTED_MODULE_3__["union"])("FBlocks.Game.Game", [], Game, () => [["RunningGame", [GameState$reflection()]], ["FinishedGame", [Object(_score_fs__WEBPACK_IMPORTED_MODULE_5__["Score$reflection"])()]]]);
+  return Object(_fable_fable_library_2_13_0_Reflection_js__WEBPACK_IMPORTED_MODULE_3__["union_type"])("FBlocks.Game.Game", [], Game, () => [["RunningGame", [["Item", GameState$reflection()]]], ["FinishedGame", [["Item", Object(_score_fs__WEBPACK_IMPORTED_MODULE_5__["Score$reflection"])()]]]]);
 }
 function updateBlockIfValid(gameState, updater) {
   const updatedBlock = updater(gameState.block);
@@ -13820,7 +13746,7 @@ function offsetOutOfBoundsBlock(gridWidth, block$$2) {
 
   if (bounds.left < 0) {
     const block$$4 = block$$2;
-    const dx = Object(_fable_fable_library_2_4_21_Int32_js__WEBPACK_IMPORTED_MODULE_7__["op_UnaryNegation_Int32"])(bounds.left) | 0;
+    const dx = Object(_fable_fable_library_2_13_0_Int32_js__WEBPACK_IMPORTED_MODULE_7__["op_UnaryNegation_Int32"])(bounds.left) | 0;
     return Object(_block_fs__WEBPACK_IMPORTED_MODULE_1__["moveBy"])(dx, 0, block$$4);
   } else if (bounds.right >= gridWidth) {
     const block$$5 = block$$2;
@@ -13854,7 +13780,7 @@ function processInput(currentFrame$$3, inputs, gameState$$4) {
     };
 
     const stopMovement = function stopMovement(gameState$$9) {
-      const moveDelta$$1 = null;
+      const moveDelta$$1 = undefined;
       return new GameState(gameState$$9.block, gameState$$9.grid, gameState$$9.isFastFallEnabled, gameState$$9.isPaused, gameState$$9.lastBlockFallFrame, gameState$$9.lastMoveFrame, moveDelta$$1, gameState$$9.nextShape, gameState$$9.score, gameState$$9.shapeGeneratorState);
     };
 
@@ -13867,12 +13793,12 @@ function processInput(currentFrame$$3, inputs, gameState$$4) {
       return new GameState(gameState$$11.block, gameState$$11.grid, gameState$$11.isFastFallEnabled, isPaused, gameState$$11.lastBlockFallFrame, gameState$$11.lastMoveFrame, gameState$$11.moveDelta, gameState$$11.nextShape, gameState$$11.score, gameState$$11.shapeGeneratorState);
     };
 
-    return (action.tag === 1 ? Object(_fable_fable_library_2_4_21_Util_js__WEBPACK_IMPORTED_MODULE_8__["partialApply"])(1, setMovement, [1]) : action.tag === 2 ? stopMovement : action.tag === 5 ? Object(_fable_fable_library_2_4_21_Util_js__WEBPACK_IMPORTED_MODULE_8__["partialApply"])(1, enableFastFall, [true]) : action.tag === 6 ? Object(_fable_fable_library_2_4_21_Util_js__WEBPACK_IMPORTED_MODULE_8__["partialApply"])(1, enableFastFall, [false]) : action.tag === 3 ? rotateBlock : action.tag === 4 ? placeBlock$$1 : action.tag === 7 ? togglePause : Object(_fable_fable_library_2_4_21_Util_js__WEBPACK_IMPORTED_MODULE_8__["partialApply"])(1, setMovement, [-1]))(gameState$$5);
+    return (action.tag === 1 ? Object(_fable_fable_library_2_13_0_Util_js__WEBPACK_IMPORTED_MODULE_8__["partialApply"])(1, setMovement, [1]) : action.tag === 2 ? stopMovement : action.tag === 5 ? Object(_fable_fable_library_2_13_0_Util_js__WEBPACK_IMPORTED_MODULE_8__["partialApply"])(1, enableFastFall, [true]) : action.tag === 6 ? Object(_fable_fable_library_2_13_0_Util_js__WEBPACK_IMPORTED_MODULE_8__["partialApply"])(1, enableFastFall, [false]) : action.tag === 3 ? rotateBlock : action.tag === 4 ? placeBlock$$1 : action.tag === 7 ? togglePause : Object(_fable_fable_library_2_13_0_Util_js__WEBPACK_IMPORTED_MODULE_8__["partialApply"])(1, setMovement, [-1]))(gameState$$5);
   };
 
   let updatedGameState;
   const source = inputs;
-  updatedGameState = Object(_fable_fable_library_2_4_21_Seq_js__WEBPACK_IMPORTED_MODULE_9__["fold"])(processAction, gameState$$4, source);
+  updatedGameState = Object(_fable_fable_library_2_13_0_Seq_js__WEBPACK_IMPORTED_MODULE_9__["fold"])(processAction, gameState$$4, source);
   return updatedGameState;
 }
 function moveBlock(dx$$3, gameState$$12) {
@@ -13904,11 +13830,11 @@ function calculateFallInterval(isFastFallEnabled$$1, level) {
     normalFallInterval = (48 - level * 5) * 1;
   } else {
     const framesPerCell = 5 - ~~((level - 10) / 3) | 0;
-    normalFallInterval = Object(_fable_fable_library_2_4_21_Util_js__WEBPACK_IMPORTED_MODULE_8__["max"])(_fable_fable_library_2_4_21_Util_js__WEBPACK_IMPORTED_MODULE_8__["comparePrimitives"], framesPerCell, 1) * 1;
+    normalFallInterval = Object(_fable_fable_library_2_13_0_Util_js__WEBPACK_IMPORTED_MODULE_8__["max"])(_fable_fable_library_2_13_0_Util_js__WEBPACK_IMPORTED_MODULE_8__["comparePrimitives"], framesPerCell, 1) * 1;
   }
 
   if (isFastFallEnabled$$1) {
-    return Object(_fable_fable_library_2_4_21_Util_js__WEBPACK_IMPORTED_MODULE_8__["min"])(_fable_fable_library_2_4_21_Util_js__WEBPACK_IMPORTED_MODULE_8__["comparePrimitives"], fastFallInterval, normalFallInterval) | 0;
+    return Object(_fable_fable_library_2_13_0_Util_js__WEBPACK_IMPORTED_MODULE_8__["min"])(_fable_fable_library_2_13_0_Util_js__WEBPACK_IMPORTED_MODULE_8__["comparePrimitives"], fastFallInterval, normalFallInterval) | 0;
   } else {
     return normalFallInterval | 0;
   }
@@ -13962,7 +13888,7 @@ function newGame(gridWidth$$2, gridHeight, currentTime) {
   patternInput$$1 = Object(_randomShapeGenerator_fs__WEBPACK_IMPORTED_MODULE_6__["getList"])(2, state$$1);
   const randomGeneratorState = patternInput$$1[1];
   const initialShapes = patternInput$$1[0];
-  const state$$2 = new GameState((shapeName$$1 = Object(_fable_fable_library_2_4_21_List_js__WEBPACK_IMPORTED_MODULE_11__["item"])(0, initialShapes), (Object(_block_fs__WEBPACK_IMPORTED_MODULE_1__["create"])(grid$$1.width, shapeName$$1))), grid$$1, false, false, 0, 0, null, Object(_fable_fable_library_2_4_21_List_js__WEBPACK_IMPORTED_MODULE_11__["item"])(1, initialShapes), _score_fs__WEBPACK_IMPORTED_MODULE_5__["initial"], randomGeneratorState);
+  const state$$2 = new GameState((shapeName$$1 = Object(_fable_fable_library_2_13_0_List_js__WEBPACK_IMPORTED_MODULE_11__["item"])(0, initialShapes), (Object(_block_fs__WEBPACK_IMPORTED_MODULE_1__["create"])(grid$$1.width, shapeName$$1))), grid$$1, false, false, 0, 0, undefined, Object(_fable_fable_library_2_13_0_List_js__WEBPACK_IMPORTED_MODULE_11__["item"])(1, initialShapes), _score_fs__WEBPACK_IMPORTED_MODULE_5__["initial"], randomGeneratorState);
   return new Game(0, "RunningGame", state$$2);
 }
 
@@ -13987,7 +13913,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _unitsOfMeasure_fs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./unitsOfMeasure.fs */ "./src/unitsOfMeasure.fs");
 /* harmony import */ var _time_fs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./time.fs */ "./src/time.fs");
 /* harmony import */ var _game_fs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./game.fs */ "./src/game.fs");
-/* harmony import */ var _fable_fable_library_2_4_21_Util_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../.fable/fable-library.2.4.21/Util.js */ "./.fable/fable-library.2.4.21/Util.js");
+/* harmony import */ var _fable_fable_library_2_13_0_Util_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../.fable/fable-library.2.13.0/Util.js */ "./.fable/fable-library.2.13.0/Util.js");
 
 
 
@@ -14036,14 +13962,18 @@ function mainLoop(game$$1, updateUI, lastFrameNumber$$1, lastFrameTime$$1, lastG
   const updatedGame = patternInput[0];
   const frameNumber$$1 = patternInput[1] | 0;
 
-  if (!Object(_fable_fable_library_2_4_21_Util_js__WEBPACK_IMPORTED_MODULE_3__["equals"])(updatedGame, game$$1)) {
+  if (!Object(_fable_fable_library_2_13_0_Util_js__WEBPACK_IMPORTED_MODULE_3__["equals"])(updatedGame, game$$1)) {
     updateUI(game$$1, updatedGame);
+  } else {
+    void null;
   }
 
   if (updatedGame.tag === 0) {
     onNextFrame(function (_arg1) {
       mainLoop(updatedGame, updateUI, frameNumber$$1, updatedLastFrameTime, gameTime, realTime);
     });
+  } else {
+    void null;
   }
 }
 function run(game$$2, updateUI$$1) {
@@ -14076,16 +14006,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "removeCompletedRows", function() { return removeCompletedRows; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "placeBlock", function() { return placeBlock; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "moveBlockToBottom", function() { return moveBlockToBottom; });
-/* harmony import */ var _fable_fable_library_2_4_21_Types_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../.fable/fable-library.2.4.21/Types.js */ "./.fable/fable-library.2.4.21/Types.js");
+/* harmony import */ var _fable_fable_library_2_13_0_Types_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../.fable/fable-library.2.13.0/Types.js */ "./.fable/fable-library.2.13.0/Types.js");
 /* harmony import */ var _shape_fs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./shape.fs */ "./src/shape.fs");
 /* harmony import */ var _matrix_fs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./matrix.fs */ "./src/matrix.fs");
-/* harmony import */ var _fable_fable_library_2_4_21_Reflection_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../.fable/fable-library.2.4.21/Reflection.js */ "./.fable/fable-library.2.4.21/Reflection.js");
-/* harmony import */ var _fable_fable_library_2_4_21_Util_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../.fable/fable-library.2.4.21/Util.js */ "./.fable/fable-library.2.4.21/Util.js");
-/* harmony import */ var _fable_fable_library_2_4_21_Seq_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../.fable/fable-library.2.4.21/Seq.js */ "./.fable/fable-library.2.4.21/Seq.js");
+/* harmony import */ var _fable_fable_library_2_13_0_Reflection_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../.fable/fable-library.2.13.0/Reflection.js */ "./.fable/fable-library.2.13.0/Reflection.js");
+/* harmony import */ var _fable_fable_library_2_13_0_Util_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../.fable/fable-library.2.13.0/Util.js */ "./.fable/fable-library.2.13.0/Util.js");
+/* harmony import */ var _fable_fable_library_2_13_0_Seq_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../.fable/fable-library.2.13.0/Seq.js */ "./.fable/fable-library.2.13.0/Seq.js");
 /* harmony import */ var _block_fs__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./block.fs */ "./src/block.fs");
 /* harmony import */ var _coord_fs__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./coord.fs */ "./src/coord.fs");
-/* harmony import */ var _fable_fable_library_2_4_21_List_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../.fable/fable-library.2.4.21/List.js */ "./.fable/fable-library.2.4.21/List.js");
-/* harmony import */ var _fable_fable_library_2_4_21_Option_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../.fable/fable-library.2.4.21/Option.js */ "./.fable/fable-library.2.4.21/Option.js");
+/* harmony import */ var _fable_fable_library_2_13_0_List_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../.fable/fable-library.2.13.0/List.js */ "./.fable/fable-library.2.13.0/List.js");
+/* harmony import */ var _fable_fable_library_2_13_0_Option_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../.fable/fable-library.2.13.0/Option.js */ "./.fable/fable-library.2.13.0/Option.js");
 
 
 
@@ -14096,13 +14026,13 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-const Grid = Object(_fable_fable_library_2_4_21_Types_js__WEBPACK_IMPORTED_MODULE_0__["declare"])(function FBlocks_Grid_Grid(arg1, arg2, arg3) {
-  this.cells = arg1;
-  this.height = arg2 | 0;
-  this.width = arg3 | 0;
-}, _fable_fable_library_2_4_21_Types_js__WEBPACK_IMPORTED_MODULE_0__["Record"]);
+const Grid = Object(_fable_fable_library_2_13_0_Types_js__WEBPACK_IMPORTED_MODULE_0__["declare"])(function FBlocks_Grid_Grid(cells, height, width) {
+  this.cells = cells;
+  this.height = height | 0;
+  this.width = width | 0;
+}, _fable_fable_library_2_13_0_Types_js__WEBPACK_IMPORTED_MODULE_0__["Record"]);
 function Grid$reflection() {
-  return Object(_fable_fable_library_2_4_21_Reflection_js__WEBPACK_IMPORTED_MODULE_3__["record"])("FBlocks.Grid.Grid", [], Grid, () => [["cells", Object(_matrix_fs__WEBPACK_IMPORTED_MODULE_2__["Matrix$00601$reflection"])(Object(_shape_fs__WEBPACK_IMPORTED_MODULE_1__["ShapeCell$reflection"])())], ["height", _fable_fable_library_2_4_21_Reflection_js__WEBPACK_IMPORTED_MODULE_3__["int32"]], ["width", _fable_fable_library_2_4_21_Reflection_js__WEBPACK_IMPORTED_MODULE_3__["int32"]]]);
+  return Object(_fable_fable_library_2_13_0_Reflection_js__WEBPACK_IMPORTED_MODULE_3__["record_type"])("FBlocks.Grid.Grid", [], Grid, () => [["cells", Object(_matrix_fs__WEBPACK_IMPORTED_MODULE_2__["Matrix$00601$reflection"])(Object(_shape_fs__WEBPACK_IMPORTED_MODULE_1__["ShapeCell$reflection"])())], ["height", _fable_fable_library_2_13_0_Reflection_js__WEBPACK_IMPORTED_MODULE_3__["int32_type"]], ["width", _fable_fable_library_2_13_0_Reflection_js__WEBPACK_IMPORTED_MODULE_3__["int32_type"]]]);
 }
 function create(width, height) {
   return new Grid(Object(_matrix_fs__WEBPACK_IMPORTED_MODULE_2__["create"])(width, height, new _shape_fs__WEBPACK_IMPORTED_MODULE_1__["ShapeCell"](0, "EmptyCell")), height, width);
@@ -14124,8 +14054,8 @@ function isBlockValid(grid$$1, block) {
     let source;
     const grid$$2 = grid$$1;
     source = getFilledCellCoords(grid$$2);
-    return Object(_fable_fable_library_2_4_21_Seq_js__WEBPACK_IMPORTED_MODULE_5__["exists"])(function predicate(gridCoord) {
-      return Object(_fable_fable_library_2_4_21_Util_js__WEBPACK_IMPORTED_MODULE_4__["equals"])(gridCoord, cellCoord);
+    return Object(_fable_fable_library_2_13_0_Seq_js__WEBPACK_IMPORTED_MODULE_5__["exists"])(function predicate(gridCoord) {
+      return Object(_fable_fable_library_2_13_0_Util_js__WEBPACK_IMPORTED_MODULE_4__["equals"])(gridCoord, cellCoord);
     }, source);
   };
 
@@ -14140,22 +14070,22 @@ function isBlockValid(grid$$1, block) {
   let source$$1;
   const block$$1 = block;
   source$$1 = Object(_block_fs__WEBPACK_IMPORTED_MODULE_6__["getSquareCoords"])(block$$1);
-  return Object(_fable_fable_library_2_4_21_Seq_js__WEBPACK_IMPORTED_MODULE_5__["forAll"])(isCellValid, source$$1);
+  return Object(_fable_fable_library_2_13_0_Seq_js__WEBPACK_IMPORTED_MODULE_5__["forAll"])(isCellValid, source$$1);
 }
 function countCompletedRows(grid$$3) {
   const isRowCompleted = function isRowCompleted(row) {
     const source$$2 = row;
-    return Object(_fable_fable_library_2_4_21_Seq_js__WEBPACK_IMPORTED_MODULE_5__["forAll"])(_shape_fs__WEBPACK_IMPORTED_MODULE_1__["isCellFilled"], source$$2);
+    return Object(_fable_fable_library_2_13_0_Seq_js__WEBPACK_IMPORTED_MODULE_5__["forAll"])(_shape_fs__WEBPACK_IMPORTED_MODULE_1__["isCellFilled"], source$$2);
   };
 
   let source$$4;
   let source$$3;
   const matrix$$1 = grid$$3.cells;
   source$$3 = Object(_matrix_fs__WEBPACK_IMPORTED_MODULE_2__["rows"])(matrix$$1);
-  source$$4 = Object(_fable_fable_library_2_4_21_Seq_js__WEBPACK_IMPORTED_MODULE_5__["filter"])(function predicate$$1(arg00) {
+  source$$4 = Object(_fable_fable_library_2_13_0_Seq_js__WEBPACK_IMPORTED_MODULE_5__["filter"])(function predicate$$1(arg00) {
     return isRowCompleted(arg00);
   }, source$$3);
-  return Object(_fable_fable_library_2_4_21_Seq_js__WEBPACK_IMPORTED_MODULE_5__["length"])(source$$4) | 0;
+  return Object(_fable_fable_library_2_13_0_Seq_js__WEBPACK_IMPORTED_MODULE_5__["length"])(source$$4) | 0;
 }
 function removeCompletedRows(grid$$4) {
   const matrix$$2 = grid$$4.cells;
@@ -14165,11 +14095,11 @@ function removeCompletedRows(grid$$4) {
     let source$$5;
     const matrix$$3 = matrix$$2;
     source$$5 = Object(_matrix_fs__WEBPACK_IMPORTED_MODULE_2__["getRow"])(rowIndex, matrix$$3);
-    return Object(_fable_fable_library_2_4_21_Seq_js__WEBPACK_IMPORTED_MODULE_5__["forAll"])(_shape_fs__WEBPACK_IMPORTED_MODULE_1__["isCellFilled"], source$$5);
+    return Object(_fable_fable_library_2_13_0_Seq_js__WEBPACK_IMPORTED_MODULE_5__["forAll"])(_shape_fs__WEBPACK_IMPORTED_MODULE_1__["isCellFilled"], source$$5);
   };
 
-  const source$$6 = Object(_fable_fable_library_2_4_21_Seq_js__WEBPACK_IMPORTED_MODULE_5__["rangeNumber"])(0, 1, matrix$$2.rowCount - 1);
-  completeRowIndices = Object(_fable_fable_library_2_4_21_Seq_js__WEBPACK_IMPORTED_MODULE_5__["filter"])(isRowComplete, source$$6);
+  const source$$6 = Object(_fable_fable_library_2_13_0_Seq_js__WEBPACK_IMPORTED_MODULE_5__["rangeNumber"])(0, 1, matrix$$2.rowCount - 1);
+  completeRowIndices = Object(_fable_fable_library_2_13_0_Seq_js__WEBPACK_IMPORTED_MODULE_5__["filter"])(isRowComplete, source$$6);
 
   const removeRow = function removeRow(matrix$$4, rowIndex$$1) {
     const mapCell = function mapCell(x, y, value) {
@@ -14187,7 +14117,7 @@ function removeCompletedRows(grid$$4) {
 
   let updatedCells;
   const source$$7 = completeRowIndices;
-  updatedCells = Object(_fable_fable_library_2_4_21_Seq_js__WEBPACK_IMPORTED_MODULE_5__["fold"])(removeRow, matrix$$2, source$$7);
+  updatedCells = Object(_fable_fable_library_2_13_0_Seq_js__WEBPACK_IMPORTED_MODULE_5__["fold"])(removeRow, matrix$$2, source$$7);
   return new Grid(updatedCells, grid$$4.height, grid$$4.width);
 }
 function placeBlock(grid$$5, block$$2) {
@@ -14195,9 +14125,9 @@ function placeBlock(grid$$5, block$$2) {
   let gridCells;
   const matrix$$5 = grid$$5.cells;
   gridCells = Object(_matrix_fs__WEBPACK_IMPORTED_MODULE_2__["mapi"])(function mapping(x$$1, y$$1, value$$1) {
-    const matchingCell = Object(_fable_fable_library_2_4_21_Seq_js__WEBPACK_IMPORTED_MODULE_5__["tryFind"])(function (tupledArg) {
+    const matchingCell = Object(_fable_fable_library_2_13_0_Seq_js__WEBPACK_IMPORTED_MODULE_5__["tryFind"])(function (tupledArg) {
       const coord$$1 = tupledArg[0];
-      return Object(_fable_fable_library_2_4_21_Util_js__WEBPACK_IMPORTED_MODULE_4__["equals"])(coord$$1, Object(_coord_fs__WEBPACK_IMPORTED_MODULE_7__["create"])(x$$1, y$$1));
+      return Object(_fable_fable_library_2_13_0_Util_js__WEBPACK_IMPORTED_MODULE_4__["equals"])(coord$$1, Object(_coord_fs__WEBPACK_IMPORTED_MODULE_7__["create"])(x$$1, y$$1));
     }, filledCells);
 
     if (matchingCell != null) {
@@ -14214,15 +14144,15 @@ function moveBlockToBottom(grid$$6, block$$3) {
   let option;
   let source$$10;
   let source$$9;
-  const source$$8 = Object(_fable_fable_library_2_4_21_List_js__WEBPACK_IMPORTED_MODULE_8__["ofSeq"])(Object(_fable_fable_library_2_4_21_Seq_js__WEBPACK_IMPORTED_MODULE_5__["rangeNumber"])(0, 1, maxMoveY));
-  source$$9 = Object(_fable_fable_library_2_4_21_Seq_js__WEBPACK_IMPORTED_MODULE_5__["map"])(function mapping$$1(dy) {
+  const source$$8 = Object(_fable_fable_library_2_13_0_List_js__WEBPACK_IMPORTED_MODULE_8__["ofSeq"])(Object(_fable_fable_library_2_13_0_Seq_js__WEBPACK_IMPORTED_MODULE_5__["rangeNumber"])(0, 1, maxMoveY));
+  source$$9 = Object(_fable_fable_library_2_13_0_Seq_js__WEBPACK_IMPORTED_MODULE_5__["map"])(function mapping$$1(dy) {
     return Object(_block_fs__WEBPACK_IMPORTED_MODULE_6__["moveBy"])(0, dy, block$$3);
   }, source$$8);
-  source$$10 = Object(_fable_fable_library_2_4_21_Seq_js__WEBPACK_IMPORTED_MODULE_5__["takeWhile"])(function predicate$$2(block$$4) {
+  source$$10 = Object(_fable_fable_library_2_13_0_Seq_js__WEBPACK_IMPORTED_MODULE_5__["takeWhile"])(function predicate$$2(block$$4) {
     return isBlockValid(grid$$6, block$$4);
   }, source$$9);
-  option = Object(_fable_fable_library_2_4_21_Seq_js__WEBPACK_IMPORTED_MODULE_5__["tryLast"])(source$$10);
-  return Object(_fable_fable_library_2_4_21_Option_js__WEBPACK_IMPORTED_MODULE_9__["defaultArg"])(option, block$$3);
+  option = Object(_fable_fable_library_2_13_0_Seq_js__WEBPACK_IMPORTED_MODULE_5__["tryLast"])(source$$10);
+  return Object(_fable_fable_library_2_13_0_Option_js__WEBPACK_IMPORTED_MODULE_9__["defaultArg"])(option, block$$3);
 }
 
 /***/ }),
@@ -14244,42 +14174,48 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "onKeyDown", function() { return onKeyDown; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "onKeyUp", function() { return onKeyUp; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "addEventListeners", function() { return addEventListeners; });
-/* harmony import */ var _fable_fable_library_2_4_21_Types_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../.fable/fable-library.2.4.21/Types.js */ "./.fable/fable-library.2.4.21/Types.js");
-/* harmony import */ var _fable_fable_library_2_4_21_Reflection_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../.fable/fable-library.2.4.21/Reflection.js */ "./.fable/fable-library.2.4.21/Reflection.js");
-/* harmony import */ var _fable_fable_library_2_4_21_Util_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../.fable/fable-library.2.4.21/Util.js */ "./.fable/fable-library.2.4.21/Util.js");
-/* harmony import */ var _fable_fable_library_2_4_21_List_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../.fable/fable-library.2.4.21/List.js */ "./.fable/fable-library.2.4.21/List.js");
+/* harmony import */ var _fable_fable_library_2_13_0_Types_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../.fable/fable-library.2.13.0/Types.js */ "./.fable/fable-library.2.13.0/Types.js");
+/* harmony import */ var _fable_fable_library_2_13_0_Reflection_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../.fable/fable-library.2.13.0/Reflection.js */ "./.fable/fable-library.2.13.0/Reflection.js");
+/* harmony import */ var _fable_fable_library_2_13_0_Util_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../.fable/fable-library.2.13.0/Util.js */ "./.fable/fable-library.2.13.0/Util.js");
+/* harmony import */ var _fable_fable_library_2_13_0_List_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../.fable/fable-library.2.13.0/List.js */ "./.fable/fable-library.2.13.0/List.js");
 
 
 
 
-const InputAction = Object(_fable_fable_library_2_4_21_Types_js__WEBPACK_IMPORTED_MODULE_0__["declare"])(function FBlocks_Input_InputAction(tag, name, ...fields) {
-  _fable_fable_library_2_4_21_Types_js__WEBPACK_IMPORTED_MODULE_0__["Union"].call(this, tag, name, ...fields);
-}, _fable_fable_library_2_4_21_Types_js__WEBPACK_IMPORTED_MODULE_0__["Union"]);
+const InputAction = Object(_fable_fable_library_2_13_0_Types_js__WEBPACK_IMPORTED_MODULE_0__["declare"])(function FBlocks_Input_InputAction(tag, name, ...fields) {
+  this.tag = tag | 0;
+  this.name = name;
+  this.fields = fields;
+}, _fable_fable_library_2_13_0_Types_js__WEBPACK_IMPORTED_MODULE_0__["Union"]);
 function InputAction$reflection() {
-  return Object(_fable_fable_library_2_4_21_Reflection_js__WEBPACK_IMPORTED_MODULE_1__["union"])("FBlocks.Input.InputAction", [], InputAction, () => ["MoveLeft", "MoveRight", "StopMovement", "Rotate", "PlaceBlock", "IncreaseFallSpeed", "DecreaseFallSpeed", "TogglePause"]);
+  return Object(_fable_fable_library_2_13_0_Reflection_js__WEBPACK_IMPORTED_MODULE_1__["union_type"])("FBlocks.Input.InputAction", [], InputAction, () => ["MoveLeft", "MoveRight", "StopMovement", "Rotate", "PlaceBlock", "IncreaseFallSpeed", "DecreaseFallSpeed", "TogglePause"]);
 }
-const inputActionQueue = Object(_fable_fable_library_2_4_21_Util_js__WEBPACK_IMPORTED_MODULE_2__["createAtom"])(new _fable_fable_library_2_4_21_Types_js__WEBPACK_IMPORTED_MODULE_0__["List"]());
+const inputActionQueue = Object(_fable_fable_library_2_13_0_Util_js__WEBPACK_IMPORTED_MODULE_2__["createAtom"])(new _fable_fable_library_2_13_0_Types_js__WEBPACK_IMPORTED_MODULE_0__["List"]());
 function getActions() {
-  const inputs = Object(_fable_fable_library_2_4_21_List_js__WEBPACK_IMPORTED_MODULE_3__["reverse"])(inputActionQueue());
-  inputActionQueue(new _fable_fable_library_2_4_21_Types_js__WEBPACK_IMPORTED_MODULE_0__["List"]());
+  const inputs = Object(_fable_fable_library_2_13_0_List_js__WEBPACK_IMPORTED_MODULE_3__["reverse"])(inputActionQueue());
+  inputActionQueue(new _fable_fable_library_2_13_0_Types_js__WEBPACK_IMPORTED_MODULE_0__["List"](), true);
   return inputs;
 }
 function handleInput(mapping, event) {
   if (!event.repeat) {
     let maybeAction;
-    const matchValue = Object(_fable_fable_library_2_4_21_Util_js__WEBPACK_IMPORTED_MODULE_2__["tryGetValue"])(mapping, event.key, null);
+    const matchValue = Object(_fable_fable_library_2_13_0_Util_js__WEBPACK_IMPORTED_MODULE_2__["tryGetValue"])(mapping, event.key, null);
 
     if (matchValue[0]) {
       const action = matchValue[1];
       maybeAction = action;
     } else {
-      maybeAction = null;
+      maybeAction = undefined;
     }
 
-    if (maybeAction == null) {} else {
+    if (maybeAction == null) {
+      void null;
+    } else {
       const action$$1 = maybeAction;
-      inputActionQueue(new _fable_fable_library_2_4_21_Types_js__WEBPACK_IMPORTED_MODULE_0__["List"](action$$1, inputActionQueue()));
+      inputActionQueue(new _fable_fable_library_2_13_0_Types_js__WEBPACK_IMPORTED_MODULE_0__["List"](action$$1, inputActionQueue()), true);
     }
+  } else {
+    void null;
   }
 }
 const onKeyDown = (() => {
@@ -14326,11 +14262,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "coordsWithValue", function() { return coordsWithValue; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "coordsWhere", function() { return coordsWhere; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "rotateClockwise", function() { return rotateClockwise; });
-/* harmony import */ var _fable_fable_library_2_4_21_Types_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../.fable/fable-library.2.4.21/Types.js */ "./.fable/fable-library.2.4.21/Types.js");
-/* harmony import */ var _fable_fable_library_2_4_21_Reflection_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../.fable/fable-library.2.4.21/Reflection.js */ "./.fable/fable-library.2.4.21/Reflection.js");
-/* harmony import */ var _fable_fable_library_2_4_21_Array_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../.fable/fable-library.2.4.21/Array.js */ "./.fable/fable-library.2.4.21/Array.js");
-/* harmony import */ var _fable_fable_library_2_4_21_Seq_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../.fable/fable-library.2.4.21/Seq.js */ "./.fable/fable-library.2.4.21/Seq.js");
-/* harmony import */ var _fable_fable_library_2_4_21_Util_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../.fable/fable-library.2.4.21/Util.js */ "./.fable/fable-library.2.4.21/Util.js");
+/* harmony import */ var _fable_fable_library_2_13_0_Types_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../.fable/fable-library.2.13.0/Types.js */ "./.fable/fable-library.2.13.0/Types.js");
+/* harmony import */ var _fable_fable_library_2_13_0_Reflection_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../.fable/fable-library.2.13.0/Reflection.js */ "./.fable/fable-library.2.13.0/Reflection.js");
+/* harmony import */ var _fable_fable_library_2_13_0_Array_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../.fable/fable-library.2.13.0/Array.js */ "./.fable/fable-library.2.13.0/Array.js");
+/* harmony import */ var _fable_fable_library_2_13_0_Seq_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../.fable/fable-library.2.13.0/Seq.js */ "./.fable/fable-library.2.13.0/Seq.js");
+/* harmony import */ var _fable_fable_library_2_13_0_Util_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../.fable/fable-library.2.13.0/Util.js */ "./.fable/fable-library.2.13.0/Util.js");
 /* harmony import */ var _coord_fs__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./coord.fs */ "./src/coord.fs");
 
 
@@ -14338,37 +14274,41 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-const Matrix$00601 = Object(_fable_fable_library_2_4_21_Types_js__WEBPACK_IMPORTED_MODULE_0__["declare"])(function FBlocks_Matrix_Matrix(arg1, arg2, arg3) {
-  this.cells = arg1;
-  this.columnCount = arg2 | 0;
-  this.rowCount = arg3 | 0;
-}, _fable_fable_library_2_4_21_Types_js__WEBPACK_IMPORTED_MODULE_0__["Record"]);
+const Matrix$00601 = Object(_fable_fable_library_2_13_0_Types_js__WEBPACK_IMPORTED_MODULE_0__["declare"])(function FBlocks_Matrix_Matrix(cells, columnCount, rowCount) {
+  this.cells = cells;
+  this.columnCount = columnCount | 0;
+  this.rowCount = rowCount | 0;
+}, _fable_fable_library_2_13_0_Types_js__WEBPACK_IMPORTED_MODULE_0__["Record"]);
 function Matrix$00601$reflection($gen$$1) {
-  return Object(_fable_fable_library_2_4_21_Reflection_js__WEBPACK_IMPORTED_MODULE_1__["record"])("FBlocks.Matrix.Matrix`1", [$gen$$1], Matrix$00601, () => [["cells", Object(_fable_fable_library_2_4_21_Reflection_js__WEBPACK_IMPORTED_MODULE_1__["array"])($gen$$1)], ["columnCount", _fable_fable_library_2_4_21_Reflection_js__WEBPACK_IMPORTED_MODULE_1__["int32"]], ["rowCount", _fable_fable_library_2_4_21_Reflection_js__WEBPACK_IMPORTED_MODULE_1__["int32"]]]);
+  return Object(_fable_fable_library_2_13_0_Reflection_js__WEBPACK_IMPORTED_MODULE_1__["record_type"])("FBlocks.Matrix.Matrix`1", [$gen$$1], Matrix$00601, () => [["cells", Object(_fable_fable_library_2_13_0_Reflection_js__WEBPACK_IMPORTED_MODULE_1__["array_type"])($gen$$1)], ["columnCount", _fable_fable_library_2_13_0_Reflection_js__WEBPACK_IMPORTED_MODULE_1__["int32_type"]], ["rowCount", _fable_fable_library_2_13_0_Reflection_js__WEBPACK_IMPORTED_MODULE_1__["int32_type"]]]);
 }
 function create(columnCount, rowCount, value) {
-  return new Matrix$00601(Object(_fable_fable_library_2_4_21_Array_js__WEBPACK_IMPORTED_MODULE_2__["replicate"])(columnCount * rowCount, value, Array), columnCount, rowCount);
+  return new Matrix$00601(Object(_fable_fable_library_2_13_0_Array_js__WEBPACK_IMPORTED_MODULE_2__["replicate"])(columnCount * rowCount, value, Array), columnCount, rowCount);
 }
 function fromArray(input) {
   var arrays;
 
   if (input.length === 0) {
     throw new Error("Input array can't have zero length\\nParameter name: input");
+  } else {
+    void null;
   }
 
   const rowCount$$1 = input.length | 0;
   const columnCount$$1 = input[0].length | 0;
   let areSubarraysSameLength;
   const source = input;
-  areSubarraysSameLength = Object(_fable_fable_library_2_4_21_Seq_js__WEBPACK_IMPORTED_MODULE_3__["forAll"])(function predicate(subarray) {
+  areSubarraysSameLength = Object(_fable_fable_library_2_13_0_Seq_js__WEBPACK_IMPORTED_MODULE_3__["forAll"])(function predicate(subarray) {
     return subarray.length === columnCount$$1;
   }, source);
 
   if (!areSubarraysSameLength) {
     throw new Error("All subarrays in matrix must have same length\\nParameter name: input");
+  } else {
+    void null;
   }
 
-  return new Matrix$00601((arrays = input, (Object(_fable_fable_library_2_4_21_Array_js__WEBPACK_IMPORTED_MODULE_2__["concat"])(arrays, Array))), columnCount$$1, rowCount$$1);
+  return new Matrix$00601((arrays = input, (Object(_fable_fable_library_2_13_0_Array_js__WEBPACK_IMPORTED_MODULE_2__["concat"])(arrays, Array))), columnCount$$1, rowCount$$1);
 }
 function getAt(x, y, matrix) {
   return matrix.cells[x + y * matrix.columnCount];
@@ -14377,8 +14317,8 @@ function getRow(y$$1, matrix$$1) {
   return matrix$$1.cells.slice(y$$1 * matrix$$1.columnCount, matrix$$1.columnCount + y$$1 * matrix$$1.columnCount - 1 + 1);
 }
 function rows(matrix$$2) {
-  const source$$1 = Object(_fable_fable_library_2_4_21_Seq_js__WEBPACK_IMPORTED_MODULE_3__["rangeNumber"])(0, 1, matrix$$2.rowCount - 1);
-  return Object(_fable_fable_library_2_4_21_Seq_js__WEBPACK_IMPORTED_MODULE_3__["map"])(function mapping(y$$2) {
+  const source$$1 = Object(_fable_fable_library_2_13_0_Seq_js__WEBPACK_IMPORTED_MODULE_3__["rangeNumber"])(0, 1, matrix$$2.rowCount - 1);
+  return Object(_fable_fable_library_2_13_0_Seq_js__WEBPACK_IMPORTED_MODULE_3__["map"])(function mapping(y$$2) {
     return getRow(y$$2, matrix$$2);
   }, source$$1);
 }
@@ -14393,18 +14333,18 @@ function iteri(action$$1, matrix$$5) {
     action$$1(i % matrix$$5.columnCount, ~~(i / matrix$$5.columnCount), x$$1);
   };
 
-  Object(_fable_fable_library_2_4_21_Array_js__WEBPACK_IMPORTED_MODULE_2__["iterateIndexed"])(action$0027, matrix$$5.cells);
+  Object(_fable_fable_library_2_13_0_Array_js__WEBPACK_IMPORTED_MODULE_2__["iterateIndexed"])(action$0027, matrix$$5.cells);
 }
 function flatmapi(mapping$$1, matrix$$6) {
   const mapping$0027 = function mapping$0027(i$$1, x$$2) {
     return mapping$$1(i$$1 % matrix$$6.columnCount, ~~(i$$1 / matrix$$6.columnCount), x$$2);
   };
 
-  return Object(_fable_fable_library_2_4_21_Array_js__WEBPACK_IMPORTED_MODULE_2__["mapIndexed"])(mapping$0027, matrix$$6.cells, Array);
+  return Object(_fable_fable_library_2_13_0_Array_js__WEBPACK_IMPORTED_MODULE_2__["mapIndexed"])(mapping$0027, matrix$$6.cells, Array);
 }
 function map(mapping$$2, matrix$$7) {
   var array;
-  return new Matrix$00601((array = matrix$$7.cells, (Object(_fable_fable_library_2_4_21_Array_js__WEBPACK_IMPORTED_MODULE_2__["map"])(mapping$$2, array, Array))), matrix$$7.columnCount, matrix$$7.rowCount);
+  return new Matrix$00601((array = matrix$$7.cells, (Object(_fable_fable_library_2_13_0_Array_js__WEBPACK_IMPORTED_MODULE_2__["map"])(mapping$$2, array, Array))), matrix$$7.columnCount, matrix$$7.rowCount);
 }
 function mapi(mapping$$3, matrix$$8) {
   var array$$1;
@@ -14413,7 +14353,7 @@ function mapi(mapping$$3, matrix$$8) {
     return mapping$$3(i$$2 % matrix$$8.columnCount, ~~(i$$2 / matrix$$8.columnCount), x$$3);
   };
 
-  return new Matrix$00601((array$$1 = matrix$$8.cells, (Object(_fable_fable_library_2_4_21_Array_js__WEBPACK_IMPORTED_MODULE_2__["mapIndexed"])(mapping$0027$$1, array$$1, Array))), matrix$$8.columnCount, matrix$$8.rowCount);
+  return new Matrix$00601((array$$1 = matrix$$8.cells, (Object(_fable_fable_library_2_13_0_Array_js__WEBPACK_IMPORTED_MODULE_2__["mapIndexed"])(mapping$0027$$1, array$$1, Array))), matrix$$8.columnCount, matrix$$8.rowCount);
 }
 function coordsWithValue(value$$1, matrix$$9) {
   let source$$3;
@@ -14422,11 +14362,11 @@ function coordsWithValue(value$$1, matrix$$9) {
   source$$2 = flatmapi(function mapping$$4(x$$4, y$$3, v) {
     return [x$$4, y$$3, v];
   }, matrix$$10);
-  source$$3 = Object(_fable_fable_library_2_4_21_Seq_js__WEBPACK_IMPORTED_MODULE_3__["filter"])(function predicate$$2(tupledArg) {
+  source$$3 = Object(_fable_fable_library_2_13_0_Seq_js__WEBPACK_IMPORTED_MODULE_3__["filter"])(function predicate$$2(tupledArg) {
     const v$$1 = tupledArg[2];
-    return Object(_fable_fable_library_2_4_21_Util_js__WEBPACK_IMPORTED_MODULE_4__["equals"])(v$$1, value$$1);
+    return Object(_fable_fable_library_2_13_0_Util_js__WEBPACK_IMPORTED_MODULE_4__["equals"])(v$$1, value$$1);
   }, source$$2);
-  return Object(_fable_fable_library_2_4_21_Seq_js__WEBPACK_IMPORTED_MODULE_3__["map"])(function mapping$$5(tupledArg$$1) {
+  return Object(_fable_fable_library_2_13_0_Seq_js__WEBPACK_IMPORTED_MODULE_3__["map"])(function mapping$$5(tupledArg$$1) {
     const x$$5 = tupledArg$$1[0] | 0;
     const y$$4 = tupledArg$$1[1] | 0;
     return Object(_coord_fs__WEBPACK_IMPORTED_MODULE_5__["create"])(x$$5, y$$4);
@@ -14439,11 +14379,11 @@ function coordsWhere(predicate$$3, matrix$$11) {
   source$$4 = flatmapi(function mapping$$6(x$$6, y$$5, v$$2) {
     return [x$$6, y$$5, v$$2];
   }, matrix$$12);
-  source$$5 = Object(_fable_fable_library_2_4_21_Seq_js__WEBPACK_IMPORTED_MODULE_3__["filter"])(function predicate$$4(tupledArg$$2) {
+  source$$5 = Object(_fable_fable_library_2_13_0_Seq_js__WEBPACK_IMPORTED_MODULE_3__["filter"])(function predicate$$4(tupledArg$$2) {
     const v$$3 = tupledArg$$2[2];
     return predicate$$3(v$$3);
   }, source$$4);
-  return Object(_fable_fable_library_2_4_21_Seq_js__WEBPACK_IMPORTED_MODULE_3__["map"])(function mapping$$7(tupledArg$$3) {
+  return Object(_fable_fable_library_2_13_0_Seq_js__WEBPACK_IMPORTED_MODULE_3__["map"])(function mapping$$7(tupledArg$$3) {
     const x$$7 = tupledArg$$3[0] | 0;
     const y$$6 = tupledArg$$3[1] | 0;
     return Object(_coord_fs__WEBPACK_IMPORTED_MODULE_5__["create"])(x$$7, y$$6);
@@ -14478,13 +14418,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getNext", function() { return getNext; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getList", function() { return getList; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "initialize", function() { return initialize; });
-/* harmony import */ var _fable_fable_library_2_4_21_Types_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../.fable/fable-library.2.4.21/Types.js */ "./.fable/fable-library.2.4.21/Types.js");
+/* harmony import */ var _fable_fable_library_2_13_0_Types_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../.fable/fable-library.2.13.0/Types.js */ "./.fable/fable-library.2.13.0/Types.js");
 /* harmony import */ var _shape_fs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./shape.fs */ "./src/shape.fs");
-/* harmony import */ var _fable_fable_library_2_4_21_Reflection_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../.fable/fable-library.2.4.21/Reflection.js */ "./.fable/fable-library.2.4.21/Reflection.js");
-/* harmony import */ var _fable_fable_library_2_4_21_Array_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../.fable/fable-library.2.4.21/Array.js */ "./.fable/fable-library.2.4.21/Array.js");
-/* harmony import */ var _fable_fable_library_2_4_21_Util_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../.fable/fable-library.2.4.21/Util.js */ "./.fable/fable-library.2.4.21/Util.js");
-/* harmony import */ var _fable_fable_library_2_4_21_List_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../.fable/fable-library.2.4.21/List.js */ "./.fable/fable-library.2.4.21/List.js");
-/* harmony import */ var _fable_fable_library_2_4_21_Seq_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../.fable/fable-library.2.4.21/Seq.js */ "./.fable/fable-library.2.4.21/Seq.js");
+/* harmony import */ var _fable_fable_library_2_13_0_Reflection_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../.fable/fable-library.2.13.0/Reflection.js */ "./.fable/fable-library.2.13.0/Reflection.js");
+/* harmony import */ var _fable_fable_library_2_13_0_Array_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../.fable/fable-library.2.13.0/Array.js */ "./.fable/fable-library.2.13.0/Array.js");
+/* harmony import */ var _fable_fable_library_2_13_0_Util_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../.fable/fable-library.2.13.0/Util.js */ "./.fable/fable-library.2.13.0/Util.js");
+/* harmony import */ var _fable_fable_library_2_13_0_List_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../.fable/fable-library.2.13.0/List.js */ "./.fable/fable-library.2.13.0/List.js");
+/* harmony import */ var _fable_fable_library_2_13_0_Seq_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../.fable/fable-library.2.13.0/Seq.js */ "./.fable/fable-library.2.13.0/Seq.js");
 
 
 
@@ -14492,26 +14432,26 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-const GeneratorState = Object(_fable_fable_library_2_4_21_Types_js__WEBPACK_IMPORTED_MODULE_0__["declare"])(function FBlocks_RandomShapeGenerator_GeneratorState(arg1) {
-  this.nextShapes = arg1;
-}, _fable_fable_library_2_4_21_Types_js__WEBPACK_IMPORTED_MODULE_0__["Record"]);
+const GeneratorState = Object(_fable_fable_library_2_13_0_Types_js__WEBPACK_IMPORTED_MODULE_0__["declare"])(function FBlocks_RandomShapeGenerator_GeneratorState(nextShapes) {
+  this.nextShapes = nextShapes;
+}, _fable_fable_library_2_13_0_Types_js__WEBPACK_IMPORTED_MODULE_0__["Record"]);
 function GeneratorState$reflection() {
-  return Object(_fable_fable_library_2_4_21_Reflection_js__WEBPACK_IMPORTED_MODULE_2__["record"])("FBlocks.RandomShapeGenerator.GeneratorState", [], GeneratorState, () => [["nextShapes", Object(_fable_fable_library_2_4_21_Reflection_js__WEBPACK_IMPORTED_MODULE_2__["list"])(Object(_shape_fs__WEBPACK_IMPORTED_MODULE_1__["ShapeName$reflection"])())]]);
+  return Object(_fable_fable_library_2_13_0_Reflection_js__WEBPACK_IMPORTED_MODULE_2__["record_type"])("FBlocks.RandomShapeGenerator.GeneratorState", [], GeneratorState, () => [["nextShapes", Object(_fable_fable_library_2_13_0_Reflection_js__WEBPACK_IMPORTED_MODULE_2__["list_type"])(Object(_shape_fs__WEBPACK_IMPORTED_MODULE_1__["ShapeName$reflection"])())]]);
 }
 const random = {};
 const allShapes = [new _shape_fs__WEBPACK_IMPORTED_MODULE_1__["ShapeName"](0, "D"), new _shape_fs__WEBPACK_IMPORTED_MODULE_1__["ShapeName"](1, "I"), new _shape_fs__WEBPACK_IMPORTED_MODULE_1__["ShapeName"](2, "J"), new _shape_fs__WEBPACK_IMPORTED_MODULE_1__["ShapeName"](3, "L"), new _shape_fs__WEBPACK_IMPORTED_MODULE_1__["ShapeName"](4, "O"), new _shape_fs__WEBPACK_IMPORTED_MODULE_1__["ShapeName"](5, "S"), new _shape_fs__WEBPACK_IMPORTED_MODULE_1__["ShapeName"](6, "Z")];
 function shuffleList(array) {
-  const arrayCopy = Object(_fable_fable_library_2_4_21_Array_js__WEBPACK_IMPORTED_MODULE_3__["copy"])(array, Array);
+  const arrayCopy = Object(_fable_fable_library_2_13_0_Array_js__WEBPACK_IMPORTED_MODULE_3__["copy"])(array, Array);
 
   for (let i = arrayCopy.length - 1; i >= 0; i--) {
-    const j = Object(_fable_fable_library_2_4_21_Util_js__WEBPACK_IMPORTED_MODULE_4__["randomNext"])(0, i + 1) | 0;
+    const j = Object(_fable_fable_library_2_13_0_Util_js__WEBPACK_IMPORTED_MODULE_4__["randomNext"])(0, i + 1) | 0;
     const temp = arrayCopy[i];
     arrayCopy[i] = arrayCopy[j];
     arrayCopy[j] = temp;
   }
 
   const array$$1 = arrayCopy;
-  return Object(_fable_fable_library_2_4_21_Array_js__WEBPACK_IMPORTED_MODULE_3__["toList"])(array$$1);
+  return Object(_fable_fable_library_2_13_0_Array_js__WEBPACK_IMPORTED_MODULE_3__["toList"])(array$$1);
 }
 function getShuffledShapes() {
   const array$$2 = allShapes;
@@ -14536,7 +14476,7 @@ function getList(count, state$$1) {
   const patternInput = getNext(state$$1);
   const shape = patternInput[0];
   const nextState = patternInput[1];
-  initialState = [new _fable_fable_library_2_4_21_Types_js__WEBPACK_IMPORTED_MODULE_0__["List"](shape, new _fable_fable_library_2_4_21_Types_js__WEBPACK_IMPORTED_MODULE_0__["List"]()), nextState];
+  initialState = [new _fable_fable_library_2_13_0_Types_js__WEBPACK_IMPORTED_MODULE_0__["List"](shape, new _fable_fable_library_2_13_0_Types_js__WEBPACK_IMPORTED_MODULE_0__["List"]()), nextState];
 
   const folder = function folder(tupledArg) {
     const shapes = tupledArg[0];
@@ -14545,12 +14485,12 @@ function getList(count, state$$1) {
       const patternInput$$1 = getNext(lastState);
       const nextState$$1 = patternInput$$1[1];
       const nextShape = patternInput$$1[0];
-      return [Object(_fable_fable_library_2_4_21_List_js__WEBPACK_IMPORTED_MODULE_5__["append"])(shapes, new _fable_fable_library_2_4_21_Types_js__WEBPACK_IMPORTED_MODULE_0__["List"](nextShape, new _fable_fable_library_2_4_21_Types_js__WEBPACK_IMPORTED_MODULE_0__["List"]())), nextState$$1];
+      return [Object(_fable_fable_library_2_13_0_List_js__WEBPACK_IMPORTED_MODULE_5__["append"])(shapes, new _fable_fable_library_2_13_0_Types_js__WEBPACK_IMPORTED_MODULE_0__["List"](nextShape, new _fable_fable_library_2_13_0_Types_js__WEBPACK_IMPORTED_MODULE_0__["List"]())), nextState$$1];
     };
   };
 
-  const source = Object(_fable_fable_library_2_4_21_Seq_js__WEBPACK_IMPORTED_MODULE_6__["rangeNumber"])(1, 1, count);
-  return Object(_fable_fable_library_2_4_21_Seq_js__WEBPACK_IMPORTED_MODULE_6__["fold"])(Object(_fable_fable_library_2_4_21_Util_js__WEBPACK_IMPORTED_MODULE_4__["uncurry"])(2, folder), initialState, source);
+  const source = Object(_fable_fable_library_2_13_0_Seq_js__WEBPACK_IMPORTED_MODULE_6__["rangeNumber"])(1, 1, count);
+  return Object(_fable_fable_library_2_13_0_Seq_js__WEBPACK_IMPORTED_MODULE_6__["fold"])(Object(_fable_fable_library_2_13_0_Util_js__WEBPACK_IMPORTED_MODULE_4__["uncurry"])(2, folder), initialState, source);
 }
 function initialize() {
   return new GeneratorState(getShuffledShapes());
@@ -14579,9 +14519,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "drawBlock", function() { return drawBlock; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "redraw", function() { return redraw; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "drawNextBlock", function() { return drawNextBlock; });
-/* harmony import */ var _fable_fable_library_2_4_21_Types_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../.fable/fable-library.2.4.21/Types.js */ "./.fable/fable-library.2.4.21/Types.js");
-/* harmony import */ var _fable_fable_library_2_4_21_Reflection_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../.fable/fable-library.2.4.21/Reflection.js */ "./.fable/fable-library.2.4.21/Reflection.js");
-/* harmony import */ var _fable_fable_library_2_4_21_String_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../.fable/fable-library.2.4.21/String.js */ "./.fable/fable-library.2.4.21/String.js");
+/* harmony import */ var _fable_fable_library_2_13_0_Types_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../.fable/fable-library.2.13.0/Types.js */ "./.fable/fable-library.2.13.0/Types.js");
+/* harmony import */ var _fable_fable_library_2_13_0_Reflection_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../.fable/fable-library.2.13.0/Reflection.js */ "./.fable/fable-library.2.13.0/Reflection.js");
+/* harmony import */ var _fable_fable_library_2_13_0_String_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../.fable/fable-library.2.13.0/String.js */ "./.fable/fable-library.2.13.0/String.js");
 /* harmony import */ var _matrix_fs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./matrix.fs */ "./src/matrix.fs");
 /* harmony import */ var _grid_fs__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./grid.fs */ "./src/grid.fs");
 /* harmony import */ var _shape_fs__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./shape.fs */ "./src/shape.fs");
@@ -14591,17 +14531,17 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-const Renderer = Object(_fable_fable_library_2_4_21_Types_js__WEBPACK_IMPORTED_MODULE_0__["declare"])(function FBlocks_Renderer_Renderer(arg1) {
-  this.canvas = arg1;
-}, _fable_fable_library_2_4_21_Types_js__WEBPACK_IMPORTED_MODULE_0__["Record"]);
+const Renderer = Object(_fable_fable_library_2_13_0_Types_js__WEBPACK_IMPORTED_MODULE_0__["declare"])(function FBlocks_Renderer_Renderer(canvas) {
+  this.canvas = canvas;
+}, _fable_fable_library_2_13_0_Types_js__WEBPACK_IMPORTED_MODULE_0__["Record"]);
 function Renderer$reflection() {
-  return Object(_fable_fable_library_2_4_21_Reflection_js__WEBPACK_IMPORTED_MODULE_1__["record"])("FBlocks.Renderer.Renderer", [], Renderer, () => [["canvas", Object(_fable_fable_library_2_4_21_Reflection_js__WEBPACK_IMPORTED_MODULE_1__["type"])("Fable.Import.Browser.HTMLCanvasElement")]]);
+  return Object(_fable_fable_library_2_13_0_Reflection_js__WEBPACK_IMPORTED_MODULE_1__["record_type"])("FBlocks.Renderer.Renderer", [], Renderer, () => [["canvas", Object(_fable_fable_library_2_13_0_Reflection_js__WEBPACK_IMPORTED_MODULE_1__["class_type"])("Fable.Import.Browser.HTMLCanvasElement")]]);
 }
 const blockSize = 24;
 function setAlpha(alpha, color) {
   const arg10 = color;
   const arg20 = alpha | 0;
-  const clo1 = Object(_fable_fable_library_2_4_21_String_js__WEBPACK_IMPORTED_MODULE_2__["toText"])(Object(_fable_fable_library_2_4_21_String_js__WEBPACK_IMPORTED_MODULE_2__["printf"])("%s%X"));
+  const clo1 = Object(_fable_fable_library_2_13_0_String_js__WEBPACK_IMPORTED_MODULE_2__["toText"])(Object(_fable_fable_library_2_13_0_String_js__WEBPACK_IMPORTED_MODULE_2__["printf"])("%s%X"));
   const clo2 = clo1(arg10);
   return clo2(arg20);
 }
@@ -14630,13 +14570,17 @@ function drawGrid(grid, canvas$$3) {
     if (cell.tag === 1) {
       const color$$2 = cell.fields[0];
       drawSquare(cellX, cellY, color$$2, canvas$$3);
+    } else {
+      void null;
     }
   }, matrix);
 }
 function drawShape(x$$1, y$$1, shape, alpha$$1, canvas$$4) {
   const matrix$$1 = shape;
   Object(_matrix_fs__WEBPACK_IMPORTED_MODULE_3__["iteri"])(function action$$1(cellX$$1, cellY$$1, cell$$1) {
-    if (cell$$1.tag === 0) {} else {
+    if (cell$$1.tag === 0) {
+      void null;
+    } else {
       const color$$3 = cell$$1.fields[0];
       drawSquare(x$$1 + cellX$$1, y$$1 + cellY$$1, setAlpha(alpha$$1, color$$3), canvas$$4);
     }
@@ -14679,19 +14623,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "calculateLevel", function() { return calculateLevel; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "update", function() { return update; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "difference", function() { return difference; });
-/* harmony import */ var _fable_fable_library_2_4_21_Types_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../.fable/fable-library.2.4.21/Types.js */ "./.fable/fable-library.2.4.21/Types.js");
-/* harmony import */ var _fable_fable_library_2_4_21_Reflection_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../.fable/fable-library.2.4.21/Reflection.js */ "./.fable/fable-library.2.4.21/Reflection.js");
-/* harmony import */ var _fable_fable_library_2_4_21_String_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../.fable/fable-library.2.4.21/String.js */ "./.fable/fable-library.2.4.21/String.js");
+/* harmony import */ var _fable_fable_library_2_13_0_Types_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../.fable/fable-library.2.13.0/Types.js */ "./.fable/fable-library.2.13.0/Types.js");
+/* harmony import */ var _fable_fable_library_2_13_0_Reflection_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../.fable/fable-library.2.13.0/Reflection.js */ "./.fable/fable-library.2.13.0/Reflection.js");
+/* harmony import */ var _fable_fable_library_2_13_0_String_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../.fable/fable-library.2.13.0/String.js */ "./.fable/fable-library.2.13.0/String.js");
 
 
 
-const Score = Object(_fable_fable_library_2_4_21_Types_js__WEBPACK_IMPORTED_MODULE_0__["declare"])(function FBlocks_Score_Score(arg1, arg2, arg3) {
-  this.level = arg1 | 0;
-  this.linesCompleted = arg2 | 0;
-  this.points = arg3 | 0;
-}, _fable_fable_library_2_4_21_Types_js__WEBPACK_IMPORTED_MODULE_0__["Record"]);
+const Score = Object(_fable_fable_library_2_13_0_Types_js__WEBPACK_IMPORTED_MODULE_0__["declare"])(function FBlocks_Score_Score(level, linesCompleted, points) {
+  this.level = level | 0;
+  this.linesCompleted = linesCompleted | 0;
+  this.points = points | 0;
+}, _fable_fable_library_2_13_0_Types_js__WEBPACK_IMPORTED_MODULE_0__["Record"]);
 function Score$reflection() {
-  return Object(_fable_fable_library_2_4_21_Reflection_js__WEBPACK_IMPORTED_MODULE_1__["record"])("FBlocks.Score.Score", [], Score, () => [["level", _fable_fable_library_2_4_21_Reflection_js__WEBPACK_IMPORTED_MODULE_1__["int32"]], ["linesCompleted", _fable_fable_library_2_4_21_Reflection_js__WEBPACK_IMPORTED_MODULE_1__["int32"]], ["points", _fable_fable_library_2_4_21_Reflection_js__WEBPACK_IMPORTED_MODULE_1__["int32"]]]);
+  return Object(_fable_fable_library_2_13_0_Reflection_js__WEBPACK_IMPORTED_MODULE_1__["record_type"])("FBlocks.Score.Score", [], Score, () => [["level", _fable_fable_library_2_13_0_Reflection_js__WEBPACK_IMPORTED_MODULE_1__["int32_type"]], ["linesCompleted", _fable_fable_library_2_13_0_Reflection_js__WEBPACK_IMPORTED_MODULE_1__["int32_type"]], ["points", _fable_fable_library_2_13_0_Reflection_js__WEBPACK_IMPORTED_MODULE_1__["int32_type"]]]);
 }
 const initial = new Score(0, 0, 0);
 function linesToNextLevel(currentLevel) {
@@ -14728,7 +14672,7 @@ function calculatePoints(linesCompleted) {
 
     default:
       {
-        throw new Error((arg10 = linesCompleted | 0, (clo1 = Object(_fable_fable_library_2_4_21_String_js__WEBPACK_IMPORTED_MODULE_2__["toText"])(Object(_fable_fable_library_2_4_21_String_js__WEBPACK_IMPORTED_MODULE_2__["printf"])("Invalid number of lines completed: %i")), clo1(arg10))) + "\\nParameter name: " + "linesCompleted");
+        throw new Error((arg10 = linesCompleted | 0, (clo1 = Object(_fable_fable_library_2_13_0_String_js__WEBPACK_IMPORTED_MODULE_2__["toText"])(Object(_fable_fable_library_2_13_0_String_js__WEBPACK_IMPORTED_MODULE_2__["printf"])("Invalid number of lines completed: %i")), clo1(arg10))) + "\\nParameter name: " + "linesCompleted");
       }
   }
 }
@@ -14768,27 +14712,31 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getShapeColor", function() { return getShapeColor; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getShapeMatrix", function() { return getShapeMatrix; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "filledCellCoords", function() { return filledCellCoords; });
-/* harmony import */ var _fable_fable_library_2_4_21_Types_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../.fable/fable-library.2.4.21/Types.js */ "./.fable/fable-library.2.4.21/Types.js");
-/* harmony import */ var _fable_fable_library_2_4_21_Reflection_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../.fable/fable-library.2.4.21/Reflection.js */ "./.fable/fable-library.2.4.21/Reflection.js");
+/* harmony import */ var _fable_fable_library_2_13_0_Types_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../.fable/fable-library.2.13.0/Types.js */ "./.fable/fable-library.2.13.0/Types.js");
+/* harmony import */ var _fable_fable_library_2_13_0_Reflection_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../.fable/fable-library.2.13.0/Reflection.js */ "./.fable/fable-library.2.13.0/Reflection.js");
 /* harmony import */ var _matrix_fs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./matrix.fs */ "./src/matrix.fs");
 /* harmony import */ var _coord_fs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./coord.fs */ "./src/coord.fs");
-/* harmony import */ var _fable_fable_library_2_4_21_Seq_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../.fable/fable-library.2.4.21/Seq.js */ "./.fable/fable-library.2.4.21/Seq.js");
+/* harmony import */ var _fable_fable_library_2_13_0_Seq_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../.fable/fable-library.2.13.0/Seq.js */ "./.fable/fable-library.2.13.0/Seq.js");
 
 
 
 
 
-const ShapeCell = Object(_fable_fable_library_2_4_21_Types_js__WEBPACK_IMPORTED_MODULE_0__["declare"])(function FBlocks_Shape_ShapeCell(tag, name, ...fields) {
-  _fable_fable_library_2_4_21_Types_js__WEBPACK_IMPORTED_MODULE_0__["Union"].call(this, tag, name, ...fields);
-}, _fable_fable_library_2_4_21_Types_js__WEBPACK_IMPORTED_MODULE_0__["Union"]);
+const ShapeCell = Object(_fable_fable_library_2_13_0_Types_js__WEBPACK_IMPORTED_MODULE_0__["declare"])(function FBlocks_Shape_ShapeCell(tag, name, ...fields) {
+  this.tag = tag | 0;
+  this.name = name;
+  this.fields = fields;
+}, _fable_fable_library_2_13_0_Types_js__WEBPACK_IMPORTED_MODULE_0__["Union"]);
 function ShapeCell$reflection() {
-  return Object(_fable_fable_library_2_4_21_Reflection_js__WEBPACK_IMPORTED_MODULE_1__["union"])("FBlocks.Shape.ShapeCell", [], ShapeCell, () => ["EmptyCell", ["FilledCell", [_fable_fable_library_2_4_21_Reflection_js__WEBPACK_IMPORTED_MODULE_1__["string"]]]]);
+  return Object(_fable_fable_library_2_13_0_Reflection_js__WEBPACK_IMPORTED_MODULE_1__["union_type"])("FBlocks.Shape.ShapeCell", [], ShapeCell, () => ["EmptyCell", ["FilledCell", [["Item", _fable_fable_library_2_13_0_Reflection_js__WEBPACK_IMPORTED_MODULE_1__["string_type"]]]]]);
 }
-const ShapeName = Object(_fable_fable_library_2_4_21_Types_js__WEBPACK_IMPORTED_MODULE_0__["declare"])(function FBlocks_Shape_ShapeName(tag, name, ...fields) {
-  _fable_fable_library_2_4_21_Types_js__WEBPACK_IMPORTED_MODULE_0__["Union"].call(this, tag, name, ...fields);
-}, _fable_fable_library_2_4_21_Types_js__WEBPACK_IMPORTED_MODULE_0__["Union"]);
+const ShapeName = Object(_fable_fable_library_2_13_0_Types_js__WEBPACK_IMPORTED_MODULE_0__["declare"])(function FBlocks_Shape_ShapeName(tag, name, ...fields) {
+  this.tag = tag | 0;
+  this.name = name;
+  this.fields = fields;
+}, _fable_fable_library_2_13_0_Types_js__WEBPACK_IMPORTED_MODULE_0__["Union"]);
 function ShapeName$reflection() {
-  return Object(_fable_fable_library_2_4_21_Reflection_js__WEBPACK_IMPORTED_MODULE_1__["union"])("FBlocks.Shape.ShapeName", [], ShapeName, () => ["D", "I", "J", "L", "O", "S", "Z"]);
+  return Object(_fable_fable_library_2_13_0_Reflection_js__WEBPACK_IMPORTED_MODULE_1__["union_type"])("FBlocks.Shape.ShapeName", [], ShapeName, () => ["D", "I", "J", "L", "O", "S", "Z"]);
 }
 function isCellFilled(cell) {
   if (cell.tag === 0) {
@@ -14857,11 +14805,11 @@ function filledCellCoords(shape) {
   source = Object(_matrix_fs__WEBPACK_IMPORTED_MODULE_2__["flatmapi"])(function mapping$$1(x$$2, y, v) {
     return [Object(_coord_fs__WEBPACK_IMPORTED_MODULE_3__["create"])(x$$2, y), v];
   }, matrix$$1);
-  source$$1 = Object(_fable_fable_library_2_4_21_Seq_js__WEBPACK_IMPORTED_MODULE_4__["filter"])(function predicate(tupledArg) {
+  source$$1 = Object(_fable_fable_library_2_13_0_Seq_js__WEBPACK_IMPORTED_MODULE_4__["filter"])(function predicate(tupledArg) {
     const v$$1 = tupledArg[1];
     return isCellFilled(v$$1);
   }, source);
-  return Object(_fable_fable_library_2_4_21_Seq_js__WEBPACK_IMPORTED_MODULE_4__["map"])(function mapping$$2(tupledArg$$1) {
+  return Object(_fable_fable_library_2_13_0_Seq_js__WEBPACK_IMPORTED_MODULE_4__["map"])(function mapping$$2(tupledArg$$1) {
     const coord = tupledArg$$1[0];
     return coord;
   }, source$$1);
@@ -14885,15 +14833,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "difference", function() { return difference; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fromMilliseconds", function() { return fromMilliseconds; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getCurrent", function() { return getCurrent; });
-/* harmony import */ var _fable_fable_library_2_4_21_Types_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../.fable/fable-library.2.4.21/Types.js */ "./.fable/fable-library.2.4.21/Types.js");
-/* harmony import */ var _fable_fable_library_2_4_21_Reflection_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../.fable/fable-library.2.4.21/Reflection.js */ "./.fable/fable-library.2.4.21/Reflection.js");
+/* harmony import */ var _fable_fable_library_2_13_0_Types_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../.fable/fable-library.2.13.0/Types.js */ "./.fable/fable-library.2.13.0/Types.js");
+/* harmony import */ var _fable_fable_library_2_13_0_Reflection_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../.fable/fable-library.2.13.0/Reflection.js */ "./.fable/fable-library.2.13.0/Reflection.js");
 
 
-const Time = Object(_fable_fable_library_2_4_21_Types_js__WEBPACK_IMPORTED_MODULE_0__["declare"])(function FBlocks_Time_Time(tag, name, ...fields) {
-  _fable_fable_library_2_4_21_Types_js__WEBPACK_IMPORTED_MODULE_0__["Union"].call(this, tag, name, ...fields);
-}, _fable_fable_library_2_4_21_Types_js__WEBPACK_IMPORTED_MODULE_0__["Union"]);
+const Time = Object(_fable_fable_library_2_13_0_Types_js__WEBPACK_IMPORTED_MODULE_0__["declare"])(function FBlocks_Time_Time(tag, name, ...fields) {
+  this.tag = tag | 0;
+  this.name = name;
+  this.fields = fields;
+}, _fable_fable_library_2_13_0_Types_js__WEBPACK_IMPORTED_MODULE_0__["Union"]);
 function Time$reflection() {
-  return Object(_fable_fable_library_2_4_21_Reflection_js__WEBPACK_IMPORTED_MODULE_1__["union"])("FBlocks.Time.Time", [], Time, () => [["Time", [_fable_fable_library_2_4_21_Reflection_js__WEBPACK_IMPORTED_MODULE_1__["float64"]]]]);
+  return Object(_fable_fable_library_2_13_0_Reflection_js__WEBPACK_IMPORTED_MODULE_1__["union_type"])("FBlocks.Time.Time", [], Time, () => [["Time", [["ms", _fable_fable_library_2_13_0_Reflection_js__WEBPACK_IMPORTED_MODULE_1__["float64_type"]]]]]);
 }
 const zero = new Time(0, "Time", 0);
 function add(_arg2, _arg1) {
