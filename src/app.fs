@@ -1,6 +1,7 @@
 module FBlocks.App
 
-open Fable.Import.Browser
+open Browser
+open Browser.Types
 open Fable.Core
 
 let gridWidth = 10
@@ -43,7 +44,7 @@ let run gameContainerDivId nextBlockDivId =
                 levelUpElement.innerHTML <- "Level Up!"
 
                 let callback = removeChildNodeCallback levelUpElement
-                levelUpElement.addEventListener ("animationend", U2.Case1 callback)
+                levelUpElement.addEventListener ("animationend", callback)
                 gameContainerElement.appendChild levelUpElement |> ignore
 
     let updateUI (previousState: Game.Game) (currentState: Game.Game) =

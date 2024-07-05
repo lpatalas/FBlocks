@@ -7,15 +7,11 @@
   "author": "Łukasz Patalas",
   "license": "MIT",
   "scripts": {
-    "build": "webpack",
-    "start": "webpack --watch"
+    "build-fable": "dotnet fable src/FBlocks.fsproj --outDir artifacts/fable_output --extension .generated.js",
+    "bundle": "esbuild artifacts/fable_output/app.generated.js --bundle --outdir=public",
+    "build": "npm run build-fable && npm run bundle"
   },
   "devDependencies": {
-    "@babel/core": "^7.14.3",
-    "fable-compiler": "^2.1.12",
-    "fable-loader": "^2.1.5",
-    "webpack": "^4.46.0",
-    "webpack-cli": "^3.2.3",
-    "webpack-dev-server": "^3.11.2"
+    "esbuild": "0.23.0"
   }
 }

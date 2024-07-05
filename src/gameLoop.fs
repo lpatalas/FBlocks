@@ -1,6 +1,6 @@
 module FBlocks.GameLoop
 
-open Fable.Import.Browser
+open Browser
 
 let framesPerSecond = 60.0<frame/s>
 let msPerFrame = 1.0<frame> / framesPerSecond |> secondsToMilliseconds

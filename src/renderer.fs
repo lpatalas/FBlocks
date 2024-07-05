@@ -1,10 +1,11 @@
 module FBlocks.Renderer
 
 open Fable.Core.JsInterop
-open Fable.Import.Browser
+open Browser
+open Browser.Types
 
 type Renderer = {
-    canvas: HTMLCanvasElement
+    canvas:HTMLCanvasElement
 }
 
 let blockSize = 24.0
@@ -14,7 +15,7 @@ let setAlpha alpha color =
 
 let create containerElementId width height =
     let elem = document.getElementById containerElementId
-    let canvas = document.createElement_canvas()
+    let canvas = document.createElement "canvas" :?> HTMLCanvasElement
     canvas.width <- (float width) * blockSize
     canvas.height <- (float height) * blockSize
     elem.appendChild(canvas) |> ignore

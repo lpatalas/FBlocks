@@ -1,6 +1,6 @@
 module FBlocks.Time
 
-open Fable.Import.Browser
+open Browser
 
 type Time = Time of ms: float<ms>
 

@@ -1,4 +1,5 @@
 .ionide/
+artifacts/
 bin/
 node_modules/
 obj/

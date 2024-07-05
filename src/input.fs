@@ -1,6 +1,7 @@
 module FBlocks.Input
 
-open Fable.Import.Browser
+open Browser
+open Browser.Types
 open System.Collections.Generic
 
 type InputAction =
@@ -20,7 +21,8 @@ let getActions() =
     inputActionQueue <- []
     inputs
 
-let handleInput (mapping: IDictionary<string, InputAction>) (event: KeyboardEvent) =
+let handleInput (mapping: IDictionary<string, InputAction>) (inputEvent: Event) =
+    let event = inputEvent :?> KeyboardEvent
     if not event.repeat then
         let maybeAction =
             match mapping.TryGetValue(event.key) with
@@ -32,7 +34,7 @@ let handleInput (mapping: IDictionary<string, InputAction>) (event: KeyboardEven
         | None -> ()
 
 let onKeyDown =
-    handleInput (dict[
+    handleInput (dict [
         "ArrowLeft", MoveLeft
         "ArrowRight", MoveRight
         "ArrowDown", IncreaseFallSpeed
@@ -41,7 +43,7 @@ let onKeyDown =
     ])
 
 let onKeyUp =
-    handleInput (dict[
+    handleInput (dict [
         "ArrowLeft", StopMovement
         "ArrowRight", StopMovement
         "ArrowDown", DecreaseFallSpeed
@@ -49,5 +51,5 @@ let onKeyUp =
     ])
 
 let addEventListeners() =
-    window.addEventListener_keydown onKeyDown
-    window.addEventListener_keyup onKeyUp
+    window.addEventListener("keydown", onKeyDown)
+    window.addEventListener("keyup", onKeyUp)
