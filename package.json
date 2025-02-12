@@ -12,6 +12,6 @@
     "build": "npm run build-fable && npm run bundle"
   },
   "devDependencies": {
-    "esbuild": "0.23.0"
+    "esbuild": "0.25.0"
   }
 }
